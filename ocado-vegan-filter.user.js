@@ -1,10 +1,11 @@
 // ==UserScript==
 // @name        Ocado Vegan Filter
-// @version     1.2.0
+// @version     1.2.1
 // @license     Unlicense
 // @description Update Ocado's incomplete "vegan" filter with over 15000 vegan products.
 // @match       https://www.ocado.com/*
 // @run-at      document-idle
+// @inject-into page
 // @grant       none
 // @namespace   https://greasyfork.org/en/scripts/576838-ocado-vegan-filter
 // @downloadURL https://update.greasyfork.org/scripts/576838/Ocado%20Vegan%20Filter.user.js
