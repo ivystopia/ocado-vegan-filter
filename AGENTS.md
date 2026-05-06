@@ -84,7 +84,10 @@ Use this only when the user explicitly asks to update the installed userscript w
 - Copy the serialized IndexedDB `object_data.data` blob for the `_Ocado Vegan Filter` key from the temporary profile back into the real profile.
 - Update only the `data` column for the existing row; avoid modifying IndexedDB trigger-sensitive columns such as `file_ids`.
 - Verify with a fresh temporary Firefox profile that FireMonkey reads the expected version, metadata, and source.
-- A running Firefox/FireMonkey process may have an in-memory registration of the old script. If the user does not see the change immediately, ask them to refresh Ocado tabs or reload FireMonkey; do not restart Firefox yourself.
+- A running Firefox/FireMonkey process may have an in-memory registration of the old script. Updating IndexedDB on disk is not enough by itself; FireMonkey must be reloaded so it unregisters/re-registers the userscript from storage.
+- If Firefox is running and the user has authorized updating their real install, automate the reload step where practical: disable FireMonkey, load/reload the relevant Ocado page, re-enable FireMonkey, then hard-refresh the Ocado tab.
+- Never use blind GUI keystrokes for this reload. If GUI automation is required, first target and verify the specific Firefox window/tab; do not type into whichever window currently has focus.
+- Do not close or restart Firefox for this workflow unless the user explicitly asks. If safe targeted automation is not possible, stop and give the user the exact manual reload steps instead.
 
 ## Testing
 

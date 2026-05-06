@@ -1,6 +1,6 @@
 // ==UserScript==
 // @name        Ocado Vegan Filter
-// @version     1.1.0
+// @version     1.2.0
 // @license     Unlicense
 // @description Update Ocado's incomplete "vegan" filter with over 15000 vegan products.
 // @match       https://www.ocado.com/*
@@ -62,8 +62,10 @@
  * present in one of the verified local vegan allowlists embedded below.
  *
  * Products not known to be vegan are visually de-emphasised. Their product image
- * is faded and fully desaturated, and promotional red text is muted. The normal
- * "Add" button remains unchanged and clickable, so the filter is cosmetic only.
+ * is faded and fully desaturated, promotional red text is muted, and the normal
+ * "Add" button is restyled to look like Ocado's "Show alternatives" button. The
+ * button remains Ocado's real Add button and stays clickable; hovering changes
+ * the label to "Add anyway" to make that explicit.
  *
  * Where the embedded vegan product lists came from
  * -----------------------------------------------
@@ -86,7 +88,12 @@
   "use strict";
 
  const NON_VEGAN_LABEL = "Not vegan";
+ const ADD_ANYWAY_LABEL = "Add anyway";
  const ADD_BUTTON_SELECTOR = 'button[data-test="counter-button"], button[data-testid="counter-button"]';
+ const OUT_OF_STOCK_BUTTON_SELECTOR = [
+   'button[data-test="fop-controls-show-alternatives-button"]',
+   'button[data-testid="fop-controls-show-alternatives-button"]',
+ ].join(",");
  const CARD_SELECTOR = ".product-card-container, [data-test^='fop-wrapper:'], [data-testid^='fop-wrapper:']";
  const NON_VEGAN_CARD_CLASS = "ocado-vegan-filter-non-vegan";
  const NON_VEGAN_ADD_BUTTON_CLASS = "ocado-vegan-filter-not-vegan-add";
@@ -2106,30 +2113,14 @@
     * stacking context, which can make our muted image sit above that anchor.
     * Therefore muted images must ignore pointer events so clicks pass through to
     * Ocado's own link overlay instead of being swallowed by the decorative image.
-    *
-    * The Add button follows the same principle. We keep Ocado's real button in
-    * the DOM and only draw "Not vegan" as a pseudo-element. The pseudo-element is
-    * pointer-transparent, so the button receives clicks exactly as before.
     */
    const style = document.createElement("style");
    style.id = STYLE_ID;
    style.textContent = `
-   .${NON_VEGAN_ADD_BUTTON_CLASS} {
-     background: #e1e4e3 !important;
-     color: transparent !important;
-     position: relative !important;
-   }
-
-   .${NON_VEGAN_ADD_BUTTON_CLASS}::after {
-     align-items: center;
-     color: #4f5655;
-     content: "${NON_VEGAN_LABEL}";
-     display: flex;
-     font-weight: 700;
-     inset: 0;
-     justify-content: center;
-     pointer-events: none;
-     position: absolute;
+   .${NON_VEGAN_ADD_BUTTON_CLASS}[data-ocado-vegan-filter-button-style="fallback"] {
+     background: #e9e4ed !important;
+     border: 0 !important;
+     color: #2e004d !important;
    }
 
    .${NON_VEGAN_CARD_CLASS} a[data-test="fop-product-link"] img,
@@ -2179,7 +2170,8 @@
  }
 
  function isAddButton(button) {
-   return textOf(button) === "Add" && /^Add\b/i.test(button.getAttribute("aria-label") || "");
+   return button.classList.contains(NON_VEGAN_ADD_BUTTON_CLASS) ||
+   (textOf(button) === "Add" && /^Add\b/i.test(button.getAttribute("aria-label") || ""));
  }
 
  function restoreLegacyBlockedButton(button) {
@@ -2197,31 +2189,126 @@
    return original;
  }
 
+ function firstClassMatching(element, pattern) {
+   return Array.from(element.classList || []).find((className) => pattern.test(className)) || "";
+ }
+
+ function firstDocumentClassMatching(pattern) {
+   for (const element of document.querySelectorAll("[class]")) {
+     const className = firstClassMatching(element, pattern);
+
+     if (className) {
+       return className;
+     }
+   }
+
+   return "";
+ }
+
+ function outOfStockButtonTemplate() {
+   return document.querySelector(OUT_OF_STOCK_BUTTON_SELECTOR) ||
+   Array.from(document.querySelectorAll("button")).find((button) => textOf(button) === "Show alternatives") ||
+   null;
+ }
+
+ function inferredOutOfStockButtonClassName(button) {
+   const classes = [
+     firstClassMatching(button, /^_button_[a-z0-9]+_\d+$/i) || firstDocumentClassMatching(/^_button_[a-z0-9]+_\d+$/i),
+     firstDocumentClassMatching(/^_button--m_/),
+     firstDocumentClassMatching(/^_button--secondary_/),
+     firstDocumentClassMatching(/^_button--fill_/),
+   ].filter(Boolean);
+
+   return classes.join(" ");
+ }
+
+ function outOfStockButtonClassName(button) {
+   const template = outOfStockButtonTemplate();
+
+   if (template) {
+     return template.getAttribute("class") || "";
+   }
+
+   return inferredOutOfStockButtonClassName(button);
+ }
+
+ function applyOutOfStockButtonStyle(button) {
+   if (!button.dataset.ocadoVeganFilterOriginalClass) {
+     button.dataset.ocadoVeganFilterOriginalClass = button.getAttribute("class") || "";
+   }
+
+   const className = outOfStockButtonClassName(button);
+
+   if (className) {
+     button.setAttribute("class", `${className} ${NON_VEGAN_ADD_BUTTON_CLASS}`.trim());
+     delete button.dataset.ocadoVeganFilterButtonStyle;
+     return;
+   }
+
+   button.classList.add(NON_VEGAN_ADD_BUTTON_CLASS);
+   button.dataset.ocadoVeganFilterButtonStyle = "fallback";
+ }
+
+ function installAddAnywayHoverText(button) {
+   if (button.dataset.ocadoVeganFilterHoverTextInstalled) {
+     return;
+   }
+
+   // The button remains Ocado's original Add button. Only the visible text is
+   // changed, and the hover state makes the click-through behaviour explicit.
+   button.addEventListener("mouseenter", () => {
+     if (button.classList.contains(NON_VEGAN_ADD_BUTTON_CLASS)) {
+       button.textContent = ADD_ANYWAY_LABEL;
+     }
+   });
+   button.addEventListener("mouseleave", () => {
+     if (button.classList.contains(NON_VEGAN_ADD_BUTTON_CLASS)) {
+       button.textContent = NON_VEGAN_LABEL;
+     }
+   });
+   button.dataset.ocadoVeganFilterHoverTextInstalled = "true";
+ }
+
  function markAddButtonsCosmetically(card) {
-   // Do not replace or disable buttons. The class below only changes how the
-   // existing Ocado Add button is painted; the original click handler remains on
-   // the original button.
+   // Do not replace or disable buttons. We keep the existing Ocado Add button
+   // and swap only its visual class set/text, so the original click handler
+   // remains on the original button.
    for (const button of card.querySelectorAll(`${ADD_BUTTON_SELECTOR}, .${LEGACY_BLOCKED_BUTTON_CLASS}`)) {
      const addButton = button.classList.contains(LEGACY_BLOCKED_BUTTON_CLASS)
      ? restoreLegacyBlockedButton(button)
      : button;
 
      if (isAddButton(addButton)) {
-       addButton.classList.add(NON_VEGAN_ADD_BUTTON_CLASS);
+       if (!addButton.dataset.ocadoVeganFilterOriginalText) {
+         addButton.dataset.ocadoVeganFilterOriginalText = textOf(addButton) || "Add";
+       }
+
+       applyOutOfStockButtonStyle(addButton);
+       installAddAnywayHoverText(addButton);
+       addButton.textContent = addButton.matches(":hover") ? ADD_ANYWAY_LABEL : NON_VEGAN_LABEL;
      }
    }
  }
 
  function restoreAddButtonLabels(card) {
    // Cards can change classification as Ocado hydrates more metadata into the
-   // page. If a card becomes known-vegan, remove only our cosmetic marker and
-   // leave the underlying Ocado button untouched.
+   // page. If a card becomes known-vegan, restore the button classes/text we
+   // saved before applying the cosmetic out-of-stock style.
    for (const button of card.querySelectorAll(`.${NON_VEGAN_ADD_BUTTON_CLASS}, .${LEGACY_BLOCKED_BUTTON_CLASS}`)) {
      const addButton = button.classList.contains(LEGACY_BLOCKED_BUTTON_CLASS)
      ? restoreLegacyBlockedButton(button)
      : button;
 
-     addButton.classList.remove(NON_VEGAN_ADD_BUTTON_CLASS);
+     if (typeof addButton.dataset.ocadoVeganFilterOriginalClass === "string") {
+       addButton.setAttribute("class", addButton.dataset.ocadoVeganFilterOriginalClass);
+     } else {
+       addButton.classList.remove(NON_VEGAN_ADD_BUTTON_CLASS);
+     }
+
+     addButton.textContent = addButton.dataset.ocadoVeganFilterOriginalText || "Add";
+     delete addButton.dataset.ocadoVeganFilterButtonStyle;
+     delete addButton.dataset.ocadoVeganFilterOriginalClass;
+     delete addButton.dataset.ocadoVeganFilterOriginalText;
    }
  }
 
