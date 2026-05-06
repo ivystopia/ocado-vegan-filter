@@ -1,0 +1,45 @@
+{
+  "generatedAtEpoch": 1777991703,
+  "outputPrefix": "ocado_vegan_according_to_ingredients",
+  "manufacturerUrls": "ocado_vegan_according_to_manufacturer_urls.txt",
+  "leafCategoryCount": 5248,
+  "categoryPageCount": 6697,
+  "uniqueProducts": 48002,
+  "failedCategoryCount": 0,
+  "failedCategories": [],
+  "enumerateElapsedSeconds": 270.82,
+  "bopFetched": 41753,
+  "bopExistingBeforeRun": 0,
+  "bopErrorCount": 2,
+  "bopErrors": [
+    {
+      "error": "JSON parse failure: SyntaxError: JSON.parse: unexpected character at line 1 column 1 of the JSON data",
+      "retailerProductId": "27960011",
+      "status": 502,
+      "textStart": "<html>\r\n<head><title>502 Bad Gateway</title></head>\r\n<body>\r\n<center><h1>502 Bad Gateway</h1></center>\r\n</body>\r\n</html>\r\n",
+      "fetchedAtEpoch": 1777992004
+    },
+    {
+      "error": "JSON parse failure: SyntaxError: JSON.parse: unexpected character at line 1 column 1 of the JSON data",
+      "retailerProductId": "280935011",
+      "status": 502,
+      "textStart": "<html>\r\n<head><title>502 Bad Gateway</title></head>\r\n<body>\r\n<center><h1>502 Bad Gateway</h1></center>\r\n</body>\r\n</html>\r\n",
+      "fetchedAtEpoch": 1777992004
+    }
+  ],
+  "bopElapsedSeconds": 352.3,
+  "bopRetryAtEpoch": 1777992689,
+  "bopRetryFetched": 2,
+  "bopRetryErrorCount": 0,
+  "bopRawRows": 41755,
+  "bopSuccessfulRows": 41753,
+  "bopHistoricalErrorRows": 2,
+  "precheckRegeneratedAtEpoch": 1777992689,
+  "precheckCounts": {
+    "skip_no_safe_vegan_evidence": 28305,
+    "skip_official_vegan_tag": 4490,
+    "candidate": 8958,
+    "skip_old_vegan_according_to_manufacturer": 6249
+  },
+  "precheckRows": 48002
+}
