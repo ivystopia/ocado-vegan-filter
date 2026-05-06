@@ -102,12 +102,15 @@
   const HYDRATION_ROOT_NAMES = ["__INITIAL_STATE__", "__QUERY_INITIAL_STATE__", "__staticRouterHydrationData", "__staticRouterHydrationData__"];
   const HYDRATION_INDEX_REFRESH_MS = 1000;
   const GRAYSCALE_IMAGE_CACHE = new Map();
+
+  // This cache avoids repeatedly scanning Ocado's page data on every small page update.
   let hydrationProductIndex = {
     roots: [],
     productsByRetailerId: new Map(),
     indexedAt: 0,
   };
 
+  // Products with an explicit vegan claim from the manufacturer/page text, or with "vegan" in the name.
   const MANUFACTURER_OR_NAME_VEGAN_PRODUCT_IDS = new Set(
     `
   10111011 10202011 10213011 10214011 10263011 10279011 10344011 10851011
@@ -1074,6 +1077,7 @@
       .split(/\s+/),
   );
 
+  // Products judged vegan from stored ingredient/product identity data, using conservative offline rules.
   const INGREDIENTS_VEGAN_PRODUCT_IDS = new Set(
     `
   10069011 10090011 10200011 10203011 10266011 10295011 10355011 10365011
@@ -2104,6 +2108,11 @@
     }
 
     /*
+     * These styles are only visual.
+     * They make "not known vegan" products look muted, but they do not remove
+     * Ocado's links or basket controls.
+     */
+    /*
      * Important click-through rule:
      * Ocado renders the product image and the clickable product link as separate
      * overlapping elements. The link is usually an absolutely positioned
@@ -2203,10 +2212,16 @@
   }
 
   function outOfStockButtonTemplate() {
+    // Prefer copying Ocado's own out-of-stock button style from the current page.
     return document.querySelector(OUT_OF_STOCK_BUTTON_SELECTOR) || Array.from(document.querySelectorAll("button")).find((button) => textOf(button) === "Show alternatives") || null;
   }
 
   function inferredOutOfStockButtonClassName(button) {
+    /*
+     * Some pages do not currently contain an out-of-stock product.
+     * In that case, look for Ocado's reusable secondary-button classes already
+     * present elsewhere on the page and use those as the closest match.
+     */
     const classes = [
       firstClassMatching(button, /^_button_[a-z0-9]+_\d+$/i) || firstDocumentClassMatching(/^_button_[a-z0-9]+_\d+$/i),
       firstDocumentClassMatching(/^_button--m_/),
@@ -2228,6 +2243,7 @@
   }
 
   function applyOutOfStockButtonStyle(button) {
+    // Save the original classes so the card can be restored if it later turns out to be vegan.
     if (!button.dataset.ocadoVeganFilterOriginalClass) {
       button.dataset.ocadoVeganFilterOriginalClass = button.getAttribute("class") || "";
     }
@@ -2352,6 +2368,11 @@
   }
 
   function grayscaleImageDataUrl(image, source) {
+    /*
+     * CSS grayscale was not visually reliable enough on all Ocado images.
+     * This converts the loaded image pixels to a real grayscale data URL, then
+     * CSS still applies the fade/opacity effect on top.
+     */
     const cached = GRAYSCALE_IMAGE_CACHE.get(source);
 
     if (cached) {
@@ -2390,6 +2411,7 @@
     }
 
     if (!image.complete || !image.naturalWidth || !image.naturalHeight) {
+      // Lazy-loaded images may not have pixels yet; try again when the image finishes loading.
       scheduleImageGrayscaleOnLoad(image);
       return;
     }
@@ -2574,6 +2596,8 @@
   }
 
   function hydrationProductHasVeganAttribute(productId) {
+    // Product grids may hide the vegan icon when too many badges exist, but the
+    // hidden page data can still contain Ocado's full vegan attribute.
     if (!productId) {
       return false;
     }
@@ -2648,6 +2672,7 @@
   }
 
   function processCard(card) {
+    // Vegan products are left exactly as Ocado rendered them.
     if (shouldAllowProduct(card)) {
       card.classList.remove(NON_VEGAN_CARD_CLASS);
       restoreAddButtonLabels(card);
@@ -2655,12 +2680,14 @@
       return;
     }
 
+    // Products without vegan evidence are still usable, but visually muted.
     card.classList.add(NON_VEGAN_CARD_CLASS);
     blockProductImages(card);
     markAddButtonsCosmetically(card);
   }
 
   function productCards() {
+    // Ocado uses more than one card shape across search, category, and promotion pages.
     const cards = new Set();
 
     for (const element of document.querySelectorAll(CARD_SELECTOR)) {
@@ -2700,6 +2727,8 @@
 
   scheduleRun();
 
+  // Ocado product grids update after initial page load, during scrolling, and
+  // after basket interactions. Re-run whenever the grid DOM changes.
   const observer = new MutationObserver(scheduleRun);
   observer.observe(document.documentElement, {
     attributeFilter: ["alt", "class", "data-test", "data-testid", "href", "src", "srcset"],

@@ -45,6 +45,7 @@ The project has two related goals:
 
 - The distributable userscript is `Ocado Vegan Filter`.
 - The repo copy is `ocado-vegan-filter.user.js`.
+- Preserve the current userscript formatting style; edits should already match VS Code autoformat-on-save output and should not introduce formatting-only churn.
 - If the user says they updated the separate local userscript copy, treat `a separate local userscript file` as the current source of truth and sync the repo copy from it after validating.
 - Keep the script self-contained; it should not fetch Ocado product detail pages or call third-party services while shopping.
 - The script should treat products as vegan when Ocado tags them vegan, when the name explicitly contains standalone `vegan`, or when the product ID is in an embedded vegan allowlist.
@@ -60,6 +61,12 @@ The project has two related goals:
 - Tag only versions that are live on Greasy Fork.
 - Use exact Greasy Fork version strings for tags, for example `1.0.1`, not `v1.0.1`.
 - Do not create a release tag until the user confirms the version is ready to publish to Greasy Fork.
+
+## Git Workflow
+
+- Each commit should be one self-contained logical change.
+- Keep formatting-only changes in a separate commit from feature, behaviour, documentation, or data changes.
+- When the user makes a firm statement about how this repository should be handled in future, update this `AGENTS.md` directly as part of the current task.
 
 ## FireMonkey Workflow
 
