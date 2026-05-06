@@ -49,7 +49,8 @@ def userscript() -> str:
 
 def extract_userscript_id_set(constant_name: str) -> set[str]:
     match = re.search(
-        rf"const {re.escape(constant_name)} = new Set\(`(?P<body>.*?)`\s*\.trim\(\)\.split",
+        rf"const\s+{re.escape(constant_name)}\s*=\s*new\s+Set\(\s*`(?P<body>.*?)`\s*"
+        r"\.trim\(\)\s*\.split\(\s*/\\s\+/\s*\)\s*,?\s*\)",
         userscript(),
         flags=re.S,
     )
