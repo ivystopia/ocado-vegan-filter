@@ -85,9 +85,12 @@
 (function () {
   "use strict";
 
+ const NON_VEGAN_LABEL = "Not vegan";
  const ADD_BUTTON_SELECTOR = 'button[data-test="counter-button"], button[data-testid="counter-button"]';
  const CARD_SELECTOR = ".product-card-container, [data-test^='fop-wrapper:'], [data-testid^='fop-wrapper:']";
  const NON_VEGAN_CARD_CLASS = "ocado-vegan-filter-non-vegan";
+ const NON_VEGAN_ADD_BUTTON_CLASS = "ocado-vegan-filter-not-vegan-add";
+ const LEGACY_BLOCKED_BUTTON_CLASS = "ocado-vegan-filter-blocked";
  const STYLE_ID = "ocado-vegan-filter-style";
  const BLOCKED_IMAGE_FILTER = "grayscale(100%) saturate(0)";
  const BLOCKED_IMAGE_OPACITY = "0.42";
@@ -2098,6 +2101,23 @@
    const style = document.createElement("style");
    style.id = STYLE_ID;
    style.textContent = `
+   .${NON_VEGAN_ADD_BUTTON_CLASS} {
+     background: #e1e4e3 !important;
+     color: transparent !important;
+     position: relative !important;
+   }
+
+   .${NON_VEGAN_ADD_BUTTON_CLASS}::after {
+     align-items: center;
+     color: #4f5655;
+     content: "${NON_VEGAN_LABEL}";
+     display: flex;
+     font-weight: 700;
+     inset: 0;
+     justify-content: center;
+     position: absolute;
+   }
+
    .${NON_VEGAN_CARD_CLASS} a[data-test="fop-product-link"] img,
  .${NON_VEGAN_CARD_CLASS} a[data-testid="fop-product-link"] img,
  .${NON_VEGAN_CARD_CLASS} a[href*="/products/"] img,
@@ -2141,6 +2161,43 @@
    }
 
    return card.matches(".product-card-container") ? card : card.querySelector(".product-card-container") || card;
+ }
+
+ function isAddButton(button) {
+   return textOf(button) === "Add" && /^Add\b/i.test(button.getAttribute("aria-label") || "");
+ }
+
+ function restoreLegacyBlockedButton(button) {
+   const original = button.__ocadoVeganFilterOriginal;
+
+   if (!original) {
+     return button;
+   }
+
+   button.replaceWith(original);
+   return original;
+ }
+
+ function markAddButtonsCosmetically(card) {
+   for (const button of card.querySelectorAll(`${ADD_BUTTON_SELECTOR}, .${LEGACY_BLOCKED_BUTTON_CLASS}`)) {
+     const addButton = button.classList.contains(LEGACY_BLOCKED_BUTTON_CLASS)
+     ? restoreLegacyBlockedButton(button)
+     : button;
+
+     if (isAddButton(addButton)) {
+       addButton.classList.add(NON_VEGAN_ADD_BUTTON_CLASS);
+     }
+   }
+ }
+
+ function restoreAddButtonLabels(card) {
+   for (const button of card.querySelectorAll(`.${NON_VEGAN_ADD_BUTTON_CLASS}, .${LEGACY_BLOCKED_BUTTON_CLASS}`)) {
+     const addButton = button.classList.contains(LEGACY_BLOCKED_BUTTON_CLASS)
+     ? restoreLegacyBlockedButton(button)
+     : button;
+
+     addButton.classList.remove(NON_VEGAN_ADD_BUTTON_CLASS);
+   }
  }
 
  function productImages(card) {
@@ -2502,12 +2559,14 @@
  function processCard(card) {
    if (shouldAllowProduct(card)) {
      card.classList.remove(NON_VEGAN_CARD_CLASS);
+     restoreAddButtonLabels(card);
      restoreProductImages(card);
      return;
    }
 
    card.classList.add(NON_VEGAN_CARD_CLASS);
    blockProductImages(card);
+   markAddButtonsCosmetically(card);
  }
 
  function productCards() {

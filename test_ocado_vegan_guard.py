@@ -74,6 +74,7 @@ def assert_card_state(rows: dict[str, dict[str, object]], card_id: str, *, block
     row = rows[card_id]
     if blocked:
         assert row["buttonText"] == "Add", row
+        assert row["buttonVisuallyMarked"] is True, row
         assert row["blocked"] is False, row
         assert row["nonVeganClass"] is True, row
         assert row["imageOpacity"] == "0.42", row
@@ -81,6 +82,7 @@ def assert_card_state(rows: dict[str, dict[str, object]], card_id: str, *, block
         return
 
     assert row["buttonText"] == "Add", row
+    assert row["buttonVisuallyMarked"] is False, row
     assert row["blocked"] is False, row
     assert row["nonVeganClass"] is False, row
     assert row["imageOpacity"] == "1", row
@@ -96,6 +98,8 @@ def assert_zero_saturation_filter(value: object, row: object) -> None:
 def fixture_smoke_test() -> None:
     html = """<!doctype html><html><body>
       <script>
+        window.blockedAddClicks = 0;
+        window.blockedImageClicks = 0;
         window.__INITIAL_STATE__ = {
           data: {
             products: {
@@ -157,12 +161,12 @@ def fixture_smoke_test() -> None:
         <button data-test="counter-button" aria-label="Add Rummo Spaghetti Pasta No.3">Add</button>
       </article>
       <article class="product-card-container" id="blocked">
-        <a href="https://www.ocado.com/products/mcvities-penguin-orange-biscuit-bars-multipack-123456789"><img></a>
+        <a href="https://www.ocado.com/products/mcvities-penguin-orange-biscuit-bars-multipack-123456789" onclick="window.blockedImageClicks += 1; event.preventDefault();"><img style="display: block; width: 100px; height: 100px;"></a>
         <span data-test="fop-offer-text" style="color: rgb(169, 0, 22)">Half price</span>
         <span class="_text--promotion_fixture" style="color: rgb(169, 0, 22)">£1.00 per pack</span>
         <span data-test="fop-price" class="_display--promotion_fixture" style="color: rgb(169, 0, 22)">£1.00</span>
         <svg data-test="fop-offer-icon" style="fill: rgb(169, 0, 22)"></svg>
-        <button data-test="counter-button" aria-label="Add McVitie's Penguin Orange Biscuit Bars Multipack">Add</button>
+        <button data-test="counter-button" aria-label="Add McVitie's Penguin Orange Biscuit Bars Multipack" onclick="window.blockedAddClicks += 1">Add</button>
       </article>
     </body></html>"""
 
@@ -174,6 +178,8 @@ def fixture_smoke_test() -> None:
         driver.execute_script(userscript())
         wait = WebDriverWait(driver, 5)
         wait.until(lambda d: d.execute_script("return getComputedStyle(document.querySelector('#blocked img')).opacity") == "0.42")
+        driver.find_element(By.CSS_SELECTOR, "#blocked button").click()
+        driver.find_element(By.CSS_SELECTOR, "#blocked a").click()
         rows = driver.execute_script(
             """
             return Object.fromEntries(['ready', 'ready-hyphen', 'cajun', 'cajun-hyphen', 'official', 'name-vegan', 'hydration-vegan', 'ingredients-beans', 'ingredients-pasta', 'blocked'].map(id => {
@@ -186,6 +192,7 @@ def fixture_smoke_test() -> None:
               const offerIcon = card.querySelector('[data-test="fop-offer-icon"]');
               return [id, {
                 buttonText: button.textContent.trim(),
+                buttonVisuallyMarked: button.classList.contains('ocado-vegan-filter-not-vegan-add'),
                 blocked: button.classList.contains('ocado-vegan-filter-blocked'),
                 nonVeganClass: card.classList.contains('ocado-vegan-filter-non-vegan'),
                 imageOpacity: getComputedStyle(img).opacity,
@@ -198,6 +205,7 @@ def fixture_smoke_test() -> None:
             }));
             """
         )
+        click_counts = driver.execute_script("return {add: window.blockedAddClicks, image: window.blockedImageClicks};")
     finally:
         driver.quit()
 
@@ -214,6 +222,7 @@ def fixture_smoke_test() -> None:
     ]:
         assert_card_state(rows, card_id, blocked=False)
     assert_card_state(rows, "blocked", blocked=True)
+    assert click_counts == {"add": 1, "image": 1}, click_counts
     assert rows["blocked"]["offerColor"] == MUTED_PROMOTION_RGB, rows["blocked"]
     assert rows["blocked"]["offerUnitPriceColor"] == MUTED_PROMOTION_RGB, rows["blocked"]
     assert rows["blocked"]["offerPriceColor"] == MUTED_PROMOTION_RGB, rows["blocked"]
@@ -305,6 +314,7 @@ def collect_rows(driver: webdriver.Firefox) -> list[dict[str, object]]:
             official,
             nonVeganClass: card.classList.contains('ocado-vegan-filter-non-vegan'),
             blocked: Boolean(card.querySelector('button.ocado-vegan-filter-blocked')),
+            buttonVisuallyMarked: Boolean(button && button.classList.contains('ocado-vegan-filter-not-vegan-add')),
             buttonText: button && button.textContent.replace(/\s+/g, ' ').trim(),
             imageOpacity: img && getComputedStyle(img).opacity,
             imageFilter: img && getComputedStyle(img).filter,
@@ -357,6 +367,7 @@ def promotions_page_smoke_test() -> None:
 
     for row in manufacturer_vegan_rows:
         assert row["buttonText"] == "Add", row
+        assert row["buttonVisuallyMarked"] is False, row
         assert row["blocked"] is False, row
         assert row["nonVeganClass"] is False, row
         assert row["imageFilter"] == "none", row
@@ -364,6 +375,7 @@ def promotions_page_smoke_test() -> None:
 
     for row in muted_rows[:5]:
         assert row["buttonText"] == "Add", row
+        assert row["buttonVisuallyMarked"] is True, row
         assert row["blocked"] is False, row
         assert_zero_saturation_filter(row["imageFilter"], row)
         assert row["imageOpacity"] == "0.42", row
