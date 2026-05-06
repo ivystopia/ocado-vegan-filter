@@ -1,6 +1,6 @@
 // ==UserScript==
 // @name        Ocado Vegan Filter
-// @version     1.0.1
+// @version     1.1.0
 // @license     Unlicense
 // @description Update Ocado's incomplete "vegan" filter with over 15000 vegan products.
 // @match       https://www.ocado.com/*
@@ -62,10 +62,8 @@
  * present in one of the verified local vegan allowlists embedded below.
  *
  * Products not known to be vegan are visually de-emphasised. Their product image
- * is faded and fully desaturated, promotional red text is muted, and the normal
- * "Add" button is replaced with a grey, unclickable "Not vegan" button. The
- * product title, image link, and other product-page links remain clickable, so
- * the product can still be opened and inspected manually.
+ * is faded and fully desaturated, and promotional red text is muted. The normal
+ * "Add" button remains unchanged and clickable, so the filter is cosmetic only.
  *
  * Where the embedded vegan product lists came from
  * -----------------------------------------------
@@ -87,9 +85,7 @@
 (function () {
   "use strict";
 
- const BLOCKED_LABEL = "Not vegan";
  const ADD_BUTTON_SELECTOR = 'button[data-test="counter-button"], button[data-testid="counter-button"]';
- const BLOCKED_CLASS = "ocado-vegan-filter-blocked";
  const CARD_SELECTOR = ".product-card-container, [data-test^='fop-wrapper:'], [data-testid^='fop-wrapper:']";
  const NON_VEGAN_CARD_CLASS = "ocado-vegan-filter-non-vegan";
  const STYLE_ID = "ocado-vegan-filter-style";
@@ -2102,18 +2098,6 @@
    const style = document.createElement("style");
    style.id = STYLE_ID;
    style.textContent = `
-   .${BLOCKED_CLASS} {
-     width: 100% !important;
-     min-height: 2.5rem !important;
-     border: 0 !important;
-     background: #e1e4e3 !important;
-     color: #4f5655 !important;
-     cursor: not-allowed !important;
-     font-weight: 700 !important;
-     justify-content: center !important;
-     pointer-events: none !important;
-   }
-
    .${NON_VEGAN_CARD_CLASS} a[data-test="fop-product-link"] img,
  .${NON_VEGAN_CARD_CLASS} a[data-testid="fop-product-link"] img,
  .${NON_VEGAN_CARD_CLASS} a[href*="/products/"] img,
@@ -2157,34 +2141,6 @@
    }
 
    return card.matches(".product-card-container") ? card : card.querySelector(".product-card-container") || card;
- }
-
- function isAddButton(button) {
-   return textOf(button) === "Add" && /^Add\b/i.test(button.getAttribute("aria-label") || "");
- }
-
- function createBlockedButton(addButton) {
-   const blockedButton = document.createElement("button");
-   blockedButton.type = "button";
-   blockedButton.disabled = true;
-   blockedButton.tabIndex = -1;
-   blockedButton.className = `${addButton.className} ${BLOCKED_CLASS}`.trim();
-   blockedButton.textContent = BLOCKED_LABEL;
-   blockedButton.setAttribute("aria-disabled", "true");
-   blockedButton.setAttribute("aria-label", BLOCKED_LABEL);
-   blockedButton.dataset.ocadoVeganFilter = "blocked";
-   blockedButton.__ocadoVeganFilterOriginal = addButton;
-   return blockedButton;
- }
-
- function restoreBlockedButtons(card) {
-   for (const blockedButton of card.querySelectorAll(`.${BLOCKED_CLASS}`)) {
-     const original = blockedButton.__ocadoVeganFilterOriginal;
-
-     if (original) {
-       blockedButton.replaceWith(original);
-     }
-   }
  }
 
  function productImages(card) {
@@ -2546,21 +2502,12 @@
  function processCard(card) {
    if (shouldAllowProduct(card)) {
      card.classList.remove(NON_VEGAN_CARD_CLASS);
-     restoreBlockedButtons(card);
      restoreProductImages(card);
      return;
    }
 
    card.classList.add(NON_VEGAN_CARD_CLASS);
    blockProductImages(card);
-
-   for (const addButton of card.querySelectorAll(ADD_BUTTON_SELECTOR)) {
-     if (addButton.classList.contains(BLOCKED_CLASS) || !isAddButton(addButton)) {
-       continue;
-     }
-
-     addButton.replaceWith(createBlockedButton(addButton));
-   }
  }
 
  function productCards() {

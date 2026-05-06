@@ -1,0 +1,471 @@
+#!/usr/bin/env python3
+"""Smoke-test the Ocado Vegan Filter userscript against real and fixture DOMs."""
+
+from __future__ import annotations
+
+import base64
+import json
+import os
+import re
+import shutil
+import sys
+import time
+from pathlib import Path
+
+from selenium import webdriver
+from selenium.webdriver.common.by import By
+from selenium.webdriver.firefox.options import Options
+from selenium.webdriver.firefox.service import Service
+from selenium.webdriver.support import expected_conditions as EC
+from selenium.webdriver.support.ui import WebDriverWait
+
+
+ROOT = Path(__file__).resolve().parent
+USERSCRIPT = ROOT / "ocado-vegan-filter.user.js"
+PROMOTIONS_URL = "https://www.ocado.com/promotions?source=header%20button"
+CHEESE_SEARCH_URL = "https://www.ocado.com/search?q=cheese"
+FIREFOX_HELPER_SCRIPTS = Path(os.environ.get("BROWSE_WITH_FIREFOX_SCRIPTS", ""))
+USERSCRIPT_MANAGER_ID = "<extension-id>"
+USERSCRIPT_MANAGER_UUID = "<extension-uuid>"
+MANUFACTURER_OR_NAME_VEGAN_IDS = {
+    "577028011",
+    "601607011",
+    "652775011",
+    "652776011",
+    "672727011",
+    "679700011",
+    "666687011",
+}
+INGREDIENTS_VEGAN_IDS = {
+    "517986011",
+    "624307011",
+}
+MUTED_PROMOTION_RGB = "rgb(101, 67, 72)"
+
+
+def userscript() -> str:
+    return USERSCRIPT.read_text()
+
+
+def extract_userscript_id_set(constant_name: str) -> set[str]:
+    match = re.search(
+        rf"const {re.escape(constant_name)} = new Set\(`(?P<body>.*?)`\s*\.trim\(\)\.split",
+        userscript(),
+        flags=re.S,
+    )
+    assert match, f"{constant_name} was not found in userscript"
+    return set(re.findall(r"\b\d+\b", match.group("body")))
+
+
+def userscript_source_test() -> None:
+    assert "// @name        Ocado Vegan Filter" in userscript()
+    assert "// @version     1.1.0" in userscript()
+
+    manufacturer_or_name_ids = extract_userscript_id_set("MANUFACTURER_OR_NAME_VEGAN_PRODUCT_IDS")
+    ingredients_ids = extract_userscript_id_set("INGREDIENTS_VEGAN_PRODUCT_IDS")
+
+    assert MANUFACTURER_OR_NAME_VEGAN_IDS <= manufacturer_or_name_ids
+    assert INGREDIENTS_VEGAN_IDS <= ingredients_ids
+    assert "const MANUFACTURER_VEGAN_PRODUCT_IDS" not in userscript()
+    print("userscript source test passed")
+
+
+def assert_card_state(rows: dict[str, dict[str, object]], card_id: str, *, blocked: bool) -> None:
+    row = rows[card_id]
+    if blocked:
+        assert row["buttonText"] == "Add", row
+        assert row["blocked"] is False, row
+        assert row["nonVeganClass"] is True, row
+        assert row["imageOpacity"] == "0.42", row
+        assert_zero_saturation_filter(row["imageFilter"], row)
+        return
+
+    assert row["buttonText"] == "Add", row
+    assert row["blocked"] is False, row
+    assert row["nonVeganClass"] is False, row
+    assert row["imageOpacity"] == "1", row
+    assert row["imageFilter"] == "none", row
+
+
+def assert_zero_saturation_filter(value: object, row: object) -> None:
+    css_filter = str(value)
+    assert "saturate(0)" in css_filter, row
+    assert "grayscale(1)" in css_filter or "grayscale(100%)" in css_filter, row
+
+
+def fixture_smoke_test() -> None:
+    html = """<!doctype html><html><body>
+      <script>
+        window.__INITIAL_STATE__ = {
+          data: {
+            products: {
+              "430f643f-01fa-43e0-98bd-a0db2d9c7e0f": {
+                retailerProductId: "315701011",
+                name: "Violife Non-Dairy Cheese Alternative Slices",
+                attributes: [
+                  {icon: "freezable", label: "Suitable for freezing"},
+                  {icon: "lactoseFree", label: "Lactose Free"},
+                  {icon: "vegetarian", label: "Vegetarian"},
+                  {icon: "glutenFree", label: "Gluten Free"},
+                  {icon: "wheatFree", label: "Wheat Free"},
+                  {icon: "vegan", label: "Vegan"}
+                ]
+              }
+            }
+          }
+        };
+      </script>
+      <article class="product-card-container" id="ready">
+        <a href="https://www.ocado.com/products/squeaky-bean-ready-to-eat-marinated-chicken-style-pieces-kick-of-tikka/601607011"><img></a>
+        <button data-test="counter-button" aria-label="Add Squeaky Bean Ready To Eat Marinated Chicken Style Pieces">Add</button>
+      </article>
+      <article class="product-card-container" id="ready-hyphen">
+        <a href="https://www.ocado.com/products/squeaky-bean-ready-to-eat-marinated-chicken-style-pieces-kick-of-tikka-601607011"><img></a>
+        <button data-test="counter-button" aria-label="Add Squeaky Bean Ready To Eat Marinated Chicken Style Pieces">Add</button>
+      </article>
+      <article class="product-card-container" id="cajun">
+        <a href="https://www.ocado.com/products/squeaky-bean-chargrilled-cajun-mini-fillets/577028011"><img></a>
+        <button data-test="counter-button" aria-label="Add Squeaky Bean Chargrilled Cajun Mini Fillets">Add</button>
+      </article>
+      <article class="product-card-container" id="cajun-hyphen">
+        <a href="https://www.ocado.com/products/squeaky-bean-chargrilled-cajun-mini-fillets-577028011"><img></a>
+        <button data-test="counter-button" aria-label="Add Squeaky Bean Chargrilled Cajun Mini Fillets">Add</button>
+      </article>
+      <article class="product-card-container" id="official">
+        <a href="https://www.ocado.com/products/example-vegan-999999011"><img></a>
+        <svg id="vegan"></svg>
+        <button data-test="counter-button" aria-label="Add Official Vegan">Add</button>
+      </article>
+      <article class="product-card-container" id="name-vegan">
+        <a href="https://www.ocado.com/products/i-am-nut-ok-bluffalo-notzarella-vegan-mozzarella/634291011">I AM NUT OK Bluffalo Notzarella - Vegan Mozzarella<img></a>
+        <button data-test="counter-button" aria-label="Add I AM NUT OK Bluffalo Notzarella - Vegan Mozzarella">Add</button>
+      </article>
+      <article class="product-card-container" id="hydration-vegan">
+        <a href="https://www.ocado.com/products/violife-non-dairy-cheese-alternative-slices/315701011">Violife Non-Dairy Cheese Alternative Slices<img></a>
+        <svg data-test="product-card-lifestyle-freezable"></svg>
+        <svg data-test="product-card-lifestyle-lactoseFree"></svg>
+        <svg data-test="product-card-lifestyle-vegetarian"></svg>
+        <svg data-test="product-card-lifestyle-glutenFree"></svg>
+        <button data-test="counter-button" aria-label="Add Violife Non-Dairy Cheese Alternative Slices">Add</button>
+      </article>
+      <article class="product-card-container" id="ingredients-beans">
+        <a href="https://www.ocado.com/products/m-s-extra-fine-beans/517986011">M&amp;S Extra Fine Beans<img></a>
+        <button data-test="counter-button" aria-label="Add M&S Extra Fine Beans">Add</button>
+      </article>
+      <article class="product-card-container" id="ingredients-pasta">
+        <a href="https://www.ocado.com/products/rummo-spaghetti-pasta-no-3/624307011">Rummo Spaghetti Pasta No.3<img></a>
+        <button data-test="counter-button" aria-label="Add Rummo Spaghetti Pasta No.3">Add</button>
+      </article>
+      <article class="product-card-container" id="blocked">
+        <a href="https://www.ocado.com/products/mcvities-penguin-orange-biscuit-bars-multipack-123456789"><img></a>
+        <span data-test="fop-offer-text" style="color: rgb(169, 0, 22)">Half price</span>
+        <span class="_text--promotion_fixture" style="color: rgb(169, 0, 22)">£1.00 per pack</span>
+        <span data-test="fop-price" class="_display--promotion_fixture" style="color: rgb(169, 0, 22)">£1.00</span>
+        <svg data-test="fop-offer-icon" style="fill: rgb(169, 0, 22)"></svg>
+        <button data-test="counter-button" aria-label="Add McVitie's Penguin Orange Biscuit Bars Multipack">Add</button>
+      </article>
+    </body></html>"""
+
+    options = Options()
+    options.add_argument("-headless")
+    driver = webdriver.Firefox(options=options)
+    try:
+        driver.get("data:text/html;base64," + base64.b64encode(html.encode()).decode())
+        driver.execute_script(userscript())
+        wait = WebDriverWait(driver, 5)
+        wait.until(lambda d: d.execute_script("return getComputedStyle(document.querySelector('#blocked img')).opacity") == "0.42")
+        rows = driver.execute_script(
+            """
+            return Object.fromEntries(['ready', 'ready-hyphen', 'cajun', 'cajun-hyphen', 'official', 'name-vegan', 'hydration-vegan', 'ingredients-beans', 'ingredients-pasta', 'blocked'].map(id => {
+              const card = document.getElementById(id);
+              const button = card.querySelector('button');
+              const img = card.querySelector('img');
+              const offerText = card.querySelector('[data-test="fop-offer-text"]');
+              const offerUnitPrice = card.querySelector('[class*="_text--promotion_"]');
+              const offerPrice = card.querySelector('[data-test="fop-price"]');
+              const offerIcon = card.querySelector('[data-test="fop-offer-icon"]');
+              return [id, {
+                buttonText: button.textContent.trim(),
+                blocked: button.classList.contains('ocado-vegan-filter-blocked'),
+                nonVeganClass: card.classList.contains('ocado-vegan-filter-non-vegan'),
+                imageOpacity: getComputedStyle(img).opacity,
+                imageFilter: getComputedStyle(img).filter,
+                offerColor: offerText && getComputedStyle(offerText).color,
+                offerUnitPriceColor: offerUnitPrice && getComputedStyle(offerUnitPrice).color,
+                offerPriceColor: offerPrice && getComputedStyle(offerPrice).color,
+                offerIconFill: offerIcon && getComputedStyle(offerIcon).fill,
+              }];
+            }));
+            """
+        )
+    finally:
+        driver.quit()
+
+    for card_id in [
+        "ready",
+        "ready-hyphen",
+        "cajun",
+        "cajun-hyphen",
+        "official",
+        "name-vegan",
+        "hydration-vegan",
+        "ingredients-beans",
+        "ingredients-pasta",
+    ]:
+        assert_card_state(rows, card_id, blocked=False)
+    assert_card_state(rows, "blocked", blocked=True)
+    assert rows["blocked"]["offerColor"] == MUTED_PROMOTION_RGB, rows["blocked"]
+    assert rows["blocked"]["offerUnitPriceColor"] == MUTED_PROMOTION_RGB, rows["blocked"]
+    assert rows["blocked"]["offerPriceColor"] == MUTED_PROMOTION_RGB, rows["blocked"]
+    assert rows["blocked"]["offerIconFill"] == MUTED_PROMOTION_RGB, rows["blocked"]
+    print("fixture smoke test passed")
+
+
+def import_firefox_helpers():
+    sys.path.insert(0, str(FIREFOX_HELPER_SCRIPTS))
+    from firefox_session import firefox_options, resolve_current_profile, snapshot_profile
+
+    return firefox_options, resolve_current_profile, snapshot_profile
+
+
+def remove_userscript_manager_from_temp_profile(profile: Path) -> None:
+    xpi = profile / f"extensions/{USERSCRIPT_MANAGER_ID}.xpi"
+    if xpi.exists():
+        xpi.unlink()
+
+    for storage_dir in (profile / "storage/default").glob(f"moz-extension+++{USERSCRIPT_MANAGER_UUID}*"):
+        shutil.rmtree(storage_dir, ignore_errors=True)
+
+    prefs = profile / "prefs.js"
+    if prefs.exists():
+        lines = prefs.read_text(errors="ignore").splitlines()
+        lines = [line for line in lines if USERSCRIPT_MANAGER_ID not in line and USERSCRIPT_MANAGER_UUID not in line]
+        prefs.write_text("\n".join(lines) + "\n")
+
+    for name in ["extensions.json", "extension-settings.json", "extension-preferences.json"]:
+        path = profile / name
+        if not path.exists():
+            continue
+
+        try:
+            data = json.loads(path.read_text())
+        except json.JSONDecodeError:
+            continue
+
+        changed = False
+        if name == "extensions.json" and isinstance(data.get("addons"), list):
+            before = len(data["addons"])
+            data["addons"] = [addon for addon in data["addons"] if addon.get("id") != USERSCRIPT_MANAGER_ID]
+            changed = before != len(data["addons"])
+        elif isinstance(data, dict) and USERSCRIPT_MANAGER_ID in data:
+            data.pop(USERSCRIPT_MANAGER_ID, None)
+            changed = True
+
+        if changed:
+            path.write_text(json.dumps(data))
+
+
+def collect_rows(driver: webdriver.Firefox) -> list[dict[str, object]]:
+    return driver.execute_script(
+        r"""
+        const productIdFromUrl = url => String(url || '').match(/\/products\/(?:[^/?#]*[-/])?(\d+)(?:\/details)?(?:[/?#]|$)/)?.[1] || null;
+        const originalPromotionRed = 'rgb(169, 0, 22)';
+        const cards = Array.from(document.querySelectorAll('.product-card-container, [data-test^="fop-wrapper:"], [data-testid^="fop-wrapper:"]'))
+          .map(el => el.matches('.product-card-container') ? el : el.querySelector('.product-card-container') || el);
+        return [...new Set(cards)].map((card, index) => {
+          const productLink = card.querySelector('a[href*="/products/"]');
+          const img = productLink && productLink.querySelector('img') || card.querySelector('img');
+          const button = card.querySelector('button[data-test="counter-button"], button[data-testid="counter-button"]');
+          const offerText = card.querySelector('[data-test="fop-offer-text"], [data-testid="fop-offer-text"], [class*="_text--promotion_"], [class*="_display--promotion_"]');
+          const offerPrice = card.querySelector('[data-test="fop-price"][class*="promotion"], [data-testid="fop-price"][class*="promotion"], [class*="_display--promotion_"]');
+          const offerIcon = card.querySelector('[data-test="fop-offer-icon"], [data-testid="fop-offer-icon"], [data-icon="icon__promotion"]');
+          const originalRedElements = Array.from(card.querySelectorAll('[data-test*="offer"], [data-testid*="offer"], [data-test="fop-price"], [data-testid="fop-price"], [data-icon="icon__promotion"], [class*="promotion"]'))
+            .flatMap(el => {
+              const style = getComputedStyle(el);
+              if (style.color !== originalPromotionRed && style.fill !== originalPromotionRed) {
+                return [];
+              }
+
+              return [{
+                tag: el.tagName.toLowerCase(),
+                dataTest: el.getAttribute('data-test') || el.getAttribute('data-testid') || '',
+                className: String(el.className || '').slice(0, 160),
+                color: style.color,
+                fill: style.fill,
+                text: el.textContent.replace(/\s+/g, ' ').trim().slice(0, 120),
+              }];
+            });
+          const official = Boolean(card.querySelector('[data-test="product-card-lifestyle-vegan"], [data-testid="product-card-lifestyle-vegan"], svg#vegan, svg[data-icon="icon__vegan"]')) ||
+            Array.from(card.querySelectorAll('use')).some(use => String(use.getAttribute('href') || use.getAttribute('xlink:href') || '').endsWith('#vegan'));
+          return {
+            index,
+            text: card.textContent.replace(/\s+/g, ' ').trim().slice(0, 320),
+            href: productLink && productLink.href,
+            id: productIdFromUrl(productLink && productLink.href),
+            official,
+            nonVeganClass: card.classList.contains('ocado-vegan-filter-non-vegan'),
+            blocked: Boolean(card.querySelector('button.ocado-vegan-filter-blocked')),
+            buttonText: button && button.textContent.replace(/\s+/g, ' ').trim(),
+            imageOpacity: img && getComputedStyle(img).opacity,
+            imageFilter: img && getComputedStyle(img).filter,
+            imageCurrentSrc: img && (img.currentSrc || img.src),
+            grayscaleSource: img && img.dataset.ocadoVeganFilterGrayscaleSource,
+            offerColor: offerText && getComputedStyle(offerText).color,
+            offerPriceColor: offerPrice && getComputedStyle(offerPrice).color,
+            offerIconFill: offerIcon && getComputedStyle(offerIcon).fill,
+            originalRedElements,
+          };
+        });
+        """
+    )
+
+
+def promotions_page_smoke_test() -> None:
+    firefox_options, resolve_current_profile, snapshot_profile = import_firefox_helpers()
+    runtime_profile, temporary_root = snapshot_profile(resolve_current_profile().path)
+    remove_userscript_manager_from_temp_profile(runtime_profile)
+
+    options = firefox_options(runtime_profile, headless=True)
+    service = Service(log_output=str(temporary_root / "geckodriver.log"), env={**os.environ, "MOZ_HEADLESS": "1"})
+    driver = webdriver.Firefox(options=options, service=service)
+    try:
+        driver.set_page_load_timeout(90)
+        wait = WebDriverWait(driver, 90)
+        driver.get(PROMOTIONS_URL)
+        wait.until(lambda d: d.execute_script("return document.readyState") in ("interactive", "complete"))
+        wait.until(EC.presence_of_element_located((By.CSS_SELECTOR, ".product-card-container, [data-test^='fop-wrapper:'], [data-testid^='fop-wrapper:']")))
+        driver.execute_script(userscript())
+
+        rows: list[dict[str, object]] = []
+        for _ in range(12):
+            time.sleep(0.8)
+            rows = collect_rows(driver)
+            if any(row["id"] in MANUFACTURER_OR_NAME_VEGAN_IDS for row in rows) and any(row["nonVeganClass"] for row in rows):
+                break
+            driver.execute_script("window.scrollBy(0, Math.max(800, window.innerHeight * 1.4))")
+    finally:
+        driver.quit()
+        shutil.rmtree(temporary_root, ignore_errors=True)
+
+    manufacturer_vegan_rows = [row for row in rows if row["id"] in MANUFACTURER_OR_NAME_VEGAN_IDS]
+    muted_rows = [row for row in rows if row["nonVeganClass"]]
+    official_rows = [row for row in rows if row["official"]]
+
+    assert rows, "No product cards found on promotions page"
+    assert manufacturer_vegan_rows, "No vegan-according-to-manufacturer products found in loaded promotions slice"
+    assert muted_rows, "No visually muted non-vegan products found in loaded promotions slice"
+
+    for row in manufacturer_vegan_rows:
+        assert row["buttonText"] == "Add", row
+        assert row["blocked"] is False, row
+        assert row["nonVeganClass"] is False, row
+        assert row["imageFilter"] == "none", row
+        assert row["imageOpacity"] == "1", row
+
+    for row in muted_rows[:5]:
+        assert row["buttonText"] == "Add", row
+        assert row["blocked"] is False, row
+        assert_zero_saturation_filter(row["imageFilter"], row)
+        assert row["imageOpacity"] == "0.42", row
+        assert row["grayscaleSource"] or str(row["imageCurrentSrc"]).startswith("data:image/png"), row
+
+    muted_promotion_rows = [row for row in muted_rows if row["offerColor"]]
+    assert muted_promotion_rows, "No muted promotional rows found in loaded promotions slice"
+    for row in muted_promotion_rows[:5]:
+        assert row["offerColor"] == MUTED_PROMOTION_RGB, row
+        if row["offerPriceColor"]:
+            assert row["offerPriceColor"] == MUTED_PROMOTION_RGB, row
+        if row["offerIconFill"]:
+            assert row["offerIconFill"] == MUTED_PROMOTION_RGB, row
+        assert row["originalRedElements"] == [], row
+
+    muted_promo_price_rows = [row for row in muted_rows if row["offerPriceColor"]]
+    assert muted_promo_price_rows, "No muted promotional price rows found in loaded promotions slice"
+
+    evidence = {
+        "loadedCards": len(rows),
+        "manufacturerVeganExamples": [
+            {"id": row["id"], "href": row["href"], "buttonText": row["buttonText"], "text": row["text"][:120]}
+            for row in manufacturer_vegan_rows[:3]
+        ],
+        "mutedExamples": [
+            {
+                "id": row["id"],
+                "buttonText": row["buttonText"],
+                "imageFilter": row["imageFilter"],
+                "offerColor": row["offerColor"],
+                "offerPriceColor": row["offerPriceColor"],
+                "text": row["text"][:120],
+            }
+            for row in muted_rows[:3]
+        ],
+        "officialVeganExamples": [
+            {"id": row["id"], "buttonText": row["buttonText"], "text": row["text"][:120]}
+            for row in official_rows[:3]
+        ],
+    }
+    print(json.dumps(evidence, indent=2))
+    print("promotions page smoke test passed")
+
+
+def cheese_search_hydration_smoke_test() -> None:
+    firefox_options, resolve_current_profile, snapshot_profile = import_firefox_helpers()
+    runtime_profile, temporary_root = snapshot_profile(resolve_current_profile().path)
+    remove_userscript_manager_from_temp_profile(runtime_profile)
+
+    options = firefox_options(runtime_profile, headless=True)
+    service = Service(log_output=str(temporary_root / "geckodriver.log"), env={**os.environ, "MOZ_HEADLESS": "1"})
+    driver = webdriver.Firefox(options=options, service=service)
+    try:
+        driver.set_page_load_timeout(90)
+        wait = WebDriverWait(driver, 90)
+        driver.get(CHEESE_SEARCH_URL)
+        wait.until(lambda d: d.execute_script("return document.readyState") in ("interactive", "complete"))
+        wait.until(EC.presence_of_element_located((By.CSS_SELECTOR, 'a[href*="/products/violife-non-dairy-cheese-alternative-slices/315701011"]')))
+        driver.execute_script(userscript())
+
+        target = None
+        rows: list[dict[str, object]] = []
+        for _ in range(10):
+            time.sleep(0.5)
+            rows = collect_rows(driver)
+            target = next((row for row in rows if row["id"] == "315701011"), None)
+            if target and target["buttonText"]:
+                break
+
+        assert target, "Violife cheese product was not found in the loaded cheese search results"
+    finally:
+        driver.quit()
+        shutil.rmtree(temporary_root, ignore_errors=True)
+
+    assert target["buttonText"] == "Add", target
+    assert target["blocked"] is False, target
+    assert target["nonVeganClass"] is False, target
+    assert target["imageFilter"] == "none", target
+    assert target["imageOpacity"] == "1", target
+    print(
+        json.dumps(
+            {
+                "hydrationVeganExample": {
+                    "id": target["id"],
+                    "href": target["href"],
+                    "buttonText": target["buttonText"],
+                    "visibleOfficialIcon": target["official"],
+                    "text": target["text"][:160],
+                }
+            },
+            indent=2,
+        )
+    )
+    print("cheese search hydration smoke test passed")
+
+
+def main() -> None:
+    userscript_source_test()
+    fixture_smoke_test()
+    cheese_search_hydration_smoke_test()
+    promotions_page_smoke_test()
+
+
+if __name__ == "__main__":
+    main()
