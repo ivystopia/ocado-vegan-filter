@@ -2098,6 +2098,19 @@
      return;
    }
 
+   /*
+    * Important click-through rule:
+    * Ocado renders the product image and the clickable product link as separate
+    * overlapping elements. The link is usually an absolutely positioned
+    * "image-link-concealed" anchor over the image. CSS filters create a new
+    * stacking context, which can make our muted image sit above that anchor.
+    * Therefore muted images must ignore pointer events so clicks pass through to
+    * Ocado's own link overlay instead of being swallowed by the decorative image.
+    *
+    * The Add button follows the same principle. We keep Ocado's real button in
+    * the DOM and only draw "Not vegan" as a pseudo-element. The pseudo-element is
+    * pointer-transparent, so the button receives clicks exactly as before.
+    */
    const style = document.createElement("style");
    style.id = STYLE_ID;
    style.textContent = `
@@ -2115,6 +2128,7 @@
      font-weight: 700;
      inset: 0;
      justify-content: center;
+     pointer-events: none;
      position: absolute;
    }
 
@@ -2129,6 +2143,7 @@
    filter: grayscale(100%) saturate(0) !important;
    opacity: 0.42 !important;
    animation: none !important;
+   pointer-events: none !important;
    transition: none !important;
  }
 
@@ -2168,6 +2183,10 @@
  }
 
  function restoreLegacyBlockedButton(button) {
+   // Pre-1.1.0 versions physically replaced Ocado's Add button with a disabled
+   // "Not vegan" button. If this script runs on a page that was already mutated
+   // by that old version, put Ocado's original button back before applying the
+   // new cosmetic-only marker.
    const original = button.__ocadoVeganFilterOriginal;
 
    if (!original) {
@@ -2179,6 +2198,9 @@
  }
 
  function markAddButtonsCosmetically(card) {
+   // Do not replace or disable buttons. The class below only changes how the
+   // existing Ocado Add button is painted; the original click handler remains on
+   // the original button.
    for (const button of card.querySelectorAll(`${ADD_BUTTON_SELECTOR}, .${LEGACY_BLOCKED_BUTTON_CLASS}`)) {
      const addButton = button.classList.contains(LEGACY_BLOCKED_BUTTON_CLASS)
      ? restoreLegacyBlockedButton(button)
@@ -2191,6 +2213,9 @@
  }
 
  function restoreAddButtonLabels(card) {
+   // Cards can change classification as Ocado hydrates more metadata into the
+   // page. If a card becomes known-vegan, remove only our cosmetic marker and
+   // leave the underlying Ocado button untouched.
    for (const button of card.querySelectorAll(`.${NON_VEGAN_ADD_BUTTON_CLASS}, .${LEGACY_BLOCKED_BUTTON_CLASS}`)) {
      const addButton = button.classList.contains(LEGACY_BLOCKED_BUTTON_CLASS)
      ? restoreLegacyBlockedButton(button)
@@ -2307,6 +2332,9 @@
  }
 
  function blockProductImages(card) {
+   // "Block" is historical naming from the earlier version. This now means
+   // "visually mute"; it must not block clicks. The CSS above makes the image
+   // pointer-transparent so Ocado's own overlaid product link remains clickable.
    for (const image of productImages(card)) {
      if (!image.dataset.ocadoVeganFilterImage) {
        image.dataset.ocadoVeganFilterOriginalStyle = image.getAttribute("style") || "";
@@ -2320,6 +2348,7 @@
      image.style.setProperty("filter", BLOCKED_IMAGE_FILTER, "important");
      image.style.setProperty("opacity", BLOCKED_IMAGE_OPACITY, "important");
      image.style.setProperty("animation", "none", "important");
+     image.style.setProperty("pointer-events", "none", "important");
      image.style.setProperty("transition", "none", "important");
 
      for (const animation of image.getAnimations()) {

@@ -78,6 +78,8 @@ def assert_card_state(rows: dict[str, dict[str, object]], card_id: str, *, block
         assert row["blocked"] is False, row
         assert row["nonVeganClass"] is True, row
         assert row["imageOpacity"] == "0.42", row
+        assert row["imagePointerEvents"] == "none", row
+        assert row["imagePointTag"] == "A", row
         assert_zero_saturation_filter(row["imageFilter"], row)
         return
 
@@ -86,6 +88,7 @@ def assert_card_state(rows: dict[str, dict[str, object]], card_id: str, *, block
     assert row["blocked"] is False, row
     assert row["nonVeganClass"] is False, row
     assert row["imageOpacity"] == "1", row
+    assert row["imagePointerEvents"] != "none", row
     assert row["imageFilter"] == "none", row
 
 
@@ -197,6 +200,11 @@ def fixture_smoke_test() -> None:
                 nonVeganClass: card.classList.contains('ocado-vegan-filter-non-vegan'),
                 imageOpacity: getComputedStyle(img).opacity,
                 imageFilter: getComputedStyle(img).filter,
+                imagePointerEvents: getComputedStyle(img).pointerEvents,
+                imagePointTag: document.elementFromPoint(
+                  img.getBoundingClientRect().left + img.getBoundingClientRect().width / 2,
+                  img.getBoundingClientRect().top + img.getBoundingClientRect().height / 2
+                )?.tagName || null,
                 offerColor: offerText && getComputedStyle(offerText).color,
                 offerUnitPriceColor: offerUnitPrice && getComputedStyle(offerUnitPrice).color,
                 offerPriceColor: offerPrice && getComputedStyle(offerPrice).color,
