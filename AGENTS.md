@@ -45,6 +45,7 @@ The project has two related goals:
 
 - The distributable userscript is `Ocado Vegan Filter`.
 - The repo copy is `ocado-vegan-filter.user.js`.
+- For the current userscript development loop, write changes to the repo copy only; the user will handle Firefox/FireMonkey installation and testing unless they explicitly ask otherwise.
 - Preserve the current userscript formatting style; edits should already match VS Code autoformat-on-save output and should not introduce formatting-only churn.
 - If the user says they updated the separate local userscript copy, treat `a separate local userscript file` as the current source of truth and sync the repo copy from it after validating.
 - Keep the script self-contained; it should not fetch Ocado product detail pages or call third-party services while shopping.
