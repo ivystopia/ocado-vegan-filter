@@ -1,6 +1,6 @@
 // ==UserScript==
 // @name        Ocado Vegan Filter
-// @version     1.2.1
+// @version     1.2.2
 // @license     Unlicense
 // @description Update Ocado's incomplete "vegan" filter with over 15000 vegan products.
 // @match       https://www.ocado.com/*
@@ -2347,6 +2347,19 @@
     return image.currentSrc || image.src || image.getAttribute("src") || "";
   }
 
+  function imageLooksMutedByThisScript(image) {
+    const inlineStyle = image.getAttribute("style") || "";
+
+    return (
+      image.dataset.ocadoVeganFilterImage === "blocked" ||
+      Boolean(image.dataset.ocadoVeganFilterGrayscaleSource) ||
+      Boolean(image.dataset.ocadoVeganFilterOriginalSrc) ||
+      Boolean(image.dataset.ocadoVeganFilterOriginalSrcset) ||
+      inlineStyle.includes(BLOCKED_IMAGE_FILTER) ||
+      inlineStyle.includes(BLOCKED_IMAGE_OPACITY)
+    );
+  }
+
   function scheduleImageGrayscaleOnLoad(image) {
     if (image.dataset.ocadoVeganFilterLoadListener) {
       return;
@@ -2459,20 +2472,33 @@
   }
 
   function restoreProductImages(card) {
-    for (const image of card.querySelectorAll('[data-ocado-vegan-filter-image="blocked"]')) {
-      const originalStyle = image.dataset.ocadoVeganFilterOriginalStyle || "";
-
-      if (originalStyle) {
-        image.setAttribute("style", originalStyle);
-      } else {
-        image.removeAttribute("style");
+    for (const image of productImages(card)) {
+      if (!imageLooksMutedByThisScript(image)) {
+        continue;
       }
+
+      const originalStyle = image.dataset.ocadoVeganFilterOriginalStyle;
+
+      if (typeof originalStyle === "string" && originalStyle) {
+        image.setAttribute("style", originalStyle);
+      } else if (typeof originalStyle === "string") {
+        image.removeAttribute("style");
+      } else {
+        image.style.removeProperty("filter");
+        image.style.removeProperty("opacity");
+        image.style.removeProperty("animation");
+        image.style.removeProperty("pointer-events");
+        image.style.removeProperty("transition");
+      }
+
+      const fallbackSource = image.dataset.ocadoVeganFilterGrayscaleSource || "";
+      const originalSrc = image.dataset.ocadoVeganFilterOriginalSrc || fallbackSource;
 
       delete image.dataset.ocadoVeganFilterImage;
       delete image.dataset.ocadoVeganFilterOriginalStyle;
       delete image.dataset.ocadoVeganFilterGrayscaleSource;
       delete image.dataset.ocadoVeganFilterGrayscaleFailedSource;
-      restoreImageAttribute(image, "src", image.dataset.ocadoVeganFilterOriginalSrc || "");
+      restoreImageAttribute(image, "src", originalSrc);
       restoreImageAttribute(image, "srcset", image.dataset.ocadoVeganFilterOriginalSrcset || "");
       restoreImageAttribute(image, "sizes", image.dataset.ocadoVeganFilterOriginalSizes || "");
       delete image.dataset.ocadoVeganFilterOriginalSrc;
@@ -2732,7 +2758,7 @@
   // after basket interactions. Re-run whenever the grid DOM changes.
   const observer = new MutationObserver(scheduleRun);
   observer.observe(document.documentElement, {
-    attributeFilter: ["alt", "class", "data-test", "data-testid", "href", "src", "srcset"],
+    attributeFilter: ["alt", "class", "data-ocado-vegan-filter-image", "data-ocado-vegan-filter-grayscale-source", "data-test", "data-testid", "href", "src", "srcset", "style"],
     attributes: true,
     childList: true,
     subtree: true,

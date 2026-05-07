@@ -60,7 +60,7 @@ def extract_userscript_id_set(constant_name: str) -> set[str]:
 
 def userscript_source_test() -> None:
     assert "// @name        Ocado Vegan Filter" in userscript()
-    assert "// @version     1.2.1" in userscript()
+    assert "// @version     1.2.2" in userscript()
     assert "// @inject-into page" in userscript()
 
     manufacturer_or_name_ids = extract_userscript_id_set("MANUFACTURER_OR_NAME_VEGAN_PRODUCT_IDS")
@@ -158,6 +158,16 @@ def fixture_smoke_test() -> None:
         <svg data-test="product-card-lifestyle-glutenFree"></svg>
         <button data-test="counter-button" aria-label="Add Violife Non-Dairy Cheese Alternative Slices">Add</button>
       </article>
+      <article class="product-card-container ocado-vegan-filter-non-vegan" id="stale-vegan">
+        <a href="https://www.ocado.com/products/violife-non-dairy-cheese-alternative-slices/315701011">Violife Non-Dairy Cheese Alternative Slices<img
+          src="data:image/png;base64,stale"
+          data-ocado-vegan-filter-grayscale-source="https://www.ocado.com/images-v3/example/original.webp"
+          data-ocado-vegan-filter-original-srcset="https://www.ocado.com/images-v3/example/100x100.webp 100w, https://www.ocado.com/images-v3/example/200x200.webp 200w"
+          data-ocado-vegan-filter-original-sizes="(max-width: 36em) 100px, 175px"
+          style="filter: grayscale(100%) saturate(0) !important; opacity: 0.42 !important; animation: none !important; pointer-events: none !important; transition: none !important;"
+        ></a>
+        <button data-test="counter-button" aria-label="Add Violife Non-Dairy Cheese Alternative Slices">Add</button>
+      </article>
       <article class="product-card-container" id="ingredients-beans">
         <a href="https://www.ocado.com/products/m-s-extra-fine-beans/517986011">M&amp;S Extra Fine Beans<img></a>
         <button data-test="counter-button" aria-label="Add M&S Extra Fine Beans">Add</button>
@@ -193,7 +203,7 @@ def fixture_smoke_test() -> None:
             const blockedHoverText = blockedButton.textContent.trim();
             blockedButton.dispatchEvent(new MouseEvent('mouseleave', { bubbles: true }));
             const blockedLeaveText = blockedButton.textContent.trim();
-            return Object.fromEntries(['ready', 'ready-hyphen', 'cajun', 'cajun-hyphen', 'official', 'name-vegan', 'hydration-vegan', 'ingredients-beans', 'ingredients-pasta', 'blocked'].map(id => {
+            return Object.fromEntries(['ready', 'ready-hyphen', 'cajun', 'cajun-hyphen', 'official', 'name-vegan', 'hydration-vegan', 'stale-vegan', 'ingredients-beans', 'ingredients-pasta', 'blocked'].map(id => {
               const card = document.getElementById(id);
               const button = card.querySelector('button');
               const img = card.querySelector('img');
@@ -210,6 +220,9 @@ def fixture_smoke_test() -> None:
                 imageOpacity: getComputedStyle(img).opacity,
                 imageFilter: getComputedStyle(img).filter,
                 imagePointerEvents: getComputedStyle(img).pointerEvents,
+                imageSrc: img.getAttribute('src') || '',
+                imageSrcset: img.getAttribute('srcset') || '',
+                imageDataset: {...img.dataset},
                 imagePointTag: document.elementFromPoint(
                   img.getBoundingClientRect().left + img.getBoundingClientRect().width / 2,
                   img.getBoundingClientRect().top + img.getBoundingClientRect().height / 2
@@ -236,10 +249,14 @@ def fixture_smoke_test() -> None:
         "official",
         "name-vegan",
         "hydration-vegan",
+        "stale-vegan",
         "ingredients-beans",
         "ingredients-pasta",
     ]:
         assert_card_state(rows, card_id, blocked=False)
+    assert rows["stale-vegan"]["imageSrc"] == "https://www.ocado.com/images-v3/example/original.webp", rows["stale-vegan"]
+    assert rows["stale-vegan"]["imageSrcset"].startswith("https://www.ocado.com/images-v3/example/100x100.webp"), rows["stale-vegan"]
+    assert "ocadoVeganFilterGrayscaleSource" not in rows["stale-vegan"]["imageDataset"], rows["stale-vegan"]
     assert_card_state(rows, "blocked", blocked=True)
     assert click_counts == {"add": 1, "image": 1}, click_counts
     assert rows["blocked"]["blockedHoverText"] == "Add anyway", rows["blocked"]
