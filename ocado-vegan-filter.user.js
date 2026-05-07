@@ -110,6 +110,11 @@
     productsByRetailerId: new Map(),
     indexedAt: 0,
   };
+  let hydrationIndexForcedRefreshUsedInRun = false;
+
+  // Ocado's generated class names are stable enough within one page view.
+  const documentClassCache = new Map();
+  let cachedOutOfStockButtonClassName = "";
 
   // Products with an explicit vegan claim from the manufacturer/page text, or with "vegan" in the name.
   const MANUFACTURER_OR_NAME_VEGAN_PRODUCT_IDS = new Set(
@@ -2201,10 +2206,18 @@
   }
 
   function firstDocumentClassMatching(pattern) {
+    const cacheKey = String(pattern);
+    const cachedClassName = documentClassCache.get(cacheKey);
+
+    if (cachedClassName) {
+      return cachedClassName;
+    }
+
     for (const element of document.querySelectorAll("[class]")) {
       const className = firstClassMatching(element, pattern);
 
       if (className) {
+        documentClassCache.set(cacheKey, className);
         return className;
       }
     }
@@ -2234,13 +2247,19 @@
   }
 
   function outOfStockButtonClassName(button) {
+    if (cachedOutOfStockButtonClassName) {
+      return cachedOutOfStockButtonClassName;
+    }
+
     const template = outOfStockButtonTemplate();
 
     if (template) {
-      return template.getAttribute("class") || "";
+      cachedOutOfStockButtonClassName = template.getAttribute("class") || "";
+      return cachedOutOfStockButtonClassName;
     }
 
-    return inferredOutOfStockButtonClassName(button);
+    cachedOutOfStockButtonClassName = inferredOutOfStockButtonClassName(button);
+    return cachedOutOfStockButtonClassName;
   }
 
   function applyOutOfStockButtonStyle(button) {
@@ -2631,7 +2650,13 @@
 
     let product = hydrationProductsByRetailerId().get(productId);
 
-    if (!product) {
+    if (!product && !hydrationIndexForcedRefreshUsedInRun) {
+      /*
+       * Ocado sometimes mutates its hydration object in place. Do at most one
+       * forced re-index per run: enough to catch newly loaded products without
+       * walking the full hydration tree once for every non-vegan product.
+       */
+      hydrationIndexForcedRefreshUsedInRun = true;
       product = hydrationProductsByRetailerId(true).get(productId);
     }
 
@@ -2691,11 +2716,17 @@
   }
 
   function shouldAllowProduct(card) {
+    if (hasOfficialVeganTag(card)) {
+      return true;
+    }
+
     const productId = productIdForCard(card);
 
-    // Order matters for readability, not behavior: official Ocado evidence
-    // first, then local evidence generated from the offline catalogue database.
-    return hydrationProductHasVeganAttribute(productId) || hasOfficialVeganTag(card) || isKnownVeganProductId(productId) || productNameSaysVegan(card);
+    /*
+     * Check cheap local evidence before walking Ocado's hidden hydration data.
+     * The order should not change the answer, only the amount of work needed.
+     */
+    return isKnownVeganProductId(productId) || productNameSaysVegan(card) || hydrationProductHasVeganAttribute(productId);
   }
 
   function processCard(card) {
@@ -2736,6 +2767,7 @@
 
   function run() {
     scheduled = false;
+    hydrationIndexForcedRefreshUsedInRun = false;
     addStyles();
 
     for (const card of productCards()) {
