@@ -28,6 +28,9 @@ class ClassifyOcadoVeganTests(unittest.TestCase):
             [product_id, *values.values()],
         )
 
+    def insert_category(self, conn: sqlite3.Connection, product_id: str = "1", category_path: str = "fresh-chilled-food/vegetables/beans") -> None:
+        conn.execute("insert into product_categories (product_id, category_path) values (?, ?)", (product_id, category_path))
+
     def classify(self, conn: sqlite3.Connection, product_id: str = "1") -> classifier.ClassificationResult | None:
         return classifier.classify_by_rules(classifier.load_product_context(conn, product_id))
 
@@ -125,11 +128,20 @@ class ClassifyOcadoVeganTests(unittest.TestCase):
 
     def test_ambiguous_ingredients_classify_unknown(self) -> None:
         conn = self.create_db()
-        self.insert_product(conn, name="Udon Noodles", ingredients="Wheat Flour fortified with Calcium, Iron, Vitamin B3 and B1, Water")
+        self.insert_product(conn, name="Supplement", ingredients="Vitamin D3, Glycerine")
 
         result = self.classify(conn)
 
         self.assertEqual(result.vegan_status, "unknown")
+
+    def test_fortified_wheat_flour_classifies_vegan_when_other_terms_are_safe(self) -> None:
+        conn = self.create_db()
+        self.insert_product(conn, name="Udon Noodles", ingredients="Wheat Flour (with Calcium, Iron, Niacin (Vitamin B3), Thiamin (Vitamin B1)), Water")
+
+        result = self.classify(conn)
+
+        self.assertEqual(result.vegan_status, "vegan")
+        self.assertEqual(result.vegan_reason, "ingredients")
 
     def test_allowlisted_ingredients_classify_vegan(self) -> None:
         conn = self.create_db()
@@ -143,11 +155,39 @@ class ClassifyOcadoVeganTests(unittest.TestCase):
     def test_single_ingredient_product_identity_classifies_vegan(self) -> None:
         conn = self.create_db()
         self.insert_product(conn, name="M&S Extra Fine Beans")
+        self.insert_category(conn)
 
         result = self.classify(conn)
 
         self.assertEqual(result.vegan_status, "vegan")
         self.assertEqual(result.vegan_reason, "ingredients")
+
+    def test_single_ingredient_product_identity_requires_produce_category(self) -> None:
+        conn = self.create_db()
+        self.insert_product(conn, name="Absolut Lime Flavoured Swedish Vodka")
+        self.insert_category(conn, category_path="beer-wine-spirits/spirits/vodka/flavoured")
+
+        result = self.classify(conn)
+
+        self.assertIsNone(result)
+
+    def test_single_ingredient_examples_classify_vegan(self) -> None:
+        examples = {
+            "281646011": ("Wholegood Organic Mixed Peppers", "fresh-chilled-food/vegetables/peppers"),
+            "310608011": ("Ocado Washed Baby Spinach", "fresh-chilled-food/vegetables/cabbage-spinach-greens/spinach"),
+            "518478011": ("M&S British White Mushrooms", "fresh-chilled-food/vegetables/mushrooms/white"),
+            "518483011": ("M&S British Baby Parsnips", "fresh-chilled-food/vegetables/carrots-root-vegetables/parsnips"),
+        }
+        for product_id, (name, category_path) in examples.items():
+            with self.subTest(product_id=product_id):
+                conn = self.create_db()
+                self.insert_product(conn, product_id=product_id, name=name)
+                self.insert_category(conn, product_id=product_id, category_path=category_path)
+
+                result = self.classify(conn, product_id=product_id)
+
+                self.assertEqual(result.vegan_status, "vegan")
+                self.assertEqual(result.vegan_reason, "ingredients")
 
     def test_codex_payload_validation_and_disagreement_merge(self) -> None:
         pass_a = {

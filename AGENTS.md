@@ -30,7 +30,8 @@ The project has two related goals:
 - May-contain allergen warnings do not make a product non-vegan.
 - Explicit animal-derived ingredients such as milk, egg, honey, gelatine, meat, fish, shellfish, beeswax, shellac, carmine, lanolin, or similar should classify as non-vegan.
 - Ingredients with ambiguous sourcing should classify as unknown unless the product text explicitly resolves the source.
-- Fortified flour/wheat should remain unknown unless the evidence explicitly proves the fortification sources are vegan.
+- Fortified wheat/flour should be treated as vegan when the fortification is limited to standard flour additions such as calcium, iron, niacin, thiamin, or folic acid.
+- Vitamins outside standard flour fortification should remain unknown unless the evidence explicitly proves the sources are vegan.
 - Safe parser improvements should be source-aware, for example allowing `soya lecithin` while keeping bare `lecithin` unknown.
 
 ## Classifier Workflow

@@ -19,8 +19,8 @@ from typing import Any, Iterable
 
 
 DEFAULT_DB = "ocado_products.sqlite"
-CLASSIFIER_VERSION = "db-vegan-codex-v1"
-PROMPT_VERSION = "ocado-vegan-product-json-v1"
+CLASSIFIER_VERSION = "db-vegan-codex-v2"
+PROMPT_VERSION = "ocado-vegan-product-json-v2"
 VALID_STATUSES = {"vegan", "nonvegan", "unknown"}
 VALID_VEGAN_REASONS = {"tagged", "manufacturer", "ingredients", "name"}
 
@@ -119,7 +119,6 @@ NONVEGAN_INGREDIENT_PATTERNS = [
 ]
 
 AMBIGUOUS_INGREDIENT_PATTERNS = [
-    r"\bfortified\b",
     r"\bvitamins?\b",
     r"\bvitamin d3?\b",
     r"\bcholecalciferol\b",
@@ -144,12 +143,27 @@ AMBIGUOUS_INGREDIENT_PATTERNS = [
 ]
 
 SAFE_INGREDIENT_TERMS = {
+    "flour",
+    "fortified wheat flour",
     "water",
     "salt",
     "sea salt",
+    "sugar",
+    "dextrose",
+    "molasses",
+    "glucose-fructose syrup",
+    "barley malt extract",
+    "malted barley flour",
+    "wheat flour",
+    "wholewheat flour",
+    "whole grain wheat flour",
+    "wholegrain wheat flour",
     "durum wheat semolina",
     "semolina",
     "wheat semolina",
+    "wheat bran",
+    "wheat protein",
+    "wheat starch",
     "beans",
     "green beans",
     "fine beans",
@@ -163,6 +177,11 @@ SAFE_INGREDIENT_TERMS = {
     "olive oil",
     "extra virgin olive oil",
     "rapeseed oil",
+    "vegetable oil",
+    "vegetable oils",
+    "palm oil",
+    "palm",
+    "rapeseed",
     "rice",
     "brown rice",
     "basmati rice",
@@ -170,6 +189,14 @@ SAFE_INGREDIENT_TERMS = {
     "oat flakes",
     "maize",
     "corn",
+    "yeast",
+    "dried yeast",
+    "raising agent",
+    "raising agents",
+    "sodium bicarbonate",
+    "ammonium bicarbonate",
+    "acidity regulator",
+    "sodium hydroxide",
     "firming agent",
     "calcium chloride",
 }
@@ -178,13 +205,47 @@ SINGLE_INGREDIENT_NAME_TERMS = [
     "beans",
     "green beans",
     "fine beans",
+    "peas",
+    "petits pois",
     "tomatoes",
     "potatoes",
+    "peppers",
     "carrots",
+    "parsnips",
+    "swede",
     "cucumber",
     "onions",
+    "shallots",
+    "garlic",
+    "chillies",
+    "ginger",
+    "asparagus",
+    "aubergine",
+    "courgettes",
+    "broccoli",
+    "cauliflower",
+    "cabbage",
+    "sprouts",
+    "lettuce",
+    "spinach",
+    "kale",
+    "rocket",
+    "watercress",
+    "mushrooms",
+    "dates",
+    "grapes",
     "apples",
     "bananas",
+    "blackberries",
+    "blueberries",
+    "strawberries",
+    "raspberries",
+    "pineapple",
+    "melon",
+    "mango",
+    "lemons",
+    "oranges",
+    "pears",
     "rice",
     "lentils",
     "chickpeas",
@@ -201,13 +262,19 @@ SINGLE_INGREDIENT_NAME_TERMS = [
 PROCESSED_NAME_BLOCKLIST = [
     "sauce",
     "soup",
-    "salad",
-    "ready",
+    "juice",
+    "oil",
+    "powder",
+    "vinegar",
+    "drink",
+    "smoothie",
+    "card",
+    "candle",
+    "diffuser",
+    "seeds",
     "seasoned",
     "flavoured",
     "flavored",
-    "cooked",
-    "prepared",
     "meal",
     "bites",
     "lollies",
@@ -217,6 +284,41 @@ PROCESSED_NAME_BLOCKLIST = [
     "dressing",
     "marinated",
 ]
+
+SINGLE_INGREDIENT_PRODUCE_CATEGORY_MARKERS = [
+    "fresh-chilled-food/fruit/",
+    "fresh-chilled-food/vegetables/",
+    "fresh-chilled-food/salad-herbs/",
+    "fresh-chilled-food/best-of-british/fruit-vegetables/",
+    "dietary-lifestyle-world-foods/organic/fruit-vegetables/",
+    "m-s/m-s-best-of-fresh/m-s-fruit-vegetables/",
+    "ocado-own-range/fruit-vegetables-salad/",
+    "frozen-food/frozen-fruit-vegetables-herbs/",
+]
+
+SAFE_FLOUR_FORTIFICATION_TERMS = {
+    "added",
+    "calcium",
+    "calcium carbonate",
+    "flour",
+    "folic acid",
+    "fortified",
+    "iron",
+    "niacin",
+    "thiamin",
+    "thiamine",
+    "vitamin b1",
+    "vitamin b3",
+    "vitamin b9",
+    "vitamins",
+    "wheat flour",
+    "with",
+}
+
+FLOUR_FORTIFICATION_HEAD_RE = re.compile(
+    r"\b(?:fortified\s+)?(?:whole\s*grain\s+|wholegrain\s+|wholewheat\s+)?(?:wheat\s+)?flour\s*([\[(])",
+    re.IGNORECASE,
+)
 
 CODEX_OUTPUT_SCHEMA: dict[str, Any] = {
     "type": "object",
@@ -605,6 +707,62 @@ def split_ingredient_terms(text: str) -> list[str]:
     return terms
 
 
+def normalize_fortification_term(term: str) -> str:
+    term = re.sub(r"\b(?:with|added)\b", " ", term)
+    term = re.sub(r"\s+", " ", term).strip(" .:-")
+    return term
+
+
+def is_safe_flour_fortification(segment: str) -> bool:
+    terms = split_ingredient_terms(segment)
+    if not terms:
+        return False
+    return all(term in SAFE_FLOUR_FORTIFICATION_TERMS or normalize_fortification_term(term) in SAFE_FLOUR_FORTIFICATION_TERMS for term in terms)
+
+
+def matching_delimiter(text: str, open_index: int) -> int:
+    opener = text[open_index]
+    closer = ")" if opener == "(" else "]"
+    depth = 0
+    for index in range(open_index, len(text)):
+        char = text[index]
+        if char == opener:
+            depth += 1
+        elif char == closer:
+            depth -= 1
+            if depth == 0:
+                return index
+    return -1
+
+
+def strip_safe_flour_fortification(text: str) -> str:
+    # UK flour fortification minerals/vitamins are treated as vegan for this
+    # project. Strip only the parenthesised/bracketed flour fortification
+    # detail, leaving unrelated vitamins elsewhere to remain ambiguous.
+    result = []
+    cursor = 0
+    while True:
+        match = FLOUR_FORTIFICATION_HEAD_RE.search(text, cursor)
+        if not match:
+            result.append(text[cursor:])
+            return "".join(result)
+
+        open_index = match.end(1) - 1
+        close_index = matching_delimiter(text, open_index)
+        if close_index == -1:
+            result.append(text[cursor:])
+            return "".join(result)
+
+        segment = text[open_index + 1 : close_index]
+        if is_safe_flour_fortification(segment):
+            result.append(text[cursor : match.start()])
+            result.append("Wheat Flour")
+            cursor = close_index + 1
+        else:
+            result.append(text[cursor : close_index + 1])
+            cursor = close_index + 1
+
+
 def all_terms_are_safe(terms: list[str]) -> bool:
     if not terms:
         return False
@@ -614,6 +772,9 @@ def all_terms_are_safe(terms: list[str]) -> bool:
 def looks_like_single_ingredient_vegan_product(context: dict[str, Any]) -> bool:
     name = (context["product"].get("name") or "").lower()
     if not name or any(blocked in name for blocked in PROCESSED_NAME_BLOCKLIST):
+        return False
+    categories = context["categories"]
+    if not categories or not any(marker in category for category in categories for marker in SINGLE_INGREDIENT_PRODUCE_CATEGORY_MARKERS):
         return False
     return any(re.search(rf"\b{re.escape(term)}\b", name) for term in SINGLE_INGREDIENT_NAME_TERMS)
 
@@ -635,7 +796,7 @@ def classify_by_ingredients(context: dict[str, Any]) -> ClassificationResult | N
             )
         return None
 
-    ingredient_text = strip_allergen_warnings(ingredients)
+    ingredient_text = strip_safe_flour_fortification(strip_allergen_warnings(ingredients))
     nonvegan_matches = ingredient_matches(ingredient_text, NONVEGAN_INGREDIENT_PATTERNS)
     if nonvegan_matches:
         return ClassificationResult(
@@ -772,7 +933,8 @@ def build_codex_prompt(products: list[dict[str, Any]]) -> str:
         "- Use ingredients only when ingredients or single-ingredient identity make vegan status certain.\n"
         "- Ingredients such as milk, egg, honey, gelatine, meat, fish, shellfish, beeswax, shellac, carmine, or lanolin are nonvegan.\n"
         "- May-contain allergen warnings do not make a product nonvegan.\n"
-        "- Ambiguous ingredients such as natural flavourings, enzymes, vitamins, vitamin D3, fortified flour, glycerine, E471/E472, wax, glaze, or colours mean unknown unless other explicit vegan evidence exists.\n"
+        "- Treat fortified wheat/flour as vegan when the fortification is limited to standard flour additions such as calcium, iron, niacin, thiamin, or folic acid.\n"
+        "- Ambiguous ingredients such as natural flavourings, enzymes, vitamins outside standard flour fortification, vitamin D3, glycerine, E471/E472, wax, glaze, or colours mean unknown unless other explicit vegan evidence exists.\n"
         "- Prefer unknown over guessing.\n\n"
         f"Product JSON:\n{json_dumps(payload)}\n"
     )

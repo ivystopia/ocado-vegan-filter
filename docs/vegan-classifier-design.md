@@ -72,10 +72,10 @@ Examples:
 
 - Fresh green beans with no ingredients field can be `vegan/ingredients`.
 - Plain dried pasta with ingredients `Durum wheat semolina` can be `vegan/ingredients`.
-- Udon noodles containing fortified wheat/flour should be `unknown` unless the DB text explicitly says vegan.
+- Udon noodles containing fortified wheat/flour can be `vegan/ingredients` when the fortification is limited to standard flour additions such as calcium, iron, niacin, thiamin, or folic acid.
 - Products containing milk, egg, honey, gelatine, meat, fish, shellfish, beeswax, shellac, carmine, lanolin, or similar animal-derived ingredients should be `nonvegan`.
 - `May contain milk` warnings do not make a product `nonvegan`.
-- Vague or ambiguous ingredients such as natural flavourings, enzymes, vitamins, vitamin D3, glycerine, mono/diglycerides, shellac/glaze, colours, or fortified flour should be `unknown` unless explicit vegan evidence exists.
+- Vague or ambiguous ingredients such as natural flavourings, enzymes, vitamins outside standard flour fortification, vitamin D3, glycerine, mono/diglycerides, shellac/glaze, or colours should be `unknown` unless explicit vegan evidence exists.
 
 ## Decision Order
 
