@@ -174,6 +174,7 @@ class ClassifyOcadoVeganTests(unittest.TestCase):
     def test_single_ingredient_examples_classify_vegan(self) -> None:
         examples = {
             "281646011": ("Wholegood Organic Mixed Peppers", "fresh-chilled-food/vegetables/peppers"),
+            "349510011": ("Albert Bartlett Butter Gold Bakers", "fresh-chilled-food/vegetables/potatoes/baking-potatoes"),
             "310608011": ("Ocado Washed Baby Spinach", "fresh-chilled-food/vegetables/cabbage-spinach-greens/spinach"),
             "518478011": ("M&S British White Mushrooms", "fresh-chilled-food/vegetables/mushrooms/white"),
             "518483011": ("M&S British Baby Parsnips", "fresh-chilled-food/vegetables/carrots-root-vegetables/parsnips"),

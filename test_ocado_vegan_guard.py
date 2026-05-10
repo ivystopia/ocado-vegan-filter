@@ -60,7 +60,7 @@ def extract_userscript_id_set(constant_name: str) -> set[str]:
 
 def userscript_source_test() -> None:
     assert "// @name        Ocado Vegan Filter" in userscript()
-    assert "// @version     1.4.0" in userscript()
+    assert "// @version     1.4.1" in userscript()
     assert "// @inject-into page" in userscript()
 
     manufacturer_or_name_ids = extract_userscript_id_set("MANUFACTURER_OR_NAME_VEGAN_PRODUCT_IDS")

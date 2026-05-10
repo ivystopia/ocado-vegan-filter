@@ -71,6 +71,7 @@ Do not infer from brand reputation, product category, marketing assumptions, or 
 Examples:
 
 - Fresh green beans with no ingredients field can be `vegan/ingredients`.
+- A product with no ingredients field should be treated as a single-ingredient product; use stored product identity and category text to decide whether that single ingredient is unambiguously vegan.
 - Plain dried pasta with ingredients `Durum wheat semolina` can be `vegan/ingredients`.
 - Udon noodles containing fortified wheat/flour can be `vegan/ingredients` when the fortification is limited to standard flour additions such as calcium, iron, niacin, thiamin, or folic acid.
 - Products containing milk, egg, honey, gelatine, meat, fish, shellfish, beeswax, shellac, carmine, lanolin, or similar animal-derived ingredients should be `nonvegan`.

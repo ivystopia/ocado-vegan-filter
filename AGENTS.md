@@ -28,6 +28,7 @@ The project has two related goals:
 - `unknown` means assessed, but not enough database evidence exists to classify safely.
 - `NULL` or missing status means unclassified and should generally be treated as work remaining.
 - May-contain allergen warnings do not make a product non-vegan.
+- A product with no explicit ingredients field should be treated as a single-ingredient product and classified from stored product identity/category text when that identity is unambiguous.
 - Explicit animal-derived ingredients such as milk, egg, honey, gelatine, meat, fish, shellfish, beeswax, shellac, carmine, lanolin, or similar should classify as non-vegan.
 - Ingredients with ambiguous sourcing should classify as unknown unless the product text explicitly resolves the source.
 - Fortified wheat/flour should be treated as vegan when the fortification is limited to standard flour additions such as calcium, iron, niacin, thiamin, or folic acid.

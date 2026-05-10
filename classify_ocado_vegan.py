@@ -19,8 +19,8 @@ from typing import Any, Iterable
 
 
 DEFAULT_DB = "ocado_products.sqlite"
-CLASSIFIER_VERSION = "db-vegan-codex-v2"
-PROMPT_VERSION = "ocado-vegan-product-json-v2"
+CLASSIFIER_VERSION = "db-vegan-codex-v3"
+PROMPT_VERSION = "ocado-vegan-product-json-v3"
 VALID_STATUSES = {"vegan", "nonvegan", "unknown"}
 VALID_VEGAN_REASONS = {"tagged", "manufacturer", "ingredients", "name"}
 
@@ -207,17 +207,24 @@ SINGLE_INGREDIENT_NAME_TERMS = [
     "fine beans",
     "peas",
     "petits pois",
+    "sweetcorn",
+    "corn",
+    "mangetout",
+    "mange tout",
     "tomatoes",
     "potatoes",
     "peppers",
     "carrots",
     "parsnips",
+    "turnips",
     "swede",
     "cucumber",
     "onions",
+    "leeks",
     "shallots",
     "garlic",
     "chillies",
+    "chilli",
     "ginger",
     "asparagus",
     "aubergine",
@@ -229,13 +236,20 @@ SINGLE_INGREDIENT_NAME_TERMS = [
     "lettuce",
     "spinach",
     "kale",
+    "cavolo nero",
+    "spring greens",
+    "choi sum",
     "rocket",
     "watercress",
     "mushrooms",
     "dates",
     "grapes",
+    "avocados",
+    "avocado",
     "apples",
     "bananas",
+    "berries",
+    "mixed berries",
     "blackberries",
     "blueberries",
     "strawberries",
@@ -243,9 +257,21 @@ SINGLE_INGREDIENT_NAME_TERMS = [
     "pineapple",
     "melon",
     "mango",
+    "mangoes",
     "lemons",
+    "lemon",
+    "limes",
+    "lime",
     "oranges",
+    "satsumas",
+    "satsuma",
+    "tangerines",
+    "tangerine",
+    "nectarines",
+    "nectarine",
     "pears",
+    "beetroot",
+    "methi",
     "rice",
     "lentils",
     "chickpeas",
@@ -770,13 +796,27 @@ def all_terms_are_safe(terms: list[str]) -> bool:
 
 
 def looks_like_single_ingredient_vegan_product(context: dict[str, Any]) -> bool:
-    name = (context["product"].get("name") or "").lower()
+    product = context["product"]
+    name = (product.get("name") or "").lower()
     if not name or any(blocked in name for blocked in PROCESSED_NAME_BLOCKLIST):
         return False
     categories = context["categories"]
     if not categories or not any(marker in category for category in categories for marker in SINGLE_INGREDIENT_PRODUCE_CATEGORY_MARKERS):
         return False
-    return any(re.search(rf"\b{re.escape(term)}\b", name) for term in SINGLE_INGREDIENT_NAME_TERMS)
+
+    full_product_name = ""
+    full_product_name_match = re.search(r"\bfull product name:\s*([^.;]+)", normalize_space(product.get("other_information")), re.IGNORECASE)
+    if full_product_name_match:
+        full_product_name = full_product_name_match.group(1).lower()
+
+    identity_text = " ".join(
+        [
+            name,
+            full_product_name,
+            " ".join(categories).replace("-", " ").replace("/", " ").lower(),
+        ]
+    )
+    return any(re.search(rf"\b{re.escape(term)}\b", identity_text) for term in SINGLE_INGREDIENT_NAME_TERMS)
 
 
 def classify_by_ingredients(context: dict[str, Any]) -> ClassificationResult | None:
@@ -791,7 +831,11 @@ def classify_by_ingredients(context: dict[str, Any]) -> ClassificationResult | N
                 vegan_reason="ingredients",
                 confidence="certain",
                 summary="Product identity is an unambiguous single vegan ingredient and no ingredients field is present.",
-                evidence={"rule": "single_ingredient_product_identity", "name": product.get("name")},
+                evidence={
+                    "rule": "single_ingredient_product_identity",
+                    "name": product.get("name"),
+                    "categories": context["categories"],
+                },
                 source="rule",
             )
         return None
@@ -931,6 +975,7 @@ def build_codex_prompt(products: list[dict[str, Any]]) -> str:
         "- vegan_reason must be tagged, manufacturer, ingredients, or name only when vegan_status is vegan; otherwise it must be null.\n"
         "- Use manufacturer when the supplied product text explicitly says vegan or suitable for vegans.\n"
         "- Use ingredients only when ingredients or single-ingredient identity make vegan status certain.\n"
+        "- If the product has no ingredients field, treat it as a single-ingredient product and classify from the supplied product identity/category text when that identity is unambiguous.\n"
         "- Ingredients such as milk, egg, honey, gelatine, meat, fish, shellfish, beeswax, shellac, carmine, or lanolin are nonvegan.\n"
         "- May-contain allergen warnings do not make a product nonvegan.\n"
         "- Treat fortified wheat/flour as vegan when the fortification is limited to standard flour additions such as calcium, iron, niacin, thiamin, or folic acid.\n"
