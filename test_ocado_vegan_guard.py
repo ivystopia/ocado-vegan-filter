@@ -27,6 +27,9 @@ CHEESE_SEARCH_URL = "https://www.ocado.com/search?q=cheese"
 FIREFOX_HELPER_SCRIPTS = Path(os.environ.get("BROWSE_WITH_FIREFOX_SCRIPTS", ""))
 USERSCRIPT_MANAGER_ID = "<extension-id>"
 USERSCRIPT_MANAGER_UUID = "<extension-uuid>"
+OFFICIAL_VEGAN_IDS = {
+    "369202011",
+}
 MANUFACTURER_OR_NAME_VEGAN_IDS = {
     "577028011",
     "601607011",
@@ -60,12 +63,14 @@ def extract_userscript_id_set(constant_name: str) -> set[str]:
 
 def userscript_source_test() -> None:
     assert "// @name        Ocado Vegan Filter" in userscript()
-    assert "// @version     1.4.1" in userscript()
+    assert "// @version     1.4.2" in userscript()
     assert "// @inject-into page" in userscript()
 
+    official_ids = extract_userscript_id_set("OFFICIAL_VEGAN_PRODUCT_IDS")
     manufacturer_or_name_ids = extract_userscript_id_set("MANUFACTURER_OR_NAME_VEGAN_PRODUCT_IDS")
     ingredients_ids = extract_userscript_id_set("INGREDIENTS_VEGAN_PRODUCT_IDS")
 
+    assert OFFICIAL_VEGAN_IDS <= official_ids
     assert MANUFACTURER_OR_NAME_VEGAN_IDS <= manufacturer_or_name_ids
     assert INGREDIENTS_VEGAN_IDS <= ingredients_ids
     assert "const MANUFACTURER_VEGAN_PRODUCT_IDS" not in userscript()
@@ -146,6 +151,14 @@ def fixture_smoke_test() -> None:
         <svg id="vegan"></svg>
         <button data-test="counter-button" aria-label="Add Official Vegan">Add</button>
       </article>
+      <article class="product-card-container" id="official-hidden-icon">
+        <a href="https://www.ocado.com/products/itsu-vegetable-fusion-gyoza/369202011">itsu vegetable fusion gyoza<img></a>
+        <svg data-test="product-card-lifestyle-freezable"></svg>
+        <svg data-test="product-card-lifestyle-vegetarian"></svg>
+        <svg data-test="product-card-lifestyle-microwavable"></svg>
+        <svg data-test="product-card-lifestyle-frozen"></svg>
+        <button data-test="counter-button" aria-label="Add itsu vegetable fusion gyoza">Add</button>
+      </article>
       <article class="product-card-container" id="name-vegan">
         <a href="https://www.ocado.com/products/i-am-nut-ok-bluffalo-notzarella-vegan-mozzarella/634291011">I AM NUT OK Bluffalo Notzarella - Vegan Mozzarella<img></a>
         <button data-test="counter-button" aria-label="Add I AM NUT OK Bluffalo Notzarella - Vegan Mozzarella">Add</button>
@@ -203,7 +216,7 @@ def fixture_smoke_test() -> None:
             const blockedHoverText = blockedButton.textContent.trim();
             blockedButton.dispatchEvent(new MouseEvent('mouseleave', { bubbles: true }));
             const blockedLeaveText = blockedButton.textContent.trim();
-            return Object.fromEntries(['ready', 'ready-hyphen', 'cajun', 'cajun-hyphen', 'official', 'name-vegan', 'hydration-vegan', 'stale-vegan', 'ingredients-beans', 'ingredients-pasta', 'blocked'].map(id => {
+            return Object.fromEntries(['ready', 'ready-hyphen', 'cajun', 'cajun-hyphen', 'official', 'official-hidden-icon', 'name-vegan', 'hydration-vegan', 'stale-vegan', 'ingredients-beans', 'ingredients-pasta', 'blocked'].map(id => {
               const card = document.getElementById(id);
               const button = card.querySelector('button');
               const img = card.querySelector('img');
@@ -247,6 +260,7 @@ def fixture_smoke_test() -> None:
         "cajun",
         "cajun-hyphen",
         "official",
+        "official-hidden-icon",
         "name-vegan",
         "hydration-vegan",
         "stale-vegan",
