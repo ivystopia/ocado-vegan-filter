@@ -71,6 +71,7 @@ The project has two related goals:
 - Each commit should be one self-contained logical change.
 - Keep formatting-only changes in a separate commit from feature, behaviour, documentation, or data changes.
 - Keep repo-specific signing configuration in local `.git/config`, not in tracked repo files.
+- Keep GitHub Actions workflows on the latest stable major versions of actions and avoid deprecated JavaScript runtimes.
 - When the user makes a firm statement about how this repository should be handled in future, update this `AGENTS.md` directly as part of the current task.
 
 ## FireMonkey Workflow
