@@ -20,7 +20,7 @@ from selenium.webdriver.support import expected_conditions as EC
 from selenium.webdriver.support.ui import WebDriverWait
 
 
-ROOT = Path(__file__).resolve().parent
+ROOT = Path(__file__).resolve().parents[1]
 USERSCRIPT = ROOT / "ocado-vegan-filter.user.js"
 PROMOTIONS_URL = "https://www.ocado.com/promotions?source=header%20button"
 CHEESE_SEARCH_URL = "https://www.ocado.com/search?q=cheese"

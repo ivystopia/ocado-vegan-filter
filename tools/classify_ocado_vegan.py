@@ -18,7 +18,8 @@ from pathlib import Path
 from typing import Any, Iterable
 
 
-DEFAULT_DB = "ocado_products.sqlite"
+REPO_ROOT = Path(__file__).resolve().parents[1]
+DEFAULT_DB = str(REPO_ROOT / "ocado_products.sqlite")
 CLASSIFIER_VERSION = "db-vegan-codex-v4"
 PROMPT_VERSION = "ocado-vegan-product-json-v3"
 VALID_STATUSES = {"vegan", "nonvegan", "unknown"}

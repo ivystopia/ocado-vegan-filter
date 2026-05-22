@@ -38,8 +38,9 @@ from selenium.webdriver.firefox.service import Service
 
 USER_AGENT = "Mozilla/5.0 (X11; Linux x86_64; rv:150.0) Gecko/20100101 Firefox/150.0"
 CATEGORY_SITEMAP_URL = "https://www.ocado.com/sitemaps/sitemap-categories-part1.xml"
-DEFAULT_OUTPUT_PREFIX = "ocado_vegan_according_to_ingredients"
-DEFAULT_MANUFACTURER_URLS = "ocado_vegan_according_to_manufacturer_urls.txt"
+REPO_ROOT = Path(__file__).resolve().parents[1]
+DEFAULT_OUTPUT_PREFIX = str(REPO_ROOT / "audit/ingredients/ocado_vegan_according_to_ingredients")
+DEFAULT_MANUFACTURER_URLS = str(REPO_ROOT / "audit/manufacturer/ocado_vegan_according_to_manufacturer_urls.txt")
 DEFAULT_MODEL = os.environ.get("OPENAI_MODEL", "gpt-5.5")
 DEFAULT_COOKIES_DB = os.environ.get("OCADO_COOKIES_DB", "")
 

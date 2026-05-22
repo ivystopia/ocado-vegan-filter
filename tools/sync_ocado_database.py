@@ -42,6 +42,8 @@ FIREFOX_HELPER_SCRIPTS = os.environ.get("BROWSE_WITH_FIREFOX_SCRIPTS", "")
 if FIREFOX_HELPER_SCRIPTS and FIREFOX_HELPER_SCRIPTS not in sys.path:
     sys.path.insert(0, FIREFOX_HELPER_SCRIPTS)
 
+REPO_ROOT = Path(__file__).resolve().parents[1]
+
 
 def browser_session(*args: Any, **kwargs: Any) -> Any:
     try:
@@ -916,7 +918,7 @@ def run_sync(args: argparse.Namespace) -> int:
 
 def build_parser() -> argparse.ArgumentParser:
     parser = argparse.ArgumentParser(description=__doc__)
-    parser.add_argument("--db", default="ocado_products.sqlite")
+    parser.add_argument("--db", default=str(REPO_ROOT / "ocado_products.sqlite"))
     parser.add_argument("--timeout", type=int, default=60)
     parser.add_argument("--retries", type=int, default=3)
     parser.add_argument("--category-limit", type=int, default=0)

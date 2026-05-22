@@ -24,6 +24,7 @@ PRODUCT_BOP_URL = "https://www.ocado.com/api/webproductpagews/v5/products/bop"
 PRODUCT_URL_RE = re.compile(r"/products/(?P<slug>[^/]+)/(?P<retailer_product_id>\d+)$")
 SITEMAP_NS = {"sm": "http://www.sitemaps.org/schemas/sitemap/0.9"}
 THREAD_LOCAL = threading.local()
+REPO_ROOT = Path(__file__).resolve().parents[1]
 DEFAULT_COOKIES_DB = os.environ.get("OCADO_COOKIES_DB", "")
 
 
@@ -36,7 +37,7 @@ def parse_args() -> argparse.Namespace:
     )
     parser.add_argument(
         "--output-prefix",
-        default="ocado_vegan_according_to_manufacturer_sitemap",
+        default=str(REPO_ROOT / "audit/manufacturer/ocado_vegan_according_to_manufacturer_sitemap"),
         help="Prefix for the generated JSON and CSV files",
     )
     parser.add_argument(

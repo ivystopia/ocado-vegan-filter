@@ -16,16 +16,21 @@ from pathlib import Path
 from typing import Any, Iterable
 
 
-DEFAULT_OUTPUT = "ocado_products.sqlite"
-DEFAULT_PRODUCT_UNIVERSE = "ocado_vegan_according_to_ingredients_product_universe.jsonl"
-DEFAULT_BOP_RAW = "ocado_vegan_according_to_ingredients_bop_raw.jsonl"
-DEFAULT_PRECHECK_AUDIT = "ocado_vegan_according_to_ingredients_precheck_audit.jsonl"
-DEFAULT_MANUFACTURER_AUDIT = "ocado_vegan_according_to_manufacturer_audit.json"
-DEFAULT_INGREDIENTS_AUDIT = "ocado_vegan_according_to_ingredients_audit.jsonl"
-DEFAULT_CLASSIFIER_A = "ocado_vegan_according_to_ingredients_classifier_pass_a.jsonl"
-DEFAULT_CLASSIFIER_B = "ocado_vegan_according_to_ingredients_classifier_pass_b.jsonl"
-DEFAULT_MANUFACTURER_META = "ocado_vegan_according_to_manufacturer_meta.json"
-DEFAULT_INGREDIENTS_META = "ocado_vegan_according_to_ingredients_meta.json"
+REPO_ROOT = Path(__file__).resolve().parents[1]
+AUDIT_ROOT = REPO_ROOT / "audit"
+INGREDIENTS_AUDIT_ROOT = AUDIT_ROOT / "ingredients"
+MANUFACTURER_AUDIT_ROOT = AUDIT_ROOT / "manufacturer"
+
+DEFAULT_OUTPUT = str(REPO_ROOT / "ocado_products.sqlite")
+DEFAULT_PRODUCT_UNIVERSE = str(INGREDIENTS_AUDIT_ROOT / "ocado_vegan_according_to_ingredients_product_universe.jsonl")
+DEFAULT_BOP_RAW = str(INGREDIENTS_AUDIT_ROOT / "ocado_vegan_according_to_ingredients_bop_raw.jsonl")
+DEFAULT_PRECHECK_AUDIT = str(INGREDIENTS_AUDIT_ROOT / "ocado_vegan_according_to_ingredients_precheck_audit.jsonl")
+DEFAULT_MANUFACTURER_AUDIT = str(MANUFACTURER_AUDIT_ROOT / "ocado_vegan_according_to_manufacturer_audit.json")
+DEFAULT_INGREDIENTS_AUDIT = str(INGREDIENTS_AUDIT_ROOT / "ocado_vegan_according_to_ingredients_audit.jsonl")
+DEFAULT_CLASSIFIER_A = str(INGREDIENTS_AUDIT_ROOT / "ocado_vegan_according_to_ingredients_classifier_pass_a.jsonl")
+DEFAULT_CLASSIFIER_B = str(INGREDIENTS_AUDIT_ROOT / "ocado_vegan_according_to_ingredients_classifier_pass_b.jsonl")
+DEFAULT_MANUFACTURER_META = str(MANUFACTURER_AUDIT_ROOT / "ocado_vegan_according_to_manufacturer_meta.json")
+DEFAULT_INGREDIENTS_META = str(INGREDIENTS_AUDIT_ROOT / "ocado_vegan_according_to_ingredients_meta.json")
 
 PRODUCT_URL_ID_RE = re.compile(r"/products/(?:[^/?#]*[-/])?(?P<id>\d+)(?:/details)?(?:[/?#]|$)")
 TAG_RE = re.compile(r"<[^>]+>")

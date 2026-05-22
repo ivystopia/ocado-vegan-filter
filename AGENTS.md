@@ -103,7 +103,8 @@ Use this only when the user explicitly asks to update the installed userscript w
 - Run targeted tests after code changes when practical.
 - For userscript/browser behaviour bugs, reproduce the issue in Firefox before implementing a fix; do not rely only on code inspection or assumptions.
 - For userscript syntax, run `node --check` on the script file.
-- For classifier/database changes, run the relevant `test_*` files with `pytest` or `python -m unittest` according to the existing test style.
+- Python tools live under `tools/`, tests live under `tests/`, and retained audit outputs live under `audit/`.
+- For classifier/database changes, run the relevant `tests/test_*` files with `pytest` or `python -m unittest` according to the existing test style.
 
 ## Output Conventions
 

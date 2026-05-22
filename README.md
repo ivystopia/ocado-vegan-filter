@@ -23,6 +23,12 @@ Products not identified as vegan are visually muted:
 
 The filter is cosmetic only. Product links still work, and the real Ocado `Add` button remains clickable.
 
+## Screenshots
+
+| Logo | Product Grid |
+| --- | --- |
+| ![Ocado Vegan Filter logo](assets/images/logo.jpg) | ![Ocado product grid with vegan products highlighted](assets/images/screenshot.jpg) |
+
 ## How Products Are Treated As Vegan
 
 The script treats a product as vegan when any of these are true:
@@ -48,36 +54,41 @@ The large local SQLite database and raw scrape streams are intentionally not tra
 
 ### Classification And Database Tooling
 
-- `build_ocado_database.py` - creates the SQLite schema used by the local catalogue database.
-- `sync_ocado_database.py` - imports and synchronises scraped Ocado product data into SQLite.
-- `classify_ocado_vegan.py` - classifies products as `vegan`, `nonvegan`, or `unknown` from stored database data.
+- `tools/build_ocado_database.py` - creates the SQLite schema used by the local catalogue database.
+- `tools/sync_ocado_database.py` - imports and synchronises scraped Ocado product data into SQLite.
+- `tools/classify_ocado_vegan.py` - classifies products as `vegan`, `nonvegan`, or `unknown` from stored database data.
 - `docs/vegan-classifier-design.md` - notes describing the intended offline vegan-classification workflow.
 
 ### Scraping Tooling
 
-- `scan_ocado_vegan_according_to_manufacturer.py` - finds products whose page text explicitly says they are vegan.
-- `scan_ocado_vegan_according_to_manufacturer_sitemap.py` - sitemap-based support for the manufacturer-text scan.
-- `scan_ocado_vegan_according_to_ingredients.py` - tooling for the conservative vegan-by-ingredients scan.
+- `tools/scan_ocado_vegan_according_to_manufacturer.py` - finds products whose page text explicitly says they are vegan.
+- `tools/scan_ocado_vegan_according_to_manufacturer_sitemap.py` - sitemap-based support for the manufacturer-text scan.
+- `tools/scan_ocado_vegan_according_to_ingredients.py` - tooling for the conservative vegan-by-ingredients scan.
 
 ### Retained Audit Outputs
 
 These files are small enough to keep in Git and document the public outputs of the audit:
 
-- `ocado_vegan_according_to_manufacturer_urls.txt` - manufacturer-text vegan URL list.
-- `ocado_vegan_according_to_manufacturer_new_urls.txt` - follow-up manufacturer-text vegan URL list.
-- `ocado_vegan_according_to_manufacturer_audit.csv` - structured audit rows for the manufacturer-text list.
-- `ocado_vegan_according_to_manufacturer_audit.json` - JSON form of the manufacturer-text audit.
-- `ocado_vegan_according_to_manufacturer_meta.json` - metadata for the manufacturer-text scan.
-- `ocado_vegan_according_to_manufacturer_cover_letter.txt` - customer-services cover note for reporting catalogue issues.
-- `ocado_vegan_according_to_ingredients_meta.json` - metadata for the ingredients-based scan.
+- `audit/manufacturer/ocado_vegan_according_to_manufacturer_urls.txt` - manufacturer-text vegan URL list.
+- `audit/manufacturer/ocado_vegan_according_to_manufacturer_new_urls.txt` - follow-up manufacturer-text vegan URL list.
+- `audit/manufacturer/ocado_vegan_according_to_manufacturer_audit.csv` - structured audit rows for the manufacturer-text list.
+- `audit/manufacturer/ocado_vegan_according_to_manufacturer_audit.json` - JSON form of the manufacturer-text audit.
+- `audit/manufacturer/ocado_vegan_according_to_manufacturer_meta.json` - metadata for the manufacturer-text scan.
+- `audit/manufacturer/ocado_vegan_according_to_manufacturer_cover_letter.txt` - customer-services cover note for reporting catalogue issues.
+- `audit/ingredients/ocado_vegan_according_to_ingredients_meta.json` - metadata for the ingredients-based scan.
+
+### Images
+
+- `assets/images/logo.jpg` - full-resolution logo used on the Greasy Fork page.
+- `assets/images/screenshot.jpg` - full-resolution product-grid screenshot used on the Greasy Fork page.
 
 ### Tests
 
-- `test_ocado_vegan_filter.py` - userscript source and browser-fixture smoke tests.
-- `test_classify_ocado_vegan.py` - vegan classifier tests.
-- `test_build_ocado_database.py` - database schema/build tests.
-- `test_sync_ocado_database.py` - database synchronisation tests.
-- `test_ocado_vegan_according_to_ingredients.py` - ingredients-scan helper tests.
+- `tests/test_ocado_vegan_filter.py` - userscript source and browser-fixture smoke tests.
+- `tests/test_classify_ocado_vegan.py` - vegan classifier tests.
+- `tests/test_build_ocado_database.py` - database schema/build tests.
+- `tests/test_sync_ocado_database.py` - database synchronisation tests.
+- `tests/test_ocado_vegan_according_to_ingredients.py` - ingredients-scan helper tests.
 
 ### Project Metadata
 
@@ -106,8 +117,8 @@ Useful checks:
 
 ```sh
 node --check ocado-vegan-filter.user.js
-python3 -m unittest test_classify_ocado_vegan.py
-python3 - <<'PY'
+python3 -m unittest discover -s tests
+PYTHONPATH=tests python3 - <<'PY'
 import test_ocado_vegan_filter as t
 
 t.userscript_source_test()

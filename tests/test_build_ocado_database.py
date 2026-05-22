@@ -5,9 +5,14 @@ from __future__ import annotations
 
 import json
 import sqlite3
+import sys
 import tempfile
 import unittest
 from pathlib import Path
+
+TOOLS = Path(__file__).resolve().parents[1] / "tools"
+if str(TOOLS) not in sys.path:
+    sys.path.insert(0, str(TOOLS))
 
 import build_ocado_database as importer
 
