@@ -13,6 +13,7 @@
 // ==/UserScript==
 
 /*
+ * ---------------------------------------------------------------------------
  * Vegan product counts in this source file
  * ----------------------------------------
  * Recognised vegan product IDs: 20,591
@@ -23,6 +24,10 @@
  *
  * These counts are generated from the embedded allowlists below. Update them
  * whenever the allowlists are regenerated.
+ *
+ * ---------------------------------------------------------------------------
+ * Unlicense
+ * ---------
  *
  *  This is free and unencumbered software released into the public domain.
  *
@@ -49,7 +54,9 @@
  *
  *  For more information, please refer to <https://unlicense.org/>
  *
+ * ---------------------------------------------------------------------------
  * Ocado Vegan Filter
+ * -------------------
  *
  * Background
  * ----------
