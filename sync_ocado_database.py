@@ -38,11 +38,18 @@ from build_ocado_database import (
 )
 
 
-FIREFOX_HELPER_SCRIPTS = Path(os.environ.get("BROWSE_WITH_FIREFOX_SCRIPTS", ""))
-if str(FIREFOX_HELPER_SCRIPTS) not in sys.path:
-    sys.path.insert(0, str(FIREFOX_HELPER_SCRIPTS))
+FIREFOX_HELPER_SCRIPTS = os.environ.get("BROWSE_WITH_FIREFOX_SCRIPTS", "")
+if FIREFOX_HELPER_SCRIPTS and FIREFOX_HELPER_SCRIPTS not in sys.path:
+    sys.path.insert(0, FIREFOX_HELPER_SCRIPTS)
 
-from firefox_session import browser_session  # noqa: E402
+
+def browser_session(*args: Any, **kwargs: Any) -> Any:
+    try:
+        from firefox_session import browser_session as real_browser_session
+    except ImportError as exc:
+        raise RuntimeError("Set BROWSE_WITH_FIREFOX_SCRIPTS to a directory containing firefox_session.py") from exc
+
+    return real_browser_session(*args, **kwargs)
 
 
 USER_AGENT = "Mozilla/5.0 (X11; Linux x86_64; rv:150.0) Gecko/20100101 Firefox/150.0"

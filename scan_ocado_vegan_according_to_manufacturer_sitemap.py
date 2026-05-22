@@ -3,6 +3,7 @@ import argparse
 import csv
 import html
 import json
+import os
 import re
 import sqlite3
 import threading
@@ -23,14 +24,15 @@ PRODUCT_BOP_URL = "https://www.ocado.com/api/webproductpagews/v5/products/bop"
 PRODUCT_URL_RE = re.compile(r"/products/(?P<slug>[^/]+)/(?P<retailer_product_id>\d+)$")
 SITEMAP_NS = {"sm": "http://www.sitemaps.org/schemas/sitemap/0.9"}
 THREAD_LOCAL = threading.local()
+DEFAULT_COOKIES_DB = os.environ.get("OCADO_COOKIES_DB", "")
 
 
 def parse_args() -> argparse.Namespace:
     parser = argparse.ArgumentParser()
     parser.add_argument(
         "--cookies-db",
-        default=str(Path.home() / ".mozilla/firefox/<firefox-profile>/cookies.sqlite"),
-        help="Path to Firefox cookies.sqlite",
+        default=DEFAULT_COOKIES_DB,
+        help="Path to Firefox cookies.sqlite. Defaults to OCADO_COOKIES_DB.",
     )
     parser.add_argument(
         "--output-prefix",
@@ -59,6 +61,9 @@ def parse_args() -> argparse.Namespace:
 
 
 def build_cookie_jar(cookies_db: str) -> requests.cookies.RequestsCookieJar:
+    if not cookies_db:
+        raise ValueError("Set --cookies-db or OCADO_COOKIES_DB to a Firefox cookies.sqlite path")
+
     conn = sqlite3.connect(cookies_db)
     try:
         cursor = conn.cursor()

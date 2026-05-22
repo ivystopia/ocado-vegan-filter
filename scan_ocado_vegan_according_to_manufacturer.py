@@ -17,13 +17,15 @@ from selenium.webdriver.firefox.service import Service
 USER_AGENT = "Mozilla/5.0 (X11; Linux x86_64; rv:150.0) Gecko/20100101 Firefox/150.0"
 CATEGORY_SITEMAP_URL = "https://www.ocado.com/sitemaps/sitemap-categories-part1.xml"
 PRODUCT_BOP_URL = "/api/webproductpagews/v5/products/bop?retailerProductId="
+DEFAULT_COOKIES_DB = os.environ.get("OCADO_COOKIES_DB", "")
 
 
 def parse_args() -> argparse.Namespace:
     parser = argparse.ArgumentParser()
     parser.add_argument(
         "--cookies-db",
-        default=str(Path.home() / ".mozilla/firefox/<firefox-profile>/cookies.sqlite"),
+        default=DEFAULT_COOKIES_DB,
+        help="Path to Firefox cookies.sqlite. Defaults to OCADO_COOKIES_DB.",
     )
     parser.add_argument("--output-prefix", default="ocado_vegan_according_to_manufacturer")
     parser.add_argument("--category-limit", type=int, default=0)
@@ -36,6 +38,9 @@ def parse_args() -> argparse.Namespace:
 
 
 def build_cookie_rows(cookies_db: str) -> list[tuple]:
+    if not cookies_db:
+        raise ValueError("Set --cookies-db or OCADO_COOKIES_DB to a Firefox cookies.sqlite path")
+
     conn = sqlite3.connect(cookies_db)
     try:
         cursor = conn.cursor()

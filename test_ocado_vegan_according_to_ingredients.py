@@ -209,7 +209,7 @@ class VeganAccordingToIngredientsTests(unittest.TestCase):
     def test_manufacturer_list_skip_helper_if_exposed(self) -> None:
         helper = getattr(self.scraper, "should_skip_vegan_according_to_manufacturer", None)
         if helper is None:
-            self.skipTest("vegan-according-to-manufacturer manufacturer-list skip helper is optional")
+            self.skipTest("manufacturer-list skip helper is optional")
 
         manufacturer_vegan_ids = {"517986011"}
         self.assertTrue(helper(GREEN_BEANS, manufacturer_vegan_ids))

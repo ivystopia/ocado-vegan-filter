@@ -5,12 +5,12 @@ This scraper deliberately keeps raw/pre-check data:
 
 - product universe JSONL: every product discovered through Ocado categories
 - raw category page JSONL: raw category API payloads
-- raw BOP JSONL: raw product API payloads for every non-vegan-according-to-manufacturer product fetched
+- raw BOP JSONL: raw product API payloads for fetched products
 - precheck audit JSONL: deterministic skip/candidate state before LLM classification
 
-The final URL list includes only products that are not in the vegan-according-to-manufacturer
-vegan-according-to-manufacturer list, are not officially tagged as vegan by
-Ocado, and pass two independent conservative classifier passes.
+The final URL list includes only products that are not already covered by
+manufacturer/name evidence, are not officially tagged as vegan by Ocado, and
+pass two independent conservative classifier passes.
 """
 
 from __future__ import annotations
@@ -41,6 +41,7 @@ CATEGORY_SITEMAP_URL = "https://www.ocado.com/sitemaps/sitemap-categories-part1.
 DEFAULT_OUTPUT_PREFIX = "ocado_vegan_according_to_ingredients"
 DEFAULT_MANUFACTURER_URLS = "ocado_vegan_according_to_manufacturer_urls.txt"
 DEFAULT_MODEL = os.environ.get("OPENAI_MODEL", "gpt-5.5")
+DEFAULT_COOKIES_DB = os.environ.get("OCADO_COOKIES_DB", "")
 
 SUITABLE_FOR_VEGAN_PATTERNS = [
     re.compile(r"\bsuitable\s+for\s+vegans?\b", re.IGNORECASE),
@@ -396,6 +397,9 @@ def load_env_file(path: Path = Path.home() / ".env") -> None:
 
 
 def build_cookie_rows(cookies_db: str) -> list[tuple]:
+    if not cookies_db:
+        raise ValueError("Set --cookies-db or OCADO_COOKIES_DB to a Firefox cookies.sqlite path")
+
     source = Path(cookies_db).expanduser()
     with tempfile.TemporaryDirectory() as temporary_directory:
         copy_path = Path(temporary_directory) / "cookies.sqlite"
@@ -867,7 +871,7 @@ def extract_precheck(args: argparse.Namespace) -> dict[str, Any]:
 
         if retailer_product_id in manufacturer_vegan_ids:
             status = "skip_old_vegan_according_to_manufacturer"
-            reason = "Product was already included in the vegan-according-to-manufacturer vegan-according-to-manufacturer list."
+            reason = "Product was already included in the vegan-according-to-manufacturer list."
         elif product_has_vegan_tag(universe_row) or product_has_vegan_tag(product):
             status = "skip_official_vegan_tag"
             reason = "Product is already officially tagged vegan in Ocado metadata."
@@ -1157,7 +1161,7 @@ def build_parser() -> argparse.ArgumentParser:
     )
     parser.add_argument("--output-prefix", default=DEFAULT_OUTPUT_PREFIX)
     parser.add_argument("--manufacturer-urls", default=DEFAULT_MANUFACTURER_URLS)
-    parser.add_argument("--cookies-db", default=str(Path.home() / ".mozilla/firefox/<firefox-profile>/cookies.sqlite"))
+    parser.add_argument("--cookies-db", default=DEFAULT_COOKIES_DB, help="Path to Firefox cookies.sqlite. Defaults to OCADO_COOKIES_DB.")
     parser.add_argument("--category-limit", type=int, default=0)
     parser.add_argument("--product-limit", type=int, default=0)
     parser.add_argument("--category-batch-size", type=int, default=20)
@@ -1168,7 +1172,7 @@ def build_parser() -> argparse.ArgumentParser:
     parser.add_argument(
         "--include-manufacturer-vegan",
         action="store_true",
-        help="Fetch BOP raw data even for vegan-according-to-manufacturer vegan-according-to-manufacturer products.",
+        help="Fetch BOP raw data even for vegan-according-to-manufacturer products.",
     )
     parser.add_argument("--include-old-known", action="store_true", dest="include_manufacturer_vegan", help=argparse.SUPPRESS)
     parser.add_argument("--classify", action="store_true", help="For command=run, also call OpenAI classifier passes and finalize.")

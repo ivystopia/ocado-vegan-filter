@@ -1,6 +1,6 @@
 # Ocado Report Instructions
 
-These instructions apply to `this repository`.
+These instructions apply to this repository.
 
 ## Project Purpose
 
@@ -49,20 +49,20 @@ The project has two related goals:
 - The repo copy is `ocado-vegan-filter.user.js`.
 - For the current userscript development loop, write changes to the repo copy only; the user will handle Firefox/FireMonkey installation and testing unless they explicitly ask otherwise.
 - Preserve the current userscript formatting style; edits should already match VS Code autoformat-on-save output and should not introduce formatting-only churn.
-- If the user says they updated the separate local userscript copy, treat `a separate local userscript file` as the current source of truth and sync the repo copy from it after validating.
+- If the user says they updated a separate local copy of the userscript, treat that named file as the current source of truth and sync the repo copy from it after validating.
 - Keep the script self-contained; it should not fetch Ocado product detail pages or call third-party services while shopping.
 - The script should treat products as vegan when Ocado tags them vegan, when the name explicitly contains standalone `vegan`, or when the product ID is in an embedded vegan allowlist.
 - Keep separate allowlists for manufacturer/name evidence and ingredients evidence.
 - Non-vegan or not-known-vegan products should be visually de-emphasised only; the real Ocado Add button must remain present and clickable.
 - Product links must remain clickable.
 - Keep userscript metadata free of personal identifiers.
-- Never use `personal.example` or another personal domain in userscript metadata.
+- Never use a personal domain in userscript metadata.
 - Greasy Fork may force or preserve `@namespace`; if a namespace is required, use a non-personal value.
 - Use `@license Unlicense` and preserve the Unlicense text when preparing release files.
 - Bump the userscript version for fixes and behavior changes before publishing.
 - Commit development changes directly to `main`.
 - Tag only versions that are live on Greasy Fork.
-- Use exact Greasy Fork version strings for tags, for example `1.0.1`, not `v1.0.1`.
+- Use exact Greasy Fork version strings for tags, for example `1.4.4`, not `v1.4.4`.
 - Use signed annotated tags for Greasy Fork release tags.
 - Do not create a release tag until the user confirms the version is ready to publish to Greasy Fork.
 
@@ -75,16 +75,13 @@ The project has two related goals:
 
 ## FireMonkey Workflow
 
-- The user has switched from userscript manager to FireMonkey.
-- Do not assume userscript manager is active.
+- Do not assume any userscript manager other than FireMonkey is active.
 - Do not close or restart the user's real Firefox unless the user explicitly asks.
 - Prefer editing userscript files on disk for release work.
 - FireMonkey stores scripts in `browser.storage.local` under keys of the form `_<script name>`, for example `_Ocado Vegan Filter`.
 - The stored FireMonkey value is not just raw source; it is a parsed object containing metadata fields plus the full `js` source.
 - FireMonkey's parser is available in its extension bundle as `content/meta.js`; use `Meta.get(source, pref)` to create the correct stored object instead of hand-building it.
-- FireMonkey's current local extension ID is `<firemonkey-extension-id>`; rediscover its Firefox extension UUID from `extensions.webextensions.uuids` if needed.
-- At the time this file was written, the local FireMonkey UUID was `<extension-uuid>`.
-- The corresponding storage directory was `~/.mozilla/firefox/<firefox-profile>/storage/default/moz-extension+++<extension-uuid>^userContextId=4294967295`.
+- If direct FireMonkey storage updates are needed, rediscover the local extension UUID and storage path from the current Firefox profile instead of relying on hard-coded paths.
 
 ## Updating Installed FireMonkey Directly
 

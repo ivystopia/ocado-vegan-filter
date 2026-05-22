@@ -6,10 +6,6 @@ Install it from Greasy Fork:
 
 https://greasyfork.org/en/scripts/576838-ocado-vegan-filter
 
-Background discussion and feedback thread:
-
-https://www.reddit.com/r/veganuk/comments/1t5afpp/fix_the_vegan_filtering_on_ocado_with_a_userscript/
-
 ## What It Does
 
 Ocado already has a vegan icon and filter, but some vegan products are missing from that metadata or do not show the vegan icon in product grids.
@@ -34,7 +30,7 @@ The script treats a product as vegan when any of these are true:
 - Ocado officially tags it as vegan.
 - The product name contains the standalone word `vegan`.
 - Ocado product page text explicitly says it is vegan, including manufacturer text, dietary information, or product features.
-- Offline catalogue data supports a conservative vegan-by-ingredients classification.
+- Embedded catalogue data supports a conservative vegan-by-ingredients classification.
 
 `Not vegan` means "not identified as vegan by this script". It is not a definitive claim that the product contains animal-derived ingredients.
 
@@ -42,7 +38,7 @@ The script treats a product as vegan when any of these are true:
 
 The userscript is self-contained while shopping. It does not fetch Ocado product detail pages in the background, and it does not call third-party services.
 
-The large local SQLite database and raw scrape streams used during development are intentionally not tracked in this repository.
+The large local SQLite database and raw scrape streams are intentionally not tracked in this repository.
 
 ## Repository Contents
 
@@ -67,12 +63,12 @@ The large local SQLite database and raw scrape streams used during development a
 
 These files are small enough to keep in Git and document the public outputs of the audit:
 
-- `ocado_vegan_according_to_manufacturer_urls.txt` - original manufacturer-text vegan URL list.
+- `ocado_vegan_according_to_manufacturer_urls.txt` - manufacturer-text vegan URL list.
 - `ocado_vegan_according_to_manufacturer_new_urls.txt` - follow-up manufacturer-text vegan URL list.
 - `ocado_vegan_according_to_manufacturer_audit.csv` - structured audit rows for the manufacturer-text list.
 - `ocado_vegan_according_to_manufacturer_audit.json` - JSON form of the manufacturer-text audit.
 - `ocado_vegan_according_to_manufacturer_meta.json` - metadata for the manufacturer-text scan.
-- `ocado_vegan_according_to_manufacturer_cover_letter.txt` - customer-services cover note used with the original report.
+- `ocado_vegan_according_to_manufacturer_cover_letter.txt` - customer-services cover note for reporting catalogue issues.
 - `ocado_vegan_according_to_ingredients_meta.json` - metadata for the ingredients-based scan.
 
 ### Tests
@@ -87,9 +83,10 @@ These files are small enough to keep in Git and document the public outputs of t
 
 - `README.md` - this file.
 - `LICENSE` - the Unlicense text.
-- `AGENTS.md` - local development instructions for Codex-style agents.
+- `AGENTS.md` - repository-specific automation instructions.
 - `.gitignore` - excludes local databases, raw scrape streams, virtual environments, and caches.
 - `.flake8` - Python lint configuration.
+- `.github/workflows/release.yml` - publishes userscript assets to GitHub Releases when a release tag is pushed.
 
 ### Intentionally Not Tracked
 

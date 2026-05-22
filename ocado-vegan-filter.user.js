@@ -1,6 +1,6 @@
 // ==UserScript==
 // @name        Ocado Vegan Filter
-// @version     1.4.3
+// @version     1.4.4
 // @license     Unlicense
 // @description Update Ocado's incomplete "vegan" filter with over 15000 vegan products.
 // @match       https://www.ocado.com/*
@@ -60,7 +60,7 @@
  * Products treated as vegan keep their normal appearance and retain the normal
  * yellow "Add" button. A product is treated as vegan when Ocado identifies it as
  * vegan, when the product name explicitly says vegan, or when its product ID is
- * present in one of the verified local vegan allowlists embedded below.
+ * present in one of the embedded vegan allowlists below.
  *
  * Products not known to be vegan are visually de-emphasised. Their product image
  * is faded and fully desaturated, promotional red text is muted, and the normal
@@ -68,14 +68,13 @@
  * button remains Ocado's real Add button and stays clickable; hovering changes
  * the label to "Add anyway" to make that explicit.
  *
- * Where the embedded vegan product lists came from
- * -----------------------------------------------
- * The allowlists were generated from a catalogue audit and
- * split by evidence type. They are split by evidence type:
+ * What the embedded vegan product lists mean
+ * ------------------------------------------
+ * The allowlists are split by evidence type:
  *
  * - OFFICIAL_VEGAN_PRODUCT_IDS contains products Ocado officially tagged
- *   vegan when the offline catalogue database was generated. It acts as a
- *   fallback when Ocado hides the vegan icon in a product grid.
+ *   vegan. It acts as a fallback when Ocado hides the vegan icon in a
+ *   product grid.
  * - MANUFACTURER_OR_NAME_VEGAN_PRODUCT_IDS contains products where the Ocado
  *   page content explicitly says the product is suitable for vegans, or where
  *   the product name itself contains the standalone word "vegan".
@@ -98,7 +97,6 @@
   const CARD_SELECTOR = ".product-card-container, [data-test^='fop-wrapper:'], [data-testid^='fop-wrapper:']";
   const NON_VEGAN_CARD_CLASS = "ocado-vegan-filter-non-vegan";
   const NON_VEGAN_ADD_BUTTON_CLASS = "ocado-vegan-filter-not-vegan-add";
-  const LEGACY_BLOCKED_BUTTON_CLASS = "ocado-vegan-filter-blocked";
   const STYLE_ID = "ocado-vegan-filter-style";
   const BLOCKED_IMAGE_FILTER = "grayscale(100%) saturate(0)";
   const BLOCKED_IMAGE_OPACITY = "0.42";
@@ -119,7 +117,7 @@
   const documentClassCache = new Map();
   let cachedOutOfStockButtonClassName = "";
 
-  // Products Ocado officially tagged vegan when the offline catalogue database was generated.
+  // Products Ocado officially tagged vegan.
   const OFFICIAL_VEGAN_PRODUCT_IDS = new Set(
     `
   10018011 10054011 10074011 10076011 10077011 10219011 10225011 10230011
@@ -2797,21 +2795,6 @@
     return button.classList.contains(NON_VEGAN_ADD_BUTTON_CLASS) || (textOf(button) === "Add" && /^Add\b/i.test(button.getAttribute("aria-label") || ""));
   }
 
-  function restoreLegacyBlockedButton(button) {
-    // Pre-1.1.0 versions physically replaced Ocado's Add button with a disabled
-    // "Not vegan" button. If this script runs on a page that was already mutated
-    // by that old version, put Ocado's original button back before applying the
-    // new cosmetic-only marker.
-    const original = button.__ocadoVeganFilterOriginal;
-
-    if (!original) {
-      return button;
-    }
-
-    button.replaceWith(original);
-    return original;
-  }
-
   function firstClassMatching(element, pattern) {
     return Array.from(element.classList || []).find((className) => pattern.test(className)) || "";
   }
@@ -2915,18 +2898,18 @@
     // Do not replace or disable buttons. We keep the existing Ocado Add button
     // and swap only its visual class set/text, so the original click handler
     // remains on the original button.
-    for (const button of card.querySelectorAll(`${ADD_BUTTON_SELECTOR}, .${LEGACY_BLOCKED_BUTTON_CLASS}`)) {
-      const addButton = button.classList.contains(LEGACY_BLOCKED_BUTTON_CLASS) ? restoreLegacyBlockedButton(button) : button;
-
-      if (isAddButton(addButton)) {
-        if (!addButton.dataset.ocadoVeganFilterOriginalText) {
-          addButton.dataset.ocadoVeganFilterOriginalText = textOf(addButton) || "Add";
-        }
-
-        applyOutOfStockButtonStyle(addButton);
-        installAddAnywayHoverText(addButton);
-        addButton.textContent = addButton.matches(":hover") ? ADD_ANYWAY_LABEL : NON_VEGAN_LABEL;
+    for (const addButton of card.querySelectorAll(ADD_BUTTON_SELECTOR)) {
+      if (!isAddButton(addButton)) {
+        continue;
       }
+
+      if (!addButton.dataset.ocadoVeganFilterOriginalText) {
+        addButton.dataset.ocadoVeganFilterOriginalText = textOf(addButton) || "Add";
+      }
+
+      applyOutOfStockButtonStyle(addButton);
+      installAddAnywayHoverText(addButton);
+      addButton.textContent = addButton.matches(":hover") ? ADD_ANYWAY_LABEL : NON_VEGAN_LABEL;
     }
   }
 
@@ -2934,9 +2917,7 @@
     // Cards can change classification as Ocado hydrates more metadata into the
     // page. If a card becomes known-vegan, restore the button classes/text we
     // saved before applying the cosmetic out-of-stock style.
-    for (const button of card.querySelectorAll(`.${NON_VEGAN_ADD_BUTTON_CLASS}, .${LEGACY_BLOCKED_BUTTON_CLASS}`)) {
-      const addButton = button.classList.contains(LEGACY_BLOCKED_BUTTON_CLASS) ? restoreLegacyBlockedButton(button) : button;
-
+    for (const addButton of card.querySelectorAll(`.${NON_VEGAN_ADD_BUTTON_CLASS}`)) {
       if (typeof addButton.dataset.ocadoVeganFilterOriginalClass === "string") {
         addButton.setAttribute("class", addButton.dataset.ocadoVeganFilterOriginalClass);
       } else {
@@ -2981,7 +2962,7 @@
     const inlineStyle = image.getAttribute("style") || "";
 
     return (
-      image.dataset.ocadoVeganFilterImage === "blocked" ||
+      image.dataset.ocadoVeganFilterImage === "muted" ||
       Boolean(image.dataset.ocadoVeganFilterGrayscaleSource) ||
       Boolean(image.dataset.ocadoVeganFilterOriginalSrc) ||
       Boolean(image.dataset.ocadoVeganFilterOriginalSrcset) ||
@@ -3076,9 +3057,8 @@
   }
 
   function blockProductImages(card) {
-    // "Block" is historical naming from the earlier version. This now means
-    // "visually mute"; it must not block clicks. The CSS above makes the image
-    // pointer-transparent so Ocado's own overlaid product link remains clickable.
+    // The CSS makes the image pointer-transparent so Ocado's overlaid product
+    // link remains clickable.
     for (const image of productImages(card)) {
       if (!image.dataset.ocadoVeganFilterImage) {
         image.dataset.ocadoVeganFilterOriginalStyle = image.getAttribute("style") || "";
@@ -3087,7 +3067,7 @@
         image.dataset.ocadoVeganFilterOriginalSizes = image.getAttribute("sizes") || "";
       }
 
-      image.dataset.ocadoVeganFilterImage = "blocked";
+      image.dataset.ocadoVeganFilterImage = "muted";
       replaceWithGrayscaleImage(image);
       image.style.setProperty("filter", BLOCKED_IMAGE_FILTER, "important");
       image.style.setProperty("opacity", BLOCKED_IMAGE_OPACITY, "important");

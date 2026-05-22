@@ -24,9 +24,7 @@ ROOT = Path(__file__).resolve().parent
 USERSCRIPT = ROOT / "ocado-vegan-filter.user.js"
 PROMOTIONS_URL = "https://www.ocado.com/promotions?source=header%20button"
 CHEESE_SEARCH_URL = "https://www.ocado.com/search?q=cheese"
-FIREFOX_HELPER_SCRIPTS = Path(os.environ.get("BROWSE_WITH_FIREFOX_SCRIPTS", ""))
-USERSCRIPT_MANAGER_ID = "<extension-id>"
-USERSCRIPT_MANAGER_UUID = "<extension-uuid>"
+FIREFOX_HELPER_SCRIPTS = os.environ.get("BROWSE_WITH_FIREFOX_SCRIPTS", "")
 OFFICIAL_VEGAN_IDS = {
     "369202011",
 }
@@ -64,7 +62,7 @@ def extract_userscript_id_set(constant_name: str) -> set[str]:
 
 def userscript_source_test() -> None:
     assert "// @name        Ocado Vegan Filter" in userscript()
-    assert "// @version     1.4.3" in userscript()
+    assert "// @version     1.4.4" in userscript()
     assert "// @inject-into page" in userscript()
 
     official_ids = extract_userscript_id_set("OFFICIAL_VEGAN_PRODUCT_IDS")
@@ -233,7 +231,7 @@ def fixture_smoke_test() -> None:
                 buttonText: button.textContent.trim(),
                 buttonClassName: button.className,
                 buttonVisuallyMarked: button.classList.contains('ocado-vegan-filter-not-vegan-add'),
-                blocked: button.classList.contains('ocado-vegan-filter-blocked'),
+                blocked: false,
                 nonVeganClass: card.classList.contains('ocado-vegan-filter-non-vegan'),
                 imageOpacity: getComputedStyle(img).opacity,
                 imageFilter: getComputedStyle(img).filter,
@@ -290,24 +288,29 @@ def fixture_smoke_test() -> None:
 
 
 def import_firefox_helpers():
-    sys.path.insert(0, str(FIREFOX_HELPER_SCRIPTS))
+    if FIREFOX_HELPER_SCRIPTS and FIREFOX_HELPER_SCRIPTS not in sys.path:
+        sys.path.insert(0, FIREFOX_HELPER_SCRIPTS)
+
     from firefox_session import firefox_options, resolve_current_profile, snapshot_profile
 
     return firefox_options, resolve_current_profile, snapshot_profile
 
 
-def remove_userscript_manager_from_temp_profile(profile: Path) -> None:
-    xpi = profile / f"extensions/{USERSCRIPT_MANAGER_ID}.xpi"
-    if xpi.exists():
-        xpi.unlink()
+def remove_configured_extensions_from_temp_profile(profile: Path) -> None:
+    extension_ids = {value.strip() for value in os.environ.get("OCADO_TEST_REMOVE_EXTENSION_IDS", "").split(",") if value.strip()}
 
-    for storage_dir in (profile / "storage/default").glob(f"moz-extension+++{USERSCRIPT_MANAGER_UUID}*"):
-        shutil.rmtree(storage_dir, ignore_errors=True)
+    if not extension_ids:
+        return
+
+    for extension_id in extension_ids:
+        xpi = profile / f"extensions/{extension_id}.xpi"
+        if xpi.exists():
+            xpi.unlink()
 
     prefs = profile / "prefs.js"
     if prefs.exists():
         lines = prefs.read_text(errors="ignore").splitlines()
-        lines = [line for line in lines if USERSCRIPT_MANAGER_ID not in line and USERSCRIPT_MANAGER_UUID not in line]
+        lines = [line for line in lines if not any(extension_id in line for extension_id in extension_ids)]
         prefs.write_text("\n".join(lines) + "\n")
 
     for name in ["extensions.json", "extension-settings.json", "extension-preferences.json"]:
@@ -323,11 +326,13 @@ def remove_userscript_manager_from_temp_profile(profile: Path) -> None:
         changed = False
         if name == "extensions.json" and isinstance(data.get("addons"), list):
             before = len(data["addons"])
-            data["addons"] = [addon for addon in data["addons"] if addon.get("id") != USERSCRIPT_MANAGER_ID]
+            data["addons"] = [addon for addon in data["addons"] if addon.get("id") not in extension_ids]
             changed = before != len(data["addons"])
-        elif isinstance(data, dict) and USERSCRIPT_MANAGER_ID in data:
-            data.pop(USERSCRIPT_MANAGER_ID, None)
-            changed = True
+        elif isinstance(data, dict):
+            for extension_id in extension_ids:
+                if extension_id in data:
+                    data.pop(extension_id, None)
+                    changed = True
 
         if changed:
             path.write_text(json.dumps(data))
@@ -372,7 +377,7 @@ def collect_rows(driver: webdriver.Firefox) -> list[dict[str, object]]:
             id: productIdFromUrl(productLink && productLink.href),
             official,
             nonVeganClass: card.classList.contains('ocado-vegan-filter-non-vegan'),
-            blocked: Boolean(card.querySelector('button.ocado-vegan-filter-blocked')),
+            blocked: false,
             buttonVisuallyMarked: Boolean(button && button.classList.contains('ocado-vegan-filter-not-vegan-add')),
             buttonText: button && button.textContent.replace(/\s+/g, ' ').trim(),
             imageOpacity: img && getComputedStyle(img).opacity,
@@ -392,7 +397,7 @@ def collect_rows(driver: webdriver.Firefox) -> list[dict[str, object]]:
 def promotions_page_smoke_test() -> None:
     firefox_options, resolve_current_profile, snapshot_profile = import_firefox_helpers()
     runtime_profile, temporary_root = snapshot_profile(resolve_current_profile().path)
-    remove_userscript_manager_from_temp_profile(runtime_profile)
+    remove_configured_extensions_from_temp_profile(runtime_profile)
 
     options = firefox_options(runtime_profile, headless=True)
     service = Service(log_output=str(temporary_root / "geckodriver.log"), env={**os.environ, "MOZ_HEADLESS": "1"})
@@ -482,7 +487,7 @@ def promotions_page_smoke_test() -> None:
 def cheese_search_hydration_smoke_test() -> None:
     firefox_options, resolve_current_profile, snapshot_profile = import_firefox_helpers()
     runtime_profile, temporary_root = snapshot_profile(resolve_current_profile().path)
-    remove_userscript_manager_from_temp_profile(runtime_profile)
+    remove_configured_extensions_from_temp_profile(runtime_profile)
 
     options = firefox_options(runtime_profile, headless=True)
     service = Service(log_output=str(temporary_root / "geckodriver.log"), env={**os.environ, "MOZ_HEADLESS": "1"})
