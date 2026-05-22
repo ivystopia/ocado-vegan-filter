@@ -19,7 +19,7 @@ from typing import Any, Iterable
 
 
 DEFAULT_DB = "ocado_products.sqlite"
-CLASSIFIER_VERSION = "db-vegan-codex-v3"
+CLASSIFIER_VERSION = "db-vegan-codex-v4"
 PROMPT_VERSION = "ocado-vegan-product-json-v3"
 VALID_STATUSES = {"vegan", "nonvegan", "unknown"}
 VALID_VEGAN_REASONS = {"tagged", "manufacturer", "ingredients", "name"}
@@ -659,6 +659,26 @@ def find_matching_sources(sources: list[dict[str, str]], patterns: list[str]) ->
     return matches
 
 
+def features_text_has_standalone_vegan_claim(text: str) -> bool:
+    """Return true when "vegan" is a discrete product feature, not incidental prose."""
+    for part in re.split(r"[,;|\n\r\u2022]+", text):
+        token = normalize_space(part).strip(" .:-").lower()
+        if token in {
+            "vegan",
+            "suitable for vegan",
+            "suitable for vegans",
+            "suitable for a vegan diet",
+            "vegan friendly",
+            "certified vegan",
+        }:
+            return True
+        if re.fullmatch(r"(?:suitable for )?(?:vegetarians? (?:and|&) )?vegans?", token):
+            return True
+        if re.fullmatch(r"vegans? (?:and|&) vegetarians?", token):
+            return True
+    return False
+
+
 def classify_by_manufacturer_text(context: dict[str, Any]) -> ClassificationResult | None:
     product_id = context["product"]["id"]
     sources = text_sources(context)
@@ -666,6 +686,8 @@ def classify_by_manufacturer_text(context: dict[str, Any]) -> ClassificationResu
     negative = find_matching_sources(sources, NEGATIVE_VEGAN_PATTERNS)
     for source in sources:
         if source["text"].strip().lower() in {"vegan", "suitable for vegans"}:
+            positive.append(source)
+        if source["table"] == "products" and source["column"] == "features" and features_text_has_standalone_vegan_claim(source["text"]):
             positive.append(source)
     if positive and negative:
         return ClassificationResult(

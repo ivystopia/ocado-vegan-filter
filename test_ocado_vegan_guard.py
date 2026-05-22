@@ -31,6 +31,7 @@ OFFICIAL_VEGAN_IDS = {
     "369202011",
 }
 MANUFACTURER_OR_NAME_VEGAN_IDS = {
+    "511102011",
     "577028011",
     "601607011",
     "652775011",
@@ -63,7 +64,7 @@ def extract_userscript_id_set(constant_name: str) -> set[str]:
 
 def userscript_source_test() -> None:
     assert "// @name        Ocado Vegan Filter" in userscript()
-    assert "// @version     1.4.2" in userscript()
+    assert "// @version     1.4.3" in userscript()
     assert "// @inject-into page" in userscript()
 
     official_ids = extract_userscript_id_set("OFFICIAL_VEGAN_PRODUCT_IDS")
@@ -189,6 +190,10 @@ def fixture_smoke_test() -> None:
         <a href="https://www.ocado.com/products/rummo-spaghetti-pasta-no-3/624307011">Rummo Spaghetti Pasta No.3<img></a>
         <button data-test="counter-button" aria-label="Add Rummo Spaghetti Pasta No.3">Add</button>
       </article>
+      <article class="product-card-container" id="features-gherkins">
+        <a href="https://www.ocado.com/products/kuhne-gherkins/511102011">Kuhne Gherkins<img></a>
+        <button data-test="counter-button" aria-label="Add Kuhne Gherkins">Add</button>
+      </article>
       <article class="product-card-container" id="blocked">
         <a href="https://www.ocado.com/products/mcvities-penguin-orange-biscuit-bars-multipack-123456789" onclick="window.blockedImageClicks += 1; event.preventDefault();"><img style="display: block; width: 100px; height: 100px;"></a>
         <span data-test="fop-offer-text" style="color: rgb(169, 0, 22)">Half price</span>
@@ -216,7 +221,7 @@ def fixture_smoke_test() -> None:
             const blockedHoverText = blockedButton.textContent.trim();
             blockedButton.dispatchEvent(new MouseEvent('mouseleave', { bubbles: true }));
             const blockedLeaveText = blockedButton.textContent.trim();
-            return Object.fromEntries(['ready', 'ready-hyphen', 'cajun', 'cajun-hyphen', 'official', 'official-hidden-icon', 'name-vegan', 'hydration-vegan', 'stale-vegan', 'ingredients-beans', 'ingredients-pasta', 'blocked'].map(id => {
+            return Object.fromEntries(['ready', 'ready-hyphen', 'cajun', 'cajun-hyphen', 'official', 'official-hidden-icon', 'name-vegan', 'hydration-vegan', 'stale-vegan', 'ingredients-beans', 'ingredients-pasta', 'features-gherkins', 'blocked'].map(id => {
               const card = document.getElementById(id);
               const button = card.querySelector('button');
               const img = card.querySelector('img');
@@ -266,6 +271,7 @@ def fixture_smoke_test() -> None:
         "stale-vegan",
         "ingredients-beans",
         "ingredients-pasta",
+        "features-gherkins",
     ]:
         assert_card_state(rows, card_id, blocked=False)
     assert rows["stale-vegan"]["imageSrc"] == "https://www.ocado.com/images-v3/example/original.webp", rows["stale-vegan"]

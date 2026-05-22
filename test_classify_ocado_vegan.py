@@ -78,6 +78,23 @@ class ClassifyOcadoVeganTests(unittest.TestCase):
         self.assertEqual(result.vegan_status, "vegan")
         self.assertEqual(result.vegan_reason, "manufacturer")
 
+    def test_standalone_vegan_feature_classifies_as_manufacturer(self) -> None:
+        conn = self.create_db()
+        self.insert_product(conn, name="Gherkins", features="Vegetarian, Vegan, Gluten free")
+
+        result = self.classify(conn)
+
+        self.assertEqual(result.vegan_status, "vegan")
+        self.assertEqual(result.vegan_reason, "manufacturer")
+
+    def test_incidental_vegan_feature_text_does_not_classify_as_manufacturer(self) -> None:
+        conn = self.create_db()
+        self.insert_product(conn, name="Recipe Card", features="Great with vegan mayo")
+
+        result = self.classify(conn)
+
+        self.assertIsNone(result)
+
     def test_explicit_nonvegan_text_classifies_as_nonvegan(self) -> None:
         conn = self.create_db()
         self.insert_product(conn, name="Sample Dessert", dietary_information="Not suitable for vegans")
