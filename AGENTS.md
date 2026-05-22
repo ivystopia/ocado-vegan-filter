@@ -73,6 +73,9 @@ The project has two related goals:
 - Keep formatting-only changes in a separate commit from feature, behaviour, documentation, or data changes.
 - Keep repo-specific signing configuration in local `.git/config`, not in tracked repo files.
 - Keep GitHub Actions workflows on the latest stable major versions of actions and avoid deprecated JavaScript runtimes.
+- Keep the GitHub remote on SSH, not HTTPS, and use SSH for Git pushes/fetches.
+- For GitHub CLI API commands, do not let stale environment tokens override the authenticated `gh` keyring login; run commands as `env -u GH_TOKEN -u GITHUB_TOKEN gh ...` unless the user explicitly asks to test an environment token.
+- If GitHub CLI returns `HTTP 401: Bad credentials`, first check `gh auth status` with those token variables unset before asking the user to re-authenticate.
 - When the user makes a firm statement about how this repository should be handled in future, update this `AGENTS.md` directly as part of the current task.
 
 ## FireMonkey Workflow
