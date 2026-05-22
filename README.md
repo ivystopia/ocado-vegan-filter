@@ -25,9 +25,10 @@ The filter is cosmetic only. Product links still work, and the real Ocado `Add` 
 
 ## Screenshots
 
-| Logo | Product Grid |
-| --- | --- |
-| ![Ocado Vegan Filter logo](assets/images/logo.jpg) | ![Ocado product grid with vegan products highlighted](assets/images/screenshot.jpg) |
+<p>
+  <img src="assets/images/logo.jpg" alt="Ocado Vegan Filter logo" width="49%">
+  <img src="assets/images/screenshot.jpg" alt="Ocado product grid with vegan products highlighted" width="49%">
+</p>
 
 ## How Products Are Treated As Vegan
 
