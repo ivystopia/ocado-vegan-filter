@@ -35,7 +35,7 @@ jobs:
           asset="ocado-vegan-filter-${version}.user.js"
           cp ocado-vegan-filter.user.js "${asset}"
           sha256sum "${asset}" > "${asset}.sha256"
-          git for-each-ref "refs/tags/${version}" --format="%(contents)" > release-notes.md
+          git for-each-ref "refs/tags/${version}" --format="%(contents)" | sed "/^-----BEGIN PGP SIGNATURE-----$/,\$d" > release-notes.md
 
       - name: Publish GitHub release
         uses: softprops/action-gh-release@v2
