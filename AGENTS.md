@@ -63,12 +63,14 @@ The project has two related goals:
 - Commit development changes directly to `main`.
 - Tag only versions that are live on Greasy Fork.
 - Use exact Greasy Fork version strings for tags, for example `1.0.1`, not `v1.0.1`.
+- Use signed annotated tags for Greasy Fork release tags.
 - Do not create a release tag until the user confirms the version is ready to publish to Greasy Fork.
 
 ## Git Workflow
 
 - Each commit should be one self-contained logical change.
 - Keep formatting-only changes in a separate commit from feature, behaviour, documentation, or data changes.
+- Keep repo-specific signing configuration in local `.git/config`, not in tracked repo files.
 - When the user makes a firm statement about how this repository should be handled in future, update this `AGENTS.md` directly as part of the current task.
 
 ## FireMonkey Workflow
