@@ -13,6 +13,17 @@
 // ==/UserScript==
 
 /*
+ * Vegan product counts in this source file
+ * ----------------------------------------
+ * Recognised vegan product IDs: 20,591
+ * Official Ocado vegan product IDs: 4,631
+ * Additional vegan product IDs added by this script: 15,960
+ * Manufacturer/name evidence product IDs: 7,692
+ * Ingredients evidence product IDs: 8,277
+ *
+ * These counts are generated from the embedded allowlists below. Update them
+ * whenever the allowlists are regenerated.
+ *
  *  This is free and unencumbered software released into the public domain.
  *
  *  Anyone is free to copy, modify, publish, use, compile, sell, or

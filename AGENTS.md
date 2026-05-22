@@ -60,6 +60,7 @@ The project has two related goals:
 - Greasy Fork may force or preserve `@namespace`; if a namespace is required, use a non-personal value.
 - Use `@license Unlicense` and preserve the Unlicense text when preparing release files.
 - Bump the userscript version for fixes and behavior changes before publishing.
+- Keep the product counts at the top of the userscript comment block up to date whenever a userscript change is finalised.
 - Commit development changes directly to `main`.
 - Tag only versions that are live on Greasy Fork.
 - Use exact Greasy Fork version strings for tags, for example `1.4.4`, not `v1.4.4`.
