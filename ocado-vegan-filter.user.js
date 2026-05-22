@@ -1,6 +1,6 @@
 // ==UserScript==
 // @name        Ocado Vegan Filter
-// @version     1.4.4
+// @version     1.5.0
 // @license     Unlicense
 // @description Update Ocado's incomplete "vegan" filter with over 15000 vegan products.
 // @match       https://www.ocado.com/*
