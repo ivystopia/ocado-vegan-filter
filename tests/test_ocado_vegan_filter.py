@@ -120,8 +120,8 @@ def fixture_smoke_test() -> None:
           data: {
             products: {
               "430f643f-01fa-43e0-98bd-a0db2d9c7e0f": {
-                retailerProductId: "315701011",
-                name: "Violife Non-Dairy Cheese Alternative Slices",
+                retailerProductId: "999998011",
+                name: "Synthetic Hydration Vegan Product",
                 attributes: [
                   {icon: "freezable", label: "Suitable for freezing"},
                   {icon: "lactoseFree", label: "Lactose Free"},
@@ -129,6 +129,13 @@ def fixture_smoke_test() -> None:
                   {icon: "glutenFree", label: "Gluten Free"},
                   {icon: "wheatFree", label: "Wheat Free"},
                   {icon: "vegan", label: "Vegan"}
+                ]
+              },
+              "65ae304a-a28a-4019-bf00-c2bd4b963427": {
+                retailerProductId: "999997011",
+                name: "Synthetic Late Hydration Product",
+                attributes: [
+                  {icon: "vegetarian", label: "Vegetarian"}
                 ]
               }
             }
@@ -175,12 +182,16 @@ def fixture_smoke_test() -> None:
         <button data-test="counter-button" aria-label="Add I AM NUT OK Bluffalo Notzarella - Vegan Mozzarella">Add</button>
       </article>
       <article class="product-card-container" id="hydration-vegan">
-        <a href="https://www.ocado.com/products/violife-non-dairy-cheese-alternative-slices/315701011">Violife Non-Dairy Cheese Alternative Slices<img></a>
+        <a href="https://www.ocado.com/products/synthetic-hydration-vegan-product/999998011">Synthetic Hydration Vegan Product<img></a>
         <svg data-test="product-card-lifestyle-freezable"></svg>
         <svg data-test="product-card-lifestyle-lactoseFree"></svg>
         <svg data-test="product-card-lifestyle-vegetarian"></svg>
         <svg data-test="product-card-lifestyle-glutenFree"></svg>
-        <button data-test="counter-button" aria-label="Add Violife Non-Dairy Cheese Alternative Slices">Add</button>
+        <button data-test="counter-button" aria-label="Add Synthetic Hydration Vegan Product">Add</button>
+      </article>
+      <article class="product-card-container" id="late-hydration-vegan">
+        <a href="https://www.ocado.com/products/synthetic-late-hydration-product/999997011">Synthetic Late Hydration Product<img></a>
+        <button data-test="counter-button" aria-label="Add Synthetic Late Hydration Product">Add</button>
       </article>
       <article class="product-card-container ocado-vegan-filter-non-vegan" id="stale-vegan">
         <a href="https://www.ocado.com/products/violife-non-dairy-cheese-alternative-slices/315701011">Violife Non-Dairy Cheese Alternative Slices<img
@@ -216,6 +227,10 @@ def fixture_smoke_test() -> None:
         <a href="https://www.ocado.com/products/example-known-nonvegan-17959011"><img style="display: block; width: 100px; height: 100px;"></a>
         <button data-test="counter-button" aria-label="Add Example Known Nonvegan">Add</button>
       </article>
+      <article class="product-card-container" id="load-mutation-source">
+        <a href="https://www.ocado.com/products/load-mutation-source-123456780"><img src="blob:null/ocado-vegan-filter-test"></a>
+        <button data-test="counter-button" aria-label="Add Load Mutation Source">Add</button>
+      </article>
     </body></html>"""
 
     options = Options()
@@ -223,6 +238,28 @@ def fixture_smoke_test() -> None:
     driver = webdriver.Firefox(options=options)
     try:
         driver.get("data:text/html;base64," + base64.b64encode(html.encode()).decode())
+        driver.execute_script(
+            """
+            window.ocadoTestAnimationFrameCount = 0;
+            window.ocadoTestNativeRequestAnimationFrame = window.requestAnimationFrame.bind(window);
+            window.requestAnimationFrame = callback => window.ocadoTestNativeRequestAnimationFrame(timestamp => {
+              window.ocadoTestAnimationFrameCount += 1;
+              return callback(timestamp);
+            });
+            """
+        )
+        driver.execute_script(
+            """
+            document.querySelector('#load-mutation-source img').addEventListener('load', () => {
+              document.body.insertAdjacentHTML('beforeend', `
+                <article class="product-card-container" id="card-added-during-image-load">
+                  <a href="https://www.ocado.com/products/card-added-during-image-load-123456781"><img></a>
+                  <button data-test="counter-button" aria-label="Add Card Added During Image Load">Add</button>
+                </article>
+              `);
+            }, { once: true });
+            """
+        )
         driver.execute_script(userscript())
         wait = WebDriverWait(driver, 5)
         wait.until(lambda d: d.execute_script("return getComputedStyle(document.querySelector('#blocked img')).opacity") == "0.42")
@@ -240,7 +277,7 @@ def fixture_smoke_test() -> None:
             const knownNonveganHoverText = knownNonveganButton.textContent.trim();
             knownNonveganButton.dispatchEvent(new MouseEvent('mouseleave', { bubbles: true }));
             const knownNonveganLeaveText = knownNonveganButton.textContent.trim();
-            return Object.fromEntries(['ready', 'ready-hyphen', 'cajun', 'cajun-hyphen', 'official', 'official-overrides-known-nonvegan', 'official-hidden-icon', 'name-vegan', 'hydration-vegan', 'stale-vegan', 'ingredients-beans', 'ingredients-pasta', 'features-gherkins', 'blocked', 'known-nonvegan'].map(id => {
+            return Object.fromEntries(['ready', 'ready-hyphen', 'cajun', 'cajun-hyphen', 'official', 'official-overrides-known-nonvegan', 'official-hidden-icon', 'name-vegan', 'hydration-vegan', 'late-hydration-vegan', 'stale-vegan', 'ingredients-beans', 'ingredients-pasta', 'features-gherkins', 'blocked', 'known-nonvegan'].map(id => {
               const card = document.getElementById(id);
               const button = card.querySelector('button');
               const img = card.querySelector('img');
@@ -277,6 +314,35 @@ def fixture_smoke_test() -> None:
             """
         )
         click_counts = driver.execute_script("return {add: window.blockedAddClicks, image: window.blockedImageClicks};")
+        time.sleep(0.15)
+        idle_frame_count = driver.execute_script("return window.ocadoTestAnimationFrameCount;")
+        time.sleep(0.25)
+        settled_frame_count = driver.execute_script("return window.ocadoTestAnimationFrameCount;")
+        driver.execute_script("document.querySelector('#blocked').classList.add('external-page-update');")
+        wait.until(lambda d: d.execute_script("return window.ocadoTestAnimationFrameCount;") > settled_frame_count)
+        external_update_frame_count = driver.execute_script("return window.ocadoTestAnimationFrameCount;")
+        time.sleep(0.25)
+        final_frame_count = driver.execute_script("return window.ocadoTestAnimationFrameCount;")
+        driver.execute_script(
+            """
+            window.__INITIAL_STATE__.data.products['65ae304a-a28a-4019-bf00-c2bd4b963427'].attributes = [
+              {icon: 'vegan', label: 'Vegan'}
+            ];
+            document.querySelector('#late-hydration-vegan').classList.add('hydration-updated');
+            """
+        )
+        wait.until(
+            lambda d: d.execute_script(
+                "return document.querySelector('#late-hydration-vegan button').textContent.trim() === 'Add' && !document.querySelector('#late-hydration-vegan').classList.contains('ocado-vegan-filter-non-vegan');"
+            )
+        )
+        driver.execute_script("document.querySelector('#load-mutation-source img').dispatchEvent(new Event('load')); ")
+        wait.until(EC.presence_of_element_located((By.CSS_SELECTOR, "#card-added-during-image-load")))
+        wait.until(
+            lambda d: d.execute_script(
+                "return document.querySelector('#card-added-during-image-load').classList.contains('ocado-vegan-filter-non-vegan') && document.querySelector('#card-added-during-image-load button').textContent.trim() === 'Unknown vegan';"
+            )
+        )
     finally:
         driver.quit()
 
@@ -300,6 +366,7 @@ def fixture_smoke_test() -> None:
     assert rows["stale-vegan"]["imageSrcset"].startswith("https://www.ocado.com/images-v3/example/100x100.webp"), rows["stale-vegan"]
     assert "ocadoVeganFilterGrayscaleSource" not in rows["stale-vegan"]["imageDataset"], rows["stale-vegan"]
     assert_card_state(rows, "blocked", blocked=True, label="Unknown vegan")
+    assert_card_state(rows, "late-hydration-vegan", blocked=True, label="Unknown vegan", check_link_target=False)
     assert_card_state(rows, "known-nonvegan", blocked=True, label="Not vegan", check_link_target=False)
     assert click_counts == {"add": 1, "image": 1}, click_counts
     assert rows["blocked"]["blockedHoverText"] == "Add anyway", rows["blocked"]
@@ -311,6 +378,9 @@ def fixture_smoke_test() -> None:
     assert rows["blocked"]["offerUnitPriceColor"] == MUTED_PROMOTION_RGB, rows["blocked"]
     assert rows["blocked"]["offerPriceColor"] == MUTED_PROMOTION_RGB, rows["blocked"]
     assert rows["blocked"]["offerIconFill"] == MUTED_PROMOTION_RGB, rows["blocked"]
+    assert settled_frame_count == idle_frame_count, (idle_frame_count, settled_frame_count)
+    assert external_update_frame_count == settled_frame_count + 1, (settled_frame_count, external_update_frame_count)
+    assert final_frame_count == external_update_frame_count, (external_update_frame_count, final_frame_count)
     print("fixture smoke test passed")
 
 

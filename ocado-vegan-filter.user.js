@@ -4899,7 +4899,7 @@
         const card = findProductCard(image);
 
         if (card && card.classList.contains(NON_VEGAN_CARD_CLASS)) {
-          blockProductImages(card);
+          scheduleRun();
         }
       },
       { once: true },
@@ -5118,10 +5118,9 @@
       seen.add(value);
 
       if (value.retailerProductId) {
-        productsByRetailerId.set(String(value.retailerProductId), {
-          attributes: Array.isArray(value.attributes) ? value.attributes : [],
-          iconAttributes: Array.isArray(value.iconAttributes) ? value.iconAttributes : [],
-        });
+        // Retain the live product object so in-place hydration updates remain
+        // visible without rebuilding the full index.
+        productsByRetailerId.set(String(value.retailerProductId), value);
       }
 
       for (const child of Object.values(value)) {
@@ -5275,6 +5274,7 @@
   }
 
   let scheduled = false;
+  let observer;
 
   function run() {
     scheduled = false;
@@ -5284,6 +5284,10 @@
     for (const card of productCards()) {
       processCard(card);
     }
+
+    // Discard mutations caused synchronously by this pass. Without this, our
+    // own class, text, image, and style updates schedule another full-grid pass.
+    observer.takeRecords();
   }
 
   function scheduleRun() {
@@ -5295,15 +5299,15 @@
     window.requestAnimationFrame(run);
   }
 
-  scheduleRun();
-
   // Ocado product grids update after initial page load, during scrolling, and
   // after basket interactions. Re-run whenever the grid DOM changes.
-  const observer = new MutationObserver(scheduleRun);
+  observer = new MutationObserver(scheduleRun);
   observer.observe(document.documentElement, {
     attributeFilter: ["alt", "class", "data-ocado-vegan-filter-image", "data-ocado-vegan-filter-grayscale-source", "data-test", "data-testid", "href", "src", "srcset", "style"],
     attributes: true,
     childList: true,
     subtree: true,
   });
+
+  scheduleRun();
 })();
