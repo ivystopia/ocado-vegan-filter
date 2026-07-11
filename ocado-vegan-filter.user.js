@@ -4770,20 +4770,30 @@
 
   function applyOutOfStockButtonStyle(button) {
     // Save the original classes so the card can be restored if it later turns out to be vegan.
-    if (!button.dataset.ocadoVeganFilterOriginalClass) {
+    if (button.dataset.ocadoVeganFilterOriginalClass === undefined) {
       button.dataset.ocadoVeganFilterOriginalClass = button.getAttribute("class") || "";
     }
 
     const className = outOfStockButtonClassName(button);
 
     if (className) {
-      button.setAttribute("class", `${className} ${NON_VEGAN_ADD_BUTTON_CLASS}`.trim());
-      delete button.dataset.ocadoVeganFilterButtonStyle;
+      const styledClassName = `${className} ${NON_VEGAN_ADD_BUTTON_CLASS}`.trim();
+
+      if (button.getAttribute("class") !== styledClassName) {
+        button.setAttribute("class", styledClassName);
+      }
+      if (button.dataset.ocadoVeganFilterButtonStyle !== undefined) {
+        delete button.dataset.ocadoVeganFilterButtonStyle;
+      }
       return;
     }
 
-    button.classList.add(NON_VEGAN_ADD_BUTTON_CLASS);
-    button.dataset.ocadoVeganFilterButtonStyle = "fallback";
+    if (!button.classList.contains(NON_VEGAN_ADD_BUTTON_CLASS)) {
+      button.classList.add(NON_VEGAN_ADD_BUTTON_CLASS);
+    }
+    if (button.dataset.ocadoVeganFilterButtonStyle !== "fallback") {
+      button.dataset.ocadoVeganFilterButtonStyle = "fallback";
+    }
   }
 
   function installAddAnywayHoverText(button) {
@@ -4794,13 +4804,17 @@
     // The button remains Ocado's original Add button. Only the visible text is
     // changed, and the hover state makes the click-through behaviour explicit.
     button.addEventListener("mouseenter", () => {
-      if (button.classList.contains(NON_VEGAN_ADD_BUTTON_CLASS)) {
+      if (button.classList.contains(NON_VEGAN_ADD_BUTTON_CLASS) && textOf(button) !== ADD_ANYWAY_LABEL) {
         button.textContent = ADD_ANYWAY_LABEL;
       }
     });
     button.addEventListener("mouseleave", () => {
       if (button.classList.contains(NON_VEGAN_ADD_BUTTON_CLASS)) {
-        button.textContent = button.dataset.ocadoVeganFilterLabel || UNKNOWN_VEGAN_LABEL;
+        const label = button.dataset.ocadoVeganFilterLabel || UNKNOWN_VEGAN_LABEL;
+
+        if (textOf(button) !== label) {
+          button.textContent = label;
+        }
       }
     });
     button.dataset.ocadoVeganFilterHoverTextInstalled = "true";
@@ -4815,14 +4829,21 @@
         continue;
       }
 
-      if (!addButton.dataset.ocadoVeganFilterOriginalText) {
+      if (addButton.dataset.ocadoVeganFilterOriginalText === undefined) {
         addButton.dataset.ocadoVeganFilterOriginalText = textOf(addButton) || "Add";
       }
 
       applyOutOfStockButtonStyle(addButton);
       installAddAnywayHoverText(addButton);
-      addButton.dataset.ocadoVeganFilterLabel = label;
-      addButton.textContent = addButton.matches(":hover") ? ADD_ANYWAY_LABEL : label;
+      if (addButton.dataset.ocadoVeganFilterLabel !== label) {
+        addButton.dataset.ocadoVeganFilterLabel = label;
+      }
+
+      const visibleLabel = addButton.matches(":hover") ? ADD_ANYWAY_LABEL : label;
+
+      if (textOf(addButton) !== visibleLabel) {
+        addButton.textContent = visibleLabel;
+      }
     }
   }
 
@@ -4981,17 +5002,25 @@
         image.dataset.ocadoVeganFilterOriginalSizes = image.getAttribute("sizes") || "";
       }
 
-      image.dataset.ocadoVeganFilterImage = "muted";
+      if (image.dataset.ocadoVeganFilterImage !== "muted") {
+        image.dataset.ocadoVeganFilterImage = "muted";
+      }
       replaceWithGrayscaleImage(image);
-      image.style.setProperty("filter", BLOCKED_IMAGE_FILTER, "important");
-      image.style.setProperty("opacity", BLOCKED_IMAGE_OPACITY, "important");
-      image.style.setProperty("animation", "none", "important");
-      image.style.setProperty("pointer-events", "none", "important");
-      image.style.setProperty("transition", "none", "important");
+      setImportantStyle(image, "filter", BLOCKED_IMAGE_FILTER);
+      setImportantStyle(image, "opacity", BLOCKED_IMAGE_OPACITY);
+      setImportantStyle(image, "animation", "none");
+      setImportantStyle(image, "pointer-events", "none");
+      setImportantStyle(image, "transition", "none");
 
       for (const animation of image.getAnimations()) {
         animation.cancel();
       }
+    }
+  }
+
+  function setImportantStyle(element, property, value) {
+    if (element.style.getPropertyValue(property) !== value || element.style.getPropertyPriority(property) !== "important") {
+      element.style.setProperty(property, value, "important");
     }
   }
 
@@ -5240,7 +5269,9 @@
   function processCard(card) {
     // Vegan products are left exactly as Ocado rendered them.
     if (shouldAllowProduct(card)) {
-      card.classList.remove(NON_VEGAN_CARD_CLASS);
+      if (card.classList.contains(NON_VEGAN_CARD_CLASS)) {
+        card.classList.remove(NON_VEGAN_CARD_CLASS);
+      }
       restoreAddButtonLabels(card);
       restoreProductImages(card);
       return;
@@ -5249,7 +5280,9 @@
     // Known non-vegan and unknown products are still usable, but visually muted.
     const productId = productIdForCard(card);
     const label = isKnownNonVeganProductId(productId) ? NON_VEGAN_LABEL : UNKNOWN_VEGAN_LABEL;
-    card.classList.add(NON_VEGAN_CARD_CLASS);
+    if (!card.classList.contains(NON_VEGAN_CARD_CLASS)) {
+      card.classList.add(NON_VEGAN_CARD_CLASS);
+    }
     blockProductImages(card);
     markAddButtonsCosmetically(card, label);
   }

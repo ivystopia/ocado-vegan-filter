@@ -318,11 +318,32 @@ def fixture_smoke_test() -> None:
         idle_frame_count = driver.execute_script("return window.ocadoTestAnimationFrameCount;")
         time.sleep(0.25)
         settled_frame_count = driver.execute_script("return window.ocadoTestAnimationFrameCount;")
+        driver.execute_script(
+            """
+            window.ocadoTestRepeatedMutationCount = 0;
+            window.ocadoTestRepeatedMutations = [];
+            window.ocadoTestRepeatedMutationObserver = new MutationObserver(mutations => {
+              window.ocadoTestRepeatedMutationCount += mutations.length;
+              window.ocadoTestRepeatedMutations.push(...mutations.map(mutation => ({
+                attributeName: mutation.attributeName,
+                target: mutation.target.id || mutation.target.tagName,
+                type: mutation.type,
+              })));
+            });
+            window.ocadoTestRepeatedMutationObserver.observe(document.querySelector('#blocked'), {
+              attributes: true,
+              childList: true,
+              subtree: true,
+            });
+            """
+        )
         driver.execute_script("document.querySelector('#blocked').classList.add('external-page-update');")
         wait.until(lambda d: d.execute_script("return window.ocadoTestAnimationFrameCount;") > settled_frame_count)
         external_update_frame_count = driver.execute_script("return window.ocadoTestAnimationFrameCount;")
         time.sleep(0.25)
         final_frame_count = driver.execute_script("return window.ocadoTestAnimationFrameCount;")
+        repeated_mutation_count = driver.execute_script("return window.ocadoTestRepeatedMutationCount;")
+        repeated_mutations = driver.execute_script("return window.ocadoTestRepeatedMutations;")
         driver.execute_script(
             """
             window.__INITIAL_STATE__.data.products['65ae304a-a28a-4019-bf00-c2bd4b963427'].attributes = [
@@ -334,6 +355,18 @@ def fixture_smoke_test() -> None:
         wait.until(
             lambda d: d.execute_script(
                 "return document.querySelector('#late-hydration-vegan button').textContent.trim() === 'Add' && !document.querySelector('#late-hydration-vegan').classList.contains('ocado-vegan-filter-non-vegan');"
+            )
+        )
+        driver.execute_script(
+            """
+            window.ocadoTestRepeatedMutationObserver.disconnect();
+            document.querySelector('#blocked button').textContent = 'Add';
+            document.querySelector('#blocked img').style.setProperty('opacity', '1', 'important');
+            """
+        )
+        wait.until(
+            lambda d: d.execute_script(
+                "return document.querySelector('#blocked button').textContent.trim() === 'Unknown vegan' && getComputedStyle(document.querySelector('#blocked img')).opacity === '0.42';"
             )
         )
         driver.execute_script("document.querySelector('#load-mutation-source img').dispatchEvent(new Event('load')); ")
@@ -381,6 +414,7 @@ def fixture_smoke_test() -> None:
     assert settled_frame_count == idle_frame_count, (idle_frame_count, settled_frame_count)
     assert external_update_frame_count == settled_frame_count + 1, (settled_frame_count, external_update_frame_count)
     assert final_frame_count == external_update_frame_count, (external_update_frame_count, final_frame_count)
+    assert repeated_mutation_count == 1, repeated_mutations
     print("fixture smoke test passed")
 
 
