@@ -418,6 +418,73 @@ def fixture_smoke_test() -> None:
     print("fixture smoke test passed")
 
 
+def grayscale_cache_smoke_test() -> None:
+    image_count = 260
+    cards = "".join(
+        f"""<article class="product-card-container">
+          <a href="https://www.ocado.com/products/cache-{800100000 + index}"><img></a>
+          <button data-test="counter-button" aria-label="Add cache item {index}">Add</button>
+        </article>"""
+        for index in range(image_count)
+    )
+    html = f"<!doctype html><html><body>{cards}</body></html>"
+    options = Options()
+    options.add_argument("-headless")
+    driver = webdriver.Firefox(options=options)
+    try:
+        driver.get("data:text/html;base64," + base64.b64encode(html.encode()).decode())
+        driver.execute_script(
+            """
+            const NativeMap = window.Map;
+            window.ocadoTestMaps = [];
+            window.Map = class extends NativeMap {
+              constructor(...args) {
+                super(...args);
+                window.ocadoTestMaps.push(this);
+              }
+            };
+            """
+        )
+        driver.execute_async_script(
+            """
+            const done = arguments[0];
+            const images = Array.from(document.querySelectorAll('img'));
+            Promise.all(images.map((image, index) => new Promise(resolve => {
+              image.onload = resolve;
+              image.onerror = resolve;
+              const svg = `<svg xmlns="http://www.w3.org/2000/svg" width="2" height="2"><rect width="2" height="2" fill="rgb(${index % 255},0,0)"/></svg>`;
+              image.src = URL.createObjectURL(new Blob([svg], { type: 'image/svg+xml' }));
+            }))).then(() => {
+              window.ocadoTestImageSources = images.map(image => image.src);
+              done();
+            });
+            """
+        )
+        driver.execute_script(
+            "const script = document.createElement('script'); script.textContent = arguments[0]; document.documentElement.append(script);",
+            userscript(),
+        )
+        WebDriverWait(driver, 20).until(
+            lambda d: d.execute_script("return document.querySelectorAll('.ocado-vegan-filter-non-vegan').length") == image_count
+        )
+        cache_state = driver.execute_script(
+            """
+            const cache = window.ocadoTestMaps[0];
+            return {
+              size: cache.size,
+              hasFirst: cache.has(window.ocadoTestImageSources[0]),
+              hasLast: cache.has(window.ocadoTestImageSources.at(-1)),
+              failures: document.querySelectorAll('[data-ocado-vegan-filter-grayscale-failed-source]').length,
+            };
+            """
+        )
+    finally:
+        driver.quit()
+
+    assert cache_state == {"size": 256, "hasFirst": False, "hasLast": True, "failures": 0}, cache_state
+    print("grayscale cache smoke test passed")
+
+
 def import_firefox_helpers():
     if FIREFOX_HELPER_SCRIPTS and FIREFOX_HELPER_SCRIPTS not in sys.path:
         sys.path.insert(0, FIREFOX_HELPER_SCRIPTS)
@@ -675,6 +742,7 @@ def cheese_search_hydration_smoke_test() -> None:
 def main() -> None:
     userscript_source_test()
     fixture_smoke_test()
+    grayscale_cache_smoke_test()
     cheese_search_hydration_smoke_test()
     promotions_page_smoke_test()
 

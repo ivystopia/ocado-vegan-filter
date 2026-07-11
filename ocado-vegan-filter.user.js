@@ -128,6 +128,7 @@
   const MUTED_PROMOTION_COLOR = "#654348";
   const HYDRATION_ROOT_NAMES = ["__INITIAL_STATE__", "__QUERY_INITIAL_STATE__", "__staticRouterHydrationData", "__staticRouterHydrationData__"];
   const HYDRATION_INDEX_REFRESH_MS = 1000;
+  const GRAYSCALE_IMAGE_CACHE_LIMIT = 256;
   const GRAYSCALE_IMAGE_CACHE = new Map();
 
   // This cache avoids repeatedly scanning Ocado's page data on every small page update.
@@ -4936,6 +4937,9 @@
     const cached = GRAYSCALE_IMAGE_CACHE.get(source);
 
     if (cached) {
+      // Refresh insertion order so the least recently used image is evicted.
+      GRAYSCALE_IMAGE_CACHE.delete(source);
+      GRAYSCALE_IMAGE_CACHE.set(source, cached);
       return cached;
     }
 
@@ -4960,6 +4964,9 @@
 
     const dataUrl = canvas.toDataURL("image/png");
     GRAYSCALE_IMAGE_CACHE.set(source, dataUrl);
+    if (GRAYSCALE_IMAGE_CACHE.size > GRAYSCALE_IMAGE_CACHE_LIMIT) {
+      GRAYSCALE_IMAGE_CACHE.delete(GRAYSCALE_IMAGE_CACHE.keys().next().value);
+    }
     return dataUrl;
   }
 
