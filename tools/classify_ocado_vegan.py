@@ -20,8 +20,8 @@ from typing import Any, Iterable
 
 REPO_ROOT = Path(__file__).resolve().parents[1]
 DEFAULT_DB = str(REPO_ROOT / "ocado_products.sqlite")
-CLASSIFIER_VERSION = "db-vegan-codex-v6"
-PROMPT_VERSION = "ocado-vegan-product-json-v4"
+CLASSIFIER_VERSION = "db-vegan-codex-v8"
+PROMPT_VERSION = "ocado-vegan-product-json-v7"
 VALID_STATUSES = {"vegan", "nonvegan", "unknown"}
 VALID_VEGAN_REASONS = {"tagged", "manufacturer", "ingredients", "name"}
 
@@ -73,8 +73,13 @@ NONVEGAN_INGREDIENT_PATTERNS = [
     r"\blactose\b",
     r"\bskimmed milk\b",
     r"\bwhole milk\b",
+    r"\bnonfat milk\b",
+    r"\bmilk\b(?!\s+(?:chocolate\s+)?flavou?r)",
     r"\bmilk powder\b",
     r"\bmilk solids?\b",
+    r"\bmilk proteins?\b",
+    r"\bmilk chocolate\b(?!\s+flavou?r)",
+    r"\b(?:butter|milk)\s*fat\b",
     r"\bcream\b",
     r"\bbutter(?:milk)?\b",
     r"\bcheese\b",
@@ -82,10 +87,12 @@ NONVEGAN_INGREDIENT_PATTERNS = [
     r"\beggs?\b",
     r"\balbumen\b",
     r"\bhoney\b",
-    r"\bbeeswax\b",
+    r"\bbees\s*wax\b",
+    r"\bcera (?:alba|flava)\b",
     r"\bshellac\b",
-    r"\bgelati[ne]\b",
+    r"\bgelati(?:n|ne)\b",
     r"\bcollagen\b",
+    r"\bkeratin\b",
     r"\bisinglass\b",
     r"\bcarmine\b",
     r"\bcochineal\b",
@@ -110,6 +117,8 @@ NONVEGAN_INGREDIENT_PATTERNS = [
     r"\bsalmon\b",
     r"\bcod\b",
     r"\bshellfish\b",
+    r"\bscampi\b",
+    r"\bcrustaceans?\b",
     r"\bprawns?\b",
     r"\bshrimps?\b",
     r"\bcrab\b",
@@ -117,6 +126,107 @@ NONVEGAN_INGREDIENT_PATTERNS = [
     r"\boyster\b",
     r"\bmussels?\b",
     r"\bclams?\b",
+]
+
+# Only these unambiguous matches may override an explicit vegan claim. Broader
+# ingredient rules deliberately include terms such as butter, cream, cheese,
+# yoghurt, collagen, and named meats/fish, but those can occur in plant terms
+# (cocoa butter, coconut cream, vegan cheese, vegan collagen, oyster mushroom,
+# chicken-style). They remain useful without being safe conflict arbiters.
+CONCLUSIVE_ANIMAL_INGREDIENT_PATTERNS = [
+    r"\bwhey\b",
+    r"\bcasein(?:ate)?s?\b",
+    r"\blactose\b",
+    r"\bskimmed milk\b",
+    r"\bwhole milk\b",
+    r"\bnonfat milk\b",
+    r"\bmilk\b(?!\s+(?:chocolate\s+)?flavou?r)",
+    r"\bmilk solids?\b",
+    r"\bmilk proteins?\b",
+    r"\bmilk chocolate\b(?!\s+flavou?r)",
+    r"\b(?:butter|milk)\s*fat\b",
+    r"\beggs?\b",
+    r"\balbumen\b",
+    r"\bhoney\b",
+    r"\bbees\s*wax\b",
+    r"\bcera (?:alba|flava)\b",
+    r"\bshellac\b",
+    r"\bgelati(?:n|ne)\b",
+    r"\bkeratin\b",
+    r"\bisinglass\b",
+    r"\bcarmine\b",
+    r"\bcochineal\b",
+    r"\be120\b",
+    r"\blanolin\b",
+    r"\blard\b",
+    r"\bsuet\b",
+    r"\btallow\b",
+    r"\bscampi\b",
+    r"\bcrustaceans?\b",
+]
+
+NON_ANIMAL_INGREDIENT_SUBSTITUTIONS = [
+    (
+        re.compile(
+            r"\b(?:cocoa|cacao|shea|mango kernel|mango seed|kokum|murumuru|coconut|cupua[cç]u|avocado|almond|peanut|cashew|hazelnut|pistachio|macadamia|sunflower seed|pumpkin seed)\s+butter\b",
+            re.IGNORECASE,
+        ),
+        "plant fat",
+    ),
+    (
+        re.compile(
+            r"\b(?:theobroma cacao|butyrospermum parkii|mangifera indica|garcinia indica|astrocaryum murumuru|theobroma grandiflorum)(?:\s+seed|\s+kernel)?\s+butter\b",
+            re.IGNORECASE,
+        ),
+        "plant fat",
+    ),
+    (re.compile(r"\bbutter\s+beans?\b", re.IGNORECASE), "beans"),
+    (re.compile(r"\bmilk\s+thistle\b", re.IGNORECASE), "silybum marianum"),
+    (re.compile(r"\b(?:coconut|coco|oat|soya?|rice|almond|cashew)\s+cream\b", re.IGNORECASE), "plant ingredient"),
+    (re.compile(r"\bcreamed\s+coconut\b", re.IGNORECASE), "coconut"),
+    (re.compile(r"\bcream\s+of\s+tartar\b", re.IGNORECASE), "tartaric acid"),
+    (
+        re.compile(r"\b(?:plant|coconut|coco|oat|soya?|rice|almond|cashew|hazelnut|pea|potato)\s+milk\s+(?:powder|solids?)\b", re.IGNORECASE),
+        "plant powder",
+    ),
+    (
+        re.compile(r"\b(?:vegan|plant|plant[- ]based|dairy[- ]free|oat|coconut|rice|almond|soya?|hazelnut|pea|potato)\s+milk\s+chocolate\b", re.IGNORECASE),
+        "plant chocolate alternative",
+    ),
+    (
+        re.compile(
+            r"\b(?:vegan|plant|plant[- ]based|dairy[- ]free|oat|coconut|rice|almond|cashew|soya?|hazelnut|pea|potato|hemp|macadamia|tiger nut|sesame)\s+(?:cultured\s+)?milk\b",
+            re.IGNORECASE,
+        ),
+        "plant ingredient",
+    ),
+    (re.compile(r"\brica\s+milk\b", re.IGNORECASE), "plant ingredient"),
+    (
+        re.compile(r"\b(?:vegan|plant[- ]based|dairy[- ]free)\s+(?:cheese|yogh?urt|collagen|keratin|cream)\b", re.IGNORECASE),
+        "plant alternative",
+    ),
+    (
+        re.compile(
+            r"\b(?:vegan|vegetarian|plant[- ]based|meat[- ]free)\s+(?:chicken|beef|pork|bacon|ham|turkey|duck|lamb|mutton|fish|prawn|shrimp|crab|lobster|oyster)\b",
+            re.IGNORECASE,
+        ),
+        "plant alternative",
+    ),
+    (
+        re.compile(
+            r"\b(?:chicken|beef|pork|bacon|ham|turkey|duck|lamb|mutton|fish|prawn|shrimp|crab|lobster|oyster)[- ](?:style|free)\b",
+            re.IGNORECASE,
+        ),
+        "plant alternative",
+    ),
+    (
+        re.compile(
+            r"\b(?:artificial\s+|natural\s+)?(?:chicken|beef|pork|bacon|ham|turkey|duck|lamb|mutton|fish|prawn|shrimp|crab|lobster|oyster)\s+flavou?r(?:ing|ed|s)?\b",
+            re.IGNORECASE,
+        ),
+        "ambiguous flavouring",
+    ),
+    (re.compile(r"\boyster\s+mushrooms?\b", re.IGNORECASE), "mushroom"),
 ]
 
 AMBIGUOUS_INGREDIENT_PATTERNS = [
@@ -724,6 +834,29 @@ def classify_by_manufacturer_text(context: dict[str, Any]) -> ClassificationResu
 
 
 def strip_allergen_warnings(text: str) -> str:
+    # Warnings are not always a standalone sentence (for example, they may
+    # follow the ingredient list after a full stop without whitespace).
+    text = re.sub(r"\bmay (?:also )?contain\b[^.;]*", " ", text, flags=re.IGNORECASE)
+    text = re.sub(r"\bcontains? traces? of\b[^.;]*", " ", text, flags=re.IGNORECASE)
+    text = re.sub(r"\ballergen present on (?:the )?manufacturing line\b[^.;]*", " ", text, flags=re.IGNORECASE)
+    text = re.sub(
+        r"\b(?:as )?(?:it is )?made in the same environment as\b[^.;]*",
+        " ",
+        text,
+        flags=re.IGNORECASE,
+    )
+    text = re.sub(
+        r"\bnot suitable for\b[^.;]*?\ballergy sufferers?\b",
+        " ",
+        text,
+        flags=re.IGNORECASE,
+    )
+    text = re.sub(
+        r"\bnot suitable for (?:those|people|anyone) with\b[^.;]*?\ballerg(?:y|ies)\b",
+        " ",
+        text,
+        flags=re.IGNORECASE,
+    )
     chunks = re.split(r"(?<=[.;])\s+", text)
     kept = []
     warning_start = re.compile(
@@ -735,6 +868,15 @@ def strip_allergen_warnings(text: str) -> str:
             continue
         kept.append(chunk)
     return " ".join(kept)
+
+
+def strip_explicit_absence_and_plant_names(text: str) -> str:
+    """Remove contexts where an animal-term token explicitly means absence or a plant name."""
+    text = re.sub(r"\bfree from\s*:?[\s\S]*?(?=\.(?:\s|$)|$)", " ", text, flags=re.IGNORECASE)
+    text = re.sub(r"\bhoney\s*bush\b", "rooibos plant", text, flags=re.IGNORECASE)
+    for pattern, replacement in NON_ANIMAL_INGREDIENT_SUBSTITUTIONS:
+        text = pattern.sub(replacement, text)
+    return text
 
 
 def ingredient_matches(text: str, patterns: list[str]) -> list[str]:
@@ -863,7 +1005,9 @@ def classify_by_ingredients(context: dict[str, Any]) -> ClassificationResult | N
             )
         return None
 
-    ingredient_text = strip_safe_flour_fortification(strip_allergen_warnings(ingredients))
+    ingredient_text = strip_explicit_absence_and_plant_names(
+        strip_safe_flour_fortification(strip_allergen_warnings(ingredients))
+    )
     nonvegan_matches = ingredient_matches(ingredient_text, NONVEGAN_INGREDIENT_PATTERNS)
     if nonvegan_matches:
         return ClassificationResult(
@@ -919,14 +1063,47 @@ def classify_by_rules(context: dict[str, Any]) -> ClassificationResult | None:
     product = context["product"]
     product_id = product["id"]
     flags = set(context["flags"])
+    ingredients_text = strip_explicit_absence_and_plant_names(
+        strip_safe_flour_fortification(
+            strip_allergen_warnings(normalize_space(product.get("ingredients")))
+        )
+    )
+    conclusive_animal_matches = ingredient_matches(
+        ingredients_text, CONCLUSIVE_ANIMAL_INGREDIENT_PATTERNS
+    )
     if product.get("official_vegan") == 1 or "vegan" in flags:
+        evidence: dict[str, Any] = {
+            "rule": "official_vegan_tag",
+            "official_vegan": product.get("official_vegan"),
+            "flags": sorted(flags),
+        }
+        if conclusive_animal_matches:
+            evidence["apparent_animal_ingredient_conflict"] = {
+                "source": evidence_source("products", "ingredients", product.get("ingredients")),
+                "matched_patterns": conclusive_animal_matches,
+            }
         return ClassificationResult(
             product_id=product_id,
             vegan_status="vegan",
             vegan_reason="tagged",
             confidence="certain",
             summary="Ocado metadata contains the official vegan tag.",
-            evidence={"rule": "official_vegan_tag", "official_vegan": product.get("official_vegan"), "flags": sorted(flags)},
+            evidence=evidence,
+            source="rule",
+        )
+
+    if conclusive_animal_matches:
+        return ClassificationResult(
+            product_id=product_id,
+            vegan_status="nonvegan",
+            vegan_reason=None,
+            confidence="certain",
+            summary="Ingredients contain explicit animal-derived terms, overriding conflicting non-official vegan claims.",
+            evidence={
+                "rule": "ingredients_conclusive_animal_conflict",
+                "sources": [evidence_source("products", "ingredients", product.get("ingredients"))],
+                "matched_patterns": conclusive_animal_matches,
+            },
             source="rule",
         )
 
@@ -959,6 +1136,7 @@ def product_context_for_llm(context: dict[str, Any]) -> dict[str, Any]:
         "name",
         "brand",
         "url",
+        "official_vegan",
         "ingredients",
         "allergens",
         "dietary_information",
@@ -999,8 +1177,10 @@ def build_codex_prompt(products: list[dict[str, Any]]) -> str:
         "- Use manufacturer when the supplied product text explicitly says vegan or suitable for vegans.\n"
         "- Use ingredients only when ingredients or single-ingredient identity make vegan status certain.\n"
         "- If the product has no ingredients field, treat it as a single-ingredient product and classify from the supplied product identity/category text when that identity is unambiguous.\n"
+        "- If supplied fields materially conflict about the product or ingredient identity, classify unknown even when each possible identity would individually be vegan.\n"
         "- For manufactured non-food goods, a headline material such as cotton, plastic, melamine, metal, or glass does not prove the whole product vegan. Dyes, adhesives, coatings, trims, and processing inputs may be unlisted; classify unknown unless explicit vegan evidence or a complete composition resolves them.\n"
         "- Ingredients such as milk, egg, honey, gelatine, meat, fish, shellfish, beeswax, shellac, carmine, or lanolin are nonvegan.\n"
+        "- An official Ocado vegan tag is authoritative. Explicit animal-derived ingredients override only conflicting non-official claims.\n"
         "- May-contain allergen warnings do not make a product nonvegan.\n"
         "- Treat fortified wheat/flour as vegan when the fortification is limited to standard flour additions such as calcium, iron, niacin, thiamin, or folic acid.\n"
         "- Ambiguous ingredients such as natural flavourings, enzymes, vitamins outside standard flour fortification, vitamin D3, glycerine, E471/E472, wax, glaze, or colours mean unknown unless other explicit vegan evidence exists.\n"
@@ -1288,6 +1468,33 @@ def select_unclassified_product_ids(
     return [row["id"] for row in conn.execute(query, parameters)]
 
 
+def officially_tagged_product_ids(conn: sqlite3.Connection, product_ids: Iterable[str]) -> list[str]:
+    ordered_ids = list(product_ids)
+    tagged_ids: set[str] = set()
+    for start in range(0, len(ordered_ids), 500):
+        batch = ordered_ids[start : start + 500]
+        placeholders = ", ".join("?" for _ in batch)
+        tagged_ids.update(
+            row["id"]
+            for row in conn.execute(
+                f"""
+                SELECT p.id
+                FROM products AS p
+                WHERE p.id IN ({placeholders})
+                  AND (
+                    p.official_vegan = 1
+                    OR EXISTS (
+                      SELECT 1 FROM product_flags AS f
+                      WHERE f.product_id = p.id AND f.flag = 'vegan'
+                    )
+                  )
+                """,
+                batch,
+            )
+        )
+    return [product_id for product_id in ordered_ids if product_id in tagged_ids]
+
+
 def classify_rules(
     conn: sqlite3.Connection,
     *,
@@ -1336,6 +1543,13 @@ def classify_codex(
     sync_run_id: int | None = None,
 ) -> int:
     ids = select_unclassified_product_ids(conn, limit=limit, sync_run_id=sync_run_id)
+    officially_tagged_ids = officially_tagged_product_ids(conn, ids)
+    if officially_tagged_ids:
+        sample = ", ".join(officially_tagged_ids[:10])
+        raise RuntimeError(
+            f"Refusing to send {len(officially_tagged_ids)} officially tagged vegan products to Codex; "
+            f"run classify-rules first. Product IDs: {sample}"
+        )
     run_id = start_run(conn, mode="codex", model=model, reasoning_effort=reasoning_effort)
     classified = 0
     batch_total = (len(ids) + batch_size - 1) // batch_size

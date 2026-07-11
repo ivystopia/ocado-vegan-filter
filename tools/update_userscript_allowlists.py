@@ -20,7 +20,38 @@ SET_QUERIES = {
 }
 
 
+def validate_official_tag_precedence(conn: sqlite3.Connection) -> None:
+    conflicts = [
+        row[0]
+        for row in conn.execute(
+            """
+            SELECT p.id
+            FROM products AS p
+            WHERE (
+                p.official_vegan = 1
+                OR EXISTS (
+                    SELECT 1 FROM product_flags AS f
+                    WHERE f.product_id = p.id AND f.flag = 'vegan'
+                )
+              )
+              AND (
+                p.vegan_status IS NOT 'vegan'
+                OR p.vegan_reason IS NOT 'tagged'
+              )
+            ORDER BY CAST(p.id AS INTEGER), p.id
+            """
+        )
+    ]
+    if conflicts:
+        sample = " ".join(conflicts[:20])
+        raise ValueError(
+            f"Refusing to export {len(conflicts)} products whose official Ocado vegan tag "
+            f"conflicts with the canonical classification: {sample}"
+        )
+
+
 def load_allowlists(conn: sqlite3.Connection) -> dict[str, list[str]]:
+    validate_official_tag_precedence(conn)
     result = {}
     for name, reason_clause in SET_QUERIES.items():
         rows = conn.execute(
@@ -45,7 +76,19 @@ def replace_set(source: str, name: str, ids: list[str]) -> str:
     marker = f"const {name} = new Set("
     start = source.index("`", source.index(marker)) + 1
     end = source.index("`", start)
-    return source[:start] + "\n" + format_ids(ids) + "\n  " + source[end:]
+    desired = set(ids)
+    retained: set[str] = set()
+    lines = []
+    for line in source[start:end].splitlines():
+        existing = re.findall(r"\b\d+\b", line)
+        kept = [product_id for product_id in existing if product_id in desired]
+        retained.update(kept)
+        if kept:
+            lines.append("  " + " ".join(kept))
+    new_ids = sorted(desired - retained, key=int)
+    if new_ids:
+        lines.extend(format_ids(new_ids).splitlines())
+    return source[:start] + "\n" + "\n".join(lines) + "\n  " + source[end:]
 
 
 def update_counts(source: str, allowlists: dict[str, list[str]]) -> str:

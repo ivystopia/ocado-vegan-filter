@@ -20,6 +20,7 @@ import classify_ocado_vegan as classifier
 class ClassifyOcadoVeganTests(unittest.TestCase):
     def create_db(self) -> sqlite3.Connection:
         conn = sqlite3.connect(":memory:")
+        self.addCleanup(conn.close)
         conn.row_factory = sqlite3.Row
         build_ocado_database.create_schema(conn)
         classifier.ensure_classification_schema(conn)
@@ -41,6 +42,7 @@ class ClassifyOcadoVeganTests(unittest.TestCase):
 
     def test_migration_adds_canonical_columns_and_drops_legacy_phase_columns(self) -> None:
         conn = sqlite3.connect(":memory:")
+        self.addCleanup(conn.close)
         conn.row_factory = sqlite3.Row
         conn.executescript(
             """
@@ -73,6 +75,133 @@ class ClassifyOcadoVeganTests(unittest.TestCase):
 
         self.assertEqual(result.vegan_status, "vegan")
         self.assertEqual(result.vegan_reason, "tagged")
+
+    def test_official_vegan_tag_overrides_conflicting_ingredient_text(self) -> None:
+        conn = self.create_db()
+        self.insert_product(conn, official_vegan=1, name="Conflicting capsules", ingredients="Starch, gelatine")
+
+        result = self.classify(conn)
+
+        self.assertEqual(result.vegan_status, "vegan")
+        self.assertEqual(result.vegan_reason, "tagged")
+        self.assertIn("apparent_animal_ingredient_conflict", result.evidence)
+        self.assertIn(
+            r"\bgelati(?:n|ne)\b",
+            result.evidence["apparent_animal_ingredient_conflict"]["matched_patterns"],
+        )
+
+    def test_explicit_animal_ingredient_overrides_manufacturer_claim(self) -> None:
+        conn = self.create_db()
+        self.insert_product(
+            conn,
+            name="Conflicting balm",
+            ingredients="Sunflower oil, honey, beeswax",
+            dietary_information="Suitable for vegans",
+        )
+
+        result = self.classify(conn)
+
+        self.assertEqual(result.vegan_status, "nonvegan")
+        self.assertIsNone(result.vegan_reason)
+
+    def test_plant_butter_does_not_override_official_vegan_tag(self) -> None:
+        conn = self.create_db()
+        self.insert_product(conn, official_vegan=1, name="Dark chocolate", ingredients="Cocoa mass, cocoa butter")
+
+        result = self.classify(conn)
+
+        self.assertEqual(result.vegan_status, "vegan")
+        self.assertEqual(result.vegan_reason, "tagged")
+
+    def test_plant_context_animal_words_do_not_classify_nonvegan(self) -> None:
+        examples = {
+            "Cocoa butter": "Cocoa mass, cocoa butter, sugar",
+            "Botanical shea butter": "Aqua, Butyrospermum Parkii Butter, Glycerin",
+            "Butter beans": "Butter Beans, Water, Salt",
+            "Coconut cream": "Coconut cream, water",
+            "Coconut milk": "Coconut milk, water",
+            "Coconut cultured milk": "Coconut cultured milk, water",
+            "Coconut milk powder": "Coconut milk powder, tapioca starch",
+            "Hazelnut milk": "Hazelnut milk, water",
+            "Milk thistle": "Milk thistle extract, cellulose",
+            "Oat milk chocolate": "Oat milk chocolate, cocoa butter, sugar",
+            "Pea milk": "Pea milk concentrate, sugar",
+            "Plant milk": "Plant milk, water",
+            "Potato milk": "Potato milk, water",
+            "Rica milk": "Rica milk, sugar",
+            "Milk chocolate flavour": "Milk chocolate flavour, cocoa butter, sugar",
+            "Cream of tartar": "Cream of tartar, bicarbonate of soda",
+            "Oyster mushrooms": "King oyster mushrooms",
+            "Plant-based cheese": "Plant-based cheese, tomato, basil",
+            "Chicken-style pieces": "Chicken-style pieces, pea protein, salt",
+            "Artificial chicken flavour": "Rice, artificial chicken flavour, salt",
+            "Vegan bacon": "Vegan bacon, tomato, lettuce",
+            "Vegan keratin": "Vegan keratin, glycerin",
+        }
+        for name, ingredients in examples.items():
+            with self.subTest(name=name):
+                conn = self.create_db()
+                self.insert_product(conn, name=name, ingredients=ingredients)
+
+                result = self.classify(conn)
+
+                self.assertTrue(result is None or result.vegan_status != "nonvegan", result)
+
+    def test_explicit_animal_variants_classify_nonvegan(self) -> None:
+        examples = {
+            "Butterfat": "Cocoa mass, butterfat, sugar",
+            "Milk fat": "Cocoa mass, milk fat, sugar",
+            "Nonfat milk": "Cocoa mass, nonfat milk, sugar",
+            "Milk": "Cocoa mass, milk, sugar",
+            "Milk protein": "Cocoa mass, milk protein, sugar",
+            "Milk chocolate": "Milk chocolate, hazelnuts",
+            "Spaced bees wax": "Sunflower oil, bees wax",
+            "INCI beeswax": "Aqua, Cera Alba, sunflower oil",
+            "Chicken powder": "Rice, chicken powder, salt",
+            "Scampi": "Scampi, wheat flour, salt",
+            "Hydrolyzed keratin": "Aqua, hydrolyzed keratin, parfum",
+        }
+        for name, ingredients in examples.items():
+            with self.subTest(name=name):
+                conn = self.create_db()
+                self.insert_product(conn, name=name, ingredients=ingredients)
+
+                result = self.classify(conn)
+
+                self.assertEqual(result.vegan_status, "nonvegan")
+
+    def test_inline_may_contain_does_not_override_official_vegan_tag(self) -> None:
+        conn = self.create_db()
+        self.insert_product(conn, official_vegan=1, name="Plant protein", ingredients="Soya protein. May contain egg and gluten")
+
+        result = self.classify(conn)
+
+        self.assertEqual(result.vegan_status, "vegan")
+
+    def test_allergy_sufferer_warning_does_not_override_official_vegan_tag(self) -> None:
+        conn = self.create_db()
+        self.insert_product(
+            conn,
+            official_vegan=1,
+            name="Plant protein",
+            ingredients=(
+                "Soya protein, sunflower oil. May contain egg and gluten. "
+                "Prepared to a vegan recipe but not suitable for egg allergy sufferers"
+            ),
+        )
+
+        result = self.classify(conn)
+
+        self.assertEqual(result.vegan_status, "vegan")
+        self.assertEqual(result.vegan_reason, "tagged")
+
+    def test_free_from_statement_does_not_override_official_vegan_tag(self) -> None:
+        conn = self.create_db()
+        self.insert_product(conn, official_vegan=1, name="Plant oil", ingredients="Evening primrose oil. Free from: lactose and milk products.")
+
+        result = self.classify(conn)
+
+        self.assertEqual(result.vegan_status, "vegan")
 
     def test_explicit_manufacturer_vegan_text_classifies_as_manufacturer(self) -> None:
         conn = self.create_db()
@@ -142,6 +271,41 @@ class ClassifyOcadoVeganTests(unittest.TestCase):
     def test_may_contain_milk_warning_does_not_classify_nonvegan(self) -> None:
         conn = self.create_db()
         self.insert_product(conn, name="Plain Rice", ingredients="Rice. May contain milk.")
+
+        result = self.classify(conn)
+
+        self.assertEqual(result.vegan_status, "vegan")
+        self.assertEqual(result.vegan_reason, "ingredients")
+
+    def test_may_contain_milk_protein_warning_does_not_classify_nonvegan(self) -> None:
+        conn = self.create_db()
+        self.insert_product(conn, name="Plain Rice", ingredients="Rice. May contain milk protein.")
+
+        result = self.classify(conn)
+
+        self.assertEqual(result.vegan_status, "vegan")
+        self.assertEqual(result.vegan_reason, "ingredients")
+
+    def test_other_milk_allergen_warnings_do_not_classify_nonvegan(self) -> None:
+        examples = [
+            "Rice. Contains traces of milk and soya.",
+            "Rice. Allergen present on manufacturing line: milk and soya.",
+            "Rice. Not suitable for those with a milk allergy.",
+            "Rice. Made in the same environment as our milk chocolate.",
+        ]
+        for ingredients in examples:
+            with self.subTest(ingredients=ingredients):
+                conn = self.create_db()
+                self.insert_product(conn, name="Plain Rice", ingredients=ingredients)
+
+                result = self.classify(conn)
+
+                self.assertEqual(result.vegan_status, "vegan")
+                self.assertEqual(result.vegan_reason, "ingredients")
+
+    def test_free_from_milk_protein_statement_does_not_classify_nonvegan(self) -> None:
+        conn = self.create_db()
+        self.insert_product(conn, name="Plain Rice", ingredients="Rice. Free from: milk protein.")
 
         result = self.classify(conn)
 
@@ -269,12 +433,31 @@ class ClassifyOcadoVeganTests(unittest.TestCase):
         conn.execute("insert into sync_product_context_changes values (7, '1', 'changed')")
         self.assertEqual(classifier.select_unclassified_product_ids(conn, sync_run_id=7), ["1"])
 
+    def test_codex_refuses_unclassified_officially_tagged_products(self) -> None:
+        conn = self.create_db()
+        self.insert_product(conn, "1", name="Tagged product")
+        conn.execute("insert into product_flags(product_id, flag) values ('1', 'vegan')")
+
+        with self.assertRaisesRegex(RuntimeError, "officially tagged vegan products"):
+            classifier.classify_codex(
+                conn,
+                limit=0,
+                batch_size=10,
+                passes=2,
+                retries=0,
+                model="gpt-5.6-terra",
+                reasoning_effort="high",
+                codex_bin="unused",
+            )
+
     def test_codex_defaults_use_benchmarked_terra_configuration(self) -> None:
         args = classifier.build_parser().parse_args(["classify-codex"])
         self.assertEqual(args.model, "gpt-5.6-terra")
         self.assertEqual(args.reasoning_effort, "high")
         prompt = classifier.build_codex_prompt([])
         self.assertIn("manufactured non-food goods", prompt)
+        self.assertIn("fields materially conflict", prompt)
+        self.assertIn("official Ocado vegan tag is authoritative", prompt)
 
 
 if __name__ == "__main__":

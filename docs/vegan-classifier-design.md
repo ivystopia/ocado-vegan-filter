@@ -74,8 +74,9 @@ Examples:
 - A product with no ingredients field should be treated as a single-ingredient product; use stored product identity and category text to decide whether that single ingredient is unambiguously vegan.
 - Plain dried pasta with ingredients `Durum wheat semolina` can be `vegan/ingredients`.
 - Udon noodles containing fortified wheat/flour can be `vegan/ingredients` when the fortification is limited to standard flour additions such as calcium, iron, niacin, thiamin, or folic acid.
-- Products containing milk, egg, honey, gelatine, meat, fish, shellfish, beeswax, shellac, carmine, lanolin, or similar animal-derived ingredients should be `nonvegan`.
+- Products without an official Ocado vegan tag that contain milk, egg, honey, gelatine, meat, fish, shellfish, beeswax, shellac, carmine, lanolin, or similar animal-derived ingredients should be `nonvegan`.
 - `May contain milk` warnings do not make a product `nonvegan`.
+- Material conflicts between supplied product fields should be `unknown`, even when each possible product or ingredient identity would individually be vegan.
 - Vague or ambiguous ingredients such as natural flavourings, enzymes, vitamins outside standard flour fortification, vitamin D3, glycerine, mono/diglycerides, shellac/glaze, or colours should be `unknown` unless explicit vegan evidence exists.
 
 ## Decision Order
@@ -85,22 +86,27 @@ Stop at the first conclusive rule.
 
 1. Official vegan tag:
    classify `vegan/tagged` if `products.official_vegan = 1` or `product_flags.flag = 'vegan'`.
+   Ocado's official tag is authoritative for this extension; store any apparent ingredient conflict in the tagged decision's audit evidence for manual review rather than downgrading the product.
 
-2. Explicit manufacturer text:
+2. Conclusive animal-derived ingredients:
+   for products without an official Ocado vegan tag, classify `nonvegan` when explicit ingredients such as whey, egg, honey, beeswax, gelatine, shellac, carmine, or lanolin conflict with a vegan claim.
+   This override intentionally excludes lexically ambiguous terms such as cocoa butter, coconut cream, vegan cheese, vegan collagen, and oyster mushroom.
+
+3. Explicit manufacturer text:
    classify `vegan/manufacturer` when product text explicitly says suitable for vegans, certified vegan, vegan friendly, or registered with the Vegan Society.
    classify `nonvegan` when product text explicitly says not vegan or not suitable for vegans.
    classify `unknown` if explicit positive and negative vegan statements conflict.
 
-3. Product name:
+4. Product name:
    classify `vegan/name` when the product name contains the standalone word `vegan` and no explicit negative vegan statement was found.
 
-4. Ingredients:
+5. Ingredients:
    classify `nonvegan` when ingredients contain obvious animal-derived terms.
    classify `unknown` when ingredients contain ambiguous terms.
    classify `vegan/ingredients` only when all parsed ingredient terms are definitely vegan.
    classify `vegan/ingredients` for no-ingredients products only when product identity is unambiguously a single vegan ingredient.
 
-5. No conclusive rule:
+6. No conclusive rule:
    leave the product unresolved for Codex classification.
 
 ## Codex LLM Fallback
@@ -164,6 +170,7 @@ python3 classify_ocado_vegan.py status
 `migrate-schema` creates a rolling SQLite backup before changing the DB.
 `classify-rules` is safe to run before Codex.
 `classify-codex` is resumable because it selects only rows where `vegan_status IS NULL`.
+It refuses to submit an officially tagged product, so deterministic rules cannot be bypassed accidentally.
 
 ## Verification
 

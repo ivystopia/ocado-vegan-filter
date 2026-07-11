@@ -29,7 +29,8 @@ The project has two related goals:
 - `NULL` or missing status means unclassified and should generally be treated as work remaining.
 - May-contain allergen warnings do not make a product non-vegan.
 - A product with no explicit ingredients field should be treated as a single-ingredient product and classified from stored product identity/category text when that identity is unambiguous.
-- Explicit animal-derived ingredients such as milk, egg, honey, gelatine, meat, fish, shellfish, beeswax, shellac, carmine, lanolin, or similar should classify as non-vegan.
+- Ocado's official vegan tag is authoritative: classify tagged products as `vegan/tagged` even when stored ingredient text appears to conflict, and report those conflicts separately for manual review.
+- For products without an official Ocado vegan tag, explicit animal-derived ingredients such as milk, egg, honey, gelatine, meat, fish, shellfish, beeswax, shellac, carmine, lanolin, or similar should classify as non-vegan.
 - Ingredients with ambiguous sourcing should classify as unknown unless the product text explicitly resolves the source.
 - Fortified wheat/flour should be treated as vegan when the fortification is limited to standard flour additions such as calcium, iron, niacin, thiamin, or folic acid.
 - Vitamins outside standard flour fortification should remain unknown unless the evidence explicitly proves the sources are vegan.
@@ -52,6 +53,7 @@ The project has two related goals:
 - If the user says they updated a separate local copy of the userscript, treat that named file as the current source of truth and sync the repo copy from it after validating.
 - Keep the script self-contained; it should not fetch Ocado product detail pages or call third-party services while shopping.
 - The script should treat products as vegan when Ocado tags them vegan, when the name explicitly contains standalone `vegan`, or when the product ID is in an embedded vegan allowlist.
+- Live or embedded official Ocado vegan metadata must take precedence over the embedded non-vegan set.
 - Keep separate allowlists for manufacturer/name evidence and ingredients evidence.
 - Non-vegan or not-known-vegan products should be visually de-emphasised only; the real Ocado Add button must remain present and clickable.
 - Product links must remain clickable.
@@ -61,6 +63,7 @@ The project has two related goals:
 - Use `@license Unlicense` and preserve the Unlicense text when preparing release files.
 - Bump the userscript version for fixes and behavior changes before publishing.
 - Keep the product counts at the top of the userscript comment block up to date whenever a userscript change is finalised.
+- When regenerating embedded product ID allowlists, keep the diff minimal: preserve the relative order and line placement of retained IDs, remove obsolete IDs in place, append only genuinely new IDs, and avoid unrelated userscript changes.
 - Commit development changes directly to `main`.
 - Tag only versions that are live on Greasy Fork.
 - Use exact Greasy Fork version strings for tags, for example `1.4.4`, not `v1.4.4`.
