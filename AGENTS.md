@@ -56,6 +56,7 @@ The project has two related goals:
 - Live or embedded official Ocado vegan metadata must take precedence over the embedded non-vegan set.
 - Keep separate allowlists for manufacturer/name evidence and ingredients evidence.
 - Non-vegan or not-known-vegan products should be visually de-emphasised only; the real Ocado Add button must remain present and clickable.
+- Use `Not vegan` only for products affirmatively classified `nonvegan`; use `Unknown vegan` for products without enough evidence to establish either vegan or non-vegan status.
 - Product links must remain clickable.
 - Keep userscript metadata free of personal identifiers.
 - Never use a personal domain in userscript metadata.

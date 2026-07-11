@@ -14,9 +14,10 @@ DEFAULT_DB = REPO_ROOT / "ocado_products.sqlite"
 DEFAULT_USERSCRIPT = REPO_ROOT / "ocado-vegan-filter.user.js"
 
 SET_QUERIES = {
-    "OFFICIAL_VEGAN_PRODUCT_IDS": "vegan_reason = 'tagged'",
-    "MANUFACTURER_OR_NAME_VEGAN_PRODUCT_IDS": "vegan_reason IN ('manufacturer', 'name')",
-    "INGREDIENTS_VEGAN_PRODUCT_IDS": "vegan_reason = 'ingredients'",
+    "OFFICIAL_VEGAN_PRODUCT_IDS": "vegan_status = 'vegan' AND vegan_reason = 'tagged'",
+    "MANUFACTURER_OR_NAME_VEGAN_PRODUCT_IDS": "vegan_status = 'vegan' AND vegan_reason IN ('manufacturer', 'name')",
+    "INGREDIENTS_VEGAN_PRODUCT_IDS": "vegan_status = 'vegan' AND vegan_reason = 'ingredients'",
+    "KNOWN_NON_VEGAN_PRODUCT_IDS": "vegan_status = 'nonvegan'",
 }
 
 
@@ -53,9 +54,9 @@ def validate_official_tag_precedence(conn: sqlite3.Connection) -> None:
 def load_allowlists(conn: sqlite3.Connection) -> dict[str, list[str]]:
     validate_official_tag_precedence(conn)
     result = {}
-    for name, reason_clause in SET_QUERIES.items():
+    for name, status_clause in SET_QUERIES.items():
         rows = conn.execute(
-            f"SELECT id FROM products WHERE vegan_status = 'vegan' AND {reason_clause} ORDER BY CAST(id AS INTEGER), id"
+            f"SELECT id FROM products WHERE {status_clause} ORDER BY CAST(id AS INTEGER), id"
         )
         result[name] = [row[0] for row in rows]
     return result
@@ -95,6 +96,7 @@ def update_counts(source: str, allowlists: dict[str, list[str]]) -> str:
     official = len(allowlists["OFFICIAL_VEGAN_PRODUCT_IDS"])
     manufacturer = len(allowlists["MANUFACTURER_OR_NAME_VEGAN_PRODUCT_IDS"])
     ingredients = len(allowlists["INGREDIENTS_VEGAN_PRODUCT_IDS"])
+    nonvegan = len(allowlists["KNOWN_NON_VEGAN_PRODUCT_IDS"])
     total = official + manufacturer + ingredients
     replacements = {
         "Recognised vegan product IDs": total,
@@ -102,6 +104,7 @@ def update_counts(source: str, allowlists: dict[str, list[str]]) -> str:
         "Additional vegan product IDs added by this script": total - official,
         "Manufacturer/name evidence product IDs": manufacturer,
         "Ingredients evidence product IDs": ingredients,
+        "Known non-vegan product IDs": nonvegan,
     }
     for label, value in replacements.items():
         source, count = re.subn(rf"(\* {re.escape(label)}: )[\d,]+", rf"\g<1>{value:,}", source, count=1)

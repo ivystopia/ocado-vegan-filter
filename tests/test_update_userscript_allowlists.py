@@ -46,9 +46,11 @@ class UpdateUserscriptAllowlistsTests(unittest.TestCase):
         self.assertEqual(generator.extract_set(updated, "OFFICIAL_VEGAN_PRODUCT_IDS"), {"30"})
         self.assertEqual(generator.extract_set(updated, "MANUFACTURER_OR_NAME_VEGAN_PRODUCT_IDS"), {"10", "20"})
         self.assertEqual(generator.extract_set(updated, "INGREDIENTS_VEGAN_PRODUCT_IDS"), {"40"})
+        self.assertEqual(generator.extract_set(updated, "KNOWN_NON_VEGAN_PRODUCT_IDS"), {"60"})
         self.assertIn("// @version     9.9.9", updated)
         self.assertIn("Recognised vegan product IDs: 4", updated)
         self.assertIn("Additional vegan product IDs added by this script: 3", updated)
+        self.assertIn("Known non-vegan product IDs: 1", updated)
 
     def test_load_allowlists_rejects_official_tag_classification_conflicts(self) -> None:
         conn = sqlite3.connect(":memory:")

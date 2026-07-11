@@ -42,6 +42,9 @@ INGREDIENTS_VEGAN_IDS = {
     "517986011",
     "624307011",
 }
+KNOWN_NON_VEGAN_IDS = {
+    "17959011",
+}
 MUTED_PROMOTION_RGB = "rgb(101, 67, 72)"
 
 
@@ -62,30 +65,34 @@ def extract_userscript_id_set(constant_name: str) -> set[str]:
 
 def userscript_source_test() -> None:
     assert "// @name        Ocado Vegan Filter" in userscript()
-    assert "// @version     1.5.1" in userscript()
+    assert "// @version     1.6.0" in userscript()
     assert "// @inject-into page" in userscript()
 
     official_ids = extract_userscript_id_set("OFFICIAL_VEGAN_PRODUCT_IDS")
     manufacturer_or_name_ids = extract_userscript_id_set("MANUFACTURER_OR_NAME_VEGAN_PRODUCT_IDS")
     ingredients_ids = extract_userscript_id_set("INGREDIENTS_VEGAN_PRODUCT_IDS")
+    known_non_vegan_ids = extract_userscript_id_set("KNOWN_NON_VEGAN_PRODUCT_IDS")
 
     assert OFFICIAL_VEGAN_IDS <= official_ids
     assert MANUFACTURER_OR_NAME_VEGAN_IDS <= manufacturer_or_name_ids
     assert INGREDIENTS_VEGAN_IDS <= ingredients_ids
+    assert KNOWN_NON_VEGAN_IDS <= known_non_vegan_ids
+    assert not (official_ids | manufacturer_or_name_ids | ingredients_ids) & known_non_vegan_ids
     assert "const MANUFACTURER_VEGAN_PRODUCT_IDS" not in userscript()
     print("userscript source test passed")
 
 
-def assert_card_state(rows: dict[str, dict[str, object]], card_id: str, *, blocked: bool) -> None:
+def assert_card_state(rows: dict[str, dict[str, object]], card_id: str, *, blocked: bool, label: str = "", check_link_target: bool = True) -> None:
     row = rows[card_id]
     if blocked:
-        assert row["buttonText"] == "Not vegan", row
+        assert row["buttonText"] == label, row
         assert row["buttonVisuallyMarked"] is True, row
         assert row["blocked"] is False, row
         assert row["nonVeganClass"] is True, row
         assert row["imageOpacity"] == "0.42", row
         assert row["imagePointerEvents"] == "none", row
-        assert row["imagePointTag"] == "A", row
+        if check_link_target:
+            assert row["imagePointTag"] == "A", row
         assert_zero_saturation_filter(row["imageFilter"], row)
         return
 
@@ -150,6 +157,11 @@ def fixture_smoke_test() -> None:
         <svg id="vegan"></svg>
         <button data-test="counter-button" aria-label="Add Official Vegan">Add</button>
       </article>
+      <article class="product-card-container" id="official-overrides-known-nonvegan">
+        <a href="https://www.ocado.com/products/example-live-vegan-17959011"><img></a>
+        <svg id="vegan"></svg>
+        <button data-test="counter-button" aria-label="Add Example Live Vegan">Add</button>
+      </article>
       <article class="product-card-container" id="official-hidden-icon">
         <a href="https://www.ocado.com/products/itsu-vegetable-fusion-gyoza/369202011">itsu vegetable fusion gyoza<img></a>
         <svg data-test="product-card-lifestyle-freezable"></svg>
@@ -200,6 +212,10 @@ def fixture_smoke_test() -> None:
         <svg data-test="fop-offer-icon" style="fill: rgb(169, 0, 22)"></svg>
         <button data-test="counter-button" aria-label="Add McVitie's Penguin Orange Biscuit Bars Multipack" onclick="window.blockedAddClicks += 1">Add</button>
       </article>
+      <article class="product-card-container" id="known-nonvegan">
+        <a href="https://www.ocado.com/products/example-known-nonvegan-17959011"><img style="display: block; width: 100px; height: 100px;"></a>
+        <button data-test="counter-button" aria-label="Add Example Known Nonvegan">Add</button>
+      </article>
     </body></html>"""
 
     options = Options()
@@ -219,7 +235,12 @@ def fixture_smoke_test() -> None:
             const blockedHoverText = blockedButton.textContent.trim();
             blockedButton.dispatchEvent(new MouseEvent('mouseleave', { bubbles: true }));
             const blockedLeaveText = blockedButton.textContent.trim();
-            return Object.fromEntries(['ready', 'ready-hyphen', 'cajun', 'cajun-hyphen', 'official', 'official-hidden-icon', 'name-vegan', 'hydration-vegan', 'stale-vegan', 'ingredients-beans', 'ingredients-pasta', 'features-gherkins', 'blocked'].map(id => {
+            const knownNonveganButton = document.querySelector('#known-nonvegan button');
+            knownNonveganButton.dispatchEvent(new MouseEvent('mouseenter', { bubbles: true }));
+            const knownNonveganHoverText = knownNonveganButton.textContent.trim();
+            knownNonveganButton.dispatchEvent(new MouseEvent('mouseleave', { bubbles: true }));
+            const knownNonveganLeaveText = knownNonveganButton.textContent.trim();
+            return Object.fromEntries(['ready', 'ready-hyphen', 'cajun', 'cajun-hyphen', 'official', 'official-overrides-known-nonvegan', 'official-hidden-icon', 'name-vegan', 'hydration-vegan', 'stale-vegan', 'ingredients-beans', 'ingredients-pasta', 'features-gherkins', 'blocked', 'known-nonvegan'].map(id => {
               const card = document.getElementById(id);
               const button = card.querySelector('button');
               const img = card.querySelector('img');
@@ -249,6 +270,8 @@ def fixture_smoke_test() -> None:
                 offerIconFill: offerIcon && getComputedStyle(offerIcon).fill,
                 blockedHoverText,
                 blockedLeaveText,
+                knownNonveganHoverText,
+                knownNonveganLeaveText,
               }];
             }));
             """
@@ -263,6 +286,7 @@ def fixture_smoke_test() -> None:
         "cajun",
         "cajun-hyphen",
         "official",
+        "official-overrides-known-nonvegan",
         "official-hidden-icon",
         "name-vegan",
         "hydration-vegan",
@@ -275,10 +299,13 @@ def fixture_smoke_test() -> None:
     assert rows["stale-vegan"]["imageSrc"] == "https://www.ocado.com/images-v3/example/original.webp", rows["stale-vegan"]
     assert rows["stale-vegan"]["imageSrcset"].startswith("https://www.ocado.com/images-v3/example/100x100.webp"), rows["stale-vegan"]
     assert "ocadoVeganFilterGrayscaleSource" not in rows["stale-vegan"]["imageDataset"], rows["stale-vegan"]
-    assert_card_state(rows, "blocked", blocked=True)
+    assert_card_state(rows, "blocked", blocked=True, label="Unknown vegan")
+    assert_card_state(rows, "known-nonvegan", blocked=True, label="Not vegan", check_link_target=False)
     assert click_counts == {"add": 1, "image": 1}, click_counts
     assert rows["blocked"]["blockedHoverText"] == "Add anyway", rows["blocked"]
-    assert rows["blocked"]["blockedLeaveText"] == "Not vegan", rows["blocked"]
+    assert rows["blocked"]["blockedLeaveText"] == "Unknown vegan", rows["blocked"]
+    assert rows["known-nonvegan"]["knownNonveganHoverText"] == "Add anyway", rows["known-nonvegan"]
+    assert rows["known-nonvegan"]["knownNonveganLeaveText"] == "Not vegan", rows["known-nonvegan"]
     assert "ocado-oos-button" in rows["blocked"]["buttonClassName"], rows["blocked"]
     assert rows["blocked"]["offerColor"] == MUTED_PROMOTION_RGB, rows["blocked"]
     assert rows["blocked"]["offerUnitPriceColor"] == MUTED_PROMOTION_RGB, rows["blocked"]
@@ -380,6 +407,8 @@ def collect_rows(driver: webdriver.Firefox) -> list[dict[str, object]]:
             blocked: false,
             buttonVisuallyMarked: Boolean(button && button.classList.contains('ocado-vegan-filter-not-vegan-add')),
             buttonText: button && button.textContent.replace(/\s+/g, ' ').trim(),
+            buttonClientWidth: button && button.clientWidth,
+            buttonScrollWidth: button && button.scrollWidth,
             imageOpacity: img && getComputedStyle(img).opacity,
             imageFilter: img && getComputedStyle(img).filter,
             imageCurrentSrc: img && (img.currentSrc || img.src),
@@ -427,7 +456,7 @@ def promotions_page_smoke_test() -> None:
 
     assert rows, "No product cards found on promotions page"
     assert manufacturer_vegan_rows, "No vegan-according-to-manufacturer products found in loaded promotions slice"
-    assert muted_rows, "No visually muted non-vegan products found in loaded promotions slice"
+    assert muted_rows, "No visually muted non-vegan or unknown products found in loaded promotions slice"
 
     for row in manufacturer_vegan_rows:
         assert row["buttonText"] == "Add", row
@@ -437,9 +466,12 @@ def promotions_page_smoke_test() -> None:
         assert row["imageFilter"] == "none", row
         assert row["imageOpacity"] == "1", row
 
+    known_non_vegan_ids = extract_userscript_id_set("KNOWN_NON_VEGAN_PRODUCT_IDS")
     for row in muted_rows[:5]:
-        assert row["buttonText"] == "Not vegan", row
+        expected_label = "Not vegan" if row["id"] in known_non_vegan_ids else "Unknown vegan"
+        assert row["buttonText"] == expected_label, row
         assert row["buttonVisuallyMarked"] is True, row
+        assert row["buttonScrollWidth"] <= row["buttonClientWidth"], row
         assert row["blocked"] is False, row
         assert_zero_saturation_filter(row["imageFilter"], row)
         assert row["imageOpacity"] == "0.42", row

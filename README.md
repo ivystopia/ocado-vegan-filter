@@ -10,16 +10,16 @@ https://greasyfork.org/en/scripts/576838-ocado-vegan-filter
 
 Ocado already has a vegan icon and filter, but some vegan products are missing from that metadata or do not show the vegan icon in product grids.
 
-This script adds a client-side correction layer. It embeds over 20,000 vegan product IDs from an offline Ocado catalogue audit, including over 15,000 products beyond the officially tagged vegan set seen in the audit.
+This script adds a client-side correction layer. It embeds over 19,000 vegan product IDs from an offline Ocado catalogue audit, including over 14,000 products beyond the officially tagged vegan set seen in the audit.
 
 Products identified as vegan keep Ocado's normal styling and yellow `Add` button.
 
-Products not identified as vegan are visually muted:
+Known non-vegan products and products without enough evidence for a safe classification are visually muted:
 
 - The product image is faded and desaturated.
 - Promotional red text is muted.
 - The `Add` button is restyled to look more like Ocado's grey out-of-stock controls.
-- The button label shows `Not vegan`, and changes to `Add anyway` on hover.
+- The button label shows `Not vegan` for an affirmative non-vegan classification or `Unknown vegan` when the evidence is inconclusive, and changes to `Add anyway` on hover.
 
 The filter is cosmetic only. Product links still work, and the real Ocado `Add` button remains clickable.
 
@@ -39,7 +39,9 @@ The script treats a product as vegan when any of these are true:
 - Ocado product page text explicitly says it is vegan, including manufacturer text, dietary information, or product features.
 - Embedded catalogue data supports a conservative vegan-by-ingredients classification.
 
-`Not vegan` means "not identified as vegan by this script". It is not a definitive claim that the product contains animal-derived ingredients.
+Live or embedded official Ocado vegan metadata is authoritative and takes precedence over the script's embedded non-vegan evidence.
+
+`Not vegan` means that the offline audit found affirmative non-vegan evidence. `Unknown vegan` means that the stored evidence is insufficient to establish either vegan or non-vegan status safely.
 
 ## Data And Privacy
 
