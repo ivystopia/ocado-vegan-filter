@@ -20,8 +20,8 @@ from typing import Any, Iterable
 
 REPO_ROOT = Path(__file__).resolve().parents[1]
 DEFAULT_DB = str(REPO_ROOT / "ocado_products.sqlite")
-CLASSIFIER_VERSION = "db-vegan-codex-v5"
-PROMPT_VERSION = "ocado-vegan-product-json-v3"
+CLASSIFIER_VERSION = "db-vegan-codex-v6"
+PROMPT_VERSION = "ocado-vegan-product-json-v4"
 VALID_STATUSES = {"vegan", "nonvegan", "unknown"}
 VALID_VEGAN_REASONS = {"tagged", "manufacturer", "ingredients", "name"}
 
@@ -999,6 +999,7 @@ def build_codex_prompt(products: list[dict[str, Any]]) -> str:
         "- Use manufacturer when the supplied product text explicitly says vegan or suitable for vegans.\n"
         "- Use ingredients only when ingredients or single-ingredient identity make vegan status certain.\n"
         "- If the product has no ingredients field, treat it as a single-ingredient product and classify from the supplied product identity/category text when that identity is unambiguous.\n"
+        "- For manufactured non-food goods, a headline material such as cotton, plastic, melamine, metal, or glass does not prove the whole product vegan. Dyes, adhesives, coatings, trims, and processing inputs may be unlisted; classify unknown unless explicit vegan evidence or a complete composition resolves them.\n"
         "- Ingredients such as milk, egg, honey, gelatine, meat, fish, shellfish, beeswax, shellac, carmine, or lanolin are nonvegan.\n"
         "- May-contain allergen warnings do not make a product nonvegan.\n"
         "- Treat fortified wheat/flour as vegan when the fortification is limited to standard flour additions such as calcium, iron, niacin, thiamin, or folic acid.\n"
@@ -1446,8 +1447,8 @@ def build_parser() -> argparse.ArgumentParser:
     codex.add_argument("--batch-size", type=int, default=10)
     codex.add_argument("--passes", type=int, default=2)
     codex.add_argument("--retries", type=int, default=2)
-    codex.add_argument("--model", default="gpt-5.6-sol")
-    codex.add_argument("--reasoning-effort", default="medium")
+    codex.add_argument("--model", default="gpt-5.6-terra")
+    codex.add_argument("--reasoning-effort", default="high")
     codex.add_argument("--codex-bin", default=shutil.which("codex") or "codex")
     codex.add_argument("--workers", type=int, default=1)
     codex.add_argument("--sync-run-id", type=int)
@@ -1458,8 +1459,8 @@ def build_parser() -> argparse.ArgumentParser:
     all_parser.add_argument("--batch-size", type=int, default=10)
     all_parser.add_argument("--passes", type=int, default=2)
     all_parser.add_argument("--retries", type=int, default=2)
-    all_parser.add_argument("--model", default="gpt-5.6-sol")
-    all_parser.add_argument("--reasoning-effort", default="medium")
+    all_parser.add_argument("--model", default="gpt-5.6-terra")
+    all_parser.add_argument("--reasoning-effort", default="high")
     all_parser.add_argument("--codex-bin", default=shutil.which("codex") or "codex")
     all_parser.add_argument("--workers", type=int, default=1)
     all_parser.add_argument("--sync-run-id", type=int)

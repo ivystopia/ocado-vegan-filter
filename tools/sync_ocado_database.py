@@ -970,6 +970,26 @@ def rebuild_fts(conn: sqlite3.Connection) -> None:
     )
 
 
+def classifier_change_payload(payload: dict[str, Any]) -> dict[str, Any]:
+    """Return only evidence whose change can alter a vegan decision."""
+    product = dict(payload.get("product") or {})
+    product.pop("url", None)
+    result: dict[str, Any] = {
+        "product": product,
+        "official_vegan": "vegan" in set(payload.get("flags") or []),
+    }
+    if not product.get("ingredients"):
+        result["categories"] = sorted(set(payload.get("categories") or []))
+    evidence = {
+        re.sub(r"\s+", " ", row.get("content") or "").strip()
+        for row in payload.get("manufacturer_vegan_evidence") or []
+        if row.get("content")
+    }
+    if evidence:
+        result["manufacturer_vegan_evidence"] = sorted(evidence)
+    return result
+
+
 def snapshot_classifier_contexts(conn: sqlite3.Connection) -> None:
     conn.execute("DROP TABLE IF EXISTS temp.sync_context_baseline")
     conn.execute(
@@ -990,7 +1010,7 @@ def snapshot_classifier_contexts(conn: sqlite3.Connection) -> None:
         payload_json = json.dumps(payload, ensure_ascii=True, sort_keys=True, separators=(",", ":"))
         conn.execute(
             "INSERT INTO sync_context_baseline VALUES (?, ?, ?, ?, ?, ?)",
-            (product_id, was_current, context_hash(payload), payload_json, vegan_status, vegan_reason),
+            (product_id, was_current, context_hash(classifier_change_payload(payload)), payload_json, vegan_status, vegan_reason),
         )
     print(f"Snapshotted classifier context for {len(rows)} products", flush=True)
 
@@ -1018,7 +1038,7 @@ def finalize_context_changes(conn: sqlite3.Connection, run_id: int) -> None:
     for product_id in current_ids:
         payload = product_context_for_llm(load_product_context(conn, product_id))
         after_json = json.dumps(payload, ensure_ascii=True, sort_keys=True, separators=(",", ":"))
-        after_hash = context_hash(payload)
+        after_hash = context_hash(classifier_change_payload(payload))
         before = conn.execute(
             "SELECT context_hash, context_json, vegan_status, vegan_reason FROM temp.sync_context_baseline WHERE product_id = ?",
             (product_id,),

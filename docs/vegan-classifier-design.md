@@ -120,9 +120,13 @@ codex exec --ephemeral --output-schema schema.json --output-last-message result.
 
 Recommended defaults:
 
-- bulk unresolved classification: `gpt-5.6-sol`, `medium`
+- bulk unresolved classification: `gpt-5.6-terra`, `high`
 - escalation/review: `gpt-5.6-sol`, `high`
 - prompt/schema review: `gpt-5.6-sol`, `high` or `xhigh`
+
+The bulk default was selected with a two-pass, evidence-grounded benchmark covering known vegan, non-vegan, unknown, and newly discovered products. False-vegan errors are the primary rejection criterion; pass agreement and latency are secondary because identical passes can still repeat the same unsupported inference.
+
+For manufactured non-food goods, material descriptions such as cotton, plastic, melamine, metal, or glass do not prove that the complete product is vegan. Unlisted dyes, adhesives, coatings, trims, and processing inputs require an `unknown` result unless explicit vegan evidence or a complete composition resolves them.
 
 Do not use `low` reasoning for product decisions because false certainty is more harmful than extra `unknown` classifications.
 

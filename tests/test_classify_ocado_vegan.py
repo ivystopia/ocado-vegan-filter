@@ -269,9 +269,12 @@ class ClassifyOcadoVeganTests(unittest.TestCase):
         conn.execute("insert into sync_product_context_changes values (7, '1', 'changed')")
         self.assertEqual(classifier.select_unclassified_product_ids(conn, sync_run_id=7), ["1"])
 
-    def test_codex_default_model_is_gpt_5_6_sol(self) -> None:
+    def test_codex_defaults_use_benchmarked_terra_configuration(self) -> None:
         args = classifier.build_parser().parse_args(["classify-codex"])
-        self.assertEqual(args.model, "gpt-5.6-sol")
+        self.assertEqual(args.model, "gpt-5.6-terra")
+        self.assertEqual(args.reasoning_effort, "high")
+        prompt = classifier.build_codex_prompt([])
+        self.assertIn("manufactured non-food goods", prompt)
 
 
 if __name__ == "__main__":
