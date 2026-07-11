@@ -20,7 +20,7 @@ from typing import Any, Iterable
 
 REPO_ROOT = Path(__file__).resolve().parents[1]
 DEFAULT_DB = str(REPO_ROOT / "ocado_products.sqlite")
-CLASSIFIER_VERSION = "db-vegan-codex-v4"
+CLASSIFIER_VERSION = "db-vegan-codex-v5"
 PROMPT_VERSION = "ocado-vegan-product-json-v3"
 VALID_STATUSES = {"vegan", "nonvegan", "unknown"}
 VALID_VEGAN_REASONS = {"tagged", "manufacturer", "ingredients", "name"}
@@ -1262,22 +1262,47 @@ def classify_codex_contexts(
     ]
 
 
-def select_unclassified_product_ids(conn: sqlite3.Connection, *, limit: int = 0) -> list[str]:
+def select_unclassified_product_ids(
+    conn: sqlite3.Connection,
+    *,
+    limit: int = 0,
+    sync_run_id: int | None = None,
+) -> list[str]:
     query = "SELECT id FROM products WHERE vegan_status IS NULL ORDER BY id"
+    parameters: tuple[Any, ...] = ()
+    if sync_run_id is not None:
+        query = """
+            SELECT id FROM products
+            WHERE vegan_status IS NULL
+              AND id IN (
+                SELECT product_id FROM sync_product_context_changes
+                WHERE run_id = ? AND change_kind IN ('new', 'changed')
+              )
+            ORDER BY id
+        """
+        parameters = (sync_run_id,)
     if limit:
         query += " LIMIT ?"
-        return [row["id"] for row in conn.execute(query, (limit,))]
-    return [row["id"] for row in conn.execute(query)]
+        parameters += (limit,)
+    return [row["id"] for row in conn.execute(query, parameters)]
 
 
-def classify_rules(conn: sqlite3.Connection, *, limit: int = 0, force: bool = False) -> int:
-    where = "1 = 1" if force else "vegan_status IS NULL"
-    query = f"SELECT id FROM products WHERE {where} ORDER BY id"
-    if limit:
-        query += " LIMIT ?"
-        ids = [row["id"] for row in conn.execute(query, (limit,))]
+def classify_rules(
+    conn: sqlite3.Connection,
+    *,
+    limit: int = 0,
+    force: bool = False,
+    sync_run_id: int | None = None,
+) -> int:
+    if force and sync_run_id is None:
+        query = "SELECT id FROM products ORDER BY id"
+        parameters: tuple[Any, ...] = ()
+        if limit:
+            query += " LIMIT ?"
+            parameters = (limit,)
+        ids = [row["id"] for row in conn.execute(query, parameters)]
     else:
-        ids = [row["id"] for row in conn.execute(query)]
+        ids = select_unclassified_product_ids(conn, limit=limit, sync_run_id=sync_run_id)
     run_id = start_run(conn, mode="rules")
     classified = 0
     try:
@@ -1307,8 +1332,9 @@ def classify_codex(
     reasoning_effort: str,
     codex_bin: str,
     workers: int = 1,
+    sync_run_id: int | None = None,
 ) -> int:
-    ids = select_unclassified_product_ids(conn, limit=limit)
+    ids = select_unclassified_product_ids(conn, limit=limit, sync_run_id=sync_run_id)
     run_id = start_run(conn, mode="codex", model=model, reasoning_effort=reasoning_effort)
     classified = 0
     batch_total = (len(ids) + batch_size - 1) // batch_size
@@ -1413,16 +1439,18 @@ def build_parser() -> argparse.ArgumentParser:
     rules = subparsers.add_parser("classify-rules")
     rules.add_argument("--limit", type=int, default=0)
     rules.add_argument("--force", action="store_true")
+    rules.add_argument("--sync-run-id", type=int)
 
     codex = subparsers.add_parser("classify-codex")
     codex.add_argument("--limit", type=int, default=0)
     codex.add_argument("--batch-size", type=int, default=10)
     codex.add_argument("--passes", type=int, default=2)
     codex.add_argument("--retries", type=int, default=2)
-    codex.add_argument("--model", default="gpt-5.4-mini")
+    codex.add_argument("--model", default="gpt-5.6-sol")
     codex.add_argument("--reasoning-effort", default="medium")
     codex.add_argument("--codex-bin", default=shutil.which("codex") or "codex")
     codex.add_argument("--workers", type=int, default=1)
+    codex.add_argument("--sync-run-id", type=int)
 
     all_parser = subparsers.add_parser("classify-all")
     all_parser.add_argument("--codex", action="store_true", help="Also run Codex on unresolved products.")
@@ -1430,10 +1458,11 @@ def build_parser() -> argparse.ArgumentParser:
     all_parser.add_argument("--batch-size", type=int, default=10)
     all_parser.add_argument("--passes", type=int, default=2)
     all_parser.add_argument("--retries", type=int, default=2)
-    all_parser.add_argument("--model", default="gpt-5.4-mini")
+    all_parser.add_argument("--model", default="gpt-5.6-sol")
     all_parser.add_argument("--reasoning-effort", default="medium")
     all_parser.add_argument("--codex-bin", default=shutil.which("codex") or "codex")
     all_parser.add_argument("--workers", type=int, default=1)
+    all_parser.add_argument("--sync-run-id", type=int)
 
     subparsers.add_parser("status")
     return parser
@@ -1457,7 +1486,7 @@ def main(argv: list[str] | None = None) -> int:
 
         if args.command == "classify-rules":
             with conn:
-                count = classify_rules(conn, limit=args.limit, force=args.force)
+                count = classify_rules(conn, limit=args.limit, force=args.force, sync_run_id=args.sync_run_id)
             print(f"Rule-classified {count} products")
             return 0
 
@@ -1472,13 +1501,14 @@ def main(argv: list[str] | None = None) -> int:
                 reasoning_effort=args.reasoning_effort,
                 codex_bin=args.codex_bin,
                 workers=args.workers,
+                sync_run_id=args.sync_run_id,
             )
             print(f"Codex-classified {count} products")
             return 0
 
         if args.command == "classify-all":
             with conn:
-                rule_count = classify_rules(conn)
+                rule_count = classify_rules(conn, sync_run_id=args.sync_run_id)
             print(f"Rule-classified {rule_count} products")
             if args.codex:
                 count = classify_codex(
@@ -1491,6 +1521,7 @@ def main(argv: list[str] | None = None) -> int:
                     reasoning_effort=args.reasoning_effort,
                     codex_bin=args.codex_bin,
                     workers=args.workers,
+                    sync_run_id=args.sync_run_id,
                 )
                 print(f"Codex-classified {count} products")
             return 0

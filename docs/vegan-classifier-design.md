@@ -120,9 +120,9 @@ codex exec --ephemeral --output-schema schema.json --output-last-message result.
 
 Recommended defaults:
 
-- bulk unresolved classification: `gpt-5.4-mini`, `medium`
-- escalation/review: `gpt-5.4`, `high`
-- prompt/schema review: `gpt-5.5`, `high` or `xhigh`
+- bulk unresolved classification: `gpt-5.6-sol`, `medium`
+- escalation/review: `gpt-5.6-sol`, `high`
+- prompt/schema review: `gpt-5.6-sol`, `high` or `xhigh`
 
 Do not use `low` reasoning for product decisions because false certainty is more harmful than extra `unknown` classifications.
 

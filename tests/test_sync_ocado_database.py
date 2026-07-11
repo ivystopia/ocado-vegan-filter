@@ -147,6 +147,7 @@ class SyncOcadoDatabaseTests(unittest.TestCase):
                 }
 
                 sync.apply_product_detail(conn, run_id, "222", data, 200)
+                sync.finalize_product_flags(conn, run_id)
                 sync.rebuild_fts(conn)
 
                 product = conn.execute("select * from products where id = '222'").fetchone()
@@ -165,6 +166,51 @@ class SyncOcadoDatabaseTests(unittest.TestCase):
                     conn.execute("select count(*) from products_fts where products_fts match 'beans'").fetchone()[0],
                     1,
                 )
+                self.assertEqual(
+                    conn.execute("select count(*) from product_detail_raw_latest where product_id = '222'").fetchone()[0],
+                    1,
+                )
+            finally:
+                conn.close()
+
+    def test_detail_refresh_clears_removed_fields_evidence_and_flags(self) -> None:
+        with tempfile.TemporaryDirectory() as tmp:
+            conn = self.create_db(Path(tmp) / "ocado.sqlite")
+            try:
+                run_id = sync.start_sync_run(conn)
+                conn.execute(
+                    "insert into products(id, ingredients, official_vegan, current_on_ocado) values ('1', 'Old milk', 1, 1)"
+                )
+                conn.execute("insert into product_flags(product_id, flag) values ('1', 'vegan')")
+                conn.execute(
+                    "insert into manufacturer_vegan_evidence(product_id, field_title, content) values ('1', 'features', 'Vegan')"
+                )
+                sync.apply_product_detail(
+                    conn,
+                    run_id,
+                    "1",
+                    {"product": {"name": "Changed product", "iconAttributes": []}, "bopData": {"fields": []}},
+                    200,
+                )
+                sync.finalize_product_flags(conn, run_id)
+                product = conn.execute("select ingredients, official_vegan from products where id = '1'").fetchone()
+                self.assertIsNone(product["ingredients"])
+                self.assertEqual(product["official_vegan"], 0)
+                self.assertEqual(conn.execute("select count(*) from product_flags where product_id = '1'").fetchone()[0], 0)
+                self.assertEqual(
+                    conn.execute("select count(*) from manufacturer_vegan_evidence where product_id = '1'").fetchone()[0], 0
+                )
+            finally:
+                conn.close()
+
+    def test_full_detail_selection_is_defaultable(self) -> None:
+        with tempfile.TemporaryDirectory() as tmp:
+            conn = self.create_db(Path(tmp) / "ocado.sqlite")
+            try:
+                conn.execute("insert into products(id, current_on_ocado, has_full_product_detail) values ('1', 1, 1)")
+                conn.execute("insert into products(id, current_on_ocado, has_full_product_detail) values ('2', 1, 0)")
+                self.assertEqual(sync.products_needing_detail(conn, missing_only=True), ["2"])
+                self.assertEqual(sync.products_needing_detail(conn, missing_only=False), ["1", "2"])
             finally:
                 conn.close()
 

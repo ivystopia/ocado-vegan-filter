@@ -259,6 +259,20 @@ class ClassifyOcadoVeganTests(unittest.TestCase):
             1,
         )
 
+    def test_sync_run_selector_limits_unclassified_products(self) -> None:
+        conn = self.create_db()
+        self.insert_product(conn, "1", name="Changed")
+        self.insert_product(conn, "2", name="Not targeted")
+        conn.execute(
+            "create table sync_product_context_changes(run_id integer, product_id text, change_kind text)"
+        )
+        conn.execute("insert into sync_product_context_changes values (7, '1', 'changed')")
+        self.assertEqual(classifier.select_unclassified_product_ids(conn, sync_run_id=7), ["1"])
+
+    def test_codex_default_model_is_gpt_5_6_sol(self) -> None:
+        args = classifier.build_parser().parse_args(["classify-codex"])
+        self.assertEqual(args.model, "gpt-5.6-sol")
+
 
 if __name__ == "__main__":
     unittest.main()

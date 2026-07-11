@@ -8,12 +8,15 @@ not read or write JSONL files.
 from __future__ import annotations
 
 import argparse
+import hashlib
+import json
 import os
 import re
 import shutil
 import sqlite3
 import sys
 import time
+import zlib
 from collections import deque
 from pathlib import Path
 from typing import Any, Iterable
@@ -21,6 +24,7 @@ from typing import Any, Iterable
 import requests
 
 from build_ocado_database import (
+    KNOWN_TEXT_COLUMNS,
     PRODUCT_COLUMNS,
     attribute_flags,
     bool_int,
@@ -36,6 +40,7 @@ from build_ocado_database import (
     table_to_plain_text,
     unit_price_to_parts,
 )
+from classify_ocado_vegan import context_hash, load_product_context, product_context_for_llm
 
 
 FIREFOX_HELPER_SCRIPTS = os.environ.get("BROWSE_WITH_FIREFOX_SCRIPTS", "")
@@ -67,6 +72,15 @@ SYNC_PRODUCT_COLUMNS: dict[str, str] = {
     "last_detail_fetch_run_id": "INTEGER",
     "last_detail_fetch_status": "INTEGER",
 }
+
+DETAIL_SCALAR_COLUMNS = [
+    "ocado_product_uuid", "name", "brand", "url", "type", "pack_size", "alcohol", "is_new",
+    "is_in_current_catalog", "medical_questionnaire_required", "time_restricted", "age_restriction_years",
+    "price_gbp", "promo_price_gbp", "unit_price_gbp", "unit_price_unit", "promo_unit_price_gbp",
+    "promo_unit_price_unit", "rating_count", "rating_overall", "guaranteed_product_life_quantity",
+    "guaranteed_product_life_unit", "hfss_display_restriction_group", "quantity_restriction_group_json",
+    "catchweight_json", "tax_codes_json", "retailer_financing_plan_ids_json", "promotions_json",
+]
 
 
 def now_epoch() -> int:
@@ -152,18 +166,51 @@ def ensure_sync_schema(conn: sqlite3.Connection) -> None:
           fetched_at_epoch INTEGER NOT NULL
         );
 
+        CREATE TABLE IF NOT EXISTS sync_product_flags (
+          run_id INTEGER NOT NULL,
+          product_id TEXT NOT NULL,
+          flag TEXT NOT NULL,
+          source TEXT NOT NULL,
+          PRIMARY KEY (run_id, product_id, flag, source)
+        );
+
+        CREATE TABLE IF NOT EXISTS product_detail_raw_latest (
+          product_id TEXT PRIMARY KEY,
+          run_id INTEGER NOT NULL,
+          response_sha256 TEXT NOT NULL,
+          response_json_zlib BLOB NOT NULL,
+          fetched_at_epoch INTEGER NOT NULL
+        );
+
+        CREATE TABLE IF NOT EXISTS sync_product_context_changes (
+          run_id INTEGER NOT NULL,
+          product_id TEXT NOT NULL,
+          change_kind TEXT NOT NULL,
+          before_context_hash TEXT,
+          after_context_hash TEXT,
+          before_context_json TEXT,
+          after_context_json TEXT,
+          previous_vegan_status TEXT,
+          previous_vegan_reason TEXT,
+          PRIMARY KEY (run_id, product_id)
+        );
+
         CREATE INDEX IF NOT EXISTS idx_sync_discoveries_run_source
           ON sync_product_discoveries(run_id, source);
         CREATE INDEX IF NOT EXISTS idx_sync_categories_run_product
           ON sync_product_categories(run_id, product_id);
         CREATE INDEX IF NOT EXISTS idx_detail_fetches_run_product
           ON product_detail_fetches(run_id, product_id);
+        CREATE INDEX IF NOT EXISTS idx_sync_context_changes_run_kind
+          ON sync_product_context_changes(run_id, change_kind);
         CREATE INDEX IF NOT EXISTS idx_products_current_on_ocado
           ON products(current_on_ocado);
         CREATE INDEX IF NOT EXISTS idx_products_last_detail_status
           ON products(last_detail_fetch_status);
         """
     )
+    for column_name in ("products_new", "products_changed", "products_removed", "classifications_invalidated"):
+        ensure_column(conn, "sync_runs", column_name, "INTEGER DEFAULT 0")
 
 
 def create_rolling_backup(db_path: Path) -> Path:
@@ -205,6 +252,10 @@ def record_run_count(conn: sqlite3.Connection, run_id: int, column_name: str, va
         "detail_fetch_attempted",
         "detail_fetch_succeeded",
         "detail_fetch_failed",
+        "products_new",
+        "products_changed",
+        "products_removed",
+        "classifications_invalidated",
     }
     if column_name not in allowed:
         raise ValueError(f"unsupported sync_runs column: {column_name}")
@@ -450,6 +501,19 @@ def insert_product_flags(conn: sqlite3.Connection, product_id: str, flags: Itera
         conn.execute("UPDATE products SET official_vegan = 1 WHERE id = ?", (product_id,))
 
 
+def stage_product_flags(
+    conn: sqlite3.Connection,
+    run_id: int,
+    product_id: str,
+    flags: Iterable[str],
+    source: str,
+) -> None:
+    conn.executemany(
+        "INSERT OR IGNORE INTO sync_product_flags (run_id, product_id, flag, source) VALUES (?, ?, ?, ?)",
+        ((run_id, product_id, flag, source) for flag in set(flags) if flag),
+    )
+
+
 def record_discovery(
     conn: sqlite3.Connection,
     run_id: int,
@@ -492,7 +556,7 @@ def stage_category_product(conn: sqlite3.Connection, run_id: int, slug_path: str
         """,
         (run_id, product_id, slug_path),
     )
-    insert_product_flags(conn, product_id, attribute_flags(product.get("iconAttributes")))
+    stage_product_flags(conn, run_id, product_id, attribute_flags(product.get("iconAttributes")), "category")
 
 
 def record_category_fetch(conn: sqlite3.Connection, run_id: int, result: dict[str, Any], attempt: int) -> None:
@@ -695,8 +759,12 @@ def apply_product_detail(conn: sqlite3.Connection, run_id: int, product_id: str,
         brand=product.get("brand"),
         run_id=run_id,
     )
-    updates: dict[str, Any] = {
+    updates: dict[str, Any] = {column: None for column in [*DETAIL_SCALAR_COLUMNS, *KNOWN_TEXT_COLUMNS]}
+    updates.update({
         "ocado_product_uuid": product.get("productId"),
+        "name": html_to_text(product.get("name")),
+        "brand": html_to_text(product.get("brand")),
+        "url": product_url(product_id),
         "type": product.get("type"),
         "pack_size": product.get("packSizeDescription"),
         "alcohol": bool_int(product.get("alcohol")),
@@ -716,7 +784,7 @@ def apply_product_detail(conn: sqlite3.Connection, run_id: int, product_id: str,
         "has_full_product_detail": 1,
         "last_detail_fetch_run_id": run_id,
         "last_detail_fetch_status": status,
-    }
+    })
     unit_price_gbp, unit_price_unit = unit_price_to_parts(product.get("unitPrice"))
     updates["unit_price_gbp"] = unit_price_gbp
     updates["unit_price_unit"] = unit_price_unit
@@ -736,10 +804,11 @@ def apply_product_detail(conn: sqlite3.Connection, run_id: int, product_id: str,
         [*updates.values(), product_id],
     )
     flags = attribute_flags(product.get("iconAttributes"))
-    insert_product_flags(conn, product_id, flags)
+    stage_product_flags(conn, run_id, product_id, flags, "detail")
 
     conn.execute("DELETE FROM product_breadcrumbs WHERE product_id = ?", (product_id,))
     conn.execute("DELETE FROM product_nutrition WHERE product_id = ?", (product_id,))
+    conn.execute("DELETE FROM manufacturer_vegan_evidence WHERE product_id = ?", (product_id,))
     bop = data.get("bopData") if isinstance(data.get("bopData"), dict) else {}
     detailed_description = html_to_text(bop.get("detailedDescription"))
     set_product_value(conn, product_id, "detailed_description", detailed_description)
@@ -759,6 +828,11 @@ def apply_product_detail(conn: sqlite3.Connection, run_id: int, product_id: str,
             continue
         content = field.get("content")
         text = table_to_plain_text(content) if column == "nutrition_plain_text" else html_to_text(content)
+        if text and "vegan" in text.lower():
+            conn.execute(
+                "INSERT INTO manufacturer_vegan_evidence (product_id, field_title, content) VALUES (?, ?, ?)",
+                (product_id, title or column, text),
+            )
         if column in PRODUCT_COLUMNS:
             set_product_value(conn, product_id, column, text)
         if column == "nutrition_plain_text":
@@ -775,6 +849,20 @@ def apply_product_detail(conn: sqlite3.Connection, run_id: int, product_id: str,
         "UPDATE products SET name_contains_vegan = ? WHERE id = ?",
         (1 if name and re.search(r"\bvegan\b", name, re.IGNORECASE) else 0, product_id),
     )
+    raw_json = json.dumps(data, ensure_ascii=True, sort_keys=True, separators=(",", ":")).encode("utf-8")
+    conn.execute(
+        """
+        INSERT INTO product_detail_raw_latest
+          (product_id, run_id, response_sha256, response_json_zlib, fetched_at_epoch)
+        VALUES (?, ?, ?, ?, ?)
+        ON CONFLICT(product_id) DO UPDATE SET
+          run_id = excluded.run_id,
+          response_sha256 = excluded.response_sha256,
+          response_json_zlib = excluded.response_json_zlib,
+          fetched_at_epoch = excluded.fetched_at_epoch
+        """,
+        (product_id, run_id, hashlib.sha256(raw_json).hexdigest(), zlib.compress(raw_json, 9), now_epoch()),
+    )
 
 
 def log_detail_fetch(conn: sqlite3.Connection, run_id: int, product_id: str, attempt: int, row: dict[str, Any]) -> None:
@@ -788,23 +876,29 @@ def log_detail_fetch(conn: sqlite3.Connection, run_id: int, product_id: str, att
     )
 
 
-def products_needing_detail(conn: sqlite3.Connection, product_limit: int = 0) -> list[str]:
+def products_needing_detail(
+    conn: sqlite3.Connection,
+    product_limit: int = 0,
+    *,
+    missing_only: bool = True,
+) -> list[str]:
     query = """
         SELECT id
         FROM products
         WHERE current_on_ocado = 1
-          AND COALESCE(has_full_product_detail, 0) != 1
+          AND (? = 0 OR COALESCE(has_full_product_detail, 0) != 1)
         ORDER BY id
     """
+    parameters: tuple[Any, ...] = (1 if missing_only else 0,)
     if product_limit:
         query += " LIMIT ?"
-        return [row[0] for row in conn.execute(query, (product_limit,))]
-    return [row[0] for row in conn.execute(query)]
+        parameters += (product_limit,)
+    return [row[0] for row in conn.execute(query, parameters)]
 
 
 def fetch_missing_product_details(conn: sqlite3.Connection, run_id: int, driver: Any, args: argparse.Namespace) -> None:
-    ids = products_needing_detail(conn, args.detail_limit)
-    print(f"Products needing full detail: {len(ids)}", flush=True)
+    ids = products_needing_detail(conn, args.detail_limit, missing_only=args.missing_details_only)
+    print(f"Products selected for detail refresh: {len(ids)}", flush=True)
     attempted = 0
     succeeded: set[str] = set()
     failed: dict[str, dict[str, Any]] = {}
@@ -876,6 +970,113 @@ def rebuild_fts(conn: sqlite3.Connection) -> None:
     )
 
 
+def snapshot_classifier_contexts(conn: sqlite3.Connection) -> None:
+    conn.execute("DROP TABLE IF EXISTS temp.sync_context_baseline")
+    conn.execute(
+        """
+        CREATE TEMP TABLE sync_context_baseline (
+          product_id TEXT PRIMARY KEY,
+          was_current INTEGER NOT NULL,
+          context_hash TEXT NOT NULL,
+          context_json TEXT NOT NULL,
+          vegan_status TEXT,
+          vegan_reason TEXT
+        )
+        """
+    )
+    rows = list(conn.execute("SELECT id, COALESCE(current_on_ocado, 0), vegan_status, vegan_reason FROM products ORDER BY id"))
+    for product_id, was_current, vegan_status, vegan_reason in rows:
+        payload = product_context_for_llm(load_product_context(conn, product_id))
+        payload_json = json.dumps(payload, ensure_ascii=True, sort_keys=True, separators=(",", ":"))
+        conn.execute(
+            "INSERT INTO sync_context_baseline VALUES (?, ?, ?, ?, ?, ?)",
+            (product_id, was_current, context_hash(payload), payload_json, vegan_status, vegan_reason),
+        )
+    print(f"Snapshotted classifier context for {len(rows)} products", flush=True)
+
+
+def finalize_product_flags(conn: sqlite3.Connection, run_id: int) -> None:
+    conn.execute("DELETE FROM product_flags WHERE product_id IN (SELECT id FROM products WHERE current_on_ocado = 1)")
+    conn.execute(
+        "INSERT OR IGNORE INTO product_flags (product_id, flag) SELECT product_id, flag FROM sync_product_flags WHERE run_id = ?",
+        (run_id,),
+    )
+    conn.execute(
+        """
+        UPDATE products
+        SET official_vegan = CASE WHEN EXISTS (
+          SELECT 1 FROM product_flags WHERE product_id = products.id AND flag = 'vegan'
+        ) THEN 1 ELSE 0 END
+        WHERE current_on_ocado = 1
+        """
+    )
+
+
+def finalize_context_changes(conn: sqlite3.Connection, run_id: int) -> None:
+    new_count = changed_count = invalidated = 0
+    current_ids = [row[0] for row in conn.execute("SELECT id FROM products WHERE current_on_ocado = 1 ORDER BY id")]
+    for product_id in current_ids:
+        payload = product_context_for_llm(load_product_context(conn, product_id))
+        after_json = json.dumps(payload, ensure_ascii=True, sort_keys=True, separators=(",", ":"))
+        after_hash = context_hash(payload)
+        before = conn.execute(
+            "SELECT context_hash, context_json, vegan_status, vegan_reason FROM temp.sync_context_baseline WHERE product_id = ?",
+            (product_id,),
+        ).fetchone()
+        if before is not None and before[0] == after_hash:
+            continue
+        kind = "new" if before is None else "changed"
+        new_count += int(kind == "new")
+        changed_count += int(kind == "changed")
+        conn.execute(
+            """
+            INSERT INTO sync_product_context_changes
+              (run_id, product_id, change_kind, before_context_hash, after_context_hash,
+               before_context_json, after_context_json, previous_vegan_status, previous_vegan_reason)
+            VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?)
+            """,
+            (
+                run_id, product_id, kind, before[0] if before else None, after_hash,
+                before[1] if before else None, after_json, before[2] if before else None,
+                before[3] if before else None,
+            ),
+        )
+        conn.execute(
+            """
+            UPDATE products SET vegan_status = NULL, vegan_reason = NULL,
+              vegan_classifier_version = NULL, vegan_classified_at_epoch = NULL
+            WHERE id = ?
+            """,
+            (product_id,),
+        )
+        invalidated += 1
+
+    removed_rows = conn.execute(
+        """
+        SELECT b.product_id, b.context_hash, b.context_json, b.vegan_status, b.vegan_reason
+        FROM temp.sync_context_baseline b JOIN products p ON p.id = b.product_id
+        WHERE b.was_current = 1 AND p.current_on_ocado = 0
+        """
+    ).fetchall()
+    conn.executemany(
+        """
+        INSERT INTO sync_product_context_changes
+          (run_id, product_id, change_kind, before_context_hash, before_context_json,
+           previous_vegan_status, previous_vegan_reason)
+        VALUES (?, ?, 'removed', ?, ?, ?, ?)
+        """,
+        ((run_id, row[0], row[1], row[2], row[3], row[4]) for row in removed_rows),
+    )
+    record_run_count(conn, run_id, "products_new", new_count)
+    record_run_count(conn, run_id, "products_changed", changed_count)
+    record_run_count(conn, run_id, "products_removed", len(removed_rows))
+    record_run_count(conn, run_id, "classifications_invalidated", invalidated)
+    print(
+        f"Context changes new={new_count} changed={changed_count} removed={len(removed_rows)} invalidated={invalidated}",
+        flush=True,
+    )
+
+
 def run_sync(args: argparse.Namespace) -> int:
     db_path = Path(args.db)
     if not db_path.exists():
@@ -885,12 +1086,14 @@ def run_sync(args: argparse.Namespace) -> int:
     print(f"Backed up database to {backup_path}", flush=True)
 
     conn = sqlite3.connect(db_path)
+    conn.row_factory = sqlite3.Row
     conn.execute("PRAGMA journal_mode = WAL")
     conn.execute("PRAGMA synchronous = NORMAL")
     try:
         with conn:
             ensure_sync_schema(conn)
             run_id = start_sync_run(conn)
+            snapshot_classifier_contexts(conn)
         print(f"Started sync run {run_id}", flush=True)
 
         try:
@@ -905,6 +1108,8 @@ def run_sync(args: argparse.Namespace) -> int:
                     apply_current_flags(conn, run_id)
                 fetch_missing_product_details(conn, run_id, session.driver, args)
             with conn:
+                finalize_product_flags(conn, run_id)
+                finalize_context_changes(conn, run_id)
                 finish_sync_run(conn, run_id, "completed")
             print(f"Completed sync run {run_id}", flush=True)
             return 0
@@ -924,6 +1129,11 @@ def build_parser() -> argparse.ArgumentParser:
     parser.add_argument("--category-limit", type=int, default=0)
     parser.add_argument("--product-limit", type=int, default=0, help="Limit product sitemap imports, mainly for tests/smoke runs.")
     parser.add_argument("--detail-limit", type=int, default=0, help="Limit detail fetches, mainly for tests/smoke runs.")
+    parser.add_argument(
+        "--missing-details-only",
+        action="store_true",
+        help="Fetch only current products without full details instead of refreshing every current product.",
+    )
     parser.add_argument("--category-batch-size", type=int, default=10)
     parser.add_argument("--category-concurrency", type=int, default=4)
     parser.add_argument("--bop-batch-size", type=int, default=50)
