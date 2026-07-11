@@ -5252,9 +5252,9 @@
     });
   }
 
-  function shouldAllowProduct(card) {
+  function productStatusForCard(card) {
     if (hasOfficialVeganTag(card)) {
-      return true;
+      return "vegan";
     }
 
     const productId = productIdForCard(card);
@@ -5263,12 +5263,18 @@
      * Check cheap local evidence before walking Ocado's hidden hydration data.
      * The order should not change the answer, only the amount of work needed.
      */
-    return isKnownVeganProductId(productId) || productNameSaysVegan(card) || hydrationProductHasVeganAttribute(productId);
+    if (isKnownVeganProductId(productId) || productNameSaysVegan(card) || hydrationProductHasVeganAttribute(productId)) {
+      return "vegan";
+    }
+
+    return isKnownNonVeganProductId(productId) ? "nonvegan" : "unknown";
   }
 
   function processCard(card) {
+    const status = productStatusForCard(card);
+
     // Vegan products are left exactly as Ocado rendered them.
-    if (shouldAllowProduct(card)) {
+    if (status === "vegan") {
       if (card.classList.contains(NON_VEGAN_CARD_CLASS)) {
         card.classList.remove(NON_VEGAN_CARD_CLASS);
       }
@@ -5278,8 +5284,7 @@
     }
 
     // Known non-vegan and unknown products are still usable, but visually muted.
-    const productId = productIdForCard(card);
-    const label = isKnownNonVeganProductId(productId) ? NON_VEGAN_LABEL : UNKNOWN_VEGAN_LABEL;
+    const label = status === "nonvegan" ? NON_VEGAN_LABEL : UNKNOWN_VEGAN_LABEL;
     if (!card.classList.contains(NON_VEGAN_CARD_CLASS)) {
       card.classList.add(NON_VEGAN_CARD_CLASS);
     }
