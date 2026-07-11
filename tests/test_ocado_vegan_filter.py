@@ -436,11 +436,19 @@ def grayscale_cache_smoke_test() -> None:
         driver.execute_script(
             """
             const NativeMap = window.Map;
+            const NativeWeakSet = window.WeakSet;
             window.ocadoTestMaps = [];
+            window.ocadoTestHydrationWalks = 0;
             window.Map = class extends NativeMap {
               constructor(...args) {
                 super(...args);
                 window.ocadoTestMaps.push(this);
+              }
+            };
+            window.WeakSet = class extends NativeWeakSet {
+              constructor(...args) {
+                super(...args);
+                window.ocadoTestHydrationWalks += 1;
               }
             };
             """
@@ -475,13 +483,14 @@ def grayscale_cache_smoke_test() -> None:
               hasFirst: cache.has(window.ocadoTestImageSources[0]),
               hasLast: cache.has(window.ocadoTestImageSources.at(-1)),
               failures: document.querySelectorAll('[data-ocado-vegan-filter-grayscale-failed-source]').length,
+              hydrationWalks: window.ocadoTestHydrationWalks,
             };
             """
         )
     finally:
         driver.quit()
 
-    assert cache_state == {"size": 256, "hasFirst": False, "hasLast": True, "failures": 0}, cache_state
+    assert cache_state == {"size": 256, "hasFirst": False, "hasLast": True, "failures": 0, "hydrationWalks": 1}, cache_state
     print("grayscale cache smoke test passed")
 
 

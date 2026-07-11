@@ -5192,13 +5192,21 @@
       return false;
     }
 
-    let product = hydrationProductsByRetailerId().get(productId);
+    const previousProductsByRetailerId = hydrationProductIndex.productsByRetailerId;
+    const productsByRetailerId = hydrationProductsByRetailerId();
+    const indexWasRefreshed = productsByRetailerId !== previousProductsByRetailerId;
+
+    if (indexWasRefreshed) {
+      hydrationIndexForcedRefreshUsedInRun = true;
+    }
+
+    let product = productsByRetailerId.get(productId);
 
     if (!product && !hydrationIndexForcedRefreshUsedInRun) {
       /*
        * Ocado sometimes mutates its hydration object in place. Do at most one
-       * forced re-index per run: enough to catch newly loaded products without
-       * walking the full hydration tree once for every non-vegan product.
+       * one re-index per run: enough to catch newly loaded products without
+       * walking the full hydration tree repeatedly for missing products.
        */
       hydrationIndexForcedRefreshUsedInRun = true;
       product = hydrationProductsByRetailerId(true).get(productId);
