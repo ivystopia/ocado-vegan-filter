@@ -164,6 +164,11 @@ def fixture_smoke_test() -> None:
         <svg id="vegan"></svg>
         <button data-test="counter-button" aria-label="Add Official Vegan">Add</button>
       </article>
+      <article class="product-card-container" id="unowned-native-opacity">
+        <a href="https://www.ocado.com/products/unowned-native-opacity-999996011"><img src="data:image/gif;base64,R0lGODlhAQABAAD/ACwAAAAAAQABAAACADs=" style="opacity: 0.42"></a>
+        <svg id="vegan"></svg>
+        <button data-test="counter-button" aria-label="Add Unowned Native Opacity">Add</button>
+      </article>
       <article class="product-card-container" id="official-overrides-known-nonvegan">
         <a href="https://www.ocado.com/products/example-live-vegan-17959011"><img></a>
         <svg id="vegan"></svg>
@@ -277,7 +282,7 @@ def fixture_smoke_test() -> None:
             const knownNonveganHoverText = knownNonveganButton.textContent.trim();
             knownNonveganButton.dispatchEvent(new MouseEvent('mouseleave', { bubbles: true }));
             const knownNonveganLeaveText = knownNonveganButton.textContent.trim();
-            return Object.fromEntries(['ready', 'ready-hyphen', 'cajun', 'cajun-hyphen', 'official', 'official-overrides-known-nonvegan', 'official-hidden-icon', 'name-vegan', 'hydration-vegan', 'late-hydration-vegan', 'stale-vegan', 'ingredients-beans', 'ingredients-pasta', 'features-gherkins', 'blocked', 'known-nonvegan'].map(id => {
+            return Object.fromEntries(['ready', 'ready-hyphen', 'cajun', 'cajun-hyphen', 'official', 'unowned-native-opacity', 'official-overrides-known-nonvegan', 'official-hidden-icon', 'name-vegan', 'hydration-vegan', 'late-hydration-vegan', 'stale-vegan', 'ingredients-beans', 'ingredients-pasta', 'features-gherkins', 'blocked', 'known-nonvegan'].map(id => {
               const card = document.getElementById(id);
               const button = card.querySelector('button');
               const img = card.querySelector('img');
@@ -398,6 +403,9 @@ def fixture_smoke_test() -> None:
     assert rows["stale-vegan"]["imageSrc"] == "https://www.ocado.com/images-v3/example/original.webp", rows["stale-vegan"]
     assert rows["stale-vegan"]["imageSrcset"].startswith("https://www.ocado.com/images-v3/example/100x100.webp"), rows["stale-vegan"]
     assert "ocadoVeganFilterGrayscaleSource" not in rows["stale-vegan"]["imageDataset"], rows["stale-vegan"]
+    assert rows["unowned-native-opacity"]["buttonText"] == "Add", rows["unowned-native-opacity"]
+    assert rows["unowned-native-opacity"]["imageOpacity"] == "0.42", rows["unowned-native-opacity"]
+    assert rows["unowned-native-opacity"]["imageSrc"] == "data:image/gif;base64,R0lGODlhAQABAAD/ACwAAAAAAQABAAACADs=", rows["unowned-native-opacity"]
     assert_card_state(rows, "blocked", blocked=True, label="Unknown vegan")
     assert_card_state(rows, "late-hydration-vegan", blocked=True, label="Unknown vegan", check_link_target=False)
     assert_card_state(rows, "known-nonvegan", blocked=True, label="Not vegan", check_link_target=False)

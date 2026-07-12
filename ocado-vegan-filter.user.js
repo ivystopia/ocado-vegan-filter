@@ -4895,15 +4895,13 @@
   }
 
   function imageLooksMutedByThisScript(image) {
-    const inlineStyle = image.getAttribute("style") || "";
-
     return (
       image.dataset.ocadoVeganFilterImage === "muted" ||
-      Boolean(image.dataset.ocadoVeganFilterGrayscaleSource) ||
-      Boolean(image.dataset.ocadoVeganFilterOriginalSrc) ||
-      Boolean(image.dataset.ocadoVeganFilterOriginalSrcset) ||
-      inlineStyle.includes(BLOCKED_IMAGE_FILTER) ||
-      inlineStyle.includes(BLOCKED_IMAGE_OPACITY)
+      image.dataset.ocadoVeganFilterGrayscaleSource !== undefined ||
+      image.dataset.ocadoVeganFilterOriginalStyle !== undefined ||
+      image.dataset.ocadoVeganFilterOriginalSrc !== undefined ||
+      image.dataset.ocadoVeganFilterOriginalSrcset !== undefined ||
+      image.dataset.ocadoVeganFilterOriginalSizes !== undefined
     );
   }
 
