@@ -7,6 +7,7 @@ import sqlite3
 import sys
 import tempfile
 import unittest
+from contextlib import closing
 from pathlib import Path
 
 TOOLS = Path(__file__).resolve().parents[1] / "tools"
@@ -42,7 +43,8 @@ class SyncOcadoDatabaseTests(unittest.TestCase):
 
             backup = sync.create_rolling_backup(db_path)
             self.assertTrue(backup.exists())
-            self.assertEqual(sqlite3.connect(backup).execute("select value from marker").fetchone()[0], "first")
+            with closing(sqlite3.connect(backup)) as backup_conn:
+                self.assertEqual(backup_conn.execute("select value from marker").fetchone()[0], "first")
 
             conn = sqlite3.connect(db_path)
             conn.execute("delete from marker")
@@ -51,7 +53,8 @@ class SyncOcadoDatabaseTests(unittest.TestCase):
             conn.close()
 
             backup = sync.create_rolling_backup(db_path)
-            self.assertEqual(sqlite3.connect(backup).execute("select value from marker").fetchone()[0], "second")
+            with closing(sqlite3.connect(backup)) as backup_conn:
+                self.assertEqual(backup_conn.execute("select value from marker").fetchone()[0], "second")
             self.assertEqual(len(list(db_path.parent.glob("ocado.sqlite.bak*"))), 1)
 
     def test_apply_current_flags_marks_current_and_stale_products(self) -> None:

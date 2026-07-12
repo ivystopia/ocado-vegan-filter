@@ -13,6 +13,7 @@ import subprocess
 import tempfile
 import time
 from concurrent.futures import FIRST_COMPLETED, Future, ThreadPoolExecutor, wait
+from contextlib import closing
 from dataclasses import dataclass
 from pathlib import Path
 from typing import Any, Iterable
@@ -549,7 +550,7 @@ def create_backup(db_path: Path) -> Path:
     backup_path = db_path.with_suffix(db_path.suffix + ".bak")
     if backup_path.exists():
         backup_path.unlink()
-    with sqlite3.connect(db_path) as source, sqlite3.connect(backup_path) as backup:
+    with closing(sqlite3.connect(db_path)) as source, closing(sqlite3.connect(backup_path)) as backup:
         source.backup(backup)
     return backup_path
 
@@ -1689,13 +1690,13 @@ def main(argv: list[str] | None = None) -> int:
 
     if args.command == "migrate-schema":
         backup = create_backup(db_path)
-        with connect(db_path) as conn:
+        with closing(connect(db_path)) as conn:
             with conn:
                 ensure_classification_schema(conn)
         print(f"Migrated {db_path}; backup at {backup}")
         return 0
 
-    with connect(db_path) as conn:
+    with closing(connect(db_path)) as conn:
         with conn:
             ensure_classification_schema(conn)
 

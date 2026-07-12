@@ -18,6 +18,7 @@ import sys
 import time
 import zlib
 from collections import deque
+from contextlib import closing
 from pathlib import Path
 from typing import Any, Iterable
 
@@ -217,7 +218,7 @@ def create_rolling_backup(db_path: Path) -> Path:
     backup_path = db_path.with_suffix(db_path.suffix + ".bak")
     if backup_path.exists():
         backup_path.unlink()
-    with sqlite3.connect(db_path) as source, sqlite3.connect(backup_path) as backup:
+    with closing(sqlite3.connect(db_path)) as source, closing(sqlite3.connect(backup_path)) as backup:
         source.backup(backup)
     return backup_path
 

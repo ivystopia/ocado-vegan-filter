@@ -6,6 +6,7 @@ from __future__ import annotations
 import argparse
 import re
 import sqlite3
+from contextlib import closing
 from pathlib import Path
 
 
@@ -133,7 +134,7 @@ def main() -> int:
 
     source = args.userscript.read_text(encoding="utf-8")
     before = {name: extract_set(source, name) for name in SET_QUERIES}
-    with sqlite3.connect(f"file:{args.db}?mode=ro", uri=True) as conn:
+    with closing(sqlite3.connect(f"file:{args.db}?mode=ro", uri=True)) as conn:
         allowlists = load_allowlists(conn)
     updated = regenerate(source, allowlists, args.version)
     args.userscript.write_text(updated, encoding="utf-8")
