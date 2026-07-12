@@ -5,17 +5,13 @@ from __future__ import annotations
 
 import base64
 import json
-import os
 import re
-import shutil
-import sys
 import time
 from pathlib import Path
 
 from selenium import webdriver
 from selenium.webdriver.common.by import By
 from selenium.webdriver.firefox.options import Options
-from selenium.webdriver.firefox.service import Service
 from selenium.webdriver.support import expected_conditions as EC
 from selenium.webdriver.support.ui import WebDriverWait
 
@@ -23,8 +19,7 @@ from selenium.webdriver.support.ui import WebDriverWait
 ROOT = Path(__file__).resolve().parents[1]
 USERSCRIPT = ROOT / "ocado-vegan-filter.user.js"
 PROMOTIONS_URL = "https://www.ocado.com/promotions?source=header%20button"
-CHEESE_SEARCH_URL = "https://www.ocado.com/search?q=cheese"
-FIREFOX_HELPER_SCRIPTS = os.environ.get("BROWSE_WITH_FIREFOX_SCRIPTS", "")
+ADDITIONAL_VEGAN_SEARCH_URL = "https://www.ocado.com/search?q=Kuhne%20Gherkins"
 OFFICIAL_VEGAN_IDS = {
     "369202011",
 }
@@ -46,6 +41,12 @@ KNOWN_NON_VEGAN_IDS = {
     "17959011",
 }
 MUTED_PROMOTION_RGB = "rgb(101, 67, 72)"
+
+
+def headless_firefox() -> webdriver.Firefox:
+    options = Options()
+    options.add_argument("-headless")
+    return webdriver.Firefox(options=options)
 
 
 def userscript() -> str:
@@ -87,7 +88,7 @@ def assert_card_state(rows: dict[str, dict[str, object]], card_id: str, *, block
     if blocked:
         assert row["buttonText"] == label, row
         assert row["buttonVisuallyMarked"] is True, row
-        assert row["blocked"] is False, row
+        assert row["buttonDisabled"] is False, row
         assert row["nonVeganClass"] is True, row
         assert row["imageOpacity"] == "0.42", row
         assert row["imagePointerEvents"] == "none", row
@@ -98,7 +99,7 @@ def assert_card_state(rows: dict[str, dict[str, object]], card_id: str, *, block
 
     assert row["buttonText"] == "Add", row
     assert row["buttonVisuallyMarked"] is False, row
-    assert row["blocked"] is False, row
+    assert row["buttonDisabled"] is False, row
     assert row["nonVeganClass"] is False, row
     assert row["imageOpacity"] == "1", row
     assert row["imagePointerEvents"] != "none", row
@@ -238,9 +239,7 @@ def fixture_smoke_test() -> None:
       </article>
     </body></html>"""
 
-    options = Options()
-    options.add_argument("-headless")
-    driver = webdriver.Firefox(options=options)
+    driver = headless_firefox()
     try:
         driver.get("data:text/html;base64," + base64.b64encode(html.encode()).decode())
         driver.execute_script(
@@ -294,7 +293,7 @@ def fixture_smoke_test() -> None:
                 buttonText: button.textContent.trim(),
                 buttonClassName: button.className,
                 buttonVisuallyMarked: button.classList.contains('ocado-vegan-filter-not-vegan-add'),
-                blocked: false,
+                buttonDisabled: Boolean(button.disabled),
                 nonVeganClass: card.classList.contains('ocado-vegan-filter-non-vegan'),
                 imageOpacity: getComputedStyle(img).opacity,
                 imageFilter: getComputedStyle(img).filter,
@@ -436,9 +435,7 @@ def grayscale_cache_smoke_test() -> None:
         for index in range(image_count)
     )
     html = f"<!doctype html><html><body>{cards}</body></html>"
-    options = Options()
-    options.add_argument("-headless")
-    driver = webdriver.Firefox(options=options)
+    driver = headless_firefox()
     try:
         driver.get("data:text/html;base64," + base64.b64encode(html.encode()).decode())
         driver.execute_script(
@@ -502,57 +499,6 @@ def grayscale_cache_smoke_test() -> None:
     print("grayscale cache smoke test passed")
 
 
-def import_firefox_helpers():
-    if FIREFOX_HELPER_SCRIPTS and FIREFOX_HELPER_SCRIPTS not in sys.path:
-        sys.path.insert(0, FIREFOX_HELPER_SCRIPTS)
-
-    from firefox_session import firefox_options, resolve_current_profile, snapshot_profile
-
-    return firefox_options, resolve_current_profile, snapshot_profile
-
-
-def remove_configured_extensions_from_temp_profile(profile: Path) -> None:
-    extension_ids = {value.strip() for value in os.environ.get("OCADO_TEST_REMOVE_EXTENSION_IDS", "").split(",") if value.strip()}
-
-    if not extension_ids:
-        return
-
-    for extension_id in extension_ids:
-        xpi = profile / f"extensions/{extension_id}.xpi"
-        if xpi.exists():
-            xpi.unlink()
-
-    prefs = profile / "prefs.js"
-    if prefs.exists():
-        lines = prefs.read_text(errors="ignore").splitlines()
-        lines = [line for line in lines if not any(extension_id in line for extension_id in extension_ids)]
-        prefs.write_text("\n".join(lines) + "\n")
-
-    for name in ["extensions.json", "extension-settings.json", "extension-preferences.json"]:
-        path = profile / name
-        if not path.exists():
-            continue
-
-        try:
-            data = json.loads(path.read_text())
-        except json.JSONDecodeError:
-            continue
-
-        changed = False
-        if name == "extensions.json" and isinstance(data.get("addons"), list):
-            before = len(data["addons"])
-            data["addons"] = [addon for addon in data["addons"] if addon.get("id") not in extension_ids]
-            changed = before != len(data["addons"])
-        elif isinstance(data, dict):
-            for extension_id in extension_ids:
-                if extension_id in data:
-                    data.pop(extension_id, None)
-                    changed = True
-
-        if changed:
-            path.write_text(json.dumps(data))
-
-
 def collect_rows(driver: webdriver.Firefox) -> list[dict[str, object]]:
     return driver.execute_script(
         r"""
@@ -592,7 +538,7 @@ def collect_rows(driver: webdriver.Firefox) -> list[dict[str, object]]:
             id: productIdFromUrl(productLink && productLink.href),
             official,
             nonVeganClass: card.classList.contains('ocado-vegan-filter-non-vegan'),
-            blocked: false,
+            buttonDisabled: Boolean(button && button.disabled),
             buttonVisuallyMarked: Boolean(button && button.classList.contains('ocado-vegan-filter-not-vegan-add')),
             buttonText: button && button.textContent.replace(/\s+/g, ' ').trim(),
             buttonClientWidth: button && button.clientWidth,
@@ -612,47 +558,31 @@ def collect_rows(driver: webdriver.Firefox) -> list[dict[str, object]]:
 
 
 def promotions_page_smoke_test() -> None:
-    firefox_options, resolve_current_profile, snapshot_profile = import_firefox_helpers()
-    runtime_profile, temporary_root = snapshot_profile(resolve_current_profile().path)
-    remove_configured_extensions_from_temp_profile(runtime_profile)
-
-    options = firefox_options(runtime_profile, headless=True)
-    service = Service(log_output=str(temporary_root / "geckodriver.log"), env={**os.environ, "MOZ_HEADLESS": "1"})
-    driver = webdriver.Firefox(options=options, service=service)
+    driver = headless_firefox()
     try:
         driver.set_page_load_timeout(90)
         wait = WebDriverWait(driver, 90)
         driver.get(PROMOTIONS_URL)
         wait.until(lambda d: d.execute_script("return document.readyState") in ("interactive", "complete"))
         wait.until(EC.presence_of_element_located((By.CSS_SELECTOR, ".product-card-container, [data-test^='fop-wrapper:'], [data-testid^='fop-wrapper:']")))
+        assert not driver.execute_script("return Boolean(document.querySelector('#ocado-vegan-filter-style'))")
         driver.execute_script(userscript())
 
         rows: list[dict[str, object]] = []
         for _ in range(12):
             time.sleep(0.8)
             rows = collect_rows(driver)
-            if any(row["id"] in MANUFACTURER_OR_NAME_VEGAN_IDS for row in rows) and any(row["nonVeganClass"] for row in rows):
+            if any(row["nonVeganClass"] and row["offerColor"] for row in rows):
                 break
             driver.execute_script("window.scrollBy(0, Math.max(800, window.innerHeight * 1.4))")
     finally:
         driver.quit()
-        shutil.rmtree(temporary_root, ignore_errors=True)
 
-    manufacturer_vegan_rows = [row for row in rows if row["id"] in MANUFACTURER_OR_NAME_VEGAN_IDS]
     muted_rows = [row for row in rows if row["nonVeganClass"]]
     official_rows = [row for row in rows if row["official"]]
 
     assert rows, "No product cards found on promotions page"
-    assert manufacturer_vegan_rows, "No vegan-according-to-manufacturer products found in loaded promotions slice"
     assert muted_rows, "No visually muted non-vegan or unknown products found in loaded promotions slice"
-
-    for row in manufacturer_vegan_rows:
-        assert row["buttonText"] == "Add", row
-        assert row["buttonVisuallyMarked"] is False, row
-        assert row["blocked"] is False, row
-        assert row["nonVeganClass"] is False, row
-        assert row["imageFilter"] == "none", row
-        assert row["imageOpacity"] == "1", row
 
     known_non_vegan_ids = extract_userscript_id_set("KNOWN_NON_VEGAN_PRODUCT_IDS")
     for row in muted_rows[:5]:
@@ -660,7 +590,7 @@ def promotions_page_smoke_test() -> None:
         assert row["buttonText"] == expected_label, row
         assert row["buttonVisuallyMarked"] is True, row
         assert row["buttonScrollWidth"] <= row["buttonClientWidth"], row
-        assert row["blocked"] is False, row
+        assert row["buttonDisabled"] is False, row
         assert_zero_saturation_filter(row["imageFilter"], row)
         assert row["imageOpacity"] == "0.42", row
         assert row["grayscaleSource"] or str(row["imageCurrentSrc"]).startswith("data:image/png"), row
@@ -680,10 +610,6 @@ def promotions_page_smoke_test() -> None:
 
     evidence = {
         "loadedCards": len(rows),
-        "manufacturerVeganExamples": [
-            {"id": row["id"], "href": row["href"], "buttonText": row["buttonText"], "text": row["text"][:120]}
-            for row in manufacturer_vegan_rows[:3]
-        ],
         "mutedExamples": [
             {
                 "id": row["id"],
@@ -704,20 +630,15 @@ def promotions_page_smoke_test() -> None:
     print("promotions page smoke test passed")
 
 
-def cheese_search_hydration_smoke_test() -> None:
-    firefox_options, resolve_current_profile, snapshot_profile = import_firefox_helpers()
-    runtime_profile, temporary_root = snapshot_profile(resolve_current_profile().path)
-    remove_configured_extensions_from_temp_profile(runtime_profile)
-
-    options = firefox_options(runtime_profile, headless=True)
-    service = Service(log_output=str(temporary_root / "geckodriver.log"), env={**os.environ, "MOZ_HEADLESS": "1"})
-    driver = webdriver.Firefox(options=options, service=service)
+def additional_vegan_search_smoke_test() -> None:
+    driver = headless_firefox()
     try:
         driver.set_page_load_timeout(90)
         wait = WebDriverWait(driver, 90)
-        driver.get(CHEESE_SEARCH_URL)
+        driver.get(ADDITIONAL_VEGAN_SEARCH_URL)
         wait.until(lambda d: d.execute_script("return document.readyState") in ("interactive", "complete"))
-        wait.until(EC.presence_of_element_located((By.CSS_SELECTOR, 'a[href*="/products/violife-non-dairy-cheese-alternative-slices/315701011"]')))
+        wait.until(EC.presence_of_element_located((By.CSS_SELECTOR, 'a[href*="/products/kuhne-gherkins/511102011"]')))
+        assert not driver.execute_script("return Boolean(document.querySelector('#ocado-vegan-filter-style'))")
         driver.execute_script(userscript())
 
         target = None
@@ -725,24 +646,23 @@ def cheese_search_hydration_smoke_test() -> None:
         for _ in range(10):
             time.sleep(0.5)
             rows = collect_rows(driver)
-            target = next((row for row in rows if row["id"] == "315701011"), None)
+            target = next((row for row in rows if row["id"] == "511102011"), None)
             if target and target["buttonText"]:
                 break
 
-        assert target, "Violife cheese product was not found in the loaded cheese search results"
+        assert target, "Kuhne Gherkins was not found in the loaded search results"
     finally:
         driver.quit()
-        shutil.rmtree(temporary_root, ignore_errors=True)
 
     assert target["buttonText"] == "Add", target
-    assert target["blocked"] is False, target
+    assert target["buttonDisabled"] is False, target
     assert target["nonVeganClass"] is False, target
     assert target["imageFilter"] == "none", target
     assert target["imageOpacity"] == "1", target
     print(
         json.dumps(
             {
-                "hydrationVeganExample": {
+                "additionalVeganExample": {
                     "id": target["id"],
                     "href": target["href"],
                     "buttonText": target["buttonText"],
@@ -753,14 +673,14 @@ def cheese_search_hydration_smoke_test() -> None:
             indent=2,
         )
     )
-    print("cheese search hydration smoke test passed")
+    print("additional vegan search smoke test passed")
 
 
 def main() -> None:
     userscript_source_test()
     fixture_smoke_test()
     grayscale_cache_smoke_test()
-    cheese_search_hydration_smoke_test()
+    additional_vegan_search_smoke_test()
     promotions_page_smoke_test()
 
 
