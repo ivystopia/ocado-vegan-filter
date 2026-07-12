@@ -2,7 +2,7 @@
 // @name        Ocado Vegan Filter
 // @version     1.6.0
 // @license     Unlicense
-// @description Update Ocado's incomplete "vegan" filter with over 18000 vegan products.
+// @description Supplement Ocado's incomplete vegan labelling with over 18,000 recognised vegan products.
 // @match       https://www.ocado.com/*
 // @run-at      document-idle
 // @inject-into page
@@ -14,17 +14,17 @@
 
 /*
  * ---------------------------------------------------------------------------
- * Vegan product counts in this source file
- * ----------------------------------------
+ * Product classification counts in this source file
+ * -------------------------------------------------
  * Recognised vegan product IDs: 18,741
  * Official Ocado vegan product IDs: 4,651
- * Additional vegan product IDs added by this script: 14,090
+ * Additional vegan product IDs recognised by this script: 14,090
  * Manufacturer/name evidence product IDs: 7,967
  * Ingredients evidence product IDs: 6,123
  * Known non-vegan product IDs: 13,276
  *
- * These counts are generated from the embedded allowlists below. Update them
- * whenever the allowlists are regenerated.
+ * These counts are generated from the embedded product ID sets below. Update
+ * them whenever the sets are regenerated.
  *
  * ---------------------------------------------------------------------------
  * Unlicense
@@ -61,8 +61,8 @@
  *
  * Background
  * ----------
- * Ocado has a built-in vegan filter and vegan product icon, but the live
- * catalogue is incomplete: many products that are vegan are not consistently
+ * Ocado has a built-in vegan filter and vegan product icon, but its live vegan
+ * metadata is incomplete: many products that are vegan are not consistently
  * surfaced by Ocado's vegan metadata. This makes ordinary browsing risky,
  * because visually similar vegan and non-vegan products can appear together,
  * and the standard "Add" button is shown for both.
@@ -79,7 +79,7 @@
  * Products treated as vegan keep their normal appearance and retain the normal
  * yellow "Add" button. A product is treated as vegan when Ocado identifies it as
  * vegan, when the product name explicitly says vegan, or when its product ID is
- * present in one of the embedded vegan allowlists below.
+ * present in one of the embedded vegan ID sets below.
  *
  * Known non-vegan and unknown products are visually de-emphasised. Their
  * product image is faded and fully desaturated, promotional red text is muted,
@@ -89,13 +89,14 @@
  * the label to "Add anyway" to make that explicit. Known non-vegan products show
  * "Not vegan"; products without enough evidence show "Unknown vegan".
  *
- * What the embedded vegan product lists mean
- * ------------------------------------------
- * The allowlists are split by evidence type:
+ * What the embedded product ID sets mean
+ * --------------------------------------
+ * The embedded ID sets are split by evidence type:
  *
  * - OFFICIAL_VEGAN_PRODUCT_IDS contains products Ocado officially tagged
  *   vegan. It acts as a fallback when Ocado hides the vegan icon in a
- *   product grid.
+ *   product grid. Official Ocado vegan metadata is authoritative and takes
+ *   precedence over local non-vegan evidence.
  * - MANUFACTURER_OR_NAME_VEGAN_PRODUCT_IDS contains products where the Ocado
  *   page content explicitly says the product is suitable for vegans, or where
  *   the product name itself contains the standalone word "vegan".
@@ -103,7 +104,7 @@
  *   stored ingredients/product identity data, without relying on a manufacturer
  *   vegan claim.
  * - KNOWN_NON_VEGAN_PRODUCT_IDS contains products with affirmative non-vegan
- *   evidence in the local audit. Products in neither a vegan list nor this list
+ *   evidence in the local audit. Products in neither a vegan set nor this set
  *   are treated as unknown, rather than assumed non-vegan.
  *
  * The script is intentionally self-contained for shopping use: it does not fetch
@@ -120,11 +121,11 @@
   const ADD_BUTTON_SELECTOR = 'button[data-test="counter-button"], button[data-testid="counter-button"]';
   const OUT_OF_STOCK_BUTTON_SELECTOR = ['button[data-test="fop-controls-show-alternatives-button"]', 'button[data-testid="fop-controls-show-alternatives-button"]'].join(",");
   const CARD_SELECTOR = ".product-card-container, [data-test^='fop-wrapper:'], [data-testid^='fop-wrapper:']";
-  const NON_VEGAN_CARD_CLASS = "ocado-vegan-filter-non-vegan";
-  const NON_VEGAN_ADD_BUTTON_CLASS = "ocado-vegan-filter-not-vegan-add";
+  const MUTED_CARD_CLASS = "ocado-vegan-filter-muted";
+  const MUTED_ADD_BUTTON_CLASS = "ocado-vegan-filter-muted-add";
   const STYLE_ID = "ocado-vegan-filter-style";
-  const BLOCKED_IMAGE_FILTER = "grayscale(100%) saturate(0)";
-  const BLOCKED_IMAGE_OPACITY = "0.42";
+  const MUTED_IMAGE_FILTER = "grayscale(100%) saturate(0)";
+  const MUTED_IMAGE_OPACITY = "0.42";
   const MUTED_PROMOTION_COLOR = "#654348";
   const HYDRATION_ROOT_NAMES = ["__INITIAL_STATE__", "__QUERY_INITIAL_STATE__", "__staticRouterHydrationData", "__staticRouterHydrationData__"];
   const HYDRATION_INDEX_REFRESH_MS = 1000;
@@ -137,7 +138,7 @@
     productsByRetailerId: new Map(),
     indexedAt: 0,
   };
-  let hydrationIndexForcedRefreshUsedInRun = false;
+  let hydrationIndexRefreshedInRun = false;
 
   // Ocado's generated class names are stable enough within one page view.
   const documentClassCache = new Map();
@@ -4637,7 +4638,7 @@
 
     /*
      * These styles are only visual.
-     * They make "not known vegan" products look muted, but they do not remove
+     * They make known non-vegan and unknown products look muted, but they do not remove
      * Ocado's links or basket controls.
      */
     /*
@@ -4652,37 +4653,37 @@
     const style = document.createElement("style");
     style.id = STYLE_ID;
     style.textContent = `
-    .${NON_VEGAN_ADD_BUTTON_CLASS}[data-ocado-vegan-filter-button-style="fallback"] {
+    .${MUTED_ADD_BUTTON_CLASS}[data-ocado-vegan-filter-button-style="fallback"] {
       background: #e9e4ed !important;
       border: 0 !important;
       color: #2e004d !important;
     }
 
-    .${NON_VEGAN_CARD_CLASS} a[data-test="fop-product-link"] img,
-    .${NON_VEGAN_CARD_CLASS} a[data-testid="fop-product-link"] img,
-    .${NON_VEGAN_CARD_CLASS} a[href*="/products/"] img,
-    .${NON_VEGAN_CARD_CLASS} .image-container img,
-    .${NON_VEGAN_CARD_CLASS} .header-container img,
-    .${NON_VEGAN_CARD_CLASS} img[data-test="lazy-load-image"],
-    .${NON_VEGAN_CARD_CLASS} img[data-testid="lazy-load-image"],
-    .${NON_VEGAN_CARD_CLASS} img[alt] {
-      filter: grayscale(100%) saturate(0) !important;
-      opacity: 0.42 !important;
+    .${MUTED_CARD_CLASS} a[data-test="fop-product-link"] img,
+    .${MUTED_CARD_CLASS} a[data-testid="fop-product-link"] img,
+    .${MUTED_CARD_CLASS} a[href*="/products/"] img,
+    .${MUTED_CARD_CLASS} .image-container img,
+    .${MUTED_CARD_CLASS} .header-container img,
+    .${MUTED_CARD_CLASS} img[data-test="lazy-load-image"],
+    .${MUTED_CARD_CLASS} img[data-testid="lazy-load-image"],
+    .${MUTED_CARD_CLASS} img[alt] {
+      filter: ${MUTED_IMAGE_FILTER} !important;
+      opacity: ${MUTED_IMAGE_OPACITY} !important;
       animation: none !important;
       pointer-events: none !important;
       transition: none !important;
     }
 
-    .${NON_VEGAN_CARD_CLASS} .promotion-container a,
-    .${NON_VEGAN_CARD_CLASS} [data-test="fop-offer-text"],
-    .${NON_VEGAN_CARD_CLASS} [data-testid="fop-offer-text"],
-    .${NON_VEGAN_CARD_CLASS} [data-test="fop-offer-icon"],
-    .${NON_VEGAN_CARD_CLASS} [data-testid="fop-offer-icon"],
-    .${NON_VEGAN_CARD_CLASS} [data-test="fop-price"][class*="promotion"],
-    .${NON_VEGAN_CARD_CLASS} [data-testid="fop-price"][class*="promotion"],
-    .${NON_VEGAN_CARD_CLASS} [data-icon="icon__promotion"],
-    .${NON_VEGAN_CARD_CLASS} [class*="_text--promotion_"],
-    .${NON_VEGAN_CARD_CLASS} [class*="_display--promotion_"] {
+    .${MUTED_CARD_CLASS} .promotion-container a,
+    .${MUTED_CARD_CLASS} [data-test="fop-offer-text"],
+    .${MUTED_CARD_CLASS} [data-testid="fop-offer-text"],
+    .${MUTED_CARD_CLASS} [data-test="fop-offer-icon"],
+    .${MUTED_CARD_CLASS} [data-testid="fop-offer-icon"],
+    .${MUTED_CARD_CLASS} [data-test="fop-price"][class*="promotion"],
+    .${MUTED_CARD_CLASS} [data-testid="fop-price"][class*="promotion"],
+    .${MUTED_CARD_CLASS} [data-icon="icon__promotion"],
+    .${MUTED_CARD_CLASS} [class*="_text--promotion_"],
+    .${MUTED_CARD_CLASS} [class*="_display--promotion_"] {
       color: ${MUTED_PROMOTION_COLOR} !important;
       fill: ${MUTED_PROMOTION_COLOR} !important;
     }
@@ -4705,7 +4706,7 @@
   }
 
   function isAddButton(button) {
-    return button.classList.contains(NON_VEGAN_ADD_BUTTON_CLASS) || (textOf(button) === "Add" && /^Add\b/i.test(button.getAttribute("aria-label") || ""));
+    return button.classList.contains(MUTED_ADD_BUTTON_CLASS) || (textOf(button) === "Add" && /^Add\b/i.test(button.getAttribute("aria-label") || ""));
   }
 
   function firstClassMatching(element, pattern) {
@@ -4770,7 +4771,7 @@
   }
 
   function applyOutOfStockButtonStyle(button) {
-    // Save the original classes so the card can be restored if it later turns out to be vegan.
+    // Save the original classes so later vegan metadata can restore the card.
     if (button.dataset.ocadoVeganFilterOriginalClass === undefined) {
       button.dataset.ocadoVeganFilterOriginalClass = button.getAttribute("class") || "";
     }
@@ -4778,7 +4779,7 @@
     const className = outOfStockButtonClassName(button);
 
     if (className) {
-      const styledClassName = `${className} ${NON_VEGAN_ADD_BUTTON_CLASS}`.trim();
+      const styledClassName = `${className} ${MUTED_ADD_BUTTON_CLASS}`.trim();
 
       if (button.getAttribute("class") !== styledClassName) {
         button.setAttribute("class", styledClassName);
@@ -4789,8 +4790,8 @@
       return;
     }
 
-    if (!button.classList.contains(NON_VEGAN_ADD_BUTTON_CLASS)) {
-      button.classList.add(NON_VEGAN_ADD_BUTTON_CLASS);
+    if (!button.classList.contains(MUTED_ADD_BUTTON_CLASS)) {
+      button.classList.add(MUTED_ADD_BUTTON_CLASS);
     }
     if (button.dataset.ocadoVeganFilterButtonStyle !== "fallback") {
       button.dataset.ocadoVeganFilterButtonStyle = "fallback";
@@ -4805,12 +4806,12 @@
     // The button remains Ocado's original Add button. Only the visible text is
     // changed, and the hover state makes the click-through behaviour explicit.
     button.addEventListener("mouseenter", () => {
-      if (button.classList.contains(NON_VEGAN_ADD_BUTTON_CLASS) && textOf(button) !== ADD_ANYWAY_LABEL) {
+      if (button.classList.contains(MUTED_ADD_BUTTON_CLASS) && textOf(button) !== ADD_ANYWAY_LABEL) {
         button.textContent = ADD_ANYWAY_LABEL;
       }
     });
     button.addEventListener("mouseleave", () => {
-      if (button.classList.contains(NON_VEGAN_ADD_BUTTON_CLASS)) {
+      if (button.classList.contains(MUTED_ADD_BUTTON_CLASS)) {
         const label = button.dataset.ocadoVeganFilterLabel || UNKNOWN_VEGAN_LABEL;
 
         if (textOf(button) !== label) {
@@ -4821,7 +4822,7 @@
     button.dataset.ocadoVeganFilterHoverTextInstalled = "true";
   }
 
-  function markAddButtonsCosmetically(card, label) {
+  function styleMutedAddButtons(card, label) {
     // Do not replace or disable buttons. We keep the existing Ocado Add button
     // and swap only its visual class set/text, so the original click handler
     // remains on the original button.
@@ -4848,15 +4849,15 @@
     }
   }
 
-  function restoreAddButtonLabels(card) {
+  function restoreAddButtonAppearance(card) {
     // Cards can change classification as Ocado hydrates more metadata into the
-    // page. If a card becomes known-vegan, restore the button classes/text we
+    // page. If later metadata identifies a card as vegan, restore the appearance
     // saved before applying the cosmetic out-of-stock style.
-    for (const addButton of card.querySelectorAll(`.${NON_VEGAN_ADD_BUTTON_CLASS}`)) {
+    for (const addButton of card.querySelectorAll(`.${MUTED_ADD_BUTTON_CLASS}`)) {
       if (typeof addButton.dataset.ocadoVeganFilterOriginalClass === "string") {
         addButton.setAttribute("class", addButton.dataset.ocadoVeganFilterOriginalClass);
       } else {
-        addButton.classList.remove(NON_VEGAN_ADD_BUTTON_CLASS);
+        addButton.classList.remove(MUTED_ADD_BUTTON_CLASS);
       }
 
       addButton.textContent = addButton.dataset.ocadoVeganFilterOriginalText || "Add";
@@ -4894,7 +4895,7 @@
     return image.currentSrc || image.src || image.getAttribute("src") || "";
   }
 
-  function imageLooksMutedByThisScript(image) {
+  function imageIsMutedByThisScript(image) {
     return (
       image.dataset.ocadoVeganFilterImage === "muted" ||
       image.dataset.ocadoVeganFilterGrayscaleSource !== undefined ||
@@ -4918,7 +4919,7 @@
 
         const card = findProductCard(image);
 
-        if (card && card.classList.contains(NON_VEGAN_CARD_CLASS)) {
+        if (card && card.classList.contains(MUTED_CARD_CLASS)) {
           scheduleRun();
         }
       },
@@ -4996,7 +4997,7 @@
     }
   }
 
-  function blockProductImages(card) {
+  function muteProductImages(card) {
     // The CSS makes the image pointer-transparent so Ocado's overlaid product
     // link remains clickable.
     for (const image of productImages(card)) {
@@ -5011,8 +5012,8 @@
         image.dataset.ocadoVeganFilterImage = "muted";
       }
       replaceWithGrayscaleImage(image);
-      setImportantStyle(image, "filter", BLOCKED_IMAGE_FILTER);
-      setImportantStyle(image, "opacity", BLOCKED_IMAGE_OPACITY);
+      setImportantStyle(image, "filter", MUTED_IMAGE_FILTER);
+      setImportantStyle(image, "opacity", MUTED_IMAGE_OPACITY);
       setImportantStyle(image, "animation", "none");
       setImportantStyle(image, "pointer-events", "none");
       setImportantStyle(image, "transition", "none");
@@ -5031,7 +5032,7 @@
 
   function restoreProductImages(card) {
     for (const image of productImages(card)) {
-      if (!imageLooksMutedByThisScript(image)) {
+      if (!imageIsMutedByThisScript(image)) {
         continue;
       }
 
@@ -5098,9 +5099,8 @@
   }
 
   function isKnownVeganProductId(productId) {
-    // Local allowlist lookup. Officially tagged vegan products are handled
-    // separately, so this only covers products Ocado does not reliably identify
-    // as vegan in the rendered grid.
+    // Embedded vegan-set lookup. The official set is also checked because Ocado
+    // does not render its vegan badge consistently on product cards.
     return productId ? OFFICIAL_VEGAN_PRODUCT_IDS.has(productId) || MANUFACTURER_OR_NAME_VEGAN_PRODUCT_IDS.has(productId) || INGREDIENTS_VEGAN_PRODUCT_IDS.has(productId) : false;
   }
 
@@ -5195,18 +5195,18 @@
     const indexWasRefreshed = productsByRetailerId !== previousProductsByRetailerId;
 
     if (indexWasRefreshed) {
-      hydrationIndexForcedRefreshUsedInRun = true;
+      hydrationIndexRefreshedInRun = true;
     }
 
     let product = productsByRetailerId.get(productId);
 
-    if (!product && !hydrationIndexForcedRefreshUsedInRun) {
+    if (!product && !hydrationIndexRefreshedInRun) {
       /*
        * Ocado sometimes mutates its hydration object in place. Do at most one
-       * one re-index per run: enough to catch newly loaded products without
+       * re-index per run: enough to catch newly loaded products without
        * walking the full hydration tree repeatedly for missing products.
        */
-      hydrationIndexForcedRefreshUsedInRun = true;
+      hydrationIndexRefreshedInRun = true;
       product = hydrationProductsByRetailerId(true).get(productId);
     }
 
@@ -5247,9 +5247,9 @@
     return match ? match[1].replace(/[-_]+/g, " ") : "";
   }
 
-  function productNameSaysVegan(card) {
-    // Cheap fallback for products where the name itself is explicit, e.g.
-    // "vegan mozzarella". This deliberately requires the standalone word.
+  function productNameOrSlugSaysVegan(card) {
+    // Cheap fallback for products whose rendered name or URL slug is explicit,
+    // e.g. "vegan mozzarella". This deliberately requires the standalone word.
     return /\bvegan\b/i.test(`${productNameForCard(card)} ${productUrlSlugForCard(card)}`);
   }
 
@@ -5265,7 +5265,7 @@
     });
   }
 
-  function productStatusForCard(card) {
+  function veganStatusForCard(card) {
     if (hasOfficialVeganTag(card)) {
       return "vegan";
     }
@@ -5273,10 +5273,10 @@
     const productId = productIdForCard(card);
 
     /*
-     * Check cheap local evidence before walking Ocado's hidden hydration data.
-     * The order should not change the answer, only the amount of work needed.
+     * Positive evidence is intentionally checked before the known non-vegan
+     * fallback. In particular, Ocado's official metadata is authoritative.
      */
-    if (isKnownVeganProductId(productId) || productNameSaysVegan(card) || hydrationProductHasVeganAttribute(productId)) {
+    if (isKnownVeganProductId(productId) || productNameOrSlugSaysVegan(card) || hydrationProductHasVeganAttribute(productId)) {
       return "vegan";
     }
 
@@ -5284,25 +5284,25 @@
   }
 
   function processCard(card) {
-    const status = productStatusForCard(card);
+    const status = veganStatusForCard(card);
 
     // Vegan products are left exactly as Ocado rendered them.
     if (status === "vegan") {
-      if (card.classList.contains(NON_VEGAN_CARD_CLASS)) {
-        card.classList.remove(NON_VEGAN_CARD_CLASS);
+      if (card.classList.contains(MUTED_CARD_CLASS)) {
+        card.classList.remove(MUTED_CARD_CLASS);
       }
-      restoreAddButtonLabels(card);
+      restoreAddButtonAppearance(card);
       restoreProductImages(card);
       return;
     }
 
     // Known non-vegan and unknown products are still usable, but visually muted.
     const label = status === "nonvegan" ? NON_VEGAN_LABEL : UNKNOWN_VEGAN_LABEL;
-    if (!card.classList.contains(NON_VEGAN_CARD_CLASS)) {
-      card.classList.add(NON_VEGAN_CARD_CLASS);
+    if (!card.classList.contains(MUTED_CARD_CLASS)) {
+      card.classList.add(MUTED_CARD_CLASS);
     }
-    blockProductImages(card);
-    markAddButtonsCosmetically(card, label);
+    muteProductImages(card);
+    styleMutedAddButtons(card, label);
   }
 
   function productCards() {
@@ -5329,7 +5329,7 @@
 
   function run() {
     scheduled = false;
-    hydrationIndexForcedRefreshUsedInRun = false;
+    hydrationIndexRefreshedInRun = false;
     addStyles();
 
     for (const card of productCards()) {

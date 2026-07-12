@@ -101,7 +101,7 @@ def update_counts(source: str, allowlists: dict[str, list[str]]) -> str:
     replacements = {
         "Recognised vegan product IDs": total,
         "Official Ocado vegan product IDs": official,
-        "Additional vegan product IDs added by this script": total - official,
+        "Additional vegan product IDs recognised by this script": total - official,
         "Manufacturer/name evidence product IDs": manufacturer,
         "Ingredients evidence product IDs": ingredients,
         "Known non-vegan product IDs": nonvegan,

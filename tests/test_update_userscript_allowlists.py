@@ -25,6 +25,7 @@ class UpdateUserscriptAllowlistsTests(unittest.TestCase):
 
     def test_regenerate_uses_only_canonical_vegan_rows(self) -> None:
         conn = sqlite3.connect(":memory:")
+        self.addCleanup(conn.close)
         conn.execute(
             "create table products(id text, official_vegan integer, vegan_status text, vegan_reason text)"
         )
@@ -49,7 +50,7 @@ class UpdateUserscriptAllowlistsTests(unittest.TestCase):
         self.assertEqual(generator.extract_set(updated, "KNOWN_NON_VEGAN_PRODUCT_IDS"), {"60"})
         self.assertIn("// @version     9.9.9", updated)
         self.assertIn("Recognised vegan product IDs: 4", updated)
-        self.assertIn("Additional vegan product IDs added by this script: 3", updated)
+        self.assertIn("Additional vegan product IDs recognised by this script: 3", updated)
         self.assertIn("Known non-vegan product IDs: 1", updated)
 
     def test_load_allowlists_rejects_official_tag_classification_conflicts(self) -> None:

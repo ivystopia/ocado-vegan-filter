@@ -83,13 +83,13 @@ def userscript_source_test() -> None:
     print("userscript source test passed")
 
 
-def assert_card_state(rows: dict[str, dict[str, object]], card_id: str, *, blocked: bool, label: str = "", check_link_target: bool = True) -> None:
+def assert_card_state(rows: dict[str, dict[str, object]], card_id: str, *, muted: bool, label: str = "", check_link_target: bool = True) -> None:
     row = rows[card_id]
-    if blocked:
+    if muted:
         assert row["buttonText"] == label, row
         assert row["buttonVisuallyMarked"] is True, row
         assert row["buttonDisabled"] is False, row
-        assert row["nonVeganClass"] is True, row
+        assert row["mutedClass"] is True, row
         assert row["imageOpacity"] == "0.42", row
         assert row["imagePointerEvents"] == "none", row
         if check_link_target:
@@ -100,7 +100,7 @@ def assert_card_state(rows: dict[str, dict[str, object]], card_id: str, *, block
     assert row["buttonText"] == "Add", row
     assert row["buttonVisuallyMarked"] is False, row
     assert row["buttonDisabled"] is False, row
-    assert row["nonVeganClass"] is False, row
+    assert row["mutedClass"] is False, row
     assert row["imageOpacity"] == "1", row
     assert row["imagePointerEvents"] != "none", row
     assert row["imageFilter"] == "none", row
@@ -115,8 +115,8 @@ def assert_zero_saturation_filter(value: object, row: object) -> None:
 def fixture_smoke_test() -> None:
     html = """<!doctype html><html><body>
       <script>
-        window.blockedAddClicks = 0;
-        window.blockedImageClicks = 0;
+        window.unknownAddClicks = 0;
+        window.unknownImageClicks = 0;
         window.__INITIAL_STATE__ = {
           data: {
             products: {
@@ -199,7 +199,7 @@ def fixture_smoke_test() -> None:
         <a href="https://www.ocado.com/products/synthetic-late-hydration-product/999997011">Synthetic Late Hydration Product<img></a>
         <button data-test="counter-button" aria-label="Add Synthetic Late Hydration Product">Add</button>
       </article>
-      <article class="product-card-container ocado-vegan-filter-non-vegan" id="stale-vegan">
+      <article class="product-card-container ocado-vegan-filter-muted" id="stale-vegan">
         <a href="https://www.ocado.com/products/violife-non-dairy-cheese-alternative-slices/315701011">Violife Non-Dairy Cheese Alternative Slices<img
           src="data:image/png;base64,stale"
           data-ocado-vegan-filter-grayscale-source="https://www.ocado.com/images-v3/example/original.webp"
@@ -221,13 +221,13 @@ def fixture_smoke_test() -> None:
         <a href="https://www.ocado.com/products/kuhne-gherkins/511102011">Kuhne Gherkins<img></a>
         <button data-test="counter-button" aria-label="Add Kuhne Gherkins">Add</button>
       </article>
-      <article class="product-card-container" id="blocked">
-        <a href="https://www.ocado.com/products/mcvities-penguin-orange-biscuit-bars-multipack-123456789" onclick="window.blockedImageClicks += 1; event.preventDefault();"><img style="display: block; width: 100px; height: 100px;"></a>
+      <article class="product-card-container" id="unknown">
+        <a href="https://www.ocado.com/products/mcvities-penguin-orange-biscuit-bars-multipack-123456789" onclick="window.unknownImageClicks += 1; event.preventDefault();"><img style="display: block; width: 100px; height: 100px;"></a>
         <span data-test="fop-offer-text" style="color: rgb(169, 0, 22)">Half price</span>
         <span class="_text--promotion_fixture" style="color: rgb(169, 0, 22)">£1.00 per pack</span>
         <span data-test="fop-price" class="_display--promotion_fixture" style="color: rgb(169, 0, 22)">£1.00</span>
         <svg data-test="fop-offer-icon" style="fill: rgb(169, 0, 22)"></svg>
-        <button data-test="counter-button" aria-label="Add McVitie's Penguin Orange Biscuit Bars Multipack" onclick="window.blockedAddClicks += 1">Add</button>
+        <button data-test="counter-button" aria-label="Add McVitie's Penguin Orange Biscuit Bars Multipack" onclick="window.unknownAddClicks += 1">Add</button>
       </article>
       <article class="product-card-container" id="known-nonvegan">
         <a href="https://www.ocado.com/products/example-known-nonvegan-17959011"><img style="display: block; width: 100px; height: 100px;"></a>
@@ -266,22 +266,22 @@ def fixture_smoke_test() -> None:
         )
         driver.execute_script(userscript())
         wait = WebDriverWait(driver, 5)
-        wait.until(lambda d: d.execute_script("return getComputedStyle(document.querySelector('#blocked img')).opacity") == "0.42")
-        driver.find_element(By.CSS_SELECTOR, "#blocked button").click()
-        driver.find_element(By.CSS_SELECTOR, "#blocked a").click()
+        wait.until(lambda d: d.execute_script("return getComputedStyle(document.querySelector('#unknown img')).opacity") == "0.42")
+        driver.find_element(By.CSS_SELECTOR, "#unknown button").click()
+        driver.find_element(By.CSS_SELECTOR, "#unknown a").click()
         rows = driver.execute_script(
             """
-            const blockedButton = document.querySelector('#blocked button');
-            blockedButton.dispatchEvent(new MouseEvent('mouseenter', { bubbles: true }));
-            const blockedHoverText = blockedButton.textContent.trim();
-            blockedButton.dispatchEvent(new MouseEvent('mouseleave', { bubbles: true }));
-            const blockedLeaveText = blockedButton.textContent.trim();
+            const unknownButton = document.querySelector('#unknown button');
+            unknownButton.dispatchEvent(new MouseEvent('mouseenter', { bubbles: true }));
+            const unknownHoverText = unknownButton.textContent.trim();
+            unknownButton.dispatchEvent(new MouseEvent('mouseleave', { bubbles: true }));
+            const unknownLeaveText = unknownButton.textContent.trim();
             const knownNonveganButton = document.querySelector('#known-nonvegan button');
             knownNonveganButton.dispatchEvent(new MouseEvent('mouseenter', { bubbles: true }));
             const knownNonveganHoverText = knownNonveganButton.textContent.trim();
             knownNonveganButton.dispatchEvent(new MouseEvent('mouseleave', { bubbles: true }));
             const knownNonveganLeaveText = knownNonveganButton.textContent.trim();
-            return Object.fromEntries(['ready', 'ready-hyphen', 'cajun', 'cajun-hyphen', 'official', 'unowned-native-opacity', 'official-overrides-known-nonvegan', 'official-hidden-icon', 'name-vegan', 'hydration-vegan', 'late-hydration-vegan', 'stale-vegan', 'ingredients-beans', 'ingredients-pasta', 'features-gherkins', 'blocked', 'known-nonvegan'].map(id => {
+            return Object.fromEntries(['ready', 'ready-hyphen', 'cajun', 'cajun-hyphen', 'official', 'unowned-native-opacity', 'official-overrides-known-nonvegan', 'official-hidden-icon', 'name-vegan', 'hydration-vegan', 'late-hydration-vegan', 'stale-vegan', 'ingredients-beans', 'ingredients-pasta', 'features-gherkins', 'unknown', 'known-nonvegan'].map(id => {
               const card = document.getElementById(id);
               const button = card.querySelector('button');
               const img = card.querySelector('img');
@@ -292,9 +292,9 @@ def fixture_smoke_test() -> None:
               return [id, {
                 buttonText: button.textContent.trim(),
                 buttonClassName: button.className,
-                buttonVisuallyMarked: button.classList.contains('ocado-vegan-filter-not-vegan-add'),
+                buttonVisuallyMarked: button.classList.contains('ocado-vegan-filter-muted-add'),
                 buttonDisabled: Boolean(button.disabled),
-                nonVeganClass: card.classList.contains('ocado-vegan-filter-non-vegan'),
+                mutedClass: card.classList.contains('ocado-vegan-filter-muted'),
                 imageOpacity: getComputedStyle(img).opacity,
                 imageFilter: getComputedStyle(img).filter,
                 imagePointerEvents: getComputedStyle(img).pointerEvents,
@@ -309,15 +309,15 @@ def fixture_smoke_test() -> None:
                 offerUnitPriceColor: offerUnitPrice && getComputedStyle(offerUnitPrice).color,
                 offerPriceColor: offerPrice && getComputedStyle(offerPrice).color,
                 offerIconFill: offerIcon && getComputedStyle(offerIcon).fill,
-                blockedHoverText,
-                blockedLeaveText,
+                unknownHoverText,
+                unknownLeaveText,
                 knownNonveganHoverText,
                 knownNonveganLeaveText,
               }];
             }));
             """
         )
-        click_counts = driver.execute_script("return {add: window.blockedAddClicks, image: window.blockedImageClicks};")
+        click_counts = driver.execute_script("return {add: window.unknownAddClicks, image: window.unknownImageClicks};")
         time.sleep(0.15)
         idle_frame_count = driver.execute_script("return window.ocadoTestAnimationFrameCount;")
         time.sleep(0.25)
@@ -334,14 +334,14 @@ def fixture_smoke_test() -> None:
                 type: mutation.type,
               })));
             });
-            window.ocadoTestRepeatedMutationObserver.observe(document.querySelector('#blocked'), {
+            window.ocadoTestRepeatedMutationObserver.observe(document.querySelector('#unknown'), {
               attributes: true,
               childList: true,
               subtree: true,
             });
             """
         )
-        driver.execute_script("document.querySelector('#blocked').classList.add('external-page-update');")
+        driver.execute_script("document.querySelector('#unknown').classList.add('external-page-update');")
         wait.until(lambda d: d.execute_script("return window.ocadoTestAnimationFrameCount;") > settled_frame_count)
         external_update_frame_count = driver.execute_script("return window.ocadoTestAnimationFrameCount;")
         time.sleep(0.25)
@@ -358,26 +358,26 @@ def fixture_smoke_test() -> None:
         )
         wait.until(
             lambda d: d.execute_script(
-                "return document.querySelector('#late-hydration-vegan button').textContent.trim() === 'Add' && !document.querySelector('#late-hydration-vegan').classList.contains('ocado-vegan-filter-non-vegan');"
+                "return document.querySelector('#late-hydration-vegan button').textContent.trim() === 'Add' && !document.querySelector('#late-hydration-vegan').classList.contains('ocado-vegan-filter-muted');"
             )
         )
         driver.execute_script(
             """
             window.ocadoTestRepeatedMutationObserver.disconnect();
-            document.querySelector('#blocked button').textContent = 'Add';
-            document.querySelector('#blocked img').style.setProperty('opacity', '1', 'important');
+            document.querySelector('#unknown button').textContent = 'Add';
+            document.querySelector('#unknown img').style.setProperty('opacity', '1', 'important');
             """
         )
         wait.until(
             lambda d: d.execute_script(
-                "return document.querySelector('#blocked button').textContent.trim() === 'Unknown vegan' && getComputedStyle(document.querySelector('#blocked img')).opacity === '0.42';"
+                "return document.querySelector('#unknown button').textContent.trim() === 'Unknown vegan' && getComputedStyle(document.querySelector('#unknown img')).opacity === '0.42';"
             )
         )
         driver.execute_script("document.querySelector('#load-mutation-source img').dispatchEvent(new Event('load')); ")
         wait.until(EC.presence_of_element_located((By.CSS_SELECTOR, "#card-added-during-image-load")))
         wait.until(
             lambda d: d.execute_script(
-                "return document.querySelector('#card-added-during-image-load').classList.contains('ocado-vegan-filter-non-vegan') && document.querySelector('#card-added-during-image-load button').textContent.trim() === 'Unknown vegan';"
+                "return document.querySelector('#card-added-during-image-load').classList.contains('ocado-vegan-filter-muted') && document.querySelector('#card-added-during-image-load button').textContent.trim() === 'Unknown vegan';"
             )
         )
     finally:
@@ -398,26 +398,26 @@ def fixture_smoke_test() -> None:
         "ingredients-pasta",
         "features-gherkins",
     ]:
-        assert_card_state(rows, card_id, blocked=False)
+        assert_card_state(rows, card_id, muted=False)
     assert rows["stale-vegan"]["imageSrc"] == "https://www.ocado.com/images-v3/example/original.webp", rows["stale-vegan"]
     assert rows["stale-vegan"]["imageSrcset"].startswith("https://www.ocado.com/images-v3/example/100x100.webp"), rows["stale-vegan"]
     assert "ocadoVeganFilterGrayscaleSource" not in rows["stale-vegan"]["imageDataset"], rows["stale-vegan"]
     assert rows["unowned-native-opacity"]["buttonText"] == "Add", rows["unowned-native-opacity"]
     assert rows["unowned-native-opacity"]["imageOpacity"] == "0.42", rows["unowned-native-opacity"]
     assert rows["unowned-native-opacity"]["imageSrc"] == "data:image/gif;base64,R0lGODlhAQABAAD/ACwAAAAAAQABAAACADs=", rows["unowned-native-opacity"]
-    assert_card_state(rows, "blocked", blocked=True, label="Unknown vegan")
-    assert_card_state(rows, "late-hydration-vegan", blocked=True, label="Unknown vegan", check_link_target=False)
-    assert_card_state(rows, "known-nonvegan", blocked=True, label="Not vegan", check_link_target=False)
+    assert_card_state(rows, "unknown", muted=True, label="Unknown vegan")
+    assert_card_state(rows, "late-hydration-vegan", muted=True, label="Unknown vegan", check_link_target=False)
+    assert_card_state(rows, "known-nonvegan", muted=True, label="Not vegan", check_link_target=False)
     assert click_counts == {"add": 1, "image": 1}, click_counts
-    assert rows["blocked"]["blockedHoverText"] == "Add anyway", rows["blocked"]
-    assert rows["blocked"]["blockedLeaveText"] == "Unknown vegan", rows["blocked"]
+    assert rows["unknown"]["unknownHoverText"] == "Add anyway", rows["unknown"]
+    assert rows["unknown"]["unknownLeaveText"] == "Unknown vegan", rows["unknown"]
     assert rows["known-nonvegan"]["knownNonveganHoverText"] == "Add anyway", rows["known-nonvegan"]
     assert rows["known-nonvegan"]["knownNonveganLeaveText"] == "Not vegan", rows["known-nonvegan"]
-    assert "ocado-oos-button" in rows["blocked"]["buttonClassName"], rows["blocked"]
-    assert rows["blocked"]["offerColor"] == MUTED_PROMOTION_RGB, rows["blocked"]
-    assert rows["blocked"]["offerUnitPriceColor"] == MUTED_PROMOTION_RGB, rows["blocked"]
-    assert rows["blocked"]["offerPriceColor"] == MUTED_PROMOTION_RGB, rows["blocked"]
-    assert rows["blocked"]["offerIconFill"] == MUTED_PROMOTION_RGB, rows["blocked"]
+    assert "ocado-oos-button" in rows["unknown"]["buttonClassName"], rows["unknown"]
+    assert rows["unknown"]["offerColor"] == MUTED_PROMOTION_RGB, rows["unknown"]
+    assert rows["unknown"]["offerUnitPriceColor"] == MUTED_PROMOTION_RGB, rows["unknown"]
+    assert rows["unknown"]["offerPriceColor"] == MUTED_PROMOTION_RGB, rows["unknown"]
+    assert rows["unknown"]["offerIconFill"] == MUTED_PROMOTION_RGB, rows["unknown"]
     assert settled_frame_count == idle_frame_count, (idle_frame_count, settled_frame_count)
     assert external_update_frame_count == settled_frame_count + 1, (settled_frame_count, external_update_frame_count)
     assert final_frame_count == external_update_frame_count, (external_update_frame_count, final_frame_count)
@@ -478,7 +478,7 @@ def grayscale_cache_smoke_test() -> None:
             userscript(),
         )
         WebDriverWait(driver, 20).until(
-            lambda d: d.execute_script("return document.querySelectorAll('.ocado-vegan-filter-non-vegan').length") == image_count
+            lambda d: d.execute_script("return document.querySelectorAll('.ocado-vegan-filter-muted').length") == image_count
         )
         cache_state = driver.execute_script(
             """
@@ -537,9 +537,9 @@ def collect_rows(driver: webdriver.Firefox) -> list[dict[str, object]]:
             href: productLink && productLink.href,
             id: productIdFromUrl(productLink && productLink.href),
             official,
-            nonVeganClass: card.classList.contains('ocado-vegan-filter-non-vegan'),
+            mutedClass: card.classList.contains('ocado-vegan-filter-muted'),
             buttonDisabled: Boolean(button && button.disabled),
-            buttonVisuallyMarked: Boolean(button && button.classList.contains('ocado-vegan-filter-not-vegan-add')),
+            buttonVisuallyMarked: Boolean(button && button.classList.contains('ocado-vegan-filter-muted-add')),
             buttonText: button && button.textContent.replace(/\s+/g, ' ').trim(),
             buttonClientWidth: button && button.clientWidth,
             buttonScrollWidth: button && button.scrollWidth,
@@ -572,13 +572,13 @@ def promotions_page_smoke_test() -> None:
         for _ in range(12):
             time.sleep(0.8)
             rows = collect_rows(driver)
-            if any(row["nonVeganClass"] and row["offerColor"] for row in rows):
+            if any(row["mutedClass"] and row["offerColor"] for row in rows):
                 break
             driver.execute_script("window.scrollBy(0, Math.max(800, window.innerHeight * 1.4))")
     finally:
         driver.quit()
 
-    muted_rows = [row for row in rows if row["nonVeganClass"]]
+    muted_rows = [row for row in rows if row["mutedClass"]]
     official_rows = [row for row in rows if row["official"]]
 
     assert rows, "No product cards found on promotions page"
@@ -656,7 +656,7 @@ def additional_vegan_search_smoke_test() -> None:
 
     assert target["buttonText"] == "Add", target
     assert target["buttonDisabled"] is False, target
-    assert target["nonVeganClass"] is False, target
+    assert target["mutedClass"] is False, target
     assert target["imageFilter"] == "none", target
     assert target["imageOpacity"] == "1", target
     print(

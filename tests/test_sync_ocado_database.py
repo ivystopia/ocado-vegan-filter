@@ -214,7 +214,7 @@ class SyncOcadoDatabaseTests(unittest.TestCase):
             finally:
                 conn.close()
 
-    def test_change_payload_ignores_url_and_non_vegan_display_flags(self) -> None:
+    def test_change_payload_ignores_url_and_nonclassification_display_flags(self) -> None:
         before = {
             "product": {"id": "1", "name": "Beans", "ingredients": "Beans", "url": "https://old"},
             "flags": ["vegetarian"],
