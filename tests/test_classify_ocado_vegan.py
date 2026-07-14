@@ -8,6 +8,7 @@ import sys
 import tempfile
 import unittest
 from pathlib import Path
+from unittest import mock
 
 TOOLS = Path(__file__).resolve().parents[1] / "tools"
 if str(TOOLS) not in sys.path:
@@ -449,6 +450,61 @@ class ClassifyOcadoVeganTests(unittest.TestCase):
                 reasoning_effort="high",
                 codex_bin="unused",
             )
+
+    def test_codex_commits_completed_run_status(self) -> None:
+        with tempfile.TemporaryDirectory() as tmp:
+            db_path = Path(tmp) / "products.sqlite"
+            conn = sqlite3.connect(db_path)
+            conn.row_factory = sqlite3.Row
+            build_ocado_database.create_schema(conn)
+            classifier.ensure_classification_schema(conn)
+            conn.commit()
+
+            count = classifier.classify_codex(
+                conn,
+                limit=0,
+                batch_size=10,
+                passes=2,
+                retries=0,
+                model="gpt-5.6-terra",
+                reasoning_effort="high",
+                codex_bin="unused",
+            )
+            conn.close()
+
+            self.assertEqual(count, 0)
+            reopened = sqlite3.connect(db_path)
+            run = reopened.execute(
+                "select status, total_products, completed_at_epoch from vegan_classification_runs"
+            ).fetchone()
+            reopened.close()
+            self.assertEqual(run[0], "completed")
+            self.assertEqual(run[1], 0)
+            self.assertIsNotNone(run[2])
+
+    def test_codex_commits_interrupted_run_status(self) -> None:
+        conn = self.create_db()
+        self.insert_product(conn, "1", name="Unresolved product")
+
+        with mock.patch.object(classifier, "classify_codex_contexts", side_effect=KeyboardInterrupt):
+            with self.assertRaises(KeyboardInterrupt):
+                classifier.classify_codex(
+                    conn,
+                    limit=0,
+                    batch_size=10,
+                    passes=2,
+                    retries=0,
+                    model="gpt-5.6-terra",
+                    reasoning_effort="high",
+                    codex_bin="unused",
+                )
+
+        run = conn.execute(
+            "select status, error, completed_at_epoch from vegan_classification_runs"
+        ).fetchone()
+        self.assertEqual(run["status"], "interrupted")
+        self.assertEqual(run["error"], "Interrupted by operator.")
+        self.assertIsNotNone(run["completed_at_epoch"])
 
     def test_codex_defaults_use_benchmarked_terra_configuration(self) -> None:
         args = classifier.build_parser().parse_args(["classify-codex"])

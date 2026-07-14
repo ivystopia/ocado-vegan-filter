@@ -1551,7 +1551,9 @@ def classify_codex(
             f"Refusing to send {len(officially_tagged_ids)} officially tagged vegan products to Codex; "
             f"run classify-rules first. Product IDs: {sample}"
         )
-    run_id = start_run(conn, mode="codex", model=model, reasoning_effort=reasoning_effort)
+    with conn:
+        run_id = start_run(conn, mode="codex", model=model, reasoning_effort=reasoning_effort)
+        increment_run(conn, run_id, "total_products", len(ids))
     classified = 0
     batch_total = (len(ids) + batch_size - 1) // batch_size
 
@@ -1588,7 +1590,6 @@ def classify_codex(
                 increment_run(conn, run_id, "errors", error_count)
 
     try:
-        increment_run(conn, run_id, "total_products", len(ids))
         if workers <= 1:
             for batch_start in range(0, len(ids), batch_size):
                 batch_ids = ids[batch_start : batch_start + batch_size]
@@ -1622,10 +1623,16 @@ def classify_codex(
                         write_batch_results(batch_ids, results)
                         print(f"Codex batch {batch_number}/{batch_total}: wrote {len(results)} products", flush=True)
                         submit_next_batch()
-        finish_run(conn, run_id, "completed")
+        with conn:
+            finish_run(conn, run_id, "completed")
+    except KeyboardInterrupt:
+        with conn:
+            finish_run(conn, run_id, "interrupted", "Interrupted by operator.")
+        raise
     except Exception as exc:
-        increment_run(conn, run_id, "errors", 1)
-        finish_run(conn, run_id, "failed", str(exc))
+        with conn:
+            increment_run(conn, run_id, "errors", 1)
+            finish_run(conn, run_id, "failed", str(exc))
         raise
     return classified
 
