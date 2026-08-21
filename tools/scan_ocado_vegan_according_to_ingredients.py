@@ -1,6 +1,10 @@
 #!/usr/bin/env python3
 """Find Ocado products that are vegan according to title/ingredients evidence.
 
+This is the legacy JSONL pipeline retained for historical/raw-data work. New
+monthly catalogue maintenance uses ``sync_ocado_database.py`` followed by the
+DB-only ``classify_ocado_vegan.py`` workflow.
+
 This scraper deliberately keeps raw/pre-check data:
 
 - product universe JSONL: every product discovered through Ocado categories
@@ -41,7 +45,8 @@ CATEGORY_SITEMAP_URL = "https://www.ocado.com/sitemaps/sitemap-categories-part1.
 REPO_ROOT = Path(__file__).resolve().parents[1]
 DEFAULT_OUTPUT_PREFIX = str(REPO_ROOT / "audit/ingredients/ocado_vegan_according_to_ingredients")
 DEFAULT_MANUFACTURER_URLS = str(REPO_ROOT / "audit/manufacturer/ocado_vegan_according_to_manufacturer_urls.txt")
-DEFAULT_MODEL = os.environ.get("OPENAI_MODEL", "gpt-5.5")
+DEFAULT_MODEL = os.environ.get("OPENAI_MODEL", "gpt-5.6-luna")
+DEFAULT_REASONING_EFFORT = os.environ.get("OPENAI_REASONING_EFFORT", "high")
 DEFAULT_COOKIES_DB = os.environ.get("OCADO_COOKIES_DB", "")
 
 SUITABLE_FOR_VEGAN_PATTERNS = [
@@ -950,7 +955,7 @@ def extract_response_text(payload: dict[str, Any]) -> str:
     raise ValueError("Could not find response text in OpenAI response")
 
 
-def call_openai_classifier(prompt: str, model: str) -> dict[str, Any]:
+def call_openai_classifier(prompt: str, model: str, reasoning_effort: str) -> dict[str, Any]:
     load_env_file()
     api_key = os.environ.get("OPENAI_API_KEY")
     if not api_key:
@@ -982,6 +987,7 @@ def call_openai_classifier(prompt: str, model: str) -> dict[str, Any]:
                     "strict": True,
                 }
             },
+            "reasoning": {"effort": reasoning_effort},
         },
         timeout=60,
     )
@@ -1037,7 +1043,7 @@ def classify_candidates(args: argparse.Namespace, pass_id: str) -> dict[str, Any
         ]
         prompt = build_batch_classifier_prompt(batch, pass_id)
         try:
-            payload = call_openai_classifier(prompt, args.model)
+            payload = call_openai_classifier(prompt, args.model, args.reasoning_effort)
             decisions = payload.get("decisions")
             if not isinstance(decisions, list):
                 raise ValueError("Classifier response did not contain a decisions array")
@@ -1052,6 +1058,7 @@ def classify_candidates(args: argparse.Namespace, pass_id: str) -> dict[str, Any
                         "retailerProductId": retailer_product_id,
                         "passId": pass_id,
                         "model": args.model,
+                        "reasoningEffort": args.reasoning_effort,
                         "classifiedAtEpoch": int(time.time()),
                         "decision": decision,
                     }
@@ -1062,6 +1069,7 @@ def classify_candidates(args: argparse.Namespace, pass_id: str) -> dict[str, Any
                     "retailerProductId": str(candidate["retailerProductId"]),
                     "passId": pass_id,
                     "model": args.model,
+                    "reasoningEffort": args.reasoning_effort,
                     "classifiedAtEpoch": int(time.time()),
                     "error": f"{type(exc).__name__}: {exc}",
                 }
@@ -1181,6 +1189,7 @@ def build_parser() -> argparse.ArgumentParser:
     parser.add_argument("--classification-batch-size", type=int, default=10)
     parser.add_argument("--classification-flush-interval", type=int, default=10)
     parser.add_argument("--model", default=DEFAULT_MODEL)
+    parser.add_argument("--reasoning-effort", default=DEFAULT_REASONING_EFFORT)
     return parser
 
 

@@ -60,18 +60,22 @@ The large local SQLite database and raw scrape streams are intentionally not tra
 - `tools/build_ocado_database.py` - creates the SQLite schema used by the local catalogue database.
 - `tools/sync_ocado_database.py` - imports and synchronises scraped Ocado product data into SQLite.
 - `tools/classify_ocado_vegan.py` - classifies products as `vegan`, `nonvegan`, or `unknown` from stored database data.
+- `tools/benchmark_ocado_vegan.py` - runs the fixed, read-only classifier safety benchmark.
 - `docs/vegan-classifier-design.md` - notes describing the intended offline vegan-classification workflow.
+- `docs/monthly-maintenance.md` - the monthly scrape, classification, validation, and userscript update runbook.
+- `docs/model-benchmark-2026-08-21.md` - evidence supporting the current Luna/high classifier default.
 
 ### Scraping Tooling
 
 - `tools/scan_ocado_vegan_according_to_manufacturer.py` - finds products whose page text explicitly says they are vegan.
 - `tools/scan_ocado_vegan_according_to_manufacturer_sitemap.py` - sitemap-based support for the manufacturer-text scan.
-- `tools/scan_ocado_vegan_according_to_ingredients.py` - tooling for the conservative vegan-by-ingredients scan.
+- `tools/scan_ocado_vegan_according_to_ingredients.py` - legacy JSONL tooling retained for raw scrape archaeology; monthly maintenance uses the DB-first sync instead.
 
 ### Retained Audit Outputs
 
 These files are small enough to keep in Git and document the public outputs of the audit:
 
+- `audit/benchmarks/*.json` - dated monthly classifier regression results created by the maintenance runbook.
 - `audit/manufacturer/ocado_vegan_according_to_manufacturer_urls.txt` - manufacturer-text vegan URL list.
 - `audit/manufacturer/ocado_vegan_according_to_manufacturer_new_urls.txt` - follow-up manufacturer-text vegan URL list.
 - `audit/manufacturer/ocado_vegan_according_to_manufacturer_audit.csv` - structured audit rows for the manufacturer-text list.
@@ -128,6 +132,8 @@ t.userscript_source_test()
 t.fixture_smoke_test()
 PY
 ```
+
+For a catalogue refresh and userscript data update, follow [the monthly maintenance runbook](docs/monthly-maintenance.md).
 
 ## License
 

@@ -21,6 +21,8 @@ from typing import Any, Iterable
 
 REPO_ROOT = Path(__file__).resolve().parents[1]
 DEFAULT_DB = str(REPO_ROOT / "ocado_products.sqlite")
+DEFAULT_CODEX_MODEL = "gpt-5.6-luna"
+DEFAULT_REASONING_EFFORT = "high"
 CLASSIFIER_VERSION = "db-vegan-codex-v8"
 PROMPT_VERSION = "ocado-vegan-product-json-v7"
 VALID_STATUSES = {"vegan", "nonvegan", "unknown"}
@@ -577,6 +579,7 @@ def ensure_classification_schema(conn: sqlite3.Connection, *, drop_legacy: bool 
           prompt_version TEXT,
           model TEXT,
           reasoning_effort TEXT,
+          sync_run_id INTEGER,
           total_products INTEGER DEFAULT 0,
           rule_classified INTEGER DEFAULT 0,
           llm_submitted INTEGER DEFAULT 0,
@@ -615,6 +618,7 @@ def ensure_classification_schema(conn: sqlite3.Connection, *, drop_legacy: bool 
           ON products(vegan_status);
         """
     )
+    ensure_column(conn, "vegan_classification_runs", "sync_run_id", "INTEGER")
 
 
 def connect(db_path: Path) -> sqlite3.Connection:
@@ -629,14 +633,15 @@ def start_run(
     mode: str,
     model: str | None = None,
     reasoning_effort: str | None = None,
+    sync_run_id: int | None = None,
 ) -> int:
     cursor = conn.execute(
         """
         INSERT INTO vegan_classification_runs
-          (started_at_epoch, status, mode, classifier_version, prompt_version, model, reasoning_effort)
-        VALUES (?, 'running', ?, ?, ?, ?, ?)
+          (started_at_epoch, status, mode, classifier_version, prompt_version, model, reasoning_effort, sync_run_id)
+        VALUES (?, 'running', ?, ?, ?, ?, ?, ?)
         """,
-        (now_epoch(), mode, CLASSIFIER_VERSION, PROMPT_VERSION, model, reasoning_effort),
+        (now_epoch(), mode, CLASSIFIER_VERSION, PROMPT_VERSION, model, reasoning_effort, sync_run_id),
     )
     return int(cursor.lastrowid)
 
@@ -1512,7 +1517,7 @@ def classify_rules(
         ids = [row["id"] for row in conn.execute(query, parameters)]
     else:
         ids = select_unclassified_product_ids(conn, limit=limit, sync_run_id=sync_run_id)
-    run_id = start_run(conn, mode="rules")
+    run_id = start_run(conn, mode="rules", sync_run_id=sync_run_id)
     classified = 0
     try:
         increment_run(conn, run_id, "total_products", len(ids))
@@ -1552,7 +1557,13 @@ def classify_codex(
             f"run classify-rules first. Product IDs: {sample}"
         )
     with conn:
-        run_id = start_run(conn, mode="codex", model=model, reasoning_effort=reasoning_effort)
+        run_id = start_run(
+            conn,
+            mode="codex",
+            model=model,
+            reasoning_effort=reasoning_effort,
+            sync_run_id=sync_run_id,
+        )
         increment_run(conn, run_id, "total_products", len(ids))
     classified = 0
     batch_total = (len(ids) + batch_size - 1) // batch_size
@@ -1669,8 +1680,8 @@ def build_parser() -> argparse.ArgumentParser:
     codex.add_argument("--batch-size", type=int, default=10)
     codex.add_argument("--passes", type=int, default=2)
     codex.add_argument("--retries", type=int, default=2)
-    codex.add_argument("--model", default="gpt-5.6-terra")
-    codex.add_argument("--reasoning-effort", default="high")
+    codex.add_argument("--model", default=DEFAULT_CODEX_MODEL)
+    codex.add_argument("--reasoning-effort", default=DEFAULT_REASONING_EFFORT)
     codex.add_argument("--codex-bin", default=shutil.which("codex") or "codex")
     codex.add_argument("--workers", type=int, default=1)
     codex.add_argument("--sync-run-id", type=int)
@@ -1681,8 +1692,8 @@ def build_parser() -> argparse.ArgumentParser:
     all_parser.add_argument("--batch-size", type=int, default=10)
     all_parser.add_argument("--passes", type=int, default=2)
     all_parser.add_argument("--retries", type=int, default=2)
-    all_parser.add_argument("--model", default="gpt-5.6-terra")
-    all_parser.add_argument("--reasoning-effort", default="high")
+    all_parser.add_argument("--model", default=DEFAULT_CODEX_MODEL)
+    all_parser.add_argument("--reasoning-effort", default=DEFAULT_REASONING_EFFORT)
     all_parser.add_argument("--codex-bin", default=shutil.which("codex") or "codex")
     all_parser.add_argument("--workers", type=int, default=1)
     all_parser.add_argument("--sync-run-id", type=int)

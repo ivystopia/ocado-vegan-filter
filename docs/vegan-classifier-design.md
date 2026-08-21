@@ -42,6 +42,7 @@ Classification must be auditable without re-scraping Ocado.
 - classifier version
 - prompt version
 - model and reasoning effort when applicable
+- originating sync run ID when classification is limited to a monthly sync
 - counters and errors
 
 `product_vegan_classification_audit` records each product decision:
@@ -126,15 +127,19 @@ codex exec --ephemeral --output-schema schema.json --output-last-message result.
 
 Recommended defaults:
 
-- bulk unresolved classification: `gpt-5.6-terra`, `high`
-- escalation/review: `gpt-5.6-sol`, `high`
+- bulk unresolved classification: `gpt-5.6-luna`, `high`, two passes
+- fallback/shadow comparison: `gpt-5.6-terra`, `high`, two passes
 - prompt/schema review: `gpt-5.6-sol`, `high` or `xhigh`
 
-The bulk default was selected with a two-pass, evidence-grounded benchmark covering known vegan, non-vegan, unknown, and newly discovered products. False-vegan errors are the primary rejection criterion; pass agreement and latency are secondary because identical passes can still repeat the same unsupported inference.
+The bulk default was selected with a two-pass, evidence-grounded benchmark covering known vegan, non-vegan, unknown, and newly discovered products. Luna/high matched all 48 retained gold decisions with zero pass disagreements. Luna low and medium both repeated a false-vegan decision, while xhigh added no classification benefit and used materially more time and output tokens. See `docs/model-benchmark-2026-08-21.md`.
+
+The model ID and reasoning effort are separate settings. Use model `gpt-5.6-luna` with reasoning effort `high`; never construct a slash-suffixed model ID such as `gpt-5.6-luna/high`.
+
+False-vegan errors are the primary rejection criterion. Pass agreement and latency are secondary because identical passes can still repeat the same unsupported inference.
 
 For manufactured non-food goods, material descriptions such as cotton, plastic, melamine, metal, or glass do not prove that the complete product is vegan. Unlisted dyes, adhesives, coatings, trims, and processing inputs require an `unknown` result unless explicit vegan evidence or a complete composition resolves them.
 
-Do not use `low` reasoning for product decisions because false certainty is more harmful than extra `unknown` classifications.
+Do not use Luna `low` or `medium` reasoning for product decisions because both repeated a false-vegan result in the retained benchmark. Use `high` unless a later benchmark justifies another setting.
 
 For the first bulk run, run two independent Codex passes for any LLM-classified product.
 If the passes disagree on `vegan_status` or `vegan_reason`, classify the product as `unknown`.
@@ -160,11 +165,11 @@ Keep classifier concurrency low initially: 1-2 workers, then 2-4 after sample au
 The implementation entrypoint is:
 
 ```bash
-python3 classify_ocado_vegan.py migrate-schema
-python3 classify_ocado_vegan.py classify-rules
-python3 classify_ocado_vegan.py classify-codex --limit 100 --batch-size 10
-python3 classify_ocado_vegan.py classify-all --codex
-python3 classify_ocado_vegan.py status
+python3 tools/classify_ocado_vegan.py migrate-schema
+python3 tools/classify_ocado_vegan.py classify-rules
+python3 tools/classify_ocado_vegan.py classify-codex --limit 100 --batch-size 10
+python3 tools/classify_ocado_vegan.py classify-all --codex
+python3 tools/classify_ocado_vegan.py status
 ```
 
 `migrate-schema` creates a rolling SQLite backup before changing the DB.

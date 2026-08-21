@@ -5,8 +5,12 @@ from __future__ import annotations
 
 import sqlite3
 import sys
+import tempfile
 import unittest
+from contextlib import redirect_stdout
+from io import StringIO
 from pathlib import Path
+from unittest import mock
 
 
 ROOT = Path(__file__).resolve().parents[1]
@@ -71,6 +75,40 @@ class UpdateUserscriptAllowlistsTests(unittest.TestCase):
 
         with self.assertRaisesRegex(ValueError, "Refusing to export 2 products"):
             generator.load_allowlists(conn)
+
+    def test_dry_run_does_not_write_userscript(self) -> None:
+        with tempfile.TemporaryDirectory() as tmp:
+            tmp_path = Path(tmp)
+            db_path = tmp_path / "products.sqlite"
+            userscript_path = tmp_path / "filter.user.js"
+            original = (ROOT / "ocado-vegan-filter.user.js").read_text(encoding="utf-8")
+            userscript_path.write_text(original, encoding="utf-8")
+
+            conn = sqlite3.connect(db_path)
+            conn.execute(
+                "create table products(id text, official_vegan integer, vegan_status text, vegan_reason text)"
+            )
+            conn.execute("create table product_flags(product_id text, flag text)")
+            conn.execute("insert into products values ('10', 0, 'vegan', 'ingredients')")
+            conn.commit()
+            conn.close()
+
+            with redirect_stdout(StringIO()):
+                with mock.patch.object(
+                    sys,
+                    "argv",
+                    [
+                        "update_userscript_allowlists.py",
+                        "--db",
+                        str(db_path),
+                        "--userscript",
+                        str(userscript_path),
+                        "--dry-run",
+                    ],
+                ):
+                    self.assertEqual(generator.main(), 0)
+
+            self.assertEqual(userscript_path.read_text(encoding="utf-8"), original)
 
 
 if __name__ == "__main__":

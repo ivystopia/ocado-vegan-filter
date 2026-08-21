@@ -62,6 +62,8 @@ class ClassifyOcadoVeganTests(unittest.TestCase):
         self.assertIn("vegan_reason", columns)
         self.assertNotIn("vegan_according_to_manufacturer", columns)
         self.assertNotIn("vegan_according_to_ingredients", columns)
+        run_columns = {row["name"] for row in conn.execute("pragma table_info(vegan_classification_runs)")}
+        self.assertIn("sync_run_id", run_columns)
         self.assertIsNotNone(
             conn.execute(
                 "select name from sqlite_master where type = 'table' and name = 'product_vegan_classification_audit'"
@@ -446,7 +448,7 @@ class ClassifyOcadoVeganTests(unittest.TestCase):
                 batch_size=10,
                 passes=2,
                 retries=0,
-                model="gpt-5.6-terra",
+                model=classifier.DEFAULT_CODEX_MODEL,
                 reasoning_effort="high",
                 codex_bin="unused",
             )
@@ -466,7 +468,7 @@ class ClassifyOcadoVeganTests(unittest.TestCase):
                 batch_size=10,
                 passes=2,
                 retries=0,
-                model="gpt-5.6-terra",
+                model=classifier.DEFAULT_CODEX_MODEL,
                 reasoning_effort="high",
                 codex_bin="unused",
             )
@@ -482,6 +484,17 @@ class ClassifyOcadoVeganTests(unittest.TestCase):
             self.assertEqual(run[1], 0)
             self.assertIsNotNone(run[2])
 
+    def test_run_records_originating_sync_run(self) -> None:
+        conn = self.create_db()
+
+        run_id = classifier.start_run(conn, mode="rules", sync_run_id=42)
+        recorded_sync_run_id = conn.execute(
+            "select sync_run_id from vegan_classification_runs where id = ?",
+            (run_id,),
+        ).fetchone()[0]
+
+        self.assertEqual(recorded_sync_run_id, 42)
+
     def test_codex_commits_interrupted_run_status(self) -> None:
         conn = self.create_db()
         self.insert_product(conn, "1", name="Unresolved product")
@@ -494,7 +507,7 @@ class ClassifyOcadoVeganTests(unittest.TestCase):
                     batch_size=10,
                     passes=2,
                     retries=0,
-                    model="gpt-5.6-terra",
+                    model=classifier.DEFAULT_CODEX_MODEL,
                     reasoning_effort="high",
                     codex_bin="unused",
                 )
@@ -506,9 +519,9 @@ class ClassifyOcadoVeganTests(unittest.TestCase):
         self.assertEqual(run["error"], "Interrupted by operator.")
         self.assertIsNotNone(run["completed_at_epoch"])
 
-    def test_codex_defaults_use_benchmarked_terra_configuration(self) -> None:
+    def test_codex_defaults_use_benchmarked_luna_configuration(self) -> None:
         args = classifier.build_parser().parse_args(["classify-codex"])
-        self.assertEqual(args.model, "gpt-5.6-terra")
+        self.assertEqual(args.model, "gpt-5.6-luna")
         self.assertEqual(args.reasoning_effort, "high")
         prompt = classifier.build_codex_prompt([])
         self.assertIn("manufactured non-food goods", prompt)

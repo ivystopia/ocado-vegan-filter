@@ -40,6 +40,11 @@ The project has two related goals:
 
 - The classifier must use only data already stored in SQLite unless the task is explicitly to scrape/import new data.
 - Follow `docs/vegan-classifier-design.md` for end-to-end classifier behaviour.
+- Use `gpt-5.6-luna` with reasoning effort `high` and two independent passes for bulk unresolved classification.
+- Pass the model and reasoning effort separately; `gpt-5.6-luna/high` is not a valid model ID.
+- Do not use Luna `low` or `medium` for product decisions: both repeated a false-vegan result in the retained safety benchmark.
+- Run `tools/benchmark_ocado_vegan.py` successfully before each monthly live sync or after any model, prompt, schema, or classification-rule change.
+- For monthly maintenance, follow `docs/monthly-maintenance.md` and use the DB-first sync/classifier workflow rather than the legacy JSONL scanners.
 - Keep audit trails for classification decisions in the database tables, including evidence, summary, classifier version, and run metadata.
 - If independent LLM/classifier passes disagree, classify the product as unknown unless the user explicitly authorizes a different arbitration workflow.
 - For any rule change that increases vegan classifications, first quantify likely impact with SQLite queries and explain the safety argument.

@@ -130,6 +130,11 @@ def main() -> int:
     parser.add_argument("--db", type=Path, default=DEFAULT_DB)
     parser.add_argument("--userscript", type=Path, default=DEFAULT_USERSCRIPT)
     parser.add_argument("--version")
+    parser.add_argument(
+        "--dry-run",
+        action="store_true",
+        help="Report allowlist changes without writing the userscript.",
+    )
     args = parser.parse_args()
 
     source = args.userscript.read_text(encoding="utf-8")
@@ -137,7 +142,8 @@ def main() -> int:
     with closing(sqlite3.connect(f"file:{args.db}?mode=ro", uri=True)) as conn:
         allowlists = load_allowlists(conn)
     updated = regenerate(source, allowlists, args.version)
-    args.userscript.write_text(updated, encoding="utf-8")
+    if not args.dry_run:
+        args.userscript.write_text(updated, encoding="utf-8")
 
     for name, ids in allowlists.items():
         after = set(ids)
@@ -146,6 +152,8 @@ def main() -> int:
             print("  added: " + " ".join(sorted(after - before[name], key=int)))
         if before[name] - after:
             print("  removed: " + " ".join(sorted(before[name] - after, key=int)))
+    if args.dry_run:
+        print("Dry run: userscript was not changed")
     return 0
 
 
