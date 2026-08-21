@@ -76,6 +76,7 @@ The large local SQLite database and raw scrape streams are intentionally not tra
 These files are small enough to keep in Git and document the public outputs of the audit:
 
 - `audit/benchmarks/*.json` - dated monthly classifier regression results created by the maintenance runbook.
+- `audit/monthly/*.md` - retained scrape, classification, validation, and userscript-update summaries.
 - `audit/manufacturer/ocado_vegan_according_to_manufacturer_urls.txt` - manufacturer-text vegan URL list.
 - `audit/manufacturer/ocado_vegan_according_to_manufacturer_new_urls.txt` - follow-up manufacturer-text vegan URL list.
 - `audit/manufacturer/ocado_vegan_according_to_manufacturer_audit.csv` - structured audit rows for the manufacturer-text list.

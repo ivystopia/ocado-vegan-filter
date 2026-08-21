@@ -37,9 +37,17 @@ Run the DB-first sync. It makes a rolling SQLite backup before changing the data
 
 ```bash
 DB_PATH="$PWD/ocado_products.sqlite"
+FIREFOX_PYTHON="/home/ivy/.venvs/codex-firefox/bin/python"
+FIREFOX_SCRIPTS="/home/ivy/.codex/skills/browse-with-firefox/scripts"
 
-python3 tools/sync_ocado_database.py --db "$DB_PATH"
+test -x "$FIREFOX_PYTHON"
+test -f "$FIREFOX_SCRIPTS/firefox_session.py"
+
+BROWSE_WITH_FIREFOX_SCRIPTS="$FIREFOX_SCRIPTS" \
+  "$FIREFOX_PYTHON" tools/sync_ocado_database.py --db "$DB_PATH"
 ```
+
+The sync needs the dedicated Firefox environment because it imports Selenium's `firefox_session.py` helper and launches a headless snapshot of the current Firefox profile. It does not close, restart, or modify the real Firefox session.
 
 Do not use the legacy `scan_ocado_vegan_according_to_ingredients.py` JSONL pipeline for monthly maintenance.
 
@@ -95,10 +103,10 @@ python3 tools/classify_ocado_vegan.py --db "$DB_PATH" classify-all \
   --passes 2 \
   --retries 2 \
   --batch-size 10 \
-  --workers 1
+  --workers 8
 ```
 
-The command is resumable: successfully classified products are no longer selected if the command must be rerun. Any disagreement between the two passes becomes `unknown`.
+The command is resumable: successfully classified products are no longer selected if the command must be rerun. Any disagreement between the two passes becomes `unknown`. Eight workers completed the 8,242-product August 2026 queue without a final error; lower the worker count and rerun only if the service starts returning persistent rate or execution errors.
 
 ## 4. Validate The Database
 
@@ -148,6 +156,33 @@ WHERE (
     )
   )
   AND (p.vegan_status IS NOT 'vegan' OR p.vegan_reason IS NOT 'tagged');
+
+SELECT COUNT(*) AS disagreement_products
+FROM product_vegan_classification_audit AS a
+JOIN vegan_classification_runs AS r ON r.id = a.run_id
+WHERE r.sync_run_id = ${SYNC_RUN_ID}
+  AND r.mode = 'codex'
+  AND a.evidence_json LIKE '%independent_codex_disagreement%';
+
+SELECT COUNT(*) AS validation_error_products
+FROM product_vegan_classification_audit AS a
+JOIN vegan_classification_runs AS r ON r.id = a.run_id
+WHERE r.sync_run_id = ${SYNC_RUN_ID}
+  AND r.mode = 'codex'
+  AND a.validation_error IS NOT NULL;
+
+SELECT COALESCE(c.previous_vegan_status, 'unclassified') AS previous_status,
+       COALESCE(c.previous_vegan_reason, '') AS previous_reason,
+       p.vegan_status AS current_status,
+       COALESCE(p.vegan_reason, '') AS current_reason,
+       COUNT(*) AS products
+FROM sync_product_context_changes AS c
+JOIN products AS p ON p.id = c.product_id
+WHERE c.run_id = ${SYNC_RUN_ID}
+  AND c.change_kind = 'changed'
+GROUP BY c.previous_vegan_status, c.previous_vegan_reason,
+         p.vegan_status, p.vegan_reason
+ORDER BY previous_status, previous_reason, current_status, current_reason;
 SQL
 ```
 
@@ -157,6 +192,8 @@ Required gates:
 - `unclassified_changed_products` is zero.
 - `unclassified_current_products` is zero.
 - `official_tag_conflicts` is zero.
+- `validation_error_products` is zero.
+- Every reported pass disagreement is stored as `unknown` and reviewed as a group before export.
 - Counts distinguish all known products from current Ocado products.
 - Any large movement into or out of `vegan`, particularly `vegan/ingredients`, is manually reviewed.
 
@@ -181,7 +218,7 @@ If there are no allowlist changes, do not bump the userscript version or publish
 If the allowlists changed and the validation gates passed, choose the next patch version. Replace the example version below with the intended value:
 
 ```bash
-NEXT_VERSION="1.6.1"
+NEXT_VERSION="1.6.2"
 
 python3 tools/update_userscript_allowlists.py \
   --db "$DB_PATH" \

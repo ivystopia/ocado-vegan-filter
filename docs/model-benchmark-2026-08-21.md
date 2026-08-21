@@ -46,6 +46,14 @@ An end-to-end validation using the original 24-product batches also returned 48/
 
 A final validation using the retained production batch size of 10 returned 48/48 exact with zero false-vegan results, zero execution errors, and no retries in 284.5 seconds. The two passes disagreed on product `468140011` and safely merged it to the expected `unknown`. This is why the gate reports disagreements even when the final status remains correct.
 
+## Live Catalogue Evidence
+
+The 2026-08-21 monthly refresh provided a much larger operational validation. Deterministic rules resolved 4,453 of 12,695 new or changed products, then Luna/high classified the remaining 8,242 products with two passes, batches of 10, and eight concurrent workers.
+
+The Luna run completed in 9,240 seconds with all 8,242 products written and zero final execution or validation errors. There were 166 pass disagreements (2.0%); every one was conservatively merged to `unknown`. A small number of responses omitted an ID or returned an invalid field combination, but the existing retry and split-batch recovery paths produced complete validated results before anything was written.
+
+This confirms that Luna/high is suitable for the full monthly catalogue workload, not only the fixed benchmark. Eight workers are the current operational default on this machine; the classification remains transactionally resumable if a future run needs to restart with lower concurrency.
+
 ## Rejected Configurations
 
 Luna/low and Luna/medium both classified product `697048011`, a dog dental powder with insufficient vegan evidence, as vegan in both passes. The two-pass merge cannot protect against identical unsupported decisions, so both efforts are prohibited for production classification.
