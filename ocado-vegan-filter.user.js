@@ -5195,7 +5195,13 @@
   }
 
   function productAttributesContainVegan(attributes) {
-    return (attributes || []).some((attribute) => {
+    if (!Array.isArray(attributes)) {
+      return false;
+    }
+    return attributes.some((attribute) => {
+      if (!attribute || typeof attribute !== "object") {
+        return false;
+      }
       const icon = String(attribute.icon || attribute.file || "")
         .trim()
         .toLowerCase();

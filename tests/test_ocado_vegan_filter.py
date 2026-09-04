@@ -425,6 +425,31 @@ def fixture_smoke_test() -> None:
     print("fixture smoke test passed")
 
 
+def malformed_hydration_smoke_test() -> None:
+    html = """<!doctype html><script>
+      window.__INITIAL_STATE__={products:[
+        {retailerProductId:'999880011',attributes:{vegan:true}},
+        {retailerProductId:'999880012',attributes:[null,17,{icon:'vegan'}]}
+      ]};</script>
+      <article class="product-card-container" id="bad"><a href="https://www.ocado.com/products/999880011">Malformed</a>
+        <button data-test="counter-button" aria-label="Add malformed">Add</button></article>
+      <article class="product-card-container" id="good"><a href="https://www.ocado.com/products/999880012">Tagged</a>
+        <button data-test="counter-button" aria-label="Add tagged">Add</button></article>
+      <article class="product-card-container" id="milk"><a href="https://www.ocado.com/products/17959011">Milk</a>
+        <button data-test="counter-button" aria-label="Add milk">Add</button></article>"""
+    driver = headless_firefox()
+    try:
+        driver.get("data:text/html;base64," + base64.b64encode(html.encode()).decode())
+        driver.execute_script(userscript())
+        wait = WebDriverWait(driver, 5)
+        wait.until(lambda d: d.execute_script("return document.querySelector('#milk button').textContent") == "Not vegan")
+        assert driver.execute_script("return document.querySelector('#bad button').textContent") == "Unknown vegan"
+        assert driver.execute_script("return document.querySelector('#good button').textContent") == "Add"
+    finally:
+        driver.quit()
+    print("malformed hydration smoke test passed")
+
+
 def reused_counter_smoke_test() -> None:
     html = """<!doctype html><article class="product-card-container">
       <a href="https://www.ocado.com/products/999880011">Sample</a>
@@ -802,6 +827,7 @@ def main() -> None:
     image_ownership_smoke_test()
     incremental_updates_smoke_test()
     reused_counter_smoke_test()
+    malformed_hydration_smoke_test()
     additional_vegan_search_smoke_test()
     promotions_page_smoke_test()
 
