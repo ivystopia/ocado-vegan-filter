@@ -425,7 +425,46 @@ def fixture_smoke_test() -> None:
     print("fixture smoke test passed")
 
 
-def grayscale_cache_smoke_test() -> None:
+def image_ownership_smoke_test() -> None:
+    html = """<!doctype html><article class="product-card-container">
+      <a href="https://www.ocado.com/products/999880011"><img style="width: 40px; opacity: 0.75"></a>
+      <button data-test="counter-button" aria-label="Add sample">Add</button>
+    </article>"""
+    driver = headless_firefox()
+    try:
+        driver.get("data:text/html;base64," + base64.b64encode(html.encode()).decode())
+        driver.execute_script(userscript())
+        wait = WebDriverWait(driver, 5)
+        wait.until(lambda d: d.execute_script("return document.querySelector('article').classList.contains('ocado-vegan-filter-muted')"))
+        driver.execute_script(
+            """
+            const image = document.querySelector('img');
+            image.src = 'https://www.ocado.com/images-v3/new-product.webp';
+            image.srcset = 'https://www.ocado.com/images-v3/new-product.webp 2x';
+            image.sizes = '100px';
+            image.style.setProperty('opacity', '0.8', 'important');
+            image.style.borderTopWidth = '3px';
+            document.querySelector('a').href = 'https://www.ocado.com/products/511102011';
+            """
+        )
+        wait.until(lambda d: d.execute_script("return !document.querySelector('article').classList.contains('ocado-vegan-filter-muted')"))
+        state = driver.execute_script(
+            """const i=document.querySelector('img');return {
+              src:i.getAttribute('src'),srcset:i.getAttribute('srcset'),sizes:i.sizes,
+              opacity:i.style.opacity,border:i.style.borderTopWidth,filter:i.style.filter
+            };"""
+        )
+        assert state == {
+            "src": "https://www.ocado.com/images-v3/new-product.webp",
+            "srcset": "https://www.ocado.com/images-v3/new-product.webp 2x",
+            "sizes": "100px", "opacity": "0.8", "border": "3px", "filter": "",
+        }, state
+    finally:
+        driver.quit()
+    print("image ownership smoke test passed")
+
+
+def image_rendering_smoke_test() -> None:
     image_count = 260
     cards = "".join(
         f"""<article class="product-card-container">
@@ -482,11 +521,10 @@ def grayscale_cache_smoke_test() -> None:
         )
         cache_state = driver.execute_script(
             """
-            const cache = window.ocadoTestMaps[0];
             return {
-              size: cache.size,
-              hasFirst: cache.has(window.ocadoTestImageSources[0]),
-              hasLast: cache.has(window.ocadoTestImageSources.at(-1)),
+              sourcesPreserved: Array.from(document.images).every((image, index) => image.src === window.ocadoTestImageSources[index]),
+              canvasCount: document.querySelectorAll('canvas').length,
+              converted: document.querySelectorAll('[data-ocado-vegan-filter-grayscale-source]').length,
               failures: document.querySelectorAll('[data-ocado-vegan-filter-grayscale-failed-source]').length,
               hydrationWalks: window.ocadoTestHydrationWalks,
             };
@@ -495,8 +533,8 @@ def grayscale_cache_smoke_test() -> None:
     finally:
         driver.quit()
 
-    assert cache_state == {"size": 256, "hasFirst": False, "hasLast": True, "failures": 0, "hydrationWalks": 1}, cache_state
-    print("grayscale cache smoke test passed")
+    assert cache_state == {"sourcesPreserved": True, "canvasCount": 0, "converted": 0, "failures": 0, "hydrationWalks": 1}, cache_state
+    print("image rendering smoke test passed")
 
 
 def collect_rows(driver: webdriver.Firefox) -> list[dict[str, object]]:
@@ -593,7 +631,8 @@ def promotions_page_smoke_test() -> None:
         assert row["buttonDisabled"] is False, row
         assert_zero_saturation_filter(row["imageFilter"], row)
         assert row["imageOpacity"] == "0.42", row
-        assert row["grayscaleSource"] or str(row["imageCurrentSrc"]).startswith("data:image/png"), row
+        assert row["grayscaleSource"] is None, row
+        assert str(row["imageCurrentSrc"]).startswith("https://"), row
 
     muted_promotion_rows = [row for row in muted_rows if row["offerColor"]]
     assert muted_promotion_rows, "No muted promotional rows found in loaded promotions slice"
@@ -679,7 +718,8 @@ def additional_vegan_search_smoke_test() -> None:
 def main() -> None:
     userscript_source_test()
     fixture_smoke_test()
-    grayscale_cache_smoke_test()
+    image_rendering_smoke_test()
+    image_ownership_smoke_test()
     additional_vegan_search_smoke_test()
     promotions_page_smoke_test()
 

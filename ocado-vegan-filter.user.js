@@ -129,8 +129,13 @@
   const MUTED_PROMOTION_COLOR = "#654348";
   const HYDRATION_ROOT_NAMES = ["__INITIAL_STATE__", "__QUERY_INITIAL_STATE__", "__staticRouterHydrationData", "__staticRouterHydrationData__"];
   const HYDRATION_INDEX_REFRESH_MS = 1000;
-  const GRAYSCALE_IMAGE_CACHE_LIMIT = 256;
-  const GRAYSCALE_IMAGE_CACHE = new Map();
+  const MUTED_IMAGE_STYLES = {
+    filter: MUTED_IMAGE_FILTER,
+    opacity: MUTED_IMAGE_OPACITY,
+    animation: "none",
+    "pointer-events": "none",
+    transition: "none",
+  };
 
   // This cache avoids repeatedly scanning Ocado's page data on every small page update.
   let hydrationProductIndex = {
@@ -5039,10 +5044,6 @@
     }
   }
 
-  function imageSource(image) {
-    return image.currentSrc || image.src || image.getAttribute("src") || "";
-  }
-
   function imageIsMutedByThisScript(image) {
     return (
       image.dataset.ocadoVeganFilterImage === "muted" ||
@@ -5054,120 +5055,21 @@
     );
   }
 
-  function scheduleImageGrayscaleOnLoad(image) {
-    if (image.dataset.ocadoVeganFilterLoadListener) {
-      return;
-    }
-
-    image.dataset.ocadoVeganFilterLoadListener = "true";
-    image.addEventListener(
-      "load",
-      () => {
-        delete image.dataset.ocadoVeganFilterLoadListener;
-
-        const card = findProductCard(image);
-
-        if (card && card.classList.contains(MUTED_CARD_CLASS)) {
-          scheduleRun();
-        }
-      },
-      { once: true },
-    );
-  }
-
-  function grayscaleImageDataUrl(image, source) {
-    /*
-     * CSS grayscale was not visually reliable enough on all Ocado images.
-     * This converts the loaded image pixels to a real grayscale data URL, then
-     * CSS still applies the fade/opacity effect on top.
-     */
-    const cached = GRAYSCALE_IMAGE_CACHE.get(source);
-
-    if (cached) {
-      // Refresh insertion order so the least recently used image is evicted.
-      GRAYSCALE_IMAGE_CACHE.delete(source);
-      GRAYSCALE_IMAGE_CACHE.set(source, cached);
-      return cached;
-    }
-
-    const canvas = document.createElement("canvas");
-    canvas.width = image.naturalWidth;
-    canvas.height = image.naturalHeight;
-
-    const context = canvas.getContext("2d", { willReadFrequently: true });
-    context.drawImage(image, 0, 0);
-
-    const imageData = context.getImageData(0, 0, canvas.width, canvas.height);
-    const data = imageData.data;
-
-    for (let index = 0; index < data.length; index += 4) {
-      const gray = Math.round(data[index] * 0.2126 + data[index + 1] * 0.7152 + data[index + 2] * 0.0722);
-      data[index] = gray;
-      data[index + 1] = gray;
-      data[index + 2] = gray;
-    }
-
-    context.putImageData(imageData, 0, 0);
-
-    const dataUrl = canvas.toDataURL("image/png");
-    GRAYSCALE_IMAGE_CACHE.set(source, dataUrl);
-    if (GRAYSCALE_IMAGE_CACHE.size > GRAYSCALE_IMAGE_CACHE_LIMIT) {
-      GRAYSCALE_IMAGE_CACHE.delete(GRAYSCALE_IMAGE_CACHE.keys().next().value);
-    }
-    return dataUrl;
-  }
-
-  function replaceWithGrayscaleImage(image) {
-    const source = imageSource(image);
-
-    if (!source || source.startsWith("data:")) {
-      return;
-    }
-
-    if (!image.complete || !image.naturalWidth || !image.naturalHeight) {
-      // Lazy-loaded images may not have pixels yet; try again when the image finishes loading.
-      scheduleImageGrayscaleOnLoad(image);
-      return;
-    }
-
-    if (image.dataset.ocadoVeganFilterGrayscaleFailedSource === source) {
-      return;
-    }
-
-    try {
-      const dataUrl = grayscaleImageDataUrl(image, source);
-      image.dataset.ocadoVeganFilterGrayscaleSource = source;
-      image.removeAttribute("srcset");
-      image.removeAttribute("sizes");
-      image.src = dataUrl;
-    } catch (error) {
-      image.dataset.ocadoVeganFilterGrayscaleFailedSource = source;
-    }
-  }
-
   function muteProductImages(card) {
     // The CSS makes the image pointer-transparent so Ocado's overlaid product
     // link remains clickable.
     for (const image of productImages(card)) {
       if (!image.dataset.ocadoVeganFilterImage) {
         image.dataset.ocadoVeganFilterOriginalStyle = image.getAttribute("style") || "";
-        image.dataset.ocadoVeganFilterOriginalSrc = image.getAttribute("src") || "";
-        image.dataset.ocadoVeganFilterOriginalSrcset = image.getAttribute("srcset") || "";
-        image.dataset.ocadoVeganFilterOriginalSizes = image.getAttribute("sizes") || "";
       }
 
       if (image.dataset.ocadoVeganFilterImage !== "muted") {
         image.dataset.ocadoVeganFilterImage = "muted";
       }
-      replaceWithGrayscaleImage(image);
-      setImportantStyle(image, "filter", MUTED_IMAGE_FILTER);
-      setImportantStyle(image, "opacity", MUTED_IMAGE_OPACITY);
-      setImportantStyle(image, "animation", "none");
-      setImportantStyle(image, "pointer-events", "none");
-      setImportantStyle(image, "transition", "none");
-
-      for (const animation of image.getAnimations()) {
-        animation.cancel();
+      // CSS handles loaded and lazy images without copying pixels or replacing
+      // Ocado's responsive image sources. Important styles also override fades.
+      for (const [property, value] of Object.entries(MUTED_IMAGE_STYLES)) {
+        setImportantStyle(image, property, value);
       }
     }
   }
@@ -5184,30 +5086,32 @@
         continue;
       }
 
-      const originalStyle = image.dataset.ocadoVeganFilterOriginalStyle;
-
-      if (typeof originalStyle === "string" && originalStyle) {
-        image.setAttribute("style", originalStyle);
-      } else if (typeof originalStyle === "string") {
-        image.removeAttribute("style");
-      } else {
-        image.style.removeProperty("filter");
-        image.style.removeProperty("opacity");
-        image.style.removeProperty("animation");
-        image.style.removeProperty("pointer-events");
-        image.style.removeProperty("transition");
+      const original = document.createElement("span").style;
+      original.cssText = image.dataset.ocadoVeganFilterOriginalStyle || "";
+      for (const [property, value] of Object.entries(MUTED_IMAGE_STYLES)) {
+        // Restore only properties we still own, preserving changes made by Ocado.
+        if (image.style.getPropertyValue(property) === value && image.style.getPropertyPriority(property) === "important") {
+          const previousValue = original.getPropertyValue(property);
+          if (previousValue) {
+            image.style.setProperty(property, previousValue, original.getPropertyPriority(property));
+          } else {
+            image.style.removeProperty(property);
+          }
+        }
       }
 
-      const fallbackSource = image.dataset.ocadoVeganFilterGrayscaleSource || "";
-      const originalSrc = image.dataset.ocadoVeganFilterOriginalSrc || fallbackSource;
-
+      // Clean up images left by an older script only while they still contain
+      // its generated data URL. Never restore an old product over a reused image.
+      const fallbackSource = image.dataset.ocadoVeganFilterGrayscaleSource;
+      if (fallbackSource && image.getAttribute("src")?.startsWith("data:")) {
+        restoreImageAttribute(image, "src", image.dataset.ocadoVeganFilterOriginalSrc || fallbackSource);
+        restoreImageAttribute(image, "srcset", image.dataset.ocadoVeganFilterOriginalSrcset || "");
+        restoreImageAttribute(image, "sizes", image.dataset.ocadoVeganFilterOriginalSizes || "");
+      }
       delete image.dataset.ocadoVeganFilterImage;
       delete image.dataset.ocadoVeganFilterOriginalStyle;
       delete image.dataset.ocadoVeganFilterGrayscaleSource;
       delete image.dataset.ocadoVeganFilterGrayscaleFailedSource;
-      restoreImageAttribute(image, "src", originalSrc);
-      restoreImageAttribute(image, "srcset", image.dataset.ocadoVeganFilterOriginalSrcset || "");
-      restoreImageAttribute(image, "sizes", image.dataset.ocadoVeganFilterOriginalSizes || "");
       delete image.dataset.ocadoVeganFilterOriginalSrc;
       delete image.dataset.ocadoVeganFilterOriginalSrcset;
       delete image.dataset.ocadoVeganFilterOriginalSizes;
