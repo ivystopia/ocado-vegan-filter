@@ -78,7 +78,7 @@ The project has two related goals:
 
 ## Git Workflow
 
-- Each commit should be one self-contained logical change.
+- Commit each finalised logical change individually: one change per commit and one commit per change.
 - Keep formatting-only changes in a separate commit from feature, behaviour, documentation, or data changes.
 - Keep repo-specific signing configuration in local `.git/config`, not in tracked repo files.
 - Keep GitHub Actions workflows on the latest stable major versions of actions and avoid deprecated JavaScript runtimes.
