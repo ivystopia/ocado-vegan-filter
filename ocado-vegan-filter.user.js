@@ -129,6 +129,7 @@
   const MUTED_PROMOTION_COLOR = "#654348";
   const HYDRATION_ROOT_NAMES = ["__INITIAL_STATE__", "__QUERY_INITIAL_STATE__", "__staticRouterHydrationData", "__staticRouterHydrationData__"];
   const HYDRATION_INDEX_REFRESH_MS = 1000;
+  const FRAME_WORK_BUDGET_MS = 8;
   const MUTED_IMAGE_STYLES = {
     filter: MUTED_IMAGE_FILTER,
     opacity: MUTED_IMAGE_OPACITY,
@@ -148,6 +149,7 @@
   // Ocado's generated class names are stable enough within one page view.
   const documentClassCache = new Map();
   let cachedOutOfStockButtonClassName = "";
+  let buttonStyleResolved = false;
 
   // Products Ocado officially tagged vegan.
   const OFFICIAL_VEGAN_PRODUCT_IDS = new Set(
@@ -4870,7 +4872,7 @@
     const cacheKey = String(pattern);
     const cachedClassName = documentClassCache.get(cacheKey);
 
-    if (cachedClassName) {
+    if (documentClassCache.has(cacheKey)) {
       return cachedClassName;
     }
 
@@ -4883,6 +4885,7 @@
       }
     }
 
+    documentClassCache.set(cacheKey, "");
     return "";
   }
 
@@ -4908,9 +4911,10 @@
   }
 
   function outOfStockButtonClassName(button) {
-    if (cachedOutOfStockButtonClassName) {
+    if (buttonStyleResolved) {
       return cachedOutOfStockButtonClassName;
     }
+    buttonStyleResolved = true;
 
     const template = outOfStockButtonTemplate();
 
@@ -5378,19 +5382,91 @@
 
   let scheduled = false;
   let observer;
+  let needsFullScan = true;
+  let observedHydrationRoots = hydrationRoots();
+  const pendingCards = new Set();
+  const relevantAttributes = new Set(["alt", "class", "data-test", "data-testid", "href", "src", "srcset", "sizes", "style", "id", "data-icon", "aria-label"]);
+
+  function invalidateButtonStyle() {
+    buttonStyleResolved = false;
+    cachedOutOfStockButtonClassName = "";
+    documentClassCache.clear();
+  }
+
+  function collectAddedCards(element) {
+    if (element.nodeType !== Node.ELEMENT_NODE) {
+      return;
+    }
+    const cards = element.querySelectorAll(CARD_SELECTOR);
+    if (element.matches(CARD_SELECTOR)) {
+      pendingCards.add(findProductCard(element));
+    }
+    for (const card of cards) {
+      pendingCards.add(findProductCard(card));
+    }
+    if (cards.length || element.matches(CARD_SELECTOR)) {
+      invalidateButtonStyle();
+    }
+    if (element.matches(OUT_OF_STOCK_BUTTON_SELECTOR) || element.querySelector(OUT_OF_STOCK_BUTTON_SELECTOR)) {
+      invalidateButtonStyle();
+      needsFullScan = true;
+    }
+  }
+
+  function queueMutations(records) {
+    const roots = hydrationRoots();
+    if (roots.length !== observedHydrationRoots.length || roots.some((root, index) => root !== observedHydrationRoots[index])) {
+      observedHydrationRoots = roots;
+      needsFullScan = true;
+    }
+    for (const record of records) {
+      if (record.type === "attributes" && !relevantAttributes.has(record.attributeName)) {
+        continue;
+      }
+      const element = record.target.nodeType === Node.ELEMENT_NODE ? record.target : record.target.parentElement;
+      const card = element && findProductCard(element);
+      if (card) {
+        pendingCards.add(card);
+      }
+      for (const added of record.addedNodes) {
+        collectAddedCards(added);
+      }
+    }
+    if (needsFullScan || pendingCards.size || !document.getElementById(STYLE_ID)) {
+      hydrationIndexRefreshedInRun = false;
+      scheduleRun();
+    }
+  }
 
   function run() {
     scheduled = false;
-    hydrationIndexRefreshedInRun = false;
     addStyles();
 
-    for (const card of productCards()) {
-      processCard(card);
+    if (needsFullScan) {
+      needsFullScan = false;
+      for (const card of productCards()) {
+        pendingCards.add(card);
+      }
     }
 
-    // Discard mutations caused synchronously by this pass. Without this, our
-    // own class, text, image, and style updates schedule another full-grid pass.
-    observer.takeRecords();
+    const startedAt = performance.now();
+    try {
+      for (const card of pendingCards) {
+        pendingCards.delete(card);
+        if (card.isConnected) {
+          processCard(card);
+        }
+        if (performance.now() - startedAt >= FRAME_WORK_BUDGET_MS) {
+          break;
+        }
+      }
+    } finally {
+      // Ignore our synchronous writes, but observe later React updates normally.
+      observer.takeRecords();
+      if (pendingCards.size) {
+        scheduleRun();
+      }
+    }
   }
 
   function scheduleRun() {
@@ -5402,12 +5478,12 @@
     window.requestAnimationFrame(run);
   }
 
-  // Ocado product grids update after initial page load, during scrolling, and
-  // after basket interactions. Re-run whenever the grid DOM changes.
-  observer = new MutationObserver(scheduleRun);
+  // Route page changes to affected cards. Text-node and namespaced SVG updates
+  // matter too; filter attributes here so xlink:href mutations remain observable.
+  observer = new MutationObserver(queueMutations);
   observer.observe(document.documentElement, {
-    attributeFilter: ["alt", "class", "data-ocado-vegan-filter-image", "data-ocado-vegan-filter-grayscale-source", "data-test", "data-testid", "href", "src", "srcset", "style"],
     attributes: true,
+    characterData: true,
     childList: true,
     subtree: true,
   });

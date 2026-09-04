@@ -425,6 +425,60 @@ def fixture_smoke_test() -> None:
     print("fixture smoke test passed")
 
 
+def incremental_updates_smoke_test() -> None:
+    html = """<!doctype html><header id="header">Header</header><main>
+      <article class="product-card-container" id="text">
+        <a href="https://www.ocado.com/products/999880011">Sample product</a>
+        <span data-test="fop-title">Sample Vegan product</span>
+        <button data-test="counter-button" aria-label="Add sample">Add</button>
+      </article>
+      <article class="product-card-container" id="icon">
+        <a href="https://www.ocado.com/products/999880012">Another product</a>
+        <svg><use></use></svg><button data-test="counter-button" aria-label="Add another">Add</button>
+      </article>
+    </main>"""
+    source = userscript().replace("  let scheduled = false;", """
+      const originalProcessCard = processCard;
+      window.auditProcessed = 0;
+      processCard = card => { window.auditProcessed++; originalProcessCard(card); };
+      let scheduled = false;
+    """)
+    driver = headless_firefox()
+    try:
+        driver.get("data:text/html;base64," + base64.b64encode(html.encode()).decode())
+        driver.execute_script(source)
+        wait = WebDriverWait(driver, 5)
+        wait.until(lambda d: d.execute_script("return window.auditProcessed") == 2)
+        driver.execute_script("document.querySelector('#header').classList.add('updated');")
+        time.sleep(0.1)
+        assert driver.execute_script("return window.auditProcessed") == 2
+        driver.execute_script("document.querySelector('[data-test=fop-title]').firstChild.data = 'Sample product';")
+        wait.until(lambda d: d.execute_script("return document.querySelector('#text button').textContent") == "Unknown vegan")
+        assert driver.execute_script("return window.auditProcessed") == 3
+        driver.execute_script("document.querySelector('use').setAttributeNS('http://www.w3.org/1999/xlink', 'xlink:href', '#vegan');")
+        wait.until(lambda d: d.execute_script("return document.querySelector('#icon button').textContent") == "Add")
+        assert driver.execute_script("return window.auditProcessed") == 4
+        driver.execute_script("document.querySelector('svg').remove();")
+        wait.until(lambda d: d.execute_script("return document.querySelector('#icon button').textContent") == "Unknown vegan")
+        driver.execute_script("""
+          window.__INITIAL_STATE__ = {product: {retailerProductId:'999880012', attributes:[{icon:'vegan'}]}};
+          document.querySelector('#header').classList.add('hydrated');
+        """)
+        wait.until(lambda d: d.execute_script("return document.querySelector('#icon button').textContent") == "Add")
+        assert driver.execute_script("return window.auditProcessed") == 7
+        driver.execute_script("""
+          const template = document.querySelector('#text');
+          const fragment = document.createDocumentFragment();
+          for (let n=0; n<200; n++) { const card=template.cloneNode(true); card.removeAttribute('id'); fragment.append(card); }
+          document.querySelector('main').append(fragment);
+        """)
+        wait.until(lambda d: d.execute_script("return window.auditProcessed") == 207)
+        assert driver.execute_script("return document.querySelectorAll('.product-card-container').length") == 202
+    finally:
+        driver.quit()
+    print("incremental updates smoke test passed")
+
+
 def image_ownership_smoke_test() -> None:
     html = """<!doctype html><article class="product-card-container">
       <a href="https://www.ocado.com/products/999880011"><img style="width: 40px; opacity: 0.75"></a>
@@ -720,6 +774,7 @@ def main() -> None:
     fixture_smoke_test()
     image_rendering_smoke_test()
     image_ownership_smoke_test()
+    incremental_updates_smoke_test()
     additional_vegan_search_smoke_test()
     promotions_page_smoke_test()
 
