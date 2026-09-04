@@ -4861,7 +4861,7 @@
   }
 
   function isAddButton(button) {
-    return button.classList.contains(MUTED_ADD_BUTTON_CLASS) || (textOf(button) === "Add" && /^Add\b/i.test(button.getAttribute("aria-label") || ""));
+    return /^Add\b/i.test(button.getAttribute("aria-label") || "") && (button.classList.contains(MUTED_ADD_BUTTON_CLASS) || textOf(button) === "Add");
   }
 
   function firstClassMatching(element, pattern) {
@@ -4944,6 +4944,9 @@
       if (button.dataset.ocadoVeganFilterButtonStyle !== undefined) {
         delete button.dataset.ocadoVeganFilterButtonStyle;
       }
+      if (button.dataset.ocadoVeganFilterAppliedClass !== styledClassName) {
+        button.dataset.ocadoVeganFilterAppliedClass = styledClassName;
+      }
       return;
     }
 
@@ -4952,6 +4955,10 @@
     }
     if (button.dataset.ocadoVeganFilterButtonStyle !== "fallback") {
       button.dataset.ocadoVeganFilterButtonStyle = "fallback";
+    }
+    const appliedClass = button.getAttribute("class") || "";
+    if (button.dataset.ocadoVeganFilterAppliedClass !== appliedClass) {
+      button.dataset.ocadoVeganFilterAppliedClass = appliedClass;
     }
   }
 
@@ -4963,12 +4970,12 @@
     // The button remains Ocado's original Add button. Only the visible text is
     // changed, and the hover state makes the click-through behaviour explicit.
     button.addEventListener("mouseenter", () => {
-      if (button.classList.contains(MUTED_ADD_BUTTON_CLASS) && textOf(button) !== ADD_ANYWAY_LABEL) {
+      if (button.classList.contains(MUTED_ADD_BUTTON_CLASS) && isAddButton(button) && textOf(button) !== ADD_ANYWAY_LABEL) {
         button.textContent = ADD_ANYWAY_LABEL;
       }
     });
     button.addEventListener("mouseleave", () => {
-      if (button.classList.contains(MUTED_ADD_BUTTON_CLASS)) {
+      if (button.classList.contains(MUTED_ADD_BUTTON_CLASS) && isAddButton(button)) {
         const label = button.dataset.ocadoVeganFilterLabel || UNKNOWN_VEGAN_LABEL;
 
         if (textOf(button) !== label) {
@@ -4985,6 +4992,9 @@
     // remains on the original button.
     for (const addButton of card.querySelectorAll(ADD_BUTTON_SELECTOR)) {
       if (!isAddButton(addButton)) {
+        if (addButton.classList.contains(MUTED_ADD_BUTTON_CLASS)) {
+          restoreAddButton(addButton);
+        }
         continue;
       }
 
@@ -5006,22 +5016,28 @@
     }
   }
 
-  function restoreAddButtonAppearance(card) {
-    // Cards can change classification as Ocado hydrates more metadata into the
-    // page. If later metadata identifies a card as vegan, restore the appearance
-    // saved before applying the cosmetic out-of-stock style.
-    for (const addButton of card.querySelectorAll(`.${MUTED_ADD_BUTTON_CLASS}`)) {
-      if (typeof addButton.dataset.ocadoVeganFilterOriginalClass === "string") {
-        addButton.setAttribute("class", addButton.dataset.ocadoVeganFilterOriginalClass);
-      } else {
-        addButton.classList.remove(MUTED_ADD_BUTTON_CLASS);
-      }
-
+  function restoreAddButton(addButton) {
+    // React can reuse this element for a quantity control, or replace its
+    // classes/text before we run. Restore only the appearance we still own.
+    const appliedClass = addButton.dataset.ocadoVeganFilterAppliedClass;
+    if (typeof addButton.dataset.ocadoVeganFilterOriginalClass === "string" && (appliedClass === undefined || addButton.getAttribute("class") === appliedClass)) {
+      addButton.setAttribute("class", addButton.dataset.ocadoVeganFilterOriginalClass);
+    } else {
+      addButton.classList.remove(MUTED_ADD_BUTTON_CLASS);
+    }
+    if (/^Add\b/i.test(addButton.getAttribute("aria-label") || "") && [NON_VEGAN_LABEL, UNKNOWN_VEGAN_LABEL, ADD_ANYWAY_LABEL].includes(textOf(addButton))) {
       addButton.textContent = addButton.dataset.ocadoVeganFilterOriginalText || "Add";
-      delete addButton.dataset.ocadoVeganFilterButtonStyle;
-      delete addButton.dataset.ocadoVeganFilterOriginalClass;
-      delete addButton.dataset.ocadoVeganFilterOriginalText;
-      delete addButton.dataset.ocadoVeganFilterLabel;
+    }
+    delete addButton.dataset.ocadoVeganFilterButtonStyle;
+    delete addButton.dataset.ocadoVeganFilterOriginalClass;
+    delete addButton.dataset.ocadoVeganFilterAppliedClass;
+    delete addButton.dataset.ocadoVeganFilterOriginalText;
+    delete addButton.dataset.ocadoVeganFilterLabel;
+  }
+
+  function restoreAddButtonAppearance(card) {
+    for (const addButton of card.querySelectorAll(`.${MUTED_ADD_BUTTON_CLASS}`)) {
+      restoreAddButton(addButton);
     }
   }
 

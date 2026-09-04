@@ -425,6 +425,32 @@ def fixture_smoke_test() -> None:
     print("fixture smoke test passed")
 
 
+def reused_counter_smoke_test() -> None:
+    html = """<!doctype html><article class="product-card-container">
+      <a href="https://www.ocado.com/products/999880011">Sample</a>
+      <button class="native-button" data-test="counter-button" aria-label="Add sample">Add</button>
+    </article>"""
+    driver = headless_firefox()
+    try:
+        driver.get("data:text/html;base64," + base64.b64encode(html.encode()).decode())
+        driver.execute_script("window.originalButton=document.querySelector('button');window.clicks=0;originalButton.addEventListener('click',()=>window.clicks++);")
+        driver.execute_script(userscript())
+        wait = WebDriverWait(driver, 5)
+        wait.until(lambda d: d.execute_script("return originalButton.textContent") == "Unknown vegan")
+        driver.execute_script("""
+          originalButton.textContent='+';
+          originalButton.setAttribute('aria-label','Increase quantity');
+          originalButton.dispatchEvent(new MouseEvent('mouseenter'));
+        """)
+        wait.until(lambda d: d.execute_script("return !originalButton.classList.contains('ocado-vegan-filter-muted-add')"))
+        driver.find_element(By.TAG_NAME, "button").click()
+        state = driver.execute_script("return {label:originalButton.textContent,classes:originalButton.className,same:originalButton===document.querySelector('button'),clicks:window.clicks};")
+        assert state == {"label": "+", "classes": "native-button", "same": True, "clicks": 1}, state
+    finally:
+        driver.quit()
+    print("reused counter smoke test passed")
+
+
 def incremental_updates_smoke_test() -> None:
     html = """<!doctype html><header id="header">Header</header><main>
       <article class="product-card-container" id="text">
@@ -775,6 +801,7 @@ def main() -> None:
     image_rendering_smoke_test()
     image_ownership_smoke_test()
     incremental_updates_smoke_test()
+    reused_counter_smoke_test()
     additional_vegan_search_smoke_test()
     promotions_page_smoke_test()
 
