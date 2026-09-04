@@ -22,6 +22,23 @@ SET_QUERIES = {
 }
 
 
+def validate_export_readiness(conn: sqlite3.Connection) -> None:
+    tables = {row[0] for row in conn.execute("SELECT name FROM sqlite_master WHERE type = 'table'")}
+    if "sync_context_baseline" in tables:
+        raise ValueError("Refusing to export an incomplete catalogue sync; rerun the sync successfully first")
+    if "sync_runs" in tables:
+        latest = conn.execute("SELECT id, status FROM sync_runs ORDER BY id DESC LIMIT 1").fetchone()
+        if latest and latest[1] != "completed":
+            raise ValueError(f"Refusing to export sync run {latest[0]} with status {latest[1]!r}")
+    columns = {row[1] for row in conn.execute("PRAGMA table_info(products)")}
+    if "current_on_ocado" in columns:
+        unfinished = conn.execute(
+            "SELECT COUNT(*) FROM products WHERE current_on_ocado = 1 AND vegan_status IS NULL"
+        ).fetchone()[0]
+        if unfinished:
+            raise ValueError(f"Refusing to export {unfinished} unclassified current products")
+
+
 def validate_official_tag_precedence(conn: sqlite3.Connection) -> None:
     conflicts = [
         row[0]
@@ -53,6 +70,7 @@ def validate_official_tag_precedence(conn: sqlite3.Connection) -> None:
 
 
 def load_allowlists(conn: sqlite3.Connection) -> dict[str, list[str]]:
+    validate_export_readiness(conn)
     validate_official_tag_precedence(conn)
     result = {}
     for name, status_clause in SET_QUERIES.items():

@@ -992,10 +992,14 @@ def classifier_change_payload(payload: dict[str, Any]) -> dict[str, Any]:
 
 
 def snapshot_classifier_contexts(conn: sqlite3.Connection) -> None:
-    conn.execute("DROP TABLE IF EXISTS temp.sync_context_baseline")
+    # Keep the original evidence across failed/interrupted syncs. Replacing it
+    # with a partially refreshed catalogue would hide changes on the next retry.
+    if conn.execute("SELECT 1 FROM sqlite_master WHERE type = 'table' AND name = 'sync_context_baseline'").fetchone():
+        print("Reusing classifier context from the unfinished sync", flush=True)
+        return
     conn.execute(
         """
-        CREATE TEMP TABLE sync_context_baseline (
+        CREATE TABLE IF NOT EXISTS sync_context_baseline (
           product_id TEXT PRIMARY KEY,
           was_current INTEGER NOT NULL,
           context_hash TEXT NOT NULL,
@@ -1041,7 +1045,7 @@ def finalize_context_changes(conn: sqlite3.Connection, run_id: int) -> None:
         after_json = json.dumps(payload, ensure_ascii=True, sort_keys=True, separators=(",", ":"))
         after_hash = context_hash(classifier_change_payload(payload))
         before = conn.execute(
-            "SELECT context_hash, context_json, vegan_status, vegan_reason FROM temp.sync_context_baseline WHERE product_id = ?",
+            "SELECT context_hash, context_json, vegan_status, vegan_reason FROM sync_context_baseline WHERE product_id = ?",
             (product_id,),
         ).fetchone()
         if before is not None and before[0] == after_hash:
@@ -1075,7 +1079,7 @@ def finalize_context_changes(conn: sqlite3.Connection, run_id: int) -> None:
     removed_rows = conn.execute(
         """
         SELECT b.product_id, b.context_hash, b.context_json, b.vegan_status, b.vegan_reason
-        FROM temp.sync_context_baseline b JOIN products p ON p.id = b.product_id
+        FROM sync_context_baseline b JOIN products p ON p.id = b.product_id
         WHERE b.was_current = 1 AND p.current_on_ocado = 0
         """
     ).fetchall()
@@ -1092,6 +1096,7 @@ def finalize_context_changes(conn: sqlite3.Connection, run_id: int) -> None:
     record_run_count(conn, run_id, "products_changed", changed_count)
     record_run_count(conn, run_id, "products_removed", len(removed_rows))
     record_run_count(conn, run_id, "classifications_invalidated", invalidated)
+    conn.execute("DROP TABLE sync_context_baseline")
     print(
         f"Context changes new={new_count} changed={changed_count} removed={len(removed_rows)} invalidated={invalidated}",
         flush=True,

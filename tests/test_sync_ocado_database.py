@@ -16,6 +16,8 @@ if str(TOOLS) not in sys.path:
 
 import build_ocado_database
 import sync_ocado_database as sync
+import classify_ocado_vegan as classifier
+import update_userscript_allowlists as allowlists
 
 
 class SyncOcadoDatabaseTests(unittest.TestCase):
@@ -25,6 +27,51 @@ class SyncOcadoDatabaseTests(unittest.TestCase):
         build_ocado_database.create_schema(conn)
         sync.ensure_sync_schema(conn)
         return conn
+
+    def test_failed_sync_preserves_baseline_across_reopen_and_retry(self) -> None:
+        with tempfile.TemporaryDirectory() as tmp:
+            path = Path(tmp) / "ocado.sqlite"
+            conn = self.create_db(path)
+            classifier.ensure_classification_schema(conn, drop_legacy=False)
+            with conn:
+                conn.execute(
+                    """INSERT INTO products
+                       (id, name, ingredients, official_vegan, vegan_status, vegan_reason, current_on_ocado)
+                       VALUES ('1', 'Sauce', 'Tomato', 0, 'vegan', 'ingredients', 1)"""
+                )
+                run_id = sync.start_sync_run(conn)
+                sync.snapshot_classifier_contexts(conn)
+            data = {
+                "product": {"retailerProductId": "1", "name": "Sauce", "iconAttributes": []},
+                "bopData": {"fields": [{"title": "ingredients", "content": "Milk, Tomato"}]},
+            }
+            with conn:
+                sync.apply_product_detail(conn, run_id, "1", data, 200)
+                sync.upsert_basic_product(conn, "2", name="New product", run_id=run_id)
+                sync.finish_sync_run(conn, run_id, "failed", "Simulated next-batch failure")
+            with self.assertRaisesRegex(ValueError, "incomplete catalogue sync"):
+                allowlists.load_allowlists(conn)
+            conn.close()
+
+            with closing(sqlite3.connect(path)) as conn:
+                conn.row_factory = sqlite3.Row
+                with conn:
+                    retry_id = sync.start_sync_run(conn)
+                    sync.snapshot_classifier_contexts(conn)
+                    sync.apply_product_detail(conn, retry_id, "1", data, 200)
+                    sync.finalize_product_flags(conn, retry_id)
+                    sync.finalize_context_changes(conn, retry_id)
+                    sync.finish_sync_run(conn, retry_id, "completed")
+                self.assertIsNone(conn.execute("SELECT vegan_status FROM products WHERE id = '1'").fetchone()[0])
+                self.assertEqual(classifier.select_unclassified_product_ids(conn, sync_run_id=retry_id), ["1", "2"])
+                before = conn.execute(
+                    "SELECT before_context_json FROM sync_product_context_changes WHERE run_id = ? AND product_id = '1'",
+                    (retry_id,),
+                ).fetchone()[0]
+                self.assertIn('"ingredients":"Tomato"', before)
+                self.assertIsNone(conn.execute("SELECT 1 FROM sqlite_master WHERE name = 'sync_context_baseline'").fetchone())
+                with self.assertRaisesRegex(ValueError, "unclassified current products"):
+                    allowlists.load_allowlists(conn)
 
     def test_product_id_from_url_handles_slugged_product_urls(self) -> None:
         self.assertEqual(

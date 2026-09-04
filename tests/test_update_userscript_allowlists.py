@@ -22,6 +22,13 @@ import update_userscript_allowlists as generator
 
 
 class UpdateUserscriptAllowlistsTests(unittest.TestCase):
+    def test_export_requires_latest_sync_completed(self) -> None:
+        with sqlite3.connect(":memory:") as conn:
+            conn.execute("CREATE TABLE sync_runs(id INTEGER, status TEXT)")
+            conn.execute("INSERT INTO sync_runs VALUES (1, 'completed'), (2, 'failed')")
+            with self.assertRaisesRegex(ValueError, "sync run 2"):
+                generator.validate_export_readiness(conn)
+
     def test_replace_set_preserves_retained_order_and_appends_new_ids(self) -> None:
         source = "const IDS = new Set(\n    `\n  30 10 20\n  `\n      .trim()\n      .split(/\\s+/),\n  );"
         updated = generator.replace_set(source, "IDS", ["10", "30", "40"])
