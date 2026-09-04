@@ -4868,7 +4868,7 @@
     return Array.from(element.classList || []).find((className) => pattern.test(className)) || "";
   }
 
-  function firstDocumentClassMatching(pattern) {
+  function firstDocumentClassMatching(pattern, fragment) {
     const cacheKey = String(pattern);
     const cachedClassName = documentClassCache.get(cacheKey);
 
@@ -4876,7 +4876,9 @@
       return cachedClassName;
     }
 
-    for (const element of document.querySelectorAll("[class]")) {
+    // Narrow candidates in the native selector engine before examining class
+    // tokens. Walking every class on a large grid can block rendering.
+    for (const element of document.querySelectorAll(`[class*="${fragment}" i]`)) {
       const className = firstClassMatching(element, pattern);
 
       if (className) {
@@ -4901,10 +4903,10 @@
      * present elsewhere on the page and use those as the closest match.
      */
     const classes = [
-      firstClassMatching(button, /^_button_[a-z0-9]+_\d+$/i) || firstDocumentClassMatching(/^_button_[a-z0-9]+_\d+$/i),
-      firstDocumentClassMatching(/^_button--m_/),
-      firstDocumentClassMatching(/^_button--secondary_/),
-      firstDocumentClassMatching(/^_button--fill_/),
+      firstClassMatching(button, /^_button_[a-z0-9]+_\d+$/i) || firstDocumentClassMatching(/^_button_[a-z0-9]+_\d+$/i, "_button_"),
+      firstDocumentClassMatching(/^_button--m_/, "_button--m_"),
+      firstDocumentClassMatching(/^_button--secondary_/, "_button--secondary_"),
+      firstDocumentClassMatching(/^_button--fill_/, "_button--fill_"),
     ].filter(Boolean);
 
     return classes.join(" ");
