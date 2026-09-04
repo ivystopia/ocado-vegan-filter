@@ -124,15 +124,13 @@ ocado-vegan-filter.user.js
 Useful checks:
 
 ```sh
+python3 -m pip install -r requirements-dev.txt
 node --check ocado-vegan-filter.user.js
 python3 -m unittest discover -s tests
-PYTHONPATH=tests python3 - <<'PY'
-import test_ocado_vegan_filter as t
-
-t.userscript_source_test()
-t.fixture_smoke_test()
-PY
+OCADO_LIVE_TESTS=1 python3 -m unittest discover -s tests -p test_ocado_vegan_filter.py
 ```
+
+The normal suite includes real headless Firefox fixture tests. Live Ocado checks are opt-in; CI and GitHub releases run the fixture suite without needing an Ocado account. Set `FIREFOX_BINARY` when Firefox is not on the default browser path.
 
 For a catalogue refresh and userscript data update, follow [the monthly maintenance runbook](docs/monthly-maintenance.md).
 

@@ -5,8 +5,10 @@ from __future__ import annotations
 
 import base64
 import json
+import os
 import re
 import time
+import unittest
 from pathlib import Path
 
 from selenium import webdriver
@@ -46,6 +48,8 @@ MUTED_PROMOTION_RGB = "rgb(101, 67, 72)"
 def headless_firefox() -> webdriver.Firefox:
     options = Options()
     options.add_argument("-headless")
+    if os.environ.get("FIREFOX_BINARY"):
+        options.binary_location = os.environ["FIREFOX_BINARY"]
     return webdriver.Firefox(options=options)
 
 
@@ -66,7 +70,7 @@ def extract_userscript_id_set(constant_name: str) -> set[str]:
 
 def userscript_source_test() -> None:
     assert "// @name        Ocado Vegan Filter" in userscript()
-    assert "// @version     1.6.1" in userscript()
+    assert re.search(r"(?m)^// @version\s+\d+\.\d+\.\d+$", userscript())
     assert "// @inject-into page" in userscript()
 
     official_ids = extract_userscript_id_set("OFFICIAL_VEGAN_PRODUCT_IDS")
@@ -820,17 +824,33 @@ def additional_vegan_search_smoke_test() -> None:
     print("additional vegan search smoke test passed")
 
 
-def main() -> None:
-    userscript_source_test()
-    fixture_smoke_test()
-    image_rendering_smoke_test()
-    image_ownership_smoke_test()
-    incremental_updates_smoke_test()
-    reused_counter_smoke_test()
-    malformed_hydration_smoke_test()
-    additional_vegan_search_smoke_test()
-    promotions_page_smoke_test()
+class UserscriptTests(unittest.TestCase):
+    def test_source(self) -> None:
+        userscript_source_test()
+
+    def test_fixture(self) -> None:
+        fixture_smoke_test()
+
+    def test_image_rendering(self) -> None:
+        image_rendering_smoke_test()
+
+    def test_image_ownership(self) -> None:
+        image_ownership_smoke_test()
+
+    def test_incremental_updates(self) -> None:
+        incremental_updates_smoke_test()
+
+    def test_reused_counter(self) -> None:
+        reused_counter_smoke_test()
+
+    def test_malformed_hydration(self) -> None:
+        malformed_hydration_smoke_test()
+
+    @unittest.skipUnless(os.environ.get("OCADO_LIVE_TESTS") == "1", "Live Ocado checks are opt-in")
+    def test_live_pages(self) -> None:
+        additional_vegan_search_smoke_test()
+        promotions_page_smoke_test()
 
 
 if __name__ == "__main__":
-    main()
+    unittest.main()
