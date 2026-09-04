@@ -18,6 +18,8 @@ python3 -m unittest discover -s tests
 
 Run the fixed safety benchmark before contacting Ocado. It is read-only and must finish with `48/48 exact`, no false-vegan result, and no execution errors.
 
+The standard fixture now contains frozen SQLite evidence in `benchmarks/vegan-classifier-v1-contexts.json`, with hashes checked by the runner. It does not reread changing catalogue rows. Keep these inputs and their expected statuses together when adding regression cases.
+
 ```bash
 RUN_DATE="$(date +%F)"
 

@@ -40,12 +40,22 @@ def load_fixture(path: Path) -> dict[str, Any]:
         if product_id in seen:
             raise ValueError(f"Duplicate benchmark product ID: {product_id}")
         seen.add(product_id)
+    if payload.get("contexts_file"):
+        snapshots = json.loads((path.parent / payload["contexts_file"]).read_text(encoding="utf-8"))
+        contexts = snapshots.get("contexts", {})
+        if set(contexts) != seen:
+            raise ValueError("Frozen benchmark contexts must exactly match the fixture product IDs")
+        for product_id, snapshot in contexts.items():
+            context = snapshot["context"]
+            if context.get("product", {}).get("id") != product_id or classifier.context_hash(context) != snapshot["sha256"]:
+                raise ValueError(f"Invalid frozen benchmark context: {product_id}")
+        payload["contexts"] = {product_id: row["context"] for product_id, row in contexts.items()}
     return payload
 
 
 def build_parser() -> argparse.ArgumentParser:
     parser = argparse.ArgumentParser(description=__doc__)
-    parser.add_argument("--db", type=Path, default=DEFAULT_DB)
+    parser.add_argument("--db", type=Path, default=DEFAULT_DB, help="Database for legacy fixtures without frozen contexts")
     parser.add_argument("--fixture", type=Path, default=DEFAULT_FIXTURE)
     parser.add_argument("--model", default=classifier.DEFAULT_CODEX_MODEL)
     parser.add_argument("--reasoning-effort", default=classifier.DEFAULT_REASONING_EFFORT)
@@ -73,8 +83,10 @@ def run_benchmark(args: argparse.Namespace) -> dict[str, Any]:
         cohorts[product["cohort"]].append(str(product["product_id"]))
 
     db_uri = args.db.resolve().as_uri() + "?mode=ro"
-    conn = sqlite3.connect(db_uri, uri=True)
-    conn.row_factory = sqlite3.Row
+    conn = None
+    if not fixture.get("contexts"):
+        conn = sqlite3.connect(db_uri, uri=True)
+        conn.row_factory = sqlite3.Row
     decisions: dict[str, classifier.ClassificationResult] = {}
     started = time.perf_counter()
     try:
@@ -82,7 +94,10 @@ def run_benchmark(args: argparse.Namespace) -> dict[str, Any]:
             print(f"Benchmark cohort {cohort}: {len(product_ids)} products", flush=True)
             for offset in range(0, len(product_ids), args.batch_size):
                 batch_ids = product_ids[offset : offset + args.batch_size]
-                contexts = classifier.load_product_contexts(conn, batch_ids)
+                contexts = (
+                    [fixture["contexts"][product_id] for product_id in batch_ids]
+                    if fixture.get("contexts") else classifier.load_product_contexts(conn, batch_ids)
+                )
                 results = classifier.classify_codex_contexts(
                     contexts,
                     passes=args.passes,
@@ -93,7 +108,8 @@ def run_benchmark(args: argparse.Namespace) -> dict[str, Any]:
                 )
                 decisions.update((result.product_id, result) for result in results)
     finally:
-        conn.close()
+        if conn is not None:
+            conn.close()
 
     elapsed = time.perf_counter() - started
     missing = sorted(set(expected) - set(decisions), key=int)
@@ -121,6 +137,8 @@ def run_benchmark(args: argparse.Namespace) -> dict[str, Any]:
     result = {
         "benchmark": fixture["name"],
         "fixture_date": fixture.get("benchmark_date"),
+        "fixture_sha256": classifier.context_hash(fixture),
+        "frozen_contexts": bool(fixture.get("contexts")),
         "run_at": datetime.now(timezone.utc).isoformat(),
         "model": args.model,
         "reasoning_effort": args.reasoning_effort,

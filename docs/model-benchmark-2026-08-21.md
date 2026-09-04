@@ -77,6 +77,14 @@ The corrected model worked through the existing ChatGPT-authenticated Codex CLI 
 
 ## Rerun Policy
 
+### Frozen inputs added on 2026-09-04
+
+The August rescrape changed evidence for an existing benchmark product: `677770011` gained an explicit manufacturer vegan statement, but its original expected status remained `unknown`. Running the old ID-only fixture against September's database therefore produced a misleading 47/48 result. That result is retained as `audit/benchmarks/2026-09-04-luna-high-unfrozen.json`.
+
+The original cohort inputs are now frozen in `benchmarks/vegan-classifier-v1-contexts.json`. Thirteen prior contexts were recovered from SQLite's sync-run-4 before-context records; the remaining 35 use the unchanged classification evidence in SQLite. Expected statuses, model, effort, prompt, and classification rules were not changed. Each frozen context and each benchmark run has a content hash.
+
+The frozen-input rerun returned 48/48 exact, zero false-vegan results, zero disagreements, and zero execution errors in 187.2 seconds. The result is retained as `audit/benchmarks/2026-09-04-luna-high-frozen.json`.
+
 Run the retained benchmark before every monthly live sync and after any change to:
 
 - model or reasoning effort;

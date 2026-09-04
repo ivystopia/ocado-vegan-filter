@@ -2,6 +2,7 @@
   "schema_version": 1,
   "name": "ocado-vegan-classifier-v1",
   "benchmark_date": "2026-08-21",
+  "contexts_file": "vegan-classifier-v1-contexts.json",
   "description": "Safety-first regression cohort derived from the SQLite product evidence used for the 2026-08-21 model comparison.",
   "products": [
     {"product_id": "683213011", "cohort": "challenge", "expected_status": "unknown"},

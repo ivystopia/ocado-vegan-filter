@@ -1,0 +1,1344 @@
+{
+  "description": "Frozen inputs for the original 2026-08-21 gold statuses, reconstructed from SQLite before-context audit records after detecting live-data drift on 2026-09-04. No expected statuses changed.",
+  "contexts": {
+    "683213011": {
+      "context": {
+        "categories": [
+          "events-inspiration/m-s-home-sale/bathroom",
+          "home-garden/home/towels-bathroom-accessories/towels/hand-towel",
+          "m-s/m-s-homeware-beauty/m-s-home-furnishings-decor/m-s-bathroom"
+        ],
+        "flags": [],
+        "manufacturer_vegan_evidence": [],
+        "product": {
+          "brand": "M&S",
+          "detailed_description": "Wrap up in comfort after your bath or shower with this pure cotton towel. It's made to a 500gsm weight for a substantial handfeel and finished with a charming blanket stitch trim. M&S' StayNew\u2122 technology keeps colours bright and fabrics soft for longer. This towel\u2019s GSM rating is 500 GSM. GSM stands for grams per square metre and indicates the weight and density of the towel. 450-600 GSM signifies a light to medium weight towel: good value and quick-drying, with added benefits such as low-twist yarn to make them feel more like their heavier-weight counterparts.",
+          "id": "683213011",
+          "name": "M&S Pure Cotton Blanket Stitch Towel, Hand Towel, Neutral",
+          "official_vegan": 0,
+          "preparation_and_usage": "Machine washable Tumble dry Keep away from fire and flames 100% cotton",
+          "specification": "- 500 gsm - Towel - Stay new",
+          "url": "https://www.ocado.com/products/683213011/details"
+        }
+      },
+      "sha256": "ca101a727bc0d8aef31ac5c11fde51e1be19c807869931b7b6458e30fe3f738c",
+      "source": "sync run 4 before_context_json"
+    },
+    "686950011": {
+      "context": {
+        "categories": [
+          "clothing-accessories/kids-clothing-accessories-3-14-years/kids-nightwear",
+          "events-inspiration/m-s-home-sale/clothing"
+        ],
+        "flags": [],
+        "manufacturer_vegan_evidence": [],
+        "product": {
+          "brand": "M&S",
+          "detailed_description": "These pure cotton pyjamas are a comfy choice for bedtime. Made in a regular fit, the two sets include short-sleeved tops and bottoms with a classic checked print.",
+          "id": "686950011",
+          "name": "M&S Boys Pure Cotton Checked Pyjama Sets, 10-11 Years, Blue",
+          "official_vegan": 0,
+          "preparation_and_usage": "Machine washable even at 30\u00ba Tumble dry Keep away from fire 100% cotton (exclusive of trimmings) Ribbing - 97% cotton, 3% elastane",
+          "specification": "- Regular fit - Short sleeve - Pyjama sets",
+          "url": "https://www.ocado.com/products/686950011/details"
+        }
+      },
+      "sha256": "273f130616ad048f0c9b3fb0d79ffbc5722f4c4b28105e5c3f236d12838beebd",
+      "source": "sync run 4 before_context_json"
+    },
+    "374339011": {
+      "context": {
+        "product": {
+          "id": "374339011",
+          "name": "Seedlip Alcohol Free Spirit Garden 108",
+          "brand": "Seedlip",
+          "url": "https://www.ocado.com/products/374339011/details",
+          "official_vegan": 0,
+          "ingredients": "Water, Natural Botanical Distillates and Extracts (15%), Preservative: Potassium Sorbate, Acid: Citric Acid",
+          "dietary_information": "No Sugar",
+          "features": "ABOUT - Seedlip has created Alcohol Free Spirits with incredible and distinct flavours. If you're moderating or looking for a fantastic alternative to alcohol to enjoy yourself or serve to guests when hosting, Seedlip is for you, ALCOHOL FREE - Make January a delightful and wholesome herbal experience by starting the New Year with Seedlip Garden 108 in a Martini cocktail, TASTING NOTES - Seedlip Garden 108 uses six natural botanicals to create its unique flavour. Blending peas, thyme & rosemary with a complex herbal base character of spearmint, hay & hops, SERVE - Serve 50ml of Seedlip with tonic over ice and garnish with Mint or Rosemary, or why not try an alcohol free Eastside or Martini?, HOW IT'S MADE - Seedlip is made from six carefully selected botanicals and spices. All our ingredients are high-quality, carefully sourced and uniquely combined. Our plants serve the palate with a unique and natural tasting flavour. Seedlip has no calories, no sugar and is allergy-friendly, PERFECT FOR GIFTING - Give the gift of enjoying indulgent alcohol-free cocktails, bringing a perfectly balanced and refreshing experience to any occasion",
+          "detailed_description": "Seedlip is on a mission to change the way the world drinks. Born out of the frustration of the lack of sophisticated, premium alternatives to alcohol, Seedlip created a range of non- alcoholic spirits to elevate every occasion. Whether midweek, relaxing at home, the designated driver or pregnant, Seedlip gives everyone a drink at the table. Each Seedlip flavour is distilled using natural ingredients and has no sugar, no calories and no artificial sweeteners. Seedlip Garden 108 is herbal in flavour, made from a blend of pea, rosemary, thyme, spearmint, hay & hops distillates. Garden 108 is best enjoyed in a large wine glass with ice, topped with your favourite premium mixer. We love to use elderflower tonic water. Garnish with a sugar snap pea and enjoy. Seedlip can also be used to create your favourite no and low alcohol cocktails. Why not try our take on the Martini or Mojito?",
+          "further_description": "Design by Pearlfisher Ther Art of Nature\u2122",
+          "brand_marketing": "Created by Ben Branson on his family's 300 year old farm and driven by a frustration at the lack of sophisticated non-alcoholic options, Seedlip is on a mission to change the way the world drinks with the best non-alcoholic alternatives. Launching in 2015, Seedlip has captured audiences across the globe and is now stocked in some the best bars around the world. With three unique & complex blends - Spice 94, Garden 108 & Grove 42 - Seedlip can be simply served with a premium mixer of your choice or mixed to create a range of sophisticated non- alcoholic cocktails.",
+          "other_information": "Origin: GB",
+          "preparation_and_usage": "Serve 50ml/2oz Over Ice with Tonic or Soda & garnish with a handful of Peas. Garden 108 Tall glass full of ice 50ml / 2oz Garden 108 Top with Tonic Garnish with Sugar Snap Pea Spice 94 Tall glass full of ice 50ml / 2oz Spice 94 Top with Tonic Garnish with Grapefruit Grove 42 Tall glass full of ice 50ml / 2oz Grove 42 Top with Tonic Garnish with Orange",
+          "country_of_origin": "United Kingdom"
+        },
+        "flags": [
+          "vegetarian"
+        ],
+        "categories": [
+          "beer-wine-spirits/brands-we-love/the-bar/cocktails",
+          "beer-wine-spirits/brands-we-love/the-bar/drinks-food/drinks",
+          "beer-wine-spirits/cocktails/low-no-alcohol",
+          "beer-wine-spirits/low-alcohol-alcohol-free/brands-we-love/seedlip",
+          "beer-wine-spirits/low-alcohol-alcohol-free/no-alcohol",
+          "beer-wine-spirits/low-alcohol-alcohol-free/spirits/alcohol-free",
+          "beer-wine-spirits/spirits/low-alcohol-free-spirits/low-alcohol-free-gin/alcohol-free"
+        ],
+        "manufacturer_vegan_evidence": []
+      },
+      "sha256": "376efc68a83f4076b5fc656de619c9a9ccb5fa76f5626257d6ec820b3623ce7d",
+      "source": "SQLite evidence unchanged by sync run 4"
+    },
+    "632347011": {
+      "context": {
+        "product": {
+          "id": "632347011",
+          "name": "M&S Black Sesame Seeds",
+          "brand": "M&S",
+          "url": "https://www.ocado.com/products/632347011/details",
+          "official_vegan": 0,
+          "features": "Sprinkle over salads or stir fries for a rich nutty flavour",
+          "detailed_description": "Our Black Sesame Seeds are harvested with care to retain their nutty taste and distinct crunch. These little seeds add a big twist when sprinkled over salads or stir-fries for a rich nutty flavour. M&S UPC - 29381326",
+          "brand_marketing": "M&S Food has been at the heart of the nation since 1884. Giving our customers their best-loved products at the incredible quality and value that only M&S can deliver. From Percy Pig to the freshest M&S Select Farms produce, we grow, source, and develop our own products to give you family-ready food that's unbeatable on flavour and innovation. And that's whether you come to us for your family favourites, an indulgent treat, or your perfect party food spread. After all, this is not just food\u2026 This is M&S Food.",
+          "other_information": "Full Product Name: Black sesame seeds Storage: For best before end, see base of jar. Store in a cool, dry place, away from sunlight. Additional Information: \u00a9 M&S plc",
+          "preparation_and_usage": "Sprinkle over salads or stir fries for a rich nutty flavour"
+        },
+        "flags": [],
+        "categories": [
+          "food-cupboard/cooking-ingredients/herbs-spices/seeds"
+        ],
+        "manufacturer_vegan_evidence": []
+      },
+      "sha256": "3a270a0d3c60a62834c02d5f2907085f909be7a5c2f0a01b081ae93d6e0e7848",
+      "source": "SQLite evidence unchanged by sync run 4"
+    },
+    "656339011": {
+      "context": {
+        "product": {
+          "id": "656339011",
+          "name": "Simply Soft 2 x 50 Oval Cosmetic Cotton Pads Multipack",
+          "brand": "Simply Soft",
+          "url": "https://www.ocado.com/products/656339011/details",
+          "official_vegan": 0,
+          "features": "Made with 100% soft cotton wool",
+          "detailed_description": "Our Cosmetic Pads are made from 100% pure cotton, so they're soft, strong and absorbent like any good pad should be. These luxurious pads are ideal for even the most delicate skin so you can cleanse, tone and moisturise in pure comfort.",
+          "other_information": "Storage: Store in a cool, dry place. Safety Warning: Caution: Keep product and packaging out of reach of babies & children. Cotton is a natural product & therefore small pieces of cotton seed, husk or stalk may be present. Additional Information: Approx 100 pads (2 packets of 50 Oval pads)",
+          "country_of_origin": "Produce of the EU"
+        },
+        "flags": [],
+        "categories": [
+          "beauty-toiletries/skincare/cleanser",
+          "beauty-toiletries/skincare/cotton-wool-buds/cotton-wool"
+        ],
+        "manufacturer_vegan_evidence": []
+      },
+      "sha256": "8478d3a06a058495e0d2a7006b0fd79221a27cfb46ba3f057a9d251e0eb4f055",
+      "source": "SQLite evidence unchanged by sync run 4"
+    },
+    "522485011": {
+      "context": {
+        "categories": [
+          "clothing-accessories/school-uniform/girls-uniform",
+          "clothing-accessories/school-uniform/shirts-polo-shirts-blouses",
+          "events-inspiration/m-s-home-sale/clothing",
+          "events-inspiration/school-s-out-stock-up/m-s-school-uniform"
+        ],
+        "flags": [],
+        "manufacturer_vegan_evidence": [],
+        "product": {
+          "brand": "M&S",
+          "detailed_description": "For the young fashionista, these slim fit shirts create a narrow cut through the body for a modern and stylish look. Made from Easy to Iron fabric and featuring a smart collar, plus our patented Expandicuff\u2122 design (up to 8 years), this three pack of school shirts is everything you need for a smart and comfortable school wardrobe selection. Available in blue or white to suit classic children's school colours, your search for the perfect school blouse is over. The Expandicuff\u2122 design is protected by M&S in the UK by Patent No. GB 2,458,284. Slim Fit- a 4cm narrower cut through the waist and/ or body. 65% polyester, 35% cotton (exclusive of trimmings)",
+          "features": "- Pack Size: 3 blouses per pack - Easy to Iron - Slim fit - Button fastening - Short sleeve - Expandicuff\u2122 up to age 8 years only",
+          "id": "522485011",
+          "name": "M&S Girls' Slim Fit Easy to Iron Blouses, Size 12-13, White",
+          "official_vegan": 0,
+          "preparation_and_usage": "Machine washable even at 30\u00ba Tumble dry Keep Away From Fire",
+          "url": "https://www.ocado.com/products/522485011/details"
+        }
+      },
+      "sha256": "bac114fed1b9cdfe01b0b2fbc8d86b1918f22487464a9bd44018f03840e7d352",
+      "source": "sync run 4 before_context_json"
+    },
+    "687407011": {
+      "context": {
+        "categories": [
+          "clothing-accessories/women-s-clothing-accesssories/women-s-nightwear",
+          "events-inspiration/m-s-home-sale/clothing"
+        ],
+        "flags": [],
+        "manufacturer_vegan_evidence": [],
+        "product": {
+          "brand": "M&S",
+          "detailed_description": "Made from breathable pure cotton, these pyjamas will help you dream in comfort. This regular-fit, two-piece set includes a short-sleeved top paired with full-length bottoms in a soft-feel brushed woven fabric, finished with a comfy elasticated waistband. M&S Collection: versatile styles in modern shapes with unique and playful details. M&S Collection: versatile styles in modern shapes with unique and playful details.",
+          "id": "687407011",
+          "name": "M&S Womens Pure Cotton Pyjama Set With Woven Bottoms, Large, Light Blue",
+          "official_vegan": 0,
+          "preparation_and_usage": "Machine washable even at 30\u00ba Tumble dry Keep away from fire 100% cotton (exclusive of trimmings)",
+          "specification": "- Regular fit - Short sleeve - Elasticated waist - Long - Pyjama sets",
+          "url": "https://www.ocado.com/products/687407011/details"
+        }
+      },
+      "sha256": "5cd5180aac47879bfa3a88aa35c39469d9dd92667a59a50a19cad3d2c74bda14",
+      "source": "sync run 4 before_context_json"
+    },
+    "468140011": {
+      "context": {
+        "categories": [
+          "events-inspiration/summer-shop/holiday-essentials-home-outdoor/gardening-entertainment/entertainment",
+          "events-inspiration/summer-shop/picnic-deli/packable-drinks-accessories/accessories",
+          "events-inspiration/summer-shop/the-fan-zone/partyware-merch",
+          "home-garden/garden-diy/outdoor-dining-picnic/outdoor-dining",
+          "home-garden/garden-diy/outdoor-dining-picnic/picnicware",
+          "home-garden/kitchen-dining/glassware-barware/highballs-tumbler-glasses"
+        ],
+        "flags": [],
+        "manufacturer_vegan_evidence": [],
+        "product": {
+          "brand": "Colourworks",
+          "detailed_description": "No picnic is complete without a selection of refreshing drinks to choose from. But using real glass cups outdoors is sure to result in a few breakages, and flimsy plastic alternatives are hardly the height of picnic chic. With these tumblers on hand, however, you'll be sipping juice, fizzy pop or even a cheeky glass of wine before you know it, without worrying about broken glass or having to drink from disposable 'kiddie' cups. These tumblers are made of high-quality melamine, so they're incredibly tough. In fact, they're virtually unbreakable, so they're ideal for outdoor events like picnics and barbecues especially if there are kids about. - Includes 4 robust picnic tumblers - Each measures 8.5 cm (3.5 inches) wide by 9 cm (3.5 inches) tall - Capacity: 280 ml (0.5 pint) - 100% melamine - 100% BPA free - Certified food safe - Dishwasher safe",
+          "id": "468140011",
+          "name": "Colourworks Classics Picnic Tumblers",
+          "official_vegan": 0,
+          "preparation_and_usage": "Not microwave safe",
+          "specification": "BPA Free",
+          "url": "https://www.ocado.com/products/468140011/details"
+        }
+      },
+      "sha256": "82830cd45bc654568b734f869c108acf718366708fa36b1fa2a7b3c451765bf8",
+      "source": "sync run 4 before_context_json"
+    },
+    "664071011": {
+      "context": {
+        "product": {
+          "id": "664071011",
+          "name": "Dove Powder Anti-Perspirant Deodorant Stick",
+          "brand": "Dove",
+          "url": "https://www.ocado.com/products/664071011/details",
+          "official_vegan": 0,
+          "ingredients": "INGREDIENTS: Aluminum Zirconium Tetrachlorohydrex GLY, PPG-14 Butyl Ether, Stearyl Alcohol, C15-19 Alkane, Isopropyl Palmitate, Paraffinum Liquidum, Hydrogenated Castor Oil, PEG-8 Distearate, Polyethylene, Parfum, Helianthus Annuus Seed Oil, PEG-8, BHT, Alpha-Isomethyl Ionone, Benzyl Alcohol, Benzyl Salicylate, Citronellol, Coumarin, Geraniol, Limonene, Linalool, Linalyl Acetate, Terpineol, Tetramethyl Acetyloctahydronaphthalenes, Trimethylcyclopentenyl Methylisopentenol.",
+          "features": "Dove Powder Soft Anti-Perspirant Cream Deodorant delivers expert protection and a subtle, long-lasting fragrance, This antiperspirant deodorant provides up to 48 hours of sweat and odour protection, Dove deodorant stick is made with \u00bc moisturising cream for beautifully soft and smooth underarms, The 0% alcohol* antiperspirant formula helps delicate underarm skin to recover from irritation caused by shaving, This deodorant for women has a comforting, powdery scent that helps you kick-start your day with confidence, This caring antiperspirant cream leaves underarm skin feeling softer and smoother",
+          "detailed_description": "We all spend plenty of time on our skin and hair care routines, but it's easy to forget about underarm care. Delivering all-day freshness through odour-fighting technology, Dove Powder Soft Anti-Perspirant Cream Deodorant combines the 48-hour protection you need with outstanding underarm care. Made with \u00bc moisturising cream, the gentle formula helps delicate underarm skin to recover from irritation caused by shaving, leaving it feeling softer and smoother. With 0% alcohol*, you can be sure that this antiperspirant deodorant for women will be kind to your skin while being tough on sweat. If you like powdery scents, choose this antiperspirant cream for a soft, long-lasting fragrance that will make you feel comfortable and confident no matter what comes your way. Before applying, ensure underarms are dry. Swipe Dove Powder Soft Antiperspirant Deodorant Cream several times over your skin to dispense an even layer onto each underarm. Do not use on broken skin. Stop use if rash or irritation occurs. Dove believes no young person should be held back from reaching their full potential. Since 2004, they have been building self-esteem and confidence in young people - and by 2030, they'll have helped \u00bc billion young people through their educational programmes and resources. *Without ethyl alcohol.",
+          "other_information": "Safety Warning: Logo Recycle with cap on (Landscape)Non AEROSOL & Non AOB Do not apply to irritated or damaged skin. Stop use if irritation develops.. WARNING! Small parts.. Origin: Poland",
+          "country_of_origin": "Poland"
+        },
+        "flags": [],
+        "categories": [
+          "beauty-toiletries/deodorants-body-sprays/women-s-stick-roll-on/women-s-stick-deodorant",
+          "events-inspiration/summer-wellness/travel-toiletries"
+        ],
+        "manufacturer_vegan_evidence": []
+      },
+      "sha256": "4f9727293b8d5554038d5022506539f4c2fcf5aa0cb0ee1caf5b050770d4f796",
+      "source": "SQLite evidence unchanged by sync run 4"
+    },
+    "632148011": {
+      "context": {
+        "product": {
+          "id": "632148011",
+          "name": "Febreze Aerosol Fruity Tropics Air Freshener",
+          "brand": "Febreze",
+          "url": "https://www.ocado.com/products/632148011/details",
+          "official_vegan": 0,
+          "ingredients": "Contains preservatives - Benzisothiazolinone. Contains Hydroxyisohexyl 3-cyclohexene carboxaldehyde. May produce an allergic reaction. UFI: 1410-Q0H6-D00R-EF6P",
+          "features": "2in1 fights odours & freshens, OdourClear Technology doesn't just mask but truly fights odours, leaving a fresh scent, Spray it all around the house to fight odours & freshen, Febreze Air Freshener is non-flammable, Available in a wide range of fragrances",
+          "detailed_description": "Febreze Air Freshener Spray with OdourClear Technology fights tough lingering odours and leaves a fresh scent. The Tropical Fruit scent is inspired by a unique blend of exotic fruits, which are enjoyed on a beach enclosed by palm trees. Spray it all around the house to fight odours and freshen. Febreze Air Freshener is non-flammable and is available in a wide range of fragrances.",
+          "other_information": "Safety Warning: Pressurised container: May burst if heated. Keep out of reach of children. IF IN EYES: Rinse cautiously with water for several minutes. Use only as directed. Keep away from heat, hot surfaces, sparks, open flames and other ignition sources. No smoking. Do not pierce or burn, even after use. Protect from sunlight. Do not expose to temperatures exceeding 50\u00b0C. 5% by mass of the contents are flammable. Floors can get wet after spraying. Avoid slips or falls. Store in dry place, away from cleaning products. People suffering from perfume sensitivity should be cautious when using this product. Ventilate the room after use. Contains preservatives - Benzisothiazolinone. Contains Hydroxyisohexyl 3-cyclohexene carboxaldehyde. May produce an allergic reaction.",
+          "preparation_and_usage": "Do not shake the can and hold upright for an optimal spray. Spray it all around the house to fight odours and freshen.",
+          "country_of_origin": "Italy"
+        },
+        "flags": [
+          "ocado_price_promise"
+        ],
+        "categories": [
+          "home-care-cleaning/air-fresheners/room-sprays-aerosols/room-fragrance"
+        ],
+        "manufacturer_vegan_evidence": []
+      },
+      "sha256": "c1cb5a7b6af90977c0379c76c56c8ee905e1cb780ffd46ff1451029edb5b26fb",
+      "source": "SQLite evidence unchanged by sync run 4"
+    },
+    "366209011": {
+      "context": {
+        "categories": [
+          "baby-toddler/kids-toys-games-books/education-science",
+          "events-inspiration/clearance",
+          "occasions-entertaining/gifts/shop-by-gift-type/kids-gifts/8-years",
+          "occasions-entertaining/gifts/shop-by-occasion/birthday/kids"
+        ],
+        "flags": [],
+        "manufacturer_vegan_evidence": [],
+        "product": {
+          "brand": "Kidz Labs",
+          "detailed_description": "Perform amazing experiments using everyday items with KidzLabs Kitchen Science. Simply use standard kitchen equipment and materials to enjoy the fun of this inspiring kit, with six experiments included. Generate electricity using a fork and lemon and light up a bulb. Launch a rocket fuelled by being soda and vinegar. Build a table top volcano which erupts with bubbly lava! There are a great range of experiments to try, and you'll be able to learn practical science as you do it. About the range: - The KidzLabs range features a range of science kits designed to teach the basic principles of STEAM, including astronomy, biology, chemistry, optics, magnetism and much more. - Enrich fundamental understanding of scientific principals through creative toys that inspire learning whilst having fun. - Enhances children\u2019s development in hand-eye coordination, creative thinking skills, engineering skills, construction skills, logical thinking and more.",
+          "id": "366209011",
+          "name": "KidzLabs Kitchen Science, 8yrs+",
+          "official_vegan": 0,
+          "specification": "Age: Suitable for children aged 8+. Battery: N/A",
+          "url": "https://www.ocado.com/products/366209011/details"
+        }
+      },
+      "sha256": "64ec7af394f47100bf2bad661cd4675a26aefb24f24b4bf8e486be6cb0237b34",
+      "source": "sync run 4 before_context_json"
+    },
+    "646897011": {
+      "context": {
+        "product": {
+          "id": "646897011",
+          "name": "MOTH Margarita Cocktail",
+          "brand": "Moth",
+          "url": "https://www.ocado.com/products/646897011/details",
+          "official_vegan": 0,
+          "detailed_description": "Fresh, sharp, confident. 14.9% with award-winning Tequila Enemigo. Please drink responsibly: The UK Chief Medical Officers recommend adults do not regularly drink more than 14 units per week",
+          "further_description": "Look out for smooth Tequila Enemigo in a heated debate with a classic triple sec - and a refreshing sting of lime to greet you at the door. Sharp, salty and full of zest.",
+          "other_information": "Additional Information: 1.9 UK Units per can For further health information visit - drinkaware.co.uk drinkaware",
+          "preparation_and_usage": "Enjoy Chilled",
+          "country_of_origin": "England"
+        },
+        "flags": [
+          "vegetarian"
+        ],
+        "categories": [
+          "beer-wine-spirits/cocktails/individual-serving"
+        ],
+        "manufacturer_vegan_evidence": []
+      },
+      "sha256": "53aa88e3156386b3040ee263a9f296f96028057021a78de1c349a6297d293e6b",
+      "source": "SQLite evidence unchanged by sync run 4"
+    },
+    "650833011": {
+      "context": {
+        "product": {
+          "id": "650833011",
+          "name": "M&S Good Gut Organic Natural Kefir Drink",
+          "brand": "M&S",
+          "url": "https://www.ocado.com/products/650833011/details",
+          "official_vegan": 0,
+          "ingredients": "Organic Kefir (Organic Pasteurised Whole Cow's Milk, Cultures*), *Permitted non-organic ingredients",
+          "allergens": "Contains Milk, May Contain Nuts, May Contain Peanuts Not suitable for those with a Nut and Peanut allergy.",
+          "dietary_information": "Organic; Suitable for Vegetarians",
+          "features": "Eat well, Fermented with live cultures by the Pastoret Dairy for a rich and distinctive flavour, Source of Protein, Supporting Gut Health, Suitable for vegetarians",
+          "detailed_description": "High in calcium. Calcium contributes to the normal function of digestive enzymes. Protein contributes to the maintenance of muscle mass.",
+          "further_description": "Eat well Deliciously healthy food Best enjoyed as part of a healthy lifestyle and a balanced varied diet.",
+          "brand_marketing": "M&S Food has been at the heart of the nation since 1884. Giving our customers their best-loved products at the incredible quality and value that only M&S can deliver. From Percy Pig to the freshest M&S Select Farms produce, we grow, source, and develop our own products to give you family-ready food that's unbeatable on flavour and innovation. And that's whether you come to us for your family favourites, an indulgent treat, or your perfect party food spread. After all, this is not just food\u2026 This is M&S Food.",
+          "other_information": "Full Product Name: Fermented Organic Milk Drink with Live Cultures Storage: For use by, see label. Keep refrigerated 0\u00b0C to +5\u00b0C. Once opened, consume within 3 days. Not suitable for freezing. Usage: 3 Servings Additional Information: EU Organic Place of Farming - ES-ECO-019-CT, Spanish Agriculture \u00a9 Marks and Spencer plc",
+          "preparation_and_usage": "Serving Shake well before use.",
+          "country_of_origin": "Spain"
+        },
+        "flags": [],
+        "categories": [],
+        "manufacturer_vegan_evidence": []
+      },
+      "sha256": "62fd0c710ec48c1c8321321ef3184d3a8320224f4badf954f9eb5c34aa8897b8",
+      "source": "SQLite evidence unchanged by sync run 4"
+    },
+    "76359011": {
+      "context": {
+        "product": {
+          "id": "76359011",
+          "name": "Daylesford Organic Chicken Legs",
+          "brand": "DAYLESFORD ORGANIC",
+          "url": "https://www.ocado.com/products/76359011/details",
+          "official_vegan": 0,
+          "detailed_description": "Our Love For Food Inspires Us To Go Further We've been farming organically for over 35 years, meaning our animals enjoy their natural grass and forage-based diet, growing into strong and healthy animals, free from unnecessary chemicals, antibiotics and GM feed. We choose British breeds who thrive in their native landscape and encourage healthy biodiversity on our farm. We avoid waste of any kind, so manure and kitchen waste compost are returned to the soil as rich natural fertilisers. We have built our own abattoir to ensure the highest animal welfare and reduced food miles, which results in better tasting meat, and we spread our message far beyond the boundaries of our own fields. Each step of our journey is made with a conscience, and a love for food.",
+          "other_information": "GB-ORG-05, EU Agriculture UK 4568 EC Packaged in a protective atmosphere Nutrition: daylesford.com/nutrition",
+          "preparation_and_usage": "For perfectly cooked chicken, our head chef recommends roasting: Preheat oven to 180\u00b0C (160\u00b0C fan/Gas mk 4). Season with sea salt. For crispy skin, do not coat with oil. Place legs in a roasting tin in the centre of the oven for 30-40 minutes, turning once until golden brown and thoroughly cooked, the juices run clear, with not pink meat, and the meat comes away easily from the bone. Rest for 5 minutes. Wash hands, knives and surfaces thoroughly before and after preparing raw chicken.",
+          "country_of_origin": "UK"
+        },
+        "flags": [
+          "organic"
+        ],
+        "categories": [
+          "dietary-lifestyle-world-foods/organic/meat-fish/poultry",
+          "dietary-lifestyle-world-foods/world-foods/indian/protein-dairy",
+          "events-inspiration/buy-women-built/fresh-chilled",
+          "fresh-chilled-food/best-of-british/meat",
+          "fresh-chilled-food/brands-we-love/daylesford-shop/our-butcher",
+          "fresh-chilled-food/meat-poultry/chicken/free-range/portions",
+          "fresh-chilled-food/meat-poultry/chicken/legs-thighs/legs",
+          "fresh-chilled-food/meat-poultry/chicken/organic/portions",
+          "fresh-chilled-food/meat-poultry/higher-welfare",
+          "fresh-chilled-food/meat-poultry/organic-meat",
+          "fresh-chilled-food/meat-poultry/premium-quality-meat"
+        ],
+        "manufacturer_vegan_evidence": []
+      },
+      "sha256": "0835026b6910c0ee3b79fabdba809697e83749a049269ba712d16c93d51cb45a",
+      "source": "SQLite evidence unchanged by sync run 4"
+    },
+    "632229011": {
+      "context": {
+        "categories": [
+          "events-inspiration/summer-shop/bbq/steak-pork-kebabs/steak",
+          "fresh-chilled-food/meat-poultry/venison-wild-game/venison"
+        ],
+        "flags": [
+          "suitable_for_freezing"
+        ],
+        "manufacturer_vegan_evidence": [],
+        "product": {
+          "brand": "Canvin & Gunner",
+          "country_of_origin": "United Kingdom",
+          "detailed_description": "Canvin and Gunner venison rump steak. As a cut the rump steak needs no introduction, a steak know for its robust flavour, the venison rump steak is no different, best served medium rare. All our deer only come from parks and farms we work with, we dont process any wild venison, which enables us to offer a delicately flavoured and highly consistent range of venison products. The history of Canvin & Gunner can be traced back almost 200 years, to the Canvin butchery family based in Cambridgeshire. Fast forward six generations, and the Canvin and Gunner brand is associated with this rich butchery heritage which is now firmly established as a premium supplier of British Beef and Venison. Today, traditional British butchery techniques continue alongside modern technologies to deliver a product that is consistent in it\u2019s quality and flavour.",
+          "features": "Finest British Produce Since 1852, Real People, Real History, Always British",
+          "id": "632229011",
+          "name": "Canvin & Gunner Venison Rump Steak",
+          "official_vegan": 0,
+          "other_information": "Storage: Keep refrigerated below 5\u00b0C. Do not exceed use by date. Once opened, use immediately. Suitable for freezing. Freeze as soon as possible and within the use by date. Use within one month. Defrost fully before use. Do not refreeze once defrosted.",
+          "preparation_and_usage": "Wash hands, all surfaces and utensils after touching raw meat. This product contains raw meat and must be cooked thoroughly prior to consumption. Pan Fry High/Medium Heat Rare 4-6 mins / Medium 6-8 mins / Well Done 8-10 mins Remove all packaging and allow to breathe for 10 mins. Heat 1 tbsp of oil in frying pan. Add steak and cook on a high heat to seal. Turn and seal other side. Reduce to medium heat and cook for remaining time. Ensure the surface of the meat is thoroughly cooked. Allow to rest for 5 minutes before serving",
+          "url": "https://www.ocado.com/products/632229011/details"
+        }
+      },
+      "sha256": "fd8f29abd63e5de3669f8ee2ff3716c952a715f4a2c61e4e08cd89fab6d6b8bd",
+      "source": "sync run 4 before_context_json"
+    },
+    "592773011": {
+      "context": {
+        "product": {
+          "id": "592773011",
+          "name": "M&S Oakham Gold Chicken Wings",
+          "brand": "M&S",
+          "url": "https://www.ocado.com/products/592773011/details",
+          "official_vegan": 0,
+          "dietary_information": "Typical Values per 100g per portion serving (100g) Energy kJ 809 Energy kcal 194 Fat (g) 13.5g 13.5 of which saturates (g) 3.8g 3.8g Carbohydrates (g) 0.1g 0.1g of which sugars (g) 0.0g Fibre (g) 0.0g Protein (g) 18.1g 18.1g Salt (g) 0.20g 0.20g",
+          "features": "Eat well, Slower Reared, Higher Welfare, Setting the Standards of Welfare, Fed on an Enriched Multi-Grain Diet, We know and trust, High in protein",
+          "detailed_description": "M&S Oakham gold chicken is naturally slower reared with leading welfare standards Protein contributes to the maintenance of muscle mass.",
+          "further_description": "For more information on M&S Select Farms and our quality and sourcing standards Visit our website for more details. Deliciously healthy food Best enjoyed as part of a healthy lifestyle & a balanced varied diet.",
+          "brand_marketing": "M&S Food has been at the heart of the nation since 1884. Giving our customers their best-loved products at the incredible quality and value that only M&S can deliver. From Percy Pig to the freshest M&S Select Farms produce, we grow, source, and develop our own products to give you family-ready food that's unbeatable on flavour and innovation. And that's whether you come to us for your family favourites, an indulgent treat, or your perfect party food spread. After all, this is not just food\u2026 This is M&S Food.",
+          "other_information": "Full Product Name: Fresh class A Irish Oakham Gold\u2122 chicken wings Storage: Suitable for freezing. For use by, see front of pack. Keep refrigerated 0\u00b0C to +4\u00b0C. Once opened, use immediately. Freeze on day of purchase and use within 3 months. Once defrosted (in a refrigerator) eat within 24 hours. Defrost thoroughly before use. Do not refreeze. Additional Information: Fresh Class A Packaged in a protective atmosphere for freshness. RSPCA Assured - Certification Mark, The higher welfare indoor chicken in this product comes from producers inspected to RSPCA welfare standards by the RSPCA's independently certified farm assurance scheme. \u00a9 M&S plc",
+          "country_of_origin": "United Kingdom"
+        },
+        "flags": [
+          "suitable_for_freezing"
+        ],
+        "categories": [
+          "events-inspiration/global-flavours/american",
+          "fresh-chilled-food/best-of-british/meat",
+          "fresh-chilled-food/meat-poultry/chicken/wings-drumsticks/wings",
+          "fresh-chilled-food/meat-poultry/higher-welfare",
+          "m-s/m-s-best-of-fresh/m-s-meat-fish/m-s-meat",
+          "m-s/m-s-own-brands/m-s-eat-well",
+          "m-s/m-s-own-brands/m-s-remarksable-value"
+        ],
+        "manufacturer_vegan_evidence": []
+      },
+      "sha256": "6ae8aa26fdfd9f3a9bf49b01a26b76ab021dd6467c6660c1b8beff4568c61e88",
+      "source": "SQLite evidence unchanged by sync run 4"
+    },
+    "615851011": {
+      "context": {
+        "product": {
+          "id": "615851011",
+          "name": "M&S Salt Dry Aged Sirloin Steak",
+          "brand": "M&S",
+          "url": "https://www.ocado.com/products/615851011/details",
+          "official_vegan": 0,
+          "features": "30 Day Matured Beef, From Select Farms we know and trust",
+          "detailed_description": "M&S Salt Dry Aged Sirloin Steak Salt Dry aged for a minimum of 10 days for exceptional flavour. British beef sirloin steak. M&S UPC -29375783",
+          "further_description": "For more information on M&S Select Farms and our quality and sourcing standards please visit www.marksandspencer.com/ selectfarms",
+          "brand_marketing": "M&S Food has been at the heart of the nation since 1884. Giving our customers their best-loved products at the incredible quality and value that only M&S can deliver. From Percy Pig to the freshest M&S Select Farms produce, we grow, source, and develop our own products to give you family-ready food that's unbeatable on flavour and innovation. And that's whether you come to us for your family favourites, an indulgent treat, or your perfect party food spread. After all, this is not just food\u2026 This is M&S Food.",
+          "other_information": "Full Product Name: Salt Dry Aged British Beef Sirloin Steak Storage: Suitable for freezing For Use By, see front of pack. Keep refrigerated O\u00b0C to +5\u00b0C. Freeze by date mark shown and use within 3 months. Once defrosted (in a refrigerator) use immediately. Defrost thoroughly before use.",
+          "preparation_and_usage": "There may be a slight aroma on opening, which will not affect the quality or flavour of this product.",
+          "country_of_origin": "United Kingdom"
+        },
+        "flags": [
+          "suitable_for_freezing"
+        ],
+        "categories": [
+          "events-inspiration/summer-shop/m-s/bbq-meats-protein/protein/meat",
+          "fresh-chilled-food/meat-poultry/beef/steaks/sirloin",
+          "m-s/m-s-best-of-fresh/m-s-meat-fish/m-s-meat"
+        ],
+        "manufacturer_vegan_evidence": []
+      },
+      "sha256": "c2b75a92d9c428821b0a0e3c7d2f2ea9f515d4ddbef90c34b4e13805015ac63f",
+      "source": "SQLite evidence unchanged by sync run 4"
+    },
+    "70079011": {
+      "context": {
+        "product": {
+          "id": "70079011",
+          "name": "Tiptree English Honey Blossom Set",
+          "brand": "Tiptree",
+          "url": "https://www.ocado.com/products/70079011/details",
+          "official_vegan": 0,
+          "allergens": "Made in a Nut free factory",
+          "dietary_information": "Kosher; Suitable for Coeliacs; Suitable for Vegetarians",
+          "features": "Suitable for vegetarians, Suitable for coeliacs, Kosher - KLBD, Fruit Growers & Preservers Since 1885, Free from known allergens, Made in our nut free factory, Palm oil free",
+          "detailed_description": "A natural, set honey gathered from the English Countryside.",
+          "brand_marketing": "The Wilkin family have been farming at Tiptree, Essex, since 1757, and making quality preserves there since 1885. Where we cannot grow our own crops on our LEAF Marque accredited farm, we buy the best quality fruit from trusted sources. Our products can be found in over sixty countries across the world, and are available in fine retailers, premium hotels, and quality airlines.",
+          "manufacturer_marketing": "Our products are made in our nut free factory, to cherished recipes and are free from artificial colours and flavours. We inspect and prepare our fruit by hand then cook in small batches using traditional, copper-bottomed pans.",
+          "other_information": "Full Product Name: English Blossom Set Honey Safety Warning: Honey is unsuitable for infants under 12 months",
+          "preparation_and_usage": "Unsuitable for infants under 12 months.",
+          "country_of_origin": "England"
+        },
+        "flags": [],
+        "categories": [
+          "dietary-lifestyle-world-foods/kosher/cupboard-essentials",
+          "food-cupboard/jam-honey-spreads/honey/runny-honey/jars",
+          "food-cupboard/jam-honey-spreads/honey/set-honey"
+        ],
+        "manufacturer_vegan_evidence": []
+      },
+      "sha256": "3d72dbd0e63ab236ac8a65b4195892d1ca0e607f57cd8c7a0a5b47ab3745c52f",
+      "source": "SQLite evidence unchanged by sync run 4"
+    },
+    "694881011": {
+      "context": {
+        "product": {
+          "id": "694881011",
+          "name": "Cofresh Thin Sev",
+          "brand": "Cofresh",
+          "url": "https://www.ocado.com/products/694881011/details",
+          "official_vegan": 0,
+          "ingredients": "Maize Flour, Gram Flour, Pea Flour, Potato Starch, Rapeseed Oil, Salt, Turmeric",
+          "allergens": "May Contain Cereals Containing Gluten, May Contain Milk, May Contain Nuts, May Contain Peanuts, May Contain Sesame, May Contain Soya, May Contain Sulphur Dioxide/Sulphites This product is made in a factory that handles Gluten, Peanuts, Tree Nuts, Sesame Seeds, Milk, Soya & Sulphites.",
+          "dietary_information": "Suitable for Vegetarians",
+          "features": "Proud to Be No.1 Indian Snack Brand, Suitable for vegetarians",
+          "brand_marketing": "The Cofresh family brings you their Thin Sev which are made from the finest quality ingredients.",
+          "other_information": "Full Product Name: Thin Savoury Noodles. Storage: To maintain freshness, store in a cool, dry place away from direct sunlight and strong odours. Usage: 11-12 Servings Origin: Made in the United Kingdom using ingredients from UK, EU & non-EU countries",
+          "country_of_origin": "United Kingdom"
+        },
+        "flags": [
+          "vegetarian"
+        ],
+        "categories": [
+          "treats-snacks/crisps-snacks/savoury-snacks/pulses-corn-snacks"
+        ],
+        "manufacturer_vegan_evidence": []
+      },
+      "sha256": "6a5db20af0cf53efe1ccacfc4417295766102a6f298d1c91b45df20b70d52c50",
+      "source": "SQLite evidence unchanged by sync run 4"
+    },
+    "690031011": {
+      "context": {
+        "categories": [
+          "events-inspiration/summer-shop/holiday-essentials-home-outdoor/gardening-entertainment/entertainment",
+          "pets/dog-puppy/dog-toys-accessories/dog-beds-mats-mattresses/dog-mats-mattresses"
+        ],
+        "flags": [],
+        "manufacturer_vegan_evidence": [],
+        "product": {
+          "brand": "Rosewood",
+          "country_of_origin": "China",
+          "detailed_description": "Cool your pets down with the Giant Strawberry Splash Mat. It easily attaches to a standard hosepip and the water height is controlled by the tap pressure. Your dog will have a blast chasing and catching water and having fun in the sun.",
+          "id": "690031011",
+          "name": "Rosewood Strawberry Splash Mat",
+          "official_vegan": 0,
+          "other_information": "\"For your pet's safety examine the toy from time to time for wear and replace when appropriate. Pets should be supervised when playing with toys. It is the reponsibility of the owner to decide if this toy is suitable for their pet. Choose toys based on pet size and chewing habits.",
+          "url": "https://www.ocado.com/products/690031011/details"
+        }
+      },
+      "sha256": "8cc6101a638528cbdd8bad84328aaae802cceac7a0a40c0832a8aa2f559de859",
+      "source": "sync run 4 before_context_json"
+    },
+    "692655011": {
+      "context": {
+        "categories": [
+          "events-inspiration/m-s-home-sale/clothing"
+        ],
+        "flags": [],
+        "manufacturer_vegan_evidence": [],
+        "product": {
+          "brand": "M&S",
+          "detailed_description": "These cotton-rich leggings are a handy wardrobe addition for kids. Regular fit, with stretch in the fabric and elasticated waists for easy movement. Lettuce trims at the ankles add a decorative touch. The three-pack set includes two designs with a heart print and one plain.",
+          "id": "692655011",
+          "name": "M&S Heart Leggings, 0-3 Months, Multicolour",
+          "official_vegan": 0,
+          "preparation_and_usage": "Machine washable Tumble dry Keep away from fire 97% cotton, 3% elastane (exclusive of trimmings)",
+          "specification": "- Elasticated waist - Leggings - Added Stretch",
+          "url": "https://www.ocado.com/products/692655011/details"
+        }
+      },
+      "sha256": "9d96d8eb40ef38a71baf1972068d34b18971a5e63469d28e0b50825761dc091e",
+      "source": "sync run 4 before_context_json"
+    },
+    "697048011": {
+      "context": {
+        "product": {
+          "id": "697048011",
+          "name": "Zesty Paws Dental Powder",
+          "brand": "Zesty Paws",
+          "url": "https://www.ocado.com/products/697048011/details",
+          "official_vegan": 0,
+          "ingredients": "Norwegian Seaweed (Ascophyllum nodosum) (87%), Echinacea Powder (Echinacea purpurea) (5%)",
+          "features": "Pet Approved, Plaqbrite, Reduces Plaque & Tartar, Supports Healthy Gums, Promotes Fresh Breath, Norwegian Seaweed, 3 Botanical Complex",
+          "detailed_description": "Dual action care: Targets plaque and tartar while supporting gum health. Norwegian seaweed: Scientifically shown to break down plaque, balance the oral microbiome, and prevent new build-up.",
+          "further_description": "Powered by: Plaqbrite\u2122 Botanical Complex Patent-pending blend of green tea, echinacea and pomegranate, tested to reduce plaque and tartar.",
+          "other_information": "Full Product Name: Complementary Feed for Cats & Dogs Storage: For batch number and best before date: see base Store in a cool, dry place. Safety Warning: Warnings: Always keep fresh drinking water available. Cats and dogs should be supervised at all times whilst feeding. Not suitable for kittens and puppies under 3 months old. Do not use if safety seal is broken or missing. Additional Information: Scoops",
+          "preparation_and_usage": "Feeding guidelines: Sprinkle the recommended number of scoops over your pet's food daily. On dry food, we suggest wetting kibble before sprinkling. For best results, use for a minimum of 4 weeks. Scoop included. Weight: 0-5 kg - Daily amount: 1 scoop Weight: 5-10 kg - Daily amount: 2 scoops Weight: 10-20 kg - Daily amount: 3 scoops Weight: 20-30 kg - Daily amount: 4 scoops Weight: +30 kg - Daily amount: 5 scoops",
+          "country_of_origin": "United Kingdom"
+        },
+        "flags": [],
+        "categories": [
+          "pets/dog-puppy/dog-healthcare-supplements/dental-care"
+        ],
+        "manufacturer_vegan_evidence": []
+      },
+      "sha256": "7a920a7cee45db4426204fad4ee8e9070674549381d1aa6937706e5cc76de868",
+      "source": "SQLite evidence unchanged by sync run 4"
+    },
+    "688461011": {
+      "context": {
+        "product": {
+          "id": "688461011",
+          "name": "Curel Foaming Facial Wash for Dry, Sensitive Skin",
+          "brand": "Curel",
+          "url": "https://www.ocado.com/products/688461011/details",
+          "official_vegan": 0,
+          "ingredients": "Water/Aqua, Glycerin, Maltitol, Propylene Glycol, PEG-150, Sodium Cocoyl Glutamate, Sodium Lauroyl Aspartate, Lauryl Hydroxysultaine, Polysorbate 60, Ethylhexylglycerin, Disodium EDTA, Dipotassium Glycyrrhizate, Potassium Hydroxide, Phenoxyethanol, Methylparaben",
+          "features": "Japanese Skincare, For Dry, Sensitive Skin, Foaming Facial Cleanser, Fragrance Free, Double Cleansing Routine, pH Balanced, Colourant Free, Dermatologist Recommended",
+          "detailed_description": "A gentle, fine foaming face wash that cleanses impurities on dry, sensitive skin ever-so-gently, leaving skin soft and supple while protecting natural ceramides. \u2022 Protects Ceramides. Gently cleanses without stripping the skin's natural ceramides, a vital part of your skin's moisture barrier. \u2022 Gently cleanses with care for a soft and dewy complexion. \u2022 Our daily foaming cleanser is specially formulated for dry, sensitive skin. \u2022 Fragrance free, pH balanced and colourant free. Step 2 in the Cur\u00e9l Japanese double cleansing routine. Use with Cur\u00e9l Makeup Cleansing Gel for a Japanese two-step gentle and thorough cleansing routine.",
+          "other_information": "Safety Warning: WARNING: Avoid eye contact. If contact occurs, rinse thoroughly with water. Distributor: Kao USA Inc., Cincinnati, OH 45214. Kao Germany GmbH, D-64308, Darmstadt. Kao (UK) Limited, London, EC1A 2DY. Additional Information: Cur\u00e9l is a trademark of Kao Corp., Japan",
+          "preparation_and_usage": "Directions: Dispense two pumps into the palm of the hand. Gently massage onto wet face and rinse off thoroughly.",
+          "country_of_origin": "Japan"
+        },
+        "flags": [],
+        "categories": [
+          "beauty-toiletries/skincare/cleansers-toners/cleansers-face-wash"
+        ],
+        "manufacturer_vegan_evidence": []
+      },
+      "sha256": "76ab00196ee9818306efab9132280fae24c9971b2fa4c020425950850622ce62",
+      "source": "SQLite evidence unchanged by sync run 4"
+    },
+    "677449011": {
+      "context": {
+        "categories": [
+          "clothing-accessories/kids-clothing-accessories-3-14-years/kids-underwear-socks",
+          "events-inspiration/m-s-home-sale/clothing"
+        ],
+        "flags": [],
+        "manufacturer_vegan_evidence": [],
+        "product": {
+          "brand": "M&S",
+          "detailed_description": "Refresh their underwear drawer with this handy three-pack of cotton with stretch knickers. They come in a comfy bikini style with added stretch for a flexible feel. The sporty elasticated waistband features a cool logo design. M&S' StayNew\u2122 technology ensures longer-lasting colour and finish, while Stay Soft gives the fabric a smooth feel.",
+          "id": "677449011",
+          "name": "M&S Girls Cotton Stretch Knickers, 13-14 Y, Black",
+          "official_vegan": 0,
+          "preparation_and_usage": "Machine washable Tumble dry 95% cotton, 5% elastane (exclusive of trimmings)",
+          "specification": "- Added Stretch - StayNew\u2122 technology: longer-lasting colour and finish,Stay Soft: for longer-lasting softness - Knickers",
+          "url": "https://www.ocado.com/products/677449011/details"
+        }
+      },
+      "sha256": "194ad90e1849effa9c1c5bafa16236040db0dc73e4b7f6bc6cc344eb6ad693bf",
+      "source": "sync run 4 before_context_json"
+    },
+    "678164011": {
+      "context": {
+        "product": {
+          "id": "678164011",
+          "name": "PerfectTed Matcha Latte Vanilla",
+          "brand": "Perfect Ted",
+          "url": "https://www.ocado.com/products/678164011/details",
+          "official_vegan": 0,
+          "ingredients": "Oat Drink (93%) (Water, Gluten-Free Oats (10%), Sunflower Oil, Salt), Agave Nectar, Natural Flavourings, Ceremonial Grade Matcha Green Tea (0.7%), Natural Colour (Chlorophyll), Acidity Regulator (Potassium Carbonate)",
+          "allergens": "Free From Cereals Containing Gluten, Contains Oats",
+          "dietary_information": "Gluten free; Suitable for Vegans",
+          "features": "No Refined Sugar, Ceremonial Grade, Gluten Free Oats, Natural Ingredients, Smooth & Creamy, Vegan friendly",
+          "detailed_description": "1 Can = 1 Espresso* 60mg Caffeine Per Can* *Avg. espresso = 60 mg caffeine.",
+          "further_description": "@perfecttedenergy www.perfectted.com",
+          "brand_marketing": "A Note from Our Founder Hey, I'm Marisa! I used to struggle with coffee jitters and crashes, so I switched to matcha: a centuries-old, natural caffeine source. In 2021, I set out to create the ultimate on-the-go matcha latte. After years of perfecting it with world-class baristas, here it is: your favourite caf\u00e9-quality matcha latte, made with the finest ceremonial grade matcha.",
+          "other_information": "Full Product Name: Vanilla Flavoured Matcha Green Tea Latte Oat Drink Storage: Store in a cool, dry place. Best before: See base of can. Safety Warning: HIGH-CAFFEINE CONTENT. NOT RECOMMENDED FOR CHILDREN, PREGNANT, BREAST-FEEDING WOMEN OR PERSONS SENSITIVE TO CAFFEINE (24MG OF CAFFEINE PER 100ML). CONSUME MODERATELY.",
+          "preparation_and_usage": "Consumer Information: Shake gently before opening and consume immediately. Best served chilled."
+        },
+        "flags": [
+          "ocado_price_promise",
+          "vegetarian"
+        ],
+        "categories": [
+          "soft-drinks-tea-coffee/tea-coffee-hot-drinks/iced-drinks/iced-coffee"
+        ],
+        "manufacturer_vegan_evidence": [
+          {
+            "field_title": "features",
+            "content": "No Refined Sugar, Ceremonial Grade, Gluten Free Oats, Natural Ingredients, Smooth & Creamy, Vegan friendly"
+          },
+          {
+            "field_title": "dietaryInformation",
+            "content": "Gluten free; Suitable for Vegans"
+          }
+        ]
+      },
+      "sha256": "1624c48ec361ac42406ab7b52310ed4946f887555be10d80fd8cceb3a8ed7a1f",
+      "source": "SQLite evidence unchanged by sync run 4"
+    },
+    "614318011": {
+      "context": {
+        "product": {
+          "id": "614318011",
+          "name": "Miniml White Vinegar - Sorrento Lemon",
+          "brand": "Miniml",
+          "url": "https://www.ocado.com/products/614318011/details",
+          "official_vegan": 0,
+          "ingredients": "Suitable for Vegans; Not Tested on Animals",
+          "allergens": "Aqua**, 5% Acetic Acid*, <5% Non-Ionic Surfactants*, Perfumes***. *Denotes plant or mineral origin. **Water from The Yorkshire Moors. ***100% Natural Fragrance (ISO16128).",
+          "detailed_description": "White Vinegar - Sorrento Lemon Our Sorrento Lemon White Vinegar is specifically formulated to bring the power of White Vinegar to your home, whilst leaving the fresh scent of lemon behind. This multi-functional cleaner has many uses, including, being used as a rinse aid, to clean glass, brighten small appliances, clean your kitchen, keep laundry soft and freshen up after your pets. Why Miniml? Plant Based Formula | Eco-Friendly | Reusable & Zero Waste Packaging* | Powerful Natural Cleaning | No Animal Testing | Suitable for Vegans Free From: SLS/ SLES (Sulphates), Parabens, Phosphates, Phosphonates, Chlorine Bleaches, Sulphites, Isothiazolinones, Gluten, Microplastics, Artificial Preservatives and Colours, Triclosan, Petrochemicals, GMO's, E.D.T.A, Formaldehyde, Titanium Dioxide, Optical Brighteners, Lanoline, VOC's. * The empty packaging from refills can be returned to our factory (for free) to be cleaned, reused and refilled. Scan the QR code on the back of the packaging to arrange a return so it can be reused again and again.",
+          "other_information": "Closed Loop System: All our empty packaging can be returned to our factory (for free) to be cleaned, reused and refilled. Scan the QR code on the back of the packaging to arrange a return so it can be reused again and again. Safety Warning: WARNING: Causes serious eye irritation. IF IN EYES: Rinse cautiously with water for several minutes. Remove contact lenses, if present and easy to do so. Continue Rinsing. Keep out of reach of children. Read label before use. Store closed and out of direct sunlight. Additional Information: Ethical Consumer \u2018Best Buy\u2019, Vegan Certified, Cruelty Free Certified",
+          "preparation_and_usage": "Spray directly onto the surface and wipe clean. This product is not edible vinegar + do not use on stone, marble or granite surfaces.",
+          "country_of_origin": "UK"
+        },
+        "flags": [
+          "vegetarian"
+        ],
+        "categories": [
+          "events-inspiration/buy-women-built/household",
+          "events-inspiration/future-of-food/household",
+          "events-inspiration/makers-market/brands-we-love/miniml",
+          "home-care-cleaning/brands-we-love/miniml/cleaning",
+          "home-care-cleaning/brands-we-love/miniml/laundry",
+          "home-care-cleaning/kitchen/surface-cleaners"
+        ],
+        "manufacturer_vegan_evidence": [
+          {
+            "field_title": "otherInformation",
+            "content": "Closed Loop System: All our empty packaging can be returned to our factory (for free) to be cleaned, reused and refilled. Scan the QR code on the back of the packaging to arrange a return so it can be reused again and again. Safety Warning: WARNING: Causes serious eye irritation. IF IN EYES: Rinse cautiously with water for several minutes. Remove contact lenses, if present and easy to do so. Continue Rinsing. Keep out of reach of children. Read label before use. Store closed and out of direct sunlight. Additional Information: Ethical Consumer \u2018Best Buy\u2019, Vegan Certified, Cruelty Free Certified"
+          },
+          {
+            "field_title": "ingredients",
+            "content": "Suitable for Vegans; Not Tested on Animals"
+          }
+        ]
+      },
+      "sha256": "adac9a29aefe0df56b0cf13c34e33424534873f483e771cec05c3c26097ad159",
+      "source": "SQLite evidence unchanged by sync run 4"
+    },
+    "683869011": {
+      "context": {
+        "product": {
+          "id": "683869011",
+          "name": "Hartley's Raspberry Flavour Juicy Jelly Pouches",
+          "brand": "Hartley's",
+          "url": "https://www.ocado.com/products/683869011/details",
+          "official_vegan": 0,
+          "ingredients": "Water, Fruit Extract: Carob, Apple, Apple Juice from Concentrate (6%), Gelling Agents: Gellan Gum, Xanthan Gum, Cassia Gum, Acid: Citric Acid, Colour: Anthocyanins, Acidity Regulator: Potassium Citrate, Natural Flavouring, Concentrates: Sweet Potato, Carrot, Rowan Berry Extract",
+          "dietary_information": "Suitable for Vegans; Suitable for Vegetarians",
+          "features": "Made with Real Fruit Juice, Vegetarian Society Approved - Vegan\u00ae, No Artificial Flavours, No Artificial Colours, No Added Sugar",
+          "detailed_description": "Hartley\u2019s Juicy Jelly Pouches are the new kids snacks to be enjoyed on the go! All the wobble, none of the mess. These new lunchbox fillers bring all the fruity fun in a simple squeezey pouch. Perfect for lunchboxes, picnics and every \u201cI\u2019m hungryyy\u201d moment in between. These pouches are the perfect childrens snack, and help complete the daily lunch box puzzle. Made with real fruit juice, no artificial colours or flavours and only naturally occurring sugars. Sweet, simple and spoon free, helping to keep your little one\u2019s lunch box squeaky clean! A wobble of joy for them. A snack win for you.",
+          "further_description": "Hartley\u2019s Juicy Jelly Pouches are the new kids snacks to be enjoyed on the go! All the wobble, none of the mess. These new lunchbox fillers bring all the fruity fun in a simple squeezey pouch. Perfect for lunchboxes, picnics and every \u201cI\u2019m hungryyy\u201d moment in between. These pouches are the perfect childrens snack, and help complete the daily lunch box puzzle. Made with real fruit juice, no artificial colours or flavours and only naturally occurring sugars. Sweet, simple and spoon free, helping to keep your little one\u2019s lunch box squeaky clean! A wobble of joy for them. A snack win for you.",
+          "brand_marketing": "Hartley\u2019s Juicy Jelly Pouches are the new kids snacks to be enjoyed on the go! All the wobble, none of the mess. These new lunchbox fillers bring all the fruity fun in a simple squeezey pouch. Perfect for lunchboxes, picnics and every \u201cI\u2019m hungryyy\u201d moment in between. These pouches are the perfect childrens snack, and help complete the daily lunch box puzzle. Made with real fruit juice, no artificial colours or flavours and only naturally occurring sugars. Sweet, simple and spoon free, helping to keep your little one\u2019s lunch box squeaky clean! A wobble of joy for them. A snack win for you.",
+          "other_information": "Full Product Name: Raspberry Flavour Jelly with Apple Juice from Concentrate Storage: For best before: See bottom of pack. Keep me in the cupboard or pop me in the fridge for even better results. Once opened, consume immediately. Safety Warning: CHOKING HAZARD: The removable cap presents a choking hazard to children under 36 months so should be kept out of their reach."
+        },
+        "flags": [
+          "ocado_price_promise",
+          "vegetarian"
+        ],
+        "categories": [
+          "fresh-chilled-food/ready-meals-easy-to-cook/kids-ready-meals/pre-school-2-3-years",
+          "fresh-chilled-food/ready-meals-easy-to-cook/kids-ready-meals/toddler-1-2-years",
+          "treats-snacks/crisps-snacks/kids-snacks"
+        ],
+        "manufacturer_vegan_evidence": [
+          {
+            "field_title": "features",
+            "content": "Made with Real Fruit Juice, Vegetarian Society Approved - Vegan\u00ae, No Artificial Flavours, No Artificial Colours, No Added Sugar"
+          },
+          {
+            "field_title": "dietaryInformation",
+            "content": "Suitable for Vegans; Suitable for Vegetarians"
+          }
+        ]
+      },
+      "sha256": "fd23ad08df85322be4a0d308bea3e6a5dfed4c96faf9314839d9fff80c17519e",
+      "source": "SQLite evidence unchanged by sync run 4"
+    },
+    "59959011": {
+      "context": {
+        "product": {
+          "id": "59959011",
+          "name": "Seabrook Crinkle Cut Beefy Crisps",
+          "brand": "Seabrook",
+          "url": "https://www.ocado.com/products/59959011/details",
+          "official_vegan": 0,
+          "ingredients": "Potatoes, Vegetable Oils (Sunflower, Rapeseed, in varying proportions), Yeast Extract, Rice Flour, Onion Powder, Flavouring, Acid: Citric Acid",
+          "allergens": "Free From Cereals Containing Gluten",
+          "dietary_information": "Suitable for Vegetarians; Suitable for Vegans; Gluten free",
+          "features": "Brilliant by the Bagful, Gluten Free & Vegetarian, Vegetarian Society Approved, Vegetarian Society Approved - Vegan",
+          "detailed_description": "The perfect snack for a mid-morning escape, to enjoy with your packed lunch or to be shared relaxing with friends and family in front of your favourite TV show. Brilliant by the bagful",
+          "further_description": "Free seaside pass with every pack one per 30 days Save \u00a3\u00a3\u00a3's Win seaside adventures 10 available to be won Win 1 of 10 seaside adventure breaks this summer from a choice of 6 coastal locations. Whether your family fancies theme park thrills n' spills, surfing the waves or glamping under the stars, we've got the perfect adventure for you! Get free 30 day access to the Seabrook seaside pass with this pack and take advantage of a host of discounts and offers on attractions and experiences by the sea! Parkdean Pleasure Beach Go Ape Harry Ramsder's World Famous Fish & Chips Terms & Condition GB only, 18+. Keep packaging and proof of purchase. Main Promotional Period opens 09.00 BST 01/05/24 - 23.59 BST 01/09/24. Monthly/Weekly prize draw prizes: 10 x Seaside Adventures Breaks (winner and 3 guests). Purchase necessary. Internet access required. To enter prize draws: Purchase a promotional multipack or Snack Bag of Seabrook in any major retailer and visit www.seabrookseaside.co.uk. Enter the unique code inside promotional Multipacks and Snack Bags along with full name, mobile telephone number and valid email address to be entered into the corresponding prize draw. Max 1 prize per person during Main Promotional Period. Max 1 entry per person/week during Main Promotional Period. Wrap Up Draw: entries received between 00:00 BST 02.09.24 - 23.59 BST 13.10.24 will be entered into the Wrap Up Draw. Wrap Up Draw prizes: 5 x \u00a350 Gift Card for Go Ape. Max 1 entry per person/week during the Wrap Up Draw. 15 prizes in total available to be won. Gift: All entrants can claim 30 days' access to the Seabrook Seaside pass offering discounts valid at a range of venues and subject to individual T&C's. Claim by 13.10.24. One valid claim per person per 30 days. See www.seabrookseaside.co.uk for full T&C's, exclusions and prize details.",
+          "brand_marketing": "What's your favourite flavour? The Seabrook story began in 1945 in Yorkshire, where we proudly produce our iconic crinkle cut crisps and continue to excite the nation's tastebuds to this day.",
+          "other_information": "Full Product Name: Beefy Flavour Potato Crisps Storage: Store in a cool dry place away from bright light. Additional Information: Packaged in a protective atmosphere. Crossed Grain Symbol - GB-181-001 Seabrook Crisps and the Seabrook logo are registered trademarks.",
+          "country_of_origin": "United Kingdom"
+        },
+        "flags": [
+          "gluten_free",
+          "ocado_price_promise",
+          "vegetarian"
+        ],
+        "categories": [
+          "dietary-lifestyle-world-foods/free-from/palm-oil-free/treats/snacks",
+          "treats-snacks/crisps-snacks/crisps/multipack-crisps/single-flavour"
+        ],
+        "manufacturer_vegan_evidence": [
+          {
+            "field_title": "features",
+            "content": "Brilliant by the Bagful, Gluten Free & Vegetarian, Vegetarian Society Approved, Vegetarian Society Approved - Vegan"
+          },
+          {
+            "field_title": "dietaryInformation",
+            "content": "Suitable for Vegetarians; Suitable for Vegans; Gluten free"
+          }
+        ]
+      },
+      "sha256": "4f5e6ce98ae21434740aa1e44ed67e90ac9a5e84efa7c907a2421d1bf5445c04",
+      "source": "SQLite evidence unchanged by sync run 4"
+    },
+    "596529011": {
+      "context": {
+        "product": {
+          "id": "596529011",
+          "name": "Ocado Salted Peanuts",
+          "brand": "Ocado",
+          "url": "https://www.ocado.com/products/596529011/details",
+          "official_vegan": 0,
+          "ingredients": "Roasted Peanuts, Rapeseed Oil, Salt. For allergens, see ingredients in bold. May contain Nuts and Sesame.",
+          "detailed_description": "Ocado Salted Peanuts. Roasted and salted peanuts. These lightly seasoned nuts are the perfect cupboard snack for yourself or unexpected visitors. Serve on their own in small bowls or, mix together with dark chocolate and dried fruits for a sweet and salty trail mix. Looking for recipe inspiration? If you like what you see in our serving suggestion, scroll down to follow our deliciously easy Barbecued Bananas with Peanut Butter Cream recipe. Search 'Ocado dried fruit' to pick and mix your favourite fruits when creating your own trail mix.",
+          "other_information": "Warning: Although extra care has been taken to remove shells, some may remain. Remember, small children can choke on nuts. Packaged in a protective atmosphere."
+        },
+        "flags": [
+          "ocado_price_promise",
+          "vegetarian"
+        ],
+        "categories": [
+          "ocado-own-range/bakery-food-cupboard/food-cupboard",
+          "treats-snacks/nuts-seeds/nuts/peanuts"
+        ],
+        "manufacturer_vegan_evidence": []
+      },
+      "sha256": "39a8e007987ad522670adf9d366adab42f852517e75628581f2a7b6b958f1d8b",
+      "source": "SQLite evidence unchanged by sync run 4"
+    },
+    "290555011": {
+      "context": {
+        "product": {
+          "id": "290555011",
+          "name": "Ocado Original Breadsticks",
+          "brand": "Ocado",
+          "url": "https://www.ocado.com/products/290555011/details",
+          "official_vegan": 0,
+          "ingredients": "Wheat Flour, Olive Oil (7%), Yeast, Barley Malt Extract, Salt. For allergens, see ingredients in bold. May contain Soya, Sesame and Milk.",
+          "detailed_description": "Ocado Original Breadsticks. Breadsticks made with olive oil (7%). These mini plain breadsticks are a great sharing option and offer a satisfying crunch in every bite. Perfect for snacking or dipping, they're a great addition to any party platter, cheese and antipasti board or picnic basket and are suitable for vegetarians. Want to dunk your breadsticks into a delicious dip? Search 'Ocado dips' for a wide range of tasty pots including houmous, salsa, sour cream & chive and taramosalata.",
+          "country_of_origin": "Packed in Italy"
+        },
+        "flags": [
+          "ocado_price_promise"
+        ],
+        "categories": [
+          "dietary-lifestyle-world-foods/free-from/palm-oil-free/treats/biscuits-cakes/biscuits/savoury-biscuits",
+          "events-inspiration/everyday-savers",
+          "events-inspiration/summer-shop/picnic-deli/summer-hosting/snacks",
+          "ocado-own-range/bakery-food-cupboard/food-cupboard",
+          "treats-snacks/crackers-crispbreads/breadsticks-nibbles/breadsticks",
+          "treats-snacks/crisps-snacks/savoury-snacks/breadsticks"
+        ],
+        "manufacturer_vegan_evidence": []
+      },
+      "sha256": "1abe169ab474f2a38da628659f6470433566ec803f2dc1eb191b3e4068eeb288",
+      "source": "SQLite evidence unchanged by sync run 4"
+    },
+    "587564011": {
+      "context": {
+        "product": {
+          "id": "587564011",
+          "name": "Ocado Penne Pasta",
+          "brand": "Ocado",
+          "url": "https://www.ocado.com/products/587564011/details",
+          "official_vegan": 0,
+          "ingredients": "Durum Wheat Semolina, Water. For allergens, see ingredients in bold. May contain Mustard and Soya.",
+          "detailed_description": "Ocado Penne Pasta. Dried durum wheat semolina penne rigate pasta. If you love a hearty, baked pasta dish or a thick tomato sauce, then penne is the perfect choice. Its classic short, tube-like shape with angled ends and a ridged surface is designed to hold sauces perfectly. The neutral base flavour pairs wonderfully with rich, meaty sauces like a classic rag\u00f9, or with thick, creamy sauces that can cling to the ridges and fill the hollow centre. It\u2019s perfect for creating a satisfying pasta bake, as its firm texture keeps its shape well in the oven. It's also an excellent choice for pasta salads, as it pairs well with a wide range of vegetables and dressings. Looking for recipe inspiration? Scroll down and try this delicious recipe for Halloumi Pasta, perfect for a quick and easy mid-week meal. From a classic white spaghetti to a hearty whole wheat penne, we've got the perfect pasta for you, simply search for 'Ocado pasta'."
+        },
+        "flags": [
+          "ocado_price_promise",
+          "vegetarian"
+        ],
+        "categories": [
+          "dietary-lifestyle-world-foods/world-foods/italian/pasta-sauce/dry-pasta",
+          "events-inspiration/everyday-savers",
+          "food-cupboard/dry-rice-pasta-pulses/pasta/penne",
+          "ocado-own-range/bakery-food-cupboard/food-cupboard"
+        ],
+        "manufacturer_vegan_evidence": []
+      },
+      "sha256": "f33d454c50bc6749002acaebf8bd7aac19c9c1af82c1d89c4fe40d9bdc2200f2",
+      "source": "SQLite evidence unchanged by sync run 4"
+    },
+    "596537011": {
+      "context": {
+        "product": {
+          "id": "596537011",
+          "name": "Ocado Roasted & Salted Pistachios",
+          "brand": "Ocado",
+          "url": "https://www.ocado.com/products/596537011/details",
+          "official_vegan": 0,
+          "ingredients": "Pistachio Nuts, Salt. For allergens, see ingredients in bold. May contain Peanuts, other Nuts and Sesame.",
+          "detailed_description": "Ocado Roasted & Salted Pistachios. Shell on, roasted and salted pistachio nuts. These lightly seasoned pistachios have a strong, nutty flavour and are the perfect cupboard staple. They can be portioned out as a delicious snack for yourself or unexpected visitors - just don't forget an extra bowl to collect the empty shells! Search 'Ocado nuts' for lots of other tasty choices including roasted & salted cashews, salted mixed nuts and salted peanuts.",
+          "other_information": "Warning: This product contains shell. Remember, small children can choke on nuts. Packaged in a protective atmosphere."
+        },
+        "flags": [
+          "ocado_price_promise",
+          "vegetarian"
+        ],
+        "categories": [
+          "ocado-own-range/bakery-food-cupboard/food-cupboard",
+          "treats-snacks/nuts-seeds/nuts/pistachios"
+        ],
+        "manufacturer_vegan_evidence": []
+      },
+      "sha256": "6660a7f6e3c4bc8f94a6d5100786acd93efcb7667f953bc8d125237edfdc6ce9",
+      "source": "SQLite evidence unchanged by sync run 4"
+    },
+    "558578011": {
+      "context": {
+        "product": {
+          "id": "558578011",
+          "name": "Picard Chocolate Eclairs",
+          "brand": "Picard",
+          "url": "https://www.ocado.com/products/558578011/details",
+          "official_vegan": 0,
+          "ingredients": "Rehydrated skimmed MILK, chocolate 14% (cocoa paste, sugar, cocoa butter, emulsifier: SOYA lecithin), fresh EGG (liquid, pasteurised), water, semi-skimmed MILK, WHEAT flour (GLUTEN), sugar, concentrated butter (MILK), corn starch, MILK chocolate (sugar, whole MILK powder, cocoa butter, cocoa paste, skimmed MILK powder, emulsifier: SOYA lecithin), inverted sugar syrup, fat-reduced cocoa powder, inulin, salt, gelling agent: carrageenan.",
+          "allergens": "May contain traces of: peanuts, nuts.",
+          "detailed_description": "4 delicious choux pastry eclairs filled with a chocolate custard and topped with chocolate icing. A French patisserie classic.",
+          "preparation_and_usage": "Defrost in the fridge: Take the eclairs out of their box and remove the plastic film. Put them in the refrigerator on their plastic dish and leave them to defrost for 5 hours. Remove them from the refrigerator 10 min before serving.",
+          "country_of_origin": "Made in France with milk of EU origin and no-EU origin, egg of EU origin."
+        },
+        "flags": [
+          "frozen",
+          "suitable_for_freezing"
+        ],
+        "categories": [
+          "frozen-food/brands-we-love/picard-shop/party-food",
+          "frozen-food/brands-we-love/picard-shop/pastries-desserts",
+          "frozen-food/frozen-desserts-pastry/frozen-croissants-pastries/pastries",
+          "frozen-food/frozen-desserts-pastry/frozen-family-sized-desserts"
+        ],
+        "manufacturer_vegan_evidence": []
+      },
+      "sha256": "bb66a36a8b698b65d682826c0a67523177b349919697aff5b2ab3924c7ed5e4e",
+      "source": "SQLite evidence unchanged by sync run 4"
+    },
+    "653480011": {
+      "context": {
+        "product": {
+          "id": "653480011",
+          "name": "TriActive Super Good Bar \"with Benefits\" Cashew & Apricot",
+          "brand": "Holland & Barrett",
+          "url": "https://www.ocado.com/products/653480011/details",
+          "official_vegan": 0,
+          "ingredients": "Peanuts (31%), Dried Apricots (18%) (Apricots, Rice Flour), Almonds, Cashew Nuts (12%), Honey, Chicory Root Fibre, Puffed Rice, Magnesium, Flavouring, Vitamins (Niacin, Biotin, Vitamin B12, Folic Acid, Vitamin B6, Thiamine, Riboflavin). For allergens, see ingredients in bold.",
+          "detailed_description": "The science stuff sorted Packing 8.7g of protein and seven B vitamins, Tri Active Supergood Bar with Benefits Cashew Nuts and Apricot really is super good\u2122. Crunchy and chewy, this nutty bar with cashews, peanuts, almonds and dried apricots has the added bonus of supporting muscle mass, growth and maintenance, and reducing fatigue. This supergood bar contains a vitamin B complex. Vitamins B6 and B12, biotin, niacin, riboflavin and thiamin contribute to normal energy-yielding metabolism. Vitamin B12 also contributes to normal psychological function, while magnesium contributes to a reduction of tiredness and fatigue. Protein contributes to the maintenance and growth of muscle mass. What's inside? Muscle: 8.7g of protein per serving for the maintenance and growth of muscle mass Mind: Contains a vitamin B complex to support normal energy-yielding metabolism and normal psychological function Body: 140mg of magnesium per serving, which contributes to a reduction of tiredness and fatigue Ways to use Snack on before or after your workout to replenish your energy - Grab and go! Take one with you on your commute for a little support - Enjoy with a herbal tea or cold beverage of your choice mid-morning or afternoon",
+          "preparation_and_usage": "Advisory Information: 1. Small children may choke on nuts. 2. It is important to maintain a varied and balanced diet and a healthy lifestyle. Remember To: We go to great efforts to ensure that the information on this page is accurate at the time that the page was last edited. As we are constantly reviewing and developing our products to meet our consumer needs, consumers, particularly those that suffer from allergies and intolerances, should always check product labelling, warnings, and directions provided with the product that is delivered, prior to use or consumption. Directions: Tri Active Super Good Performance Bars are naturally packed with protein, high fibre and added benefits. Designed to top up on protein, stay focused and help replenish your muscles post workout."
+        },
+        "flags": [],
+        "categories": [
+          "dietary-lifestyle-world-foods/protein-shop/protein-snacks",
+          "events-inspiration/holland-barrett/health-food",
+          "events-inspiration/holland-barrett/sports",
+          "health-medicines-wellbeing/active-nutrition/protein-bars-snacks/protein-bars",
+          "health-medicines-wellbeing/brands-we-love/holland-and-barrett",
+          "treats-snacks/crisps-snacks/protein-energy-snacks/protein-snacks"
+        ],
+        "manufacturer_vegan_evidence": []
+      },
+      "sha256": "1c17e309458ef6a38ccd8ec88fa8e355d76b0d806ae79d84cbf08aef68b320a6",
+      "source": "SQLite evidence unchanged by sync run 4"
+    },
+    "687816011": {
+      "context": {
+        "product": {
+          "id": "687816011",
+          "name": "Bonne Maman Mango Yoghurt Mousse",
+          "brand": "Bonne Maman",
+          "url": "https://www.ocado.com/products/687816011/details",
+          "official_vegan": 0,
+          "ingredients": "Mango (34%), Yoghurt (Milk) (27%), Cream (Milk) (16%), Sugar, Passion Fruit Pur\u00e9e (3%), Cornflour, Concentrated Lemon Juice, Pork Gelatine",
+          "allergens": "Contains Milk",
+          "features": "No artificial colours, flavours or preservatives",
+          "detailed_description": "Bonne Maman Mango Yoghurt Mousse is a light and airy dessert, bursting with juicy mango pieces and a hint of passion fruit pur\u00e9e for a vibrant tropical flavour. Crafted with simple, high-quality ingredients for a taste of homemade, these chilled dessert pots offer a deliciously fruity treat any day of the week.",
+          "further_description": "Win! One of 500 KitchenAid mixers plus 6000 other prizes to be won* *See inside for details!",
+          "brand_marketing": "Bonne Maman\u00ae desserts offer you simple recipes made with care, the way you would do it at home. C'est bon, c'est Bonne Maman\u00ae",
+          "other_information": "Full Product Name: A mousse of yoghurt and cream prepared with mango pieces and passion fruit Storage: For use by date: see top of the pack. Keep refrigerated. Not suitable for home freezing. Usage: 2 Servings"
+        },
+        "flags": [],
+        "categories": [],
+        "manufacturer_vegan_evidence": []
+      },
+      "sha256": "771a0f9c9bc72b3832ed1e3bd3bb20e58e386477bd70f5044faccca4ee573361",
+      "source": "SQLite evidence unchanged by sync run 4"
+    },
+    "86518011": {
+      "context": {
+        "product": {
+          "id": "86518011",
+          "name": "Haliborange Kid's Softies Multivitamin Orange Gummies 3-12yrs",
+          "brand": "Haliborange",
+          "url": "https://www.ocado.com/products/86518011/details",
+          "official_vegan": 0,
+          "ingredients": "Glucose Syrup, Sugar, Gelatine (Bovine), Ascorbic Acid, Maltodextrin, Gelling Agent: Pectin, Acid: Citric Acid, DL-Alpha-Tocopheryl Acetate, Niacinamide, Natural Orange Flavouring, Vitamin A Prep (Retinyl Acetate, DL-Alpha Tocopherol), Glazing Agents: Vegetable Oils (Coconut, Rapeseed), Carnauba Wax, Pyridoxine Hydrochloride, Colour: Carmines, Vitamin D Prep (Cholecalciferol, Medium Chain Triglycerides), Cyanocobalamin",
+          "allergens": "Contains Soya",
+          "features": "Delicious orange flavour, Contains 7 essential vitamins",
+          "detailed_description": "Food Supplement Vitamin A: Helps support normal vision. Vitamin C: Helps support the immune system. Vitamin D: Essential for the normal growth and development of bones in children. Vitamin B12: Contributes to normal red blood cell formation.",
+          "further_description": "Trusted by Parents UK's No.1 Kids Vitamins Brand\u2020 \u2020 Based on 52 w/e Sales Data 29.12.18",
+          "brand_marketing": "We all want out little ones to shine in life! Haliborange Multivitamin Softies are a tasty way for your child to get some essential vitamins they need every day. UK Dept. of Health recommends all children from 6 months to 5 years take supplements in the form of Vitamins A, C & D. (Source: nhs.uk)",
+          "other_information": "Full Product Name: 30 Orange Multivitamin Softies - Food Supplement Storage: For Best Before End Date and Lot Number See Bottom of Jar. Store in a Cool, Dry Place, Below 25\u00b0C. Safety Warning: Food supplements are intended to supplement the diet and should not be regarded as a substitute for a varied diet and a healthy lifestyle. KEEP OUT OF REACH OF YOUNG CHILDREN. CHECK SEAL IS INTACT BEFORE PURCHASE. REPLACE LID SECURELY. Origin: Made in Germany Additional Information: Softies",
+          "preparation_and_usage": "Recommended daily intake: Children over 3 years take 1-2 fruit Softies daily. Do not exceed the recommended intake.",
+          "country_of_origin": "Germany"
+        },
+        "flags": [],
+        "categories": [
+          "baby-toddler/baby-toddler-toiletries/baby-kids-healthcare/baby-vitamins-supplements/baby-vitamins-supplements",
+          "events-inspiration/back-to-school/health-essentials",
+          "events-inspiration/summer-wellness/kids-baby",
+          "health-medicines-wellbeing/3-for-2-vitamins-supplements",
+          "health-medicines-wellbeing/kids-health/vitamins-minerals-supplements",
+          "health-medicines-wellbeing/vitamins-minerals-supplements/kids-teens/kids",
+          "health-medicines-wellbeing/vitamins-minerals-supplements/multivitamin"
+        ],
+        "manufacturer_vegan_evidence": []
+      },
+      "sha256": "c26e33a52b148220b006284638cf59074d04f90c117180606ad53f5ecbf432e3",
+      "source": "SQLite evidence unchanged by sync run 4"
+    },
+    "482049011": {
+      "context": {
+        "product": {
+          "id": "482049011",
+          "name": "John West Cracker Toppers Tuna Sweet Chilli",
+          "brand": "John West",
+          "url": "https://www.ocado.com/products/482049011/details",
+          "official_vegan": 0,
+          "ingredients": "Skipjack Tuna (Fish) (40%), Rapeseed Oil, Water, Sugar (3,1%), Red Jalape\u00f1o Chilli (3,0%), Spirit Vinegar, Modified Tapioca Starch, Skimmed Yoghurt Powder (Milk), Red Chilli (1,4%), Bamboo Fibre, Concentrated Lemon Juice, Concentrated Lime Juice, Egg Yolk Powder, Garlic Paste, Salt, Chilli Flakes (0,3%), Thickeners: Guar Gum, Xanthan Gum, Garlic Extract",
+          "allergens": "Contains Eggs, Contains Fish, Contains Milk",
+          "dietary_information": "Dolphin friendly",
+          "features": "Natural source of protein",
+          "detailed_description": "Cracker Toppers are a quick, easy and delicious way to enjoy a nutritious snack. Perfect as a topping, dip or spread to elevate any dish.",
+          "other_information": "Full Product Name: Tuna, Red Jalapeno Chilli and Spiced Sauce Spread Storage: Once opened, keep any unused product covered, refrigerated and consume within 2 days For Best Before End & Ocean of Catch See End of Can",
+          "preparation_and_usage": "Make crackers easy peasy with our delicious Cracker Toppers. Why not try them as a snack with breadsticks or as a tasty sandwich filler?",
+          "country_of_origin": "France"
+        },
+        "flags": [],
+        "categories": [
+          "food-cupboard/tinned-canned/tinned-fish/tuna/multipacks"
+        ],
+        "manufacturer_vegan_evidence": []
+      },
+      "sha256": "a67ab95bb51d6ea6a40bf0fdb5ea2e5bfe9287a29cb3aecd9e5672214e34fd79",
+      "source": "SQLite evidence unchanged by sync run 4"
+    },
+    "80782011": {
+      "context": {
+        "product": {
+          "id": "80782011",
+          "name": "Findlater's Chicken Liver Pate with Brandy & Port",
+          "brand": "Findlater's",
+          "url": "https://www.ocado.com/products/80782011/details",
+          "official_vegan": 0,
+          "ingredients": "Chicken Liver (42%), Butter (from Cow's Milk), Onions (Dried Onions, Water), Port (2%), Brandy (2%), Herbs & Spices, Garlic, Salt, Pepper",
+          "allergens": "Contains Milk, May Contain Nuts Does not contain Nuts but is made in a factory that handles them.",
+          "dietary_information": "Gluten free; Suitable for Coeliacs",
+          "features": "Great taste 2020, Finished with Brandy & Port, Findlater's of Linlithgow - Hand Crafted in Linlithgow-Scotland, Gluten free, Suitable for coeliacs",
+          "detailed_description": "Chicken liver pat\u00e9 finished with Brandy & Port",
+          "brand_marketing": "Hand crafted in Linlithgow, Scotland",
+          "other_information": "Full Product Name: Chicken Liver Pat\u00e9 Storage: For 'use by date' see side of pack. Keep refrigerated below 5\u00baC Not suitable for home freezing Use within 3 days of opening Usage: 6 Servings Origin: Hand Crafted in Linlithgow-Scotland Additional Information: All Packaging is Recyclable"
+        },
+        "flags": [
+          "gluten_free"
+        ],
+        "categories": [
+          "events-inspiration/gourmet-food-market/deli-cheese-dairy/continental-deli",
+          "fresh-chilled-food/cooked-meats-deli-dips/pate/meat",
+          "soft-drinks-tea-coffee/squash-cordial/squash/on-the-go"
+        ],
+        "manufacturer_vegan_evidence": []
+      },
+      "sha256": "31f486e40538fdeff010e0da4ed4fb936187bfa4615b2db876a2aafc961210d2",
+      "source": "SQLite evidence unchanged by sync run 4"
+    },
+    "645374011": {
+      "context": {
+        "categories": [
+          "treats-snacks/chocolate/chocolate-boxes/dark-chocolate-boxes",
+          "treats-snacks/chocolate/chocolate-boxes/luxury-chocolate"
+        ],
+        "flags": [
+          "ocado_price_promise",
+          "vegetarian"
+        ],
+        "manufacturer_vegan_evidence": [],
+        "product": {
+          "allergens": "May Contain Almonds, May Contain Brazil Nuts, May Contain Cashew Nuts, May Contain Hazelnuts, Contains Milk, May Contain Nuts, May Contain Pecan Nuts, May Contain Pistachio Nuts, Contains Soya, May Contain Walnuts May contain HAZELNUTS and other NUTS",
+          "brand": "Lindt",
+          "brand_marketing": "Made with the finest ingredients by the Lindt Master Chocolatiers since 1845. The Lindt Difference: passion for chocolate at every step.",
+          "country_of_origin": "Italy",
+          "detailed_description": "Unwrap a moment of bliss with the irresistible combination of 70% dark chocolate truffles filled with a smooth melting mint filling.",
+          "dietary_information": "Suitable for Vegetarians",
+          "features": "70% Cocoa dark chocolate truffles* with a smooth melting mint filling, Share or give the gift of bliss with this box of approx. 16 truffles, Melt into a moment of bliss, carefully crafted with passion and love by the Lindt Master Chocolatiers, Made with the finest ingredients by the Lindt Master Chocolatiers since 1845, The Lindt Difference: passion for chocolate at every step and including sustainably sourced cocoa beans",
+          "id": "645374011",
+          "ingredients": "Sugar, Cocoa Mass, Vegetable Fat (Coconut, Palm Kernel), Cocoa Butter, Low Fat Cocoa, Whole MILK Powder, Anhydrous MILK Fat, LACTOSE, Emulsifier (SOYA Lecithin), Peppermint Essential Oil, Vanilla Beans, Flavouring, *70% cocoa in the dark chocolate shell Extra dark chocolate contains: Cocoa Solids: 70% minimum, null, For Allergens see ingredients in Upper Case",
+          "name": "Lindt LINDOR Dark Mint Chocolate Truffles Box",
+          "official_vegan": 0,
+          "other_information": "Storage: Store in a cool and dry place. Origin: Manufactured in Italy",
+          "url": "https://www.ocado.com/products/645374011/details"
+        }
+      },
+      "sha256": "4082cad9066f31717743aa20eb2445cdeaa6eec2a4f0ad5cbb39f66b81bfaaa6",
+      "source": "sync run 4 before_context_json"
+    },
+    "611536011": {
+      "context": {
+        "product": {
+          "id": "611536011",
+          "name": "Bettine Goat's Cheese Slices",
+          "brand": "Bettine",
+          "url": "https://www.ocado.com/products/611536011/details",
+          "official_vegan": 0,
+          "ingredients": "Pasteurised Goat'S Milk, Salt, Preservative: Potassium Sorbate, Cultures, Microbial Rennet",
+          "allergens": "Contains Milk",
+          "dietary_information": "Suitable for Vegetarians",
+          "features": "Mild & creamy taste, Conveniently Pre-sliced, Suitable for vegetarians, Rich in Proteins, Easily Digestible",
+          "detailed_description": "In Bettine Goat's Cheese slices you taste the natural flavour of goat\u2019s cheese. Mild and pure, full of proteins and vitamins. Let the fresh creamy cheese melt in your mouth and enjoy. Delicious to eat pure, or as a creamy flavouring in your favourite dishes. Bettine goat\u2019s cheese slices won a silver award at the international cheese competition in Nantwich. Recipe Inspiration: Creamy one-pot tomato orzo with goat cheese This one-pan dish with goat cheese and tomato orzo is super creamy and mega delicious. You make everything in one pan which means very little washing up and also very little thinking after a busy day. Win-win! Ingredients (for 4 people): 1 onion Half a red pepper 250 g cherry tomatoes 1 tbsp olive oil 1 tsp. fennel seeds 400 g can of chopped tomatoes with Italian herbs 300 g orzo (pasta) 500 ml vegetable stock (made up from cube) 125 g Bettine mild goat's cheese plain slices 15g fresh basil Ground black pepper Preparation: 1. Dice the onion. Dice the red pepper. Halve the cherry tomatoes. 2. Heat the oil in the pan and fry the onion for 2 min over medium-high heat. Add the red pepper and fennel seeds and fry for 1 min. 3. Add the cherry tomatoes and fry for 2 min. 4. Add the chopped tomatoes, orzo and stock, stir well. Bring to the boil again. Cook for 10 min, or until the pasta is tender. 5. Finely chop half the basil. Crumble in the goat cheese. Stir the finely chopped basil and half the goat cheese into the orzo. 6. Serve the pasta in a deep plate. Garnish with the rest of the goat cheese and basil leaves. Season generously with freshly ground pepper.",
+          "further_description": "Discover more inspiration at www.bettine.nl Look, smell and taste",
+          "brand_marketing": "Go your own way In 1982, Johan Ewijk set out with just two goats and one goal: to craft the mildest goat cheese. You can still taste that passion today.",
+          "manufacturer_marketing": "Since 1982, Bettinehoeve has been making the most delicious goat's cheese out of love for the artisanal cheese-making craft. With its delicious mild flavour, Bettine has that unique Dutch character, is naturally soft and fresh, rich in proteins and also easily digestible. Be tempted by the tastiest piece of goat's cheese from Dutch soil!",
+          "other_information": "Full Product Name: Goat's Cheese >48% F.D.M. Storage: Once opened consume within 5 days. Keep refrigerated (max +7\u00b0C). Best before date: see top. Importer: Emmi UK Limited, 111 Upper Richmond Road, Putney, London, SW15 2TJ. Additional Information: Packaged in a protective atmosphere.",
+          "preparation_and_usage": "Taste our fresh Goat's Cheese on a sandwich, in a salad or with a drink!",
+          "country_of_origin": "Netherlands"
+        },
+        "flags": [
+          "vegetarian"
+        ],
+        "categories": [
+          "fresh-chilled-food/dairy-eggs/cheese/goats-sheeps-cheese/goats-cheese"
+        ],
+        "manufacturer_vegan_evidence": []
+      },
+      "sha256": "7dc88347045cc0d359372cb190e21c8a49fcb75114b149b3d782465c31989316",
+      "source": "SQLite evidence unchanged by sync run 4"
+    },
+    "208237011": {
+      "context": {
+        "product": {
+          "id": "208237011",
+          "name": "Fushi Virgin Organic Argan Oil",
+          "brand": "Fushi Wellbeing",
+          "url": "https://www.ocado.com/products/208237011/details",
+          "official_vegan": 0,
+          "ingredients": "INGREDIENTS: Azadirachta Indica (Neem oil). Country of origin: India. FREE FROM: Wheat, gluten, lactose, sugar, soya, milk products, GMO, Hexane, pesticides and herbicides, artificial colours, flavourings, fragrance, additives and preservatives. ORGANIC LICENSE NO: Certified Organic by the Soil Association Licence No: DA22368. EU Organic Certified GB-ORG-05 non-EU agriculture.",
+          "allergens": "FREE FROM: Wheat, gluten, lactose, sugar, soya, milk products, GMO, Hexane, pesticides and herbicides, artificial colours, flavourings, fragrance, additives and preservatives.",
+          "detailed_description": "Argan Oil benefits Fushi Fresh-Pressed\u00ae 100% pure and organic Argan Oil to nourish all skin & hair types, including dry, damaged and frizzy hair. FOR SKIN \u2022 Naturally rich in Vitamin E, known to be intensely moisturising, penetrating deep into the skin whilst being nurturing and protecting, Argan replenishes all skin types. FOR HAIR \u2022 For hair, it eliminates frizz, and nourishes dry, damaged hair, restoring shine. Rich in vitamin E, Argan oil can be used as a leave-in oil for dry ends or used as a conditioning treatment for the hair. FUELLED BY COMMUNITY & WOMEN-EMPOWERMENT \u2022 This freshly-pressed Argan Oil bottle was made from approx. 375g-500g untoasted, nutritious, fresh, raw and organic Argan kernels which grow in Southern Morocco, hand-picked by a Berber Women's cooperative who specialises in high quality argan oil extraction, meeting the highest world standards.",
+          "other_information": "\u2022 Fresh-Pressed\u00ae Oil\u2022 Unfragranced\u2022 Plastic-free \u2022 organic\u2022 pure\u2022 natural\u2022 freshly hand-blended with love & intention in our london workshop.",
+          "preparation_and_usage": "How to use Argan Oil For hair As a hair moisturiser 1-Apply a few drops to clean, towel-dried hair, from mid-length to ends. 2-Blow-dry or let dry naturally. To tame frizzy hair 1- Apply on dry hair to tame flyaway hair, and smooth hair. As a overnight hair mask 1-Massage into scalp for a leave in hair treatment overnight and wash off the next day. For skin On its own, as a skin moisturiser 1-Apply onto dry, clean face. For extra hydration to supercharge your skincare routine 2-Massage a few drops in the morning and/or evening with Fushi Biovedic Face Cream. You can also use it on its own, instead of your moisturiser or after applying your moisturiser for extra hydration. WORKS WELL WITH: \u2022 Argan & Amalaki Shampoo - refreshes and revives hair \u2022 Argan & Amalaki Conditioner - nourishes and smooths hair",
+          "country_of_origin": "UK"
+        },
+        "flags": [
+          "microwavable",
+          "suitable_for_freezing"
+        ],
+        "categories": [
+          "beauty-toiletries/hair-care/conditioner/anti-dandruff-conditioner",
+          "beauty-toiletries/hair-care/conditioner/leave-in-conditioner",
+          "beauty-toiletries/hair-care/conditioner/natural-organic-vegan/organic-conditioner",
+          "beauty-toiletries/hair-care/conditioner/shop-by-hair-type/conditioner-for-all-hair-types",
+          "beauty-toiletries/hair-care/hair-treatments-masks/hair-oils",
+          "beauty-toiletries/holiday-essentials/travel-size-toiletries/body-travel-size",
+          "beauty-toiletries/holiday-essentials/travel-size-toiletries/women-s-toiletries/women-s-body",
+          "beauty-toiletries/skincare/body-moisturisers/body-oils",
+          "dietary-lifestyle-world-foods/organic/beauty-toiletries/beauty",
+          "dietary-lifestyle-world-foods/organic/beauty-toiletries/toiletries",
+          "dietary-lifestyle-world-foods/vegan/beauty",
+          "events-inspiration/makers-market/british-made",
+          "events-inspiration/makers-market/organic",
+          "events-inspiration/makers-market/vegan-vegetarian"
+        ],
+        "manufacturer_vegan_evidence": []
+      },
+      "sha256": "9b065c884fd400c98042ff4fdf714a5b4acc7779e424cb8c66e18faa90f6ec9f",
+      "source": "SQLite evidence unchanged by sync run 4"
+    },
+    "687631011": {
+      "context": {
+        "product": {
+          "id": "687631011",
+          "name": "M&S Boys Pure Cotton Stripe T-Shirts, 9-12 Months, Khaki",
+          "brand": "M&S",
+          "url": "https://www.ocado.com/products/687631011/details",
+          "official_vegan": 0,
+          "ingredients": ">30% Anionic surfactants; 5-15% Soap; <5% Non-ionic surfactants, Phosphonates; Optical brighteners, Perfumes. UFI: 77JQ-30R0-T00N-06C8.",
+          "features": "Fairy Non Bio The Big One PODS\u00ae with 2X stain removal for little ones & big ones (Performance of The Big One equals 2 Fairy Non Bio PODS\u00ae), The Big One PODS\u00ae are enhanced with whiteness booster and they are designed to work well on both mixed loads and fuller loads, The softest Fairy (Fairy PODs vs. any other Fairy detergent) to wrap your family's delicate skin in huggable softness, Voted #1 laundry brand for sensitive skin (Online panel of 7,413 adults in GB aged 16+ among which Fairy Non Bio laundry detergent was voted most often as the #1 laundry detergent for sensitive skin), Try the Fairy Sensitive Skin Dream Team! Use in combination with Fairy Fabric Conditioner for snuggly softness & Scent Booster for a mild scent that lasts",
+          "detailed_description": "Refresh your baby's casual wardrobe with these breathable pure cotton T-shirts. Each style features a neat rib-knit crew neck and poppers on the shoulder for easy changing. This handy two-pack includes one plain design and one with a striped pattern.",
+          "other_information": "Safety Warning: Danger. Causes serious eye damage. Harmful to aquatic life with long lasting effects. Keep out of reach of children. IF IN EYES: Rinse cautiously with water for several minutes. IF SWALLOWED: Rinse mouth. Do NOT induce vomiting. Immediately call a POISON CENTER/doctor. Dispose of contents/container to an appropriate local waste system. Use with dry hands. Do not pierce, break or cut. Flame Resistant Finishes: never soak or wash above 50 \u00b0C. Please note that no effective laundry detergent can be guaranteed suitable for people with serious skin conditions. If you suffer from unusually sensitive skin, please contact your doctor for advice. Contains MEA-C10-13 Alkyl Benzenesulfonate, MEA-Laureth Sulfate, C12-14 Pareth-n.",
+          "preparation_and_usage": "Store in a cool dry place. Suitable for washing machine sizes up to 9kg, all water harshness, and soil level.",
+          "specification": "- Short sleeve - Popper fastening - T shirts",
+          "country_of_origin": "France"
+        },
+        "flags": [],
+        "categories": [
+          "clothing-accessories/baby-clothing-accessories-0-2-years/baby-boy",
+          "events-inspiration/home-clothing-sale/clothing"
+        ],
+        "manufacturer_vegan_evidence": []
+      },
+      "sha256": "b795c2e68ceb57ea6f01331fe2321f887bdac659d6f438ed2a782d10a2ffeaec",
+      "source": "SQLite evidence unchanged by sync run 4"
+    },
+    "697553011": {
+      "context": {
+        "categories": [
+          "fresh-chilled-food/brands-we-love/daylesford-shop/our-fresh-fruit-vegetables",
+          "fresh-chilled-food/salad-herbs/chilli-ginger-garlic/chilli",
+          "fresh-chilled-food/vegetables/chillies-ginger-ingredients/chillies",
+          "fresh-chilled-food/vegetables/organic",
+          "new-trending/new/brand-discovery"
+        ],
+        "flags": [
+          "organic",
+          "vegetarian"
+        ],
+        "manufacturer_vegan_evidence": [],
+        "product": {
+          "brand": "DAYLESFORD ORGANIC",
+          "country_of_origin": "UK",
+          "detailed_description": "At Daylesford, we believe organic food is essential to wellness. For over 40 years we have worked with a conscience to make real food with the simplest ingredients. Better for our wellbeing, our soil, and our future. Daylesford Organic English Chillies add a fiery kick to a wide range of savoury dishes. Use them whole in curries and stews for slow-releasing warmth or finely slice them into stir-fries and sauces for instant heat. They are also ideal for homemade hot sauce, chilli oil, marinades, and dressings, or sliced as a vibrant garnish.",
+          "id": "697553011",
+          "ingredients": "Basil",
+          "name": "Daylesford Organic Chillies",
+          "official_vegan": 0,
+          "preparation_and_usage": "Wash before use.",
+          "url": "https://www.ocado.com/products/697553011/details"
+        }
+      },
+      "sha256": "66e2fb0c10475fe28baa567167c650d8879e264053f987ed040375940b0c9c02",
+      "source": "sync run 4 before_context_json"
+    },
+    "652728011": {
+      "context": {
+        "product": {
+          "id": "652728011",
+          "name": "Holland & Barrett Vitamin D3 1000 I.U 25ug",
+          "brand": "Holland & Barrett",
+          "url": "https://www.ocado.com/products/652728011/details",
+          "official_vegan": 0,
+          "ingredients": "Ingredients: Bulking Agent (Dicalcium Phosphate, Microcrystalline Cellulose), Vitamin D (Cholecalciferol), Anti-Caking Agent (Magnesium Stearate, Silicon Dioxide).",
+          "detailed_description": "What is it? Holland & Barrett Vitamin D3 contributes towards the maintenance of normal bones, muscle function and the immune system. Supports the Normal Function of The Immune System Contributes To the Maintenance of Normal Bones and Muscle Function. Suitable For Vegetarians. What Are the Benefits of This Supplement? Vitamin D is one of the body\u2122s most important vitamins, helping it with a variety of tasks: Vitamin D contributes to the normal function of the immune system and is very important for the body\u2122s structural system, maintaining normal bone and muscle function. Vitamin D3 also contributes to the normal absorption and utilisation of calcium and phosphorus. When exposed to sunlight, our bodies will naturally make vitamin D3. This process happens when ultraviolet B (UVB) radiation from the sun triggers the 7-dehydrocholesteol to produce D3. Research suggests that everyone over the age of one years should have a daily intake of at least 10\u00c2\u00b5g of Vitamin D per day to protect bone and muscle health. Government advice is that everyone should consider taking a daily vitamin D supplement, especially during the autumn and winter. Holland & Barrett International Limited, Barling Way, CV10 7RH, UK Holland & Barrett Limited, 45 Henry St, D01 E9X8, Ireland",
+          "other_information": "Advisory Information: Food supplements must not be used as a substitute for a varied and balanced diet and a healthy lifestyle. If you are pregnant, breastfeeding, taking any medications or under medical supervision, please consult a doctor or healthcare professional before use. Discontinue use and consult a doctor if adverse reactions occur. Keep out of reach of children. Store in a cool, dry place. Do not use if seal under cap is broken or missing.",
+          "preparation_and_usage": "Directions: Take one tablet daily, preferably with a meal. Do not exceed stated dose."
+        },
+        "flags": [
+          "vegetarian"
+        ],
+        "categories": [
+          "events-inspiration/holland-barrett/joints-bones-muscles",
+          "events-inspiration/holland-barrett/vitamins-supplements",
+          "health-medicines-wellbeing/3-for-2-vitamins-supplements",
+          "health-medicines-wellbeing/brands-we-love/holland-and-barrett",
+          "health-medicines-wellbeing/vitamins-minerals-supplements/joint-care-bone-health",
+          "health-medicines-wellbeing/vitamins-minerals-supplements/vitamin-d"
+        ],
+        "manufacturer_vegan_evidence": []
+      },
+      "sha256": "397018b45a63f8a1f01e6400c63cec95c8c72050a5f1812679d5d21706591817",
+      "source": "SQLite evidence unchanged by sync run 4"
+    },
+    "677770011": {
+      "context": {
+        "categories": [
+          "fresh-chilled-food/dairy-eggs/butter-fats-spreads/chilled-pastry-dough/pastry"
+        ],
+        "flags": [
+          "vegetarian"
+        ],
+        "manufacturer_vegan_evidence": [],
+        "product": {
+          "allergens": "May Contain Milk, May Contain Nuts, Contains Wheat Dough may contain Milk. Chocolate sticks may contain Tree Nuts and Milk.",
+          "brand": "Jus Rol",
+          "dietary_information": "Suitable for Vegetarians",
+          "features": "Freshly baked in minutes!, Suitable for Vegetarians",
+          "further_description": "Why not check out www.jusrol.co.uk for more recipe ideas!",
+          "id": "677770011",
+          "ingredients": "Dough (87%): Wheat Flour, Margarine (Vegetable Fats and Oils (Palm, Rapeseed), Water, Emulsifiers (Mono-and Diglycerides of Fatty Acids), Salt, Acid (Citric Acid)), Water, Sugar, Wheat Gluten, Dextrose, Raising Agents (Glucono-Delta-Lactone, Potassium Carbonates, Diphosphates), Ethyl Alcohol, Salt, Thickener (Xanthan Gum), Flavouring, Stabiliser (Magnesium Chloride), Colour (Carotenes), Flour Treatment Agent (Ascorbic Acid), Chocolate Sticks (13%): Sugar, Cocoa Mass, Cocoa Butter, Emulsifiers (Lecithins), Natural Flavouring",
+          "name": "Jus Rol Pain au Choc",
+          "official_vegan": 0,
+          "other_information": "Full Product Name: Chilled uncooked dough and chocolate sticks for pain au chocolat. Storage: Use by: See side of pack. Keep refrigerated between 2\u00b0C and 5\u00b0C until ready for use. Once opened, use the product immediately. Do not freeze. Safety Warning: DO NOT EAT RAW DOUGH. Usage: 6 Servings Distributor: P A Ross Ltd., Ruskin Chambers, Drury Lane, Knutsford, WA16 6HA, UK. P A Ross Ltd., Suite 122, 3 Lombard Street East, Dublin 2, D02 HC78, EU. Additional Information: RSPO - Certified Sustainable Palm Oil\u2122 - 4-1062-18-100-00 FSC - FSC\u00ae Mix, Board / Supporting responsible forestry, FSC\u00ae C113809, www.fsc.org",
+          "preparation_and_usage": "Preparation instructions: When ready to use, preheat your oven to 200\u00b0C (180\u00b0C fan assisted/Gas Mark 6). Line a baking tray with non-stick baking paper. 1. Pull off the label where indicated and release the dough by twisting the can [the can may burst slightly]. 2. Unroll the dough and follow the perforations to separate into pieces. Do not eat raw dough. 3. Place 2 chocolate sticks at the end of each piece of dough and roll both ends inwards. 4. Place them seam side down and spaced out on the baking tray. 5. Bake for 12 to 15 minutes until the pains au chocolate are golden brown. Baking times may be increased depending on the oven used. Adjust accordingly. Not suitable for microwave cooking. Tip: For a deeper golden colour, glaze with milk or an egg wash before baking.",
+          "url": "https://www.ocado.com/products/677770011/details"
+        }
+      },
+      "sha256": "d73b13fe97b6a2c461450b2e931de455c110a87f6ff7dd8d205fe36de24243d2",
+      "source": "sync run 4 before_context_json"
+    },
+    "602030011": {
+      "context": {
+        "product": {
+          "id": "602030011",
+          "name": "Ariel Original 4in1 Pods Washing Liquid Capsules 50 Washes",
+          "brand": "Ariel",
+          "url": "https://www.ocado.com/products/602030011/details",
+          "official_vegan": 0,
+          "ingredients": ">30% Anionic Surfactants, 5-15% Non-Ionic Surfactants, <5% Phosphonates, Soap, Enzymes, Optical Brighteners, Perfumes, Alpha-Isomethyl Ionone, Camphor, Citronellol, Citrus Aurantium Peel Oil, Coumarin, Eugenol, Limonene, Pogostemon Cablin Oil, Rose Ketones, Terpineol, Tetramethyl Acetyloctahydronaphthalenes",
+          "features": "STAIN & ODOUR REMOVAL IN 1 WASH: Ariel 4in1 PODS\u00ae washing capsules provide outstanding results in 1 wash for both stains and odors, EFFECTIVE EVEN IN COLD & SHORT: Ariel 4in1 PODS\u00ae have been designed to work great even in cold and short cycles, FAST DISSOLVING EVEN IN COLD: Ariel 4in1 PODS\u00ae dissolve fast even in cold water, WASH COLDER & SAVE UP TO 60% ON YOUR WASHING MACHINE ELECTRICITY BILL (washing machine energy consumption from 40\u00b0C to 20\u00b0C, normal cycle), HOW TO USE YOUR ARIEL PODS\u00ae: Pod first, laundry on top for best results, GREAT FOR CLEANING, NOT FOR LITTLE HANDS: Always keep Ariel 4in1 PODS\u00ae out of reach of children. Visit keepcapsfromkids.eu for more information, FULL LOADS (in >5kg machines)? TOUGH STAINS OR ODOURS? Use 2 PODS\u00ae for optimal results",
+          "detailed_description": "Ariel 4in1 PODS\u00ae washing capsules laundry detergent Original provide stain & odour removal in 1 wash. They have been designed to work great even in cold and short cycles, dissolving fast even in cold water and providing impeccable results. Wash colder & save up to 60% on your washing machine electricity bill (washing machine energy consumption from 40\u00b0C to 20\u00b0C, normal cycle). For best results, Pod first at the back of the empty drum and put your clothes on top. For full loads (in >5kg machines) and tough stains or odours, use 2 PODS\u00ae for optimal results. To find out more about our brand, what's behind our products & our cold wash journey, go to ariel.co.uk. Always keep Ariel 4in1 PODS\u00ae washing capsules laundry detergent out of reach of children. Visit keepcapsfromkids.eu for more information.",
+          "other_information": "Safety Warning: Causes serious eye damage. Causes skin irritation. Harmful to aquatic life with long lasting effects. Keep out of reach of children. IF IN EYES: Rinse cautiously with water for several minutes. IF ON SKIN: Wash with plenty of water. IF SWALLOWED: Rinse mouth. Do NOT induce vomiting. Immediately call a POISON CENTER/doctor. Use with dry hands. Do not pierce, break or cut. Flame Resistant Finishes: never soak or wash above 50 \u00b0C. Contains MEA-C10-13 Alkyl Benzenesulfonate, MEA-Laureth Sulfate, C12-14 Pareth-n. Contains Citronellol, Tetrahydrolinalool, Isoeugenol, Delta-Damascone, Methylundecanal. May produce an allergic reaction.",
+          "preparation_and_usage": "POD FIRST. CLOTHES ON TOP. Store in a cool dry place.",
+          "country_of_origin": "France"
+        },
+        "flags": [
+          "ocado_price_promise"
+        ],
+        "categories": [
+          "home-care-cleaning/laundry/laundry-detergents/capsules"
+        ],
+        "manufacturer_vegan_evidence": []
+      },
+      "sha256": "3cbb1d806197a6dbc7f7aa649bac974558e7a700dd7fa64f30fbb530786a2186",
+      "source": "SQLite evidence unchanged by sync run 4"
+    },
+    "587053011": {
+      "context": {
+        "product": {
+          "id": "587053011",
+          "name": "Epicure Classic Pickle Spears",
+          "brand": "Epicure",
+          "url": "https://www.ocado.com/products/587053011/details",
+          "official_vegan": 0,
+          "ingredients": "Gherkins (55%), Water, Spirit Vinegar, Sugar, Salt, Mustard Seeds, Flavouring, Colour: E101",
+          "allergens": "Contains Mustard",
+          "features": "Sweet and sour, Create - Discover and be Epicurious",
+          "detailed_description": "Our pickles have been carefully selected for their delicious flavour and harvested early to keep their sharp crunch.",
+          "further_description": "Join us for exciting recipe ideas: www.epicure.co.uk",
+          "other_information": "Full Product Name: Classic Pickle Spears Storage: Store in a Cool Dry Place Once opened, refrigerate and consume within 5 days. Best Before End: See Lid. Origin: Packed in Germany"
+        },
+        "flags": [
+          "ocado_price_promise",
+          "vegetarian"
+        ],
+        "categories": [
+          "food-cupboard/brands-we-love/epicure/world-deli",
+          "food-cupboard/cooking-ingredients/gherkins-pickled-foods/gherkins"
+        ],
+        "manufacturer_vegan_evidence": []
+      },
+      "sha256": "3baee194c7c0079bcfe0f66261e69389139fe63e908a514fb6da1915122412f6",
+      "source": "SQLite evidence unchanged by sync run 4"
+    },
+    "638884011": {
+      "context": {
+        "product": {
+          "id": "638884011",
+          "name": "Clipper Chamomile & Peach Organic Tea Bags",
+          "brand": "Clipper",
+          "url": "https://www.ocado.com/products/638884011/details",
+          "official_vegan": 0,
+          "ingredients": "Chamomile* (76%), Rosehip*, Natural Peach Flavouring* (6.5%), Orange Peel*, Natural Mango Flavouring*, Natural Orange Flavouring, *Organically produced ingredients",
+          "features": "Natural, Fair & Delicious\u2122, Unwinding, Plastic-free unbleached bags, With Natural Peach Flavouring, Made with Pure, Natural Ingredients and a Clear Conscience, A taste of nature in every sip",
+          "detailed_description": "Chamomile & Peach flavoured organic infusion. Refreshment and relaxation combine in this floral and fruity blend made with pure, natural ingredients and a clear conscience. Natural, Fair & Delicious.",
+          "further_description": "Design: WWW.BIGFISH.CO.UK",
+          "other_information": "Full Product Name: Chamomile and Peach Flavoured Organic Infusion Storage: Best before: See base. Store in a cool, dry place. Additional Information: Soil Association Organic - UK/Non-UK Agriculture Non EU Organic - GB-ORG-05, EU/Non-EU Agriculture",
+          "preparation_and_usage": "250ml 100\u00b0C 2-5 mins",
+          "country_of_origin": "United Kingdom"
+        },
+        "flags": [
+          "organic",
+          "vegetarian"
+        ],
+        "categories": [
+          "dietary-lifestyle-world-foods/b-corp-certified/drinks/tea",
+          "dietary-lifestyle-world-foods/organic/drinks-alcohol/soft-drinks/hot-drinks",
+          "soft-drinks-tea-coffee/tea-coffee-hot-drinks/tea/fruit-herbal/camomile"
+        ],
+        "manufacturer_vegan_evidence": []
+      },
+      "sha256": "9db795d8816cdc81dcdd1941458da7c95677b2147a85700c1bab9e2cccda92eb",
+      "source": "SQLite evidence unchanged by sync run 4"
+    }
+  }
+}
