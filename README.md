@@ -54,6 +54,7 @@ The large local SQLite database and raw scrape streams are intentionally not tra
 ### Userscript
 
 - `ocado-vegan-filter.user.js` - the complete distributable userscript published on Greasy Fork.
+- [Firefox performance and code audit](docs/code-audit-2026-09-04.md) - measured improvements, fixes, and reproducible browser benchmarks.
 
 ### Classification And Database Tooling
 

@@ -1,0 +1,4800 @@
+{
+  "browser": "155.0",
+  "platform": "Linux-6.18.49-x64v3-xanmod1-x86_64-with-glibc2.41",
+  "userscript_sha256": "dd43faeedf2f275c402484e182382a4914a3dda0d860a046e716655aa82eaa2f",
+  "results": [
+    {
+      "page": "promotions",
+      "cards": 74,
+      "variant": "current",
+      "repetition": 0,
+      "compile_and_init_ms": 10,
+      "initial": {
+        "canvas": [],
+        "classScans": 3,
+        "converted": 0,
+        "dataUrlCharacters": 0,
+        "failed": 0,
+        "hydration": [
+          1
+        ],
+        "loadedImages": 36,
+        "muted": 60,
+        "processCards": 74,
+        "runs": [
+          8,
+          5
+        ],
+        "states": [
+          {
+            "button": "Unknown vegan",
+            "disabled": false,
+            "muted": true
+          },
+          {
+            "button": "Unknown vegan",
+            "disabled": false,
+            "muted": true
+          },
+          {
+            "button": "Unknown vegan",
+            "disabled": false,
+            "muted": true
+          },
+          {
+            "button": "Unknown vegan",
+            "disabled": false,
+            "muted": true
+          },
+          {
+            "button": "Unknown vegan",
+            "disabled": false,
+            "muted": true
+          },
+          {
+            "button": "Unknown vegan",
+            "disabled": false,
+            "muted": true
+          },
+          {
+            "button": "Not vegan",
+            "disabled": false,
+            "muted": true
+          },
+          {
+            "button": "Not vegan",
+            "disabled": false,
+            "muted": true
+          },
+          {
+            "button": "Unknown vegan",
+            "disabled": false,
+            "muted": true
+          },
+          {
+            "button": "Not vegan",
+            "disabled": false,
+            "muted": true
+          },
+          {
+            "button": "Unknown vegan",
+            "disabled": false,
+            "muted": true
+          },
+          {
+            "button": "Unknown vegan",
+            "disabled": false,
+            "muted": true
+          },
+          {
+            "button": "Add",
+            "disabled": false,
+            "muted": false
+          },
+          {
+            "button": "Add",
+            "disabled": false,
+            "muted": false
+          },
+          {
+            "button": "Unknown vegan",
+            "disabled": false,
+            "muted": true
+          },
+          {
+            "button": "Add",
+            "disabled": false,
+            "muted": false
+          },
+          {
+            "button": "Add",
+            "disabled": false,
+            "muted": false
+          },
+          {
+            "button": null,
+            "disabled": null,
+            "muted": true
+          },
+          {
+            "button": null,
+            "disabled": null,
+            "muted": true
+          },
+          {
+            "button": null,
+            "disabled": null,
+            "muted": true
+          },
+          {
+            "button": null,
+            "disabled": null,
+            "muted": true
+          },
+          {
+            "button": null,
+            "disabled": null,
+            "muted": true
+          },
+          {
+            "button": null,
+            "disabled": null,
+            "muted": true
+          },
+          {
+            "button": null,
+            "disabled": null,
+            "muted": true
+          },
+          {
+            "button": null,
+            "disabled": null,
+            "muted": true
+          },
+          {
+            "button": null,
+            "disabled": null,
+            "muted": true
+          },
+          {
+            "button": null,
+            "disabled": null,
+            "muted": true
+          },
+          {
+            "button": null,
+            "disabled": null,
+            "muted": true
+          },
+          {
+            "button": null,
+            "disabled": null,
+            "muted": true
+          },
+          {
+            "button": null,
+            "disabled": null,
+            "muted": true
+          },
+          {
+            "button": null,
+            "disabled": null,
+            "muted": true
+          },
+          {
+            "button": null,
+            "disabled": null,
+            "muted": true
+          },
+          {
+            "button": null,
+            "disabled": null,
+            "muted": true
+          },
+          {
+            "button": null,
+            "disabled": null,
+            "muted": true
+          },
+          {
+            "button": null,
+            "disabled": null,
+            "muted": true
+          },
+          {
+            "button": null,
+            "disabled": null,
+            "muted": true
+          },
+          {
+            "button": null,
+            "disabled": null,
+            "muted": true
+          },
+          {
+            "button": null,
+            "disabled": null,
+            "muted": true
+          },
+          {
+            "button": null,
+            "disabled": null,
+            "muted": true
+          },
+          {
+            "button": null,
+            "disabled": null,
+            "muted": true
+          },
+          {
+            "button": null,
+            "disabled": null,
+            "muted": true
+          },
+          {
+            "button": null,
+            "disabled": null,
+            "muted": true
+          },
+          {
+            "button": null,
+            "disabled": null,
+            "muted": true
+          },
+          {
+            "button": null,
+            "disabled": null,
+            "muted": true
+          },
+          {
+            "button": null,
+            "disabled": null,
+            "muted": true
+          },
+          {
+            "button": null,
+            "disabled": null,
+            "muted": true
+          },
+          {
+            "button": null,
+            "disabled": null,
+            "muted": true
+          },
+          {
+            "button": null,
+            "disabled": null,
+            "muted": true
+          },
+          {
+            "button": null,
+            "disabled": null,
+            "muted": true
+          },
+          {
+            "button": null,
+            "disabled": null,
+            "muted": true
+          },
+          {
+            "button": "Add",
+            "disabled": false,
+            "muted": false
+          },
+          {
+            "button": "Add",
+            "disabled": false,
+            "muted": false
+          },
+          {
+            "button": "Not vegan",
+            "disabled": false,
+            "muted": true
+          },
+          {
+            "button": "Add",
+            "disabled": false,
+            "muted": false
+          },
+          {
+            "button": "Not vegan",
+            "disabled": false,
+            "muted": true
+          },
+          {
+            "button": "Unknown vegan",
+            "disabled": false,
+            "muted": true
+          },
+          {
+            "button": "Not vegan",
+            "disabled": false,
+            "muted": true
+          },
+          {
+            "button": "Add",
+            "disabled": false,
+            "muted": false
+          },
+          {
+            "button": "Add",
+            "disabled": false,
+            "muted": false
+          },
+          {
+            "button": "Add",
+            "disabled": false,
+            "muted": false
+          },
+          {
+            "button": "Add",
+            "disabled": false,
+            "muted": false
+          },
+          {
+            "button": "Add",
+            "disabled": false,
+            "muted": false
+          },
+          {
+            "button": "Not vegan",
+            "disabled": false,
+            "muted": true
+          },
+          {
+            "button": "Not vegan",
+            "disabled": false,
+            "muted": true
+          },
+          {
+            "button": "Add",
+            "disabled": false,
+            "muted": false
+          },
+          {
+            "button": "Not vegan",
+            "disabled": false,
+            "muted": true
+          },
+          {
+            "button": "Add",
+            "disabled": false,
+            "muted": false
+          },
+          {
+            "button": "Unknown vegan",
+            "disabled": false,
+            "muted": true
+          },
+          {
+            "button": "Unknown vegan",
+            "disabled": false,
+            "muted": true
+          },
+          {
+            "button": "Not vegan",
+            "disabled": false,
+            "muted": true
+          },
+          {
+            "button": null,
+            "disabled": null,
+            "muted": true
+          },
+          {
+            "button": null,
+            "disabled": null,
+            "muted": true
+          },
+          {
+            "button": null,
+            "disabled": null,
+            "muted": true
+          },
+          {
+            "button": null,
+            "disabled": null,
+            "muted": true
+          }
+        ]
+      },
+      "unrelated": {
+        "canvas": [],
+        "classScans": 0,
+        "hydration": [],
+        "processCards": 0,
+        "runs": [],
+        "ticks": [
+          1,
+          33,
+          34,
+          33,
+          33,
+          33,
+          34,
+          34,
+          32,
+          34,
+          33,
+          33,
+          34,
+          33,
+          33,
+          33,
+          33,
+          35,
+          33,
+          33
+        ]
+      },
+      "single": {
+        "canvas": [],
+        "classScans": 0,
+        "hydration": [
+          0
+        ],
+        "processCards": 20,
+        "runs": [
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0
+        ],
+        "ticks": [
+          29,
+          33,
+          34,
+          34,
+          33,
+          33,
+          34,
+          33,
+          33,
+          33,
+          33,
+          34,
+          34,
+          33,
+          33,
+          33,
+          34,
+          33,
+          34,
+          33
+        ]
+      }
+    },
+    {
+      "page": "milk",
+      "cards": 75,
+      "variant": "current",
+      "repetition": 0,
+      "compile_and_init_ms": 10,
+      "initial": {
+        "canvas": [],
+        "classScans": 3,
+        "converted": 0,
+        "dataUrlCharacters": 0,
+        "failed": 0,
+        "hydration": [
+          0
+        ],
+        "loadedImages": 24,
+        "muted": 75,
+        "processCards": 75,
+        "runs": [
+          9
+        ],
+        "states": [
+          {
+            "button": "Not vegan",
+            "disabled": false,
+            "muted": true
+          },
+          {
+            "button": "Not vegan",
+            "disabled": false,
+            "muted": true
+          },
+          {
+            "button": "Not vegan",
+            "disabled": false,
+            "muted": true
+          },
+          {
+            "button": "Not vegan",
+            "disabled": false,
+            "muted": true
+          },
+          {
+            "button": null,
+            "disabled": null,
+            "muted": true
+          },
+          {
+            "button": null,
+            "disabled": null,
+            "muted": true
+          },
+          {
+            "button": null,
+            "disabled": null,
+            "muted": true
+          },
+          {
+            "button": null,
+            "disabled": null,
+            "muted": true
+          },
+          {
+            "button": null,
+            "disabled": null,
+            "muted": true
+          },
+          {
+            "button": null,
+            "disabled": null,
+            "muted": true
+          },
+          {
+            "button": null,
+            "disabled": null,
+            "muted": true
+          },
+          {
+            "button": null,
+            "disabled": null,
+            "muted": true
+          },
+          {
+            "button": null,
+            "disabled": null,
+            "muted": true
+          },
+          {
+            "button": null,
+            "disabled": null,
+            "muted": true
+          },
+          {
+            "button": null,
+            "disabled": null,
+            "muted": true
+          },
+          {
+            "button": null,
+            "disabled": null,
+            "muted": true
+          },
+          {
+            "button": null,
+            "disabled": null,
+            "muted": true
+          },
+          {
+            "button": null,
+            "disabled": null,
+            "muted": true
+          },
+          {
+            "button": null,
+            "disabled": null,
+            "muted": true
+          },
+          {
+            "button": null,
+            "disabled": null,
+            "muted": true
+          },
+          {
+            "button": null,
+            "disabled": null,
+            "muted": true
+          },
+          {
+            "button": null,
+            "disabled": null,
+            "muted": true
+          },
+          {
+            "button": null,
+            "disabled": null,
+            "muted": true
+          },
+          {
+            "button": null,
+            "disabled": null,
+            "muted": true
+          },
+          {
+            "button": null,
+            "disabled": null,
+            "muted": true
+          },
+          {
+            "button": null,
+            "disabled": null,
+            "muted": true
+          },
+          {
+            "button": null,
+            "disabled": null,
+            "muted": true
+          },
+          {
+            "button": null,
+            "disabled": null,
+            "muted": true
+          },
+          {
+            "button": null,
+            "disabled": null,
+            "muted": true
+          },
+          {
+            "button": null,
+            "disabled": null,
+            "muted": true
+          },
+          {
+            "button": null,
+            "disabled": null,
+            "muted": true
+          },
+          {
+            "button": null,
+            "disabled": null,
+            "muted": true
+          },
+          {
+            "button": null,
+            "disabled": null,
+            "muted": true
+          },
+          {
+            "button": null,
+            "disabled": null,
+            "muted": true
+          },
+          {
+            "button": null,
+            "disabled": null,
+            "muted": true
+          },
+          {
+            "button": null,
+            "disabled": null,
+            "muted": true
+          },
+          {
+            "button": null,
+            "disabled": null,
+            "muted": true
+          },
+          {
+            "button": null,
+            "disabled": null,
+            "muted": true
+          },
+          {
+            "button": null,
+            "disabled": null,
+            "muted": true
+          },
+          {
+            "button": null,
+            "disabled": null,
+            "muted": true
+          },
+          {
+            "button": null,
+            "disabled": null,
+            "muted": true
+          },
+          {
+            "button": null,
+            "disabled": null,
+            "muted": true
+          },
+          {
+            "button": null,
+            "disabled": null,
+            "muted": true
+          },
+          {
+            "button": null,
+            "disabled": null,
+            "muted": true
+          },
+          {
+            "button": null,
+            "disabled": null,
+            "muted": true
+          },
+          {
+            "button": null,
+            "disabled": null,
+            "muted": true
+          },
+          {
+            "button": null,
+            "disabled": null,
+            "muted": true
+          },
+          {
+            "button": null,
+            "disabled": null,
+            "muted": true
+          },
+          {
+            "button": "Not vegan",
+            "disabled": false,
+            "muted": true
+          },
+          {
+            "button": "Not vegan",
+            "disabled": false,
+            "muted": true
+          },
+          {
+            "button": "Not vegan",
+            "disabled": false,
+            "muted": true
+          },
+          {
+            "button": "Not vegan",
+            "disabled": false,
+            "muted": true
+          },
+          {
+            "button": "Not vegan",
+            "disabled": false,
+            "muted": true
+          },
+          {
+            "button": "Not vegan",
+            "disabled": false,
+            "muted": true
+          },
+          {
+            "button": "Not vegan",
+            "disabled": false,
+            "muted": true
+          },
+          {
+            "button": "Not vegan",
+            "disabled": false,
+            "muted": true
+          },
+          {
+            "button": "Not vegan",
+            "disabled": false,
+            "muted": true
+          },
+          {
+            "button": "Not vegan",
+            "disabled": false,
+            "muted": true
+          },
+          {
+            "button": "Not vegan",
+            "disabled": false,
+            "muted": true
+          },
+          {
+            "button": "Not vegan",
+            "disabled": false,
+            "muted": true
+          },
+          {
+            "button": "Not vegan",
+            "disabled": false,
+            "muted": true
+          },
+          {
+            "button": "Not vegan",
+            "disabled": false,
+            "muted": true
+          },
+          {
+            "button": "Not vegan",
+            "disabled": false,
+            "muted": true
+          },
+          {
+            "button": "Not vegan",
+            "disabled": false,
+            "muted": true
+          },
+          {
+            "button": "Not vegan",
+            "disabled": false,
+            "muted": true
+          },
+          {
+            "button": "Not vegan",
+            "disabled": false,
+            "muted": true
+          },
+          {
+            "button": "Not vegan",
+            "disabled": false,
+            "muted": true
+          },
+          {
+            "button": "Not vegan",
+            "disabled": false,
+            "muted": true
+          },
+          {
+            "button": null,
+            "disabled": null,
+            "muted": true
+          },
+          {
+            "button": null,
+            "disabled": null,
+            "muted": true
+          },
+          {
+            "button": null,
+            "disabled": null,
+            "muted": true
+          },
+          {
+            "button": null,
+            "disabled": null,
+            "muted": true
+          },
+          {
+            "button": null,
+            "disabled": null,
+            "muted": true
+          },
+          {
+            "button": null,
+            "disabled": null,
+            "muted": true
+          },
+          {
+            "button": null,
+            "disabled": null,
+            "muted": true
+          }
+        ]
+      },
+      "unrelated": {
+        "canvas": [],
+        "classScans": 0,
+        "hydration": [],
+        "processCards": 0,
+        "runs": [],
+        "ticks": [
+          11,
+          33,
+          33,
+          32,
+          35,
+          33,
+          34,
+          32,
+          34,
+          33,
+          34,
+          33,
+          34,
+          32,
+          34,
+          34,
+          33,
+          33,
+          33,
+          34
+        ]
+      },
+      "single": {
+        "canvas": [],
+        "classScans": 0,
+        "hydration": [
+          0
+        ],
+        "processCards": 20,
+        "runs": [
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          1,
+          0,
+          0,
+          0,
+          1,
+          0,
+          0,
+          0,
+          0,
+          0,
+          1,
+          0
+        ],
+        "ticks": [
+          30,
+          33,
+          34,
+          32,
+          35,
+          32,
+          34,
+          33,
+          33,
+          34,
+          33,
+          34,
+          32,
+          35,
+          33,
+          33,
+          33,
+          33,
+          35,
+          32
+        ]
+      }
+    },
+    {
+      "page": "promotions",
+      "cards": 74,
+      "variant": "current",
+      "repetition": 1,
+      "compile_and_init_ms": 9,
+      "initial": {
+        "canvas": [],
+        "classScans": 3,
+        "converted": 0,
+        "dataUrlCharacters": 0,
+        "failed": 0,
+        "hydration": [
+          1
+        ],
+        "loadedImages": 36,
+        "muted": 60,
+        "processCards": 74,
+        "runs": [
+          9,
+          1
+        ],
+        "states": [
+          {
+            "button": "Unknown vegan",
+            "disabled": false,
+            "muted": true
+          },
+          {
+            "button": "Unknown vegan",
+            "disabled": false,
+            "muted": true
+          },
+          {
+            "button": "Unknown vegan",
+            "disabled": false,
+            "muted": true
+          },
+          {
+            "button": "Unknown vegan",
+            "disabled": false,
+            "muted": true
+          },
+          {
+            "button": "Unknown vegan",
+            "disabled": false,
+            "muted": true
+          },
+          {
+            "button": "Unknown vegan",
+            "disabled": false,
+            "muted": true
+          },
+          {
+            "button": "Not vegan",
+            "disabled": false,
+            "muted": true
+          },
+          {
+            "button": "Not vegan",
+            "disabled": false,
+            "muted": true
+          },
+          {
+            "button": "Unknown vegan",
+            "disabled": false,
+            "muted": true
+          },
+          {
+            "button": "Not vegan",
+            "disabled": false,
+            "muted": true
+          },
+          {
+            "button": "Unknown vegan",
+            "disabled": false,
+            "muted": true
+          },
+          {
+            "button": "Unknown vegan",
+            "disabled": false,
+            "muted": true
+          },
+          {
+            "button": "Add",
+            "disabled": false,
+            "muted": false
+          },
+          {
+            "button": "Add",
+            "disabled": false,
+            "muted": false
+          },
+          {
+            "button": "Unknown vegan",
+            "disabled": false,
+            "muted": true
+          },
+          {
+            "button": "Add",
+            "disabled": false,
+            "muted": false
+          },
+          {
+            "button": "Add",
+            "disabled": false,
+            "muted": false
+          },
+          {
+            "button": null,
+            "disabled": null,
+            "muted": true
+          },
+          {
+            "button": null,
+            "disabled": null,
+            "muted": true
+          },
+          {
+            "button": null,
+            "disabled": null,
+            "muted": true
+          },
+          {
+            "button": null,
+            "disabled": null,
+            "muted": true
+          },
+          {
+            "button": null,
+            "disabled": null,
+            "muted": true
+          },
+          {
+            "button": null,
+            "disabled": null,
+            "muted": true
+          },
+          {
+            "button": null,
+            "disabled": null,
+            "muted": true
+          },
+          {
+            "button": null,
+            "disabled": null,
+            "muted": true
+          },
+          {
+            "button": null,
+            "disabled": null,
+            "muted": true
+          },
+          {
+            "button": null,
+            "disabled": null,
+            "muted": true
+          },
+          {
+            "button": null,
+            "disabled": null,
+            "muted": true
+          },
+          {
+            "button": null,
+            "disabled": null,
+            "muted": true
+          },
+          {
+            "button": null,
+            "disabled": null,
+            "muted": true
+          },
+          {
+            "button": null,
+            "disabled": null,
+            "muted": true
+          },
+          {
+            "button": null,
+            "disabled": null,
+            "muted": true
+          },
+          {
+            "button": null,
+            "disabled": null,
+            "muted": true
+          },
+          {
+            "button": null,
+            "disabled": null,
+            "muted": true
+          },
+          {
+            "button": null,
+            "disabled": null,
+            "muted": true
+          },
+          {
+            "button": null,
+            "disabled": null,
+            "muted": true
+          },
+          {
+            "button": null,
+            "disabled": null,
+            "muted": true
+          },
+          {
+            "button": null,
+            "disabled": null,
+            "muted": true
+          },
+          {
+            "button": null,
+            "disabled": null,
+            "muted": true
+          },
+          {
+            "button": null,
+            "disabled": null,
+            "muted": true
+          },
+          {
+            "button": null,
+            "disabled": null,
+            "muted": true
+          },
+          {
+            "button": null,
+            "disabled": null,
+            "muted": true
+          },
+          {
+            "button": null,
+            "disabled": null,
+            "muted": true
+          },
+          {
+            "button": null,
+            "disabled": null,
+            "muted": true
+          },
+          {
+            "button": null,
+            "disabled": null,
+            "muted": true
+          },
+          {
+            "button": null,
+            "disabled": null,
+            "muted": true
+          },
+          {
+            "button": null,
+            "disabled": null,
+            "muted": true
+          },
+          {
+            "button": null,
+            "disabled": null,
+            "muted": true
+          },
+          {
+            "button": null,
+            "disabled": null,
+            "muted": true
+          },
+          {
+            "button": null,
+            "disabled": null,
+            "muted": true
+          },
+          {
+            "button": "Add",
+            "disabled": false,
+            "muted": false
+          },
+          {
+            "button": "Add",
+            "disabled": false,
+            "muted": false
+          },
+          {
+            "button": "Not vegan",
+            "disabled": false,
+            "muted": true
+          },
+          {
+            "button": "Add",
+            "disabled": false,
+            "muted": false
+          },
+          {
+            "button": "Not vegan",
+            "disabled": false,
+            "muted": true
+          },
+          {
+            "button": "Unknown vegan",
+            "disabled": false,
+            "muted": true
+          },
+          {
+            "button": "Not vegan",
+            "disabled": false,
+            "muted": true
+          },
+          {
+            "button": "Add",
+            "disabled": false,
+            "muted": false
+          },
+          {
+            "button": "Add",
+            "disabled": false,
+            "muted": false
+          },
+          {
+            "button": "Add",
+            "disabled": false,
+            "muted": false
+          },
+          {
+            "button": "Add",
+            "disabled": false,
+            "muted": false
+          },
+          {
+            "button": "Add",
+            "disabled": false,
+            "muted": false
+          },
+          {
+            "button": "Not vegan",
+            "disabled": false,
+            "muted": true
+          },
+          {
+            "button": "Not vegan",
+            "disabled": false,
+            "muted": true
+          },
+          {
+            "button": "Add",
+            "disabled": false,
+            "muted": false
+          },
+          {
+            "button": "Not vegan",
+            "disabled": false,
+            "muted": true
+          },
+          {
+            "button": "Add",
+            "disabled": false,
+            "muted": false
+          },
+          {
+            "button": "Unknown vegan",
+            "disabled": false,
+            "muted": true
+          },
+          {
+            "button": "Unknown vegan",
+            "disabled": false,
+            "muted": true
+          },
+          {
+            "button": "Not vegan",
+            "disabled": false,
+            "muted": true
+          },
+          {
+            "button": null,
+            "disabled": null,
+            "muted": true
+          },
+          {
+            "button": null,
+            "disabled": null,
+            "muted": true
+          },
+          {
+            "button": null,
+            "disabled": null,
+            "muted": true
+          },
+          {
+            "button": null,
+            "disabled": null,
+            "muted": true
+          }
+        ]
+      },
+      "unrelated": {
+        "canvas": [],
+        "classScans": 0,
+        "hydration": [],
+        "processCards": 0,
+        "runs": [],
+        "ticks": [
+          7,
+          33,
+          33,
+          34,
+          34,
+          33,
+          33,
+          32,
+          35,
+          33,
+          33,
+          33,
+          33,
+          34,
+          34,
+          33,
+          33,
+          33,
+          34,
+          33
+        ]
+      },
+      "single": {
+        "canvas": [],
+        "classScans": 0,
+        "hydration": [
+          1
+        ],
+        "processCards": 20,
+        "runs": [
+          0,
+          0,
+          0,
+          0,
+          1,
+          0,
+          1,
+          1,
+          1,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          1
+        ],
+        "ticks": [
+          30,
+          33,
+          33,
+          34,
+          33,
+          33,
+          33,
+          33,
+          34,
+          33,
+          34,
+          33,
+          34,
+          33,
+          33,
+          34,
+          33,
+          34,
+          33,
+          33
+        ]
+      }
+    },
+    {
+      "page": "milk",
+      "cards": 75,
+      "variant": "current",
+      "repetition": 1,
+      "compile_and_init_ms": 11,
+      "initial": {
+        "canvas": [],
+        "classScans": 3,
+        "converted": 0,
+        "dataUrlCharacters": 0,
+        "failed": 0,
+        "hydration": [
+          1
+        ],
+        "loadedImages": 24,
+        "muted": 75,
+        "processCards": 75,
+        "runs": [
+          9,
+          0
+        ],
+        "states": [
+          {
+            "button": "Not vegan",
+            "disabled": false,
+            "muted": true
+          },
+          {
+            "button": "Not vegan",
+            "disabled": false,
+            "muted": true
+          },
+          {
+            "button": "Not vegan",
+            "disabled": false,
+            "muted": true
+          },
+          {
+            "button": "Not vegan",
+            "disabled": false,
+            "muted": true
+          },
+          {
+            "button": null,
+            "disabled": null,
+            "muted": true
+          },
+          {
+            "button": null,
+            "disabled": null,
+            "muted": true
+          },
+          {
+            "button": null,
+            "disabled": null,
+            "muted": true
+          },
+          {
+            "button": null,
+            "disabled": null,
+            "muted": true
+          },
+          {
+            "button": null,
+            "disabled": null,
+            "muted": true
+          },
+          {
+            "button": null,
+            "disabled": null,
+            "muted": true
+          },
+          {
+            "button": null,
+            "disabled": null,
+            "muted": true
+          },
+          {
+            "button": null,
+            "disabled": null,
+            "muted": true
+          },
+          {
+            "button": null,
+            "disabled": null,
+            "muted": true
+          },
+          {
+            "button": null,
+            "disabled": null,
+            "muted": true
+          },
+          {
+            "button": null,
+            "disabled": null,
+            "muted": true
+          },
+          {
+            "button": null,
+            "disabled": null,
+            "muted": true
+          },
+          {
+            "button": null,
+            "disabled": null,
+            "muted": true
+          },
+          {
+            "button": null,
+            "disabled": null,
+            "muted": true
+          },
+          {
+            "button": null,
+            "disabled": null,
+            "muted": true
+          },
+          {
+            "button": null,
+            "disabled": null,
+            "muted": true
+          },
+          {
+            "button": null,
+            "disabled": null,
+            "muted": true
+          },
+          {
+            "button": null,
+            "disabled": null,
+            "muted": true
+          },
+          {
+            "button": null,
+            "disabled": null,
+            "muted": true
+          },
+          {
+            "button": null,
+            "disabled": null,
+            "muted": true
+          },
+          {
+            "button": null,
+            "disabled": null,
+            "muted": true
+          },
+          {
+            "button": null,
+            "disabled": null,
+            "muted": true
+          },
+          {
+            "button": null,
+            "disabled": null,
+            "muted": true
+          },
+          {
+            "button": null,
+            "disabled": null,
+            "muted": true
+          },
+          {
+            "button": null,
+            "disabled": null,
+            "muted": true
+          },
+          {
+            "button": null,
+            "disabled": null,
+            "muted": true
+          },
+          {
+            "button": null,
+            "disabled": null,
+            "muted": true
+          },
+          {
+            "button": null,
+            "disabled": null,
+            "muted": true
+          },
+          {
+            "button": null,
+            "disabled": null,
+            "muted": true
+          },
+          {
+            "button": null,
+            "disabled": null,
+            "muted": true
+          },
+          {
+            "button": null,
+            "disabled": null,
+            "muted": true
+          },
+          {
+            "button": null,
+            "disabled": null,
+            "muted": true
+          },
+          {
+            "button": null,
+            "disabled": null,
+            "muted": true
+          },
+          {
+            "button": null,
+            "disabled": null,
+            "muted": true
+          },
+          {
+            "button": null,
+            "disabled": null,
+            "muted": true
+          },
+          {
+            "button": null,
+            "disabled": null,
+            "muted": true
+          },
+          {
+            "button": null,
+            "disabled": null,
+            "muted": true
+          },
+          {
+            "button": null,
+            "disabled": null,
+            "muted": true
+          },
+          {
+            "button": null,
+            "disabled": null,
+            "muted": true
+          },
+          {
+            "button": null,
+            "disabled": null,
+            "muted": true
+          },
+          {
+            "button": null,
+            "disabled": null,
+            "muted": true
+          },
+          {
+            "button": null,
+            "disabled": null,
+            "muted": true
+          },
+          {
+            "button": null,
+            "disabled": null,
+            "muted": true
+          },
+          {
+            "button": null,
+            "disabled": null,
+            "muted": true
+          },
+          {
+            "button": "Not vegan",
+            "disabled": false,
+            "muted": true
+          },
+          {
+            "button": "Not vegan",
+            "disabled": false,
+            "muted": true
+          },
+          {
+            "button": "Not vegan",
+            "disabled": false,
+            "muted": true
+          },
+          {
+            "button": "Not vegan",
+            "disabled": false,
+            "muted": true
+          },
+          {
+            "button": "Not vegan",
+            "disabled": false,
+            "muted": true
+          },
+          {
+            "button": "Not vegan",
+            "disabled": false,
+            "muted": true
+          },
+          {
+            "button": "Not vegan",
+            "disabled": false,
+            "muted": true
+          },
+          {
+            "button": "Not vegan",
+            "disabled": false,
+            "muted": true
+          },
+          {
+            "button": "Not vegan",
+            "disabled": false,
+            "muted": true
+          },
+          {
+            "button": "Not vegan",
+            "disabled": false,
+            "muted": true
+          },
+          {
+            "button": "Not vegan",
+            "disabled": false,
+            "muted": true
+          },
+          {
+            "button": "Not vegan",
+            "disabled": false,
+            "muted": true
+          },
+          {
+            "button": "Not vegan",
+            "disabled": false,
+            "muted": true
+          },
+          {
+            "button": "Not vegan",
+            "disabled": false,
+            "muted": true
+          },
+          {
+            "button": "Not vegan",
+            "disabled": false,
+            "muted": true
+          },
+          {
+            "button": "Not vegan",
+            "disabled": false,
+            "muted": true
+          },
+          {
+            "button": "Not vegan",
+            "disabled": false,
+            "muted": true
+          },
+          {
+            "button": "Not vegan",
+            "disabled": false,
+            "muted": true
+          },
+          {
+            "button": "Not vegan",
+            "disabled": false,
+            "muted": true
+          },
+          {
+            "button": "Not vegan",
+            "disabled": false,
+            "muted": true
+          },
+          {
+            "button": null,
+            "disabled": null,
+            "muted": true
+          },
+          {
+            "button": null,
+            "disabled": null,
+            "muted": true
+          },
+          {
+            "button": null,
+            "disabled": null,
+            "muted": true
+          },
+          {
+            "button": null,
+            "disabled": null,
+            "muted": true
+          },
+          {
+            "button": null,
+            "disabled": null,
+            "muted": true
+          },
+          {
+            "button": null,
+            "disabled": null,
+            "muted": true
+          },
+          {
+            "button": null,
+            "disabled": null,
+            "muted": true
+          }
+        ]
+      },
+      "unrelated": {
+        "canvas": [],
+        "classScans": 0,
+        "hydration": [],
+        "processCards": 0,
+        "runs": [],
+        "ticks": [
+          8,
+          33,
+          33,
+          34,
+          33,
+          34,
+          34,
+          32,
+          34,
+          33,
+          34,
+          33,
+          33,
+          33,
+          33,
+          34,
+          33,
+          33,
+          34,
+          33
+        ]
+      },
+      "single": {
+        "canvas": [],
+        "classScans": 0,
+        "hydration": [
+          2
+        ],
+        "processCards": 20,
+        "runs": [
+          0,
+          0,
+          0,
+          0,
+          0,
+          1,
+          2,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          1
+        ],
+        "ticks": [
+          30,
+          33,
+          34,
+          33,
+          33,
+          34,
+          33,
+          33,
+          33,
+          34,
+          34,
+          33,
+          33,
+          33,
+          34,
+          33,
+          34,
+          33,
+          33,
+          34
+        ]
+      }
+    },
+    {
+      "page": "promotions",
+      "cards": 74,
+      "variant": "current",
+      "repetition": 2,
+      "compile_and_init_ms": 9,
+      "initial": {
+        "canvas": [],
+        "classScans": 3,
+        "converted": 0,
+        "dataUrlCharacters": 0,
+        "failed": 0,
+        "hydration": [
+          1
+        ],
+        "loadedImages": 36,
+        "muted": 60,
+        "processCards": 74,
+        "runs": [
+          9,
+          1
+        ],
+        "states": [
+          {
+            "button": "Unknown vegan",
+            "disabled": false,
+            "muted": true
+          },
+          {
+            "button": "Unknown vegan",
+            "disabled": false,
+            "muted": true
+          },
+          {
+            "button": "Unknown vegan",
+            "disabled": false,
+            "muted": true
+          },
+          {
+            "button": "Unknown vegan",
+            "disabled": false,
+            "muted": true
+          },
+          {
+            "button": "Unknown vegan",
+            "disabled": false,
+            "muted": true
+          },
+          {
+            "button": "Unknown vegan",
+            "disabled": false,
+            "muted": true
+          },
+          {
+            "button": "Not vegan",
+            "disabled": false,
+            "muted": true
+          },
+          {
+            "button": "Not vegan",
+            "disabled": false,
+            "muted": true
+          },
+          {
+            "button": "Unknown vegan",
+            "disabled": false,
+            "muted": true
+          },
+          {
+            "button": "Not vegan",
+            "disabled": false,
+            "muted": true
+          },
+          {
+            "button": "Unknown vegan",
+            "disabled": false,
+            "muted": true
+          },
+          {
+            "button": "Unknown vegan",
+            "disabled": false,
+            "muted": true
+          },
+          {
+            "button": "Add",
+            "disabled": false,
+            "muted": false
+          },
+          {
+            "button": "Add",
+            "disabled": false,
+            "muted": false
+          },
+          {
+            "button": "Unknown vegan",
+            "disabled": false,
+            "muted": true
+          },
+          {
+            "button": "Add",
+            "disabled": false,
+            "muted": false
+          },
+          {
+            "button": "Add",
+            "disabled": false,
+            "muted": false
+          },
+          {
+            "button": null,
+            "disabled": null,
+            "muted": true
+          },
+          {
+            "button": null,
+            "disabled": null,
+            "muted": true
+          },
+          {
+            "button": null,
+            "disabled": null,
+            "muted": true
+          },
+          {
+            "button": null,
+            "disabled": null,
+            "muted": true
+          },
+          {
+            "button": null,
+            "disabled": null,
+            "muted": true
+          },
+          {
+            "button": null,
+            "disabled": null,
+            "muted": true
+          },
+          {
+            "button": null,
+            "disabled": null,
+            "muted": true
+          },
+          {
+            "button": null,
+            "disabled": null,
+            "muted": true
+          },
+          {
+            "button": null,
+            "disabled": null,
+            "muted": true
+          },
+          {
+            "button": null,
+            "disabled": null,
+            "muted": true
+          },
+          {
+            "button": null,
+            "disabled": null,
+            "muted": true
+          },
+          {
+            "button": null,
+            "disabled": null,
+            "muted": true
+          },
+          {
+            "button": null,
+            "disabled": null,
+            "muted": true
+          },
+          {
+            "button": null,
+            "disabled": null,
+            "muted": true
+          },
+          {
+            "button": null,
+            "disabled": null,
+            "muted": true
+          },
+          {
+            "button": null,
+            "disabled": null,
+            "muted": true
+          },
+          {
+            "button": null,
+            "disabled": null,
+            "muted": true
+          },
+          {
+            "button": null,
+            "disabled": null,
+            "muted": true
+          },
+          {
+            "button": null,
+            "disabled": null,
+            "muted": true
+          },
+          {
+            "button": null,
+            "disabled": null,
+            "muted": true
+          },
+          {
+            "button": null,
+            "disabled": null,
+            "muted": true
+          },
+          {
+            "button": null,
+            "disabled": null,
+            "muted": true
+          },
+          {
+            "button": null,
+            "disabled": null,
+            "muted": true
+          },
+          {
+            "button": null,
+            "disabled": null,
+            "muted": true
+          },
+          {
+            "button": null,
+            "disabled": null,
+            "muted": true
+          },
+          {
+            "button": null,
+            "disabled": null,
+            "muted": true
+          },
+          {
+            "button": null,
+            "disabled": null,
+            "muted": true
+          },
+          {
+            "button": null,
+            "disabled": null,
+            "muted": true
+          },
+          {
+            "button": null,
+            "disabled": null,
+            "muted": true
+          },
+          {
+            "button": null,
+            "disabled": null,
+            "muted": true
+          },
+          {
+            "button": null,
+            "disabled": null,
+            "muted": true
+          },
+          {
+            "button": null,
+            "disabled": null,
+            "muted": true
+          },
+          {
+            "button": null,
+            "disabled": null,
+            "muted": true
+          },
+          {
+            "button": "Add",
+            "disabled": false,
+            "muted": false
+          },
+          {
+            "button": "Add",
+            "disabled": false,
+            "muted": false
+          },
+          {
+            "button": "Not vegan",
+            "disabled": false,
+            "muted": true
+          },
+          {
+            "button": "Add",
+            "disabled": false,
+            "muted": false
+          },
+          {
+            "button": "Not vegan",
+            "disabled": false,
+            "muted": true
+          },
+          {
+            "button": "Unknown vegan",
+            "disabled": false,
+            "muted": true
+          },
+          {
+            "button": "Not vegan",
+            "disabled": false,
+            "muted": true
+          },
+          {
+            "button": "Add",
+            "disabled": false,
+            "muted": false
+          },
+          {
+            "button": "Add",
+            "disabled": false,
+            "muted": false
+          },
+          {
+            "button": "Add",
+            "disabled": false,
+            "muted": false
+          },
+          {
+            "button": "Add",
+            "disabled": false,
+            "muted": false
+          },
+          {
+            "button": "Add",
+            "disabled": false,
+            "muted": false
+          },
+          {
+            "button": "Not vegan",
+            "disabled": false,
+            "muted": true
+          },
+          {
+            "button": "Not vegan",
+            "disabled": false,
+            "muted": true
+          },
+          {
+            "button": "Add",
+            "disabled": false,
+            "muted": false
+          },
+          {
+            "button": "Not vegan",
+            "disabled": false,
+            "muted": true
+          },
+          {
+            "button": "Add",
+            "disabled": false,
+            "muted": false
+          },
+          {
+            "button": "Unknown vegan",
+            "disabled": false,
+            "muted": true
+          },
+          {
+            "button": "Unknown vegan",
+            "disabled": false,
+            "muted": true
+          },
+          {
+            "button": "Not vegan",
+            "disabled": false,
+            "muted": true
+          },
+          {
+            "button": null,
+            "disabled": null,
+            "muted": true
+          },
+          {
+            "button": null,
+            "disabled": null,
+            "muted": true
+          },
+          {
+            "button": null,
+            "disabled": null,
+            "muted": true
+          },
+          {
+            "button": null,
+            "disabled": null,
+            "muted": true
+          }
+        ]
+      },
+      "unrelated": {
+        "canvas": [],
+        "classScans": 0,
+        "hydration": [],
+        "processCards": 0,
+        "runs": [],
+        "ticks": [
+          11,
+          33,
+          33,
+          34,
+          33,
+          33,
+          34,
+          33,
+          33,
+          34,
+          32,
+          35,
+          33,
+          33,
+          34,
+          32,
+          35,
+          32,
+          34,
+          33
+        ]
+      },
+      "single": {
+        "canvas": [],
+        "classScans": 0,
+        "hydration": [
+          0
+        ],
+        "processCards": 20,
+        "runs": [
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          1,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          1,
+          0
+        ],
+        "ticks": [
+          30,
+          34,
+          33,
+          33,
+          34,
+          33,
+          33,
+          34,
+          33,
+          33,
+          35,
+          32,
+          34,
+          32,
+          34,
+          34,
+          33,
+          33,
+          33,
+          33
+        ]
+      }
+    },
+    {
+      "page": "milk",
+      "cards": 75,
+      "variant": "current",
+      "repetition": 2,
+      "compile_and_init_ms": 7,
+      "initial": {
+        "canvas": [],
+        "classScans": 3,
+        "converted": 0,
+        "dataUrlCharacters": 0,
+        "failed": 0,
+        "hydration": [
+          0
+        ],
+        "loadedImages": 24,
+        "muted": 75,
+        "processCards": 75,
+        "runs": [
+          9,
+          1
+        ],
+        "states": [
+          {
+            "button": "Not vegan",
+            "disabled": false,
+            "muted": true
+          },
+          {
+            "button": "Not vegan",
+            "disabled": false,
+            "muted": true
+          },
+          {
+            "button": "Not vegan",
+            "disabled": false,
+            "muted": true
+          },
+          {
+            "button": "Not vegan",
+            "disabled": false,
+            "muted": true
+          },
+          {
+            "button": null,
+            "disabled": null,
+            "muted": true
+          },
+          {
+            "button": null,
+            "disabled": null,
+            "muted": true
+          },
+          {
+            "button": null,
+            "disabled": null,
+            "muted": true
+          },
+          {
+            "button": null,
+            "disabled": null,
+            "muted": true
+          },
+          {
+            "button": null,
+            "disabled": null,
+            "muted": true
+          },
+          {
+            "button": null,
+            "disabled": null,
+            "muted": true
+          },
+          {
+            "button": null,
+            "disabled": null,
+            "muted": true
+          },
+          {
+            "button": null,
+            "disabled": null,
+            "muted": true
+          },
+          {
+            "button": null,
+            "disabled": null,
+            "muted": true
+          },
+          {
+            "button": null,
+            "disabled": null,
+            "muted": true
+          },
+          {
+            "button": null,
+            "disabled": null,
+            "muted": true
+          },
+          {
+            "button": null,
+            "disabled": null,
+            "muted": true
+          },
+          {
+            "button": null,
+            "disabled": null,
+            "muted": true
+          },
+          {
+            "button": null,
+            "disabled": null,
+            "muted": true
+          },
+          {
+            "button": null,
+            "disabled": null,
+            "muted": true
+          },
+          {
+            "button": null,
+            "disabled": null,
+            "muted": true
+          },
+          {
+            "button": null,
+            "disabled": null,
+            "muted": true
+          },
+          {
+            "button": null,
+            "disabled": null,
+            "muted": true
+          },
+          {
+            "button": null,
+            "disabled": null,
+            "muted": true
+          },
+          {
+            "button": null,
+            "disabled": null,
+            "muted": true
+          },
+          {
+            "button": null,
+            "disabled": null,
+            "muted": true
+          },
+          {
+            "button": null,
+            "disabled": null,
+            "muted": true
+          },
+          {
+            "button": null,
+            "disabled": null,
+            "muted": true
+          },
+          {
+            "button": null,
+            "disabled": null,
+            "muted": true
+          },
+          {
+            "button": null,
+            "disabled": null,
+            "muted": true
+          },
+          {
+            "button": null,
+            "disabled": null,
+            "muted": true
+          },
+          {
+            "button": null,
+            "disabled": null,
+            "muted": true
+          },
+          {
+            "button": null,
+            "disabled": null,
+            "muted": true
+          },
+          {
+            "button": null,
+            "disabled": null,
+            "muted": true
+          },
+          {
+            "button": null,
+            "disabled": null,
+            "muted": true
+          },
+          {
+            "button": null,
+            "disabled": null,
+            "muted": true
+          },
+          {
+            "button": null,
+            "disabled": null,
+            "muted": true
+          },
+          {
+            "button": null,
+            "disabled": null,
+            "muted": true
+          },
+          {
+            "button": null,
+            "disabled": null,
+            "muted": true
+          },
+          {
+            "button": null,
+            "disabled": null,
+            "muted": true
+          },
+          {
+            "button": null,
+            "disabled": null,
+            "muted": true
+          },
+          {
+            "button": null,
+            "disabled": null,
+            "muted": true
+          },
+          {
+            "button": null,
+            "disabled": null,
+            "muted": true
+          },
+          {
+            "button": null,
+            "disabled": null,
+            "muted": true
+          },
+          {
+            "button": null,
+            "disabled": null,
+            "muted": true
+          },
+          {
+            "button": null,
+            "disabled": null,
+            "muted": true
+          },
+          {
+            "button": null,
+            "disabled": null,
+            "muted": true
+          },
+          {
+            "button": null,
+            "disabled": null,
+            "muted": true
+          },
+          {
+            "button": null,
+            "disabled": null,
+            "muted": true
+          },
+          {
+            "button": "Not vegan",
+            "disabled": false,
+            "muted": true
+          },
+          {
+            "button": "Not vegan",
+            "disabled": false,
+            "muted": true
+          },
+          {
+            "button": "Not vegan",
+            "disabled": false,
+            "muted": true
+          },
+          {
+            "button": "Not vegan",
+            "disabled": false,
+            "muted": true
+          },
+          {
+            "button": "Not vegan",
+            "disabled": false,
+            "muted": true
+          },
+          {
+            "button": "Not vegan",
+            "disabled": false,
+            "muted": true
+          },
+          {
+            "button": "Not vegan",
+            "disabled": false,
+            "muted": true
+          },
+          {
+            "button": "Not vegan",
+            "disabled": false,
+            "muted": true
+          },
+          {
+            "button": "Not vegan",
+            "disabled": false,
+            "muted": true
+          },
+          {
+            "button": "Not vegan",
+            "disabled": false,
+            "muted": true
+          },
+          {
+            "button": "Not vegan",
+            "disabled": false,
+            "muted": true
+          },
+          {
+            "button": "Not vegan",
+            "disabled": false,
+            "muted": true
+          },
+          {
+            "button": "Not vegan",
+            "disabled": false,
+            "muted": true
+          },
+          {
+            "button": "Not vegan",
+            "disabled": false,
+            "muted": true
+          },
+          {
+            "button": "Not vegan",
+            "disabled": false,
+            "muted": true
+          },
+          {
+            "button": "Not vegan",
+            "disabled": false,
+            "muted": true
+          },
+          {
+            "button": "Not vegan",
+            "disabled": false,
+            "muted": true
+          },
+          {
+            "button": "Not vegan",
+            "disabled": false,
+            "muted": true
+          },
+          {
+            "button": "Not vegan",
+            "disabled": false,
+            "muted": true
+          },
+          {
+            "button": "Not vegan",
+            "disabled": false,
+            "muted": true
+          },
+          {
+            "button": null,
+            "disabled": null,
+            "muted": true
+          },
+          {
+            "button": null,
+            "disabled": null,
+            "muted": true
+          },
+          {
+            "button": null,
+            "disabled": null,
+            "muted": true
+          },
+          {
+            "button": null,
+            "disabled": null,
+            "muted": true
+          },
+          {
+            "button": null,
+            "disabled": null,
+            "muted": true
+          },
+          {
+            "button": null,
+            "disabled": null,
+            "muted": true
+          },
+          {
+            "button": null,
+            "disabled": null,
+            "muted": true
+          }
+        ]
+      },
+      "unrelated": {
+        "canvas": [],
+        "classScans": 0,
+        "hydration": [],
+        "processCards": 0,
+        "runs": [],
+        "ticks": [
+          26,
+          35,
+          32,
+          34,
+          32,
+          34,
+          34,
+          33,
+          33,
+          34,
+          32,
+          35,
+          33,
+          33,
+          33,
+          33,
+          34,
+          34,
+          32,
+          34
+        ]
+      },
+      "single": {
+        "canvas": [],
+        "classScans": 0,
+        "hydration": [
+          0
+        ],
+        "processCards": 20,
+        "runs": [
+          0,
+          0,
+          0,
+          0,
+          0,
+          1,
+          1,
+          0,
+          0,
+          0,
+          1,
+          0,
+          0,
+          1,
+          0,
+          1,
+          0,
+          0,
+          0,
+          0
+        ],
+        "ticks": [
+          31,
+          33,
+          34,
+          33,
+          33,
+          34,
+          33,
+          34,
+          33,
+          33,
+          33,
+          34,
+          34,
+          32,
+          34,
+          34,
+          32,
+          34,
+          33,
+          33
+        ]
+      }
+    },
+    {
+      "page": "promotions",
+      "cards": 74,
+      "variant": "current",
+      "repetition": 3,
+      "compile_and_init_ms": 9,
+      "initial": {
+        "canvas": [],
+        "classScans": 3,
+        "converted": 0,
+        "dataUrlCharacters": 0,
+        "failed": 0,
+        "hydration": [
+          1
+        ],
+        "loadedImages": 36,
+        "muted": 60,
+        "processCards": 74,
+        "runs": [
+          8
+        ],
+        "states": [
+          {
+            "button": "Unknown vegan",
+            "disabled": false,
+            "muted": true
+          },
+          {
+            "button": "Unknown vegan",
+            "disabled": false,
+            "muted": true
+          },
+          {
+            "button": "Unknown vegan",
+            "disabled": false,
+            "muted": true
+          },
+          {
+            "button": "Unknown vegan",
+            "disabled": false,
+            "muted": true
+          },
+          {
+            "button": "Unknown vegan",
+            "disabled": false,
+            "muted": true
+          },
+          {
+            "button": "Unknown vegan",
+            "disabled": false,
+            "muted": true
+          },
+          {
+            "button": "Not vegan",
+            "disabled": false,
+            "muted": true
+          },
+          {
+            "button": "Not vegan",
+            "disabled": false,
+            "muted": true
+          },
+          {
+            "button": "Unknown vegan",
+            "disabled": false,
+            "muted": true
+          },
+          {
+            "button": "Not vegan",
+            "disabled": false,
+            "muted": true
+          },
+          {
+            "button": "Unknown vegan",
+            "disabled": false,
+            "muted": true
+          },
+          {
+            "button": "Unknown vegan",
+            "disabled": false,
+            "muted": true
+          },
+          {
+            "button": "Add",
+            "disabled": false,
+            "muted": false
+          },
+          {
+            "button": "Add",
+            "disabled": false,
+            "muted": false
+          },
+          {
+            "button": "Unknown vegan",
+            "disabled": false,
+            "muted": true
+          },
+          {
+            "button": "Add",
+            "disabled": false,
+            "muted": false
+          },
+          {
+            "button": "Add",
+            "disabled": false,
+            "muted": false
+          },
+          {
+            "button": null,
+            "disabled": null,
+            "muted": true
+          },
+          {
+            "button": null,
+            "disabled": null,
+            "muted": true
+          },
+          {
+            "button": null,
+            "disabled": null,
+            "muted": true
+          },
+          {
+            "button": null,
+            "disabled": null,
+            "muted": true
+          },
+          {
+            "button": null,
+            "disabled": null,
+            "muted": true
+          },
+          {
+            "button": null,
+            "disabled": null,
+            "muted": true
+          },
+          {
+            "button": null,
+            "disabled": null,
+            "muted": true
+          },
+          {
+            "button": null,
+            "disabled": null,
+            "muted": true
+          },
+          {
+            "button": null,
+            "disabled": null,
+            "muted": true
+          },
+          {
+            "button": null,
+            "disabled": null,
+            "muted": true
+          },
+          {
+            "button": null,
+            "disabled": null,
+            "muted": true
+          },
+          {
+            "button": null,
+            "disabled": null,
+            "muted": true
+          },
+          {
+            "button": null,
+            "disabled": null,
+            "muted": true
+          },
+          {
+            "button": null,
+            "disabled": null,
+            "muted": true
+          },
+          {
+            "button": null,
+            "disabled": null,
+            "muted": true
+          },
+          {
+            "button": null,
+            "disabled": null,
+            "muted": true
+          },
+          {
+            "button": null,
+            "disabled": null,
+            "muted": true
+          },
+          {
+            "button": null,
+            "disabled": null,
+            "muted": true
+          },
+          {
+            "button": null,
+            "disabled": null,
+            "muted": true
+          },
+          {
+            "button": null,
+            "disabled": null,
+            "muted": true
+          },
+          {
+            "button": null,
+            "disabled": null,
+            "muted": true
+          },
+          {
+            "button": null,
+            "disabled": null,
+            "muted": true
+          },
+          {
+            "button": null,
+            "disabled": null,
+            "muted": true
+          },
+          {
+            "button": null,
+            "disabled": null,
+            "muted": true
+          },
+          {
+            "button": null,
+            "disabled": null,
+            "muted": true
+          },
+          {
+            "button": null,
+            "disabled": null,
+            "muted": true
+          },
+          {
+            "button": null,
+            "disabled": null,
+            "muted": true
+          },
+          {
+            "button": null,
+            "disabled": null,
+            "muted": true
+          },
+          {
+            "button": null,
+            "disabled": null,
+            "muted": true
+          },
+          {
+            "button": null,
+            "disabled": null,
+            "muted": true
+          },
+          {
+            "button": null,
+            "disabled": null,
+            "muted": true
+          },
+          {
+            "button": null,
+            "disabled": null,
+            "muted": true
+          },
+          {
+            "button": null,
+            "disabled": null,
+            "muted": true
+          },
+          {
+            "button": "Add",
+            "disabled": false,
+            "muted": false
+          },
+          {
+            "button": "Add",
+            "disabled": false,
+            "muted": false
+          },
+          {
+            "button": "Not vegan",
+            "disabled": false,
+            "muted": true
+          },
+          {
+            "button": "Add",
+            "disabled": false,
+            "muted": false
+          },
+          {
+            "button": "Not vegan",
+            "disabled": false,
+            "muted": true
+          },
+          {
+            "button": "Unknown vegan",
+            "disabled": false,
+            "muted": true
+          },
+          {
+            "button": "Not vegan",
+            "disabled": false,
+            "muted": true
+          },
+          {
+            "button": "Add",
+            "disabled": false,
+            "muted": false
+          },
+          {
+            "button": "Add",
+            "disabled": false,
+            "muted": false
+          },
+          {
+            "button": "Add",
+            "disabled": false,
+            "muted": false
+          },
+          {
+            "button": "Add",
+            "disabled": false,
+            "muted": false
+          },
+          {
+            "button": "Add",
+            "disabled": false,
+            "muted": false
+          },
+          {
+            "button": "Not vegan",
+            "disabled": false,
+            "muted": true
+          },
+          {
+            "button": "Not vegan",
+            "disabled": false,
+            "muted": true
+          },
+          {
+            "button": "Add",
+            "disabled": false,
+            "muted": false
+          },
+          {
+            "button": "Not vegan",
+            "disabled": false,
+            "muted": true
+          },
+          {
+            "button": "Add",
+            "disabled": false,
+            "muted": false
+          },
+          {
+            "button": "Unknown vegan",
+            "disabled": false,
+            "muted": true
+          },
+          {
+            "button": "Unknown vegan",
+            "disabled": false,
+            "muted": true
+          },
+          {
+            "button": "Not vegan",
+            "disabled": false,
+            "muted": true
+          },
+          {
+            "button": null,
+            "disabled": null,
+            "muted": true
+          },
+          {
+            "button": null,
+            "disabled": null,
+            "muted": true
+          },
+          {
+            "button": null,
+            "disabled": null,
+            "muted": true
+          },
+          {
+            "button": null,
+            "disabled": null,
+            "muted": true
+          }
+        ]
+      },
+      "unrelated": {
+        "canvas": [],
+        "classScans": 0,
+        "hydration": [],
+        "processCards": 0,
+        "runs": [],
+        "ticks": [
+          6,
+          34,
+          33,
+          33,
+          33,
+          33,
+          34,
+          34,
+          33,
+          33,
+          33,
+          35,
+          33,
+          33,
+          33,
+          33,
+          34,
+          33,
+          33,
+          33
+        ]
+      },
+      "single": {
+        "canvas": [],
+        "classScans": 0,
+        "hydration": [
+          0
+        ],
+        "processCards": 20,
+        "runs": [
+          1,
+          1,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0
+        ],
+        "ticks": [
+          30,
+          34,
+          33,
+          33,
+          33,
+          33,
+          35,
+          32,
+          33,
+          34,
+          34,
+          33,
+          34,
+          32,
+          34,
+          34,
+          33,
+          33,
+          33,
+          33
+        ]
+      }
+    },
+    {
+      "page": "milk",
+      "cards": 75,
+      "variant": "current",
+      "repetition": 3,
+      "compile_and_init_ms": 9,
+      "initial": {
+        "canvas": [],
+        "classScans": 3,
+        "converted": 0,
+        "dataUrlCharacters": 0,
+        "failed": 0,
+        "hydration": [
+          1
+        ],
+        "loadedImages": 24,
+        "muted": 75,
+        "processCards": 75,
+        "runs": [
+          9,
+          0
+        ],
+        "states": [
+          {
+            "button": "Not vegan",
+            "disabled": false,
+            "muted": true
+          },
+          {
+            "button": "Not vegan",
+            "disabled": false,
+            "muted": true
+          },
+          {
+            "button": "Not vegan",
+            "disabled": false,
+            "muted": true
+          },
+          {
+            "button": "Not vegan",
+            "disabled": false,
+            "muted": true
+          },
+          {
+            "button": null,
+            "disabled": null,
+            "muted": true
+          },
+          {
+            "button": null,
+            "disabled": null,
+            "muted": true
+          },
+          {
+            "button": null,
+            "disabled": null,
+            "muted": true
+          },
+          {
+            "button": null,
+            "disabled": null,
+            "muted": true
+          },
+          {
+            "button": null,
+            "disabled": null,
+            "muted": true
+          },
+          {
+            "button": null,
+            "disabled": null,
+            "muted": true
+          },
+          {
+            "button": null,
+            "disabled": null,
+            "muted": true
+          },
+          {
+            "button": null,
+            "disabled": null,
+            "muted": true
+          },
+          {
+            "button": null,
+            "disabled": null,
+            "muted": true
+          },
+          {
+            "button": null,
+            "disabled": null,
+            "muted": true
+          },
+          {
+            "button": null,
+            "disabled": null,
+            "muted": true
+          },
+          {
+            "button": null,
+            "disabled": null,
+            "muted": true
+          },
+          {
+            "button": null,
+            "disabled": null,
+            "muted": true
+          },
+          {
+            "button": null,
+            "disabled": null,
+            "muted": true
+          },
+          {
+            "button": null,
+            "disabled": null,
+            "muted": true
+          },
+          {
+            "button": null,
+            "disabled": null,
+            "muted": true
+          },
+          {
+            "button": null,
+            "disabled": null,
+            "muted": true
+          },
+          {
+            "button": null,
+            "disabled": null,
+            "muted": true
+          },
+          {
+            "button": null,
+            "disabled": null,
+            "muted": true
+          },
+          {
+            "button": null,
+            "disabled": null,
+            "muted": true
+          },
+          {
+            "button": null,
+            "disabled": null,
+            "muted": true
+          },
+          {
+            "button": null,
+            "disabled": null,
+            "muted": true
+          },
+          {
+            "button": null,
+            "disabled": null,
+            "muted": true
+          },
+          {
+            "button": null,
+            "disabled": null,
+            "muted": true
+          },
+          {
+            "button": null,
+            "disabled": null,
+            "muted": true
+          },
+          {
+            "button": null,
+            "disabled": null,
+            "muted": true
+          },
+          {
+            "button": null,
+            "disabled": null,
+            "muted": true
+          },
+          {
+            "button": null,
+            "disabled": null,
+            "muted": true
+          },
+          {
+            "button": null,
+            "disabled": null,
+            "muted": true
+          },
+          {
+            "button": null,
+            "disabled": null,
+            "muted": true
+          },
+          {
+            "button": null,
+            "disabled": null,
+            "muted": true
+          },
+          {
+            "button": null,
+            "disabled": null,
+            "muted": true
+          },
+          {
+            "button": null,
+            "disabled": null,
+            "muted": true
+          },
+          {
+            "button": null,
+            "disabled": null,
+            "muted": true
+          },
+          {
+            "button": null,
+            "disabled": null,
+            "muted": true
+          },
+          {
+            "button": null,
+            "disabled": null,
+            "muted": true
+          },
+          {
+            "button": null,
+            "disabled": null,
+            "muted": true
+          },
+          {
+            "button": null,
+            "disabled": null,
+            "muted": true
+          },
+          {
+            "button": null,
+            "disabled": null,
+            "muted": true
+          },
+          {
+            "button": null,
+            "disabled": null,
+            "muted": true
+          },
+          {
+            "button": null,
+            "disabled": null,
+            "muted": true
+          },
+          {
+            "button": null,
+            "disabled": null,
+            "muted": true
+          },
+          {
+            "button": null,
+            "disabled": null,
+            "muted": true
+          },
+          {
+            "button": null,
+            "disabled": null,
+            "muted": true
+          },
+          {
+            "button": "Not vegan",
+            "disabled": false,
+            "muted": true
+          },
+          {
+            "button": "Not vegan",
+            "disabled": false,
+            "muted": true
+          },
+          {
+            "button": "Not vegan",
+            "disabled": false,
+            "muted": true
+          },
+          {
+            "button": "Not vegan",
+            "disabled": false,
+            "muted": true
+          },
+          {
+            "button": "Not vegan",
+            "disabled": false,
+            "muted": true
+          },
+          {
+            "button": "Not vegan",
+            "disabled": false,
+            "muted": true
+          },
+          {
+            "button": "Not vegan",
+            "disabled": false,
+            "muted": true
+          },
+          {
+            "button": "Not vegan",
+            "disabled": false,
+            "muted": true
+          },
+          {
+            "button": "Not vegan",
+            "disabled": false,
+            "muted": true
+          },
+          {
+            "button": "Not vegan",
+            "disabled": false,
+            "muted": true
+          },
+          {
+            "button": "Not vegan",
+            "disabled": false,
+            "muted": true
+          },
+          {
+            "button": "Not vegan",
+            "disabled": false,
+            "muted": true
+          },
+          {
+            "button": "Not vegan",
+            "disabled": false,
+            "muted": true
+          },
+          {
+            "button": "Not vegan",
+            "disabled": false,
+            "muted": true
+          },
+          {
+            "button": "Not vegan",
+            "disabled": false,
+            "muted": true
+          },
+          {
+            "button": "Not vegan",
+            "disabled": false,
+            "muted": true
+          },
+          {
+            "button": "Not vegan",
+            "disabled": false,
+            "muted": true
+          },
+          {
+            "button": "Not vegan",
+            "disabled": false,
+            "muted": true
+          },
+          {
+            "button": "Not vegan",
+            "disabled": false,
+            "muted": true
+          },
+          {
+            "button": "Not vegan",
+            "disabled": false,
+            "muted": true
+          },
+          {
+            "button": null,
+            "disabled": null,
+            "muted": true
+          },
+          {
+            "button": null,
+            "disabled": null,
+            "muted": true
+          },
+          {
+            "button": null,
+            "disabled": null,
+            "muted": true
+          },
+          {
+            "button": null,
+            "disabled": null,
+            "muted": true
+          },
+          {
+            "button": null,
+            "disabled": null,
+            "muted": true
+          },
+          {
+            "button": null,
+            "disabled": null,
+            "muted": true
+          },
+          {
+            "button": null,
+            "disabled": null,
+            "muted": true
+          }
+        ]
+      },
+      "unrelated": {
+        "canvas": [],
+        "classScans": 0,
+        "hydration": [],
+        "processCards": 0,
+        "runs": [],
+        "ticks": [
+          26,
+          34,
+          33,
+          33,
+          33,
+          33,
+          34,
+          34,
+          33,
+          33,
+          33,
+          34,
+          33,
+          33,
+          33,
+          33,
+          35,
+          32,
+          34,
+          33
+        ]
+      },
+      "single": {
+        "canvas": [],
+        "classScans": 0,
+        "hydration": [
+          0
+        ],
+        "processCards": 20,
+        "runs": [
+          0,
+          1,
+          0,
+          0,
+          0,
+          0,
+          1,
+          1,
+          0,
+          0,
+          1,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          1,
+          0,
+          0
+        ],
+        "ticks": [
+          30,
+          34,
+          34,
+          33,
+          33,
+          32,
+          35,
+          33,
+          33,
+          33,
+          34,
+          33,
+          34,
+          33,
+          33,
+          33,
+          34,
+          34,
+          32,
+          33
+        ]
+      }
+    },
+    {
+      "page": "promotions",
+      "cards": 74,
+      "variant": "current",
+      "repetition": 4,
+      "compile_and_init_ms": 9,
+      "initial": {
+        "canvas": [],
+        "classScans": 3,
+        "converted": 0,
+        "dataUrlCharacters": 0,
+        "failed": 0,
+        "hydration": [
+          0
+        ],
+        "loadedImages": 36,
+        "muted": 60,
+        "processCards": 74,
+        "runs": [
+          9,
+          2
+        ],
+        "states": [
+          {
+            "button": "Unknown vegan",
+            "disabled": false,
+            "muted": true
+          },
+          {
+            "button": "Unknown vegan",
+            "disabled": false,
+            "muted": true
+          },
+          {
+            "button": "Unknown vegan",
+            "disabled": false,
+            "muted": true
+          },
+          {
+            "button": "Unknown vegan",
+            "disabled": false,
+            "muted": true
+          },
+          {
+            "button": "Unknown vegan",
+            "disabled": false,
+            "muted": true
+          },
+          {
+            "button": "Unknown vegan",
+            "disabled": false,
+            "muted": true
+          },
+          {
+            "button": "Not vegan",
+            "disabled": false,
+            "muted": true
+          },
+          {
+            "button": "Not vegan",
+            "disabled": false,
+            "muted": true
+          },
+          {
+            "button": "Unknown vegan",
+            "disabled": false,
+            "muted": true
+          },
+          {
+            "button": "Not vegan",
+            "disabled": false,
+            "muted": true
+          },
+          {
+            "button": "Unknown vegan",
+            "disabled": false,
+            "muted": true
+          },
+          {
+            "button": "Unknown vegan",
+            "disabled": false,
+            "muted": true
+          },
+          {
+            "button": "Add",
+            "disabled": false,
+            "muted": false
+          },
+          {
+            "button": "Add",
+            "disabled": false,
+            "muted": false
+          },
+          {
+            "button": "Unknown vegan",
+            "disabled": false,
+            "muted": true
+          },
+          {
+            "button": "Add",
+            "disabled": false,
+            "muted": false
+          },
+          {
+            "button": "Add",
+            "disabled": false,
+            "muted": false
+          },
+          {
+            "button": null,
+            "disabled": null,
+            "muted": true
+          },
+          {
+            "button": null,
+            "disabled": null,
+            "muted": true
+          },
+          {
+            "button": null,
+            "disabled": null,
+            "muted": true
+          },
+          {
+            "button": null,
+            "disabled": null,
+            "muted": true
+          },
+          {
+            "button": null,
+            "disabled": null,
+            "muted": true
+          },
+          {
+            "button": null,
+            "disabled": null,
+            "muted": true
+          },
+          {
+            "button": null,
+            "disabled": null,
+            "muted": true
+          },
+          {
+            "button": null,
+            "disabled": null,
+            "muted": true
+          },
+          {
+            "button": null,
+            "disabled": null,
+            "muted": true
+          },
+          {
+            "button": null,
+            "disabled": null,
+            "muted": true
+          },
+          {
+            "button": null,
+            "disabled": null,
+            "muted": true
+          },
+          {
+            "button": null,
+            "disabled": null,
+            "muted": true
+          },
+          {
+            "button": null,
+            "disabled": null,
+            "muted": true
+          },
+          {
+            "button": null,
+            "disabled": null,
+            "muted": true
+          },
+          {
+            "button": null,
+            "disabled": null,
+            "muted": true
+          },
+          {
+            "button": null,
+            "disabled": null,
+            "muted": true
+          },
+          {
+            "button": null,
+            "disabled": null,
+            "muted": true
+          },
+          {
+            "button": null,
+            "disabled": null,
+            "muted": true
+          },
+          {
+            "button": null,
+            "disabled": null,
+            "muted": true
+          },
+          {
+            "button": null,
+            "disabled": null,
+            "muted": true
+          },
+          {
+            "button": null,
+            "disabled": null,
+            "muted": true
+          },
+          {
+            "button": null,
+            "disabled": null,
+            "muted": true
+          },
+          {
+            "button": null,
+            "disabled": null,
+            "muted": true
+          },
+          {
+            "button": null,
+            "disabled": null,
+            "muted": true
+          },
+          {
+            "button": null,
+            "disabled": null,
+            "muted": true
+          },
+          {
+            "button": null,
+            "disabled": null,
+            "muted": true
+          },
+          {
+            "button": null,
+            "disabled": null,
+            "muted": true
+          },
+          {
+            "button": null,
+            "disabled": null,
+            "muted": true
+          },
+          {
+            "button": null,
+            "disabled": null,
+            "muted": true
+          },
+          {
+            "button": null,
+            "disabled": null,
+            "muted": true
+          },
+          {
+            "button": null,
+            "disabled": null,
+            "muted": true
+          },
+          {
+            "button": null,
+            "disabled": null,
+            "muted": true
+          },
+          {
+            "button": null,
+            "disabled": null,
+            "muted": true
+          },
+          {
+            "button": "Add",
+            "disabled": false,
+            "muted": false
+          },
+          {
+            "button": "Add",
+            "disabled": false,
+            "muted": false
+          },
+          {
+            "button": "Not vegan",
+            "disabled": false,
+            "muted": true
+          },
+          {
+            "button": "Add",
+            "disabled": false,
+            "muted": false
+          },
+          {
+            "button": "Not vegan",
+            "disabled": false,
+            "muted": true
+          },
+          {
+            "button": "Unknown vegan",
+            "disabled": false,
+            "muted": true
+          },
+          {
+            "button": "Not vegan",
+            "disabled": false,
+            "muted": true
+          },
+          {
+            "button": "Add",
+            "disabled": false,
+            "muted": false
+          },
+          {
+            "button": "Add",
+            "disabled": false,
+            "muted": false
+          },
+          {
+            "button": "Add",
+            "disabled": false,
+            "muted": false
+          },
+          {
+            "button": "Add",
+            "disabled": false,
+            "muted": false
+          },
+          {
+            "button": "Add",
+            "disabled": false,
+            "muted": false
+          },
+          {
+            "button": "Not vegan",
+            "disabled": false,
+            "muted": true
+          },
+          {
+            "button": "Not vegan",
+            "disabled": false,
+            "muted": true
+          },
+          {
+            "button": "Add",
+            "disabled": false,
+            "muted": false
+          },
+          {
+            "button": "Not vegan",
+            "disabled": false,
+            "muted": true
+          },
+          {
+            "button": "Add",
+            "disabled": false,
+            "muted": false
+          },
+          {
+            "button": "Unknown vegan",
+            "disabled": false,
+            "muted": true
+          },
+          {
+            "button": "Unknown vegan",
+            "disabled": false,
+            "muted": true
+          },
+          {
+            "button": "Not vegan",
+            "disabled": false,
+            "muted": true
+          },
+          {
+            "button": null,
+            "disabled": null,
+            "muted": true
+          },
+          {
+            "button": null,
+            "disabled": null,
+            "muted": true
+          },
+          {
+            "button": null,
+            "disabled": null,
+            "muted": true
+          },
+          {
+            "button": null,
+            "disabled": null,
+            "muted": true
+          }
+        ]
+      },
+      "unrelated": {
+        "canvas": [],
+        "classScans": 0,
+        "hydration": [],
+        "processCards": 0,
+        "runs": [],
+        "ticks": [
+          11,
+          33,
+          33,
+          35,
+          33,
+          33,
+          33,
+          33,
+          34,
+          33,
+          33,
+          34,
+          33,
+          33,
+          34,
+          33,
+          33,
+          33,
+          34,
+          34
+        ]
+      },
+      "single": {
+        "canvas": [],
+        "classScans": 0,
+        "hydration": [
+          0
+        ],
+        "processCards": 20,
+        "runs": [
+          1,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          1,
+          0,
+          0,
+          0
+        ],
+        "ticks": [
+          29,
+          33,
+          33,
+          33,
+          34,
+          34,
+          32,
+          34,
+          33,
+          34,
+          33,
+          34,
+          33,
+          32,
+          35,
+          33,
+          34,
+          32,
+          34,
+          33
+        ]
+      }
+    },
+    {
+      "page": "milk",
+      "cards": 75,
+      "variant": "current",
+      "repetition": 4,
+      "compile_and_init_ms": 8,
+      "initial": {
+        "canvas": [],
+        "classScans": 3,
+        "converted": 0,
+        "dataUrlCharacters": 0,
+        "failed": 0,
+        "hydration": [
+          0
+        ],
+        "loadedImages": 24,
+        "muted": 75,
+        "processCards": 75,
+        "runs": [
+          9,
+          1
+        ],
+        "states": [
+          {
+            "button": "Not vegan",
+            "disabled": false,
+            "muted": true
+          },
+          {
+            "button": "Not vegan",
+            "disabled": false,
+            "muted": true
+          },
+          {
+            "button": "Not vegan",
+            "disabled": false,
+            "muted": true
+          },
+          {
+            "button": "Not vegan",
+            "disabled": false,
+            "muted": true
+          },
+          {
+            "button": null,
+            "disabled": null,
+            "muted": true
+          },
+          {
+            "button": null,
+            "disabled": null,
+            "muted": true
+          },
+          {
+            "button": null,
+            "disabled": null,
+            "muted": true
+          },
+          {
+            "button": null,
+            "disabled": null,
+            "muted": true
+          },
+          {
+            "button": null,
+            "disabled": null,
+            "muted": true
+          },
+          {
+            "button": null,
+            "disabled": null,
+            "muted": true
+          },
+          {
+            "button": null,
+            "disabled": null,
+            "muted": true
+          },
+          {
+            "button": null,
+            "disabled": null,
+            "muted": true
+          },
+          {
+            "button": null,
+            "disabled": null,
+            "muted": true
+          },
+          {
+            "button": null,
+            "disabled": null,
+            "muted": true
+          },
+          {
+            "button": null,
+            "disabled": null,
+            "muted": true
+          },
+          {
+            "button": null,
+            "disabled": null,
+            "muted": true
+          },
+          {
+            "button": null,
+            "disabled": null,
+            "muted": true
+          },
+          {
+            "button": null,
+            "disabled": null,
+            "muted": true
+          },
+          {
+            "button": null,
+            "disabled": null,
+            "muted": true
+          },
+          {
+            "button": null,
+            "disabled": null,
+            "muted": true
+          },
+          {
+            "button": null,
+            "disabled": null,
+            "muted": true
+          },
+          {
+            "button": null,
+            "disabled": null,
+            "muted": true
+          },
+          {
+            "button": null,
+            "disabled": null,
+            "muted": true
+          },
+          {
+            "button": null,
+            "disabled": null,
+            "muted": true
+          },
+          {
+            "button": null,
+            "disabled": null,
+            "muted": true
+          },
+          {
+            "button": null,
+            "disabled": null,
+            "muted": true
+          },
+          {
+            "button": null,
+            "disabled": null,
+            "muted": true
+          },
+          {
+            "button": null,
+            "disabled": null,
+            "muted": true
+          },
+          {
+            "button": null,
+            "disabled": null,
+            "muted": true
+          },
+          {
+            "button": null,
+            "disabled": null,
+            "muted": true
+          },
+          {
+            "button": null,
+            "disabled": null,
+            "muted": true
+          },
+          {
+            "button": null,
+            "disabled": null,
+            "muted": true
+          },
+          {
+            "button": null,
+            "disabled": null,
+            "muted": true
+          },
+          {
+            "button": null,
+            "disabled": null,
+            "muted": true
+          },
+          {
+            "button": null,
+            "disabled": null,
+            "muted": true
+          },
+          {
+            "button": null,
+            "disabled": null,
+            "muted": true
+          },
+          {
+            "button": null,
+            "disabled": null,
+            "muted": true
+          },
+          {
+            "button": null,
+            "disabled": null,
+            "muted": true
+          },
+          {
+            "button": null,
+            "disabled": null,
+            "muted": true
+          },
+          {
+            "button": null,
+            "disabled": null,
+            "muted": true
+          },
+          {
+            "button": null,
+            "disabled": null,
+            "muted": true
+          },
+          {
+            "button": null,
+            "disabled": null,
+            "muted": true
+          },
+          {
+            "button": null,
+            "disabled": null,
+            "muted": true
+          },
+          {
+            "button": null,
+            "disabled": null,
+            "muted": true
+          },
+          {
+            "button": null,
+            "disabled": null,
+            "muted": true
+          },
+          {
+            "button": null,
+            "disabled": null,
+            "muted": true
+          },
+          {
+            "button": null,
+            "disabled": null,
+            "muted": true
+          },
+          {
+            "button": null,
+            "disabled": null,
+            "muted": true
+          },
+          {
+            "button": "Not vegan",
+            "disabled": false,
+            "muted": true
+          },
+          {
+            "button": "Not vegan",
+            "disabled": false,
+            "muted": true
+          },
+          {
+            "button": "Not vegan",
+            "disabled": false,
+            "muted": true
+          },
+          {
+            "button": "Not vegan",
+            "disabled": false,
+            "muted": true
+          },
+          {
+            "button": "Not vegan",
+            "disabled": false,
+            "muted": true
+          },
+          {
+            "button": "Not vegan",
+            "disabled": false,
+            "muted": true
+          },
+          {
+            "button": "Not vegan",
+            "disabled": false,
+            "muted": true
+          },
+          {
+            "button": "Not vegan",
+            "disabled": false,
+            "muted": true
+          },
+          {
+            "button": "Not vegan",
+            "disabled": false,
+            "muted": true
+          },
+          {
+            "button": "Not vegan",
+            "disabled": false,
+            "muted": true
+          },
+          {
+            "button": "Not vegan",
+            "disabled": false,
+            "muted": true
+          },
+          {
+            "button": "Not vegan",
+            "disabled": false,
+            "muted": true
+          },
+          {
+            "button": "Not vegan",
+            "disabled": false,
+            "muted": true
+          },
+          {
+            "button": "Not vegan",
+            "disabled": false,
+            "muted": true
+          },
+          {
+            "button": "Not vegan",
+            "disabled": false,
+            "muted": true
+          },
+          {
+            "button": "Not vegan",
+            "disabled": false,
+            "muted": true
+          },
+          {
+            "button": "Not vegan",
+            "disabled": false,
+            "muted": true
+          },
+          {
+            "button": "Not vegan",
+            "disabled": false,
+            "muted": true
+          },
+          {
+            "button": "Not vegan",
+            "disabled": false,
+            "muted": true
+          },
+          {
+            "button": "Not vegan",
+            "disabled": false,
+            "muted": true
+          },
+          {
+            "button": null,
+            "disabled": null,
+            "muted": true
+          },
+          {
+            "button": null,
+            "disabled": null,
+            "muted": true
+          },
+          {
+            "button": null,
+            "disabled": null,
+            "muted": true
+          },
+          {
+            "button": null,
+            "disabled": null,
+            "muted": true
+          },
+          {
+            "button": null,
+            "disabled": null,
+            "muted": true
+          },
+          {
+            "button": null,
+            "disabled": null,
+            "muted": true
+          },
+          {
+            "button": null,
+            "disabled": null,
+            "muted": true
+          }
+        ]
+      },
+      "unrelated": {
+        "canvas": [],
+        "classScans": 0,
+        "hydration": [],
+        "processCards": 0,
+        "runs": [],
+        "ticks": [
+          22,
+          34,
+          33,
+          33,
+          33,
+          34,
+          33,
+          33,
+          33,
+          33,
+          34,
+          34,
+          33,
+          33,
+          34,
+          32,
+          35,
+          32,
+          34,
+          33
+        ]
+      },
+      "single": {
+        "canvas": [],
+        "classScans": 0,
+        "hydration": [
+          0
+        ],
+        "processCards": 20,
+        "runs": [
+          0,
+          0,
+          0,
+          1,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          1,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          1
+        ],
+        "ticks": [
+          30,
+          34,
+          34,
+          32,
+          34,
+          33,
+          34,
+          34,
+          32,
+          34,
+          32,
+          35,
+          33,
+          33,
+          33,
+          33,
+          35,
+          32,
+          34,
+          33
+        ]
+      }
+    }
+  ]
+}
