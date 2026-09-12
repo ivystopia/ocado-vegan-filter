@@ -1,6 +1,6 @@
 // ==UserScript==
 // @name        Ocado Vegan Filter
-// @version     1.7.0
+// @version     1.7.1
 // @license     Unlicense
 // @description Supplement Ocado's incomplete vegan labelling with over 19,000 recognised vegan products.
 // @match       https://www.ocado.com/*
