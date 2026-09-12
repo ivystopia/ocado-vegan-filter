@@ -210,7 +210,7 @@ def run_benchmark(args):
     variants = args.variants
     if args.live:
         try:
-            run_live(driver, args)
+            run_live(driver, args, results)
         finally:
             driver.quit()
             server.shutdown()
@@ -269,8 +269,8 @@ def run_benchmark(args):
         server.shutdown()
 
 
-def run_live(driver, args):
-    results = []
+def run_live(driver, args, report):
+    results = report["results"]
     driver.set_page_load_timeout(60)
     for rep in range(args.repeats):
         for page, url in [
@@ -312,7 +312,7 @@ def run_live(driver, args):
                 }
                 results.append(row)
                 args.output.parent.mkdir(parents=True, exist_ok=True)
-                args.output.write_text(json.dumps(results, indent=2) + "\n")
+                args.output.write_text(json.dumps(report, indent=2) + "\n")
                 print(
                     json.dumps(
                         {

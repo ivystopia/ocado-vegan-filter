@@ -142,9 +142,12 @@ Reuse the existing `.venv` when available. With it active, useful checks are:
 node --check ocado-vegan-filter.user.js
 python3 -m unittest discover -s tests
 OCADO_LIVE_TESTS=1 python3 -m unittest discover -s tests -p test_ocado_vegan_filter.py
+python3 tools/check_ocado_userscript_scenarios.py --output /tmp/ocado-responsive/checks.json
 ```
 
 The normal suite includes real headless Firefox fixture tests and needs neither the local catalogue database nor a Codex login. Live Ocado checks are opt-in; CI and GitHub releases run the fixture suite without needing an Ocado account. Set `FIREFOX_BINARY` when Firefox is not on the default browser path. The real classifier safety benchmark is a separate command that calls authenticated Codex; the unit tests mock those model calls.
+
+The scenario checker opens live milk, vegan-cheese, and offers pages in temporary Firefox at 390, 768, and 1440 CSS pixels, then checks initial and scrolled cards. It records the injected source hash, classification and appearance checks, visible link/button hit targets, and milk screenshots beside its JSON output. It leaves the installed userscript and basket alone; verify FireMonkey installation separately when testing an installed build.
 
 For a catalogue refresh and userscript data update, follow [the monthly maintenance runbook](docs/monthly-maintenance.md).
 
