@@ -11,6 +11,14 @@ The project has two related goals:
 - Maintain a local product database for analysis of Ocado catalogue data.
 - Maintain a self-contained userscript that helps vegan shoppers by treating products as vegan only when the local evidence supports that decision.
 
+## Start Here
+
+- Inspect `git status --short --branch` and recent commits before editing; preserve any existing user changes.
+- Read [the working guide](docs/working-guide.md) for the code map, environment, safe inspection commands, and recurring failure modes.
+- For catalogue refreshes, use [monthly maintenance](docs/monthly-maintenance.md); for classifier changes, use [the classifier design](docs/vegan-classifier-design.md).
+- For browser or performance changes, read [the Firefox audit](docs/code-audit-2026-09-04.md) and the relevant tests in `tests/test_ocado_vegan_filter.py` before changing the script.
+- Dated audit reports describe the evidence and policy at the time of that run. Follow current instructions and runbooks for today's workflow; do not infer current release state or model defaults from an old report.
+
 ## Source Of Truth
 
 - Use `ocado_products.sqlite` as the source of truth for product analysis.
@@ -18,6 +26,8 @@ The project has two related goals:
 - Treat JSONL files as historical import/raw data only.
 - If new live scraping is performed, import the result into SQLite and keep enough raw/pre-check data in SQLite or clearly named raw files so future analysis does not require re-hitting Ocado unnecessarily.
 - When reporting product counts, distinguish all known products from `current_on_ocado = 1` products.
+- Open SQLite read-only for inspection. The classifier CLI's `status` command calls schema migration code, so use the working guide's SQL for read-only status checks.
+- `tools/build_ocado_database.py` is a historical importer whose CLI deletes its output database and sidecars before rebuilding. Its `create_schema()` helper drops tables. Use an isolated target for reconstruction/tests; never run either against the source-of-truth database as a setup or inspection step.
 
 ## Vegan Classification Rules
 
@@ -41,13 +51,16 @@ The project has two related goals:
 - The classifier must use only data already stored in SQLite unless the task is explicitly to scrape/import new data.
 - Follow `docs/vegan-classifier-design.md` for end-to-end classifier behaviour.
 - Use `gpt-5.6-luna` with reasoning effort `high` and two independent passes for bulk unresolved classification.
+- The supervising Codex model and bulk classifier model are separate choices. A change of supervising model does not change the benchmarked classifier default.
 - Pass the model and reasoning effort separately; `gpt-5.6-luna/high` is not a valid model ID.
 - Do not use Luna `low` or `medium` for product decisions: both repeated a false-vegan result in the retained safety benchmark.
 - Run `tools/benchmark_ocado_vegan.py` successfully before each monthly live sync or after any model, prompt, schema, or classification-rule change.
+- Keep the benchmark's frozen contexts, hashes, and expected labels together. Investigate mismatches; do not refresh inputs from today's catalogue or change expected labels merely to obtain a pass.
 - For monthly maintenance, follow `docs/monthly-maintenance.md` and use the DB-first sync/classifier workflow rather than the legacy JSONL scanners.
 - Keep audit trails for classification decisions in the database tables, including evidence, summary, classifier version, and run metadata.
-- If independent LLM/classifier passes disagree, classify the product as unknown unless the user explicitly authorizes a different arbitration workflow.
+- If independent LLM/classifier passes disagree on status or vegan reason, classify the product as unknown unless the user explicitly authorizes a different arbitration workflow.
 - For any rule change that increases vegan classifications, first quantify likely impact with SQLite queries and explain the safety argument.
+- After an interrupted sync, preserve `sync_context_baseline` and inspect the latest run before resuming. Never delete the baseline or edit run status to bypass export checks; follow the recovery guidance in the working guide.
 
 ## Userscript Source And Release Rules
 
@@ -63,6 +76,7 @@ The project has two related goals:
 - Non-vegan or not-known-vegan products should be visually de-emphasised only; the real Ocado Add button must remain present and clickable.
 - Use `Not vegan` only for products affirmatively classified `nonvegan`; use `Unknown vegan` for products without enough evidence to establish either vegan or non-vegan status.
 - Product links must remain clickable.
+- Preserve Ocado's responsive image sources and existing button elements/handlers. Recycled cards and quantity controls must retain host-owned changes; restore only styles, classes, and labels still owned by this script.
 - Keep userscript metadata free of personal identifiers.
 - Never use a personal domain in userscript metadata.
 - Greasy Fork may force or preserve `@namespace`; if a namespace is required, use a non-personal value.
@@ -70,16 +84,20 @@ The project has two related goals:
 - Bump the userscript version when preparing a new release. Fixes found while testing an unpublished local release keep that release's agreed version number.
 - Keep the product counts at the top of the userscript comment block up to date whenever a userscript change is finalised.
 - When regenerating embedded product ID allowlists, keep the diff minimal: preserve the relative order and line placement of retained IDs, remove obsolete IDs in place, append only genuinely new IDs, and avoid unrelated userscript changes.
+- Use `tools/update_userscript_allowlists.py`, starting with `--dry-run`. It exports all known classified IDs, including historical products; do not silently narrow exports to current products or hand-edit sets around a failed safety gate.
 - Commit development changes directly to `main`.
 - For requested release work, prepare a signed annotated local tag once the agreed version passes repository checks, before the user's FireMonkey testing and Greasy Fork publication.
 - Use exact Greasy Fork version strings for tags, for example `1.4.4`, not `v1.4.4`.
 - If the user finds a bug while testing an unpublished local release, fix it at the same version, rerun the relevant checks, and remake the signed annotated local tag at the corrected commit.
 - Check local/remote tag state and publication state before moving an existing tag. Replacing an unpublished, unpushed local tag is part of this testing workflow; changing shared tags or rewriting pushed history needs explicit authorization for that concrete action.
 - Local release preparation does not authorize pushing or publishing. A tag push creates a GitHub release through the workflow; a local tag or metadata version alone does not prove publication on Greasy Fork.
+- Documentation/tooling-only changes that leave the userscript unchanged do not need a userscript version bump or release tag and do not trigger a FireMonkey installation.
+- Write short, imperative Greasy Fork release notes describing user-visible results, product additions/removals, and why classifications changed. Cover the whole interval since the last published version, including skipped local versions. Use tag annotations and Greasy Fork text; do not add a standalone `CHANGELOG.md` unless requested.
 
 ## Git Workflow
 
 - Commit each finalised logical change individually: one change per commit and one commit per change.
+- Account for new files by tracking intended repository artifacts or explicitly ignoring local working data. Leave finalised changes committed and report anything intentionally left uncommitted.
 - Keep formatting-only changes in a separate commit from feature, behaviour, documentation, or data changes.
 - Keep repo-specific signing configuration in local `.git/config`, not in tracked repo files.
 - Keep GitHub Actions workflows on the latest stable major versions of actions and avoid deprecated JavaScript runtimes.
@@ -93,34 +111,18 @@ The project has two related goals:
 - Do not assume any userscript manager other than FireMonkey is active.
 - Do not close or restart the user's real Firefox unless the user explicitly asks.
 - Prefer editing userscript files on disk for release work.
-- FireMonkey stores scripts in `browser.storage.local` under keys of the form `_<script name>`, for example `_Ocado Vegan Filter`.
-- The stored FireMonkey value is not just raw source; it is a parsed object containing metadata fields plus the full `js` source.
-- FireMonkey's parser is available in its extension bundle as `content/meta.js`; use `Meta.get(source, pref)` to create the correct stored object instead of hand-building it.
-- If direct FireMonkey storage updates are needed, rediscover the local extension UUID and storage path from the current Firefox profile instead of relying on hard-coded paths.
-
-## Updating Installed FireMonkey Directly
-
-Use this when creating or remaking a requested local release tag, or when the user separately asks to update the installed userscript directly.
-
-- Back up FireMonkey's storage directory first.
-- Use a temporary headless Firefox profile with the FireMonkey XPI and a copy of FireMonkey's storage directory.
-- In the temporary extension page, call `browser.storage.local.get()`, dynamically import `content/meta.js`, parse the source with `Meta.get(source, pref)`, and write it with `browser.storage.local.set({['_Ocado Vegan Filter']: parsed})`.
-- Copy the serialized IndexedDB `object_data.data` blob for the `_Ocado Vegan Filter` key from the temporary profile back into the real profile.
-- Update only the `data` column for the existing row; avoid modifying IndexedDB trigger-sensitive columns such as `file_ids`.
-- Verify with a fresh temporary Firefox profile that FireMonkey reads the expected version, metadata, and exact tagged source. Compare the full source or its hash: fixes to an unpublished local release can retain the same version number.
-- A running Firefox/FireMonkey process may have an in-memory registration of the old script. Updating IndexedDB on disk is not enough by itself; FireMonkey must be reloaded so it unregisters/re-registers the userscript from storage.
-- If Firefox is running and the user has authorized updating their real install, automate the reload step where practical: disable FireMonkey, load/reload the relevant Ocado page, re-enable FireMonkey, then hard-refresh the Ocado tab.
-- Never use blind GUI keystrokes for this reload. If GUI automation is required, first target and verify the specific Firefox window/tab; do not type into whichever window currently has focus.
-- Do not close or restart Firefox for this workflow unless the user explicitly asks. If safe targeted automation is not possible, stop and give the user the exact manual reload steps instead.
-- Report the backup path, installed version and source verification, and whether the running extension was successfully reloaded. A storage-only update must not be described as a verified active installation.
+- When creating/remaking a requested local release tag, or separately asked to update the installed script, follow [the FireMonkey installation runbook](docs/firemonkey-installation.md). It covers backup, parsing, storage writes, reload, and exact-source verification.
+- Never use blind GUI keystrokes. Target and verify the specific Firefox window/tab before any GUI interaction.
 
 ## Testing
 
 - Run targeted tests after code changes when practical.
-- For userscript/browser behaviour bugs, reproduce the issue in Firefox before implementing a fix; do not rely only on code inspection or assumptions.
+- Use `python3 -m unittest discover -s tests` in the development environment. New tests must be discoverable `unittest.TestCase` methods; bare helper functions were silently skipped in an earlier browser suite.
+- For userscript/browser behaviour bugs, reproduce the issue in clean temporary Firefox before implementing a fix; use retained fixtures where possible and live pages when needed. These automated checks are part of development and do not require changing the installed FireMonkey copy.
+- For performance changes, measure before and after with `tools/benchmark_ocado_userscript.py` and preserve relevant results. Protect incremental card processing, bounded hydration scans, and CSS-only image filtering; do not infer speed from source size alone.
 - For userscript syntax, run `node --check` on the script file.
 - Python tools live under `tools/`, tests live under `tests/`, and retained audit outputs live under `audit/`.
-- For classifier/database changes, run the relevant `tests/test_*` files with `pytest` or `python -m unittest` according to the existing test style.
+- The normal suite runs real headless Firefox fixtures; `OCADO_LIVE_TESTS=1` enables the live Ocado checks. Report skips explicitly and distinguish injected-script tests from installed FireMonkey verification.
 
 ## Output Conventions
 

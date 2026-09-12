@@ -6,7 +6,7 @@ The live scrape itself does not use an LLM. Luna/high is used only after the scr
 
 ## 1. Prepare And Benchmark
 
-Start from the repository root with a clean tracked working tree. The local SQLite database is intentionally untracked.
+Start from the repository root with a clean tracked working tree and the [development environment](../README.md#development) active. The local SQLite database is intentionally untracked. If resuming an interrupted refresh, inspect the latest run and follow [the recovery guidance](working-guide.md#recovery-and-classifier-pitfalls) before starting another writer.
 
 ```bash
 cd /home/ivy/repos/personal/ocado_report
@@ -21,21 +21,21 @@ Run the fixed safety benchmark before contacting Ocado. It is read-only and must
 The standard fixture now contains frozen SQLite evidence in `benchmarks/vegan-classifier-v1-contexts.json`, with hashes checked by the runner. It does not reread changing catalogue rows. Keep these inputs and their expected statuses together when adding regression cases.
 
 ```bash
-RUN_DATE="$(date +%F)"
+RUN_STAMP="$(date +%F-%H%M%S)"
 
 python3 tools/benchmark_ocado_vegan.py \
   --model gpt-5.6-luna \
   --reasoning-effort high \
   --passes 2 \
   --batch-size 10 \
-  --json-output "audit/benchmarks/${RUN_DATE}-luna-high.json"
+  --json-output "audit/benchmarks/${RUN_STAMP}-luna-high.json"
 ```
 
-Stop if the command exits non-zero. A pass disagreement is always merged to `unknown` and reported; investigate any new disagreement before continuing even when it does not create an exact-status mismatch. The runner retries transient schema/output failures, but any observed retry should still be noted in the monthly review.
+Stop if the command exits non-zero. A pass disagreement is always merged to `unknown` and reported; investigate any new disagreement before continuing even when it does not create an exact-status mismatch. The runner retries transient schema/output failures, but any observed retry should still be noted in the monthly review. Use a new output filename for each attempt so failed results remain available alongside successful reruns.
 
 ## 2. Refresh The SQLite Catalogue
 
-Run the DB-first sync. It makes a rolling SQLite backup before changing the database and prints the backup path and sync-run ID.
+Run the DB-first sync. It makes a rolling SQLite backup before changing the database and prints the backup path and sync-run ID. This replaces `ocado_products.sqlite.bak`, so preserve any known-good backup needed for recovery before retrying a failed run.
 
 ```bash
 DB_PATH="$PWD/ocado_products.sqlite"
@@ -49,15 +49,17 @@ BROWSE_WITH_FIREFOX_SCRIPTS="$FIREFOX_SCRIPTS" \
   "$FIREFOX_PYTHON" tools/sync_ocado_database.py --db "$DB_PATH"
 ```
 
-The sync needs the dedicated Firefox environment because it imports Selenium's `firefox_session.py` helper and launches a headless snapshot of the current Firefox profile. It does not close, restart, or modify the real Firefox session.
+Read the `browse-with-firefox` skill for the current environment/helper paths if the checks above fail. The sync needs this Firefox environment because it imports Selenium's `firefox_session.py` helper and launches a headless snapshot of the current Firefox profile. It does not close, restart, or modify the real Firefox session.
 
 Do not use the legacy `scan_ocado_vegan_according_to_ingredients.py` JSONL pipeline for monthly maintenance.
 
-After a successful sync, capture the latest completed run ID:
+Use the full default detail refresh for monthly maintenance. Limit flags are for isolated smoke-test databases; `--missing-details-only` cannot detect changed ingredients on already fetched products.
+
+After a successful sync, capture the latest run ID. Do not skip failed/running rows to select an older successful run:
 
 ```bash
-SYNC_RUN_ID="$(sqlite3 "$DB_PATH" \
-  "SELECT id FROM sync_runs WHERE status = 'completed' ORDER BY id DESC LIMIT 1;")"
+SYNC_RUN_ID="$(sqlite3 -readonly "$DB_PATH" \
+  "SELECT id FROM sync_runs ORDER BY id DESC LIMIT 1;")"
 
 test -n "$SYNC_RUN_ID"
 echo "Using sync run ${SYNC_RUN_ID}"
@@ -90,7 +92,7 @@ ORDER BY change_kind;
 SQL
 ```
 
-Stop if the sync is incomplete, reports errors, or the change counts look implausibly large. Investigate before classifying or exporting anything.
+Stop if the selected run is not `completed`, reports errors, or the change counts look implausibly large. Investigate before classifying or exporting anything. An unfinished sync's `sync_context_baseline` must survive until a successful rerun; never drop it or edit run status to bypass the export gate.
 
 ## 3. Classify New And Changed Products
 
@@ -199,6 +201,8 @@ Required gates:
 - Counts distinguish all known products from current Ocado products.
 - Any large movement into or out of `vegan`, particularly `vegan/ingredients`, is manually reviewed.
 
+For resumed classification, retain earlier failed/interrupted run records and account for their errors; require successful completion of the remaining queue and all product-level gates. Do not rewrite historical run statuses. The `official_tag_conflicts` query checks canonical classifications against official tags; apparent ingredient conflicts on correctly classified `vegan/tagged` products belong in a separate manual-review report and do not override the official tag.
+
 `unknown` is a valid completed classification. `NULL` is unfinished work and blocks export.
 
 ## 5. Preview The Userscript Data Change
@@ -251,7 +255,7 @@ Commit the tested userscript and retained benchmark/report artifacts directly to
 Prepare the release locally before publication:
 
 1. Create and verify a signed annotated local tag at the tested commit, using the exact userscript version without a `v` prefix. Include the release notes in the tag annotation.
-2. Back up FireMonkey storage, install the exact tagged source into the user's local FireMonkey, safely reload it, and verify the installed source as described in `AGENTS.md`. This is part of preparing the local tag, so no separate installation permission is needed. The user then tests it before publishing to Greasy Fork.
+2. Back up FireMonkey storage, install the exact tagged source into the user's local FireMonkey, safely reload it, and verify the installed source using [the FireMonkey runbook](firemonkey-installation.md). This is part of preparing the local tag, so no separate installation permission is needed. The user then tests it before publishing to Greasy Fork.
 3. If testing finds a bug, fix it at the same version, rerun the relevant checks, commit the correction, and remake and verify the signed annotated local tag. Repeat the FireMonkey installation, reload, and source verification. Check first that the tag is still unpublished and unpushed; changing a shared tag or rewriting pushed history requires explicit authorization for that concrete action.
 4. After the user's testing, publish the exact tested source to Greasy Fork when requested, or let the user publish it. Verify the live version and source before describing it as published.
 5. When pushing is requested, push the commit and release tag. The tag workflow runs the checks, verifies that the tag equals the userscript metadata version, and creates the GitHub release assets.

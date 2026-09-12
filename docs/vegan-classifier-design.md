@@ -78,7 +78,7 @@ Examples:
 - Products without an official Ocado vegan tag that contain milk, egg, honey, gelatine, meat, fish, shellfish, beeswax, shellac, carmine, lanolin, or similar animal-derived ingredients should be `nonvegan`.
 - `May contain milk` warnings do not make a product `nonvegan`.
 - Material conflicts between supplied product fields should be `unknown`, even when each possible product or ingredient identity would individually be vegan.
-- Vague or ambiguous ingredients such as natural flavourings, enzymes, vitamins outside standard flour fortification, vitamin D3, glycerine, mono/diglycerides, shellac/glaze, or colours should be `unknown` unless explicit vegan evidence exists.
+- Vague or ambiguous ingredients such as natural flavourings, enzymes, vitamins outside standard flour fortification, vitamin D3, glycerine, mono/diglycerides, glaze of unspecified composition, or colours should be `unknown` unless explicit vegan evidence exists. Explicit shellac is animal-derived and follows the non-vegan rule above.
 
 ## Decision Order
 
@@ -125,11 +125,13 @@ Use:
 codex exec --ephemeral --output-schema schema.json --output-last-message result.json
 ```
 
-Recommended defaults:
+Bulk classification defaults:
 
-- bulk unresolved classification: `gpt-5.6-luna`, `high`, two passes
-- fallback/shadow comparison: `gpt-5.6-terra`, `high`, two passes
-- prompt/schema review: `gpt-5.6-sol`, `high` or `xhigh`
+- model: `gpt-5.6-luna`
+- reasoning effort: `high`
+- independent passes: two, including resumed runs
+
+The supervising interactive Codex model is a separate choice and can review code, prompts, and schemas without replacing the bulk classifier. Alternative classifier models/settings require a successful retained benchmark before writing decisions; historical fallback comparisons are recorded in the benchmark report rather than silently selected on errors.
 
 The bulk default was selected with a two-pass, evidence-grounded benchmark covering known vegan, non-vegan, unknown, and newly discovered products. Luna/high matched all 48 retained gold decisions with zero pass disagreements. Luna low and medium both repeated a false-vegan decision, while xhigh added no classification benefit and used materially more time and output tokens. See `docs/model-benchmark-2026-08-21.md`.
 
@@ -141,41 +143,38 @@ For manufactured non-food goods, material descriptions such as cotton, plastic, 
 
 Do not use Luna `low` or `medium` reasoning for product decisions because both repeated a false-vegan result in the retained benchmark. Use `high` unless a later benchmark justifies another setting.
 
-For the first bulk run, run two independent Codex passes for any LLM-classified product.
+For every bulk run, run two independent Codex passes for any LLM-classified product.
 If the passes disagree on `vegan_status` or `vegan_reason`, classify the product as `unknown`.
 
-## Subagent Strategy
+## Concurrency and optional review
 
-Use subagents for review and audit, not as DB writers.
+The Python orchestrator owns the SQLite connection and writes batch results transactionally. Its `--workers` setting controls concurrent Codex batches; it is separate from interactive review subagents. The CLI defaults to one worker, while [monthly maintenance](monthly-maintenance.md) explicitly uses eight based on the completed August run. Start small when evaluating a changed model or prompt, and lower concurrency if persistent service errors require it.
 
-Effective roles:
+When review is delegated, keep reviewers read-only and give them a bounded task:
 
 - Prompt red-team: reviews ambiguity rules and false-positive risks.
 - Schema-risk inspector: reviews migration/upsert/audit/versioning risks.
 - Audit sampler: reviews stratified samples after classification.
 
-A persistent `ocado-vegan-classifier` subagent may be added after the prompt/schema is stable.
-It should be stateless, read-only, and receive product JSON only.
-
-Keep `agents.max_depth = 1`.
-Keep classifier concurrency low initially: 1-2 workers, then 2-4 after sample audits pass.
+Review subagents are not required to run the classifier. Do not introduce a persistent custom agent or change global Codex settings just to execute the existing workflow.
 
 ## CLI
 
-The implementation entrypoint is:
+The implementation entrypoint is below. These are database-writing operations for an authorized classification task; place `--db PATH` before the subcommand when selecting a different database:
 
 ```bash
 python3 tools/classify_ocado_vegan.py migrate-schema
 python3 tools/classify_ocado_vegan.py classify-rules
 python3 tools/classify_ocado_vegan.py classify-codex --limit 100 --batch-size 10
 python3 tools/classify_ocado_vegan.py classify-all --codex
-python3 tools/classify_ocado_vegan.py status
 ```
 
 `migrate-schema` creates a rolling SQLite backup before changing the DB.
-`classify-rules` is safe to run before Codex.
+`classify-rules` must run before Codex for the selected queue.
 `classify-codex` is resumable because it selects only rows where `vegan_status IS NULL`.
 It refuses to submit an officially tagged product, so deterministic rules cannot be bypassed accidentally.
+
+The `status` CLI also calls schema migration code, so use the read-only SQL in [the working guide](working-guide.md#inspecting-the-local-database-safely) for inspection. The guide also explains rolling-backup replacement, interrupted-sync baselines, and why `classify-rules --force` is not a complete reclassification.
 
 ## Verification
 
