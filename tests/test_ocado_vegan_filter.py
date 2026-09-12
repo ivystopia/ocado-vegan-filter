@@ -12,7 +12,9 @@ import unittest
 from pathlib import Path
 
 from selenium import webdriver
+from selenium.webdriver.common.action_chains import ActionChains
 from selenium.webdriver.common.by import By
+from selenium.webdriver.common.keys import Keys
 from selenium.webdriver.firefox.options import Options
 from selenium.webdriver.support import expected_conditions as EC
 from selenium.webdriver.support.ui import WebDriverWait
@@ -273,18 +275,21 @@ def fixture_smoke_test() -> None:
         wait.until(lambda d: d.execute_script("return getComputedStyle(document.querySelector('#unknown img')).opacity") == "0.42")
         driver.find_element(By.CSS_SELECTOR, "#unknown button").click()
         driver.find_element(By.CSS_SELECTOR, "#unknown a").click()
+        hover_labels = {}
+        for card_id, prefix, label in [("unknown", "unknown", "Unknown vegan"), ("known-nonvegan", "knownNonvegan", "Not vegan")]:
+            button = driver.find_element(By.CSS_SELECTOR, f"#{card_id} button")
+            driver.execute_script("arguments[0].scrollIntoView({block:'center'});", button)
+            ActionChains(driver).move_to_element(button).perform()
+            wait.until(lambda d: button.text == "Add anyway")
+            hover_labels[prefix + "HoverText"] = button.text
+            link = driver.find_element(By.CSS_SELECTOR, "#unknown a")
+            driver.execute_script("arguments[0].scrollIntoView({block:'center'});", link)
+            ActionChains(driver).move_to_element(link).perform()
+            wait.until(lambda d: button.text == label)
+            hover_labels[prefix + "LeaveText"] = button.text
         rows = driver.execute_script(
             """
-            const unknownButton = document.querySelector('#unknown button');
-            unknownButton.dispatchEvent(new MouseEvent('mouseenter', { bubbles: true }));
-            const unknownHoverText = unknownButton.textContent.trim();
-            unknownButton.dispatchEvent(new MouseEvent('mouseleave', { bubbles: true }));
-            const unknownLeaveText = unknownButton.textContent.trim();
-            const knownNonveganButton = document.querySelector('#known-nonvegan button');
-            knownNonveganButton.dispatchEvent(new MouseEvent('mouseenter', { bubbles: true }));
-            const knownNonveganHoverText = knownNonveganButton.textContent.trim();
-            knownNonveganButton.dispatchEvent(new MouseEvent('mouseleave', { bubbles: true }));
-            const knownNonveganLeaveText = knownNonveganButton.textContent.trim();
+            const {unknownHoverText, unknownLeaveText, knownNonveganHoverText, knownNonveganLeaveText} = arguments[0];
             return Object.fromEntries(['ready', 'ready-hyphen', 'cajun', 'cajun-hyphen', 'official', 'unowned-native-opacity', 'official-overrides-known-nonvegan', 'official-hidden-icon', 'name-vegan', 'hydration-vegan', 'late-hydration-vegan', 'stale-vegan', 'ingredients-beans', 'ingredients-pasta', 'features-gherkins', 'unknown', 'known-nonvegan'].map(id => {
               const card = document.getElementById(id);
               const button = card.querySelector('button');
@@ -298,6 +303,8 @@ def fixture_smoke_test() -> None:
                 buttonClassName: button.className,
                 buttonVisuallyMarked: button.classList.contains('ocado-vegan-filter-muted-add'),
                 buttonDisabled: Boolean(button.disabled),
+                buttonBackground: getComputedStyle(button).backgroundColor,
+                buttonColor: getComputedStyle(button).color,
                 mutedClass: card.classList.contains('ocado-vegan-filter-muted'),
                 imageOpacity: getComputedStyle(img).opacity,
                 imageFilter: getComputedStyle(img).filter,
@@ -319,7 +326,8 @@ def fixture_smoke_test() -> None:
                 knownNonveganLeaveText,
               }];
             }));
-            """
+            """,
+            hover_labels,
         )
         click_counts = driver.execute_script("return {add: window.unknownAddClicks, image: window.unknownImageClicks};")
         time.sleep(0.15)
@@ -417,7 +425,8 @@ def fixture_smoke_test() -> None:
     assert rows["unknown"]["unknownLeaveText"] == "Unknown vegan", rows["unknown"]
     assert rows["known-nonvegan"]["knownNonveganHoverText"] == "Add anyway", rows["known-nonvegan"]
     assert rows["known-nonvegan"]["knownNonveganLeaveText"] == "Not vegan", rows["known-nonvegan"]
-    assert "ocado-oos-button" in rows["unknown"]["buttonClassName"], rows["unknown"]
+    assert rows["unknown"]["buttonBackground"] == "rgb(233, 228, 237)", rows["unknown"]
+    assert rows["unknown"]["buttonColor"] == "rgb(46, 0, 77)", rows["unknown"]
     assert rows["unknown"]["offerColor"] == MUTED_PROMOTION_RGB, rows["unknown"]
     assert rows["unknown"]["offerUnitPriceColor"] == MUTED_PROMOTION_RGB, rows["unknown"]
     assert rows["unknown"]["offerPriceColor"] == MUTED_PROMOTION_RGB, rows["unknown"]
@@ -825,6 +834,134 @@ def additional_vegan_search_smoke_test() -> None:
 
 
 class UserscriptTests(unittest.TestCase):
+    def test_cloned_muted_buttons_can_be_reclassified(self) -> None:
+        html = """<!doctype html><main><article class="product-card-container">
+          <a href="https://www.ocado.com/products/999880011">Sample</a>
+          <button class="native-button" data-test="counter-button" aria-label="Add sample">Add</button>
+        </article></main>"""
+        driver = headless_firefox()
+        self.addCleanup(driver.quit)
+        driver.get("data:text/html;base64," + base64.b64encode(html.encode()).decode())
+        driver.execute_script(userscript())
+        wait = WebDriverWait(driver, 5)
+        wait.until(lambda d: d.execute_script("return document.querySelector('button').textContent") == "Unknown vegan")
+        driver.execute_script("""
+          const original=document.querySelector('article');
+          for (const [id,product] of [['clone-nonvegan','17959011'],['clone-vegan','511102011']]) {
+            const clone=original.cloneNode(true);clone.id=id;
+            clone.querySelector('a').href='https://www.ocado.com/products/'+product;
+            document.querySelector('main').append(clone);
+          }
+        """)
+        wait.until(lambda d: d.execute_script("return !document.querySelector('#clone-vegan').classList.contains('ocado-vegan-filter-muted');"))
+        self.assertEqual(driver.find_element(By.CSS_SELECTOR, "#clone-vegan button").text, "Add")
+        self.assertEqual(driver.find_element(By.CSS_SELECTOR, "#clone-vegan button").get_attribute("class"), "native-button")
+        self.assertEqual(driver.find_element(By.CSS_SELECTOR, "#clone-nonvegan button").text, "Not vegan")
+
+    def test_keyboard_and_changed_counter_attributes(self) -> None:
+        html = """<!doctype html><article class="product-card-container">
+          <a href="https://www.ocado.com/products/999880011">Sample</a>
+          <button class="native-button" data-test="counter-button" aria-label="Add sample">Add</button>
+          <a href="#after">After</a>
+        </article>"""
+        driver = headless_firefox()
+        self.addCleanup(driver.quit)
+        driver.get("data:text/html;base64," + base64.b64encode(html.encode()).decode())
+        driver.execute_script("window.clicks=0;document.querySelector('button').addEventListener('click',()=>window.clicks++);")
+        driver.execute_script(userscript())
+        wait = WebDriverWait(driver, 5)
+        button = driver.find_element(By.TAG_NAME, "button")
+        wait.until(lambda d: button.text == "Unknown vegan")
+        driver.find_element(By.TAG_NAME, "a").send_keys(Keys.TAB)
+        wait.until(lambda d: button.text == "Add anyway")
+        button.send_keys(Keys.SPACE)
+        self.assertEqual(driver.execute_script("return window.clicks;"), 1)
+        button.send_keys(Keys.TAB)
+        wait.until(lambda d: button.text == "Unknown vegan")
+        driver.execute_script("""
+          const button=document.querySelector('button');
+          button.textContent='+';
+          button.setAttribute('aria-label','Increase quantity');
+          button.setAttribute('data-test','quantity-increase');
+          button.classList.add('host-counter');
+        """)
+        wait.until(lambda d: d.execute_script("return !document.querySelector('button').classList.contains('ocado-vegan-filter-muted-add');"))
+        self.assertEqual(button.text, "+")
+        self.assertEqual(button.get_attribute("class"), "native-button host-counter")
+
+    def test_css_preserves_normal_image_styles_and_lazy_sources(self) -> None:
+        html = """<!doctype html><article class="product-card-container">
+          <a href="https://www.ocado.com/products/999880011"><img style="opacity: 0.75; width: 40px;"></a>
+          <button data-test="counter-button" aria-label="Add sample">Add</button>
+        </article>"""
+        driver = headless_firefox()
+        self.addCleanup(driver.quit)
+        driver.get("data:text/html;base64," + base64.b64encode(html.encode()).decode())
+        original_style = driver.find_element(By.TAG_NAME, "img").get_dom_attribute("style")
+        driver.execute_script("""
+          window.imageWrites=[];
+          new MutationObserver(records=>window.imageWrites.push(...records.map(r=>r.attributeName)))
+            .observe(document.querySelector('img'),{attributes:true});
+        """)
+        driver.execute_script(userscript())
+        wait = WebDriverWait(driver, 5)
+        wait.until(lambda d: d.execute_script("return getComputedStyle(document.querySelector('img')).opacity") == "0.42")
+        self.assertEqual(driver.execute_script("return window.imageWrites;"), [])
+        self.assertEqual(driver.find_element(By.TAG_NAME, "img").get_dom_attribute("style"), original_style)
+        driver.execute_script("""
+          const image=document.querySelector('img');
+          image.src='data:image/gif;base64,R0lGODlhAQABAAD/ACwAAAAAAQABAAACADs=';
+          image.srcset=image.src+' 1x';image.sizes='40px';
+        """)
+        wait.until(lambda d: d.execute_script("return document.querySelector('img').complete;"))
+        self.assertEqual(driver.execute_script("return getComputedStyle(document.querySelector('img')).opacity;"), "0.42")
+        self.assertEqual(driver.execute_script("return window.imageWrites;"), ["src", "srcset", "sizes"])
+
+    def test_host_updates_survive_muting_and_reclassification(self) -> None:
+        html = """<!doctype html><article class="product-card-container">
+          <a href="https://www.ocado.com/products/999880011"><img style="opacity: 0.75"></a>
+          <button class="native-button" data-test="counter-button" aria-label="Add sample">Add</button>
+        </article>"""
+        driver = headless_firefox()
+        self.addCleanup(driver.quit)
+        driver.get("data:text/html;base64," + base64.b64encode(html.encode()).decode())
+        driver.execute_script(userscript())
+        wait = WebDriverWait(driver, 5)
+        wait.until(lambda d: d.execute_script("return document.querySelector('button').textContent") == "Unknown vegan")
+        driver.execute_script("""
+          document.querySelector('button').classList.add('host-updated');
+          document.querySelector('img').style.setProperty('opacity', '0.8', 'important');
+        """)
+        wait.until(lambda d: d.execute_script("return getComputedStyle(document.querySelector('img')).opacity") == "0.42")
+        driver.execute_script("document.querySelector('a').href='https://www.ocado.com/products/511102011';")
+        wait.until(lambda d: d.execute_script("return document.querySelector('button').textContent") == "Add")
+        state = driver.execute_script("""return {
+          classes:document.querySelector('button').className,
+          opacity:document.querySelector('img').style.opacity,
+          priority:document.querySelector('img').style.getPropertyPriority('opacity')
+        };""")
+        self.assertEqual(state, {"classes": "native-button host-updated", "opacity": "0.8", "priority": "important"})
+
+    def test_native_button_classes_survive_while_muted(self) -> None:
+        html = """<!doctype html>
+          <button data-test="fop-controls-show-alternatives-button" class="secondary-button">Show alternatives</button>
+          <article class="product-card-container">
+            <a href="https://www.ocado.com/products/999880011">Sample</a>
+            <button class="native-button host-layout" data-test="counter-button" aria-label="Add sample">Add</button>
+          </article>"""
+        driver = headless_firefox()
+        self.addCleanup(driver.quit)
+        driver.get("data:text/html;base64," + base64.b64encode(html.encode()).decode())
+        driver.execute_script(userscript())
+        wait = WebDriverWait(driver, 5)
+        wait.until(lambda d: d.execute_script("return document.querySelector('article button').textContent") == "Unknown vegan")
+        classes = driver.execute_script("return [...document.querySelector('article button').classList];")
+        self.assertIn("native-button", classes)
+        self.assertIn("host-layout", classes)
+        driver.execute_script("document.querySelector('article button').classList.add('host-updated');")
+        driver.execute_async_script("const done=arguments[0];requestAnimationFrame(()=>requestAnimationFrame(done));")
+        self.assertTrue(driver.execute_script("return document.querySelector('article button').classList.contains('host-updated');"))
+
     def test_source(self) -> None:
         userscript_source_test()
 

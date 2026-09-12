@@ -85,7 +85,7 @@
  * product image is faded and fully desaturated, promotional red text is muted,
  * and the normal "Add" button is restyled to look like Ocado's
  * "Show alternatives" button. The button remains Ocado's real Add button and
- * stays clickable; hovering changes
+ * stays clickable; hovering or focusing with the keyboard changes
  * the label to "Add anyway" to make that explicit. Known non-vegan products show
  * "Not vegan"; products without enough evidence show "Unknown vegan".
  *
@@ -119,11 +119,22 @@
   const UNKNOWN_VEGAN_LABEL = "Unknown vegan";
   const ADD_ANYWAY_LABEL = "Add anyway";
   const ADD_BUTTON_SELECTOR = 'button[data-test="counter-button"], button[data-testid="counter-button"]';
-  const OUT_OF_STOCK_BUTTON_SELECTOR = ['button[data-test="fop-controls-show-alternatives-button"]', 'button[data-testid="fop-controls-show-alternatives-button"]'].join(",");
   const CARD_SELECTOR = ".product-card-container, [data-test^='fop-wrapper:'], [data-testid^='fop-wrapper:']";
   const MUTED_CARD_CLASS = "ocado-vegan-filter-muted";
   const MUTED_ADD_BUTTON_CLASS = "ocado-vegan-filter-muted-add";
+  const MANAGED_BUTTON_SELECTOR = `${ADD_BUTTON_SELECTOR}, button.${MUTED_ADD_BUTTON_CLASS}`;
   const STYLE_ID = "ocado-vegan-filter-style";
+  const PRODUCT_IMAGE_SELECTORS = [
+    'a[data-test="fop-product-link"] img',
+    'a[data-testid="fop-product-link"] img',
+    'a[href*="/products/"] img',
+    ".image-container img",
+    ".header-container img",
+    'img[data-test="lazy-load-image"]',
+    'img[data-testid="lazy-load-image"]',
+    "img[alt]",
+  ];
+  const PRODUCT_IMAGE_SELECTOR = PRODUCT_IMAGE_SELECTORS.join(",");
   const MUTED_IMAGE_FILTER = "grayscale(100%) saturate(0)";
   const MUTED_IMAGE_OPACITY = "0.42";
   const MUTED_PROMOTION_COLOR = "#654348";
@@ -138,6 +149,8 @@
     transition: "none",
   };
 
+  const MUTED_IMAGE_STYLE_ENTRIES = Object.entries(MUTED_IMAGE_STYLES);
+
   // This cache avoids repeatedly scanning Ocado's page data on every small page update.
   let hydrationProductIndex = {
     roots: [],
@@ -146,10 +159,9 @@
   };
   let hydrationIndexRefreshedInRun = false;
 
-  // Ocado's generated class names are stable enough within one page view.
-  const documentClassCache = new Map();
-  let cachedOutOfStockButtonClassName = "";
-  let buttonStyleResolved = false;
+  // Weak maps keep cosmetic state out of Ocado's DOM and release detached nodes.
+  const buttonStates = new WeakMap();
+  const imageStyleOverrides = new WeakMap();
 
   // Products Ocado officially tagged vegan.
   const OFFICIAL_VEGAN_PRODUCT_IDS = new Set(
@@ -4808,20 +4820,13 @@
     const style = document.createElement("style");
     style.id = STYLE_ID;
     style.textContent = `
-    .${MUTED_ADD_BUTTON_CLASS}[data-ocado-vegan-filter-button-style="fallback"] {
+    .${MUTED_ADD_BUTTON_CLASS} {
       background: #e9e4ed !important;
       border: 0 !important;
       color: #2e004d !important;
     }
 
-    .${MUTED_CARD_CLASS} a[data-test="fop-product-link"] img,
-    .${MUTED_CARD_CLASS} a[data-testid="fop-product-link"] img,
-    .${MUTED_CARD_CLASS} a[href*="/products/"] img,
-    .${MUTED_CARD_CLASS} .image-container img,
-    .${MUTED_CARD_CLASS} .header-container img,
-    .${MUTED_CARD_CLASS} img[data-test="lazy-load-image"],
-    .${MUTED_CARD_CLASS} img[data-testid="lazy-load-image"],
-    .${MUTED_CARD_CLASS} img[alt] {
+    ${PRODUCT_IMAGE_SELECTORS.map((selector) => `.${MUTED_CARD_CLASS} ${selector}`).join(",\n    ")} {
       filter: ${MUTED_IMAGE_FILTER} !important;
       opacity: ${MUTED_IMAGE_OPACITY} !important;
       animation: none !important;
@@ -4861,201 +4866,72 @@
   }
 
   function isAddButton(button) {
-    return /^Add\b/i.test(button.getAttribute("aria-label") || "") && (button.classList.contains(MUTED_ADD_BUTTON_CLASS) || textOf(button) === "Add");
+    return button.matches(ADD_BUTTON_SELECTOR) && /^Add\b/i.test(button.getAttribute("aria-label") || "") && (Boolean(buttonStates.get(button)?.label) || button.classList.contains(MUTED_ADD_BUTTON_CLASS) || textOf(button) === "Add");
   }
 
-  function firstClassMatching(element, pattern) {
-    return Array.from(element.classList || []).find((className) => pattern.test(className)) || "";
-  }
-
-  function firstDocumentClassMatching(pattern, fragment) {
-    const cacheKey = String(pattern);
-    const cachedClassName = documentClassCache.get(cacheKey);
-
-    if (documentClassCache.has(cacheKey)) {
-      return cachedClassName;
-    }
-
-    // Narrow candidates in the native selector engine before examining class
-    // tokens. Walking every class on a large grid can block rendering.
-    for (const element of document.querySelectorAll(`[class*="${fragment}" i]`)) {
-      const className = firstClassMatching(element, pattern);
-
-      if (className) {
-        documentClassCache.set(cacheKey, className);
-        return className;
-      }
-    }
-
-    documentClassCache.set(cacheKey, "");
-    return "";
-  }
-
-  function outOfStockButtonTemplate() {
-    // Prefer copying Ocado's own out-of-stock button style from the current page.
-    return document.querySelector(OUT_OF_STOCK_BUTTON_SELECTOR) || Array.from(document.querySelectorAll("button")).find((button) => textOf(button) === "Show alternatives") || null;
-  }
-
-  function inferredOutOfStockButtonClassName(button) {
-    /*
-     * Some pages do not currently contain an out-of-stock product.
-     * In that case, look for Ocado's reusable secondary-button classes already
-     * present elsewhere on the page and use those as the closest match.
-     */
-    const classes = [
-      firstClassMatching(button, /^_button_[a-z0-9]+_\d+$/i) || firstDocumentClassMatching(/^_button_[a-z0-9]+_\d+$/i, "_button_"),
-      firstDocumentClassMatching(/^_button--m_/, "_button--m_"),
-      firstDocumentClassMatching(/^_button--secondary_/, "_button--secondary_"),
-      firstDocumentClassMatching(/^_button--fill_/, "_button--fill_"),
-    ].filter(Boolean);
-
-    return classes.join(" ");
-  }
-
-  function outOfStockButtonClassName(button) {
-    if (buttonStyleResolved) {
-      return cachedOutOfStockButtonClassName;
-    }
-    buttonStyleResolved = true;
-
-    const template = outOfStockButtonTemplate();
-
-    if (template) {
-      cachedOutOfStockButtonClassName = template.getAttribute("class") || "";
-      return cachedOutOfStockButtonClassName;
-    }
-
-    cachedOutOfStockButtonClassName = inferredOutOfStockButtonClassName(button);
-    return cachedOutOfStockButtonClassName;
-  }
-
-  function applyOutOfStockButtonStyle(button) {
-    // Save the original classes so later vegan metadata can restore the card.
-    if (button.dataset.ocadoVeganFilterOriginalClass === undefined) {
-      button.dataset.ocadoVeganFilterOriginalClass = button.getAttribute("class") || "";
-    }
-
-    const className = outOfStockButtonClassName(button);
-
-    if (className) {
-      const styledClassName = `${className} ${MUTED_ADD_BUTTON_CLASS}`.trim();
-
-      if (button.getAttribute("class") !== styledClassName) {
-        button.setAttribute("class", styledClassName);
-      }
-      if (button.dataset.ocadoVeganFilterButtonStyle !== undefined) {
-        delete button.dataset.ocadoVeganFilterButtonStyle;
-      }
-      if (button.dataset.ocadoVeganFilterAppliedClass !== styledClassName) {
-        button.dataset.ocadoVeganFilterAppliedClass = styledClassName;
-      }
+  function updateAddButtonText(button, state) {
+    if (!state.label || !isAddButton(button)) {
       return;
     }
-
-    if (!button.classList.contains(MUTED_ADD_BUTTON_CLASS)) {
-      button.classList.add(MUTED_ADD_BUTTON_CLASS);
+    const label = button.matches(":hover, :focus-visible") ? ADD_ANYWAY_LABEL : state.label;
+    if (textOf(button) !== label) {
+      button.textContent = label;
     }
-    if (button.dataset.ocadoVeganFilterButtonStyle !== "fallback") {
-      button.dataset.ocadoVeganFilterButtonStyle = "fallback";
-    }
-    const appliedClass = button.getAttribute("class") || "";
-    if (button.dataset.ocadoVeganFilterAppliedClass !== appliedClass) {
-      button.dataset.ocadoVeganFilterAppliedClass = appliedClass;
-    }
-  }
-
-  function installAddAnywayHoverText(button) {
-    if (button.dataset.ocadoVeganFilterHoverTextInstalled) {
-      return;
-    }
-
-    // The button remains Ocado's original Add button. Only the visible text is
-    // changed, and the hover state makes the click-through behaviour explicit.
-    button.addEventListener("mouseenter", () => {
-      if (button.classList.contains(MUTED_ADD_BUTTON_CLASS) && isAddButton(button) && textOf(button) !== ADD_ANYWAY_LABEL) {
-        button.textContent = ADD_ANYWAY_LABEL;
-      }
-    });
-    button.addEventListener("mouseleave", () => {
-      if (button.classList.contains(MUTED_ADD_BUTTON_CLASS) && isAddButton(button)) {
-        const label = button.dataset.ocadoVeganFilterLabel || UNKNOWN_VEGAN_LABEL;
-
-        if (textOf(button) !== label) {
-          button.textContent = label;
-        }
-      }
-    });
-    button.dataset.ocadoVeganFilterHoverTextInstalled = "true";
   }
 
   function styleMutedAddButtons(card, label) {
-    // Do not replace or disable buttons. We keep the existing Ocado Add button
-    // and swap only its visual class set/text, so the original click handler
-    // remains on the original button.
-    for (const addButton of card.querySelectorAll(ADD_BUTTON_SELECTOR)) {
-      if (!isAddButton(addButton)) {
-        if (addButton.classList.contains(MUTED_ADD_BUTTON_CLASS)) {
-          restoreAddButton(addButton);
-        }
+    for (const button of card.querySelectorAll(MANAGED_BUTTON_SELECTOR)) {
+      if (!isAddButton(button)) {
+        restoreAddButton(button);
         continue;
       }
 
-      if (addButton.dataset.ocadoVeganFilterOriginalText === undefined) {
-        addButton.dataset.ocadoVeganFilterOriginalText = textOf(addButton) || "Add";
+      let state = buttonStates.get(button);
+      if (!state) {
+        state = { label: "" };
+        buttonStates.set(button, state);
+        for (const event of ["mouseenter", "mouseleave", "focus", "blur"]) {
+          button.addEventListener(event, () => updateAddButtonText(button, state));
+        }
       }
+      state.label = label;
 
-      applyOutOfStockButtonStyle(addButton);
-      installAddAnywayHoverText(addButton);
-      if (addButton.dataset.ocadoVeganFilterLabel !== label) {
-        addButton.dataset.ocadoVeganFilterLabel = label;
+      // Keep Ocado's layout classes, original button and click handlers. Our
+      // CSS changes only its palette; quantity controls keep their native style.
+      if (!button.classList.contains(MUTED_ADD_BUTTON_CLASS)) {
+        button.classList.add(MUTED_ADD_BUTTON_CLASS);
       }
-
-      const visibleLabel = addButton.matches(":hover") ? ADD_ANYWAY_LABEL : label;
-
-      if (textOf(addButton) !== visibleLabel) {
-        addButton.textContent = visibleLabel;
-      }
+      updateAddButtonText(button, state);
     }
   }
 
-  function restoreAddButton(addButton) {
-    // React can reuse this element for a quantity control, or replace its
-    // classes/text before we run. Restore only the appearance we still own.
-    const appliedClass = addButton.dataset.ocadoVeganFilterAppliedClass;
-    if (typeof addButton.dataset.ocadoVeganFilterOriginalClass === "string" && (appliedClass === undefined || addButton.getAttribute("class") === appliedClass)) {
-      addButton.setAttribute("class", addButton.dataset.ocadoVeganFilterOriginalClass);
-    } else {
-      addButton.classList.remove(MUTED_ADD_BUTTON_CLASS);
+  function restoreAddButton(button) {
+    const state = buttonStates.get(button);
+    const marked = button.classList.contains(MUTED_ADD_BUTTON_CLASS);
+    if (!state?.label && !marked) {
+      return;
     }
-    if (/^Add\b/i.test(addButton.getAttribute("aria-label") || "") && [NON_VEGAN_LABEL, UNKNOWN_VEGAN_LABEL, ADD_ANYWAY_LABEL].includes(textOf(addButton))) {
-      addButton.textContent = addButton.dataset.ocadoVeganFilterOriginalText || "Add";
+    if (marked) {
+      button.classList.remove(MUTED_ADD_BUTTON_CLASS);
     }
-    delete addButton.dataset.ocadoVeganFilterButtonStyle;
-    delete addButton.dataset.ocadoVeganFilterOriginalClass;
-    delete addButton.dataset.ocadoVeganFilterAppliedClass;
-    delete addButton.dataset.ocadoVeganFilterOriginalText;
-    delete addButton.dataset.ocadoVeganFilterLabel;
+    // Clones can retain our class/text without a WeakMap entry. Restore those
+    // too, while preserving a host-owned quantity control's current label.
+    if (/^Add\b/i.test(button.getAttribute("aria-label") || "") && [NON_VEGAN_LABEL, UNKNOWN_VEGAN_LABEL, ADD_ANYWAY_LABEL].includes(textOf(button))) {
+      button.textContent = "Add";
+    }
+    if (state) {
+      state.label = "";
+    }
   }
 
   function restoreAddButtonAppearance(card) {
-    for (const addButton of card.querySelectorAll(`.${MUTED_ADD_BUTTON_CLASS}`)) {
-      restoreAddButton(addButton);
+    for (const button of card.querySelectorAll(MANAGED_BUTTON_SELECTOR)) {
+      restoreAddButton(button);
     }
   }
 
   function productImages(card) {
-    return card.querySelectorAll(
-      [
-        'a[data-test="fop-product-link"] img',
-        'a[data-testid="fop-product-link"] img',
-        'a[href*="/products/"] img',
-        ".image-container img",
-        ".header-container img",
-        'img[data-test="lazy-load-image"]',
-        'img[data-testid="lazy-load-image"]',
-        "img[alt]",
-      ].join(","),
-    );
+    return card.querySelectorAll(PRODUCT_IMAGE_SELECTOR);
   }
 
   function restoreImageAttribute(image, name, value) {
@@ -5066,51 +4942,59 @@
     }
   }
 
-  function imageIsMutedByThisScript(image) {
-    return (
-      image.dataset.ocadoVeganFilterImage === "muted" ||
-      image.dataset.ocadoVeganFilterGrayscaleSource !== undefined ||
-      image.dataset.ocadoVeganFilterOriginalStyle !== undefined ||
-      image.dataset.ocadoVeganFilterOriginalSrc !== undefined ||
-      image.dataset.ocadoVeganFilterOriginalSrcset !== undefined ||
-      image.dataset.ocadoVeganFilterOriginalSizes !== undefined
-    );
-  }
-
   function muteProductImages(card) {
-    // The CSS makes the image pointer-transparent so Ocado's overlaid product
-    // link remains clickable.
     for (const image of productImages(card)) {
-      if (!image.dataset.ocadoVeganFilterImage) {
-        image.dataset.ocadoVeganFilterOriginalStyle = image.getAttribute("style") || "";
+      if (!image.style.cssText.includes("!important")) {
+        imageStyleOverrides.delete(image);
+        continue;
       }
+      let overrides = imageStyleOverrides.get(image);
+      for (const [property, value] of MUTED_IMAGE_STYLE_ENTRIES) {
+        const currentValue = image.style.getPropertyValue(property);
+        const priority = image.style.getPropertyPriority(property);
+        if (currentValue === value && priority === "important") {
+          continue;
+        }
 
-      if (image.dataset.ocadoVeganFilterImage !== "muted") {
-        image.dataset.ocadoVeganFilterImage = "muted";
-      }
-      // CSS handles loaded and lazy images without copying pixels or replacing
-      // Ocado's responsive image sources. Important styles also override fades.
-      for (const [property, value] of Object.entries(MUTED_IMAGE_STYLES)) {
-        setImportantStyle(image, property, value);
-      }
-    }
-  }
+        // A subsequent Ocado write supersedes any value we previously saved.
+        overrides?.delete(property);
+        if (priority !== "important") {
+          continue;
+        }
 
-  function setImportantStyle(element, property, value) {
-    if (element.style.getPropertyValue(property) !== value || element.style.getPropertyPriority(property) !== "important") {
-      element.style.setProperty(property, value, "important");
+        // The stylesheet handles ordinary inline styles and lazy images. Only
+        // inline !important declarations need a stronger inline override.
+        if (!overrides) {
+          overrides = new Map();
+          imageStyleOverrides.set(image, overrides);
+        }
+        overrides.set(property, currentValue);
+        image.style.setProperty(property, value, "important");
+      }
     }
   }
 
   function restoreProductImages(card) {
     for (const image of productImages(card)) {
-      if (!imageIsMutedByThisScript(image)) {
+      const overrides = imageStyleOverrides.get(image);
+      if (!overrides) {
         continue;
       }
+      for (const [property, originalValue] of overrides) {
+        if (image.style.getPropertyValue(property) === MUTED_IMAGE_STYLES[property] && image.style.getPropertyPriority(property) === "important") {
+          image.style.setProperty(property, originalValue, "important");
+        }
+      }
+      imageStyleOverrides.delete(image);
+    }
+  }
 
+  function restoreLegacyImages() {
+    // Compatibility cleanup runs once, outside the normal card-processing path.
+    for (const image of document.querySelectorAll("img[data-ocado-vegan-filter-image], img[data-ocado-vegan-filter-original-style], img[data-ocado-vegan-filter-grayscale-source]")) {
       const original = document.createElement("span").style;
       original.cssText = image.dataset.ocadoVeganFilterOriginalStyle || "";
-      for (const [property, value] of Object.entries(MUTED_IMAGE_STYLES)) {
+      for (const [property, value] of MUTED_IMAGE_STYLE_ENTRIES) {
         // Restore only properties we still own, preserving changes made by Ocado.
         if (image.style.getPropertyValue(property) === value && image.style.getPropertyPriority(property) === "important") {
           const previousValue = original.getPropertyValue(property);
@@ -5346,17 +5230,13 @@
   }
 
   function veganStatusForCard(card) {
-    if (hasOfficialVeganTag(card)) {
-      return "vegan";
-    }
-
     const productId = productIdForCard(card);
 
     /*
      * Positive evidence is intentionally checked before the known non-vegan
      * fallback. In particular, Ocado's official metadata is authoritative.
      */
-    if (isKnownVeganProductId(productId) || productNameOrSlugSaysVegan(card) || hydrationProductHasVeganAttribute(productId)) {
+    if (isKnownVeganProductId(productId) || hasOfficialVeganTag(card) || productNameOrSlugSaysVegan(card) || hydrationProductHasVeganAttribute(productId)) {
       return "vegan";
     }
 
@@ -5385,22 +5265,15 @@
     styleMutedAddButtons(card, label);
   }
 
-  function productCards() {
-    // Ocado uses more than one card shape across search, category, and promotion pages.
+  function productCards(root = document) {
+    // Normalise wrappers and their inner cards to one processing target.
     const cards = new Set();
-
-    for (const element of document.querySelectorAll(CARD_SELECTOR)) {
-      cards.add(element.matches(".product-card-container") ? element : element.querySelector(".product-card-container") || element);
+    if (root.nodeType === Node.ELEMENT_NODE && root.matches(CARD_SELECTOR)) {
+      cards.add(findProductCard(root));
     }
-
-    for (const button of document.querySelectorAll(ADD_BUTTON_SELECTOR)) {
-      const card = findProductCard(button);
-
-      if (card) {
-        cards.add(card);
-      }
+    for (const element of root.querySelectorAll(CARD_SELECTOR)) {
+      cards.add(findProductCard(element));
     }
-
     return cards;
   }
 
@@ -5411,29 +5284,12 @@
   const pendingCards = new Set();
   const relevantAttributes = new Set(["alt", "class", "data-test", "data-testid", "href", "src", "srcset", "sizes", "style", "id", "data-icon", "aria-label"]);
 
-  function invalidateButtonStyle() {
-    buttonStyleResolved = false;
-    cachedOutOfStockButtonClassName = "";
-    documentClassCache.clear();
-  }
-
   function collectAddedCards(element) {
     if (element.nodeType !== Node.ELEMENT_NODE) {
       return;
     }
-    const cards = element.querySelectorAll(CARD_SELECTOR);
-    if (element.matches(CARD_SELECTOR)) {
-      pendingCards.add(findProductCard(element));
-    }
-    for (const card of cards) {
-      pendingCards.add(findProductCard(card));
-    }
-    if (cards.length || element.matches(CARD_SELECTOR)) {
-      invalidateButtonStyle();
-    }
-    if (element.matches(OUT_OF_STOCK_BUTTON_SELECTOR) || element.querySelector(OUT_OF_STOCK_BUTTON_SELECTOR)) {
-      invalidateButtonStyle();
-      needsFullScan = true;
+    for (const card of productCards(element)) {
+      pendingCards.add(card);
     }
   }
 
@@ -5501,6 +5357,8 @@
     scheduled = true;
     window.requestAnimationFrame(run);
   }
+
+  restoreLegacyImages();
 
   // Route page changes to affected cards. Text-node and namespaced SVG updates
   // matter too; filter attributes here so xlink:href mutations remain observable.

@@ -39,8 +39,10 @@ INSTRUMENT = """
     const originalGrayscale = grayscaleImageDataUrl;
     grayscaleImageDataUrl = function(...args) {const start=performance.now(); try{return originalGrayscale(...args);}finally{audit.canvas.push(performance.now()-start);}};
   }
-  const originalClassScan = firstDocumentClassMatching;
-  firstDocumentClassMatching = function(...args) {audit.classScans++; return originalClassScan(...args);};
+  if (typeof firstDocumentClassMatching === 'function') {
+    const originalClassScan = firstDocumentClassMatching;
+    firstDocumentClassMatching = function(...args) {audit.classScans++; return originalClassScan(...args);};
+  }
 """
 
 SCOPED_OBSERVER = """new MutationObserver((records) => {
