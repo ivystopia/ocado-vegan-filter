@@ -1,0 +1,114 @@
+{
+  "source_sha256": "5783204bb6911b38cbcf76908bd4e67086c813059ac0f3b822c8c2837b47b5a8",
+  "browser": "Firefox 155.0.1",
+  "installation": "active FireMonkey 2.74 in the running user profile",
+  "basket_actions": 0,
+  "scenarios": [
+    {
+      "url": "https://www.ocado.com/search?q=Kuhne+Gherkins&sortBy=priceAscending",
+      "width": 1920,
+      "height": 958,
+      "timeOrigin": 1789204781065,
+      "styles": 1,
+      "legacyImageMarkers": 0,
+      "case": "price-sort-low-to-high",
+      "rendered_cards": 7,
+      "placeholder_cards": 0,
+      "statuses": {
+        "vegan": 3,
+        "unknown": 3,
+        "nonvegan": 1
+      },
+      "issues": []
+    },
+    {
+      "case": "restore-original-sort",
+      "sort": "Favourites first",
+      "passed": true
+    },
+    {
+      "url": "https://www.ocado.com/search?q=Kuhne+Gherkins&sortBy=favorite",
+      "width": 1920,
+      "height": 958,
+      "timeOrigin": 1789204781065,
+      "styles": 1,
+      "legacyImageMarkers": 0,
+      "case": "sort-restored",
+      "rendered_cards": 7,
+      "placeholder_cards": 0,
+      "statuses": {
+        "vegan": 3,
+        "unknown": 3,
+        "nonvegan": 1
+      },
+      "issues": []
+    },
+    {
+      "case": "product-link-click",
+      "product_id": "511102011",
+      "link_hit_test": true,
+      "reached_product": true,
+      "same_document": true
+    },
+    {
+      "url": "https://www.ocado.com/search?q=Kuhne+Gherkins&sortBy=favorite",
+      "width": 1920,
+      "height": 958,
+      "timeOrigin": 1789204781065,
+      "styles": 1,
+      "legacyImageMarkers": 0,
+      "case": "history-back-to-results",
+      "rendered_cards": 7,
+      "placeholder_cards": 0,
+      "statuses": {
+        "vegan": 3,
+        "unknown": 3,
+        "nonvegan": 1
+      },
+      "issues": []
+    },
+    {
+      "case": "history-forward-to-product",
+      "reached_product": true
+    },
+    {
+      "url": "https://www.ocado.com/search?q=Kuhne+Gherkins&sortBy=favorite",
+      "width": 1920,
+      "height": 958,
+      "timeOrigin": 1789204781065,
+      "styles": 1,
+      "legacyImageMarkers": 0,
+      "case": "history-back-again",
+      "rendered_cards": 7,
+      "placeholder_cards": 0,
+      "statuses": {
+        "vegan": 3,
+        "unknown": 3,
+        "nonvegan": 1
+      },
+      "issues": []
+    },
+    {
+      "case": "empty-search",
+      "product_links": 0,
+      "styles": 1,
+      "passed": true
+    },
+    {
+      "url": "https://www.ocado.com/search?q=milk",
+      "width": 1920,
+      "height": 958,
+      "timeOrigin": 1789204784390,
+      "styles": 1,
+      "legacyImageMarkers": 0,
+      "case": "recover-from-empty-search",
+      "rendered_cards": 14,
+      "placeholder_cards": 36,
+      "statuses": {
+        "nonvegan": 9,
+        "vegan": 5
+      },
+      "issues": []
+    }
+  ]
+}

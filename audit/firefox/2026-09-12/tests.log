@@ -1,0 +1,154 @@
+test_defaults_use_luna_high_with_two_passes (test_benchmark_ocado_vegan.BenchmarkOcadoVeganTests.test_defaults_use_luna_high_with_two_passes) ... ok
+test_fixture_contains_two_balanced_24_product_cohorts (test_benchmark_ocado_vegan.BenchmarkOcadoVeganTests.test_fixture_contains_two_balanced_24_product_cohorts) ... ok
+test_frozen_fixture_runs_without_opening_live_database (test_benchmark_ocado_vegan.BenchmarkOcadoVeganTests.test_frozen_fixture_runs_without_opening_live_database) ... Benchmark cohort challenge: 24 products
+Benchmark cohort holdout: 24 products
+ok
+test_build_database_imports_union_latest_values_text_nutrition_and_fts (test_build_ocado_database.BuildOcadoDatabaseTests.test_build_database_imports_union_latest_values_text_nutrition_and_fts) ... ok
+test_html_to_text_removes_formatting_and_collapses_whitespace (test_build_ocado_database.BuildOcadoDatabaseTests.test_html_to_text_removes_formatting_and_collapses_whitespace) ... ok
+test_money_to_gbp_normalizes_gbp_and_gbx (test_build_ocado_database.BuildOcadoDatabaseTests.test_money_to_gbp_normalizes_gbp_and_gbx) ... ok
+test_parse_nutrition_rows_extracts_product_specific_values (test_build_ocado_database.BuildOcadoDatabaseTests.test_parse_nutrition_rows_extracts_product_specific_values) ... ok
+test_allergy_sufferer_warning_does_not_override_official_vegan_tag (test_classify_ocado_vegan.ClassifyOcadoVeganTests.test_allergy_sufferer_warning_does_not_override_official_vegan_tag) ... ok
+test_allowlisted_ingredients_classify_vegan (test_classify_ocado_vegan.ClassifyOcadoVeganTests.test_allowlisted_ingredients_classify_vegan) ... ok
+test_ambiguous_ingredients_classify_unknown (test_classify_ocado_vegan.ClassifyOcadoVeganTests.test_ambiguous_ingredients_classify_unknown) ... ok
+test_codex_commits_completed_run_status (test_classify_ocado_vegan.ClassifyOcadoVeganTests.test_codex_commits_completed_run_status) ... ok
+test_codex_commits_interrupted_run_status (test_classify_ocado_vegan.ClassifyOcadoVeganTests.test_codex_commits_interrupted_run_status) ... Codex batch 1/1: products 1-1 of 1
+ok
+test_codex_defaults_use_benchmarked_luna_configuration (test_classify_ocado_vegan.ClassifyOcadoVeganTests.test_codex_defaults_use_benchmarked_luna_configuration) ... ok
+test_codex_payload_validation_and_disagreement_merge (test_classify_ocado_vegan.ClassifyOcadoVeganTests.test_codex_payload_validation_and_disagreement_merge) ... ok
+test_codex_refuses_unclassified_officially_tagged_products (test_classify_ocado_vegan.ClassifyOcadoVeganTests.test_codex_refuses_unclassified_officially_tagged_products) ... ok
+test_conflicting_manufacturer_text_classifies_unknown (test_classify_ocado_vegan.ClassifyOcadoVeganTests.test_conflicting_manufacturer_text_classifies_unknown) ... ok
+test_explicit_animal_ingredient_overrides_manufacturer_claim (test_classify_ocado_vegan.ClassifyOcadoVeganTests.test_explicit_animal_ingredient_overrides_manufacturer_claim) ... ok
+test_explicit_animal_variants_classify_nonvegan (test_classify_ocado_vegan.ClassifyOcadoVeganTests.test_explicit_animal_variants_classify_nonvegan) ... ok
+test_explicit_manufacturer_vegan_text_classifies_as_manufacturer (test_classify_ocado_vegan.ClassifyOcadoVeganTests.test_explicit_manufacturer_vegan_text_classifies_as_manufacturer) ... ok
+test_explicit_nonvegan_text_classifies_as_nonvegan (test_classify_ocado_vegan.ClassifyOcadoVeganTests.test_explicit_nonvegan_text_classifies_as_nonvegan) ... ok
+test_fortified_wheat_flour_classifies_vegan_when_other_terms_are_safe (test_classify_ocado_vegan.ClassifyOcadoVeganTests.test_fortified_wheat_flour_classifies_vegan_when_other_terms_are_safe) ... ok
+test_free_from_milk_protein_statement_does_not_classify_nonvegan (test_classify_ocado_vegan.ClassifyOcadoVeganTests.test_free_from_milk_protein_statement_does_not_classify_nonvegan) ... ok
+test_free_from_statement_does_not_override_official_vegan_tag (test_classify_ocado_vegan.ClassifyOcadoVeganTests.test_free_from_statement_does_not_override_official_vegan_tag) ... ok
+test_incidental_vegan_feature_text_does_not_classify_as_manufacturer (test_classify_ocado_vegan.ClassifyOcadoVeganTests.test_incidental_vegan_feature_text_does_not_classify_as_manufacturer) ... ok
+test_inline_may_contain_does_not_override_official_vegan_tag (test_classify_ocado_vegan.ClassifyOcadoVeganTests.test_inline_may_contain_does_not_override_official_vegan_tag) ... ok
+test_may_contain_milk_protein_warning_does_not_classify_nonvegan (test_classify_ocado_vegan.ClassifyOcadoVeganTests.test_may_contain_milk_protein_warning_does_not_classify_nonvegan) ... ok
+test_may_contain_milk_warning_does_not_classify_nonvegan (test_classify_ocado_vegan.ClassifyOcadoVeganTests.test_may_contain_milk_warning_does_not_classify_nonvegan) ... ok
+test_migration_adds_canonical_columns_and_drops_legacy_phase_columns (test_classify_ocado_vegan.ClassifyOcadoVeganTests.test_migration_adds_canonical_columns_and_drops_legacy_phase_columns) ... ok
+test_obvious_nonvegan_ingredients_classify_as_nonvegan (test_classify_ocado_vegan.ClassifyOcadoVeganTests.test_obvious_nonvegan_ingredients_classify_as_nonvegan) ... ok
+test_official_vegan_tag_classifies_as_tagged (test_classify_ocado_vegan.ClassifyOcadoVeganTests.test_official_vegan_tag_classifies_as_tagged) ... ok
+test_official_vegan_tag_overrides_conflicting_ingredient_text (test_classify_ocado_vegan.ClassifyOcadoVeganTests.test_official_vegan_tag_overrides_conflicting_ingredient_text) ... ok
+test_other_milk_allergen_warnings_do_not_classify_nonvegan (test_classify_ocado_vegan.ClassifyOcadoVeganTests.test_other_milk_allergen_warnings_do_not_classify_nonvegan) ... ok
+test_plant_butter_does_not_override_official_vegan_tag (test_classify_ocado_vegan.ClassifyOcadoVeganTests.test_plant_butter_does_not_override_official_vegan_tag) ... ok
+test_plant_context_animal_words_do_not_classify_nonvegan (test_classify_ocado_vegan.ClassifyOcadoVeganTests.test_plant_context_animal_words_do_not_classify_nonvegan) ... ok
+test_product_name_contains_vegan_classifies_as_name (test_classify_ocado_vegan.ClassifyOcadoVeganTests.test_product_name_contains_vegan_classifies_as_name) ... ok
+test_run_records_originating_sync_run (test_classify_ocado_vegan.ClassifyOcadoVeganTests.test_run_records_originating_sync_run) ... ok
+test_single_ingredient_examples_classify_vegan (test_classify_ocado_vegan.ClassifyOcadoVeganTests.test_single_ingredient_examples_classify_vegan) ... ok
+test_single_ingredient_product_identity_classifies_vegan (test_classify_ocado_vegan.ClassifyOcadoVeganTests.test_single_ingredient_product_identity_classifies_vegan) ... ok
+test_single_ingredient_product_identity_requires_produce_category (test_classify_ocado_vegan.ClassifyOcadoVeganTests.test_single_ingredient_product_identity_requires_produce_category) ... ok
+test_standalone_vegan_feature_classifies_as_manufacturer (test_classify_ocado_vegan.ClassifyOcadoVeganTests.test_standalone_vegan_feature_classifies_as_manufacturer) ... ok
+test_sync_run_selector_limits_unclassified_products (test_classify_ocado_vegan.ClassifyOcadoVeganTests.test_sync_run_selector_limits_unclassified_products) ... ok
+test_write_classification_updates_product_and_audit (test_classify_ocado_vegan.ClassifyOcadoVeganTests.test_write_classification_updates_product_and_audit) ... ok
+test_classifier_prompt_contains_product_context_evidence_and_ambiguity_rules (test_ocado_vegan_according_to_ingredients.VeganAccordingToIngredientsTests.test_classifier_prompt_contains_product_context_evidence_and_ambiguity_rules) ... ok
+test_explicitly_says_vegan_accepts_positive_claims_and_rejects_negatives (test_ocado_vegan_according_to_ingredients.VeganAccordingToIngredientsTests.test_explicitly_says_vegan_accepts_positive_claims_and_rejects_negatives) ... ok
+test_green_beans_single_ingredient_without_ingredients_field_includes_evidence (test_ocado_vegan_according_to_ingredients.VeganAccordingToIngredientsTests.test_green_beans_single_ingredient_without_ingredients_field_includes_evidence) ... ok
+test_legacy_classifier_defaults_to_luna_high (test_ocado_vegan_according_to_ingredients.VeganAccordingToIngredientsTests.test_legacy_classifier_defaults_to_luna_high) ... ok
+test_manufacturer_list_skip_helper_if_exposed (test_ocado_vegan_according_to_ingredients.VeganAccordingToIngredientsTests.test_manufacturer_list_skip_helper_if_exposed) ... ok
+test_merge_classifier_decisions_keeps_yes_decisions_and_drops_rejections (test_ocado_vegan_according_to_ingredients.VeganAccordingToIngredientsTests.test_merge_classifier_decisions_keeps_yes_decisions_and_drops_rejections) ... ok
+test_ms_udon_ambiguous_fortified_wheat_is_excluded_from_evidence (test_ocado_vegan_according_to_ingredients.VeganAccordingToIngredientsTests.test_ms_udon_ambiguous_fortified_wheat_is_excluded_from_evidence) ... ok
+test_normalize_text_unescapes_html_strips_tags_and_collapses_whitespace (test_ocado_vegan_according_to_ingredients.VeganAccordingToIngredientsTests.test_normalize_text_unescapes_html_strips_tags_and_collapses_whitespace) ... ok
+test_product_has_vegan_tag_uses_icon_attributes_only (test_ocado_vegan_according_to_ingredients.VeganAccordingToIngredientsTests.test_product_has_vegan_tag_uses_icon_attributes_only) ... ok
+test_rummo_spaghetti_ingredients_include_evidence (test_ocado_vegan_according_to_ingredients.VeganAccordingToIngredientsTests.test_rummo_spaghetti_ingredients_include_evidence) ... ok
+test_cloned_muted_buttons_can_be_reclassified (test_ocado_vegan_filter.UserscriptTests.test_cloned_muted_buttons_can_be_reclassified) ... ok
+test_css_preserves_normal_image_styles_and_lazy_sources (test_ocado_vegan_filter.UserscriptTests.test_css_preserves_normal_image_styles_and_lazy_sources) ... ok
+test_fixture (test_ocado_vegan_filter.UserscriptTests.test_fixture) ... ok
+test_host_updates_survive_muting_and_reclassification (test_ocado_vegan_filter.UserscriptTests.test_host_updates_survive_muting_and_reclassification) ... ok
+test_image_ownership (test_ocado_vegan_filter.UserscriptTests.test_image_ownership) ... ok
+test_image_rendering (test_ocado_vegan_filter.UserscriptTests.test_image_rendering) ... ok
+test_incremental_updates (test_ocado_vegan_filter.UserscriptTests.test_incremental_updates) ... ok
+test_keyboard_and_changed_counter_attributes (test_ocado_vegan_filter.UserscriptTests.test_keyboard_and_changed_counter_attributes) ... ok
+test_live_pages (test_ocado_vegan_filter.UserscriptTests.test_live_pages) ... ok
+test_malformed_hydration (test_ocado_vegan_filter.UserscriptTests.test_malformed_hydration) ... ok
+test_native_button_classes_survive_while_muted (test_ocado_vegan_filter.UserscriptTests.test_native_button_classes_survive_while_muted) ... ok
+test_reused_counter (test_ocado_vegan_filter.UserscriptTests.test_reused_counter) ... ok
+test_source (test_ocado_vegan_filter.UserscriptTests.test_source) ... ok
+test_apply_category_replacement_is_atomic_for_latest_run (test_sync_ocado_database.SyncOcadoDatabaseTests.test_apply_category_replacement_is_atomic_for_latest_run) ... ok
+test_apply_current_flags_marks_current_and_stale_products (test_sync_ocado_database.SyncOcadoDatabaseTests.test_apply_current_flags_marks_current_and_stale_products) ... ok
+test_apply_product_detail_updates_product_tables_and_fts (test_sync_ocado_database.SyncOcadoDatabaseTests.test_apply_product_detail_updates_product_tables_and_fts) ... ok
+test_change_payload_ignores_url_and_nonclassification_display_flags (test_sync_ocado_database.SyncOcadoDatabaseTests.test_change_payload_ignores_url_and_nonclassification_display_flags) ... ok
+test_detail_refresh_clears_removed_fields_evidence_and_flags (test_sync_ocado_database.SyncOcadoDatabaseTests.test_detail_refresh_clears_removed_fields_evidence_and_flags) ... ok
+test_failed_sync_preserves_baseline_across_reopen_and_retry (test_sync_ocado_database.SyncOcadoDatabaseTests.test_failed_sync_preserves_baseline_across_reopen_and_retry) ... fixture smoke test passed
+image ownership smoke test passed
+image rendering smoke test passed
+incremental updates smoke test passed
+{
+  "additionalVeganExample": {
+    "id": "511102011",
+    "href": "https://www.ocado.com/products/kuhne-gherkins/511102011",
+    "buttonText": "Add",
+    "visibleOfficialIcon": false,
+    "text": "Kuhne GherkinsVegetarianVegetarian(65)Rating, 4.5 out of 5 from 65 reviews.Kuhne GherkinsNow \u00a32.50, was \u00a33.10\u00a32.50 (\u00a33.73 per kilo)Offer name: Now \u00a32.50, was \u00a33"
+  }
+}
+additional vegan search smoke test passed
+{
+  "loadedCards": 51,
+  "mutedExamples": [
+    {
+      "id": "313624011",
+      "buttonText": "Not vegan",
+      "imageFilter": "grayscale(1) saturate(0)",
+      "offerColor": "rgb(101, 67, 72)",
+      "offerPriceColor": null,
+      "text": "FeaturedThis is a featured product.Heinz Seriously Good MayonnaiseVegetarianVegetarianGluten FreeGluten FreeOcado Price "
+    },
+    {
+      "id": "665167011",
+      "buttonText": "Unknown vegan",
+      "imageFilter": "grayscale(1) saturate(0)",
+      "offerColor": "rgb(101, 67, 72)",
+      "offerPriceColor": "rgb(101, 67, 72)",
+      "text": "FeaturedThis is a featured product.Plenish Ginger Dosing Bottle 7x ShotsLife 3w+Product life guaranteed for more than 3 "
+    },
+    {
+      "id": "659647011",
+      "buttonText": "Unknown vegan",
+      "imageFilter": "grayscale(1) saturate(0)",
+      "offerColor": "rgb(101, 67, 72)",
+      "offerPriceColor": "rgb(101, 67, 72)",
+      "text": "FeaturedThis is a featured product.Colgate Total Active Prevention Original ToothpasteVegetarianVegetarianOcado Price Pr"
+    }
+  ],
+  "officialVeganExamples": [
+    {
+      "id": "31661011",
+      "buttonText": "Add",
+      "text": "FeaturedThis is a featured product.New Covent Garden Tomato & Basil SoupLife 6d+Product life guaranteed for 6 days exclu"
+    },
+    {
+      "id": "306797011",
+      "buttonText": "Add",
+      "text": "FeaturedThis is a featured product.Coca-Cola Zero SugarVegetarianVegetarianVeganVegan(75)Rating, 3.2 out of 5 from 75 re"
+    },
+    {
+      "id": "251626011",
+      "buttonText": "Add",
+      "text": "FeaturedThis is a featured product.Real Olive Co. Organic Mixed Pitted Olives with Moroccan FlavoursLife 1m+Product life"
+    }
+  ]
+}
+promotions page smoke test passed
+malformed hydration smoke test passed
+reused counter smoke test passed
+userscript source test passed
+Snapshotted classifier context for 1 products
+Reusing classifier context from the unfinished sync
+Context changes new=1 changed=1 removed=0 invalidated=2
+ok
+test_full_detail_selection_is_defaultable (test_sync_ocado_database.SyncOcadoDatabaseTests.test_full_detail_selection_is_defaultable) ... ok
+test_product_id_from_url_handles_slugged_product_urls (test_sync_ocado_database.SyncOcadoDatabaseTests.test_product_id_from_url_handles_slugged_product_urls) ... ok
+test_rolling_backup_replaces_existing_backup (test_sync_ocado_database.SyncOcadoDatabaseTests.test_rolling_backup_replaces_existing_backup) ... ok
+test_dry_run_does_not_write_userscript (test_update_userscript_allowlists.UpdateUserscriptAllowlistsTests.test_dry_run_does_not_write_userscript) ... ok
+test_export_requires_latest_sync_completed (test_update_userscript_allowlists.UpdateUserscriptAllowlistsTests.test_export_requires_latest_sync_completed) ... ok
+test_load_allowlists_rejects_official_tag_classification_conflicts (test_update_userscript_allowlists.UpdateUserscriptAllowlistsTests.test_load_allowlists_rejects_official_tag_classification_conflicts) ... ok
+test_regenerate_uses_only_canonical_vegan_rows (test_update_userscript_allowlists.UpdateUserscriptAllowlistsTests.test_regenerate_uses_only_canonical_vegan_rows) ... ok
+test_replace_set_preserves_retained_order_and_appends_new_ids (test_update_userscript_allowlists.UpdateUserscriptAllowlistsTests.test_replace_set_preserves_retained_order_and_appends_new_ids) ... ok
+
+----------------------------------------------------------------------
+Ran 79 tests in 39.716s
+
+OK

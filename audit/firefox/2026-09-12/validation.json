@@ -1,0 +1,184 @@
+{
+  "date": "2026-09-12",
+  "baseline_commit": "15974b4",
+  "baseline_source_sha256": "dd43faeedf2f275c402484e182382a4914a3dda0d860a046e716655aa82eaa2f",
+  "baseline_live_source_sha256": "dd43faeedf2f275c402484e182382a4914a3dda0d860a046e716655aa82eaa2f",
+  "published_baseline": "1.7.0",
+  "published_baseline_source_exact_match": true,
+  "release": {
+    "version": "1.7.1",
+    "tag_commit": "0ff48c703bed598beb57eca65dd9c25b06a1c225",
+    "tag_signature_verified": true,
+    "source_sha256": "5783204bb6911b38cbcf76908bd4e67086c813059ac0f3b822c8c2837b47b5a8",
+    "pushed": false,
+    "published": false
+  },
+  "development_source_sha256": "e5ea9c7c80066c4d9a9ef9306344db430cb3438f9bac7defb71ae2d63a6c63e3",
+  "release_differs_from_development_only_in_version_line": true,
+  "tests": {
+    "command": "OCADO_LIVE_TESTS=1 python3 -m unittest discover -s tests -v",
+    "passed": 79,
+    "skipped": 0,
+    "seconds": 39.716,
+    "node_syntax": "passed",
+    "targeted_ruff": "passed"
+  },
+  "scenarios": {
+    "responsive_release": 18,
+    "installed_release_grids": 17,
+    "installed_release_navigation": 9,
+    "basket_actions": 0,
+    "all_issues_empty": true
+  },
+  "embedded_ids": {
+    "official": 4669,
+    "manufacturer_or_name": 8291,
+    "ingredients": 6153,
+    "known_nonvegan": 13933,
+    "vegan_union": 19113,
+    "added": 0,
+    "removed": 0,
+    "scope": "all known classified products, including historical IDs"
+  },
+  "classifier_benchmark": "not run; no classifier rule, model, schema, prompt, or catalogue changes",
+  "measurements": [
+    {
+      "mode": "replay",
+      "page": "promotions",
+      "repetitions": 5,
+      "cards": [
+        74
+      ],
+      "before": {
+        "initial_median_ms": 10,
+        "initial_max_call_ms": 9,
+        "compile_and_init_median_ms": 8,
+        "single_card_20_mutations_median_ms": 4
+      },
+      "after": {
+        "initial_median_ms": 8,
+        "initial_max_call_ms": 8,
+        "compile_and_init_median_ms": 8,
+        "single_card_20_mutations_median_ms": 4
+      },
+      "states_equal": true
+    },
+    {
+      "mode": "replay",
+      "page": "milk",
+      "repetitions": 5,
+      "cards": [
+        75
+      ],
+      "before": {
+        "initial_median_ms": 10,
+        "initial_max_call_ms": 9,
+        "compile_and_init_median_ms": 9,
+        "single_card_20_mutations_median_ms": 4
+      },
+      "after": {
+        "initial_median_ms": 7,
+        "initial_max_call_ms": 8,
+        "compile_and_init_median_ms": 9,
+        "single_card_20_mutations_median_ms": 3
+      },
+      "states_equal": true
+    },
+    {
+      "mode": "stress",
+      "page": "promotions",
+      "repetitions": 3,
+      "cards": [
+        592
+      ],
+      "before": {
+        "initial_median_ms": 56,
+        "initial_max_call_ms": 12,
+        "compile_and_init_median_ms": 7,
+        "single_card_20_mutations_median_ms": 3
+      },
+      "after": {
+        "initial_median_ms": 35,
+        "initial_max_call_ms": 11,
+        "compile_and_init_median_ms": 13,
+        "single_card_20_mutations_median_ms": 6
+      },
+      "states_equal": true
+    },
+    {
+      "mode": "stress",
+      "page": "milk",
+      "repetitions": 3,
+      "cards": [
+        600
+      ],
+      "before": {
+        "initial_median_ms": 51,
+        "initial_max_call_ms": 12,
+        "compile_and_init_median_ms": 8,
+        "single_card_20_mutations_median_ms": 5
+      },
+      "after": {
+        "initial_median_ms": 37,
+        "initial_max_call_ms": 11,
+        "compile_and_init_median_ms": 10,
+        "single_card_20_mutations_median_ms": 2
+      },
+      "states_equal": true
+    },
+    {
+      "mode": "live",
+      "page": "promotions",
+      "repetitions": 3,
+      "cards": [
+        51
+      ],
+      "before": {
+        "initial_median_ms": 11,
+        "initial_max_call_ms": 9,
+        "compile_and_init_median_ms": 10,
+        "scroll_median_ms": 47,
+        "scroll_max_call_ms": 12
+      },
+      "after": {
+        "initial_median_ms": 9,
+        "initial_max_call_ms": 9,
+        "compile_and_init_median_ms": 8,
+        "scroll_median_ms": 36,
+        "scroll_max_call_ms": 10
+      },
+      "states_equal": null
+    },
+    {
+      "mode": "live",
+      "page": "milk",
+      "repetitions": 3,
+      "cards": [
+        50
+      ],
+      "before": {
+        "initial_median_ms": 10,
+        "initial_max_call_ms": 9,
+        "compile_and_init_median_ms": 8,
+        "scroll_median_ms": 52,
+        "scroll_max_call_ms": 7
+      },
+      "after": {
+        "initial_median_ms": 9,
+        "initial_max_call_ms": 9,
+        "compile_and_init_median_ms": 7,
+        "scroll_median_ms": 40,
+        "scroll_max_call_ms": 5
+      },
+      "states_equal": null
+    }
+  ],
+  "installation_evidence": "installation.json",
+  "cleanup": {
+    "task_tabs_closed": 2,
+    "other_windows_preserved": 1,
+    "task_debugging_server_closed": true,
+    "original_firefox_process_still_running": true,
+    "task_gateway_closed": true
+  }
+}

@@ -1,0 +1,340 @@
+{
+  "source_sha256": "5783204bb6911b38cbcf76908bd4e67086c813059ac0f3b822c8c2837b47b5a8",
+  "browser": "Firefox 155.0.1",
+  "installation": "active FireMonkey 2.74 in the running user profile",
+  "basket_actions": 0,
+  "scenarios": [
+    {
+      "url": "https://www.ocado.com/search?q=milk",
+      "width": 1920,
+      "height": 958,
+      "timeOrigin": 1789204752005,
+      "styles": 1,
+      "legacyImageMarkers": 0,
+      "case": "installed-milk",
+      "cards": 50,
+      "rendered_cards": 14,
+      "placeholder_cards": 36,
+      "statuses": {
+        "nonvegan": 9,
+        "vegan": 5
+      },
+      "image_link_hits": 8,
+      "add_button_hits": 8,
+      "issues": []
+    },
+    {
+      "url": "https://www.ocado.com/search?q=milk",
+      "width": 1920,
+      "height": 958,
+      "timeOrigin": 1789204752005,
+      "styles": 1,
+      "legacyImageMarkers": 0,
+      "case": "milk-scroll-4",
+      "cards": 74,
+      "rendered_cards": 36,
+      "placeholder_cards": 38,
+      "statuses": {
+        "nonvegan": 35,
+        "vegan": 1
+      },
+      "image_link_hits": 8,
+      "add_button_hits": 16,
+      "issues": []
+    },
+    {
+      "url": "https://www.ocado.com/search?q=milk",
+      "width": 1920,
+      "height": 958,
+      "timeOrigin": 1789204752005,
+      "styles": 1,
+      "legacyImageMarkers": 0,
+      "case": "milk-scroll-8",
+      "cards": 122,
+      "rendered_cards": 36,
+      "placeholder_cards": 86,
+      "statuses": {
+        "nonvegan": 21,
+        "vegan": 15
+      },
+      "image_link_hits": 8,
+      "add_button_hits": 11,
+      "issues": []
+    },
+    {
+      "url": "https://www.ocado.com/search?q=milk",
+      "width": 1920,
+      "height": 958,
+      "timeOrigin": 1789204752005,
+      "styles": 1,
+      "legacyImageMarkers": 0,
+      "case": "milk-scroll-12",
+      "cards": 170,
+      "rendered_cards": 36,
+      "placeholder_cards": 134,
+      "statuses": {
+        "nonvegan": 3,
+        "vegan": 29,
+        "unknown": 4
+      },
+      "image_link_hits": 8,
+      "add_button_hits": 16,
+      "issues": []
+    },
+    {
+      "url": "https://www.ocado.com/search?q=vegan%20cheese",
+      "width": 1920,
+      "height": 958,
+      "timeOrigin": 1789204752005,
+      "styles": 1,
+      "legacyImageMarkers": 0,
+      "case": "search-form-vegan-cheese",
+      "cards": 36,
+      "rendered_cards": 14,
+      "placeholder_cards": 22,
+      "statuses": {
+        "vegan": 14
+      },
+      "image_link_hits": 7,
+      "add_button_hits": 7,
+      "issues": [],
+      "same_document_search": true
+    },
+    {
+      "url": "https://www.ocado.com/promotions",
+      "width": 1920,
+      "height": 958,
+      "timeOrigin": 1789204759553,
+      "styles": 1,
+      "legacyImageMarkers": 0,
+      "case": "offers",
+      "cards": 50,
+      "rendered_cards": 19,
+      "placeholder_cards": 31,
+      "statuses": {
+        "nonvegan": 6,
+        "unknown": 3,
+        "vegan": 10
+      },
+      "image_link_hits": 8,
+      "add_button_hits": 8,
+      "issues": []
+    },
+    {
+      "url": "https://www.ocado.com/promotions",
+      "width": 1920,
+      "height": 958,
+      "timeOrigin": 1789204759553,
+      "styles": 1,
+      "legacyImageMarkers": 0,
+      "case": "offers-scrolled",
+      "cards": 74,
+      "rendered_cards": 51,
+      "placeholder_cards": 23,
+      "statuses": {
+        "nonvegan": 6,
+        "unknown": 3,
+        "vegan": 42
+      },
+      "image_link_hits": 8,
+      "add_button_hits": 16,
+      "issues": []
+    },
+    {
+      "url": "https://www.ocado.com/categories/dietary-lifestyle/organic/c2e434b7-af39-4215-bc1e-2554a5f56919",
+      "width": 1920,
+      "height": 958,
+      "timeOrigin": 1789204763527,
+      "styles": 1,
+      "legacyImageMarkers": 0,
+      "case": "organic-category",
+      "cards": 50,
+      "rendered_cards": 32,
+      "placeholder_cards": 18,
+      "statuses": {
+        "vegan": 17,
+        "nonvegan": 13,
+        "unknown": 2
+      },
+      "image_link_hits": 0,
+      "add_button_hits": 0,
+      "issues": []
+    },
+    {
+      "url": "https://www.ocado.com/categories/dietary-lifestyle/organic/c2e434b7-af39-4215-bc1e-2554a5f56919",
+      "width": 1920,
+      "height": 958,
+      "timeOrigin": 1789204763527,
+      "styles": 1,
+      "legacyImageMarkers": 0,
+      "case": "organic-category-scrolled",
+      "cards": 74,
+      "rendered_cards": 53,
+      "placeholder_cards": 21,
+      "statuses": {
+        "vegan": 38,
+        "nonvegan": 13,
+        "unknown": 2
+      },
+      "image_link_hits": 8,
+      "add_button_hits": 8,
+      "issues": []
+    },
+    {
+      "url": "https://www.ocado.com/search?q=Kuhne+Gherkins",
+      "width": 1920,
+      "height": 958,
+      "timeOrigin": 1789204767351,
+      "styles": 1,
+      "legacyImageMarkers": 0,
+      "case": "gherkins-manufacturer",
+      "cards": 7,
+      "rendered_cards": 7,
+      "placeholder_cards": 0,
+      "statuses": {
+        "vegan": 3,
+        "unknown": 3,
+        "nonvegan": 1
+      },
+      "image_link_hits": 7,
+      "add_button_hits": 6,
+      "issues": []
+    },
+    {
+      "url": "https://www.ocado.com/search?q=Kuhne+Gherkins",
+      "width": 1920,
+      "height": 958,
+      "timeOrigin": 1789204767351,
+      "styles": 1,
+      "legacyImageMarkers": 0,
+      "case": "gherkins-manufacturer-scrolled",
+      "cards": 7,
+      "rendered_cards": 7,
+      "placeholder_cards": 0,
+      "statuses": {
+        "vegan": 3,
+        "unknown": 3,
+        "nonvegan": 1
+      },
+      "image_link_hits": 0,
+      "add_button_hits": 6,
+      "issues": []
+    },
+    {
+      "url": "https://www.ocado.com/search?q=bread",
+      "width": 1920,
+      "height": 958,
+      "timeOrigin": 1789204770213,
+      "styles": 1,
+      "legacyImageMarkers": 0,
+      "case": "bakery",
+      "cards": 50,
+      "rendered_cards": 14,
+      "placeholder_cards": 36,
+      "statuses": {
+        "vegan": 11,
+        "unknown": 3
+      },
+      "image_link_hits": 8,
+      "add_button_hits": 8,
+      "issues": []
+    },
+    {
+      "url": "https://www.ocado.com/search?q=bread",
+      "width": 1920,
+      "height": 958,
+      "timeOrigin": 1789204770213,
+      "styles": 1,
+      "legacyImageMarkers": 0,
+      "case": "bakery-scrolled",
+      "cards": 74,
+      "rendered_cards": 36,
+      "placeholder_cards": 38,
+      "statuses": {
+        "vegan": 20,
+        "unknown": 10,
+        "nonvegan": 6
+      },
+      "image_link_hits": 8,
+      "add_button_hits": 14,
+      "issues": []
+    },
+    {
+      "url": "https://www.ocado.com/search?q=washing+up+liquid",
+      "width": 1920,
+      "height": 958,
+      "timeOrigin": 1789204773819,
+      "styles": 1,
+      "legacyImageMarkers": 0,
+      "case": "household",
+      "cards": 51,
+      "rendered_cards": 15,
+      "placeholder_cards": 36,
+      "statuses": {
+        "vegan": 5,
+        "unknown": 10
+      },
+      "image_link_hits": 8,
+      "add_button_hits": 8,
+      "issues": []
+    },
+    {
+      "url": "https://www.ocado.com/search?q=washing+up+liquid",
+      "width": 1920,
+      "height": 958,
+      "timeOrigin": 1789204773819,
+      "styles": 1,
+      "legacyImageMarkers": 0,
+      "case": "household-scrolled",
+      "cards": 68,
+      "rendered_cards": 36,
+      "placeholder_cards": 32,
+      "statuses": {
+        "vegan": 18,
+        "unknown": 18
+      },
+      "image_link_hits": 8,
+      "add_button_hits": 16,
+      "issues": []
+    },
+    {
+      "url": "https://www.ocado.com/search?q=carrots",
+      "width": 1920,
+      "height": 958,
+      "timeOrigin": 1789204777224,
+      "styles": 1,
+      "legacyImageMarkers": 0,
+      "case": "fresh-produce",
+      "cards": 54,
+      "rendered_cards": 18,
+      "placeholder_cards": 36,
+      "statuses": {
+        "vegan": 17,
+        "unknown": 1
+      },
+      "image_link_hits": 7,
+      "add_button_hits": 7,
+      "issues": []
+    },
+    {
+      "url": "https://www.ocado.com/search?q=carrots",
+      "width": 1920,
+      "height": 958,
+      "timeOrigin": 1789204777224,
+      "styles": 1,
+      "legacyImageMarkers": 0,
+      "case": "fresh-produce-scrolled",
+      "cards": 78,
+      "rendered_cards": 38,
+      "placeholder_cards": 40,
+      "statuses": {
+        "vegan": 21,
+        "nonvegan": 11,
+        "unknown": 6
+      },
+      "image_link_hits": 16,
+      "add_button_hits": 8,
+      "issues": []
+    }
+  ]
+}
