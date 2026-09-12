@@ -53,7 +53,7 @@ The project has two related goals:
 
 - The distributable userscript is `Ocado Vegan Filter`.
 - The repo copy is `ocado-vegan-filter.user.js`.
-- For the current userscript development loop, write changes to the repo copy only; the user will handle Firefox/FireMonkey installation and testing unless they explicitly ask otherwise.
+- Ordinary development edits go to the repo copy. Whenever a requested local release tag is created or remade, also update the user's installed FireMonkey copy to the exact tagged source, reload it safely, and verify it for the user's pre-publication testing. This installation is part of release preparation and does not need a separate permission question.
 - Preserve the current userscript formatting style; edits should already match VS Code autoformat-on-save output and should not introduce formatting-only churn.
 - If the user says they updated a separate local copy of the userscript, treat that named file as the current source of truth and sync the repo copy from it after validating.
 - Keep the script self-contained; it should not fetch Ocado product detail pages or call third-party services while shopping.
@@ -67,14 +67,15 @@ The project has two related goals:
 - Never use a personal domain in userscript metadata.
 - Greasy Fork may force or preserve `@namespace`; if a namespace is required, use a non-personal value.
 - Use `@license Unlicense` and preserve the Unlicense text when preparing release files.
-- Bump the userscript version for fixes and behavior changes before publishing.
+- Bump the userscript version when preparing a new release. Fixes found while testing an unpublished local release keep that release's agreed version number.
 - Keep the product counts at the top of the userscript comment block up to date whenever a userscript change is finalised.
 - When regenerating embedded product ID allowlists, keep the diff minimal: preserve the relative order and line placement of retained IDs, remove obsolete IDs in place, append only genuinely new IDs, and avoid unrelated userscript changes.
 - Commit development changes directly to `main`.
-- Tag only versions that are live on Greasy Fork.
+- For requested release work, prepare a signed annotated local tag once the agreed version passes repository checks, before the user's FireMonkey testing and Greasy Fork publication.
 - Use exact Greasy Fork version strings for tags, for example `1.4.4`, not `v1.4.4`.
-- Use signed annotated tags for Greasy Fork release tags.
-- Do not create a release tag until the user confirms the version is ready to publish to Greasy Fork.
+- If the user finds a bug while testing an unpublished local release, fix it at the same version, rerun the relevant checks, and remake the signed annotated local tag at the corrected commit.
+- Check local/remote tag state and publication state before moving an existing tag. Replacing an unpublished, unpushed local tag is part of this testing workflow; changing shared tags or rewriting pushed history needs explicit authorization for that concrete action.
+- Local release preparation does not authorize pushing or publishing. A tag push creates a GitHub release through the workflow; a local tag or metadata version alone does not prove publication on Greasy Fork.
 
 ## Git Workflow
 
@@ -99,18 +100,19 @@ The project has two related goals:
 
 ## Updating Installed FireMonkey Directly
 
-Use this only when the user explicitly asks to update the installed userscript without using the browser UI.
+Use this when creating or remaking a requested local release tag, or when the user separately asks to update the installed userscript directly.
 
 - Back up FireMonkey's storage directory first.
 - Use a temporary headless Firefox profile with the FireMonkey XPI and a copy of FireMonkey's storage directory.
 - In the temporary extension page, call `browser.storage.local.get()`, dynamically import `content/meta.js`, parse the source with `Meta.get(source, pref)`, and write it with `browser.storage.local.set({['_Ocado Vegan Filter']: parsed})`.
 - Copy the serialized IndexedDB `object_data.data` blob for the `_Ocado Vegan Filter` key from the temporary profile back into the real profile.
 - Update only the `data` column for the existing row; avoid modifying IndexedDB trigger-sensitive columns such as `file_ids`.
-- Verify with a fresh temporary Firefox profile that FireMonkey reads the expected version, metadata, and source.
+- Verify with a fresh temporary Firefox profile that FireMonkey reads the expected version, metadata, and exact tagged source. Compare the full source or its hash: fixes to an unpublished local release can retain the same version number.
 - A running Firefox/FireMonkey process may have an in-memory registration of the old script. Updating IndexedDB on disk is not enough by itself; FireMonkey must be reloaded so it unregisters/re-registers the userscript from storage.
 - If Firefox is running and the user has authorized updating their real install, automate the reload step where practical: disable FireMonkey, load/reload the relevant Ocado page, re-enable FireMonkey, then hard-refresh the Ocado tab.
 - Never use blind GUI keystrokes for this reload. If GUI automation is required, first target and verify the specific Firefox window/tab; do not type into whichever window currently has focus.
 - Do not close or restart Firefox for this workflow unless the user explicitly asks. If safe targeted automation is not possible, stop and give the user the exact manual reload steps instead.
+- Report the backup path, installed version and source verification, and whether the running extension was successfully reloaded. A storage-only update must not be described as a verified active installation.
 
 ## Testing
 

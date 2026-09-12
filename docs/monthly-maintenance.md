@@ -217,10 +217,10 @@ If there are no allowlist changes, do not bump the userscript version or publish
 
 ## 6. Regenerate And Test A Changed Userscript
 
-If the allowlists changed and the validation gates passed, choose the next patch version. Replace the example version below with the intended value:
+If the allowlists changed and the validation gates passed, agree the release version using the current source, local tags, and last published Greasy Fork version. A routine catalogue update normally uses the next patch version; fixes during testing of an unpublished local release keep its agreed version. Set `NEXT_VERSION` to that value before running:
 
 ```bash
-NEXT_VERSION="1.6.2"
+: "${NEXT_VERSION:?Set NEXT_VERSION to the agreed release version}"
 
 python3 tools/update_userscript_allowlists.py \
   --db "$DB_PATH" \
@@ -235,7 +235,7 @@ git diff -- ocado-vegan-filter.user.js
 
 The generator preserves retained ID order, removes obsolete IDs in place, appends genuinely new IDs, updates the counts in the source comment, and changes the metadata version.
 
-Test the repo copy in Firefox with FireMonkey. Confirm at least:
+Confirm these states in the automated Firefox tests, then repeat the acceptance checks in the installed FireMonkey copy after step 7 installs the tagged release:
 
 - an officially tagged vegan product;
 - a manufacturer/name allowlisted vegan product;
@@ -248,14 +248,15 @@ Test the repo copy in Firefox with FireMonkey. Confirm at least:
 
 Commit the tested userscript and retained benchmark/report artifacts directly to `main` as one scoped maintenance change.
 
-Publishing remains a deliberate manual boundary:
+Prepare the release locally before publication:
 
-1. Publish the exact tested version to Greasy Fork.
-2. Confirm the live Greasy Fork version and source.
-3. Only then create the signed annotated Git tag using the exact version string, without a `v` prefix.
-4. Push the commit and tag; the tag workflow creates the GitHub release assets.
+1. Create and verify a signed annotated local tag at the tested commit, using the exact userscript version without a `v` prefix. Include the release notes in the tag annotation.
+2. Back up FireMonkey storage, install the exact tagged source into the user's local FireMonkey, safely reload it, and verify the installed source as described in `AGENTS.md`. This is part of preparing the local tag, so no separate installation permission is needed. The user then tests it before publishing to Greasy Fork.
+3. If testing finds a bug, fix it at the same version, rerun the relevant checks, commit the correction, and remake and verify the signed annotated local tag. Repeat the FireMonkey installation, reload, and source verification. Check first that the tag is still unpublished and unpushed; changing a shared tag or rewriting pushed history requires explicit authorization for that concrete action.
+4. After the user's testing, publish the exact tested source to Greasy Fork when requested, or let the user publish it. Verify the live version and source before describing it as published.
+5. When pushing is requested, push the commit and release tag. The tag workflow runs the checks, verifies that the tag equals the userscript metadata version, and creates the GitHub release assets.
 
-Do not tag an unpublished version, and do not update the installed FireMonkey copy directly unless that separate workflow was explicitly requested.
+Creating a local tag includes updating the installed FireMonkey copy, but does not authorize pushing or publication. If safe reload automation is unavailable, provide the exact manual reload steps and report that active installation verification remains incomplete; do not close or restart the user's Firefox without an explicit request.
 
 ## Monthly Stop Conditions
 
