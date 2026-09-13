@@ -1,0 +1,35 @@
+{
+  "tag": "1.7.2",
+  "tag_object": "6d6eef6ec5d0af3910ef8a709b3e5331f5eddd79",
+  "commit": "905b54348fd39d67d4fe42eb24654a8cbf7409e6",
+  "signature_verified": true,
+  "source_sha256": "5276d765f27fc870df5ec319fdfc63bcaa5dc88dc6ea87970c42b55e9f47a039",
+  "metadata_version": "1.7.2",
+  "working_source_matches_tag": true,
+  "prior_published_version": "1.7.1",
+  "new_release_pushed": false,
+  "new_release_published": false,
+  "firemonkey": {
+    "tag": "1.7.2",
+    "tag_commit": "905b54348fd39d67d4fe42eb24654a8cbf7409e6",
+    "source_sha256": "5276d765f27fc870df5ec319fdfc63bcaa5dc88dc6ea87970c42b55e9f47a039",
+    "version": "1.7.2",
+    "enabled": true,
+    "exact_source_verified": true,
+    "unrelated_rows_preserved": 36,
+    "active_reload_verified": false,
+    "active_reload_pending": true,
+    "active_verification_reason": "The exact pending Browser Console command could not be verified after accessibility insertion, so no bootstrap command was executed. No extension toggle or Ocado page reload was performed. The task-created console was cleared and closed.",
+    "firemonkey_enabled_verified": true,
+    "diagnostic_console_closed": true,
+    "original_firefox_process_preserved": true,
+    "private_debug_listener_created": false,
+    "manual_reload_steps": [
+      "Disable FireMonkey.",
+      "Load or reload the relevant Ocado page while FireMonkey is disabled.",
+      "Re-enable FireMonkey.",
+      "Hard-refresh the Ocado tab (Ctrl+Shift+R)."
+    ],
+    "timestamped_storage_backup_created": true
+  }
+}

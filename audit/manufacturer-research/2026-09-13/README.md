@@ -64,5 +64,12 @@ Database backup: `/home/ivy/repos/personal/ocado_report/ocado_products.sqlite.be
 - [unaccepted-candidates.csv](unaccepted-candidates.csv): disagreeing/unknown reviews and closing-audit exclusions.
 - [closing-evidence-audit.json](closing-evidence-audit.json): the bounded source audit and the parent's conservative exclusions.
 - [validation.json](validation.json): test results and exact data/source comparison results.
+- [release-verification.json](release-verification.json): verified signed tag `1.7.2` at `905b543`, exact installed-source match, and the running-extension verification outcome.
 
 Full source captures, review records and unfinished discovery remain in the ignored `.manufacturer-research/2026-09-13/` workspace and the SQLite audit tables. The application used a frozen bundle; later research would require a new, explicitly resumed run.
+
+## Installed release handoff
+
+FireMonkey storage was backed up and updated to the exact signed 1.7.2 source. A fresh disposable Firefox profile verified the version, enabled state and full source hash; 36 unrelated storage rows were preserved. The original Firefox process remained running. This post-tag verification record does not change the tagged userscript.
+
+Activation in the running Firefox remains unverified. The diagnostic console could not confirm the complete inserted reload-bootstrap command, so it was not executed; the diagnostic console was cleared and closed, and FireMonkey remains enabled. No extension toggle, Ocado reload or basket change was made during that attempt. To activate the installed update, disable FireMonkey, reload the relevant Ocado page while it is disabled, re-enable FireMonkey, then hard-refresh the Ocado tab with `Ctrl+Shift+R`.
