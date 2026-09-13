@@ -1,0 +1,132 @@
+{
+  "created_at": "2026-09-13T19:47:59.954369+00:00",
+  "snapshot": {
+    "created_at": "2026-09-13T16:54:54.455484+00:00",
+    "scope": "all products with vegan_status='unknown' at start, including historical products",
+    "total_products": 21372,
+    "current_products": 19371,
+    "brands": 2366,
+    "parts": [
+      5902,
+      3094,
+      3094,
+      3094,
+      3094,
+      3094
+    ]
+  },
+  "research": {
+    "total_products": 21372,
+    "current_products": 19371,
+    "brands": 2366,
+    "outcomes": {
+      "no_confirmation": 11678,
+      "confirmed_vegan": 1563,
+      "pending": 8075,
+      "blocked": 56
+    },
+    "sources": 5820,
+    "complete_products": 12624,
+    "errors": []
+  },
+  "coverage_complete": false,
+  "stopping_reason": "User requested stopping further research after diminishing returns on 2026-09-13; apply only already collected evidence accepted by both independent reviews.",
+  "brands_with_completed_investigation": 457,
+  "fully_completed_brands": 457,
+  "brands_with_accepted_additions": 186,
+  "reviews": {
+    "candidates": 1563,
+    "two_pass_confirmations": 1398,
+    "additional_candidates_withheld_after_closing_audit": 5,
+    "disagreements": 79,
+    "both_unknown": 86,
+    "canonical_rejections": 0,
+    "model": "gpt-5.6-luna",
+    "reasoning_effort": "high",
+    "passes": 2,
+    "prompt_version": "manufacturer-source-scope-v2"
+  },
+  "accepted_all_known": 1398,
+  "accepted_current": 1324,
+  "before": [
+    {
+      "status": "nonvegan",
+      "reason": null,
+      "all_known": 13933,
+      "current": 13131
+    },
+    {
+      "status": "unknown",
+      "reason": null,
+      "all_known": 21372,
+      "current": 19371
+    },
+    {
+      "status": "vegan",
+      "reason": "ingredients",
+      "all_known": 6153,
+      "current": 5366
+    },
+    {
+      "status": "vegan",
+      "reason": "manufacturer",
+      "all_known": 8025,
+      "current": 7449
+    },
+    {
+      "status": "vegan",
+      "reason": "name",
+      "all_known": 266,
+      "current": 220
+    },
+    {
+      "status": "vegan",
+      "reason": "tagged",
+      "all_known": 4669,
+      "current": 4414
+    }
+  ],
+  "after": [
+    {
+      "status": "nonvegan",
+      "reason": null,
+      "all_known": 13933,
+      "current": 13131
+    },
+    {
+      "status": "unknown",
+      "reason": null,
+      "all_known": 19974,
+      "current": 18047
+    },
+    {
+      "status": "vegan",
+      "reason": "ingredients",
+      "all_known": 6153,
+      "current": 5366
+    },
+    {
+      "status": "vegan",
+      "reason": "manufacturer",
+      "all_known": 9423,
+      "current": 8773
+    },
+    {
+      "status": "vegan",
+      "reason": "name",
+      "all_known": 266,
+      "current": 220
+    },
+    {
+      "status": "vegan",
+      "reason": "tagged",
+      "all_known": 4669,
+      "current": 4414
+    }
+  ],
+  "research_run_id": 1,
+  "classification_run_id": 32,
+  "bundle_hash": "e9af8782aa7cfdba3d4048228b4af583781457fbeabffe558e7b92c2a4bd4e02",
+  "database_backup_path": "/home/ivy/repos/personal/ocado_report/ocado_products.sqlite.before-manufacturer-20260913T194132Z.bak",
+  "userscript_sha256": "5276d765f27fc870df5ec319fdfc63bcaa5dc88dc6ea87970c42b55e9f47a039"
+}

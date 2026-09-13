@@ -1,0 +1,417 @@
+{
+  "audited_at": "2026-09-13T19:35:26.363827+00:00",
+  "scope": "Bounded read-only audit of 15 current independently accepted global review cases, plus one additional Neal's Yard case explicitly requested by the parent. Focus: markets, reformulations and wine vintages. No retrieval, edits to other partitions, source mutation or review resampling.",
+  "cases_reviewed": 16,
+  "current_review_hashes_matched": 16,
+  "material_scope_conflict_ids": [
+    "599866011",
+    "599867011",
+    "512988011",
+    "42739011"
+  ],
+  "narrower_discrepancy_ids": [
+    "645504011"
+  ],
+  "cases": [
+    {
+      "product_id": "599866011",
+      "brand": "Antipodes",
+      "name": "Antipodes Kiwi Seed Oil Eye Cream",
+      "review_path": "/home/ivy/repos/personal/ocado_report/.manufacturer-research/2026-09-13/reviews/599866011.json",
+      "research_artifact": "/home/ivy/repos/personal/ocado_report/.manufacturer-research/2026-09-13/part-6/results/6de23c42ad931fb596944eee360fbb02f48ebed22292aa795fddfdb9c27e962a.json",
+      "review_outcome_at_audit": "confirmed_vegan",
+      "current_input_hash_matched": true,
+      "sources": [
+        {
+          "source_id": "7a53e5704de911b81700ceed1029f88a29b376505f56d6cf89fd81d81bbbdee2",
+          "url": "https://uk.antipodesnature.com/products/kiwi-seed-oil-eye-cream-30ml",
+          "source_text_path": "/home/ivy/repos/personal/ocado_report/.manufacturer-research/2026-09-13/part-6/sources/web-source-008.txt",
+          "content_sha256": "b163fc9804612ae48236a85bd3c8e8a224bc8df5a526319e8ff2e38bb29288a6"
+        }
+      ],
+      "verdict": "concrete_scope_discrepancy",
+      "severity": "withhold_pending_parent_scope_check",
+      "finding": "Current Antipodes Kiwi Seed Oil Eye Cream vegan certification was accepted by name/30ml, but the retained source formula differs from the stored complete INCI.",
+      "stored_evidence": "Stored ingredients include glyceryl stearate and do not list palmitic acid, lauric acid or myristic acid.",
+      "source_evidence": "Current source instead lists glyceryl stearate SE and adds palmitic acid, lauric acid and myristic acid; ingredient ordering also differs.",
+      "broader_assurance": "Only the current named product certification is supplied. No retained whole-brand/all-formulas assertion resolves the stored formula.",
+      "recommended_action": "Conservatively withhold this candidate from application unless existing broader retained evidence independently covers the stored formula; do not resample to overturn the observed discrepancy."
+    },
+    {
+      "product_id": "641975011",
+      "brand": "E45",
+      "name": "E45 Hydrating Face Serum with Hyaluronic Acid for Dry & Sensitive Skin",
+      "review_path": "/home/ivy/repos/personal/ocado_report/.manufacturer-research/2026-09-13/reviews/641975011.json",
+      "research_artifact": "/home/ivy/repos/personal/ocado_report/.manufacturer-research/2026-09-13/part-6/results/87f815e385d5d6c14674ec1ede10955a38499d87a5d86169b115fd88451eae1b.json",
+      "review_outcome_at_audit": "confirmed_vegan",
+      "current_input_hash_matched": true,
+      "sources": [
+        {
+          "source_id": "332361f1b86f8e59599c019fb51d113ba3f12ce615200b033533bca6f341497a",
+          "url": "https://e45.com/uk/product/e45-face-hydrating-serum/",
+          "source_text_path": "/home/ivy/repos/personal/ocado_report/.manufacturer-research/2026-09-13/part-6/sources/620e026d0310ebe7739dd74dc36925ebe234842ca0e846e7fa0d8c8ee23954a8.txt",
+          "content_sha256": "0b3197d1d4bcb78f43cd23b976c010c93393ce63f36ca9d3d85091f686c21a93"
+        }
+      ],
+      "verdict": "no_concrete_scope_conflict_found",
+      "finding": "Exact UK E45 Face Hydrating Serum 30ml has the same complete ingredient list and explicit vegan statement. No extension to other E45 creams containing lanolin was made."
+    },
+    {
+      "product_id": "485978011",
+      "brand": "Simple",
+      "name": "Simple Wipes Daily Detox Matte",
+      "review_path": "/home/ivy/repos/personal/ocado_report/.manufacturer-research/2026-09-13/reviews/485978011.json",
+      "research_artifact": "/home/ivy/repos/personal/ocado_report/.manufacturer-research/2026-09-13/part-6/results/3fee95da5ab69ebfdc16ec892b754105a11c20203054a6c6bcc0a60176891043.json",
+      "review_outcome_at_audit": "confirmed_vegan",
+      "current_input_hash_matched": true,
+      "sources": [
+        {
+          "source_id": "1c9bce73390bc10008711f7eefe08572429e9522c20ac72005c62ebd269cb092",
+          "url": "https://www.simple.co.uk/products/face-wipes.html",
+          "source_text_path": "/home/ivy/repos/personal/ocado_report/.manufacturer-research/2026-09-13/part-6/sources/simple-wipes.txt",
+          "content_sha256": "c41c6db35de6437ed83752f48c94d6b77252b51dfb911299986e95fbdd78f644"
+        }
+      ],
+      "verdict": "no_concrete_scope_conflict_found",
+      "finding": "Simple UK source vegan wording is in the named Daily Skin Detox Matte & Clear wipes section, matching the stored matte/detox identity, thyme/zinc/witch-hazel actives and biodegradable fibre description. No other wipe section is substituted."
+    },
+    {
+      "product_id": "209791011",
+      "brand": "Sanex",
+      "name": "Sanex Expert Skin Health Moisturising Bubble Bath Soak",
+      "review_path": "/home/ivy/repos/personal/ocado_report/.manufacturer-research/2026-09-13/reviews/209791011.json",
+      "research_artifact": "/home/ivy/repos/personal/ocado_report/.manufacturer-research/2026-09-13/part-3/results/657c00409cd2a13adb6795ba7903aec5ced97f11f923e878040fd415193cc776.json",
+      "review_outcome_at_audit": "confirmed_vegan",
+      "current_input_hash_matched": true,
+      "sources": [
+        {
+          "source_id": "c74ca50a03411f9ced0d39f7f863297130e1c48716ef6d0e835f37693c9da649",
+          "url": "https://www.sanex.co.uk/products/bath/sanex-expert-skin-health-moisturising-bath-soak",
+          "source_text_path": "/home/ivy/repos/personal/ocado_report/.manufacturer-research/2026-09-13/part-3/sources/178aba4f19477149214502a3d7c0e6c6c1834e7767252d5f6853e7f1f4b2756a.browser.txt",
+          "content_sha256": "9438c9dafd2c7ee61ae6031d4789a9a80add22b9c31fdf770e7ea157bcf83743"
+        }
+      ],
+      "verdict": "no_concrete_scope_conflict_found",
+      "finding": "Sanex UK exact named bath foam has an explicit vegan statement. The complete source ingredient set matches the stored set despite ordering differences in the ingredient-purpose table."
+    },
+    {
+      "product_id": "28155011",
+      "brand": "Nivea",
+      "name": "NIVEA Soft Moisturiser Cream for Face Hands & Body,",
+      "review_path": "/home/ivy/repos/personal/ocado_report/.manufacturer-research/2026-09-13/reviews/28155011.json",
+      "research_artifact": "/home/ivy/repos/personal/ocado_report/.manufacturer-research/2026-09-13/part-3/results/2031d13ab44fd2c88dad9e946762665d9bb4bdc2dca5797c69a369c2c13eb84d.json",
+      "review_outcome_at_audit": "confirmed_vegan",
+      "current_input_hash_matched": true,
+      "sources": [
+        {
+          "source_id": "1533a5928edbbfc941218a502bd4e09aea81f9aa8ec14030b4c95bd6b4c61afd",
+          "url": "https://www.nivea.co.uk/products/soft-moisturiser-face-body-and-hands-422074430045.html",
+          "source_text_path": "/home/ivy/repos/personal/ocado_report/.manufacturer-research/2026-09-13/part-3/sources/898ef9774352bc6d90cc4f8c480f46c94a9057c9752b32b4874b05d33019ea40.txt",
+          "content_sha256": "ef109e63cdfdd527f584af9453859364e7e3da2d76d7585ccc7f178c3f0f2689"
+        }
+      ],
+      "verdict": "no_concrete_scope_conflict_found",
+      "finding": "Reformulated UK NIVEA Soft claim is matched by the complete stored current INCI, including the new fatty-acid/vegetable-oil system. The 200ml snapshot and 50ml source share that formula; no older lanolin formula was accepted."
+    },
+    {
+      "product_id": "419472011",
+      "brand": "Sukin",
+      "name": "Sukin Natural Cleansing Shampoo",
+      "review_path": "/home/ivy/repos/personal/ocado_report/.manufacturer-research/2026-09-13/reviews/419472011.json",
+      "research_artifact": "/home/ivy/repos/personal/ocado_report/.manufacturer-research/2026-09-13/part-3/results/0a24c6c632e8021c77b9045ce556b5cfd06172e6b4d5ce10d6b89ccf569b9962.json",
+      "review_outcome_at_audit": "confirmed_vegan",
+      "current_input_hash_matched": true,
+      "sources": [
+        {
+          "source_id": "d71661a2bad3e55c57f5013d2f2c9901d5e2214c881c137292626e2cb07e5529",
+          "url": "https://sukinnaturals.co.uk/pages/brand-values",
+          "source_text_path": "/home/ivy/repos/personal/ocado_report/.manufacturer-research/2026-09-13/part-3/sources/d96002792da91e5750e58bfb3b3beecdc720a77509ebc8449e2e2f75862fa987.web.txt",
+          "content_sha256": "985238eb0e87336b0e6b074e41a57753d1a9935a60b5e10017ec3c01bfd78464"
+        }
+      ],
+      "verdict": "no_concrete_scope_conflict_found",
+      "finding": "Sukin UK own brand-values publication explicitly covers animal derivatives and processes for the brand generally. The stored Australian-made Sukin Natural Balance/Cleansing Shampoo is within that brand scope; no product/market exception appears."
+    },
+    {
+      "product_id": "457221011",
+      "brand": "Aveeno",
+      "name": "Aveeno Skin Relief Moisturising Body Wash for Very Dry Skin",
+      "review_path": "/home/ivy/repos/personal/ocado_report/.manufacturer-research/2026-09-13/reviews/457221011.json",
+      "research_artifact": "/home/ivy/repos/personal/ocado_report/.manufacturer-research/2026-09-13/part-3/results/6d6e343e4c9b996ae9715949d4c46ae9a755042743115261cebf3d7c42e48ea4.json",
+      "review_outcome_at_audit": "confirmed_vegan",
+      "current_input_hash_matched": true,
+      "sources": [
+        {
+          "source_id": "5218df87eb9fcb1975b89007efcb2d2ad49eed074e0d4c86c19577dc6bdaaa1b",
+          "url": "https://www.aveeno.co.uk/products/skin-relief-body-wash",
+          "source_text_path": "/home/ivy/repos/personal/ocado_report/.manufacturer-research/2026-09-13/part-3/sources/e94df84ab6b2c7206da10479ffff8177f286ef49750804d1e963d05d1d63998d.txt",
+          "content_sha256": "831a72e13db4c0e5720b5f071466442bb8c7ae0186981fec5901d270ea22d4c3"
+        }
+      ],
+      "verdict": "no_concrete_scope_conflict_found",
+      "finding": "Exact UK Aveeno Skin Relief Body Wash claim matches the full 500ml stored ingredient sequence and source PR-0000409. No market or reformulation mismatch found."
+    },
+    {
+      "product_id": "513175011",
+      "brand": "M&S",
+      "name": "M&S Bordeaux Merlot",
+      "review_path": "/home/ivy/repos/personal/ocado_report/.manufacturer-research/2026-09-13/reviews/513175011.json",
+      "research_artifact": "/home/ivy/repos/personal/ocado_report/.manufacturer-research/2026-09-13/part-1/results/ms.json",
+      "review_outcome_at_audit": "confirmed_vegan",
+      "current_input_hash_matched": true,
+      "sources": [
+        {
+          "source_id": "1a6f05cbee82052b866ca79ebdb86acd0c8fe85c6bce87d8d5c17b5eddd326ca",
+          "url": "https://www.marksandspencer.com/food/bordeaux-merlot/p/fdp20001889",
+          "source_text_path": "/home/ivy/repos/personal/ocado_report/.manufacturer-research/2026-09-13/part-1/sources/24fd8e4f37693daed36c.txt",
+          "content_sha256": "bd589f778548eae2b515333d8e40e11446c02147ea1382e5d394574791394682"
+        }
+      ],
+      "verdict": "no_concrete_scope_conflict_found",
+      "finding": "UK 75cl Bordeaux Merlot source is vintage 2023; snapshot names the same 100% Merlot wine without a conflicting vintage or blend. No concrete conflict found; approval is not a claim about all vintages."
+    },
+    {
+      "product_id": "527649011",
+      "brand": "M&S",
+      "name": "M&S Classics Cote De Provence Rose",
+      "review_path": "/home/ivy/repos/personal/ocado_report/.manufacturer-research/2026-09-13/reviews/527649011.json",
+      "research_artifact": "/home/ivy/repos/personal/ocado_report/.manufacturer-research/2026-09-13/part-1/results/ms.json",
+      "review_outcome_at_audit": "confirmed_vegan",
+      "current_input_hash_matched": true,
+      "sources": [
+        {
+          "source_id": "6da4a109be841b844e1854b204e066ad7cdf1e4143e88f291dff14288668ef14",
+          "url": "https://www.marksandspencer.com/food/classics-cotes-de-provence/p/fdp60463893",
+          "source_text_path": "/home/ivy/repos/personal/ocado_report/.manufacturer-research/2026-09-13/part-1/sources/7840a77e7e7a06f6e759.txt",
+          "content_sha256": "cb45c58892517204ec8959178b59195678ed0735d877fb329775ebde2acc618a"
+        }
+      ],
+      "verdict": "no_concrete_scope_conflict_found",
+      "finding": "UK 75cl Classics Provence rosé source is vintage 2025. Snapshot 9.8 units/75cl accords with the source 13% ABV, and no conflicting vintage or complete grape blend is stored. No concrete conflict found."
+    },
+    {
+      "product_id": "512988011",
+      "brand": "M&S",
+      "name": "M&S Coteaux Varois en Provence Rose Small Bottle",
+      "review_path": "/home/ivy/repos/personal/ocado_report/.manufacturer-research/2026-09-13/reviews/512988011.json",
+      "research_artifact": "/home/ivy/repos/personal/ocado_report/.manufacturer-research/2026-09-13/part-1/results/ms.json",
+      "review_outcome_at_audit": "confirmed_vegan",
+      "current_input_hash_matched": true,
+      "sources": [
+        {
+          "source_id": "e42d3462da37033796a388f0987ed16aeec2171bbfc7a5a5cfe2190aac08b828",
+          "url": "https://www.marksandspencer.com/food/coteaux-varois-en-provence-ros/p/fdp60109934",
+          "source_text_path": "/home/ivy/repos/personal/ocado_report/.manufacturer-research/2026-09-13/part-1/sources/1c2b8c310f985e529667.txt",
+          "content_sha256": "00261ab7ae87a5c603e25a360f0949db5e537672e7ef4091d0d4c62c79145b35"
+        }
+      ],
+      "verdict": "concrete_scope_discrepancy",
+      "severity": "withhold_pending_parent_scope_check",
+      "finding": "The accepted M&S Coteaux Varois en Provence Rosé 250ml source is explicitly vintage 2025 and publishes a complete grape blend incompatible with the stored blend description.",
+      "stored_evidence": "The stored product says it is made with Cinsault, Grenache, Syrah, Mourvèdre and Rolle.",
+      "source_evidence": "The 2025 source gives a complete 100% blend: 18% Cinsault, 47% Grenache, 1% Carignan, 26% Syrah, 1% Rolle, 4% Cabernet Sauvignon, 1% Grenache Blanc, 1% Ugni Blanc and 1% Semillon. No Mourvèdre is included.",
+      "broader_assurance": "The only selected source is the current named wine product page; no all-vintages manufacturer assurance was supplied.",
+      "recommended_action": "Conservatively withhold this stored product from application because the current vintage/blend statement does not establish its recorded wine blend."
+    },
+    {
+      "product_id": "680172011",
+      "brand": "Flint",
+      "name": "Flint Vineyard Charmat Rose",
+      "review_path": "/home/ivy/repos/personal/ocado_report/.manufacturer-research/2026-09-13/reviews/680172011.json",
+      "research_artifact": "/home/ivy/repos/personal/ocado_report/.manufacturer-research/2026-09-13/part-5/results/4cbbe5b839033a5bbd72600a4c423c345e3ada2a8f77778ca8879c518be5f66a.json",
+      "review_outcome_at_audit": "confirmed_vegan",
+      "current_input_hash_matched": true,
+      "sources": [
+        {
+          "source_id": "f7470e44659c3c31ef276d38e3437ab53953268d21f511a1893b086f12961140",
+          "url": "https://flintvineyard.com/products/charmat-rose",
+          "source_text_path": "/home/ivy/repos/personal/ocado_report/.manufacturer-research/2026-09-13/part-5/sources/fa5e0765d049ff374ef6963367d9dfcd7d5bf8908428134001e97309d4bca4bd.txt",
+          "content_sha256": "e08941feb81b060112a9ea98646bd3d65218aa9f549ecf0885e57d67f7b6ec27"
+        }
+      ],
+      "verdict": "no_concrete_scope_conflict_found",
+      "finding": "UK Charmat Rosé exact 75cl identity. Source identifies base vintage 2025 and lot CHR25; snapshot states no vintage, lot or contradictory blend. No concrete conflict found, but the retained statement is not represented as all-vintages assurance."
+    },
+    {
+      "product_id": "628949011",
+      "brand": "Avène",
+      "name": "Avene Soothing Eye Contour Cream for very sensitive skin",
+      "review_path": "/home/ivy/repos/personal/ocado_report/.manufacturer-research/2026-09-13/reviews/628949011.json",
+      "research_artifact": "/home/ivy/repos/personal/ocado_report/.manufacturer-research/2026-09-13/part-5/results/bff1e2aaf99305f96216f9f3416e465d05e5d8acac5aedc4e3eabc99468469fa.json",
+      "review_outcome_at_audit": "confirmed_vegan",
+      "current_input_hash_matched": true,
+      "sources": [
+        {
+          "source_id": "adac0dff7c9db09883072ede409293c7a0ddd47c4cc4a3fa9c4bd5f57080dd67",
+          "url": "https://www.avene.co.uk/p/soothing-eye-contour-cream-3282779051361-b5405ca4",
+          "source_text_path": "/home/ivy/repos/personal/ocado_report/.manufacturer-research/2026-09-13/part-5/sources/72e13e6a4641fab933aef5c36ac4178150a8a146cce9b9097dff34a470de0fe2.txt",
+          "content_sha256": "e6d41b502e9f8ee2472a9f5cdae341ef0333619f2b23544499fcf7c4e06e81d9"
+        }
+      ],
+      "verdict": "no_concrete_scope_conflict_found",
+      "finding": "Exact UK Avène Soothing Eye Contour Cream 10ml source has the same complete ingredient sequence as the snapshot and a product-specific no-animal-derived-ingredients statement."
+    },
+    {
+      "product_id": "645504011",
+      "brand": "Dr Organic",
+      "name": "Dr Organic Evoke Awaken Radiance Day Cream",
+      "review_path": "/home/ivy/repos/personal/ocado_report/.manufacturer-research/2026-09-13/reviews/645504011.json",
+      "research_artifact": "/home/ivy/repos/personal/ocado_report/.manufacturer-research/2026-09-13/part-2/results/05b891da7ec4fef964cafefbbc4b99edf069ca317265919ee2046681801f9c4b.json",
+      "review_outcome_at_audit": "confirmed_vegan",
+      "current_input_hash_matched": true,
+      "sources": [
+        {
+          "source_id": "56fa2446ee84c07ab908acef9af4e12b6c3c7c9e56addef2490e36aecc21e73e",
+          "url": "https://www.drorganic.co.uk/products/evoke-awaken-radiance-day-cream",
+          "source_text_path": "/home/ivy/repos/personal/ocado_report/.manufacturer-research/2026-09-13/part-2/sources/dro-day-web.txt",
+          "content_sha256": "f7041d8b9f9d2f872fe7c1869011b833b60bc65ddf98af38cf015d29278b9099"
+        }
+      ],
+      "verdict": "concrete_scope_discrepancy",
+      "severity": "narrow_formula_discrepancy_for_parent_assessment",
+      "finding": "Dr Organic Evoke Awaken Day Cream has a smaller but concrete INCI difference: the current source adds potassium sorbate, absent from the stored complete list.",
+      "stored_evidence": "Stored preservation list has sodium dehydroacetate, sodium benzoate and benzyl alcohol, with no potassium sorbate.",
+      "source_evidence": "Current full INCI inserts potassium sorbate between sodium benzoate and benzyl alcohol. The page also has a contradictory night-cream teaser, although main title, ingredient profile and product images identify Awaken Day Cream.",
+      "broader_assurance": "The selected source is product-specific and does not explicitly state that all historical Evoke formulas are vegan.",
+      "recommended_action": "Parent should assess this narrower discrepancy before application. It is a concrete formula/source-copy inconsistency, not proof of non-vegan status or a claim that every disclosure difference is a reformulation."
+    },
+    {
+      "product_id": "51023011",
+      "brand": "Neal's Yard Remedies",
+      "name": "Neal's Yard Revitalising Orange Flower Conditioner",
+      "review_path": "/home/ivy/repos/personal/ocado_report/.manufacturer-research/2026-09-13/reviews/51023011.json",
+      "research_artifact": "/home/ivy/repos/personal/ocado_report/.manufacturer-research/2026-09-13/part-2/results/nyr-supervisor.json",
+      "review_outcome_at_audit": "confirmed_vegan",
+      "current_input_hash_matched": true,
+      "sources": [
+        {
+          "source_id": "0b4a63404d146cf1f1cb6b544abeaec9817e4a804aefb984aa86eddb91a130a8",
+          "url": "https://nyrorganic.com/uk/Neals-Yard-Remedies-2024/",
+          "source_text_path": "/home/ivy/repos/personal/ocado_report/.manufacturer-research/2026-09-13/part-2/sources/blank-supervisor-nyr-catalogue-2024-web.txt",
+          "content_sha256": "3d8edd748f52d467e9c4963a98d9725f2744da796451a851be0f5ebc0ccb8b8b"
+        }
+      ],
+      "verdict": "no_concrete_scope_conflict_found",
+      "finding": "Historical Spring 2024 UK manufacturer catalogue explicitly marks the exact Revitalising Orange Flower Conditioner 200ml VEGAN. No conflicting newer formula or product identity is established by the retained inputs."
+    },
+    {
+      "product_id": "599867011",
+      "brand": "Antipodes",
+      "name": "Antipodes Diem Vitamin C Pigment-Correcting Water Cream",
+      "review_path": "/home/ivy/repos/personal/ocado_report/.manufacturer-research/2026-09-13/reviews/599867011.json",
+      "research_artifact": "/home/ivy/repos/personal/ocado_report/.manufacturer-research/2026-09-13/part-6/results/6de23c42ad931fb596944eee360fbb02f48ebed22292aa795fddfdb9c27e962a.json",
+      "review_outcome_at_audit": "confirmed_vegan",
+      "current_input_hash_matched": true,
+      "sources": [
+        {
+          "source_id": "e5d4c149e81ff5be74e4d0dd9d8eb79796770d4565566bd731023cf1147a08d1",
+          "url": "https://uk.antipodesnature.com/products/diem-vitamin-c-pigment-correcting-water-cream-60ml",
+          "source_text_path": "/home/ivy/repos/personal/ocado_report/.manufacturer-research/2026-09-13/part-6/sources/7b61ec58c1fcffa492756c6924de448b9df3e4a0619501220ed0c60f0986a691.txt",
+          "content_sha256": "909e26fe6ac13adede40f3a810b86c4b58407cc49f9deba3819ed055af06045b"
+        }
+      ],
+      "verdict": "concrete_scope_discrepancy",
+      "severity": "withhold_pending_parent_scope_check",
+      "finding": "Current Antipodes Diem Water Cream vegan certification was accepted by exact name/60ml despite substantial changes between the stored and source ingredient lists.",
+      "stored_evidence": "Stored formula uses sodium ascorbyl phosphate, aloe leaf juice and potassium sorbate.",
+      "source_evidence": "Current source uses 3-O-ethyl ascorbic acid and aloe leaf juice powder, omits potassium sorbate, and adds cetearyl alcohol, sunflower oil, tocopherol, maltodextrin, multiple gums and other ingredients.",
+      "broader_assurance": "Only the current named product certification is supplied. No retained whole-brand/all-formulas assertion resolves the stored formula.",
+      "recommended_action": "Conservatively withhold this candidate from application; the current formula claim does not establish the stored formula."
+    },
+    {
+      "product_id": "42739011",
+      "brand": "Neal's Yard Remedies",
+      "name": "Neal's Yard Mint & Bergamot Hand Lotion",
+      "review_path": "/home/ivy/repos/personal/ocado_report/.manufacturer-research/2026-09-13/reviews/42739011.json",
+      "research_artifact": "/home/ivy/repos/personal/ocado_report/.manufacturer-research/2026-09-13/part-2/results/nyr-supervisor.json",
+      "review_outcome_at_audit": "confirmed_vegan",
+      "current_input_hash_matched": true,
+      "sources": [
+        {
+          "source_id": "5cacd72320862f61ee8735ed03dd661c570de08da4fcb1e2fe4807019522ffda",
+          "url": "https://www.nealsyardremedies.com/products/garden-mint-bergamot-hand-lotion-200-ml",
+          "source_text_path": "/home/ivy/repos/personal/ocado_report/.manufacturer-research/2026-09-13/part-2/sources/blank-supervisor-75efa6536959a0cb9b0a.txt",
+          "content_sha256": "4cdaf87c4fefb90025da6c0f10a9fd386ae2deb4e245b0243e0f3ffd111bdf60"
+        }
+      ],
+      "verdict": "concrete_scope_discrepancy",
+      "severity": "withhold_pending_parent_scope_check",
+      "finding": "The Neal's Yard current Hand Lotion formula differs by actual ingredients, not just INCI ordering or botanical synonyms. The exact-name/200ml vegan certification does not expressly bridge the stored formula.",
+      "stored_evidence": "Stored full INCI contains no Citrus aurantium bergamia/bergamot peel oil, sodium levulinate or terpineol. The stored description mentions bergamot despite its absence from that INCI.",
+      "source_evidence": "Current INCI adds bergamot peel oil, sodium levulinate and terpineol; glycerin and aloe move substantially within the list. Botanical synonym differences such as spearmint naming were not treated as separate ingredients.",
+      "broader_assurance": "The sole selected source is the current Garden Mint & Bergamot Hand Lotion product page. It does not explicitly confirm older formulations or all Neal's Yard products.",
+      "recommended_action": "Conservatively withhold unless existing retained evidence explicitly bridges the stored formula. The added ingredients are not themselves proof of non-vegan status; the issue is unsupported transfer of current certification across differing complete lists."
+    }
+  ],
+  "coverage": {
+    "total_snapshot_products": 21372,
+    "explicit_outcome_products": 20009,
+    "missing_outcomes_counted_as_pending": 1363,
+    "all_known_outcomes": {
+      "no_confirmation": 11673,
+      "confirmed_vegan": 1568,
+      "pending": 8075,
+      "blocked": 56
+    },
+    "current_on_ocado_outcomes": {
+      "no_confirmation": 10401,
+      "confirmed_vegan": 1485,
+      "pending": 7431,
+      "blocked": 54
+    },
+    "partition_outcomes": {
+      "part-1": {
+        "no_confirmation": 5849,
+        "confirmed_vegan": 53
+      },
+      "part-2": {
+        "confirmed_vegan": 305,
+        "no_confirmation": 1298,
+        "pending": 1478,
+        "blocked": 13
+      },
+      "part-3": {
+        "no_confirmation": 855,
+        "confirmed_vegan": 229,
+        "pending": 2009,
+        "blocked": 1
+      },
+      "part-4": {
+        "confirmed_vegan": 449,
+        "pending": 2044,
+        "no_confirmation": 596,
+        "blocked": 5
+      },
+      "part-5": {
+        "pending": 1383,
+        "no_confirmation": 1350,
+        "confirmed_vegan": 344,
+        "blocked": 17
+      },
+      "part-6": {
+        "no_confirmation": 1725,
+        "confirmed_vegan": 188,
+        "pending": 1161,
+        "blocked": 20
+      }
+    },
+    "duplicate_product_outcomes": [],
+    "unfinished_products_in_records_marked_complete": [],
+    "blocked_products_without_any_explanation": [],
+    "conclusion": "Pending and blocked are retained as unfinished categories. Missing records, if any, are counted pending. No claim of exhaustive completion is supported. This is a structural coverage check, not a fresh content audit of every no_confirmation decision.",
+    "observed_at": "2026-09-13T19:34:09.633154+00:00"
+  },
+  "limits": "These findings concern whether current manufacturer evidence covers the stored product. They do not classify any product non-vegan. Counts are a timestamped snapshot while the parent may still finalise application exclusions.",
+  "parent_resolution": {
+    "withheld_product_ids": [
+      "42739011",
+      "512988011",
+      "599866011",
+      "599867011",
+      "645504011"
+    ],
+    "all_withheld_remain_unknown": true,
+    "original_reviews_retained_in_database_outcome_audit": true,
+    "no_additional_source_retrieval_or_review_resampling": true
+  }
+}
