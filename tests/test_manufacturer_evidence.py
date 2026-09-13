@@ -259,6 +259,43 @@ class ManufacturerImportTests(unittest.TestCase):
                 with self.assertRaisesRegex(ValueError, "changed during research"):
                     research.apply_bundle(root, db, bundle, dry_run=True)
 
+    def test_authorized_partial_import_preserves_unfinished_outcomes_and_records_scope(self) -> None:
+        for outcome in ("pending", "blocked"):
+            with self.subTest(outcome=outcome), tempfile.TemporaryDirectory() as tmp:
+                db, root, bundle = self.prepare(Path(tmp))
+                bundle["outcomes"]["2"].update(outcome=outcome, research_complete=False)
+                reason = "User ended research because of diminishing returns"
+                before_bytes = db.read_bytes()
+                preview = research.apply_bundle(root, db, bundle, dry_run=True, partial_reason=reason)
+                self.assertEqual(db.read_bytes(), before_bytes)
+                self.assertFalse(preview["coverage_complete"])
+                self.assertEqual(preview["partial_coverage_reason"], reason)
+                self.assertEqual(preview["accepted_ids"], ["1"])
+                research.apply_bundle(root, db, bundle, dry_run=False, partial_reason=reason)
+                with sqlite3.connect(db) as conn:
+                    self.assertEqual(conn.execute("SELECT vegan_status FROM products WHERE id = '2'").fetchone()[0], "unknown")
+                    self.assertEqual(conn.execute("SELECT research_outcome FROM manufacturer_research_products WHERE product_id = '2'").fetchone()[0], outcome)
+                    scope = json.loads(conn.execute("SELECT scope_json FROM manufacturer_research_runs").fetchone()[0])
+                    self.assertFalse(scope["coverage_complete"])
+                    self.assertEqual(scope["partial_coverage_reason"], reason)
+                    self.assertEqual(scope["research"]["outcomes"][outcome], 1)
+
+    def test_partial_import_does_not_bypass_artifact_or_review_validation(self) -> None:
+        with tempfile.TemporaryDirectory() as tmp:
+            db, root, bundle = self.prepare(Path(tmp))
+            bundle["outcomes"]["2"].update(outcome="pending", research_complete=False)
+            before_bytes = db.read_bytes()
+            with self.assertRaisesRegex(ValueError, "non-empty reason"):
+                research.apply_bundle(root, db, bundle, dry_run=False, partial_reason="  ")
+            bundle["errors"].append("Invalid source capture")
+            with self.assertRaisesRegex(ValueError, "invalid research artifacts"):
+                research.apply_bundle(root, db, bundle, dry_run=False, partial_reason="User stopped research")
+            bundle["errors"].clear()
+            (root / "reviews/1.json").unlink()
+            with self.assertRaisesRegex(ValueError, "independent reviews are missing"):
+                research.apply_bundle(root, db, bundle, dry_run=False, partial_reason="User stopped research")
+            self.assertEqual(db.read_bytes(), before_bytes)
+
     def test_disagreement_cannot_be_manually_promoted_in_saved_review(self) -> None:
         with tempfile.TemporaryDirectory() as tmp:
             _, root, bundle = self.prepare(Path(tmp))

@@ -542,11 +542,15 @@ def application_plan(conn: sqlite3.Connection, bundle: dict[str, Any], reviews: 
     return {"accepted": accepted, "rejected": rejected}
 
 
-def apply_bundle(root: Path, db: Path, bundle: dict[str, Any], *, dry_run: bool) -> dict[str, Any]:
+def apply_bundle(root: Path, db: Path, bundle: dict[str, Any], *, dry_run: bool,
+                 partial_reason: str | None = None) -> dict[str, Any]:
     status = bundle_status(bundle)
     if status["errors"]:
         raise ValueError("Repair invalid research artifacts before applying")
-    if status["complete_products"] != status["total_products"]:
+    if partial_reason is not None and not partial_reason.strip():
+        raise ValueError("Partial coverage requires a non-empty reason recording the user's stopping decision")
+    coverage_complete = status["complete_products"] == status["total_products"]
+    if not coverage_complete and partial_reason is None:
         raise ValueError(f"Exhaustive research is incomplete: {status['complete_products']}/{status['total_products']} products complete")
     reviews = read_reviews(root, bundle)
     with closing(sqlite3.connect(db.resolve().as_uri() + "?mode=ro", uri=True)) as conn:
@@ -554,6 +558,8 @@ def apply_bundle(root: Path, db: Path, bundle: dict[str, Any], *, dry_run: bool)
         plan = application_plan(conn, bundle, reviews)
     report = {
         "research": status,
+        "coverage_complete": coverage_complete,
+        "partial_coverage_reason": partial_reason,
         "accepted_all_known": len(plan["accepted"]),
         "accepted_current": sum(row["current_on_ocado"] == 1 for row in plan["accepted"].values()),
         "accepted_ids": sorted(plan["accepted"], key=int),
@@ -577,7 +583,10 @@ def apply_bundle(root: Path, db: Path, bundle: dict[str, Any], *, dry_run: bool)
                 """INSERT INTO manufacturer_research_runs
                    (started_at, status, scope_json, bundle_hash, model, reasoning_effort, prompt_version)
                    VALUES (?, 'running', ?, ?, ?, ?, ?)""",
-                (utc_now(), json.dumps(bundle["snapshot"]), bundle_hash, classifier.DEFAULT_CODEX_MODEL, classifier.DEFAULT_REASONING_EFFORT, PROMPT_VERSION),
+                (utc_now(), json.dumps({**bundle["snapshot"], "research": status,
+                                        "coverage_complete": coverage_complete,
+                                        "partial_coverage_reason": partial_reason}),
+                 bundle_hash, classifier.DEFAULT_CODEX_MODEL, classifier.DEFAULT_REASONING_EFFORT, PROMPT_VERSION),
             )
             research_run_id = cursor.lastrowid
             classification_run_id = classifier.start_run(conn, mode="manufacturer-websites", model=classifier.DEFAULT_CODEX_MODEL, reasoning_effort=classifier.DEFAULT_REASONING_EFFORT)
@@ -650,6 +659,7 @@ def main() -> int:
     review.add_argument("--codex-bin", default=shutil.which("codex") or "codex")
     apply = subparsers.add_parser("apply")
     apply.add_argument("--dry-run", action="store_true")
+    apply.add_argument("--partial-reason", help="Record an explicit user decision to stop research before full coverage; all evidence and review checks still apply")
     args = parser.parse_args()
     if args.command == "snapshot":
         print(json.dumps(create_snapshot(args.root, args.db, args.partitions), ensure_ascii=False, indent=2))
@@ -666,7 +676,7 @@ def main() -> int:
             parser.error("workers and batch-size must be positive")
         result = review_candidates(args.root, bundle, workers=args.workers, batch_size=args.batch_size, codex_bin=args.codex_bin)
     else:
-        result = apply_bundle(args.root, args.db, bundle, dry_run=args.dry_run)
+        result = apply_bundle(args.root, args.db, bundle, dry_run=args.dry_run, partial_reason=args.partial_reason)
     print(json.dumps(result, ensure_ascii=False, indent=2))
     return 1 if result.get("errors") else 0
 

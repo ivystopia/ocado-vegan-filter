@@ -41,7 +41,9 @@ python3 tools/research_ocado_manufacturers.py --root .manufacturer-research/YYYY
 python3 tools/research_ocado_manufacturers.py --root .manufacturer-research/YYYY-MM-DD apply --dry-run
 ```
 
-The import requires complete product coverage and valid independent reviews for every candidate. Its dry run quantifies the all-known/current additions and reports candidates rejected by canonical rules. Explain that impact and the evidence supporting the increase before applying. Existing official-tag precedence, explicit animal-ingredient rules and conflicting manufacturer-text handling still apply. The importer rechecks the current product classification and catalogue context, including pack size, so concurrent changes cannot be overwritten silently.
+The import requires complete product coverage by default and valid independent reviews for every candidate. If the user explicitly ends research early, pass `--partial-reason` with their stopping decision to both the dry run and application. This records incomplete coverage and the reason in the preview, result and database run scope; pending and blocked outcomes remain distinct and unchanged. It does not relax source validation, independent review or classification checks. Never use this option merely to bypass unfinished authorized work.
+
+The dry run quantifies the all-known/current additions and reports candidates rejected by canonical rules. Explain that impact and the evidence supporting the increase before applying. Existing official-tag precedence, explicit animal-ingredient rules and conflicting manufacturer-text handling still apply. The importer rechecks the current product classification and catalogue context, including pack size, so concurrent changes cannot be overwritten silently.
 
 ```sh
 python3 tools/research_ocado_manufacturers.py --root .manufacturer-research/YYYY-MM-DD apply
