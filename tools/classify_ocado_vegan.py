@@ -18,12 +18,14 @@ from dataclasses import dataclass
 from pathlib import Path
 from typing import Any, Iterable
 
+from manufacturer_evidence import PUBLISHER_FIELDS, binding_hash, load_verified_evidence
+
 
 REPO_ROOT = Path(__file__).resolve().parents[1]
 DEFAULT_DB = str(REPO_ROOT / "ocado_products.sqlite")
 DEFAULT_CODEX_MODEL = "gpt-5.6-luna"
 DEFAULT_REASONING_EFFORT = "high"
-CLASSIFIER_VERSION = "db-vegan-codex-v8"
+CLASSIFIER_VERSION = "db-vegan-codex-v9"
 PROMPT_VERSION = "ocado-vegan-product-json-v7"
 VALID_STATUSES = {"vegan", "nonvegan", "unknown"}
 VALID_VEGAN_REASONS = {"tagged", "manufacturer", "ingredients", "name"}
@@ -737,12 +739,16 @@ def load_product_context(conn: sqlite3.Connection, product_id: str) -> dict[str,
             (product_id,),
         )
     ]
-    return {
+    context = {
         "product": dict(product),
         "flags": flags,
         "categories": categories,
         "manufacturer_vegan_evidence": manufacturer_evidence,
     }
+    binding = binding_hash(product_context_for_llm(context), context["product"].get("pack_size"),
+                           **{key: context["product"].get(key) for key in PUBLISHER_FIELDS})
+    context["manufacturer_vegan_evidence"].extend(load_verified_evidence(conn, product_id, binding))
+    return context
 
 
 def load_product_contexts(conn: sqlite3.Connection, product_ids: Iterable[str]) -> list[dict[str, Any]]:
@@ -763,7 +769,10 @@ def text_sources(context: dict[str, Any]) -> list[dict[str, str]]:
     for row in context["manufacturer_vegan_evidence"]:
         text = normalize_space(row.get("content"))
         if text:
-            sources.append(evidence_source("manufacturer_vegan_evidence", row.get("field_title") or "content", text))
+            source = evidence_source("manufacturer_vegan_evidence", row.get("field_title") or "content", text)
+            if row.get("source_kind") == "manufacturer_website":
+                source.update({key: value for key, value in row.items() if key not in {"field_title", "content"}})
+            sources.append(source)
     return sources
 
 
@@ -802,6 +811,8 @@ def classify_by_manufacturer_text(context: dict[str, Any]) -> ClassificationResu
     positive = find_matching_sources(sources, POSITIVE_VEGAN_PATTERNS)
     negative = find_matching_sources(sources, NEGATIVE_VEGAN_PATTERNS)
     for source in sources:
+        if source.get("source_kind") == "manufacturer_website" and source.get("verified_status") == "vegan":
+            positive.append(source)
         if source["text"].strip().lower() in {"vegan", "suitable for vegans"}:
             positive.append(source)
         if source["table"] == "products" and source["column"] == "features" and features_text_has_standalone_vegan_claim(source["text"]):

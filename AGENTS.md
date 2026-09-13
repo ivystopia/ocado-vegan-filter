@@ -49,6 +49,9 @@ The project has two related goals:
 ## Classifier Workflow
 
 - The classifier must use only data already stored in SQLite unless the task is explicitly to scrape/import new data.
+- Manufacturer-site reassessment is a separate evidence-gathering workflow: research every initially unknown product, retain the manufacturer's published statement, URL, retrieval date, market/range restrictions, and exact product match, then import accepted evidence into SQLite as `vegan/manufacturer`.
+- Keep manufacturer research exhaustive and resumable: explicitly account for every product, distinguish pending or blocked research from completed checks without confirmation, and never substitute a few illustrative brands or brand-specific code for catalogue-wide research.
+- For manufacturer-only userscript updates, change the embedded vegan IDs and generated counts only; preserve runtime behaviour, existing classifications outside the reviewed unknown cohort, and the non-vegan set.
 - Follow `docs/vegan-classifier-design.md` for end-to-end classifier behaviour.
 - Use `gpt-5.6-luna` with reasoning effort `high` and two independent passes for bulk unresolved classification.
 - The supervising Codex model and bulk classifier model are separate choices. A change of supervising model does not change the benchmarked classifier default.

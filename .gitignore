@@ -7,3 +7,6 @@ __pycache__/
 
 # Raw scrape streams are retained on disk for analysis but are too large/noisy for git.
 *.jsonl
+
+# Resumable manufacturer-site research work; retained summaries live in audit/.
+.manufacturer-research/

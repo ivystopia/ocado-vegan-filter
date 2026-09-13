@@ -9,6 +9,7 @@ Classify every product in `ocado_products.sqlite` as one of:
 - `unknown`
 
 The classifier must use only data already stored in SQLite.
+An explicitly requested [manufacturer-site research audit](manufacturer-research.md) can gather new primary-source evidence separately and import it into SQLite. The classifier remains offline; accepted website confirmations use the existing `vegan/manufacturer` category.
 It must not call Ocado live pages, Ocado APIs, product pages, search pages, category pages, or any other Ocado source.
 If the database does not contain enough information to decide, the classifier returns `unknown`.
 
@@ -97,6 +98,7 @@ Stop at the first conclusive rule.
    classify `vegan/manufacturer` when product text explicitly says suitable for vegans, certified vegan, vegan friendly, or registered with the Vegan Society.
    classify `nonvegan` when product text explicitly says not vegan or not suitable for vegans.
    classify `unknown` if explicit positive and negative vegan statements conflict.
+   Independently verified manufacturer website statements are also accepted here, only for the exact product identity, recipe and pack format reviewed. Their retained source text, URL, retrieval date, scope match and independent reviews explain the decision. Changed catalogue evidence invalidates the website claim's binding; source history remains available for reassessment.
 
 4. Product name:
    classify `vegan/name` when the product name contains the standalone word `vegan` and no explicit negative vegan statement was found.

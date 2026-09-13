@@ -37,6 +37,7 @@ The script treats a product as vegan when any of these are true:
 - Ocado officially tags it as vegan.
 - The product name contains the standalone word `vegan`.
 - Ocado product page text explicitly says it is vegan, including manufacturer text, dietary information, or product features.
+- A published manufacturer statement confirms the matched product or range, with its source and scope retained in the offline audit.
 - Embedded catalogue data supports a conservative vegan-by-ingredients classification.
 
 Live or embedded official Ocado vegan metadata is authoritative and takes precedence over the script's embedded non-vegan evidence.
@@ -62,6 +63,7 @@ The large local SQLite database and raw scrape streams are intentionally not tra
 - `tools/build_ocado_database.py` - historical JSONL importer and shared parsing/schema helpers. Its CLI deletes and rebuilds the output database; it is not a normal setup or refresh command.
 - `tools/sync_ocado_database.py` - imports and synchronises scraped Ocado product data into SQLite.
 - `tools/classify_ocado_vegan.py` - classifies products as `vegan`, `nonvegan`, or `unknown` from stored database data.
+- `tools/research_ocado_manufacturers.py` - tracks exhaustive manufacturer-site research, independently reviews retained sources, and imports product-specific confirmations; see `docs/manufacturer-research.md`.
 - `tools/benchmark_ocado_vegan.py` - runs the fixed, read-only classifier safety benchmark.
 - `tools/update_userscript_allowlists.py` - previews and regenerates the embedded sets from canonical SQLite classifications while preserving retained ID order.
 - `docs/working-guide.md` - environment setup, code map, safe inspection, and troubleshooting for maintainers.

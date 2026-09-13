@@ -1,0 +1,565 @@
+{
+  "run_at": "2026-09-13T17:29:25.124870+00:00",
+  "fixture_sha256": "60ac8c835f9a9b12df076300475c014c5c12e2bd2468d8538ff07545be015d3c",
+  "prompt_version": "manufacturer-source-scope-v2",
+  "model": "gpt-5.6-luna",
+  "reasoning_effort": "high",
+  "passes": 2,
+  "product_count": 19,
+  "exact_matches": 19,
+  "mismatches": [],
+  "disagreements": [],
+  "decisions": {
+    "1": {
+      "product_id": "1",
+      "input_hash": "eab0f5cf3304405950b6060356bbcbf60b7722fa49e39a7e5949232011f69a2d",
+      "prompt_version": "manufacturer-source-scope-v2",
+      "model": "gpt-5.6-luna",
+      "reasoning_effort": "high",
+      "reviewed_at": "2026-09-13T17:28:02.973193+00:00",
+      "outcome": "confirmed_vegan",
+      "passes": [
+        {
+          "product_id": "1",
+          "vegan_status": "vegan",
+          "vegan_reason": "manufacturer",
+          "source_url": "https://example.test/uk/faq",
+          "quote": "Our Original Cola and Zero Cola ranges are suitable for vegans.",
+          "scope_match": "The UK manufacturer explicitly covers the Original Cola range; the 330ml product matches that range.",
+          "notes": ""
+        },
+        {
+          "product_id": "1",
+          "vegan_status": "vegan",
+          "vegan_reason": "manufacturer",
+          "source_url": "https://example.test/uk/faq",
+          "quote": "Our Original Cola and Zero Cola ranges are suitable for vegans.",
+          "scope_match": "Example Foods' UK manufacturer FAQ explicitly covers the Original Cola range; the 330ml Example Original Cola matches that range.",
+          "notes": "The catalogue brand differs from the named manufacturer, but the official manufacturer statement clearly identifies the matching product range."
+        }
+      ]
+    },
+    "2": {
+      "product_id": "2",
+      "input_hash": "b3ba17079eedac4105acf05c00654d33cb8cf02afc4c4dfc217527978a56cfb6",
+      "prompt_version": "manufacturer-source-scope-v2",
+      "model": "gpt-5.6-luna",
+      "reasoning_effort": "high",
+      "reviewed_at": "2026-09-13T17:28:02.973227+00:00",
+      "outcome": "unknown",
+      "passes": [
+        {
+          "product_id": "2",
+          "vegan_status": "unknown",
+          "vegan_reason": null,
+          "source_url": null,
+          "quote": "",
+          "scope_match": "The supplied UK manufacturer statement explicitly excludes the Diet Cola range.",
+          "notes": "Explicitly stated not suitable for vegans, but the requested output permits only vegan or unknown status; therefore not promoted to vegan."
+        },
+        {
+          "product_id": "2",
+          "vegan_status": "unknown",
+          "vegan_reason": null,
+          "source_url": null,
+          "quote": "",
+          "scope_match": "The supplied UK manufacturer statement explicitly excludes the Diet Cola range.",
+          "notes": "Not suitable for vegans; the requested schema has no nonvegan status, so this is returned as unknown."
+        }
+      ]
+    },
+    "3": {
+      "product_id": "3",
+      "input_hash": "8cf5b21657af242794a252a67932ed1e9c7b94fc9e7b61a4b8952bce3d940fb0",
+      "prompt_version": "manufacturer-source-scope-v2",
+      "model": "gpt-5.6-luna",
+      "reasoning_effort": "high",
+      "reviewed_at": "2026-09-13T17:28:02.973243+00:00",
+      "outcome": "unknown",
+      "passes": [
+        {
+          "product_id": "3",
+          "vegan_status": "unknown",
+          "vegan_reason": null,
+          "source_url": null,
+          "quote": "",
+          "scope_match": "The supplied statement concerns Example Cola drinks, but the named product is Another Company Original Cola.",
+          "notes": "The publisher's brand scope does not clearly cover the actual named product brand; catalogue misfiling cannot be resolved from the supplied evidence."
+        },
+        {
+          "product_id": "3",
+          "vegan_status": "unknown",
+          "vegan_reason": null,
+          "source_url": null,
+          "quote": "",
+          "scope_match": "The supplied statement covers Example Cola drinks, but the named product is Another Company Original Cola.",
+          "notes": "The catalogue's Example brand field conflicts with the product name, so the Example Foods statement cannot verify this exact product brand."
+        }
+      ]
+    },
+    "4": {
+      "product_id": "4",
+      "input_hash": "ccd33aa912da4075193ba61cf4fb300afe8452b266c746bc1acc1b9dd4d720ea",
+      "prompt_version": "manufacturer-source-scope-v2",
+      "model": "gpt-5.6-luna",
+      "reasoning_effort": "high",
+      "reviewed_at": "2026-09-13T17:28:02.973256+00:00",
+      "outcome": "confirmed_vegan",
+      "passes": [
+        {
+          "product_id": "4",
+          "vegan_status": "vegan",
+          "vegan_reason": "manufacturer",
+          "source_url": "https://example.test/uk/faq",
+          "quote": "All Example soft drinks, including every flavour, are suitable for vegans. The statement covers our entire current UK range.",
+          "scope_match": "The UK manufacturer explicitly covers every flavour in the entire current UK soft-drinks range; Example Cherry Cola matches this scope.",
+          "notes": ""
+        },
+        {
+          "product_id": "4",
+          "vegan_status": "vegan",
+          "vegan_reason": "manufacturer",
+          "source_url": "https://example.test/uk/faq",
+          "quote": "All Example soft drinks, including every flavour, are suitable for vegans.",
+          "scope_match": "The UK manufacturer states that the entire current UK range is covered, including every flavour; Example Cherry Cola matches.",
+          "notes": "The whole-range qualification supports this flavour and pack size."
+        }
+      ]
+    },
+    "5": {
+      "product_id": "5",
+      "input_hash": "2d676ac9fce7930ecb4013467fd7fb9cc729808d3d4d36b34ab4f73dc665a6e8",
+      "prompt_version": "manufacturer-source-scope-v2",
+      "model": "gpt-5.6-luna",
+      "reasoning_effort": "high",
+      "reviewed_at": "2026-09-13T17:28:02.973269+00:00",
+      "outcome": "unknown",
+      "passes": [
+        {
+          "product_id": "5",
+          "vegan_status": "unknown",
+          "vegan_reason": null,
+          "source_url": null,
+          "quote": "",
+          "scope_match": "The supplied source makes cruelty-free and animal-testing claims but does not make a complete-product vegan claim.",
+          "notes": "It expressly says some formulas may contain animal-derived ingredients."
+        },
+        {
+          "product_id": "5",
+          "vegan_status": "unknown",
+          "vegan_reason": null,
+          "source_url": null,
+          "quote": "",
+          "scope_match": "The supplied source makes cruelty-free and animal-testing claims but does not state that the complete liquid soap product is vegan.",
+          "notes": "It expressly notes that some formulas may contain animal-derived ingredients."
+        }
+      ]
+    },
+    "6": {
+      "product_id": "6",
+      "input_hash": "2b8239c5e880975b6b3e56f2ebc9a13490b95009460b9f8b3181f2c7189adba0",
+      "prompt_version": "manufacturer-source-scope-v2",
+      "model": "gpt-5.6-luna",
+      "reasoning_effort": "high",
+      "reviewed_at": "2026-09-13T17:28:02.973282+00:00",
+      "outcome": "unknown",
+      "passes": [
+        {
+          "product_id": "6",
+          "vegan_status": "unknown",
+          "vegan_reason": null,
+          "source_url": null,
+          "quote": "",
+          "scope_match": "The supplied source is a vegan serving suggestion and does not claim that the red wine itself is vegan.",
+          "notes": "A recipe or pairing statement does not establish complete-product vegan status."
+        },
+        {
+          "product_id": "6",
+          "vegan_status": "unknown",
+          "vegan_reason": null,
+          "source_url": null,
+          "quote": "",
+          "scope_match": "The supplied source mentions vegan food only in a serving suggestion and recipe, not the wine product itself.",
+          "notes": "No complete-product vegan statement for Example Red Wine is supplied."
+        }
+      ]
+    },
+    "7": {
+      "product_id": "7",
+      "input_hash": "2fb666c93adcde7d55c3aea148b196cfec055cc2592ff9371e2224a62a47067d",
+      "prompt_version": "manufacturer-source-scope-v2",
+      "model": "gpt-5.6-luna",
+      "reasoning_effort": "high",
+      "reviewed_at": "2026-09-13T17:28:34.399534+00:00",
+      "outcome": "unknown",
+      "passes": [
+        {
+          "product_id": "7",
+          "vegan_status": "unknown",
+          "vegan_reason": null,
+          "source_url": null,
+          "quote": "",
+          "scope_match": "No manufacturer evidence; retailer assessment is not primary manufacturer evidence.",
+          "notes": "Unknown: the supplied source is an independent retailer, not the manufacturer."
+        },
+        {
+          "product_id": "7",
+          "vegan_status": "unknown",
+          "vegan_reason": null,
+          "source_url": null,
+          "quote": "",
+          "scope_match": "Retailer assessment only; not manufacturer or brand-primary evidence.",
+          "notes": "No qualifying manufacturer statement supplied."
+        }
+      ]
+    },
+    "8": {
+      "product_id": "8",
+      "input_hash": "665a2b0985d9e2f56c645d85472926a77be126c79644b9d14bb176ab08ca7ffb",
+      "prompt_version": "manufacturer-source-scope-v2",
+      "model": "gpt-5.6-luna",
+      "reasoning_effort": "high",
+      "reviewed_at": "2026-09-13T17:28:34.399561+00:00",
+      "outcome": "unknown",
+      "passes": [
+        {
+          "product_id": "8",
+          "vegan_status": "unknown",
+          "vegan_reason": null,
+          "source_url": null,
+          "quote": "",
+          "scope_match": "The statement covers the US Original Cola only and explicitly says formulations vary by country; the catalogue product is UK.",
+          "notes": "Unknown: US-market evidence does not establish the UK product."
+        },
+        {
+          "product_id": "8",
+          "vegan_status": "unknown",
+          "vegan_reason": null,
+          "source_url": null,
+          "quote": "",
+          "scope_match": "Official statement applies to US Original Cola only; catalogue product is UK.",
+          "notes": "Country-specific formulation exclusion prevents promotion."
+        }
+      ]
+    },
+    "9": {
+      "product_id": "9",
+      "input_hash": "19636678707f78d6106b4a38b8ed66730d5cd975373e548d8bc24d77f8a4bf18",
+      "prompt_version": "manufacturer-source-scope-v2",
+      "model": "gpt-5.6-luna",
+      "reasoning_effort": "high",
+      "reviewed_at": "2026-09-13T17:28:34.399575+00:00",
+      "outcome": "unknown",
+      "passes": [
+        {
+          "product_id": "9",
+          "vegan_status": "unknown",
+          "vegan_reason": null,
+          "source_url": null,
+          "quote": "",
+          "scope_match": "The vegan statement covers a reformulated 50ml glass-jar face cream, while this product is the previous 75ml plastic-tub formula.",
+          "notes": "Unknown: the supplied source explicitly states the previous formula contains beeswax."
+        },
+        {
+          "product_id": "9",
+          "vegan_status": "unknown",
+          "vegan_reason": null,
+          "source_url": null,
+          "quote": "",
+          "scope_match": "Vegan statement covers reformulated 50ml glass-jar cream, not the listed previous 75ml plastic-tub formula.",
+          "notes": "Supplied source explicitly states the listed formula contains beeswax."
+        }
+      ]
+    },
+    "10": {
+      "product_id": "10",
+      "input_hash": "5fb69499d8ac5d205fa1fd68cb44947edb13f36840b427fe4a8b4e7eabaa1b1f",
+      "prompt_version": "manufacturer-source-scope-v2",
+      "model": "gpt-5.6-luna",
+      "reasoning_effort": "high",
+      "reviewed_at": "2026-09-13T17:28:34.399589+00:00",
+      "outcome": "confirmed_vegan",
+      "passes": [
+        {
+          "product_id": "10",
+          "vegan_status": "vegan",
+          "vegan_reason": "manufacturer",
+          "source_url": "https://example.test/uk/faq",
+          "quote": "All Example hand washes are suitable for vegans.",
+          "scope_match": "The UK official manufacturer FAQ explicitly covers all Example hand washes; the catalogue product is Example Hand Wash, 250ml.",
+          "notes": "The statement is a complete UK range claim and includes no animal-origin ingredients or processing inputs."
+        },
+        {
+          "product_id": "10",
+          "vegan_status": "vegan",
+          "vegan_reason": "manufacturer",
+          "source_url": "https://example.test/uk/faq",
+          "quote": "All Example hand washes are suitable for vegans.",
+          "scope_match": "UK manufacturer statement covers all Example hand washes, matching the named Example Hand Wash.",
+          "notes": "The statement also says no ingredients or processing inputs of animal origin are used."
+        }
+      ]
+    },
+    "11": {
+      "product_id": "11",
+      "input_hash": "2557609503e548bc7a9337adf9e7fc95eefdb06cab61d9f8db6171d921f74d79",
+      "prompt_version": "manufacturer-source-scope-v2",
+      "model": "gpt-5.6-luna",
+      "reasoning_effort": "high",
+      "reviewed_at": "2026-09-13T17:28:34.399602+00:00",
+      "outcome": "unknown",
+      "passes": [
+        {
+          "product_id": "11",
+          "vegan_status": "unknown",
+          "vegan_reason": null,
+          "source_url": null,
+          "quote": "",
+          "scope_match": "The official range statement says all Example soft drinks are vegan, but the exact product ingredients list honey.",
+          "notes": "Unknown: the explicit animal ingredient conflicts with the supplied vegan statement."
+        },
+        {
+          "product_id": "11",
+          "vegan_status": "unknown",
+          "vegan_reason": null,
+          "source_url": null,
+          "quote": "",
+          "scope_match": "General statement that all Example soft drinks are vegan conflicts with the listed product's explicit honey ingredient.",
+          "notes": "Explicit animal ingredient prevents promotion."
+        }
+      ]
+    },
+    "12": {
+      "product_id": "12",
+      "input_hash": "644cd9a2fd5affdf298a558842f88b6c7ce762072468d442130846f148526da6",
+      "prompt_version": "manufacturer-source-scope-v2",
+      "model": "gpt-5.6-luna",
+      "reasoning_effort": "high",
+      "reviewed_at": "2026-09-13T17:28:34.399615+00:00",
+      "outcome": "confirmed_vegan",
+      "passes": [
+        {
+          "product_id": "12",
+          "vegan_status": "vegan",
+          "vegan_reason": "manufacturer",
+          "source_url": "https://example.test/uk/faq",
+          "quote": "Example Cocoa Drink is suitable for vegans.",
+          "scope_match": "The UK official manufacturer statement names Example Cocoa Drink, matching the catalogue product; it qualifies that traces of milk may occur from shared equipment.",
+          "notes": "May-contain traces from shared production equipment do not invalidate the explicit vegan claim."
+        },
+        {
+          "product_id": "12",
+          "vegan_status": "vegan",
+          "vegan_reason": "manufacturer",
+          "source_url": "https://example.test/uk/faq",
+          "quote": "Example Cocoa Drink is suitable for vegans.",
+          "scope_match": "UK manufacturer statement exactly names Example Cocoa Drink, matching the listed product.",
+          "notes": "May-contain traces of milk from shared equipment are expressly identified and do not invalidate the claim."
+        }
+      ]
+    },
+    "13": {
+      "product_id": "13",
+      "input_hash": "345b63ec59dedaf58c99aba2e2fadff4cc1fd48402935e597e42712b238b9c57",
+      "prompt_version": "manufacturer-source-scope-v2",
+      "model": "gpt-5.6-luna",
+      "reasoning_effort": "high",
+      "reviewed_at": "2026-09-13T17:29:07.675465+00:00",
+      "outcome": "unknown",
+      "passes": [
+        {
+          "product_id": "13",
+          "vegan_status": "unknown",
+          "vegan_reason": null,
+          "source_url": null,
+          "quote": "",
+          "scope_match": "The source covers Example UK winery products from 2023 onwards; this product is the 2021 vintage, explicitly excluded.",
+          "notes": "Earlier vintages used animal-derived fining agents, so this product cannot be promoted."
+        },
+        {
+          "product_id": "13",
+          "vegan_status": "unknown",
+          "vegan_reason": null,
+          "source_url": null,
+          "quote": "",
+          "scope_match": "The source explicitly covers vintages from 2023 onwards, while this product is the 2021 vintage.",
+          "notes": "Earlier vintages used animal-derived fining agents; the supplied evidence excludes this product."
+        }
+      ]
+    },
+    "14": {
+      "product_id": "14",
+      "input_hash": "1fe63e6db28f0baa0c1a41ef4f2af5a2568f9405ad89fd6cc1f710cec5478241",
+      "prompt_version": "manufacturer-source-scope-v2",
+      "model": "gpt-5.6-luna",
+      "reasoning_effort": "high",
+      "reviewed_at": "2026-09-13T17:29:07.675492+00:00",
+      "outcome": "unknown",
+      "passes": [
+        {
+          "product_id": "14",
+          "vegan_status": "unknown",
+          "vegan_reason": null,
+          "source_url": null,
+          "quote": "",
+          "scope_match": "The source identifies cotton towels but expressly says dyes and processing inputs have not been assessed for animal origin.",
+          "notes": "Plant material alone does not establish that the complete product is vegan."
+        },
+        {
+          "product_id": "14",
+          "vegan_status": "unknown",
+          "vegan_reason": null,
+          "source_url": null,
+          "quote": "",
+          "scope_match": "The source identifies cotton material but does not establish that the complete towel is vegan.",
+          "notes": "Animal origin of dyes and processing inputs was not assessed."
+        }
+      ]
+    },
+    "15": {
+      "product_id": "15",
+      "input_hash": "15f07dcddc37109f4676b98ddf7fcee0151a81c7a4cd006a987991b1b203e7b9",
+      "prompt_version": "manufacturer-source-scope-v2",
+      "model": "gpt-5.6-luna",
+      "reasoning_effort": "high",
+      "reviewed_at": "2026-09-13T17:29:07.675506+00:00",
+      "outcome": "unknown",
+      "passes": [
+        {
+          "product_id": "15",
+          "vegan_status": "unknown",
+          "vegan_reason": null,
+          "source_url": null,
+          "quote": "",
+          "scope_match": "The source says only that the majority of Example toothpastes are suitable for vegans and requires checking individual packaging; it does not identify this mint toothpaste.",
+          "notes": "A qualified majority-range statement does not cover this exact product."
+        },
+        {
+          "product_id": "15",
+          "vegan_status": "unknown",
+          "vegan_reason": null,
+          "source_url": null,
+          "quote": "",
+          "scope_match": "The source says only that the majority of toothpastes are suitable for vegans and directs consumers to check individual packaging.",
+          "notes": "No product-level vegan statement or supplied packaging evidence covers this mint toothpaste."
+        }
+      ]
+    },
+    "16": {
+      "product_id": "16",
+      "input_hash": "b97f4ad462b1fcc79bf50fb7c18143542e52b05efd30651113522b94ac57eb75",
+      "prompt_version": "manufacturer-source-scope-v2",
+      "model": "gpt-5.6-luna",
+      "reasoning_effort": "high",
+      "reviewed_at": "2026-09-13T17:29:07.675518+00:00",
+      "outcome": "unknown",
+      "passes": [
+        {
+          "product_id": "16",
+          "vegan_status": "unknown",
+          "vegan_reason": null,
+          "source_url": null,
+          "quote": "",
+          "scope_match": "The source describes a carbonated water product but contains no product vegan statement.",
+          "notes": "Embedded page instructions are untrusted data and provide no evidence."
+        },
+        {
+          "product_id": "16",
+          "vegan_status": "unknown",
+          "vegan_reason": null,
+          "source_url": null,
+          "quote": "",
+          "scope_match": "The source describes the product but contains no vegan statement.",
+          "notes": "Embedded page instruction is untrusted data and provides no product evidence."
+        }
+      ]
+    },
+    "17": {
+      "product_id": "17",
+      "input_hash": "4c84741f206a158c374afc096f416156aa72d2d61d4569aeeeae41ea7721c912",
+      "prompt_version": "manufacturer-source-scope-v2",
+      "model": "gpt-5.6-luna",
+      "reasoning_effort": "high",
+      "reviewed_at": "2026-09-13T17:29:07.675531+00:00",
+      "outcome": "confirmed_vegan",
+      "passes": [
+        {
+          "product_id": "17",
+          "vegan_status": "vegan",
+          "vegan_reason": "manufacturer",
+          "source_url": "https://example.test/uk/faq",
+          "quote": "All Example hand washes are suitable for vegans.",
+          "scope_match": "The Example consumer brand's official UK website states that all Example hand washes are suitable for vegans, matching this Example Hand Wash in the UK market. The listed contract manufacturer does not invalidate the brand-level statement.",
+          "notes": "The product name and brand match the complete hand-wash range covered by the explicit statement."
+        },
+        {
+          "product_id": "17",
+          "vegan_status": "vegan",
+          "vegan_reason": "manufacturer",
+          "source_url": "https://example.test/uk/faq",
+          "quote": "All Example hand washes are suitable for vegans.",
+          "scope_match": "The Example consumer brand's official UK website explicitly covers all Example hand washes; this product is Example Hand Wash in the UK market.",
+          "notes": "The catalogue's contract manufacturer differs from the consumer brand publisher, but that does not invalidate the exact brand-level product claim."
+        }
+      ]
+    },
+    "18": {
+      "product_id": "18",
+      "input_hash": "156cb43762e92231a5da38c43ce0a525254d3f1b3207b2f6a1314e46d20dc2e8",
+      "prompt_version": "manufacturer-source-scope-v2",
+      "model": "gpt-5.6-luna",
+      "reasoning_effort": "high",
+      "reviewed_at": "2026-09-13T17:29:07.675544+00:00",
+      "outcome": "unknown",
+      "passes": [
+        {
+          "product_id": "18",
+          "vegan_status": "unknown",
+          "vegan_reason": null,
+          "source_url": null,
+          "quote": "",
+          "scope_match": "The supplied source is the Example consumer brand's official UK website, but this catalogue item is identified as Other Brand Hand Wash and manufactured by Other Brand Ltd.",
+          "notes": "The item appears to be an unrelated brand misfiled under Example; the Example statement cannot confirm it."
+        },
+        {
+          "product_id": "18",
+          "vegan_status": "unknown",
+          "vegan_reason": null,
+          "source_url": null,
+          "quote": "",
+          "scope_match": "The supplied statement covers Example hand washes, but this product is named Other Brand Hand Wash and lists Other Brand Ltd as manufacturer.",
+          "notes": "The Example brand website does not establish coverage of a product from the differently identified Other Brand."
+        }
+      ]
+    },
+    "19": {
+      "product_id": "19",
+      "input_hash": "42cd626820c39b1dedd0e96adf4ce2b00882cc1dc205ca13a95e648d4d0a2a4e",
+      "prompt_version": "manufacturer-source-scope-v2",
+      "model": "gpt-5.6-luna",
+      "reasoning_effort": "high",
+      "reviewed_at": "2026-09-13T17:29:25.124823+00:00",
+      "outcome": "confirmed_vegan",
+      "passes": [
+        {
+          "product_id": "19",
+          "vegan_status": "vegan",
+          "vegan_reason": "manufacturer",
+          "source_url": "https://example.test/uk/faq",
+          "quote": "All Example hand washes are suitable for vegans.",
+          "scope_match": "The official Example UK website states that all Example hand washes are suitable for vegans, directly covering the named Example Hand Wash product and UK market.",
+          "notes": "The catalogue category appears inconsistent with the toiletry product identity, but this does not conflict with the exact official brand statement."
+        },
+        {
+          "product_id": "19",
+          "vegan_status": "vegan",
+          "vegan_reason": "manufacturer",
+          "source_url": "https://example.test/uk/faq",
+          "quote": "All Example hand washes are suitable for vegans.",
+          "scope_match": "The Example official UK website states that all Example hand washes are suitable for vegans. The product is named Example Hand Wash, matching the brand and product family; the UK source covers the UK market.",
+          "notes": "The catalogue category is inconsistent with the product name, but the official brand statement clearly covers the complete named product."
+        }
+      ]
+    }
+  }
+}
