@@ -31,6 +31,7 @@ The project has two related goals:
 
 ## Vegan Classification Rules
 
+- User-required direction (2026-10-05): a positive vegan classification must be supported by an explicit Ocado vegan tag or an explicit manufacturer vegan statement in product information or on the manufacturer's website. Ingredient-only assessment, missing ingredients, product identity, and a standalone name/URL keyword are not sufficient positive evidence. This supersedes the legacy permissions for `vegan/ingredients` and automatic `vegan/name` classifications below and in existing runbooks; implementation and migration are pending the requested codebase proposal.
 - Vegan classification must prefer false negatives over false positives.
 - Do not tag a product as vegan from probability, brand reputation, category assumptions, or "usually vegan" reasoning.
 - Valid product statuses are `vegan`, `nonvegan`, and `unknown`.
