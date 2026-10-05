@@ -31,7 +31,9 @@ The project has two related goals:
 
 ## Vegan Classification Rules
 
-- User-required direction (2026-10-05): a positive vegan classification must be supported by an explicit Ocado vegan tag or an explicit manufacturer vegan statement in product information or on the manufacturer's website. Ingredient-only assessment, missing ingredients, product identity, and a standalone name/URL keyword are not sufficient positive evidence. This supersedes the legacy permissions for `vegan/ingredients` and automatic `vegan/name` classifications below and in existing runbooks; implementation and migration are pending the requested codebase proposal.
+- User-required direction, revised (2026-10-05): retain positive classifications from official Ocado tags, explicit manufacturer statements, clearly affirmative vegan product names, and unambiguous vegan product identity/composition. Ordinary foods such as a basic bag of carrots or a bagged salad containing only unambiguously vegan ingredients can qualify without an explicit vegan claim. This supersedes the earlier confirmation-only proposal; retain all four vegan reasons.
+- Assess suitability for the complete product, including relevant manufacturing processes, not just the absence of animal ingredients. If product-specific doubt remains about processing (for example wine fining or sugar refining), ingredient sourcing, an unspecified source-dependent E number, composition completeness, or conflicting evidence, classify unknown unless the supplied evidence resolves it. General knowledge may identify such risks and ordinary vegan food identities; it must not invent product-specific sourcing or manufacturing assurances.
+- The user accepts greater use of `gpt-5.6-luna` with reasoning effort `high` for these case-by-case assessments. Implementation and migration remain pending the revised codebase proposal; do not treat permission to use more LLM assessment as permission to guess or to change the independent-pass disagreement policy.
 - Vegan classification must prefer false negatives over false positives.
 - Do not tag a product as vegan from probability, brand reputation, category assumptions, or "usually vegan" reasoning.
 - Valid product statuses are `vegan`, `nonvegan`, and `unknown`.
@@ -39,8 +41,8 @@ The project has two related goals:
 - `unknown` means assessed, but not enough database evidence exists to classify safely.
 - `NULL` or missing status means unclassified and should generally be treated as work remaining.
 - May-contain allergen warnings do not make a product non-vegan.
-- A product with no explicit ingredients field should be treated as a single-ingredient product and classified from stored product identity/category text when that identity is unambiguous.
-- Ocado's official vegan tag is authoritative: classify tagged products as `vegan/tagged` even when stored ingredient text appears to conflict, and report those conflicts separately for manual review.
+- A missing ingredients field does not itself prove a single-ingredient product. Classify from stored identity/category text only when it establishes an unambiguous ordinary vegan food and leaves no unresolved composition or relevant processing uncertainty.
+- Ocado's official vegan tag supplies explicit positive evidence, but unresolved material conflicts with product identity or animal-derived content must remain unknown pending review; retain the conflicting evidence. This revised requirement supersedes the previous unconditional official-tag precedence.
 - For products without an official Ocado vegan tag, explicit animal-derived ingredients such as milk, egg, honey, gelatine, meat, fish, shellfish, beeswax, shellac, carmine, lanolin, or similar should classify as non-vegan.
 - Ingredients with ambiguous sourcing should classify as unknown unless the product text explicitly resolves the source.
 - Fortified wheat/flour should be treated as vegan when the fortification is limited to standard flour additions such as calcium, iron, niacin, thiamin, or folic acid.
@@ -74,8 +76,8 @@ The project has two related goals:
 - Preserve the current userscript formatting style; edits should already match VS Code autoformat-on-save output and should not introduce formatting-only churn.
 - If the user says they updated a separate local copy of the userscript, treat that named file as the current source of truth and sync the repo copy from it after validating.
 - Keep the script self-contained; it should not fetch Ocado product detail pages or call third-party services while shopping.
-- The script should treat products as vegan when Ocado tags them vegan, when the name explicitly contains standalone `vegan`, or when the product ID is in an embedded vegan allowlist.
-- Live or embedded official Ocado vegan metadata must take precedence over the embedded non-vegan set.
+- The script should treat products as vegan from an accepted official tag, a clearly affirmative whole-product vegan name, or a validated embedded vegan allowlist entry, subject to unresolved-conflict checks. A name/URL keyword alone must not bypass negation, claim scope, or contrary product evidence.
+- Live or embedded official Ocado vegan metadata must not silently override recorded contrary evidence; unresolved conflicts remain unknown pending review.
 - Keep separate allowlists for manufacturer/name evidence and ingredients evidence.
 - Non-vegan or not-known-vegan products should be visually de-emphasised only; the real Ocado Add button must remain present and clickable.
 - Use `Not vegan` only for products affirmatively classified `nonvegan`; use `Unknown vegan` for products without enough evidence to establish either vegan or non-vegan status.
