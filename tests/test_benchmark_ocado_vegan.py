@@ -40,6 +40,15 @@ class BenchmarkOcadoVeganTests(unittest.TestCase):
         self.assertEqual(len(result["fixture_sha256"]), 64)
         self.assertEqual(fixture["contexts"]["677770011"]["product"]["dietary_information"], "Suitable for Vegetarians")
 
+    def test_arbitration_flag_routes_to_production_pipeline(self) -> None:
+        args = benchmark.build_parser().parse_args(["--arbitrate-disagreements"])
+        with mock.patch.object(benchmark.classifier, "classify_with_arbitration", return_value=[]) as pipeline:
+            with mock.patch.object(benchmark.classifier, "classify_codex_contexts") as standalone:
+                result = benchmark.run_benchmark(args)
+        self.assertTrue(result["arbitration_enabled"])
+        self.assertEqual(pipeline.call_count, 6)
+        standalone.assert_not_called()
+
     def test_fixture_contains_two_balanced_24_product_cohorts(self) -> None:
         fixture = benchmark.load_fixture(benchmark.DEFAULT_FIXTURE)
         products = fixture["products"]

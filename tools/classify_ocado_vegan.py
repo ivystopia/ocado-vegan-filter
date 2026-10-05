@@ -14,7 +14,7 @@ import tempfile
 import time
 from concurrent.futures import FIRST_COMPLETED, Future, ThreadPoolExecutor, wait
 from contextlib import closing
-from dataclasses import dataclass
+from dataclasses import asdict, dataclass, replace
 from pathlib import Path
 from typing import Any, Iterable
 
@@ -25,7 +25,10 @@ REPO_ROOT = Path(__file__).resolve().parents[1]
 DEFAULT_DB = str(REPO_ROOT / "ocado_products.sqlite")
 DEFAULT_CODEX_MODEL = "gpt-5.6-luna"
 DEFAULT_REASONING_EFFORT = "high"
-CLASSIFIER_VERSION = "db-vegan-codex-v9"
+ARBITRATION_MODEL = "gpt-6-astra"
+ARBITRATION_REASONING_EFFORT = "medium"
+ARBITRATION_PROMPT_VERSION = "ocado-vegan-confirmation-arbitration-v1"
+CLASSIFIER_VERSION = "db-vegan-codex-v10"
 PROMPT_VERSION = "ocado-vegan-product-json-v7"
 VALID_STATUSES = {"vegan", "nonvegan", "unknown"}
 VALID_VEGAN_REASONS = {"tagged", "manufacturer", "ingredients", "name"}
@@ -1206,6 +1209,26 @@ def build_codex_prompt(products: list[dict[str, Any]]) -> str:
     )
 
 
+def build_arbitration_prompt(products: list[dict[str, Any]]) -> str:
+    """Fresh evidence-only assessment; never expose first-stage conclusions."""
+    return (
+        "Classify each supplied product using only this JSON. Do not browse, search, read files, "
+        "or use brand reputation. Return schema-valid JSON with exactly one decision per product ID.\n"
+        "An official Ocado vegan tag is authoritative and uses reason tagged. Otherwise vegan "
+        "requires an explicit manufacturer vegan statement applying to this exact product, variant "
+        "and market, in the supplied product information or verified manufacturer evidence; use "
+        "reason manufacturer and quote that statement in evidence. A statement for another variant "
+        "or the mere word vegan in a name/URL is not confirmation. Ingredient lists, plant-based "
+        "materials, missing ingredients and product identity alone NEVER establish vegan status; "
+        "do not return vegan/ingredients or vegan/name.\n"
+        "Without an official tag, explicit animal-derived ingredients or explicit product-specific "
+        "non-vegan statements establish nonvegan. May-contain warnings do not. Material conflicts "
+        "or ambiguous evidence mean unknown. Do not infer absent animal ingredients or confirmation. "
+        "For unknown and nonvegan, vegan_reason must be null. Prefer unknown over guessing.\n"
+        f"Product JSON:\n{json_dumps({'products': products})}\n"
+    )
+
+
 def extract_json_object(raw: str) -> dict[str, Any]:
     try:
         parsed = json.loads(raw)
@@ -1291,9 +1314,10 @@ def call_codex_batch(
     model: str,
     reasoning_effort: str,
     codex_bin: str,
+    arbitration_policy: bool = False,
 ) -> tuple[dict[str, dict[str, Any]], str, str, int]:
     products = [product_context_for_llm(context) for context in contexts]
-    prompt = build_codex_prompt(products)
+    prompt = build_arbitration_prompt(products) if arbitration_policy else build_codex_prompt(products)
     expected_ids = {context["product"]["id"] for context in contexts}
     with tempfile.TemporaryDirectory(prefix="ocado-vegan-codex-") as tmp:
         tmp_path = Path(tmp)
@@ -1357,9 +1381,11 @@ def classify_codex_contexts(
     reasoning_effort: str,
     codex_bin: str,
     depth: int = 0,
+    arbitration_policy: bool = False,
 ) -> list[ClassificationResult]:
     payload = [product_context_for_llm(context) for context in contexts]
-    hash_value = context_hash({"prompt_version": PROMPT_VERSION, "products": payload})
+    prompt_version = ARBITRATION_PROMPT_VERSION if arbitration_policy else PROMPT_VERSION
+    hash_value = context_hash({"prompt_version": prompt_version, "products": payload})
     last_error: Exception | None = None
     indent = "  " + ("  " * depth)
 
@@ -1376,7 +1402,10 @@ def classify_codex_contexts(
                     model=model,
                     reasoning_effort=reasoning_effort,
                     codex_bin=codex_bin,
+                    arbitration_policy=arbitration_policy,
                 )
+                if exit_status != 0:
+                    raise RuntimeError(f"Codex returned exit status {exit_status}")
                 pass_payloads.append(decisions)
                 raw_responses.append(raw)
                 parsed_jsons.append(parsed_json)
@@ -1385,18 +1414,17 @@ def classify_codex_contexts(
             for context in contexts:
                 product_id = context["product"]["id"]
                 merged = merge_pass_decisions(pass_payloads, product_id)
-                results.append(
-                    decision_to_result(
-                        merged,
-                        source="codex",
-                        model=model,
-                        reasoning_effort=reasoning_effort,
-                        context_hash_value=hash_value,
-                        raw_response="\n--- pass ---\n".join(raw_responses),
-                        parsed_response_json=json_dumps(parsed_jsons),
-                        exit_status=max(exit_statuses),
-                    )
+                result = decision_to_result(
+                    merged,
+                    source="codex",
+                    model=model,
+                    reasoning_effort=reasoning_effort,
+                    context_hash_value=hash_value,
+                    raw_response="\n--- pass ---\n".join(raw_responses),
+                    parsed_response_json=json_dumps(parsed_jsons),
+                    exit_status=max(exit_statuses),
                 )
+                results.append(replace(result, prompt_version=prompt_version))
             return results
         except Exception as exc:
             if isinstance(exc, CodexUsageLimitError):
@@ -1424,6 +1452,7 @@ def classify_codex_contexts(
                 reasoning_effort=reasoning_effort,
                 codex_bin=codex_bin,
                 depth=depth + 1,
+                arbitration_policy=arbitration_policy,
             ),
             *classify_codex_contexts(
                 contexts[midpoint:],
@@ -1433,6 +1462,7 @@ def classify_codex_contexts(
                 reasoning_effort=reasoning_effort,
                 codex_bin=codex_bin,
                 depth=depth + 1,
+                arbitration_policy=arbitration_policy,
             ),
         ]
 
@@ -1452,12 +1482,79 @@ def classify_codex_contexts(
             source="codex_error",
             model=model,
             reasoning_effort=reasoning_effort,
-            prompt_version=PROMPT_VERSION,
+            prompt_version=prompt_version,
             context_hash=hash_value,
             validation_error=str(last_error),
             exit_status=1,
         )
     ]
+
+
+def classify_with_arbitration(
+    contexts: list[dict[str, Any]],
+    *,
+    passes: int,
+    retries: int,
+    model: str,
+    reasoning_effort: str,
+    codex_bin: str,
+) -> list[ClassificationResult]:
+    """Arbitrate only validated first-stage disagreements, once, without DB writes."""
+    if passes < 2:
+        raise ValueError("Classification requires at least two independent primary passes")
+    primary = classify_codex_contexts(
+        contexts, passes=passes, retries=retries, model=model,
+        reasoning_effort=reasoning_effort, codex_bin=codex_bin,
+    )
+    disputed = {
+        result.product_id: result for result in primary
+        if not result.validation_error and result.source == "codex"
+        and "independent_codex_disagreement" in result.evidence.get("ambiguity_notes", [])
+    }
+    if not disputed:
+        return primary
+    selected = [context for context in contexts if context["product"]["id"] in disputed]
+    arbitrated = classify_codex_contexts(
+        selected, passes=2, retries=retries, model=ARBITRATION_MODEL,
+        reasoning_effort=ARBITRATION_REASONING_EFFORT, codex_bin=codex_bin,
+        arbitration_policy=True,
+    )
+    context_by_id = {context["product"]["id"]: context for context in selected}
+    replacements = {}
+    for result in arbitrated:
+        first = disputed[result.product_id]
+        raw_arbitration = result
+        # Defense in depth: agreement alone cannot override the confirmation-only policy.
+        if result.vegan_status == "vegan":
+            confirmation = classify_by_rules(context_by_id[result.product_id])
+            if (result.vegan_reason not in {"tagged", "manufacturer"}
+                    or confirmation is None or confirmation.vegan_status != "vegan"
+                    or confirmation.vegan_reason != result.vegan_reason):
+                result = replace(
+                    result, vegan_status="unknown", vegan_reason=None, confidence="uncertain",
+                    summary="Astra agreement lacked supported explicit vegan confirmation.",
+                    evidence={**result.evidence, "ambiguity_notes": [
+                        *result.evidence.get("ambiguity_notes", []), "arbitration_confirmation_required",
+                    ]},
+                )
+        evidence = {
+            **result.evidence,
+            "arbitration": {
+                "trigger": "primary_pass_disagreement",
+                "primary": asdict(first),
+                "assessment": asdict(raw_arbitration),
+                "outcome": "error" if result.validation_error else (
+                    "unresolved" if result.vegan_status == "unknown" else "resolved"
+                ),
+            },
+        }
+        replacements[result.product_id] = replace(
+            result, source="codex_error" if result.validation_error else "codex_arbitration",
+            evidence=evidence,
+        )
+    if set(replacements) != set(disputed):
+        raise RuntimeError("Arbitration did not return exactly the disputed products")
+    return [replacements.get(result.product_id, result) for result in primary]
 
 
 def select_unclassified_product_ids(
@@ -1559,6 +1656,8 @@ def classify_codex(
     workers: int = 1,
     sync_run_id: int | None = None,
 ) -> int:
+    if passes < 2:
+        raise ValueError("Classification requires at least two independent primary passes")
     ids = select_unclassified_product_ids(conn, limit=limit, sync_run_id=sync_run_id)
     officially_tagged_ids = officially_tagged_product_ids(conn, ids)
     if officially_tagged_ids:
@@ -1589,7 +1688,7 @@ def classify_codex(
             f"Codex batch {batch_number}/{batch_total}: products {batch_start + 1}-{batch_start + len(batch_ids)} of {len(ids)}",
             flush=True,
         )
-        results = classify_codex_contexts(
+        results = classify_with_arbitration(
             contexts,
             passes=passes,
             retries=retries,

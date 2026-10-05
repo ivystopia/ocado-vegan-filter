@@ -59,6 +59,7 @@ def build_parser() -> argparse.ArgumentParser:
     parser.add_argument("--fixture", type=Path, default=DEFAULT_FIXTURE)
     parser.add_argument("--model", default=classifier.DEFAULT_CODEX_MODEL)
     parser.add_argument("--reasoning-effort", default=classifier.DEFAULT_REASONING_EFFORT)
+    parser.add_argument("--arbitrate-disagreements", action="store_true", help="Exercise production Astra arbitration after primary disagreements.")
     parser.add_argument("--passes", type=int, default=2)
     parser.add_argument("--retries", type=int, default=2)
     parser.add_argument("--batch-size", type=int, default=10)
@@ -98,7 +99,8 @@ def run_benchmark(args: argparse.Namespace) -> dict[str, Any]:
                     [fixture["contexts"][product_id] for product_id in batch_ids]
                     if fixture.get("contexts") else classifier.load_product_contexts(conn, batch_ids)
                 )
-                results = classifier.classify_codex_contexts(
+                classify = classifier.classify_with_arbitration if args.arbitrate_disagreements else classifier.classify_codex_contexts
+                results = classify(
                     contexts,
                     passes=args.passes,
                     retries=args.retries,
@@ -143,6 +145,8 @@ def run_benchmark(args: argparse.Namespace) -> dict[str, Any]:
         "model": args.model,
         "reasoning_effort": args.reasoning_effort,
         "passes": args.passes,
+        "arbitration_enabled": args.arbitrate_disagreements,
+        "arbitrated_ids": sorted(product_id for product_id, result in decisions.items() if "arbitration" in result.evidence),
         "batch_size": args.batch_size,
         "duration_seconds": round(elapsed, 3),
         "product_count": len(products),

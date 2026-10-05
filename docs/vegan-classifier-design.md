@@ -49,7 +49,7 @@ Classification must be auditable without re-scraping Ocado.
 `product_vegan_classification_audit` records each product decision:
 
 - product ID
-- source: `rule` or `codex`
+- source: `rule`, `codex`, `codex_arbitration`, or `codex_error`
 - status/reason/confidence/summary
 - evidence JSON
 - prompt version
@@ -61,6 +61,10 @@ Classification must be auditable without re-scraping Ocado.
 
 The `products` table is the current source of truth.
 The audit tables explain how each current decision was reached.
+
+## Current policy transition
+
+The 2026-10-05 confirmation-only requirement in `AGENTS.md` supersedes the legacy positive ingredient/name permissions described below. The new Astra arbitration stage enforces confirmation-only decisions. The existing deterministic and primary Luna paths and stored classifications have not yet undergone the broader policy migration; this change does not claim that migration is complete. Do not start catalogue reclassification or export as part of the arbitration implementation.
 
 ## Classification Semantics
 
@@ -146,7 +150,13 @@ For manufactured non-food goods, material descriptions such as cotton, plastic, 
 Do not use Luna `low` or `medium` reasoning for product decisions because both repeated a false-vegan result in the retained benchmark. Use `high` unless a later benchmark justifies another setting.
 
 For every bulk run, run two independent Codex passes for any LLM-classified product.
-If the passes disagree on `vegan_status` or `vegan_reason`, classify the product as `unknown`.
+If the primary passes disagree on `vegan_status` or `vegan_reason`, `classify_with_arbitration()` sends only those disputed contexts to two fresh `gpt-6-astra`/`medium` passes. The model ID and effort are separate parameters. These passes see the stored product evidence, not the Luna answers. They use `ocado-vegan-confirmation-arbitration-v1`, which requires an official tag or an applicable explicit manufacturer statement for positive vegan status. An additional deterministic confirmation check prevents ingredient/name-only or unsupported manufacturer/tag claims from being promoted even if Astra agrees. Conflicting canonical animal-ingredient evidence also blocks a non-official promotion.
+
+Accept Astra only when both passes agree on status and reason and the confirmation gate permits it. Otherwise retain `unknown`. A primary agreed `unknown` or execution failure does not trigger arbitration. Arbitration is bounded to one stage; its own disagreement does not recurse. Invalid output follows the existing bounded retry/split recovery, and exhausted failures remain `codex_error` with run errors. Account limits and interruption propagate rather than silently choosing a lower model. Both primary and arbitration assessments (including raw/parsed successful responses, model, effort, prompt version and context hash) are retained under `evidence.arbitration`; `outcome` is `resolved`, `unresolved`, or `error`. The final audit row identifies Astra, while run metadata continues to identify the primary model and the versioned pipeline. A rejected positive Astra assessment is retained alongside the final unknown decision.
+
+Production `classify-codex` and `classify-all --codex` use this pipeline automatically, with at least two primary passes required. Existing selectors still choose only unclassified products: this does not revisit historical unknowns or invalidate any stored decisions. A future historical reassessment requires an explicitly authorized cohort and preserved before/after audit history. Manufacturer website source review remains a separate two-pass workflow and does not use this arbitration stage.
+
+The 15-case [Astra pilot](../audit/benchmarks/2026-10-05-astra-disagreements/README.md) selected medium over high, but predates the stricter positive-evidence policy. Its five vegan/ingredients outcomes are not eligible for promotion under the new stage. The original 48-product frozen benchmark stays unchanged as a legacy regression suite; run it with `--arbitrate-disagreements` to exercise the pipeline. A separate confirmation-policy replay of retained disagreements lives in `audit/benchmarks/2026-10-05-arbitration-confirmation-v1/`; its new expectations are policy-specific and do not overwrite the original benchmark labels.
 
 ## Concurrency and optional review
 

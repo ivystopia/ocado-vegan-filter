@@ -4,6 +4,8 @@ This runbook refreshes the SQLite source of truth, reclassifies only new or chan
 
 The live scrape itself does not use an LLM. Luna/high is used only after the scrape, for products that remain unresolved after deterministic rules.
 
+The Astra arbitration change does not authorize reclassification. The broader confirmation-only migration is pending; reconcile that policy before executing the legacy catalogue classification/export steps below.
+
 ## 1. Prepare And Benchmark
 
 Start from the repository root with a clean tracked working tree and the [development environment](../README.md#development) active. The local SQLite database is intentionally untracked. If resuming an interrupted refresh, inspect the latest run and follow [the recovery guidance](working-guide.md#recovery-and-classifier-pitfalls) before starting another writer.
@@ -24,6 +26,7 @@ The standard fixture now contains frozen SQLite evidence in `benchmarks/vegan-cl
 RUN_STAMP="$(date +%F-%H%M%S)"
 
 python3 tools/benchmark_ocado_vegan.py \
+  --arbitrate-disagreements \
   --model gpt-5.6-luna \
   --reasoning-effort high \
   --passes 2 \
@@ -31,7 +34,7 @@ python3 tools/benchmark_ocado_vegan.py \
   --json-output "audit/benchmarks/${RUN_STAMP}-luna-high.json"
 ```
 
-Stop if the command exits non-zero. A pass disagreement is always merged to `unknown` and reported; investigate any new disagreement before continuing even when it does not create an exact-status mismatch. The runner retries transient schema/output failures, but any observed retry should still be noted in the monthly review. Use a new output filename for each attempt so failed results remain available alongside successful reruns.
+Stop if the command exits non-zero. Primary disagreements receive two independent Astra/medium assessments; unresolved Astra disagreements remain `unknown`. Review `arbitrated_ids` and the retained audit evidence; investigate any new disagreement before continuing even when it does not create an exact-status mismatch. The runner retries transient schema/output failures, but any observed retry should still be noted in the monthly review. Use a new output filename for each attempt so failed results remain available alongside successful reruns.
 
 ## 2. Refresh The SQLite Catalogue
 
@@ -110,7 +113,7 @@ python3 tools/classify_ocado_vegan.py --db "$DB_PATH" classify-all \
   --workers 8
 ```
 
-The command is resumable: successfully classified products are no longer selected if the command must be rerun. Any disagreement between the two passes becomes `unknown`. Eight workers completed the 8,242-product August 2026 queue without a final error; lower the worker count and rerun only if the service starts returning persistent rate or execution errors.
+The command is resumable: successfully classified products are no longer selected if the command must be rerun. Primary status/reason disagreements trigger two fresh Astra/medium passes on the stored evidence. Only an agreed, policy-supported result is accepted; unresolved disagreements stay `unknown`, and exhausted arbitration failures are recorded as errors. Agreed primary unknowns are not escalated. Eight workers completed the 8,242-product August 2026 queue without a final error; lower the worker count and rerun only if the service starts returning persistent rate or execution errors.
 
 ## 4. Validate The Database
 
@@ -166,7 +169,16 @@ FROM product_vegan_classification_audit AS a
 JOIN vegan_classification_runs AS r ON r.id = a.run_id
 WHERE r.sync_run_id = ${SYNC_RUN_ID}
   AND r.mode = 'codex'
-  AND a.evidence_json LIKE '%independent_codex_disagreement%';
+  AND EXISTS (SELECT 1 FROM json_each(a.evidence_json, '$.ambiguity_notes')
+              WHERE value = 'independent_codex_disagreement');
+
+SELECT json_extract(a.evidence_json, '$.arbitration.outcome') AS arbitration_outcome,
+       COUNT(*) AS products
+FROM product_vegan_classification_audit AS a
+JOIN vegan_classification_runs AS r ON r.id = a.run_id
+WHERE r.sync_run_id = ${SYNC_RUN_ID}
+  AND json_extract(a.evidence_json, '$.arbitration') IS NOT NULL
+GROUP BY arbitration_outcome;
 
 SELECT COUNT(*) AS validation_error_products
 FROM product_vegan_classification_audit AS a
