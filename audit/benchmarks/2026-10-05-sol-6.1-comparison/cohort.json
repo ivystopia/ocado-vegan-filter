@@ -1,0 +1,664 @@
+{
+  "selection": "First 15 by SHA256(astra-benchmark-2026-10-05: + product_id) among 156 latest Luna/high disagreements still unknown",
+  "products": [
+    {
+      "product_id": "694001011",
+      "context": {
+        "product": {
+          "id": "694001011",
+          "name": "England Football Size 5",
+          "brand": "Hy-pro",
+          "url": "https://www.ocado.com/products/694001011/details",
+          "official_vegan": 0,
+          "detailed_description": "Officially Licensed Merchandise: Hy-Pro are proud to showcase this officially licensed England FA football. Show off your love for your team with this premium England ball, ideal as England gifts for boys, England gifts for kids, and fans Cool Design: Made with a striking design, this England football stands out whether on show at home or in the field, making it a standout choice among boys England gifts, England kids gifts, and stylish England gifts for girls High Quality: This size 5 England football is carefully crafted using top quality materials ensuring durability and longevity, great for those needing a reliable football size 5 Great Gift Idea: This England football is an ideal gift for any football fan, with official club branding making it perfect for kids England gifts for men, and thoughtful England gifts for women for all occasions Ready for Play: This England ball is great for training, matches, or casual kickabouts, offering reliable performance for players of all ages and skill levels",
+          "brand_marketing": "Officially Licensed England FA Merchandise",
+          "preparation_and_usage": "Warning. Not suitable for children under three years. PVC",
+          "specification": "Composition: PVC, Size: 22x22x22, 375g Ball arrives deflated."
+        },
+        "flags": [],
+        "categories": [
+          "baby-toddler/kids-toys-games-books/outdoor-toys-games/balls-sport"
+        ],
+        "manufacturer_vegan_evidence": []
+      },
+      "sha256": "4bc638756d21c2e1791db44abdf43dbc0a9750b43bd786f7c9ddb35bf56c8070",
+      "luna_audit": {
+        "id": 126390,
+        "run_id": 31,
+        "product_id": "694001011",
+        "source": "codex",
+        "vegan_status": "unknown",
+        "vegan_reason": null,
+        "confidence": "uncertain",
+        "summary": "Independent Codex passes disagreed, so the product is classified unknown.",
+        "evidence_json": "{\"ambiguity_notes\": [\"independent_codex_disagreement\"], \"evidence\": [\"{\\\"ambiguity_notes\\\": [], \\\"confidence\\\": \\\"certain\\\", \\\"evidence\\\": [\\\"Composition: PVC\\\"], \\\"product_id\\\": \\\"694001011\\\", \\\"summary\\\": \\\"The complete supplied composition is PVC.\\\", \\\"vegan_reason\\\": \\\"ingredients\\\", \\\"vegan_status\\\": \\\"vegan\\\"}\", \"{\\\"ambiguity_notes\\\": [\\\"The product is a manufactured non-food good.\\\", \\\"PVC composition does not explicitly resolve all manufacturing inputs.\\\"], \\\"confidence\\\": \\\"certain\\\", \\\"evidence\\\": [\\\"Specification states PVC.\\\"], \\\"product_id\\\": \\\"694001011\\\", \\\"summary\\\": \\\"The PVC football cannot be safely classified from the supplied evidence.\\\", \\\"vegan_reason\\\": null, \\\"vegan_status\\\": \\\"unknown\\\"}\"], \"rule\": \"codex_llm\"}",
+        "model": "gpt-5.6-luna",
+        "reasoning_effort": "high",
+        "prompt_version": "ocado-vegan-product-json-v7",
+        "context_hash": "7df848527fd9d2ca8e50576146849907565b1d801e3a331dbb5a2759c3492bbc",
+        "validation_error": null,
+        "exit_status": 0,
+        "classifier_version": "db-vegan-codex-v8",
+        "classified_at_epoch": 1787324424
+      }
+    },
+    {
+      "product_id": "633002011",
+      "context": {
+        "product": {
+          "id": "633002011",
+          "name": "Cypressa Hand-Picked Whole Kalamata Olives",
+          "brand": "Cypressa",
+          "url": "https://www.ocado.com/products/633002011/details",
+          "official_vegan": 0,
+          "ingredients": "Kalamata Olives, Water, Sea Salt, Red Wine Vinegar (Sulphites)",
+          "allergens": "Contains Sulphur Dioxide/Sulphites",
+          "dietary_information": "Suitable for Vegetarians",
+          "features": "Greek Olives, Suitable for Vegetarians",
+          "further_description": "Foods of the Sun For more of our sun-drenched flavours visit cypressa.co.uk",
+          "other_information": "Full Product Name: Stone-in Kalamata olives in brine. Storage: Store in a cool dry place. Once opened, refrigerate and consume within 2 weeks. Best before end: See side of jar. Safety Warning: CAUTION: Olives contain olive stones."
+        },
+        "flags": [
+          "vegetarian"
+        ],
+        "categories": [
+          "dietary-lifestyle-world-foods/brands-we-love/cypressa/olives",
+          "food-cupboard/cooking-ingredients/olives-antipasti-jarred-goods/olives/black-olives",
+          "food-cupboard/cooking-ingredients/olives-antipasti-jarred-goods/olives/green-olives",
+          "food-cupboard/cooking-ingredients/olives-antipasti-jarred-goods/olives/jarred-olives"
+        ],
+        "manufacturer_vegan_evidence": []
+      },
+      "sha256": "b4ad1274a23ae1a004b3384df5719c66b6864b99b9fa6bb211be4f1fd76728c6",
+      "luna_audit": {
+        "id": 122045,
+        "run_id": 31,
+        "product_id": "633002011",
+        "source": "codex",
+        "vegan_status": "unknown",
+        "vegan_reason": null,
+        "confidence": "uncertain",
+        "summary": "Independent Codex passes disagreed, so the product is classified unknown.",
+        "evidence_json": "{\"ambiguity_notes\": [\"independent_codex_disagreement\"], \"evidence\": [\"{\\\"ambiguity_notes\\\": [\\\"The supplied text does not resolve whether the red wine vinegar used animal-derived processing aids; vegetarian suitability is not sufficient to establish vegan status.\\\"], \\\"confidence\\\": \\\"uncertain\\\", \\\"evidence\\\": [\\\"Ingredients are Kalamata olives, water, sea salt, and red wine vinegar containing sulphites.\\\", \\\"Product is marked suitable for vegetarians, not vegans.\\\", \\\"No official vegan tag supplied.\\\"], \\\"product_id\\\": \\\"633002011\\\", \\\"summary\\\": \\\"The listed ingredients contain no explicit animal-derived ingredient, but vegan status is not fully established.\\\", \\\"vegan_reason\\\": null, \\\"vegan_status\\\": \\\"unknown\\\"}\", \"{\\\"ambiguity_notes\\\": [], \\\"confidence\\\": \\\"certain\\\", \\\"evidence\\\": [\\\"Ingredients are Kalamata olives, water, sea salt, and red wine vinegar with sulphites.\\\", \\\"No animal-derived ingredient is listed.\\\", \\\"May contain sulphites do not affect vegan classification.\\\"], \\\"product_id\\\": \\\"633002011\\\", \\\"summary\\\": \\\"The supplied complete ingredient list consists only of plant-derived olives, water, salt, and vinegar with sulphites.\\\", \\\"vegan_reason\\\": \\\"ingredients\\\", \\\"vegan_status\\\": \\\"vegan\\\"}\"], \"rule\": \"codex_llm\"}",
+        "model": "gpt-5.6-luna",
+        "reasoning_effort": "high",
+        "prompt_version": "ocado-vegan-product-json-v7",
+        "context_hash": "d9083247663c1be8a0026cb6fded99a160cded0cff1f8d4f11c2d5c0315957e9",
+        "validation_error": null,
+        "exit_status": 0,
+        "classifier_version": "db-vegan-codex-v8",
+        "classified_at_epoch": 1787319651
+      }
+    },
+    {
+      "product_id": "691539011",
+      "context": {
+        "product": {
+          "id": "691539011",
+          "name": "M&S Boys Cotton Rich Animal Socks, 12-24 Months, Multi",
+          "brand": "M&S",
+          "url": "https://www.ocado.com/products/691539011/details",
+          "official_vegan": 0,
+          "detailed_description": "Keep your little one's feet cosy with these adorable cotton-rich baby socks. They're made with added stretch to help them stay in place. The handy pack of five includes a mix of animal designs, including cows and sheep.",
+          "preparation_and_usage": "Machine washable Tumble dry Keep away from fire\"",
+          "specification": "- Baby socks - Added Stretch - 85% cotton, 13% polyamide and 2% elastane"
+        },
+        "flags": [],
+        "categories": [
+          "clothing-accessories/baby-clothing-accessories-0-2-years/baby-outfits",
+          "events-inspiration/home-clothing-sale/clothing"
+        ],
+        "manufacturer_vegan_evidence": []
+      },
+      "sha256": "f1b6f52c6c43a465af775733624d9ae199e4fedf81144ec59b1690f07f4e8241",
+      "luna_audit": {
+        "id": 125805,
+        "run_id": 31,
+        "product_id": "691539011",
+        "source": "codex",
+        "vegan_status": "unknown",
+        "vegan_reason": null,
+        "confidence": "uncertain",
+        "summary": "Independent Codex passes disagreed, so the product is classified unknown.",
+        "evidence_json": "{\"ambiguity_notes\": [\"independent_codex_disagreement\"], \"evidence\": [\"{\\\"ambiguity_notes\\\": [\\\"The listed fibre composition does not establish that dyes, trims, or processing inputs are vegan.\\\"], \\\"confidence\\\": \\\"certain\\\", \\\"evidence\\\": [\\\"Specification lists 85% cotton, 13% polyamide, and 2% elastane.\\\", \\\"No official vegan tag or explicit vegan claim is supplied.\\\"], \\\"product_id\\\": \\\"691539011\\\", \\\"summary\\\": \\\"Cotton-rich socks without explicit complete-product vegan evidence.\\\", \\\"vegan_reason\\\": null, \\\"vegan_status\\\": \\\"unknown\\\"}\", \"{\\\"ambiguity_notes\\\": [], \\\"confidence\\\": \\\"certain\\\", \\\"evidence\\\": [\\\"Specification gives a complete 100% material composition: 85% cotton, 13% polyamide, and 2% elastane.\\\", \\\"No animal-derived material is stated, and the listed materials are plant-derived or synthetic.\\\"], \\\"product_id\\\": \\\"691539011\\\", \\\"summary\\\": \\\"The socks have a complete composition consisting only of cotton and synthetic materials, supporting a vegan classification.\\\", \\\"vegan_reason\\\": \\\"ingredients\\\", \\\"vegan_status\\\": \\\"vegan\\\"}\"], \"rule\": \"codex_llm\"}",
+        "model": "gpt-5.6-luna",
+        "reasoning_effort": "high",
+        "prompt_version": "ocado-vegan-product-json-v7",
+        "context_hash": "80caf3b76d7842b3bbc1145d41665682df3505b43bb8a9a4824cb5be379d3d77",
+        "validation_error": null,
+        "exit_status": 0,
+        "classifier_version": "db-vegan-codex-v8",
+        "classified_at_epoch": 1787323765
+      }
+    },
+    {
+      "product_id": "698034011",
+      "context": {
+        "product": {
+          "id": "698034011",
+          "name": "Wray & Nephew 43",
+          "brand": "Wray & Nephew",
+          "url": "https://www.ocado.com/products/698034011/details",
+          "official_vegan": 0,
+          "features": "Guaranteed Full Flavour",
+          "further_description": "camparigroup.info for nutritional information",
+          "other_information": "Full Product Name: Rum"
+        },
+        "flags": [
+          "vegetarian"
+        ],
+        "categories": [
+          "beer-wine-spirits/spirits/rum/white"
+        ],
+        "manufacturer_vegan_evidence": []
+      },
+      "sha256": "dfc4ef7ab5fb5a46eee83e149b0f51a7c0606ed45c98ff0876c43df20c0d7332",
+      "luna_audit": {
+        "id": 126958,
+        "run_id": 31,
+        "product_id": "698034011",
+        "source": "codex",
+        "vegan_status": "unknown",
+        "vegan_reason": null,
+        "confidence": "uncertain",
+        "summary": "Independent Codex passes disagreed, so the product is classified unknown.",
+        "evidence_json": "{\"ambiguity_notes\": [\"independent_codex_disagreement\"], \"evidence\": [\"{\\\"ambiguity_notes\\\": [\\\"Rum identity alone does not establish that undisclosed processing or filtration inputs are vegan.\\\"], \\\"confidence\\\": \\\"certain\\\", \\\"evidence\\\": [\\\"Full Product Name: Rum\\\", \\\"Name: Wray & Nephew 43\\\", \\\"No explicit vegan evidence\\\"], \\\"product_id\\\": \\\"698034011\\\", \\\"summary\\\": \\\"The supplied product identity does not establish vegan status.\\\", \\\"vegan_reason\\\": null, \\\"vegan_status\\\": \\\"unknown\\\"}\", \"{\\\"ambiguity_notes\\\": [], \\\"confidence\\\": \\\"certain\\\", \\\"evidence\\\": [\\\"Product is identified as rum, an unambiguous single-ingredient spirit identity.\\\"], \\\"product_id\\\": \\\"698034011\\\", \\\"summary\\\": \\\"Rum is a plant-derived distilled spirit with no animal-derived ingredient indicated.\\\", \\\"vegan_reason\\\": \\\"ingredients\\\", \\\"vegan_status\\\": \\\"vegan\\\"}\"], \"rule\": \"codex_llm\"}",
+        "model": "gpt-5.6-luna",
+        "reasoning_effort": "high",
+        "prompt_version": "ocado-vegan-product-json-v7",
+        "context_hash": "b1dff3ade50474bdcee5da45458df2aa237aefd6ce897c62ebeec25b7a4003e0",
+        "validation_error": null,
+        "exit_status": 0,
+        "classifier_version": "db-vegan-codex-v8",
+        "classified_at_epoch": 1787325068
+      }
+    },
+    {
+      "product_id": "599102011",
+      "context": {
+        "product": {
+          "id": "599102011",
+          "name": "M&S Recycled Sports Swimsuit, 7-8 Years, Black",
+          "brand": "Marks & Spencer",
+          "url": "https://www.ocado.com/products/599102011/details",
+          "official_vegan": 0,
+          "detailed_description": "This athletic swimsuit from M&S' Goodmove collection is ideal for young swimmers. It's cut in a regular fit with added stretch for extra flexibility. The chlorine-resistant fabric provides Sun Smart UPF50+ protection and is endorsed by the British Skin Foundation. Made with recycled nylon.",
+          "preparation_and_usage": "Machine washable Keep Away From Fire 80% polyamide, 20% elastane,Lining - 100% polyester",
+          "specification": "- Regular fit - Swimsuits - Sun Smart UPF50+ helps to protect against harmful UV rays Endorsed by the British Skin Foundation Chlorine-resistant fabric - Added Stretch"
+        },
+        "flags": [],
+        "categories": [
+          "events-inspiration/back-to-school/m-s-school-uniform/girls-7-8-yrs",
+          "events-inspiration/home-clothing-sale/clothing",
+          "m-s/m-s-clothing/m-s-kidswear/m-s-kids"
+        ],
+        "manufacturer_vegan_evidence": []
+      },
+      "sha256": "817d3be20e932e6ad258b6d1440acd8cd408eefa9f4ebab1fd273d91ba73a946",
+      "luna_audit": {
+        "id": 121355,
+        "run_id": 31,
+        "product_id": "599102011",
+        "source": "codex",
+        "vegan_status": "unknown",
+        "vegan_reason": null,
+        "confidence": "uncertain",
+        "summary": "Independent Codex passes disagreed, so the product is classified unknown.",
+        "evidence_json": "{\"ambiguity_notes\": [\"independent_codex_disagreement\"], \"evidence\": [\"{\\\"ambiguity_notes\\\": [\\\"The listed synthetic fibre composition does not explicitly address dyes, finishes, or other processing inputs.\\\"], \\\"confidence\\\": \\\"certain\\\", \\\"evidence\\\": [\\\"Preparation and usage lists 80% polyamide, 20% elastane, with a 100% polyester lining.\\\", \\\"Description says made with recycled nylon.\\\", \\\"No explicit vegan claim or official vegan tag.\\\"], \\\"product_id\\\": \\\"599102011\\\", \\\"summary\\\": \\\"The supplied synthetic composition is insufficient to confirm the entire manufactured swimsuit is vegan.\\\", \\\"vegan_reason\\\": null, \\\"vegan_status\\\": \\\"unknown\\\"}\", \"{\\\"ambiguity_notes\\\": [], \\\"confidence\\\": \\\"certain\\\", \\\"evidence\\\": [\\\"Composition is stated as 80% polyamide, 20% elastane, with a 100% polyester lining.\\\"], \\\"product_id\\\": \\\"599102011\\\", \\\"summary\\\": \\\"Complete stated composition contains only synthetic fibres.\\\", \\\"vegan_reason\\\": \\\"ingredients\\\", \\\"vegan_status\\\": \\\"vegan\\\"}\"], \"rule\": \"codex_llm\"}",
+        "model": "gpt-5.6-luna",
+        "reasoning_effort": "high",
+        "prompt_version": "ocado-vegan-product-json-v7",
+        "context_hash": "5509146b5669d76fc352268f5c80499fbaae560797ed95efcc0a825198fdcff4",
+        "validation_error": null,
+        "exit_status": 0,
+        "classifier_version": "db-vegan-codex-v8",
+        "classified_at_epoch": 1787318843
+      }
+    },
+    {
+      "product_id": "662752011",
+      "context": {
+        "product": {
+          "id": "662752011",
+          "name": "Cincoro Anejo Tequila",
+          "brand": "Cincoro Reposado",
+          "url": "https://www.ocado.com/products/662752011/details",
+          "official_vegan": 0,
+          "detailed_description": "CINCORO ANEJO is aged 20+ months & crafted by hand-selecting the highest quality 100% blue weber agave from both the highland & lowland regions of Jalisco, Mexico. It is aged in curated Tennessee Whiskey barrels until reaching remarkable depth of flavour. Our Anejo is rich with a long finish, perfect for sipping & sharing with good friends & family. THE BOTTLE: Meticulously crafted to embody the elegance & sophistication of the spirit within. The bottle\u2019s unique 5-sided glass structure pays homage to the 5 founders. A standout feature is the distinctive 23-degree angle, a tribute to Michael Jordan\u2019s iconic jersey number, symbolizing greatness & a relentless drive to be the best. AGED: Over 20 months AROMA: Fresh-cut oak wood; maple, dried fruits, cinnamon, and nutmeg TASTE: Cooked agave, toasted oak, maple, dark chocolate, and baking spices FINISH: Long and complex; evolving wood notes Please drink responsibly: The UK Chief Medical Officers recommend adults do not regularly drink more than 14 units per week",
+          "other_information": "REACH FOR GREATNESS: In July 2016, five rival NBA team owners - Emilia Fazzalari and Wyc Grousbeck of the Celtics, Jeanie Buss of the Lakers, Michael Jordan of the Hornets, and Wes Edens of the Bucks - met for dinner. That night, they bonded over their shared love for tequila and Cincoro was born. Combining \"cinco\" for five and \"oro\" for gold, Cincoro symbolizes their mission of creating the gold standard in tequila. Cincoro Tequila is uniquely made with 100% Weber Blue agave from private farms in both the highland and lowland regions of Jalisco, Mexico. The agave is hand-selected and slow-cooked in a small batch process, distilling the highland and lowland tequilas separately, before blending them together to create the Cincoro signature taste profile. This is the heart of Cincoro: a naturally rich and delicious family of tequilas that are smooth on the palate with a complex, long finish. Cincoro Tequila is a taste experience unlike any other, created to be sipped neat, but also to elevate cocktails.",
+          "preparation_and_usage": "CINCORO GRAND OLD FASHIONED 2 1\u20442oz A\u00f1ejo 1\u20442oz Light Agave Nectar 3 Dashes of Angostura Bitters METHOD: Combine all ingredients, stir and strain over ice GLASS: Rocks GARNISH: Orange swath and Maraschino cherry spices AGE: 24-28 months. TASTING NOTES AROMA: Fresh-cut oak wood; maple, dried fruits, cinnamon, and nutmeg TASTE: Cooked agave, toasted oak, maple, dark chocolate, and baking spices FINISH: Long and complex; evolving wood notes",
+          "country_of_origin": "Mexico"
+        },
+        "flags": [
+          "vegetarian"
+        ],
+        "categories": [
+          "beer-wine-spirits/spirits/tequila",
+          "events-inspiration/clearance/beer-wine-spirits"
+        ],
+        "manufacturer_vegan_evidence": []
+      },
+      "sha256": "190a0bf5ec7357bd8890db872b335e06bcdfd8e7a61d76afe201f8532374aac2",
+      "luna_audit": {
+        "id": 123048,
+        "run_id": 31,
+        "product_id": "662752011",
+        "source": "codex",
+        "vegan_status": "unknown",
+        "vegan_reason": null,
+        "confidence": "uncertain",
+        "summary": "Independent Codex passes disagreed, so the product is classified unknown.",
+        "evidence_json": "{\"ambiguity_notes\": [\"independent_codex_disagreement\"], \"evidence\": [\"{\\\"ambiguity_notes\\\": [\\\"The supplied text identifies agave and maturation in Tennessee whiskey barrels but does not provide explicit vegan evidence or complete processing details.\\\"], \\\"confidence\\\": \\\"certain\\\", \\\"evidence\\\": [\\\"The product is described as tequila crafted from 100% blue Weber agave.\\\", \\\"The product is aged in Tennessee whiskey barrels.\\\", \\\"No explicit vegan evidence is supplied.\\\"], \\\"product_id\\\": \\\"662752011\\\", \\\"summary\\\": \\\"The spirit cannot be confirmed vegan from the supplied text alone.\\\", \\\"vegan_reason\\\": null, \\\"vegan_status\\\": \\\"unknown\\\"}\", \"{\\\"ambiguity_notes\\\": [], \\\"confidence\\\": \\\"certain\\\", \\\"evidence\\\": [\\\"100% blue weber agave\\\", \\\"Tequila category and product description identify an agave spirit\\\"], \\\"product_id\\\": \\\"662752011\\\", \\\"summary\\\": \\\"The supplied identity describes a 100% agave tequila.\\\", \\\"vegan_reason\\\": \\\"ingredients\\\", \\\"vegan_status\\\": \\\"vegan\\\"}\"], \"rule\": \"codex_llm\"}",
+        "model": "gpt-5.6-luna",
+        "reasoning_effort": "high",
+        "prompt_version": "ocado-vegan-product-json-v7",
+        "context_hash": "fe89413972d4b6ce6b38a16a3df43b0340b8f71591cfea88537cfd98baaa8959",
+        "validation_error": null,
+        "exit_status": 0,
+        "classifier_version": "db-vegan-codex-v8",
+        "classified_at_epoch": 1787320779
+      }
+    },
+    {
+      "product_id": "693999011",
+      "context": {
+        "product": {
+          "id": "693999011",
+          "name": "England FA 750ml Premium Stainless Steel Bottle",
+          "brand": "Hy-pro",
+          "url": "https://www.ocado.com/products/693999011/details",
+          "official_vegan": 0,
+          "detailed_description": "Stay hydrated in style with the Hy-Pro Officially Licensed England Aluminium Bottle. Designed for passionate football fans, this 750ml sports bottle is the perfect companion for training sessions, gym workouts, school, or everyday use. Crafted from lightweight yet durable aluminium, it ensures your drinks stay fresh while showcasing your loyalty to one of the world\u2019s most iconic football teams. The bottle features an integrated folding straw, making it easy to sip on the go without spills or leaks. The secure screw-top lid prevents unwanted leaks, while the ergonomic design offers a comfortable grip, whether you're on the pitch or at your desk. The sleek aluminium body is adorned with the iconic England crest, making it an essential piece of fan gear for any England supporter. Built for convenience, this officially licensed England water bottle is both BPA-free and eco-friendly, offering a reusable alternative to plastic bottles. Whether you're a young footballer or a lifelong fan, this bottle ensures you stay refreshed while proudly supporting your favourite team. Perfect as a gift for England fans, it's a must-have for match days, training, or daily hydration.",
+          "brand_marketing": "Officially Licensed England FA Merchandise",
+          "preparation_and_usage": "CHOKING HAZARD -- Small parts. Not suitable for children under 36 months.",
+          "specification": "Composition: Body - Aluminium, Spout - PS, Cap - PP, Straw - PE, Seal Ring - Silicone Capacity: 750ml Size: 7.5x26x7.5, 128g"
+        },
+        "flags": [],
+        "categories": [
+          "home-garden/kitchen-dining/water-filters-jugs-bottles/water-bottles"
+        ],
+        "manufacturer_vegan_evidence": []
+      },
+      "sha256": "582d25738b7f11832f2968239f763b6d0e5193ed9e10606c366223e38d7fc270",
+      "luna_audit": {
+        "id": 126388,
+        "run_id": 31,
+        "product_id": "693999011",
+        "source": "codex",
+        "vegan_status": "unknown",
+        "vegan_reason": null,
+        "confidence": "uncertain",
+        "summary": "Independent Codex passes disagreed, so the product is classified unknown.",
+        "evidence_json": "{\"ambiguity_notes\": [\"independent_codex_disagreement\"], \"evidence\": [\"{\\\"ambiguity_notes\\\": [], \\\"confidence\\\": \\\"certain\\\", \\\"evidence\\\": [\\\"Composition: aluminium, PS, PP, PE, silicone\\\"], \\\"product_id\\\": \\\"693999011\\\", \\\"summary\\\": \\\"The complete supplied composition lists only non-animal materials.\\\", \\\"vegan_reason\\\": \\\"ingredients\\\", \\\"vegan_status\\\": \\\"vegan\\\"}\", \"{\\\"ambiguity_notes\\\": [\\\"The detailed description identifies the bottle as aluminium, while the product name identifies it as stainless steel.\\\"], \\\"confidence\\\": \\\"certain\\\", \\\"evidence\\\": [\\\"Supplied product text materially conflicts about the bottle material.\\\"], \\\"product_id\\\": \\\"693999011\\\", \\\"summary\\\": \\\"The conflicting material descriptions make the product identity ambiguous.\\\", \\\"vegan_reason\\\": null, \\\"vegan_status\\\": \\\"unknown\\\"}\"], \"rule\": \"codex_llm\"}",
+        "model": "gpt-5.6-luna",
+        "reasoning_effort": "high",
+        "prompt_version": "ocado-vegan-product-json-v7",
+        "context_hash": "7df848527fd9d2ca8e50576146849907565b1d801e3a331dbb5a2759c3492bbc",
+        "validation_error": null,
+        "exit_status": 0,
+        "classifier_version": "db-vegan-codex-v8",
+        "classified_at_epoch": 1787324424
+      }
+    },
+    {
+      "product_id": "606252011",
+      "context": {
+        "product": {
+          "id": "606252011",
+          "name": "Scrumbles Dog Food Grain Free Veggie",
+          "brand": "Scrumbles",
+          "url": "https://www.ocado.com/products/606252011/details",
+          "official_vegan": 0,
+          "ingredients": "Lentils 4%, Chickpeas 4%, Peas 4%, Sweet Potato 4%, Red Kidney Beans 2%, Apple 2%, Carrots 2%, White Potato 2%, Vegetable Oil, Minerals, Seaweed, Herbs (Oregano, Marjoram, Sage), Blueberries, Slippery Elm 0.01%",
+          "allergens": "Manufactured on a site that handles Grains Manufactured on a site that handles Grains.",
+          "features": "Good Inside Out, Grain Free, Slippery Elm for Digestive Health, Ethical Award - The Ethical Company Organisation",
+          "detailed_description": "Complete Nutrition This is a nutritionally complete recipe for your dog containing everything they need to thrive. Feed it on its own or mix it up with one of our dry foods. Digestive Health We put gut health first. This recipe includes Slippery Elm and has a limited ingredient list without common allergens like gluten, grain, eggs & dairy. Living the Veg Life This is a plant based recipe providing everything your doggo needs from quality plant-based ingredients.",
+          "further_description": "Good Food Shouldn't Cost the Earth! I mean what's the point! If we eat well at the expense of our precious planet, we won't be here for long. We take care to tread lightly with conscious decisions like manufacturing locally and choosing eco packaging. The sleeve is made from FSC paper, fully recyclable with your household paper/card recycling and the tray is PP5. Beyond the Bowl We're committed to helping those who need us most and work closely with animal charities donating food and funds. Find out more at SCRUMBLES.CO.UK For puppy & further feeding amounts, visit scrumbles.co.uk/feeding-calculator",
+          "brand_marketing": "We've Declared War on Bad Poos. In our search to solve our pets' tummy troubles, we found good health starts in the gut. We quit our jobs to create delicious recipes using natural, wholesome ingredients perfect for sensitive stomachs that get the wiggle of approval from our chief tasters Smudge & Boo.",
+          "other_information": "Storage: See side of tray for best before and batch code. Store in a cool dry place. once opened, keep refrigerated & consume within 3 days.",
+          "preparation_and_usage": "Feeding Guidelines Breed: Toy; Weight: 1-5kg; Trays per day: 1/4 to 3/4 Breed: Small; Weight: 5-12kg; Trays per day: 3/4 to 1 1/2 Breed: Medium; Weight: 12-25kg; Trays per day: 1 1/2 to 2 1/2 This recipe is suitable for all lifestages and can be fed from 3 months+. Fresh water should be available at all times. New to Scrumbles? We suggest a gradual transition over 7-10 days.",
+          "country_of_origin": "UK"
+        },
+        "flags": [
+          "vegetarian"
+        ],
+        "categories": [
+          "pets/brands-we-love/scrumbles",
+          "pets/dog-puppy/dog-food/wet-dog-food"
+        ],
+        "manufacturer_vegan_evidence": []
+      },
+      "sha256": "307dda048a02d84d106130d31cf5a88dac5a631259b9024466f4709b339c2d15",
+      "luna_audit": {
+        "id": 121480,
+        "run_id": 31,
+        "product_id": "606252011",
+        "source": "codex",
+        "vegan_status": "unknown",
+        "vegan_reason": null,
+        "confidence": "uncertain",
+        "summary": "Independent Codex passes disagreed, so the product is classified unknown.",
+        "evidence_json": "{\"ambiguity_notes\": [\"independent_codex_disagreement\"], \"evidence\": [\"{\\\"ambiguity_notes\\\": [\\\"The recipe is described as plant based, but no explicit vegan claim is supplied and unspecified minerals may have ambiguous sourcing.\\\"], \\\"confidence\\\": \\\"certain\\\", \\\"evidence\\\": [\\\"Ingredients list contains plant ingredients, vegetable oil, minerals, seaweed, herbs, fruit, and vegetables.\\\", \\\"The supplied text says plant based and lists no explicit animal-derived ingredient.\\\", \\\"No explicit vegan claim or official vegan tag is supplied.\\\"], \\\"product_id\\\": \\\"606252011\\\", \\\"summary\\\": \\\"Plant-based dog food with unspecified minerals; vegan status is not established with certainty.\\\", \\\"vegan_reason\\\": null, \\\"vegan_status\\\": \\\"unknown\\\"}\", \"{\\\"ambiguity_notes\\\": [], \\\"confidence\\\": \\\"certain\\\", \\\"evidence\\\": [\\\"Ingredients are lentils, chickpeas, peas, sweet potato, kidney beans, apple, carrots, potato, vegetable oil, minerals, seaweed, herbs, blueberries, and slippery elm.\\\", \\\"No animal-derived ingredients are listed.\\\", \\\"Description explicitly calls it a plant based recipe.\\\"], \\\"product_id\\\": \\\"606252011\\\", \\\"summary\\\": \\\"The supplied ingredient list contains only plant-derived or mineral ingredients.\\\", \\\"vegan_reason\\\": \\\"ingredients\\\", \\\"vegan_status\\\": \\\"vegan\\\"}\"], \"rule\": \"codex_llm\"}",
+        "model": "gpt-5.6-luna",
+        "reasoning_effort": "high",
+        "prompt_version": "ocado-vegan-product-json-v7",
+        "context_hash": "e8c4654e2bcf03b242b2813c9b9df73c266f79e12dc801dfcabf876ae5618f73",
+        "validation_error": null,
+        "exit_status": 0,
+        "classifier_version": "db-vegan-codex-v8",
+        "classified_at_epoch": 1787318994
+      }
+    },
+    {
+      "product_id": "683274011",
+      "context": {
+        "product": {
+          "id": "683274011",
+          "name": "M&S Womens 60 Denier Body Sensor Tights, M, Navy",
+          "brand": "M&S",
+          "url": "https://www.ocado.com/products/683274011/details",
+          "official_vegan": 0,
+          "detailed_description": "These 60 denier tights feature innovative Body Sensor\u2122 technology that adapts to your body temperature, keeping you cool in warm weather and providing warmth when it's cold. The opaque design is complemented by a comfortable waistband that stays in place all day, while reinforced toes ensure durability. This practical three-pack from M&S Collection offers both style and functionality for everyday wear. M&S Collection: Easy-to-wear wardrobe staples that combine classic and contemporary styles.",
+          "preparation_and_usage": "Machine washable 88% polyamide, 11% elastane lycra\u00ae and 1% cotton",
+          "specification": "- Comfort waistband - Reinforced toe, Added stretch - Opaque tights"
+        },
+        "flags": [],
+        "categories": [
+          "clothing-accessories/women-s-clothing-accesssories/women-s-tights",
+          "events-inspiration/home-clothing-sale/clothing",
+          "m-s/m-s-clothing/m-s-womenswear"
+        ],
+        "manufacturer_vegan_evidence": []
+      },
+      "sha256": "5ece382d9b26a4a49b5d70b57a1af21d7f41f1bb5c5316b21241370c6e8b8774",
+      "luna_audit": {
+        "id": 124077,
+        "run_id": 31,
+        "product_id": "683274011",
+        "source": "codex",
+        "vegan_status": "unknown",
+        "vegan_reason": null,
+        "confidence": "uncertain",
+        "summary": "Independent Codex passes disagreed, so the product is classified unknown.",
+        "evidence_json": "{\"ambiguity_notes\": [\"independent_codex_disagreement\"], \"evidence\": [\"{\\\"ambiguity_notes\\\": [], \\\"confidence\\\": \\\"certain\\\", \\\"evidence\\\": [\\\"Composition is 88% polyamide, 11% elastane, and 1% cotton, totaling 100%.\\\"], \\\"product_id\\\": \\\"683274011\\\", \\\"summary\\\": \\\"The supplied complete composition contains only synthetic fibres and cotton.\\\", \\\"vegan_reason\\\": \\\"ingredients\\\", \\\"vegan_status\\\": \\\"vegan\\\"}\", \"{\\\"ambiguity_notes\\\": [\\\"Complete textile composition is supplied, but no explicit vegan evidence covers dyes, processing inputs, or other components.\\\"], \\\"confidence\\\": \\\"certain\\\", \\\"evidence\\\": [\\\"88% polyamide, 11% elastane, 1% cotton\\\", \\\"No official vegan tag or manufacturer vegan evidence\\\"], \\\"product_id\\\": \\\"683274011\\\", \\\"summary\\\": \\\"The listed fibre composition does not establish that the complete manufactured tights are vegan.\\\", \\\"vegan_reason\\\": null, \\\"vegan_status\\\": \\\"unknown\\\"}\"], \"rule\": \"codex_llm\"}",
+        "model": "gpt-5.6-luna",
+        "reasoning_effort": "high",
+        "prompt_version": "ocado-vegan-product-json-v7",
+        "context_hash": "e98f126fa6546b0c8bb670007239e49f6d53032feb36a96f5a9e17cc8b845f20",
+        "validation_error": null,
+        "exit_status": 0,
+        "classifier_version": "db-vegan-codex-v8",
+        "classified_at_epoch": 1787321919
+      }
+    },
+    {
+      "product_id": "468269011",
+      "context": {
+        "product": {
+          "id": "468269011",
+          "name": "Big K Barbecue Coconut Shell Briquettes",
+          "brand": "Big K",
+          "url": "https://www.ocado.com/products/468269011/details",
+          "official_vegan": 0,
+          "detailed_description": "4kg Coconut Shell Briquette High performance barbecue briquettes Long burn time, high heat Low smoke Low odour Made from carbonising waste coconut shells This is a timber free product made from sustainable sources."
+        },
+        "flags": [],
+        "categories": [
+          "events-inspiration/summer-shop/holiday-essentials-home-outdoor/gardening-entertainment/entertainment",
+          "home-garden/brands-we-love/home-brands-we-love/big-k",
+          "home-garden/garden-diy/bbqs-charcoal-accessories/charcoal"
+        ],
+        "manufacturer_vegan_evidence": []
+      },
+      "sha256": "1f826f6204024aeda937152fc84f87ebef6f1dbbd1af5e1264890de9e55a392d",
+      "luna_audit": {
+        "id": 119853,
+        "run_id": 31,
+        "product_id": "468269011",
+        "source": "codex",
+        "vegan_status": "unknown",
+        "vegan_reason": null,
+        "confidence": "uncertain",
+        "summary": "Independent Codex passes disagreed, so the product is classified unknown.",
+        "evidence_json": "{\"ambiguity_notes\": [\"independent_codex_disagreement\"], \"evidence\": [\"{\\\"ambiguity_notes\\\": [], \\\"confidence\\\": \\\"certain\\\", \\\"evidence\\\": [\\\"Made from carbonising waste coconut shells\\\", \\\"Timber free product made from sustainable sources\\\"], \\\"product_id\\\": \\\"468269011\\\", \\\"summary\\\": \\\"The briquettes are explicitly made from plant-derived coconut shells with no animal-derived ingredient indicated.\\\", \\\"vegan_reason\\\": \\\"ingredients\\\", \\\"vegan_status\\\": \\\"vegan\\\"}\", \"{\\\"ambiguity_notes\\\": [\\\"Briquettes may contain unlisted binding or processing inputs; the supplied description does not state that they contain no additives.\\\"], \\\"confidence\\\": \\\"certain\\\", \\\"evidence\\\": [\\\"Detailed description states they are made from carbonising waste coconut shells.\\\", \\\"No official vegan tag or explicit vegan evidence is supplied.\\\"], \\\"product_id\\\": \\\"468269011\\\", \\\"summary\\\": \\\"Unknown because the supplied evidence does not resolve the complete composition of the briquettes.\\\", \\\"vegan_reason\\\": null, \\\"vegan_status\\\": \\\"unknown\\\"}\"], \"rule\": \"codex_llm\"}",
+        "model": "gpt-5.6-luna",
+        "reasoning_effort": "high",
+        "prompt_version": "ocado-vegan-product-json-v7",
+        "context_hash": "5027c018aba7bf74f400cc428f86b11d824c2b5780c359aa3007e100e10e6cfa",
+        "validation_error": null,
+        "exit_status": 0,
+        "classifier_version": "db-vegan-codex-v8",
+        "classified_at_epoch": 1787317125
+      }
+    },
+    {
+      "product_id": "589716011",
+      "context": {
+        "product": {
+          "id": "589716011",
+          "name": "Lavazza A Modo Mio Espresso Passionale Coffee Capsules",
+          "brand": "Lavazza",
+          "url": "https://www.ocado.com/products/589716011/details",
+          "official_vegan": 0,
+          "features": "- 36 Capsules of ground coffee with dark roasting and a level 11 intensity, - This espresso has notes of caramel and chocolate, for a harmonious, intense, smooth and warm coffee., - This ground coffee capsules can be used with an A Modo Mio Machines., - Makes an espresso or latte., - Blended coffee featuring beans from Brazil, Asia, Central-South America., - Store in a cool and dry place for long-lasting freshness",
+          "detailed_description": "A Modo Mio Espresso Passionale by Lavazza is an intense, harmoniously flavoured espresso, born from the ancient Italian tradition and now in coffee pods, perfect for real coffee lovers. Perfect for a 40ml Espresso and suitable for preparations with milk. This selection of coffee is characterised by aromatic notes of caramel and chocolate, for a harmonious, intense, smooth and warm coffee. These coffee capsules consist of a 100% Arabica blend from Brazil, Asia, Central-South America. Each blend in A Modo Mio coffee pods is expertly selected, roasted and ground, as specified by our quality standards. The dark roasting and the level 11/13 intensity give this coffee a warm and inviting taste, for an espresso with a golden and creamy finish.",
+          "further_description": "Enjoy your espresso. Throw the used capsules in the food waste bin (if you have one). The waste is sent for industrial composting. The capsule becomes nourishment for the soil. Check your local council's rules for disposal of industrial compostable waste. There could be limitations on the type of products composters may process. Compostable Technology* *Compostable capsules certified EN 13432:2000 for industrial composting by T\u00dcV Austria. Do not throw capsules into home composting systems, in the nature or include in garden waste collections. Blend for Better The commitment of Lavazza Group to create a better world. www.lavazzagroup.com/blendforbetter Barista Technology Lavazza A MoDo Mio Barista Technology guarantees an authentic Italian espresso experience At home, just like at the coffee shop. Find out more about Barista technology and the world of Lavazza A Modo Mio: www.lavazza.com Zero - CO\u2082 Impact Caps Lavazza contributes to Zero CO\u2082 Impact by offsetting the emissions of this product. Discover our commitment. www.lavazza.com/co2impact",
+          "brand_marketing": "We have been committed to achieving excellence in the production of coffee since 1895. We can count on a solid experience, accumulated over four generations of passion for our work and care of our products. Our entire history has been marked by a series of innovations, beginning with the concept of blend, invented by Lavazza at the turn of the 20th century. Today Lavazza is the symbol of Italian espresso throughout the world, one of the main expressions of our lifestyle and values of our country.",
+          "other_information": "Full Product Name: Roasted ground coffee in capsules. Storage: Best before: see below. Usage: 36 Count Importer: Lavazza Coffee UK Ltd, The Charter Building 5th Floor, Vine St, Uxbridge, UB8 1JG. Additional Information: 36 Single-dose capsules, packaged in a protective atmosphere, not to be sold separately. Origin of coffee: non-EU/non-UK",
+          "preparation_and_usage": "To use with a Lavazza A Modo Mio Espresso Machine",
+          "country_of_origin": "Italy"
+        },
+        "flags": [
+          "vegetarian"
+        ],
+        "categories": [
+          "soft-drinks-tea-coffee/tea-coffee-hot-drinks/coffee/coffee-capsules-pods/lavazza-compatible"
+        ],
+        "manufacturer_vegan_evidence": []
+      },
+      "sha256": "acb74ab18d662cc71283f5076da12b07c827fb9b9f43d4d19712c2383cbec039",
+      "luna_audit": {
+        "id": 121224,
+        "run_id": 31,
+        "product_id": "589716011",
+        "source": "codex",
+        "vegan_status": "unknown",
+        "vegan_reason": null,
+        "confidence": "uncertain",
+        "summary": "Independent Codex passes disagreed, so the product is classified unknown.",
+        "evidence_json": "{\"ambiguity_notes\": [\"independent_codex_disagreement\"], \"evidence\": [\"{\\\"ambiguity_notes\\\": [], \\\"confidence\\\": \\\"certain\\\", \\\"evidence\\\": [\\\"Full product name states roasted ground coffee in capsules.\\\", \\\"Description identifies the contents as a 100% Arabica coffee blend.\\\", \\\"No animal-derived ingredients or conflicting identity are supplied.\\\"], \\\"product_id\\\": \\\"589716011\\\", \\\"summary\\\": \\\"The product is unambiguously coffee with no supplied animal-derived ingredients.\\\", \\\"vegan_reason\\\": \\\"ingredients\\\", \\\"vegan_status\\\": \\\"vegan\\\"}\", \"{\\\"ambiguity_notes\\\": [\\\"The coffee is plant-derived, but the capsule's complete composition is not supplied; caramel and chocolate are described as aroma or taste notes, not ingredients.\\\"], \\\"confidence\\\": \\\"certain\\\", \\\"evidence\\\": [\\\"Description identifies a 100% Arabica coffee blend in capsules.\\\", \\\"No explicit vegan claim or complete capsule composition is provided.\\\"], \\\"product_id\\\": \\\"589716011\\\", \\\"summary\\\": \\\"The coffee itself is vegan, but the complete manufactured capsule product is not established as vegan.\\\", \\\"vegan_reason\\\": null, \\\"vegan_status\\\": \\\"unknown\\\"}\"], \"rule\": \"codex_llm\"}",
+        "model": "gpt-5.6-luna",
+        "reasoning_effort": "high",
+        "prompt_version": "ocado-vegan-product-json-v7",
+        "context_hash": "c072e9fb842a71c03f5407ac43713316c6f216aac87f55cef36a5d4884be2722",
+        "validation_error": null,
+        "exit_status": 0,
+        "classifier_version": "db-vegan-codex-v8",
+        "classified_at_epoch": 1787318689
+      }
+    },
+    {
+      "product_id": "700310011",
+      "context": {
+        "product": {
+          "id": "700310011",
+          "name": "123 Baby Sipper Cup with Handle and Dust Cover 260ml/8oz Blue",
+          "brand": "123 Baby",
+          "url": "https://www.ocado.com/products/700310011/details",
+          "official_vegan": 0,
+          "detailed_description": "This sipper cup is easy to use with a spill proof dust cap and two handles. Each cup is BPA-free, features a soft straw and can hold up to 260ml of cold liquid.",
+          "specification": "7 x 7.2 x 10.5 - 0.069kg 100% PP"
+        },
+        "flags": [],
+        "categories": [
+          "baby-toddler/baby-weaning/baby-kids-cups-beakers-bottles",
+          "events-inspiration/flash-finds-nursery-toys/everyday-essentials"
+        ],
+        "manufacturer_vegan_evidence": []
+      },
+      "sha256": "f2ae5ea28e05fbd1129cdbbf496ec7230768fc53c56426aba95cf6e0cd0fe384",
+      "luna_audit": {
+        "id": 127129,
+        "run_id": 31,
+        "product_id": "700310011",
+        "source": "codex",
+        "vegan_status": "unknown",
+        "vegan_reason": null,
+        "confidence": "uncertain",
+        "summary": "Independent Codex passes disagreed, so the product is classified unknown.",
+        "evidence_json": "{\"ambiguity_notes\": [\"independent_codex_disagreement\"], \"evidence\": [\"{\\\"ambiguity_notes\\\": [], \\\"confidence\\\": \\\"certain\\\", \\\"evidence\\\": [\\\"Specification states 100% PP.\\\", \\\"No animal-derived materials or ambiguous components are supplied.\\\"], \\\"product_id\\\": \\\"700310011\\\", \\\"summary\\\": \\\"The sipper cup is specified as 100% polypropylene.\\\", \\\"vegan_reason\\\": \\\"ingredients\\\", \\\"vegan_status\\\": \\\"vegan\\\"}\", \"{\\\"ambiguity_notes\\\": [\\\"Manufactured non-food item; listed PP material does not establish that all components and processing inputs are vegan.\\\"], \\\"confidence\\\": \\\"certain\\\", \\\"evidence\\\": [\\\"No official vegan tag or explicit vegan evidence.\\\", \\\"Specification lists 100% PP, but the complete product composition is unavailable.\\\"], \\\"product_id\\\": \\\"700310011\\\", \\\"summary\\\": \\\"Insufficient evidence to establish that the complete cup is vegan.\\\", \\\"vegan_reason\\\": null, \\\"vegan_status\\\": \\\"unknown\\\"}\"], \"rule\": \"codex_llm\"}",
+        "model": "gpt-5.6-luna",
+        "reasoning_effort": "high",
+        "prompt_version": "ocado-vegan-product-json-v7",
+        "context_hash": "6c35878082ff0fb0504b3885d58d1a984c2af05bbebeff5a9e560d8fdc7ec42a",
+        "validation_error": null,
+        "exit_status": 0,
+        "classifier_version": "db-vegan-codex-v8",
+        "classified_at_epoch": 1787325241
+      }
+    },
+    {
+      "product_id": "452849011",
+      "context": {
+        "product": {
+          "id": "452849011",
+          "name": "Mozart Chocolate Cream Liqueur",
+          "brand": "Mozart",
+          "url": "https://www.ocado.com/products/452849011/details",
+          "official_vegan": 0,
+          "allergens": "May Contain Milk Mozart Cream Chocolate allergens: Milk and products thereof (including Lactose) according to EU-VO 1169/2011",
+          "dietary_information": "Gluten free",
+          "features": "Hand Crafted, All Natural Ingredients, With Belgian chocolate",
+          "detailed_description": "The Exquisite Chocolate liqueur handcrafted using the finest Belgian chocolate for a truly indulgent experience. Gluten-free and made with 100% natural ingredients, including Fairtrade vanilla from Madagascar and cocoa from West Africa. Enjoy neat, over ice, or in a decadent choctail. Handcrafted in Salzburg, Austria, since 1979. Please drink responsibly: The UK Chief Medical Officers recommend adults do not regularly drink more than 14 units per week",
+          "brand_marketing": "Step into a world of unparalleled excellence with Mozart Chocolate Liqueur \u2013 the most award winning Chocolate Liqueur in the UK! Crafted with real Belgian chocolate, Madagascan vanilla and a sugar beet base, Mozart Chocolate Liqueur is a symphony of two worlds: Alcohol and Chocolate. Since its ground-breaking debut in 1979, our iconic chocolate liqueur has captivated taste buds and remains faithfully distilled in Salzburg to this day. With an unwavering commitment to quality, we have garnered the most prestigious awards, a testament to our single-minded dedication to using only the finest chocolate ingredients. Immerse yourself in our extensive portfolio, offering an array of delectable chocolate flavours to suit every occasion. From the luxurious Gold (Milk Chocolate) to the velvety White Chocolate, and from the rich and indulgent Dark Chocolate (vegan) to the delightful Strawberry White Chocolate, Coffee Chocolate, and Pumpkin Spiced Chocolate, we have a tantalising choice for every chocolate lover. Enjoy our liqueur straight, sipped neat over ice, or allow its remarkable versatility to shine by mixing it into an array of delightful chocolate cocktails. With each sip, you'll be transported to a world of pure indulgence and unrivalled satisfaction.",
+          "other_information": "Full Product Name: Sahnelik\u00f6r Cream Liqueur Storage: Refrigerate after opening. Consume within 6 months.",
+          "preparation_and_usage": "The noble drop tastes best chilled as drinking chocolate or as a creamy refiner of desserts.",
+          "country_of_origin": "Austria"
+        },
+        "flags": [
+          "vegetarian"
+        ],
+        "categories": [
+          "beer-wine-spirits/cocktails/evening-liqueurs",
+          "beer-wine-spirits/spirits/liqueurs-aperitifs/cream"
+        ],
+        "manufacturer_vegan_evidence": [
+          {
+            "field_title": "brandMarketing",
+            "content": "Step into a world of unparalleled excellence with Mozart Chocolate Liqueur \u2013 the most award winning Chocolate Liqueur in the UK! Crafted with real Belgian chocolate, Madagascan vanilla and a sugar beet base, Mozart Chocolate Liqueur is a symphony of two worlds: Alcohol and Chocolate. Since its ground-breaking debut in 1979, our iconic chocolate liqueur has captivated taste buds and remains faithfully distilled in Salzburg to this day. With an unwavering commitment to quality, we have garnered the most prestigious awards, a testament to our single-minded dedication to using only the finest chocolate ingredients. Immerse yourself in our extensive portfolio, offering an array of delectable chocolate flavours to suit every occasion. From the luxurious Gold (Milk Chocolate) to the velvety White Chocolate, and from the rich and indulgent Dark Chocolate (vegan) to the delightful Strawberry White Chocolate, Coffee Chocolate, and Pumpkin Spiced Chocolate, we have a tantalising choice for every chocolate lover. Enjoy our liqueur straight, sipped neat over ice, or allow its remarkable versatility to shine by mixing it into an array of delightful chocolate cocktails. With each sip, you'll be transported to a world of pure indulgence and unrivalled satisfaction."
+          }
+        ]
+      },
+      "sha256": "400861d680f5063bab1af38b2ebac82bd83030911350a9d70617af7b4989604f",
+      "luna_audit": {
+        "id": 119822,
+        "run_id": 31,
+        "product_id": "452849011",
+        "source": "codex",
+        "vegan_status": "unknown",
+        "vegan_reason": null,
+        "confidence": "uncertain",
+        "summary": "Independent Codex passes disagreed, so the product is classified unknown.",
+        "evidence_json": "{\"ambiguity_notes\": [\"independent_codex_disagreement\"], \"evidence\": [\"{\\\"ambiguity_notes\\\": [\\\"The brand marketing's vegan reference applies to a different Dark Chocolate variant, not clearly to this product.\\\"], \\\"confidence\\\": \\\"certain\\\", \\\"evidence\\\": [\\\"The product is named Chocolate Cream Liqueur and its full product name is Sahnelik\\\\u00f6r Cream Liqueur.\\\", \\\"The product is categorised as a cream liqueur.\\\"], \\\"product_id\\\": \\\"452849011\\\", \\\"summary\\\": \\\"The supplied product identity indicates a non-vegan cream liqueur.\\\", \\\"vegan_reason\\\": null, \\\"vegan_status\\\": \\\"nonvegan\\\"}\", \"{\\\"ambiguity_notes\\\": [\\\"The product is called a cream liqueur and the full product name says cream liqueur, but the supplied allergen statement says only 'May Contain Milk'.\\\", \\\"Manufacturer marketing discusses several variants, including a vegan dark chocolate variant, without identifying this product as that variant.\\\"], \\\"confidence\\\": \\\"certain\\\", \\\"evidence\\\": [\\\"Product name identifies Mozart Chocolate Cream Liqueur.\\\", \\\"Allergen statement says 'May Contain Milk', which does not alone establish non-vegan status.\\\", \\\"No product-specific vegan claim or ingredients list is supplied.\\\"], \\\"product_id\\\": \\\"452849011\\\", \\\"summary\\\": \\\"Product-specific evidence is insufficient and variant information is materially ambiguous.\\\", \\\"vegan_reason\\\": null, \\\"vegan_status\\\": \\\"unknown\\\"}\"], \"rule\": \"codex_llm\"}",
+        "model": "gpt-5.6-luna",
+        "reasoning_effort": "high",
+        "prompt_version": "ocado-vegan-product-json-v7",
+        "context_hash": "9f468dcef9273b5ae2061bab3b6daf6059a80b5a6df13ff38dedb3909805d462",
+        "validation_error": null,
+        "exit_status": 0,
+        "classifier_version": "db-vegan-codex-v8",
+        "classified_at_epoch": 1787317088
+      }
+    },
+    {
+      "product_id": "640656011",
+      "context": {
+        "product": {
+          "id": "640656011",
+          "name": "Estrella Galicia Premium Spanish Lager",
+          "brand": "Estrella Galicia",
+          "url": "https://www.ocado.com/products/640656011/details",
+          "official_vegan": 0,
+          "ingredients": "Water, Barley Malt and Hops",
+          "allergens": "Contains Barley",
+          "features": "Authentic Spanish Lager, Brewed In Spain",
+          "detailed_description": "An exceptional Spanish lager with a distinctive flavour, crafted using traditional methods. Made using the perfect combination of smooth Galician water, aromatic and bitter hops, and Pilsner malts, this refreshing beer has a clear pale golden colour, a light body and a well balanced sweetness with a bitter finish. Please drink responsibly: The UK Chief Medical Officers recommend adults do not regularly drink more than 14 units per week",
+          "further_description": "More nutritional info available at: www.estrellagalicia.es/info",
+          "brand_marketing": "It is made from a specific wort in the only production facility of Hijos de Rivera, in A Coru\u00f1a. The brewmasters take approximately one month\u2019s work in elaborating Estrella Galicia Especial, and half of that time is dedicated to its cold storage.",
+          "other_information": "Full Product Name: Beer Storage: Keep in a cool and dry place. Importer: Greene King, Bury St Edmunds, Suffolk, IP33 1QT.",
+          "country_of_origin": "Spain"
+        },
+        "flags": [],
+        "categories": [
+          "beer-wine-spirits/beer/lager/bottles",
+          "beer-wine-spirits/beer/world-beer/singles"
+        ],
+        "manufacturer_vegan_evidence": []
+      },
+      "sha256": "f8be51e5cf8795ac4d72c6407e2357668b69b17b5e05c470d5fc04aa7786f2d7",
+      "luna_audit": {
+        "id": 122252,
+        "run_id": 31,
+        "product_id": "640656011",
+        "source": "codex",
+        "vegan_status": "unknown",
+        "vegan_reason": null,
+        "confidence": "uncertain",
+        "summary": "Independent Codex passes disagreed, so the product is classified unknown.",
+        "evidence_json": "{\"ambiguity_notes\": [\"independent_codex_disagreement\"], \"evidence\": [\"{\\\"ambiguity_notes\\\": [], \\\"confidence\\\": \\\"certain\\\", \\\"evidence\\\": [\\\"Supplied ingredients are water, barley malt, and hops.\\\", \\\"These listed ingredients contain no animal-derived ingredients.\\\"], \\\"product_id\\\": \\\"640656011\\\", \\\"summary\\\": \\\"The lager is vegan based on its supplied ingredient list.\\\", \\\"vegan_reason\\\": \\\"ingredients\\\", \\\"vegan_status\\\": \\\"vegan\\\"}\", \"{\\\"ambiguity_notes\\\": [\\\"Beer processing aids or fining agents are not supplied.\\\"], \\\"confidence\\\": \\\"certain\\\", \\\"evidence\\\": [\\\"Supplied ingredients are water, barley malt, and hops.\\\", \\\"No animal-derived ingredient is listed, but processing inputs are not resolved by the supplied text.\\\"], \\\"product_id\\\": \\\"640656011\\\", \\\"summary\\\": \\\"Listed ingredients are compatible with vegan status, but processing evidence is incomplete.\\\", \\\"vegan_reason\\\": null, \\\"vegan_status\\\": \\\"unknown\\\"}\"], \"rule\": \"codex_llm\"}",
+        "model": "gpt-5.6-luna",
+        "reasoning_effort": "high",
+        "prompt_version": "ocado-vegan-product-json-v7",
+        "context_hash": "f0978f4e107c3f22a8c53878d467aa939e1cce34124c5daf6659a2834e1a04b5",
+        "validation_error": null,
+        "exit_status": 0,
+        "classifier_version": "db-vegan-codex-v8",
+        "classified_at_epoch": 1787319896
+      }
+    },
+    {
+      "product_id": "524647011",
+      "context": {
+        "product": {
+          "id": "524647011",
+          "name": "Adios Compostable & Biodegradable Dog Poo Bags - Grey",
+          "brand": "Adios Plastic",
+          "url": "https://www.ocado.com/products/524647011/details",
+          "official_vegan": 0,
+          "features": "Certified HOME compostable Made from natural materials One of the thickest poo bags available (20 microns thick) No microplastics",
+          "detailed_description": "Adios is on a mission to eliminate microplastics. Our dog poo bags are plant-based, compostable and extra thick.",
+          "further_description": "Adios poo bags are 20 microns thick meaning they are one of the thickest and strongest poo bags available. Certified HOME compostable to TUV Austria, EN13432 and ASTM D6400 standards.",
+          "other_information": "Recommended for All dogs Size Guide Extra large bags measuring 9 x 13 inches / 23 x 33cm Material Adios Poo bags are made from all natural materials; cornstarch and PBAT (a biodegradable copolymer)",
+          "preparation_and_usage": "Dispose of responsibly"
+        },
+        "flags": [],
+        "categories": [
+          "events-inspiration/the-pet-sale/3-for-2",
+          "events-inspiration/the-pet-sale/toys-accessories",
+          "pets/dog-puppy/dog-poop-disposal-clean-up/poop-bags"
+        ],
+        "manufacturer_vegan_evidence": []
+      },
+      "sha256": "e3ec8ea52ee506c1edb7b1d2fc60a1895caac4ffeb915e829fcd3dfac8597128",
+      "luna_audit": {
+        "id": 120334,
+        "run_id": 31,
+        "product_id": "524647011",
+        "source": "codex",
+        "vegan_status": "unknown",
+        "vegan_reason": null,
+        "confidence": "uncertain",
+        "summary": "Independent Codex passes disagreed, so the product is classified unknown.",
+        "evidence_json": "{\"ambiguity_notes\": [\"independent_codex_disagreement\"], \"evidence\": [\"{\\\"ambiguity_notes\\\": [\\\"The supplied evidence explicitly describes the bags as plant-based and lists cornstarch and PBAT, but does not explicitly state vegan or provide a complete composition covering all processing inputs.\\\"], \\\"confidence\\\": \\\"certain\\\", \\\"evidence\\\": [\\\"Description says the bags are plant-based.\\\", \\\"Material text lists cornstarch and PBAT.\\\", \\\"Official vegan tag is 0.\\\"], \\\"product_id\\\": \\\"524647011\\\", \\\"summary\\\": \\\"Adios Compostable & Biodegradable Dog Poo Bags - Grey cannot be confirmed vegan from the supplied product text.\\\", \\\"vegan_reason\\\": null, \\\"vegan_status\\\": \\\"unknown\\\"}\", \"{\\\"ambiguity_notes\\\": [], \\\"confidence\\\": \\\"certain\\\", \\\"evidence\\\": [\\\"Product text states the bags are plant-based.\\\", \\\"Material is explicitly given as cornstarch and PBAT, with no animal-derived material identified.\\\"], \\\"product_id\\\": \\\"524647011\\\", \\\"summary\\\": \\\"The supplied material composition resolves the product as vegan.\\\", \\\"vegan_reason\\\": \\\"ingredients\\\", \\\"vegan_status\\\": \\\"vegan\\\"}\"], \"rule\": \"codex_llm\"}",
+        "model": "gpt-5.6-luna",
+        "reasoning_effort": "high",
+        "prompt_version": "ocado-vegan-product-json-v7",
+        "context_hash": "3818026330976fdc4d126329fadb900a65acaa0c509b9083c297256d20a2da8e",
+        "validation_error": null,
+        "exit_status": 0,
+        "classifier_version": "db-vegan-codex-v8",
+        "classified_at_epoch": 1787317686
+      }
+    }
+  ]
+}

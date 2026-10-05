@@ -1,0 +1,82 @@
+{
+  "model": "gpt-6.1-sol",
+  "reasoning_effort": "high",
+  "run_at": "2026-10-05T22:22:53.105997+00:00",
+  "prompt_sha256": "773ba5ba9b02f06956ab317641a5d45a3f125b5f510acb3af9ec42b9c2c59a0a",
+  "duration_seconds": 18.955,
+  "exit_status": 0,
+  "decisions": {
+    "589716011": {
+      "ambiguity_notes": [],
+      "confidence": "certain",
+      "evidence": [
+        "Full product name: Roasted ground coffee in capsules.",
+        "Description identifies a 100% Arabica coffee blend.",
+        "Milk is suggested for preparation; caramel and chocolate describe aromatic notes."
+      ],
+      "product_id": "589716011",
+      "summary": "Unambiguous roasted coffee identity supports vegan classification.",
+      "vegan_reason": "ingredients",
+      "vegan_status": "vegan"
+    },
+    "700310011": {
+      "ambiguity_notes": [
+        "The 100% PP specification does not resolve dyes, other components, or manufacturing inputs."
+      ],
+      "confidence": "uncertain",
+      "evidence": [
+        "Manufactured sipper cup with a soft straw and dust cap.",
+        "Specification states 100% PP.",
+        "No explicit vegan statement is supplied."
+      ],
+      "product_id": "700310011",
+      "summary": "The material specification does not establish whole-product vegan suitability.",
+      "vegan_reason": null,
+      "vegan_status": "unknown"
+    },
+    "452849011": {
+      "ambiguity_notes": [],
+      "confidence": "certain",
+      "evidence": [
+        "Product name: Mozart Chocolate Cream Liqueur.",
+        "Full product name: Sahnelik\u00f6r Cream Liqueur.",
+        "Allergen text explicitly identifies milk and products thereof for Mozart Cream Chocolate.",
+        "The vegan statement applies specifically to the separate Dark Chocolate variety."
+      ],
+      "product_id": "452849011",
+      "summary": "This cream liqueur contains milk; the vegan claim concerns another variety.",
+      "vegan_reason": null,
+      "vegan_status": "nonvegan"
+    },
+    "640656011": {
+      "ambiguity_notes": [
+        "The supplied ingredients do not establish whether animal-derived processing or clarification inputs are used."
+      ],
+      "confidence": "uncertain",
+      "evidence": [
+        "Ingredients: Water, Barley Malt and Hops.",
+        "No explicit vegan statement or official vegan tag is supplied."
+      ],
+      "product_id": "640656011",
+      "summary": "Listed ingredients are vegan, but whole-product processing suitability remains unresolved.",
+      "vegan_reason": null,
+      "vegan_status": "unknown"
+    },
+    "524647011": {
+      "ambiguity_notes": [
+        "Plant-based headline materials do not resolve dyes, additives, or manufacturing inputs for the finished bags."
+      ],
+      "confidence": "uncertain",
+      "evidence": [
+        "Described as plant-based, compostable dog poo bags.",
+        "Materials listed as cornstarch and PBAT.",
+        "No explicit vegan statement or complete manufacturing composition is supplied."
+      ],
+      "product_id": "524647011",
+      "summary": "The listed materials do not establish whole-product vegan suitability.",
+      "vegan_reason": null,
+      "vegan_status": "unknown"
+    }
+  },
+  "raw_response": "{\"decisions\":[{\"ambiguity_notes\":[],\"confidence\":\"certain\",\"evidence\":[\"Full product name: Roasted ground coffee in capsules.\",\"Description identifies a 100% Arabica coffee blend.\",\"Milk is suggested for preparation; caramel and chocolate describe aromatic notes.\"],\"product_id\":\"589716011\",\"summary\":\"Unambiguous roasted coffee identity supports vegan classification.\",\"vegan_reason\":\"ingredients\",\"vegan_status\":\"vegan\"},{\"ambiguity_notes\":[\"The 100% PP specification does not resolve dyes, other components, or manufacturing inputs.\"],\"confidence\":\"uncertain\",\"evidence\":[\"Manufactured sipper cup with a soft straw and dust cap.\",\"Specification states 100% PP.\",\"No explicit vegan statement is supplied.\"],\"product_id\":\"700310011\",\"summary\":\"The material specification does not establish whole-product vegan suitability.\",\"vegan_reason\":null,\"vegan_status\":\"unknown\"},{\"ambiguity_notes\":[],\"confidence\":\"certain\",\"evidence\":[\"Product name: Mozart Chocolate Cream Liqueur.\",\"Full product name: Sahnelik\u00f6r Cream Liqueur.\",\"Allergen text explicitly identifies milk and products thereof for Mozart Cream Chocolate.\",\"The vegan statement applies specifically to the separate Dark Chocolate variety.\"],\"product_id\":\"452849011\",\"summary\":\"This cream liqueur contains milk; the vegan claim concerns another variety.\",\"vegan_reason\":null,\"vegan_status\":\"nonvegan\"},{\"ambiguity_notes\":[\"The supplied ingredients do not establish whether animal-derived processing or clarification inputs are used.\"],\"confidence\":\"uncertain\",\"evidence\":[\"Ingredients: Water, Barley Malt and Hops.\",\"No explicit vegan statement or official vegan tag is supplied.\"],\"product_id\":\"640656011\",\"summary\":\"Listed ingredients are vegan, but whole-product processing suitability remains unresolved.\",\"vegan_reason\":null,\"vegan_status\":\"unknown\"},{\"ambiguity_notes\":[\"Plant-based headline materials do not resolve dyes, additives, or manufacturing inputs for the finished bags.\"],\"confidence\":\"uncertain\",\"evidence\":[\"Described as plant-based, compostable dog poo bags.\",\"Materials listed as cornstarch and PBAT.\",\"No explicit vegan statement or complete manufacturing composition is supplied.\"],\"product_id\":\"524647011\",\"summary\":\"The listed materials do not establish whole-product vegan suitability.\",\"vegan_reason\":null,\"vegan_status\":\"unknown\"}]}"
+}

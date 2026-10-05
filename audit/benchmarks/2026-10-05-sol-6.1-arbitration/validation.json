@@ -1,0 +1,29 @@
+{
+  "completed_at_utc": "2026-10-05T22:31:38.115860+00:00",
+  "classifier_version": "db-vegan-codex-v11",
+  "primary_model": "gpt-5.6-luna",
+  "primary_effort": "high",
+  "arbitration_model": "gpt-6.1-sol",
+  "arbitration_effort": "medium",
+  "unit_tests_run": 117,
+  "unit_tests_skipped": 1,
+  "unit_suite_seconds": 31.711,
+  "unit_test_exit_status": 0,
+  "skip_reason": "Opt-in live Ocado browser test",
+  "production_safety_exact": 48,
+  "production_safety_total": 48,
+  "production_arbitrated_ids": [],
+  "replay_exact": 15,
+  "replay_total": 15,
+  "unchanged_frozen_cohorts_verified": true,
+  "pilot_call_records_validated": 8,
+  "runner_syntax_valid": true,
+  "database_writes": false,
+  "userscript_changed": false,
+  "source_sha256": {
+    "tools/classify_ocado_vegan.py": "9802f33ba295c904cfde6ebca3fe1aa007a1dc6a39b41e6f9cdab962d642e163",
+    "tools/benchmark_ocado_vegan.py": "e1ed450480e9e4f1ffbf3a18f76fcba89cb3dc7b95bbd80f15da83d1696a29ee",
+    "tests/test_ocado_arbitration.py": "f405c794026311b199e8f8d3d34af08dd874d4e0486a7da051604308e9650f6a",
+    "AGENTS.md": "8d7896595c23796fac8656a6bb8960fb75d0b60a52919f86fb902e0eb46e7f8a"
+  }
+}

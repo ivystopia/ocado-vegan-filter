@@ -8,7 +8,7 @@ Read [AGENTS.md](../AGENTS.md) first. This guide maps the current implementation
 | --- | --- |
 | Shopping behaviour | `ocado-vegan-filter.user.js`: self-contained embedded ID sets, page evidence, cosmetic card/button styling, and incremental DOM updates. |
 | Catalogue refresh | `tools/sync_ocado_database.py`: category and sitemap discovery, product detail refresh, retained raw/context evidence, and invalidation of changed classifications. |
-| Classification | `tools/classify_ocado_vegan.py`: deterministic rules, JSON-only Luna fallback, bounded two-pass Astra/medium arbitration, canonical fields, and audit writes. |
+| Classification | `tools/classify_ocado_vegan.py`: deterministic rules, JSON-only Luna fallback, bounded two-pass GPT-6.1-Sol/medium arbitration, canonical fields, and audit writes. |
 | Manufacturer research | `tools/research_ocado_manufacturers.py`: unknown-product cohort, research coverage, independent source/scope review and audited imports; [manufacturer research](manufacturer-research.md) describes the separate website-gathering workflow. |
 | Export | `tools/update_userscript_allowlists.py`: read-only SQLite validation, all-known-product ID sets, header counts, and optional userscript version update. `--dry-run` also avoids writing the userscript. |
 | Classifier benchmark | `tools/benchmark_ocado_vegan.py` with `benchmarks/vegan-classifier-v1*.json`: frozen, hashed evidence and expected decisions; calls the real Codex CLI. |

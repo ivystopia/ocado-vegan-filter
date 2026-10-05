@@ -4,7 +4,7 @@ This runbook refreshes the SQLite source of truth, reclassifies only new or chan
 
 The live scrape itself does not use an LLM. Luna/high is used only after the scrape, for products that remain unresolved after deterministic rules.
 
-The Astra arbitration change does not authorize reclassification. The broader confirmation-only migration is pending; reconcile that policy before executing the legacy catalogue classification/export steps below.
+Changing the disagreement arbitrator to GPT-6.1 Sol does not authorize reclassification. The revised whole-product policy migration is pending; its existing confirmation-only arbitration gate remains in place until that policy is implemented. Reconcile the policy before executing the legacy catalogue classification/export steps below.
 
 ## 1. Prepare And Benchmark
 
@@ -34,7 +34,7 @@ python3 tools/benchmark_ocado_vegan.py \
   --json-output "audit/benchmarks/${RUN_STAMP}-luna-high.json"
 ```
 
-Stop if the command exits non-zero. Primary disagreements receive two independent Astra/medium assessments; unresolved Astra disagreements remain `unknown`. Review `arbitrated_ids` and the retained audit evidence; investigate any new disagreement before continuing even when it does not create an exact-status mismatch. The runner retries transient schema/output failures, but any observed retry should still be noted in the monthly review. Use a new output filename for each attempt so failed results remain available alongside successful reruns.
+Stop if the command exits non-zero. Primary disagreements receive two independent GPT-6.1-Sol/medium assessments; unresolved arbitrator disagreements remain `unknown`. Review `arbitrated_ids` and the retained audit evidence; investigate any new disagreement before continuing even when it does not create an exact-status mismatch. The runner retries transient schema/output failures, but any observed retry should still be noted in the monthly review. Use a new output filename for each attempt so failed results remain available alongside successful reruns.
 
 ## 2. Refresh The SQLite Catalogue
 
@@ -113,7 +113,7 @@ python3 tools/classify_ocado_vegan.py --db "$DB_PATH" classify-all \
   --workers 8
 ```
 
-The command is resumable: successfully classified products are no longer selected if the command must be rerun. Primary status/reason disagreements trigger two fresh Astra/medium passes on the stored evidence. Only an agreed, policy-supported result is accepted; unresolved disagreements stay `unknown`, and exhausted arbitration failures are recorded as errors. Agreed primary unknowns are not escalated. Eight workers completed the 8,242-product August 2026 queue without a final error; lower the worker count and rerun only if the service starts returning persistent rate or execution errors.
+The command is resumable: successfully classified products are no longer selected if the command must be rerun. Primary status/reason disagreements trigger two fresh GPT-6.1-Sol/medium passes on the stored evidence. Only an agreed, policy-supported result is accepted; unresolved disagreements stay `unknown`, and exhausted arbitration failures are recorded as errors. Agreed primary unknowns are not escalated. Eight workers completed the 8,242-product August 2026 queue without a final error; lower the worker count and rerun only if the service starts returning persistent rate or execution errors.
 
 ## 4. Validate The Database
 

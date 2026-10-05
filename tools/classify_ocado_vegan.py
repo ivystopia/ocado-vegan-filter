@@ -25,10 +25,10 @@ REPO_ROOT = Path(__file__).resolve().parents[1]
 DEFAULT_DB = str(REPO_ROOT / "ocado_products.sqlite")
 DEFAULT_CODEX_MODEL = "gpt-5.6-luna"
 DEFAULT_REASONING_EFFORT = "high"
-ARBITRATION_MODEL = "gpt-6-astra"
+ARBITRATION_MODEL = "gpt-6.1-sol"
 ARBITRATION_REASONING_EFFORT = "medium"
 ARBITRATION_PROMPT_VERSION = "ocado-vegan-confirmation-arbitration-v1"
-CLASSIFIER_VERSION = "db-vegan-codex-v10"
+CLASSIFIER_VERSION = "db-vegan-codex-v11"
 PROMPT_VERSION = "ocado-vegan-product-json-v7"
 VALID_STATUSES = {"vegan", "nonvegan", "unknown"}
 VALID_VEGAN_REASONS = {"tagged", "manufacturer", "ingredients", "name"}
@@ -1532,7 +1532,7 @@ def classify_with_arbitration(
                     or confirmation.vegan_reason != result.vegan_reason):
                 result = replace(
                     result, vegan_status="unknown", vegan_reason=None, confidence="uncertain",
-                    summary="Astra agreement lacked supported explicit vegan confirmation.",
+                    summary="Arbitration agreement lacked supported explicit vegan confirmation.",
                     evidence={**result.evidence, "ambiguity_notes": [
                         *result.evidence.get("ambiguity_notes", []), "arbitration_confirmation_required",
                     ]},

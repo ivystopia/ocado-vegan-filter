@@ -1,4 +1,4 @@
-"""Safety and audit coverage for the bounded Astra arbitration stage."""
+"""Safety and audit coverage for the bounded Sol arbitration stage."""
 import json
 import sqlite3
 import sys
@@ -44,11 +44,11 @@ class ArbitrationTests(unittest.TestCase):
         self.assertEqual(calls.call_count, 4)
         for call in calls.call_args_list[2:]:
             self.assertEqual(call.args[0], [contexts[0]])
-            self.assertEqual(call.kwargs["model"], "gpt-6-astra")
+            self.assertEqual(call.kwargs["model"], "gpt-6.1-sol")
             self.assertEqual(call.kwargs["reasoning_effort"], "medium")
             self.assertTrue(call.kwargs["arbitration_policy"])
         self.assertEqual(results[0].source, "codex_arbitration")
-        self.assertEqual(results[0].model, "gpt-6-astra")
+        self.assertEqual(results[0].model, "gpt-6.1-sol")
         stages = results[0].evidence["arbitration"]
         self.assertEqual(stages["primary"]["model"], "gpt-5.6-luna")
         self.assertEqual(len(json.loads(stages["primary"]["parsed_response_json"])), 2)
@@ -71,7 +71,7 @@ class ArbitrationTests(unittest.TestCase):
         self.assertEqual(results[0].vegan_status, "unknown")
         self.assertEqual(results[0].evidence["arbitration"]["outcome"], "unresolved")
 
-    def test_astra_disagreement_stops_at_unknown_without_recursing(self):
+    def test_arbitration_disagreement_stops_at_unknown_without_recursing(self):
         a = self.response(self.decision(status="nonvegan"))
         b = self.response(self.decision())
         results, calls = self.run_pipeline([self.context()], [a, b, a, b])
@@ -79,7 +79,7 @@ class ArbitrationTests(unittest.TestCase):
         self.assertEqual(results[0].vegan_status, "unknown")
         self.assertIn("independent_codex_disagreement", results[0].evidence["ambiguity_notes"])
 
-    def test_ingredient_and_name_only_astra_agreement_cannot_promote(self):
+    def test_ingredient_and_name_only_arbitration_agreement_cannot_promote(self):
         for reason in ["ingredients", "name"]:
             with self.subTest(reason=reason):
                 yes = self.response(self.decision(status="vegan", reason=reason))
@@ -143,7 +143,7 @@ class ArbitrationTests(unittest.TestCase):
         with mock.patch.object(classifier, "call_codex_batch",
                                side_effect=[RuntimeError("split"), unknown1, unknown1, unknown2, unknown2]) as calls:
             results = classifier.classify_codex_contexts(
-                [self.context(), self.context("2")], passes=2, retries=0, model="gpt-6-astra",
+                [self.context(), self.context("2")], passes=2, retries=0, model="gpt-6.1-sol",
                 reasoning_effort="medium", codex_bin="unused", arbitration_policy=True)
         self.assertTrue(all(c.kwargs["arbitration_policy"] for c in calls.call_args_list))
         self.assertTrue(all(r.prompt_version == classifier.ARBITRATION_PROMPT_VERSION for r in results))
@@ -166,7 +166,7 @@ class ArbitrationTests(unittest.TestCase):
                         model=classifier.DEFAULT_CODEX_MODEL, reasoning_effort="high", codex_bin="unused")
                 self.assertEqual(count, 1)
                 row = conn.execute("SELECT * FROM product_vegan_classification_audit").fetchone()
-                self.assertEqual(row["model"], "gpt-6-astra")
+                self.assertEqual(row["model"], "gpt-6.1-sol")
                 self.assertEqual(row["prompt_version"], classifier.ARBITRATION_PROMPT_VERSION)
                 self.assertIn("primary", json.loads(row["evidence_json"])["arbitration"])
                 self.assertEqual(conn.execute("SELECT errors FROM vegan_classification_runs").fetchone()[0], int(failure))

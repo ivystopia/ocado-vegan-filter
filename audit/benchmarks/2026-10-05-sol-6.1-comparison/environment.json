@@ -1,0 +1,28 @@
+{
+  "git_commit": "3c7e89d02242c74c42cfebc6901ecf4409d23a4d",
+  "python": "3.13.5 (main, Aug 10 2026, 12:06:59) [GCC 14.2.0]",
+  "codex_version": "codex-cli 0.160.1",
+  "model": "gpt-6.1-sol",
+  "efforts": [
+    "medium",
+    "high"
+  ],
+  "classifier_version": "db-vegan-codex-v10",
+  "prompt_version": "ocado-vegan-product-json-v7",
+  "arbitration_enabled": false,
+  "model_documentation": "https://developers.openai.com/api/docs/models/gpt-6.1-sol",
+  "database_access": "None: inference uses unchanged frozen inputs only",
+  "comparison": "2026-10-05-astra-disagreements",
+  "passes": 2,
+  "batch_size": 10,
+  "workers": 2,
+  "context_caveat": "Same explicit product prompt/schema/frozen contexts as Astra; current Codex global/repository instructions and service conditions may differ. No system-instruction isolation added versus existing runner.",
+  "source_sha256": {
+    "tools/classify_ocado_vegan.py": "fa19fd823b8c23542beae887e37918124fc3aef70bc8215819d500747b28996c",
+    "tools/benchmark_ocado_vegan.py": "f02a195eb60e5acd0d6585aabc10b57a6cfba48774eef29e3e1602213cbd55d6",
+    "AGENTS.md": "af5b117dd4bec64746998dd24be4027381e97e0bd3f89b3b2198e89ef03e531e",
+    "benchmarks/vegan-classifier-v1.json": "f17f6d04014bb0fe68bc3f5d2343125bbfb07f0006f31ee7530dfea704a7e950",
+    "benchmarks/vegan-classifier-v1-contexts.json": "60654197bfada7cd60b50dd0fa2f17a04e7013446d066363e42034091a2b4791"
+  },
+  "inherited_service_tier_at_run": "default"
+}

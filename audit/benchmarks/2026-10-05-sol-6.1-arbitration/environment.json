@@ -1,0 +1,11 @@
+{
+  "model": "gpt-6.1-sol",
+  "reasoning_effort": "medium",
+  "primary": "replayed frozen historical Luna decisions",
+  "comparison_fixture": "../2026-10-05-arbitration-confirmation-v1/fixture.json",
+  "candidate_override": "ARBITRATION_MODEL changed only in replay process; production wrapper/prompt/confirmation gate used unchanged.",
+  "implementation_at_process_start": "db-vegan-codex-v10",
+  "production_version_after_selection": "db-vegan-codex-v11",
+  "database_access": "none",
+  "prompt_version": "ocado-vegan-confirmation-arbitration-v1"
+}

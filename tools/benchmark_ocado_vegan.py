@@ -59,7 +59,7 @@ def build_parser() -> argparse.ArgumentParser:
     parser.add_argument("--fixture", type=Path, default=DEFAULT_FIXTURE)
     parser.add_argument("--model", default=classifier.DEFAULT_CODEX_MODEL)
     parser.add_argument("--reasoning-effort", default=classifier.DEFAULT_REASONING_EFFORT)
-    parser.add_argument("--arbitrate-disagreements", action="store_true", help="Exercise production Astra arbitration after primary disagreements.")
+    parser.add_argument("--arbitrate-disagreements", action="store_true", help="Exercise production disagreement arbitration with the configured model.")
     parser.add_argument("--passes", type=int, default=2)
     parser.add_argument("--retries", type=int, default=2)
     parser.add_argument("--batch-size", type=int, default=10)

@@ -1,0 +1,54 @@
+{
+  "model": "gpt-6.1-sol",
+  "baseline_model": "gpt-6-astra",
+  "primary_classifier_unchanged": "gpt-5.6-luna/high",
+  "configurations": {
+    "medium": {
+      "pilot_counts": {
+        "unknown": 10,
+        "vegan": 4,
+        "nonvegan": 1
+      },
+      "pilot_disagreements": [],
+      "pilot_differences_from_astra": [
+        "640656011"
+      ],
+      "pilot_seconds": 88.13,
+      "astra_pilot_seconds": 80.508,
+      "safety_exact": 48,
+      "safety_false_vegan": [],
+      "safety_disagreements": [],
+      "safety_errors": [],
+      "safety_seconds": 218.475,
+      "astra_safety_seconds": 208.483,
+      "same_safety_fixture_hash": true
+    },
+    "high": {
+      "pilot_counts": {
+        "unknown": 10,
+        "vegan": 4,
+        "nonvegan": 1
+      },
+      "pilot_disagreements": [],
+      "pilot_differences_from_astra": [
+        "640656011"
+      ],
+      "pilot_seconds": 128.30599999999998,
+      "astra_pilot_seconds": 89.877,
+      "safety_exact": 48,
+      "safety_false_vegan": [],
+      "safety_disagreements": [],
+      "safety_errors": [],
+      "safety_seconds": 253.533,
+      "astra_safety_seconds": 237.463,
+      "same_safety_fixture_hash": true
+    }
+  },
+  "decision": "Select Sol medium for disagreement arbitration: both Sol settings pass 48/48; medium passes 15/15 arbitration replay; final Luna/Sol pipeline passes 48/48. Existing confirmation-only gate and two-pass policy unchanged.",
+  "limitations": [
+    "Legacy reference labels do not establish revised whole-product policy correctness.",
+    "The 15-product pilot has no independent gold labels; agreement/resolution is not accuracy.",
+    "Historical Astra comparison is not simultaneous; system instructions/service conditions can differ even with identical explicit prompt and data.",
+    "No token usage or actual monetary task cost measured."
+  ]
+}

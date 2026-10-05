@@ -1,0 +1,40 @@
+medium: pass 1, batch 1
+high: pass 1, batch 1
+medium: pass 1, batch 2
+high: pass 1, batch 2
+medium: pass 2, batch 1
+high: pass 2, batch 1
+medium: pass 2, batch 2
+medium: complete, 88.1s summed call time
+Benchmark cohort challenge: 24 products
+  pass 1/2, attempt 1
+high: pass 2, batch 2
+  pass 2/2, attempt 1
+high: complete, 128.3s summed call time
+Benchmark cohort challenge: 24 products
+  pass 1/2, attempt 1
+  pass 1/2, attempt 1
+  pass 2/2, attempt 1
+  pass 2/2, attempt 1
+  pass 1/2, attempt 1
+  pass 1/2, attempt 1
+  pass 2/2, attempt 1
+Benchmark cohort holdout: 24 products
+  pass 1/2, attempt 1
+  pass 2/2, attempt 1
+  pass 2/2, attempt 1
+  pass 1/2, attempt 1
+  pass 1/2, attempt 1
+  pass 2/2, attempt 1
+  pass 2/2, attempt 1
+Benchmark cohort holdout: 24 products
+  pass 1/2, attempt 1
+  pass 1/2, attempt 1
+  pass 2/2, attempt 1
+  pass 2/2, attempt 1
+  pass 1/2, attempt 1
+medium: safety 48/48, false-vegan=[], disagreements=[], errors=[]
+  pass 2/2, attempt 1
+  pass 1/2, attempt 1
+  pass 2/2, attempt 1
+high: safety 48/48, false-vegan=[], disagreements=[], errors=[]
