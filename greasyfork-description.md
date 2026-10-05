@@ -1,17 +1,29 @@
-**Ocado's built-in vegan labelling is incomplete:** some products are explicitly described as suitable for vegans, or can be identified as vegan from available product data, but do not consistently show Ocado's vegan tag in product grids.
+**Make vegan shopping on Ocado easier.** Keep vegan options easy to spot while you browse, search and check the offers.
 
-**This script improves the product grid experience by:**
+Ocado's vegan labels don't cover every vegan product. Ocado Vegan Filter helps you spot more options, including products missing Ocado's vegan tag, and fades other products into the background.
 
-- Keeping recognised vegan products looking normal, with Ocado's usual yellow **Add** button.
-- Visually muting known non-vegan products and products without enough evidence for a safe classification, including fading/desaturating the product image and muting promotional red text.
-- Restyling the **Add** button as **Not vegan** for affirmative non-vegan classifications or **Unknown vegan** when the available evidence is inconclusive. Both change to **Add anyway** on hover.
-- Extending Ocado's built-in vegan product data with 14,444 additional products supported by manufacturer/name evidence or conservative ingredients/product-data classification, for 19,113 recognised vegan products across the audited catalogue (17,449 currently on Ocado).
+### What you'll see
 
-Ocado's official vegan tag is authoritative and always takes precedence over the script's embedded evidence.
-**Not vegan** means the offline audit found affirmative non-vegan evidence; **Unknown vegan** means the stored evidence is insufficient to establish either vegan or non-vegan status safely.
+- **Recognised vegan products** keep their usual appearance and yellow **Add** button.
+- **Not vegan** appears on products with evidence of animal-derived ingredients.
+- **Unknown vegan** means there isn't enough information to confirm whether a product is vegan. It doesn't mean the product is definitely non-vegan.
 
-The filter is cosmetic only. Product links still work, and the real Ocado **Add** button remains clickable. The script does not change product pages, basket contents, checkout, prices, or Ocado account data.
+Products marked **Not vegan** or **Unknown vegan** have faded images and grey buttons, making the recognised vegan options easier to pick out. Nothing is hidden: you can still open any product or add it to your basket. Hover over or focus a grey button and it shows **Add anyway**.
 
-Reddit feedback thread: https://redd.it/1t5afpp
+### Get started
 
-Version 1.7.0 includes the August catalogue refresh and faster filtering for large product grids. Images keep their original responsive sources, and live card updates preserve Ocado’s product links and basket controls.
+1. Install a userscript manager for your browser if you don't already have one. Greasy Fork's installation help explains how.
+2. Click **Install this script** above and confirm the installation.
+3. Open or refresh Ocado and shop as usual. The filter works automatically on search results, category pages and offers.
+
+### How it recognises vegan options
+
+The filter uses Ocado's vegan labels, explicit vegan descriptions, manufacturer confirmations and ingredient information. When the evidence is unclear, it uses **Unknown vegan** rather than guessing. Ocado's own vegan labels always take priority.
+
+Recipes and product information can change, so check the latest ingredients before buying.
+
+### Privacy and feedback
+
+The filter runs in your browser without sending your shopping activity to third-party services. Your basket and checkout work as usual.
+
+Found a product that looks wrong, or have a suggestion? Leave feedback on this page or join the Reddit discussion: https://redd.it/1t5afpp
