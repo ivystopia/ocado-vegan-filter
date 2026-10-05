@@ -154,7 +154,7 @@ The scenario checker opens live milk, vegan-cheese, and offers pages in temporar
 
 For a catalogue refresh and userscript data update, follow [the monthly maintenance runbook](docs/monthly-maintenance.md).
 
-Develop, commit, and test on `dev`. After local testing is approved, fast-forward merge `dev` into `main` and create the signed release tag at that exact commit. Keep `main` at the latest tagged release and return to `dev` for subsequent work, including documentation and tooling changes. Push only explicitly authorized branches and tags; release publication pushes `main` and the named tag atomically without force-pushing. See the [release procedure](docs/monthly-maintenance.md#7-commit-and-release) for the commands and publication checks.
+Develop and test userscript and tooling changes on `dev`. Documentation-only commits may go directly to `main` between releases, provided its userscript remains identical to the latest release tag. Keep documentation about unreleased changes on `dev`. Before a release, merge any new documentation commits from `main` into `dev`; after local testing is approved, fast-forward merge `dev` into `main`, create the signed release tag there, and return to `dev`. Release versions describe the userscript, although Git tags snapshot the whole repository. Push only explicitly authorized branches and tags; release publication pushes `main` and the named tag atomically without force-pushing. See the [release procedure](docs/monthly-maintenance.md#7-commit-and-release) for the commands and publication checks.
 
 ## License
 
