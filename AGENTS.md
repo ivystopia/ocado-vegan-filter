@@ -92,17 +92,19 @@ The project has two related goals:
 - Keep the product counts at the top of the userscript comment block up to date whenever a userscript change is finalised.
 - When regenerating embedded product ID allowlists, keep the diff minimal: preserve the relative order and line placement of retained IDs, remove obsolete IDs in place, append only genuinely new IDs, and avoid unrelated userscript changes.
 - Use `tools/update_userscript_allowlists.py`, starting with `--dry-run`. It exports all known classified IDs, including historical products; do not silently narrow exports to current products or hand-edit sets around a failed safety gate.
-- Commit development changes directly to `main`.
-- For requested release work, prepare a signed annotated local tag once the agreed version passes repository checks, before the user's FireMonkey testing and Greasy Fork publication.
+- Commit all development, documentation, tooling, and testing changes to `dev`. Keep `main` at the latest release tag; do not commit development work directly to `main` or advance it with an ordinary pull.
+- Once the user approves the locally tested `dev` changes for release, fast-forward merge `dev` into `main` and create and verify a signed annotated tag at that exact `main` commit. Create the release tag on `main`, then return to `dev` for further work. Complete the FireMonkey tagged-source verification before publication.
 - Use exact Greasy Fork version strings for tags, for example `1.4.4`, not `v1.4.4`.
-- If the user finds a bug while testing an unpublished local release, fix it at the same version, rerun the relevant checks, and remake the signed annotated local tag at the corrected commit.
-- Check local/remote tag state and publication state before moving an existing tag. Replacing an unpublished, unpushed local tag is part of this testing workflow; changing shared tags or rewriting pushed history needs explicit authorization for that concrete action.
+- If the user finds a bug while testing an unpublished local release, fix it on `dev` at the same version and rerun the relevant checks. After the user approves the correction, fast-forward `main` to the corrected commit and remake the signed annotated local tag there.
+- Check local/remote tag state and publication state before moving an existing tag. Replacing an unpublished, unpushed local tag is part of this testing workflow. Never force-push or rewrite shared history; a published or pushed release requires a new version and tag.
 - Local release preparation does not authorize pushing or publishing. A tag push creates a GitHub release through the workflow; a local tag or metadata version alone does not prove publication on Greasy Fork.
-- Documentation/tooling-only changes that leave the userscript unchanged do not need a userscript version bump or release tag and do not trigger a FireMonkey installation.
+- Documentation/tooling-only changes that leave the userscript unchanged remain on `dev` until the next approved release; they do not need a userscript version bump or release tag and do not trigger a FireMonkey installation.
 - Write short, imperative Greasy Fork release notes describing user-visible results, product additions/removals, and why classifications changed. Cover the whole interval since the last published version, including skipped local versions. Use tag annotations and Greasy Fork text; do not add a standalone `CHANGELOG.md` unless requested.
 
 ## Git Workflow
 
+- Keep development work local unless pushing it is explicitly requested. For an authorized release push, push only `main` and the named release tag atomically; do not use `--all`, `--tags`, or push `dev` implicitly. Verify the current remote state and that `origin/main` is an ancestor of the release commit before pushing.
+- Transition on 2026-10-05: local `main` is at `1.7.2` (`905b543`), while GitHub `main` retains two already-pushed verification-documentation commits through `8c00691`. Both commits are preserved in `dev`; the next approved release will include them and restore local/remote alignment by a normal fast-forward push. Do not pull those commits onto local `main` before that release or force-push GitHub backward.
 - Commit each finalised logical change individually: one change per commit and one commit per change.
 - Account for new files by tracking intended repository artifacts or explicitly ignoring local working data. Leave finalised changes committed and report anything intentionally left uncommitted.
 - Keep formatting-only changes in a separate commit from feature, behaviour, documentation, or data changes.

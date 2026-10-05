@@ -106,7 +106,7 @@ The [monthly runbook](monthly-maintenance.md) owns execution commands and export
 
 ## Release notes and historical context
 
-The [release steps](monthly-maintenance.md#7-commit-and-release) create a signed local tag, install its exact source into FireMonkey, and allow the user to test before publication. Bugs during this local testing keep the agreed version and require both remaking the local tag and reinstalling its source. Check hashes as well as version numbers.
+Development and local testing take place on `dev`, including documentation and tooling changes. The [release steps](monthly-maintenance.md#7-commit-and-release) advance `main` only after the user approves the tested changes, create a signed local tag on `main`, and install its exact source into FireMonkey for verification before publication. Corrections to an unpublished, unpushed release are made and tested on `dev`; after user approval, advance `main`, remake the local tag, and reinstall its source. Check hashes as well as version numbers. Keep subsequent work on `dev` and never force-push.
 
 Greasy Fork release notes should use brief imperative bullets about shopping behaviour and evidence changes. Count additions/removals from the last published version, explain whether changes came from new catalogue evidence or a classification-rule change, and include skipped local versions in that interval. Keep release notes in the signed tag annotation and text prepared for Greasy Fork; a standalone changelog was deliberately removed during the September release.
 

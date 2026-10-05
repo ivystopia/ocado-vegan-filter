@@ -115,7 +115,7 @@ These files are small enough to keep in Git and document the public outputs of t
 - `.gitignore` - excludes local databases, raw scrape streams, virtual environments, and caches.
 - `.flake8` - Python lint configuration.
 - `.github/workflows/release.yml` - publishes userscript assets to GitHub Releases when a release tag is pushed.
-- `.github/workflows/test.yml` - runs the Python suite and Firefox fixtures for main, pull requests, and the release workflow.
+- `.github/workflows/test.yml` - runs the Python suite and Firefox fixtures for main and dev pushes, pull requests, and the release workflow.
 
 ### Intentionally Not Tracked
 
@@ -153,6 +153,8 @@ The normal suite includes real headless Firefox fixture tests and needs neither 
 The scenario checker opens live milk, vegan-cheese, and offers pages in temporary Firefox at 390, 768, and 1440 CSS pixels, then checks initial and scrolled cards. It records the injected source hash, classification and appearance checks, visible link/button hit targets, and milk screenshots beside its JSON output. It leaves the installed userscript and basket alone; verify FireMonkey installation separately when testing an installed build.
 
 For a catalogue refresh and userscript data update, follow [the monthly maintenance runbook](docs/monthly-maintenance.md).
+
+Develop, commit, and test on `dev`. After local testing is approved, fast-forward merge `dev` into `main` and create the signed release tag at that exact commit. Keep `main` at the latest tagged release and return to `dev` for subsequent work, including documentation and tooling changes. Push only explicitly authorized branches and tags; release publication pushes `main` and the named tag atomically without force-pushing. See the [release procedure](docs/monthly-maintenance.md#7-commit-and-release) for the commands and publication checks.
 
 ## License
 

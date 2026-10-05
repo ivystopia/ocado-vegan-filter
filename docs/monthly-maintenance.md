@@ -8,7 +8,7 @@ The Astra arbitration change does not authorize reclassification. The broader co
 
 ## 1. Prepare And Benchmark
 
-Start from the repository root with a clean tracked working tree and the [development environment](../README.md#development) active. The local SQLite database is intentionally untracked. If resuming an interrupted refresh, inspect the latest run and follow [the recovery guidance](working-guide.md#recovery-and-classifier-pitfalls) before starting another writer.
+Start from the repository root on `dev` with a clean tracked working tree and the [development environment](../README.md#development) active. The local SQLite database is intentionally untracked. If resuming an interrupted refresh, inspect the latest run and follow [the recovery guidance](working-guide.md#recovery-and-classifier-pitfalls) before starting another writer.
 
 ```bash
 cd /home/ivy/repos/personal/ocado_report
@@ -262,17 +262,19 @@ Confirm these states in the automated Firefox tests, then repeat the acceptance 
 
 ## 7. Commit And Release
 
-Commit the tested userscript and retained benchmark/report artifacts directly to `main` as one scoped maintenance change.
+Commit the tested userscript and retained benchmark/report artifacts on `dev` as one scoped maintenance change. Complete local development and testing there, including any requested FireMonkey testing using the [installation runbook](firemonkey-installation.md). Wait for the user's approval of the tested changes before advancing `main` for release. Documentation and tooling changes also stay on `dev` until an approved release.
 
 Prepare the release locally before publication:
 
-1. Create and verify a signed annotated local tag at the tested commit, using the exact userscript version without a `v` prefix. Include the release notes in the tag annotation.
+1. Inspect the current remote branches and tags, fetch `origin`, and ensure `origin/main` is an ancestor of the approved `dev` commit. If it is not, integrate the remote changes into `dev`, rerun the relevant checks, and obtain approval for the resulting changes before proceeding. With a clean working tree, run `git switch main` and `git merge --ff-only dev`. Create and verify a signed annotated local tag at that exact `main` commit, using the exact userscript version without a `v` prefix. Include the release notes in the tag annotation. Verify that `main` and the tag resolve to the same commit, then run `git switch dev`. If fast-forwarding fails, investigate rather than resetting or force-pushing.
 2. Back up FireMonkey storage, install the exact tagged source into the user's local FireMonkey, safely reload it, and verify the installed source using [the FireMonkey runbook](firemonkey-installation.md). This is part of preparing the local tag, so no separate installation permission is needed. The user then tests it before publishing to Greasy Fork.
-3. If testing finds a bug, fix it at the same version, rerun the relevant checks, commit the correction, and remake and verify the signed annotated local tag. Repeat the FireMonkey installation, reload, and source verification. Check first that the tag is still unpublished and unpushed; changing a shared tag or rewriting pushed history requires explicit authorization for that concrete action.
+3. If final verification finds a bug, fix and test it on `dev` at the same version. After the user approves the correction, fast-forward `main` to the corrected commit and remake and verify the signed annotated local tag there, then return to `dev`. Repeat the FireMonkey installation, reload, and source verification. Check first that the tag is still unpublished and unpushed; never replace a shared tag or force-push. A pushed or published release requires a new version and tag.
 4. After the user's testing, publish the exact tested source to Greasy Fork when requested, or let the user publish it. Verify the live version and source before describing it as published.
-5. When pushing is requested, push the commit and release tag. The tag workflow runs the checks, verifies that the tag equals the userscript metadata version, and creates the GitHub release assets.
+5. When pushing is requested, recheck the remote state and push only `main` and the named release tag with `git push --atomic origin refs/heads/main "refs/tags/${NEXT_VERSION}"`. Do not push `dev`, all branches, or all tags implicitly. This sends the approved release while retaining later `dev` commits locally. The tag workflow runs the checks, verifies that the tag equals the userscript metadata version, and creates the GitHub release assets. Verify both remote refs and the completed workflow.
 
 Creating a local tag includes updating the installed FireMonkey copy, but does not authorize pushing or publication. If safe reload automation is unavailable, provide the exact manual reload steps and report that active installation verification remains incomplete; do not close or restart the user's Firefox without an explicit request.
+
+The 2026-10-05 transition leaves local `main` at `1.7.2` while GitHub `main` is two verification-documentation commits ahead. Those commits are retained in `dev`. Publish the existing `1.7.2` tag with a tag-only push; the next approved release will bring GitHub `main` and local `main` together through a normal fast-forward push. Do not pull on local `main` to resolve this temporary difference or force-push GitHub backward.
 
 ## Monthly Stop Conditions
 
