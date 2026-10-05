@@ -1,0 +1,208 @@
+{
+  "model": "gpt-6-astra",
+  "reasoning_effort": "medium",
+  "passes": 2,
+  "batch_size": 10,
+  "call_duration_seconds": 80.508,
+  "decisions": {
+    "694001011": {
+      "ambiguity_notes": [
+        "PVC does not resolve coatings, adhesives, or other manufacturing inputs."
+      ],
+      "confidence": "uncertain",
+      "evidence": [
+        "Football composition is stated as PVC.",
+        "No explicit vegan statement is supplied."
+      ],
+      "product_id": "694001011",
+      "summary": "The stated plastic material does not establish that the complete football is vegan.",
+      "vegan_reason": null,
+      "vegan_status": "unknown"
+    },
+    "633002011": {
+      "ambiguity_notes": [],
+      "confidence": "certain",
+      "evidence": [
+        "Ingredients: Kalamata olives, water, sea salt, red wine vinegar (sulphites)."
+      ],
+      "product_id": "633002011",
+      "summary": "All listed ingredients are vegan.",
+      "vegan_reason": "ingredients",
+      "vegan_status": "vegan"
+    },
+    "691539011": {
+      "ambiguity_notes": [
+        "Fibre percentages do not resolve dyes, finishes, or processing inputs."
+      ],
+      "confidence": "uncertain",
+      "evidence": [
+        "Composition: 85% cotton, 13% polyamide, 2% elastane.",
+        "No explicit vegan statement is supplied."
+      ],
+      "product_id": "691539011",
+      "summary": "The fibre composition alone does not establish that the socks are vegan.",
+      "vegan_reason": null,
+      "vegan_status": "unknown"
+    },
+    "698034011": {
+      "ambiguity_notes": [],
+      "confidence": "certain",
+      "evidence": [
+        "Full product name: Rum.",
+        "Category identifies white rum; no ingredients field or conflicting identity is supplied."
+      ],
+      "product_id": "698034011",
+      "summary": "The unambiguous plain rum identity supports vegan classification under the single-ingredient rule.",
+      "vegan_reason": "ingredients",
+      "vegan_status": "vegan"
+    },
+    "599102011": {
+      "ambiguity_notes": [
+        "Fabric and lining composition do not resolve dyes, finishes, or other processing inputs."
+      ],
+      "confidence": "uncertain",
+      "evidence": [
+        "Composition: 80% polyamide, 20% elastane; lining: 100% polyester.",
+        "No explicit vegan statement is supplied."
+      ],
+      "product_id": "599102011",
+      "summary": "The textile composition does not establish that the complete swimsuit is vegan.",
+      "vegan_reason": null,
+      "vegan_status": "unknown"
+    },
+    "662752011": {
+      "ambiguity_notes": [
+        "The brand field identifies Reposado, while the name and description identify A\u00f1ejo."
+      ],
+      "confidence": "uncertain",
+      "evidence": [
+        "Brand: Cincoro Reposado.",
+        "Name: Cincoro Anejo Tequila.",
+        "Description identifies CINCORO ANEJO made with 100% blue weber agave."
+      ],
+      "product_id": "662752011",
+      "summary": "Conflicting tequila identities prevent a certain classification.",
+      "vegan_reason": null,
+      "vegan_status": "unknown"
+    },
+    "693999011": {
+      "ambiguity_notes": [
+        "The name specifies stainless steel, while the description and composition specify aluminium.",
+        "Listed component materials do not resolve coatings or other manufacturing inputs."
+      ],
+      "confidence": "uncertain",
+      "evidence": [
+        "Name: England FA 750ml Premium Stainless Steel Bottle.",
+        "Composition: aluminium body, PS spout, PP cap, PE straw, silicone seal ring."
+      ],
+      "product_id": "693999011",
+      "summary": "Conflicting material identities and incomplete manufacturing evidence leave vegan status unresolved.",
+      "vegan_reason": null,
+      "vegan_status": "unknown"
+    },
+    "606252011": {
+      "ambiguity_notes": [],
+      "confidence": "certain",
+      "evidence": [
+        "Ingredients list legumes, vegetables, apple, vegetable oil, minerals, seaweed, herbs, blueberries, and slippery elm.",
+        "Description explicitly describes a plant-based recipe."
+      ],
+      "product_id": "606252011",
+      "summary": "The supplied ingredient list supports vegan classification.",
+      "vegan_reason": "ingredients",
+      "vegan_status": "vegan"
+    },
+    "683274011": {
+      "ambiguity_notes": [
+        "Fibre composition does not resolve dyes, finishes, or processing inputs."
+      ],
+      "confidence": "uncertain",
+      "evidence": [
+        "Composition: 88% polyamide, 11% elastane, 1% cotton.",
+        "No explicit vegan statement is supplied."
+      ],
+      "product_id": "683274011",
+      "summary": "The stated fibres do not establish that the complete tights are vegan.",
+      "vegan_reason": null,
+      "vegan_status": "unknown"
+    },
+    "468269011": {
+      "ambiguity_notes": [
+        "The coconut-shell feedstock does not establish whether briquetting binders or other manufacturing inputs are vegan."
+      ],
+      "confidence": "uncertain",
+      "evidence": [
+        "Briquettes are made from carbonising waste coconut shells.",
+        "Described as timber-free; no complete composition or explicit vegan statement is supplied."
+      ],
+      "product_id": "468269011",
+      "summary": "The headline plant material does not establish the complete manufactured briquettes as vegan.",
+      "vegan_reason": null,
+      "vegan_status": "unknown"
+    },
+    "589716011": {
+      "ambiguity_notes": [],
+      "confidence": "certain",
+      "evidence": [
+        "Full product name: Roasted ground coffee in capsules.",
+        "Description identifies a 100% Arabica coffee blend."
+      ],
+      "product_id": "589716011",
+      "summary": "Unambiguous coffee identity establishes vegan status. Milk preparation suggestions and tasting notes are not ingredients.",
+      "vegan_reason": "ingredients",
+      "vegan_status": "vegan"
+    },
+    "700310011": {
+      "ambiguity_notes": [
+        "The 100% PP specification does not resolve dyes, coatings or other manufacturing inputs."
+      ],
+      "confidence": "uncertain",
+      "evidence": [
+        "Specification: 100% PP.",
+        "No explicit vegan statement is supplied."
+      ],
+      "product_id": "700310011",
+      "summary": "The cup's headline plastic material alone does not establish that the manufactured product is vegan.",
+      "vegan_reason": null,
+      "vegan_status": "unknown"
+    },
+    "452849011": {
+      "ambiguity_notes": [],
+      "confidence": "certain",
+      "evidence": [
+        "Product name: Mozart Chocolate Cream Liqueur.",
+        "Full product name: Sahnelik\u00f6r Cream Liqueur.",
+        "Product-specific allergen statement lists milk and products thereof."
+      ],
+      "product_id": "452849011",
+      "summary": "This cream liqueur contains dairy. The vegan statement explicitly concerns the separate Dark Chocolate variant.",
+      "vegan_reason": null,
+      "vegan_status": "nonvegan"
+    },
+    "640656011": {
+      "ambiguity_notes": [],
+      "confidence": "certain",
+      "evidence": [
+        "Ingredients: Water, Barley Malt and Hops."
+      ],
+      "product_id": "640656011",
+      "summary": "All listed ingredients are vegan, with no ambiguous or animal-derived ingredients supplied.",
+      "vegan_reason": "ingredients",
+      "vegan_status": "vegan"
+    },
+    "524647011": {
+      "ambiguity_notes": [
+        "Cornstarch and PBAT identify the main materials but do not resolve colourants or other manufacturing inputs."
+      ],
+      "confidence": "uncertain",
+      "evidence": [
+        "Materials: cornstarch and PBAT.",
+        "Described as plant-based and compostable; no explicit vegan statement is supplied."
+      ],
+      "product_id": "524647011",
+      "summary": "The material and compostability claims do not establish the complete manufactured bags as vegan.",
+      "vegan_reason": null,
+      "vegan_status": "unknown"
+    }
+  }
+}

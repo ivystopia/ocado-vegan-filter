@@ -1,0 +1,75 @@
+{
+  "model": "gpt-6-astra",
+  "reasoning_effort": "medium",
+  "run_at": "2026-10-05T21:18:35.689892+00:00",
+  "prompt_sha256": "773ba5ba9b02f06956ab317641a5d45a3f125b5f510acb3af9ec42b9c2c59a0a",
+  "duration_seconds": 15.845,
+  "exit_status": 0,
+  "decisions": {
+    "589716011": {
+      "ambiguity_notes": [],
+      "confidence": "certain",
+      "evidence": [
+        "Full product name: Roasted ground coffee in capsules.",
+        "Description identifies a 100% Arabica coffee blend."
+      ],
+      "product_id": "589716011",
+      "summary": "Unambiguous coffee identity establishes vegan status. Milk preparation suggestions and tasting notes are not ingredients.",
+      "vegan_reason": "ingredients",
+      "vegan_status": "vegan"
+    },
+    "700310011": {
+      "ambiguity_notes": [
+        "The 100% PP specification does not resolve dyes, coatings or other manufacturing inputs."
+      ],
+      "confidence": "uncertain",
+      "evidence": [
+        "Specification: 100% PP.",
+        "No explicit vegan statement is supplied."
+      ],
+      "product_id": "700310011",
+      "summary": "The cup's headline plastic material alone does not establish that the manufactured product is vegan.",
+      "vegan_reason": null,
+      "vegan_status": "unknown"
+    },
+    "452849011": {
+      "ambiguity_notes": [],
+      "confidence": "certain",
+      "evidence": [
+        "Product name: Mozart Chocolate Cream Liqueur.",
+        "Full product name: Sahnelik\u00f6r Cream Liqueur.",
+        "Product-specific allergen statement lists milk and products thereof."
+      ],
+      "product_id": "452849011",
+      "summary": "This cream liqueur contains dairy. The vegan statement explicitly concerns the separate Dark Chocolate variant.",
+      "vegan_reason": null,
+      "vegan_status": "nonvegan"
+    },
+    "640656011": {
+      "ambiguity_notes": [],
+      "confidence": "certain",
+      "evidence": [
+        "Ingredients: Water, Barley Malt and Hops."
+      ],
+      "product_id": "640656011",
+      "summary": "All listed ingredients are vegan, with no ambiguous or animal-derived ingredients supplied.",
+      "vegan_reason": "ingredients",
+      "vegan_status": "vegan"
+    },
+    "524647011": {
+      "ambiguity_notes": [
+        "Cornstarch and PBAT identify the main materials but do not resolve colourants or other manufacturing inputs."
+      ],
+      "confidence": "uncertain",
+      "evidence": [
+        "Materials: cornstarch and PBAT.",
+        "Described as plant-based and compostable; no explicit vegan statement is supplied."
+      ],
+      "product_id": "524647011",
+      "summary": "The material and compostability claims do not establish the complete manufactured bags as vegan.",
+      "vegan_reason": null,
+      "vegan_status": "unknown"
+    }
+  },
+  "raw_response": "{\"decisions\":[{\"ambiguity_notes\":[],\"confidence\":\"certain\",\"evidence\":[\"Full product name: Roasted ground coffee in capsules.\",\"Description identifies a 100% Arabica coffee blend.\"],\"product_id\":\"589716011\",\"summary\":\"Unambiguous coffee identity establishes vegan status. Milk preparation suggestions and tasting notes are not ingredients.\",\"vegan_reason\":\"ingredients\",\"vegan_status\":\"vegan\"},{\"ambiguity_notes\":[\"The 100% PP specification does not resolve dyes, coatings or other manufacturing inputs.\"],\"confidence\":\"uncertain\",\"evidence\":[\"Specification: 100% PP.\",\"No explicit vegan statement is supplied.\"],\"product_id\":\"700310011\",\"summary\":\"The cup's headline plastic material alone does not establish that the manufactured product is vegan.\",\"vegan_reason\":null,\"vegan_status\":\"unknown\"},{\"ambiguity_notes\":[],\"confidence\":\"certain\",\"evidence\":[\"Product name: Mozart Chocolate Cream Liqueur.\",\"Full product name: Sahnelik\u00f6r Cream Liqueur.\",\"Product-specific allergen statement lists milk and products thereof.\"],\"product_id\":\"452849011\",\"summary\":\"This cream liqueur contains dairy. The vegan statement explicitly concerns the separate Dark Chocolate variant.\",\"vegan_reason\":null,\"vegan_status\":\"nonvegan\"},{\"ambiguity_notes\":[],\"confidence\":\"certain\",\"evidence\":[\"Ingredients: Water, Barley Malt and Hops.\"],\"product_id\":\"640656011\",\"summary\":\"All listed ingredients are vegan, with no ambiguous or animal-derived ingredients supplied.\",\"vegan_reason\":\"ingredients\",\"vegan_status\":\"vegan\"},{\"ambiguity_notes\":[\"Cornstarch and PBAT identify the main materials but do not resolve colourants or other manufacturing inputs.\"],\"confidence\":\"uncertain\",\"evidence\":[\"Materials: cornstarch and PBAT.\",\"Described as plant-based and compostable; no explicit vegan statement is supplied.\"],\"product_id\":\"524647011\",\"summary\":\"The material and compostability claims do not establish the complete manufactured bags as vegan.\",\"vegan_reason\":null,\"vegan_status\":\"unknown\"}]}"
+}

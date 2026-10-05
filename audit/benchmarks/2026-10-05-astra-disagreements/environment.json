@@ -1,0 +1,16 @@
+{
+  "git_commit": "c048937b4d4edc48d668c30df1b1796093d72233",
+  "python": "3.13.5 (main, Aug 10 2026, 12:06:59) [GCC 14.2.0]",
+  "codex_version": "codex-cli 0.160.1",
+  "classifier_version": "db-vegan-codex-v9",
+  "prompt_version": "ocado-vegan-product-json-v7",
+  "model": "gpt-6-astra",
+  "efforts": [
+    "medium",
+    "high"
+  ],
+  "model_documentation": "https://developers.openai.com/api/docs/models/gpt-6-astra",
+  "database_access": "SQLite mode=ro for snapshot only; all inference uses frozen snapshots",
+  "safety_fixture": "benchmarks/vegan-classifier-v1.json",
+  "safety_contexts": "benchmarks/vegan-classifier-v1-contexts.json"
+}

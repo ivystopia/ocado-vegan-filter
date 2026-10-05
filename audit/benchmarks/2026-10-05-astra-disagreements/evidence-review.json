@@ -1,0 +1,20 @@
+{
+  "review_type": "Supervising evidence/policy review, not independent gold validation or manufacturer verification",
+  "products": {
+    "694001011": "Unknown is appropriate: PVC composition does not resolve dyes, coatings or all manufacturing inputs.",
+    "633002011": "Vegan/ingredients follows the current listed-ingredient policy: olives, water, salt and vinegar. Neither source text nor current prompt identifies animal-derived processing aids; no manufacturer confirmation was obtained.",
+    "691539011": "Unknown is appropriate: fibre percentages do not resolve dyes or other manufacturing inputs.",
+    "698034011": "Vegan/ingredients follows the explicit no-ingredients identity rule for unambiguous plain white rum. This is evidence-policy interpretation, not independently verified manufacturer suitability.",
+    "599102011": "Unknown is appropriate: recycled nylon is incomplete composition.",
+    "662752011": "Unknown is appropriate under the prompt: brand says Cincoro Reposado, while name and description say Anejo. Models noticed this identity conflict.",
+    "693999011": "Unknown is appropriate: title says stainless steel, specification says aluminium, and complete manufacturing inputs remain unspecified.",
+    "606252011": "Vegan/ingredients is supported by the supplied plant/mineral ingredient list and plant-based recipe statement. Complete-nutrition wording alone is not evidence of unlisted non-vegan vitamins.",
+    "683274011": "Unknown is appropriate: fibre percentages do not establish dyes and processing inputs.",
+    "468269011": "Unknown is appropriate: coconut-shell feedstock does not establish binder composition.",
+    "589716011": "Vegan/ingredients is supported by explicit 100% Arabica roasted ground coffee identity. Milk is a preparation suggestion; chocolate and caramel are tasting notes. Packaging uncertainty is not an ingredient in the coffee.",
+    "700310011": "Unknown is appropriate: the 100% PP material statement does not resolve all manufacturing inputs.",
+    "452849011": "Nonvegan is supported by the product-specific Milk and products thereof allergen statement and cream identity, not merely the May Contain Milk prefix. The vegan statement is explicitly for another variant.",
+    "640656011": "Vegan/ingredients follows current listed-ingredient policy: water, barley malt and hops. No manufacturer confirmation or independent processing-aid verification was obtained.",
+    "524647011": "Unknown is appropriate: cornstarch/PBAT and compostability do not establish all manufactured bag inputs."
+  }
+}

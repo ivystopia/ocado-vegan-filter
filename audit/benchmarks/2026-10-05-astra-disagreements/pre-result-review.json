@@ -1,0 +1,20 @@
+{
+  "purpose": "Supervising review notes recorded before inspecting Astra outputs; not independently validated gold labels. Pilot measures agreement and evidence quality, not accuracy against historical unknown status.",
+  "products": {
+    "694001011": "PVC headline composition does not resolve coatings or processing inputs: unknown.",
+    "633002011": "Listed food ingredients are plant/mineral-derived; assess whether concern about wine-vinegar fining is supported by existing policy rather than inventing a new requirement.",
+    "691539011": "Fibre percentages do not establish dyes and other manufacturing inputs: unknown.",
+    "698034011": "Only rum identity is stored; distinguish permitted single-ingredient identity reasoning from assuming an unstated recipe.",
+    "599102011": "Recycled nylon description is incomplete composition: unknown.",
+    "662752011": "100% blue weber agave describes feedstock; does not necessarily describe complete finished spirit. Check inference scope.",
+    "693999011": "Headline title says steel, body specification says aluminium; no explicit vegan evidence, coatings unresolved: unknown.",
+    "606252011": "Plant-based recipe and listed ingredients support vegan ingredients; no vitamins listed. Do not invent vitamin supplements from complete-nutrition marketing.",
+    "683274011": "Fibre percentages do not establish dyes and processing inputs: unknown.",
+    "468269011": "Coconut-shell feedstock does not resolve briquette binders: unknown.",
+    "589716011": "100% Arabica roasted ground coffee is unambiguous food identity: vegan/ingredients. Milk is a serving suggestion and chocolate/caramel are tasting notes; distinguish packaging from the food.",
+    "700310011": "100% PP is a headline material claim; does not resolve other manufacturing inputs: unknown.",
+    "452849011": "Contains both May Contain Milk wording and a product-specific Milk and products thereof allergen statement; review actual latter statement and cream identity. Vegan claim applies to another variant.",
+    "640656011": "All listed ingredients are plant/mineral-derived; whether unspecified beer fining blocks a decision needs explicit policy interpretation, not brand assumptions.",
+    "524647011": "Plant-based materials cornstarch/PBAT do not resolve all manufactured bag inputs: unknown."
+  }
+}

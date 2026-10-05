@@ -1,0 +1,76 @@
+{
+  "type": "object",
+  "additionalProperties": false,
+  "required": [
+    "decisions"
+  ],
+  "properties": {
+    "decisions": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "additionalProperties": false,
+        "required": [
+          "product_id",
+          "vegan_status",
+          "vegan_reason",
+          "confidence",
+          "summary",
+          "evidence",
+          "ambiguity_notes"
+        ],
+        "properties": {
+          "product_id": {
+            "type": "string"
+          },
+          "vegan_status": {
+            "type": "string",
+            "enum": [
+              "nonvegan",
+              "unknown",
+              "vegan"
+            ]
+          },
+          "vegan_reason": {
+            "anyOf": [
+              {
+                "type": "string",
+                "enum": [
+                  "ingredients",
+                  "manufacturer",
+                  "name",
+                  "tagged"
+                ]
+              },
+              {
+                "type": "null"
+              }
+            ]
+          },
+          "confidence": {
+            "type": "string",
+            "enum": [
+              "certain",
+              "uncertain"
+            ]
+          },
+          "summary": {
+            "type": "string"
+          },
+          "evidence": {
+            "type": "array",
+            "items": {
+              "type": "string"
+            }
+          },
+          "ambiguity_notes": {
+            "type": "array",
+            "items": {
+              "type": "string"
+            }
+          }
+        }
+      }
+    }
+  }
+}

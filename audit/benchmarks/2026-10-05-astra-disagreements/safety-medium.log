@@ -1,0 +1,16 @@
+Benchmark cohort challenge: 24 products
+  pass 1/2, attempt 1
+  pass 2/2, attempt 1
+  pass 1/2, attempt 1
+  pass 2/2, attempt 1
+  pass 1/2, attempt 1
+  pass 2/2, attempt 1
+Benchmark cohort holdout: 24 products
+  pass 1/2, attempt 1
+  pass 2/2, attempt 1
+  pass 1/2, attempt 1
+  pass 2/2, attempt 1
+  pass 1/2, attempt 1
+  pass 2/2, attempt 1
+Benchmark result: 48/48 exact, false-vegan=0, disagreements=0, errors=0, duration=208.5s
+Wrote audit/benchmarks/2026-10-05-astra-disagreements/safety-medium.json

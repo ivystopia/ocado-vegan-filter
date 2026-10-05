@@ -1,0 +1,146 @@
+{
+  "model": "gpt-6-astra",
+  "reasoning_effort": "high",
+  "run_at": "2026-10-05T21:19:05.507660+00:00",
+  "prompt_sha256": "d02dc94f40234d57dd6f40778d5f4f28ca213badf99e889acc61e99fa5f25003",
+  "duration_seconds": 28.246,
+  "exit_status": 0,
+  "decisions": {
+    "694001011": {
+      "ambiguity_notes": [
+        "PVC composition does not resolve adhesives, coatings, or other manufacturing inputs."
+      ],
+      "confidence": "uncertain",
+      "evidence": [
+        "Football described as 'Composition: PVC'.",
+        "No explicit vegan statement supplied."
+      ],
+      "product_id": "694001011",
+      "summary": "The stated material does not establish that the complete football is vegan.",
+      "vegan_reason": null,
+      "vegan_status": "unknown"
+    },
+    "633002011": {
+      "ambiguity_notes": [],
+      "confidence": "certain",
+      "evidence": [
+        "Ingredients: Kalamata olives, water, sea salt, red wine vinegar (sulphites)."
+      ],
+      "product_id": "633002011",
+      "summary": "All listed ingredients are vegan.",
+      "vegan_reason": "ingredients",
+      "vegan_status": "vegan"
+    },
+    "691539011": {
+      "ambiguity_notes": [
+        "Fibre percentages do not resolve dyes, finishes, or other manufacturing inputs."
+      ],
+      "confidence": "uncertain",
+      "evidence": [
+        "Composition: 85% cotton, 13% polyamide, 2% elastane.",
+        "No explicit vegan statement supplied."
+      ],
+      "product_id": "691539011",
+      "summary": "The fibre composition alone does not establish vegan status.",
+      "vegan_reason": null,
+      "vegan_status": "unknown"
+    },
+    "698034011": {
+      "ambiguity_notes": [],
+      "confidence": "certain",
+      "evidence": [
+        "Full Product Name: Rum.",
+        "Category identifies white rum; no ingredients field is supplied."
+      ],
+      "product_id": "698034011",
+      "summary": "The unambiguous plain rum identity supports vegan classification under the single-ingredient rule.",
+      "vegan_reason": "ingredients",
+      "vegan_status": "vegan"
+    },
+    "599102011": {
+      "ambiguity_notes": [
+        "Fabric and lining composition do not resolve dyes, finishes, or other manufacturing inputs."
+      ],
+      "confidence": "uncertain",
+      "evidence": [
+        "Composition: 80% polyamide, 20% elastane; lining: 100% polyester.",
+        "No explicit vegan statement supplied."
+      ],
+      "product_id": "599102011",
+      "summary": "The listed fabrics do not establish that the complete swimsuit is vegan.",
+      "vegan_reason": null,
+      "vegan_status": "unknown"
+    },
+    "662752011": {
+      "ambiguity_notes": [
+        "The brand field identifies Reposado, while the name and description identify A\u00f1ejo."
+      ],
+      "confidence": "uncertain",
+      "evidence": [
+        "Brand: Cincoro Reposado.",
+        "Name: Cincoro Anejo Tequila.",
+        "Description identifies CINCORO ANEJO made with 100% blue weber agave."
+      ],
+      "product_id": "662752011",
+      "summary": "Conflicting tequila identities prevent classification from the supplied identity text.",
+      "vegan_reason": null,
+      "vegan_status": "unknown"
+    },
+    "693999011": {
+      "ambiguity_notes": [
+        "The name specifies stainless steel, but the description and composition specify aluminium.",
+        "Listed component materials do not resolve coatings or other manufacturing inputs."
+      ],
+      "confidence": "uncertain",
+      "evidence": [
+        "Name: England FA 750ml Premium Stainless Steel Bottle.",
+        "Composition: aluminium body, PS spout, PP cap, PE straw, silicone seal ring."
+      ],
+      "product_id": "693999011",
+      "summary": "Conflicting material identities and incomplete manufacturing evidence leave vegan status unknown.",
+      "vegan_reason": null,
+      "vegan_status": "unknown"
+    },
+    "606252011": {
+      "ambiguity_notes": [],
+      "confidence": "certain",
+      "evidence": [
+        "Ingredients list legumes, vegetables, fruit, vegetable oil, minerals, seaweed, herbs, blueberries, and slippery elm.",
+        "Description calls this a plant-based recipe."
+      ],
+      "product_id": "606252011",
+      "summary": "The supplied ingredients support vegan classification.",
+      "vegan_reason": "ingredients",
+      "vegan_status": "vegan"
+    },
+    "683274011": {
+      "ambiguity_notes": [
+        "Fibre percentages do not resolve dyes, finishes, or other manufacturing inputs."
+      ],
+      "confidence": "uncertain",
+      "evidence": [
+        "Composition: 88% polyamide, 11% elastane, 1% cotton.",
+        "No explicit vegan statement supplied."
+      ],
+      "product_id": "683274011",
+      "summary": "The fibre composition alone does not establish vegan status.",
+      "vegan_reason": null,
+      "vegan_status": "unknown"
+    },
+    "468269011": {
+      "ambiguity_notes": [
+        "Coconut shell feedstock does not establish the complete composition of manufactured briquettes, including any binders or additives."
+      ],
+      "confidence": "uncertain",
+      "evidence": [
+        "Described as briquettes made from carbonising waste coconut shells.",
+        "No complete composition or explicit vegan statement supplied."
+      ],
+      "product_id": "468269011",
+      "summary": "The stated coconut shell material is insufficient to establish that the finished briquettes are vegan.",
+      "vegan_reason": null,
+      "vegan_status": "unknown"
+    }
+  },
+  "raw_response": "{\"decisions\":[{\"ambiguity_notes\":[\"PVC composition does not resolve adhesives, coatings, or other manufacturing inputs.\"],\"confidence\":\"uncertain\",\"evidence\":[\"Football described as 'Composition: PVC'.\",\"No explicit vegan statement supplied.\"],\"product_id\":\"694001011\",\"summary\":\"The stated material does not establish that the complete football is vegan.\",\"vegan_reason\":null,\"vegan_status\":\"unknown\"},{\"ambiguity_notes\":[],\"confidence\":\"certain\",\"evidence\":[\"Ingredients: Kalamata olives, water, sea salt, red wine vinegar (sulphites).\"],\"product_id\":\"633002011\",\"summary\":\"All listed ingredients are vegan.\",\"vegan_reason\":\"ingredients\",\"vegan_status\":\"vegan\"},{\"ambiguity_notes\":[\"Fibre percentages do not resolve dyes, finishes, or other manufacturing inputs.\"],\"confidence\":\"uncertain\",\"evidence\":[\"Composition: 85% cotton, 13% polyamide, 2% elastane.\",\"No explicit vegan statement supplied.\"],\"product_id\":\"691539011\",\"summary\":\"The fibre composition alone does not establish vegan status.\",\"vegan_reason\":null,\"vegan_status\":\"unknown\"},{\"ambiguity_notes\":[],\"confidence\":\"certain\",\"evidence\":[\"Full Product Name: Rum.\",\"Category identifies white rum; no ingredients field is supplied.\"],\"product_id\":\"698034011\",\"summary\":\"The unambiguous plain rum identity supports vegan classification under the single-ingredient rule.\",\"vegan_reason\":\"ingredients\",\"vegan_status\":\"vegan\"},{\"ambiguity_notes\":[\"Fabric and lining composition do not resolve dyes, finishes, or other manufacturing inputs.\"],\"confidence\":\"uncertain\",\"evidence\":[\"Composition: 80% polyamide, 20% elastane; lining: 100% polyester.\",\"No explicit vegan statement supplied.\"],\"product_id\":\"599102011\",\"summary\":\"The listed fabrics do not establish that the complete swimsuit is vegan.\",\"vegan_reason\":null,\"vegan_status\":\"unknown\"},{\"ambiguity_notes\":[\"The brand field identifies Reposado, while the name and description identify A\u00f1ejo.\"],\"confidence\":\"uncertain\",\"evidence\":[\"Brand: Cincoro Reposado.\",\"Name: Cincoro Anejo Tequila.\",\"Description identifies CINCORO ANEJO made with 100% blue weber agave.\"],\"product_id\":\"662752011\",\"summary\":\"Conflicting tequila identities prevent classification from the supplied identity text.\",\"vegan_reason\":null,\"vegan_status\":\"unknown\"},{\"ambiguity_notes\":[\"The name specifies stainless steel, but the description and composition specify aluminium.\",\"Listed component materials do not resolve coatings or other manufacturing inputs.\"],\"confidence\":\"uncertain\",\"evidence\":[\"Name: England FA 750ml Premium Stainless Steel Bottle.\",\"Composition: aluminium body, PS spout, PP cap, PE straw, silicone seal ring.\"],\"product_id\":\"693999011\",\"summary\":\"Conflicting material identities and incomplete manufacturing evidence leave vegan status unknown.\",\"vegan_reason\":null,\"vegan_status\":\"unknown\"},{\"ambiguity_notes\":[],\"confidence\":\"certain\",\"evidence\":[\"Ingredients list legumes, vegetables, fruit, vegetable oil, minerals, seaweed, herbs, blueberries, and slippery elm.\",\"Description calls this a plant-based recipe.\"],\"product_id\":\"606252011\",\"summary\":\"The supplied ingredients support vegan classification.\",\"vegan_reason\":\"ingredients\",\"vegan_status\":\"vegan\"},{\"ambiguity_notes\":[\"Fibre percentages do not resolve dyes, finishes, or other manufacturing inputs.\"],\"confidence\":\"uncertain\",\"evidence\":[\"Composition: 88% polyamide, 11% elastane, 1% cotton.\",\"No explicit vegan statement supplied.\"],\"product_id\":\"683274011\",\"summary\":\"The fibre composition alone does not establish vegan status.\",\"vegan_reason\":null,\"vegan_status\":\"unknown\"},{\"ambiguity_notes\":[\"Coconut shell feedstock does not establish the complete composition of manufactured briquettes, including any binders or additives.\"],\"confidence\":\"uncertain\",\"evidence\":[\"Described as briquettes made from carbonising waste coconut shells.\",\"No complete composition or explicit vegan statement supplied.\"],\"product_id\":\"468269011\",\"summary\":\"The stated coconut shell material is insufficient to establish that the finished briquettes are vegan.\",\"vegan_reason\":null,\"vegan_status\":\"unknown\"}]}"
+}
