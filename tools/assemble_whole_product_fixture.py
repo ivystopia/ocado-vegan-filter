@@ -184,6 +184,7 @@ def synthetic_cases():
             'adjudication':{'state':'accepted','policy_version':policy.POLICY_VERSION,'reference_type':'explicit-policy-contract',
                 'rationale':'Negative or formula-scoped names cannot assert whole-product suitability; contrary full identity remains unresolved; actual animal inputs override claims; plant sources and absent certification are distinct.'}})
     cases.extend(liquid_processing_cases())
+    cases.extend(planting_seed_cases())
     return cases
 
 
@@ -235,6 +236,36 @@ def liquid_processing_cases():
                 'reference_type':'explicit-policy-contract',
                 'mechanism_source_url':'https://vegan.org/vegan-faq/clarifying-agents',
                 'rationale':'Constituent vinegar carries the same mechanism. A final-product factory assurance does not establish precursor processing; a whole-product vegan assertion may resolve the generic uncertainty.'}})
+    return cases
+
+
+def planting_seed_cases():
+    """Planting treatment contrasts, separate from ordinary edible seed food."""
+    cases=[]
+    for variant in range(9):
+        product={'id':str(908000000+variant),'name':'Example Wildflower Seeds',
+                 'preparation_and_usage':'Sow outdoors in prepared soil.'}
+        if variant==1:product['official_vegan']=1
+        elif variant==2:product['dietary_information']='Suitable for vegans.'
+        elif variant==3:product['name']='Example Vegan Wildflower Seeds'
+        elif variant==4:product.update(ingredients='Seeds, Gelatine',official_vegan=1)
+        elif variant==5:product['features']='Untreated and uncoated seeds.'
+        elif variant==6:product['features']='Native-grown organic seeds.'
+        elif variant==7:product.update(name='Example Edible Pumpkin Seeds',ingredients='Pumpkin Seeds',
+                                     preparation_and_usage='Sprinkle over salad.')
+        elif variant==8:product['features']='Not all seed treatments are animal-free.'
+        status='unknown' if variant in (0,6,8) else 'nonvegan' if variant==4 else 'vegan'
+        reason={1:'tagged',2:'manufacturer',3:'name',5:'ingredients',7:'ingredients'}.get(variant)
+        value=classifier.product_context_for_llm({'product':product,'flags':[],
+            'categories':[],'manufacturer_vegan_evidence':[]})
+        cases.append({'case_id':f'synthetic.planting-seeds.{variant}','case_kind':'synthetic','split':'synthetic',
+            'leakage_group':'synthetic.planting-seeds','classifier_input':value,'input_sha256':classifier.context_hash(value),
+            'expected':{'vegan_status':status,'vegan_reason':reason,
+                        'required_issue_codes':['processing_unresolved'] if status=='unknown' else []},
+            'adjudication':{'state':'accepted','policy_version':policy.POLICY_VERSION,
+                'reference_type':'explicit-policy-contract',
+                'mechanism_source_url':'https://patents.google.com/patent/US20180303023A1/en',
+                'rationale':'Planting seed identity does not resolve treatment/coating/binder uncertainty. Untreated/uncoated facts or an applicable whole-product claim can resolve it; native/organic origin and qualified absence do not. Actual animal content overrides claims; edible food seeds do not inherit planting mechanisms.'}})
     return cases
 
 

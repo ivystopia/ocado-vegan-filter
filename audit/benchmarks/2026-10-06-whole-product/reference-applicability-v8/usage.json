@@ -1,0 +1,10 @@
+{
+  "calls": 2,
+  "failed_calls": 0,
+  "guard_rejections": 0,
+  "missing_usage_calls": 0,
+  "input_tokens": 23783,
+  "cached_input_tokens": 11648,
+  "output_tokens": 1223,
+  "reasoning_output_tokens": 237
+}

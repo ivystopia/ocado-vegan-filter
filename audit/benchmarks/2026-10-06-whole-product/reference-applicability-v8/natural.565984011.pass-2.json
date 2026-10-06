@@ -1,0 +1,39 @@
+{
+  "annotation": {
+    "case_id": "natural.565984011",
+    "expected_status": "unknown",
+    "expected_reason": null,
+    "required_issue_codes": [
+      "composition_incomplete"
+    ],
+    "input_refs": [
+      {
+        "path": "/product/ingredients",
+        "quote": "100% Organic Coffee Beans"
+      },
+      {
+        "path": "/product/package_type",
+        "quote": "Bag"
+      }
+    ],
+    "rationale": "The coffee composition qualifies as vegan food, but the explicitly supplied bag lacks relevant composition evidence or an applicable whole-product vegan claim. Organic and Fairtrade certifications do not resolve the bag.",
+    "external_status": "unknown",
+    "source_id": null,
+    "external_quote": "",
+    "scope_match": "No retained primary sources supplied.",
+    "component_assessment": {
+      "status": "insufficient",
+      "evidence_refs": [
+        {
+          "path": "/product/package_type",
+          "quote": "Bag"
+        }
+      ]
+    }
+  },
+  "input_sha256": "ac429c26c8ce3b64a72bf278d2ce4fc3880a90cf79fdfad80ba67fce5bc006eb",
+  "call_id": "460a6bc4-7d1e-4163-ad2f-9ea852af48c8",
+  "model": "gpt-6.1-sol",
+  "effort": "high",
+  "prompt_version": "blind-evidence-adjudication-v8"
+}

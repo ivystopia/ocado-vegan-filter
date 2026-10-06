@@ -27,6 +27,52 @@ def source_check(value, path='/manufacturer_source_candidates/0', scope='product
 
 
 class WholeProductPolicyTests(unittest.TestCase):
+    def test_cited_certification_is_manufacturer_evidence_not_an_ocado_tag(self):
+        for claim in ['Vegan Society Approved.','Kosher, Halal & Vegan certified.']:
+            value=context('Example Vegan Treat','Rice',features=claim)
+            assessment=policy.base_assessment(value,complete=True)
+            ref=policy.reference('/product/features',claim)
+            assessment['positive_support']=[{'reason':'tagged','evidence_refs':[ref]},
+                {'reason':'name','evidence_refs':[policy.reference('/product/name',value['product']['name'])]}]
+            result=policy.evaluate(value,**classifier.policy_facts(value),assessment=assessment,
+                requested_status='vegan',requested_reason='tagged')
+            self.assertEqual(result['vegan_reason'],'manufacturer')
+            value['product']['official_vegan']=1
+            self.assertEqual(policy.evaluate(value,**classifier.policy_facts(value),assessment=assessment,
+                requested_status='vegan',requested_reason='tagged')['vegan_reason'],'tagged')
+            value['product']['ingredients']='Rice, Gelatine'
+            self.assertEqual(policy.evaluate(value,**classifier.policy_facts(value),assessment=assessment,
+                requested_status='vegan',requested_reason='tagged')['vegan_status'],'nonvegan')
+
+    def test_planting_seed_identity_requires_treatment_assessment(self):
+        value=context('Wildflower Seeds',None,preparation_and_usage='Sow outdoors in prepared soil.')
+        assessment=policy.base_assessment(value,complete=True)
+        assessment['positive_support']=[{'reason':'ingredients','evidence_refs':[policy.reference('/product/name','Wildflower Seeds')]}]
+        raw=classifier.ClassificationResult(product_id='1',vegan_status='vegan',vegan_reason='ingredients',confidence='certain',
+            summary='Seed origin alone',source='codex',evidence={'assessment':assessment})
+        self.assertEqual(classifier.apply_policy_gate(value,raw).vegan_status,'unknown')
+        risk=next(issue for issue in policy.material_risks(value) if issue['rule_id']=='planting-seed-treatment-v1')
+        for text,expected in [('Native-grown organic seeds',False),('Untreated seeds',False),
+                              ('Untreated and uncoated seeds',True),('Not all seed treatments are animal-free.',False),
+                              ('All seed treatments are animal-free.',True)]:
+            with self.subTest(text=text):
+                a={'material_issues':[{**risk,'resolution_refs':[policy.reference('/product/features',text)]}]}
+                self.assertEqual(policy.resolved_risk(risk,a),expected)
+        for fields in ({'official_vegan':1},{'dietary_information':'Suitable for vegans.'}):
+            self.assertEqual(classifier.classify_by_rules(context('Wildflower Seeds',None,
+                preparation_and_usage='Sow outdoors.',**fields)).vegan_status,'vegan')
+        value['product']['features']='Untreated and uncoated seeds.'
+        assessment['material_issues']=[{**risk,'resolution_refs':[policy.reference('/product/features',value['product']['features'])]}]
+        self.assertEqual(classifier.apply_policy_gate(value,raw).vegan_status,'vegan')
+        value['product']['ingredients']='Seeds, Gelatine'
+        self.assertEqual(classifier.classify_by_rules(value).vegan_status,'nonvegan')
+
+    def test_seed_treatment_mechanism_does_not_invent_a_food_or_tool_risk(self):
+        for name,preparation in [('Pumpkin Seeds','Sprinkle over salad.'),('Roasted Edible Seeds','Sow if desired.'),
+                                 ('Seed Sowing Tool','Sow outdoors using this tool.'),('Carrots','')]:
+            value=context(name,None,preparation_and_usage=preparation)
+            self.assertNotIn('planting-seed-treatment-v1',{i['rule_id'] for i in policy.material_risks(value)},name)
+
     def test_explicit_meat_alternatives_preserve_adjacent_animal_ingredients(self):
         for ingredients in ['No Beef Protein Pieces (Mycoprotein, Rapeseed Protein), Carrots',
                             'Mycoprotein based alternative to beef, Carrots',

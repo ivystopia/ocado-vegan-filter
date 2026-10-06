@@ -12,7 +12,7 @@ import re
 from typing import Any
 
 POLICY_VERSION = "whole-product-v2"
-KNOWLEDGE_VERSION = "vegan-risk-registry-v6"
+KNOWLEDGE_VERSION = "vegan-risk-registry-v7"
 SCHEMA_VERSION = 4
 REASONS = ("tagged", "manufacturer", "name", "ingredients")
 DIMENSIONS = ("identity", "composition", "sourcing", "processing", "components")
@@ -78,6 +78,9 @@ RISK_REGISTRY = (
     {"id": "maple-defoaming-v1", "code": "processing_unresolved", "pattern": r"\bmaple\s+syrup\b",
      "source": "https://vegan.org/vegan-faq/clarifying-agents",
      "resolution": "Applicable whole-product claim or explicit animal-free manufacturing/defoaming evidence. Maple origin alone does not resolve processing-aid use."},
+    {"id": "planting-seed-treatment-v1", "code": "processing_unresolved", "pattern": r"\bseeds?\b",
+     "source": "https://patents.google.com/patent/US20180303023A1/en",
+     "resolution": "For seeds sold for planting, establish untreated and uncoated seed identity, animal-free seed treatments/coatings/binders, or an applicable whole-product claim. The primary patent documents animal and non-animal binder options, not actual treatment of any SKU. Native-grown/organic identity does not resolve this question. Do not apply this mechanism to edible seeds or ordinary harvested produce."},
     {"id": "sugar-refining-v1", "code": "processing_unresolved", "pattern": r"\b(?:sugar|sucrose)\b",
      "source": "https://www.wearetateandlylesugars.com/faq/", "resolution": "Applicable whole-product claim, unrefined identity, or supplier/process assurance with exceptions applied."},
     {"id": "source-dependent-additives-v1", "code": "source_unresolved",
@@ -267,7 +270,7 @@ def scoped_claim(text: str, *, negative: bool = False) -> bool:
     if re.search(r"\b(?:vegan (?:ingredients?|components?|dressing|sauce)|serve|serving|recipe|add (?:a )?vegan)\b", text, re.I):
         return False
     return text.strip().lower() in {"vegan", "suitable for vegans"} or bool(re.search(
-        r"\b(?:suitable for (?:a )?vegans?|suitable for (?:a )?vegan diet|suitable for vegetarians? (?:and|&) vegans?|certified vegan|registered with (?:the )?vegan society|vegan[- ]friendly)\b", text, re.I))
+        r"\b(?:suitable for (?:a )?vegans?|suitable for (?:a )?vegan diet|suitable for vegetarians? (?:and|&) vegans?|certified vegan|vegan certified|vegan society approved|registered with (?:the )?vegan society|vegan[- ]friendly)\b", text, re.I))
 
 
 def direct_claim(text: str, path: str) -> bool:
@@ -320,6 +323,21 @@ def material_risks(context: dict[str, Any], cleaned_ingredients: str = "") -> li
     risks = []
     for rule in RISK_REGISTRY:
         target_text = cleaned_ingredients if rule["id"] == "unspecified-composition-v1" else ingredients if rule["id"] in {"sugar-refining-v1", "source-dependent-additives-v1"} else f"{name} {ingredients}"
+        if rule['id']=='planting-seed-treatment-v1':
+            planting=normalized(product.get('preparation_and_usage'))
+            seed_taxonomy=any(re.search(r'/(?:flower|vegetable|grass|lawn|plant)[- ]seeds?$',category,re.I)
+                              for category in context.get('categories',[]))
+            if not re.search(rule['pattern'],name,re.I) or not (
+                    seed_taxonomy or re.search(r'\b(?:sow|sowing|germinat\w*)\b',planting,re.I)):
+                continue
+            # A seed brand name on edible seeds is not planting identity.
+            if re.search(r'\b(?:edible|snack|roasted|toasted|food|tools?|planters?|pots?|trays?|dibbers?|labels?)\b',name,re.I):continue
+            path='/product/name';text=name
+            refs=[reference(path,text)]
+            if planting:refs.append(reference('/product/preparation_and_usage',planting))
+            risks.append({'code':rule['code'],'target':'planting seed treatments','rule_id':rule['id'],
+                          'evidence_refs':refs,'resolution_refs':[],'blocks_claim':False})
+            continue
         if rule['id']=='supplied-components-composition-v1':
             fields=('name','package_type','features','specification','other_information','detailed_description','further_description')
             # A numbered PO Box is a postal address, not a supplied box. Keep
@@ -409,6 +427,7 @@ def resolved_risk(risk: dict[str, Any], assessment: dict[str, Any]) -> bool:
         "wine-fining-v1": r"\bunfined\b|\b(?:fining|fined|processing|processed|manufactur\w*)\b.*\b(?:no animal|without animal|animal[- ]free|vegan)\b|\b(?:no animal|without animal|animal[- ]free|vegan)\b.*\b(?:fining|fined|processing|processed|manufactur\w*)\b",
         "liquid-clarification-v1": r"\b(?:all production stages including (?:all )?ingredient and precursor production|from (?:the )?whole (?:fruit|apples|grapes|grains) to (?:the )?finished product)\b.*\b(?:no animal|without animal|animal[- ]free|vegan)\b|\b(?:no animal|without animal|animal[- ]free|vegan)\b.*\b(?:all production stages including (?:all )?ingredient and precursor production|from (?:the )?whole (?:fruit|apples|grapes|grains) to (?:the )?finished product)\b",
         "maple-defoaming-v1": r"\b(?:defoam\w*|processing aids?|manufactur\w*|production)\b.*\b(?:no animal|without animal|animal[- ]free|vegan)\b|\b(?:no animal|without animal|animal[- ]free|vegan)\b.*\b(?:defoam\w*|processing aids?|manufactur\w*|production)\b",
+        "planting-seed-treatment-v1": r"\buntreated\b.*\buncoated\b|\buncoated\b.*\buntreated\b|\b(?:all seed treatments|seed coatings and binders)\b.*\b(?:animal[- ]free|vegan|no animal|without animal)\b",
         "sugar-refining-v1": r"\bunrefined\b|\b(?:refining|refined|processing|processed|manufactur\w*)\b.*\b(?:no animal|without animal|animal[- ]free|no bone char|without bone char|vegan)\b|\b(?:no animal|without animal|animal[- ]free|no bone char|without bone char|vegan)\b.*\b(?:refining|refined|processing|processed|manufactur\w*)\b",
         "citrus-coating-v1": r"\b(?:unwaxed|no animal|without animal|animal[- ]free|vegan)\b",
         "compound-ingredient-composition-v1": r"\b(?:vegetable suet|margarine)\s*\([^()]+\)|\b(?:constituents|composed of|consists of)\b",
@@ -420,7 +439,7 @@ def resolved_risk(risk: dict[str, Any], assessment: dict[str, Any]) -> bool:
             continue
         for ref in issue["resolution_refs"]:
             text = ref["quote"].strip()
-            if risk['rule_id'] in {'liquid-clarification-v1','maple-defoaming-v1'} and re.search(
+            if risk['rule_id'] in {'liquid-clarification-v1','maple-defoaming-v1','planting-seed-treatment-v1'} and re.search(
                     r'\b(?:not|never|may|might|could|except|excluding|another|other variant)\b',text,re.I):
                 continue
             if risk['rule_id']=='source-dependent-additives-v1':
@@ -577,7 +596,9 @@ def whole_product_vegan_question(text):
 
 def interpreted_manufacturer_support(context, assessment):
     if not assessment or any(assessment[d]['status'] in {'insufficient','unresolved','conflicted'} for d in DIMENSIONS):return []
-    refs=next((support['evidence_refs'] for support in assessment['positive_support'] if support['reason']=='manufacturer'),[])
+    # Canonical precedence follows the cited basis, not the model's route
+    # spelling. Certification text is manufacturer evidence, not an Ocado tag.
+    refs=[ref for support in assessment['positive_support'] for ref in support['evidence_refs']]
     fields={'/product/dietary_information','/product/features','/product/detailed_description','/product/further_description',
             '/product/manufacturer_marketing','/product/brand_marketing','/product/other_information','/product/specification','/product/vinification_details'}
     if any((source_reference(context,ref,assessment) or ref['path'] in fields) and manufacturer_claim_quote(ref['quote'])

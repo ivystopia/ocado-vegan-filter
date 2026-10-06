@@ -1,0 +1,9 @@
+{
+  "packet_hash": "f7f8d3bae7be9ebc45f72a2a30d6657094ba426d738f52b8ceb4add3f2553a4d",
+  "model": "gpt-6.1-sol",
+  "effort": "high",
+  "prompt_version": "blind-evidence-adjudication-v8",
+  "policy_version": "whole-product-v2",
+  "schema_sha256": "39a9a9c15d43aeffb16aa609c945abe60f87799f84d63d2ea4b7cdbec9849868",
+  "validator_sha256": "1c85c359e8df1418f4b3aa711dc56aa08f5d528f5f2847c6ebc7b9e16c7a8f24"
+}

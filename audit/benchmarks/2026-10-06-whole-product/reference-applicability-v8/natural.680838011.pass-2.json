@@ -1,0 +1,47 @@
+{
+  "annotation": {
+    "case_id": "natural.680838011",
+    "expected_status": "unknown",
+    "expected_reason": null,
+    "required_issue_codes": [
+      "processing_unresolved"
+    ],
+    "input_refs": [
+      {
+        "path": "/product/name",
+        "quote": "Mr Fothergills Seeds Oh Sow Simple Wildflower Cornfield Mix"
+      },
+      {
+        "path": "/product/other_information",
+        "quote": "Native grown seeds, not taken from the wild."
+      },
+      {
+        "path": "/product/preparation_and_usage",
+        "quote": "SOW OUTDOORS: Where they are to flower"
+      }
+    ],
+    "rationale": "These are planting seeds. Plant identity and native-grown origin do not establish whether relevant treatments, coatings or binders are absent or vegan. No untreated/uncoated facts or applicable whole-product assurance are supplied; actual animal inputs are not established.",
+    "external_status": "unknown",
+    "source_id": null,
+    "external_quote": "",
+    "scope_match": "No retained primary sources supplied; the cited general patent mechanism does not establish this SKU's treatment.",
+    "component_assessment": {
+      "status": "unresolved",
+      "evidence_refs": [
+        {
+          "path": "/product/name",
+          "quote": "Mr Fothergills Seeds Oh Sow Simple Wildflower Cornfield Mix"
+        },
+        {
+          "path": "/product/preparation_and_usage",
+          "quote": "SOW OUTDOORS: Where they are to flower"
+        }
+      ]
+    }
+  },
+  "input_sha256": "d69326f901d3526b8ef1d75a23b94b9d69b5cf0b0b16b9ef26aff90be9e77735",
+  "call_id": "460a6bc4-7d1e-4163-ad2f-9ea852af48c8",
+  "model": "gpt-6.1-sol",
+  "effort": "high",
+  "prompt_version": "blind-evidence-adjudication-v8"
+}

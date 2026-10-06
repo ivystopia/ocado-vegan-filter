@@ -1,0 +1,17 @@
+{
+  "method": "Conclusive rules only, no model calls, original 378 development inputs; locked excluded.",
+  "mismatches": [
+    {
+      "case_id": "natural.565984011",
+      "name": "CRU Kafe Organic Fairtrade Honduran Coffee Beans",
+      "actual": [
+        "unknown",
+        null
+      ],
+      "expected": [
+        "vegan",
+        "ingredients"
+      ]
+    }
+  ]
+}
