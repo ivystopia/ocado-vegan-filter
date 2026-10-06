@@ -141,7 +141,8 @@ class WholeProductBenchmarkTests(unittest.TestCase):
             root=Path(tmp);checks=root/'checks.json';checks.write_text('{}')
             args=SimpleNamespace(fixture=root/'fixture.json',checks=checks,output=root/'results',
                 workers=1,development_only=True,primary_failure_review=None)
-            with mock.patch.object(benchmark,'load_fixture',return_value={'selection':{'target_complete':False}}),\
+            with mock.patch.object(benchmark,'load_fixture',return_value={'selection':{'target_complete':False},
+                    'cases':[{'case_id':'a','split':'development'}]}),\
                  mock.patch.object(candidate_checks,'validate_record'),\
                  mock.patch.object(comparison,'execute',return_value=failed) as execute:
                 result=comparison.run(args)
@@ -173,6 +174,59 @@ class WholeProductBenchmarkTests(unittest.TestCase):
             path=Path(tmp)/'controls.json';path.write_text(json.dumps({'gpt-6-luna/high':'passing.json'}))
             with self.assertRaisesRegex(ValueError,'both inexpensive'):
                 comparison.primary_controls(SimpleNamespace(primary_control_reports=path),{'cases':[]},'gpt-6-luna','high')
+
+    def test_failure_diagnostic_preserves_inputs_and_excludes_passing_cases(self):
+        cases=copy.deepcopy(assemble.synthetic_cases()[:2])
+        fixture={'cases':cases}
+        run={field:[] for field in comparison.FAILURE_FIELDS}
+        run.update(mismatches=[cases[0]['case_id']],unsafe_positives=[cases[0]['case_id']])
+        report={'runs':[run]}
+        with tempfile.TemporaryDirectory() as tmp:
+            result=comparison.diagnostic_fixture(fixture,report,Path(tmp)/'diagnostic.json')
+        self.assertEqual(len(result['cases']),1)
+        self.assertEqual(result['cases'][0]['classifier_input'],cases[0]['classifier_input'])
+        self.assertEqual(result['cases'][0]['expected'],cases[0]['expected'])
+        self.assertFalse(result['diagnostic_selection']['qualification_evaluation'])
+        self.assertEqual(fixture['cases'][0]['split'],cases[0]['split'])
+        report['runs'][0]['missing_cases']=['missing']
+        with tempfile.TemporaryDirectory() as tmp:
+            with self.assertRaisesRegex(ValueError,'original frozen'):
+                comparison.diagnostic_fixture(fixture,report,Path(tmp)/'diagnostic.json')
+
+    def test_stage_reuse_cannot_omit_candidate_controls_or_accept_unknown_models(self):
+        with tempfile.TemporaryDirectory() as tmp:
+            path=Path(tmp)/'stages.json'
+            args=SimpleNamespace(primary_stage_reports=path,primary_control_reports=None)
+            for value in ({'gpt-5.6-luna/high':{'pilot':'pilot.json'}},
+                          {'gpt-6.1-sol/medium':{'controls':'controls.json','pilot':'pilot.json'}}):
+                path.write_text(json.dumps(value))
+                with self.assertRaisesRegex(ValueError,'controls AND pilot'):
+                    comparison.stage_reuse_mapping(args)
+
+    def test_stage_reuse_retains_failure_and_rejects_changed_code_or_inputs(self):
+        case=assemble.synthetic_cases()[0]
+        fixture={'cases':[case]}
+        args=SimpleNamespace(workers=3)
+        report={'fixture_sha256':classifier.context_hash(fixture),'selected_case_hash':classifier.context_hash([case]),
+            'state':'completed','split':'synthetic','subset':'all','mode':'pipeline',
+            'model':'gpt-5.6-luna','effort':'high','policy_version':policy.POLICY_VERSION,
+            'knowledge_version':policy.KNOWLEDGE_VERSION,'prompt_version':classifier.PROMPT_VERSION,
+            'arbitration_prompt_version':classifier.ARBITRATION_PROMPT_VERSION,
+            'arbitration_model':classifier.ARBITRATION_MODEL,'arbitration_effort':classifier.ARBITRATION_REASONING_EFFORT,
+            'schema_sha256':classifier.context_hash(classifier.CODEX_OUTPUT_SCHEMA),
+            'workers':3,'batch_size':8,'repetitions':1,'seed':20261006,
+            'implementation_hashes':{name:classifier.context_hash((benchmark.ROOT/'tools'/name).read_text()) for name in
+                ['vegan_policy.py','classify_ocado_vegan.py','codex_evidence.py','benchmark_whole_product.py','manufacturer_evidence.py','update_userscript_allowlists.py']},
+            'runs':[{'cases':1,'unsafe_positives':[case['case_id']]}],'usage':{'missing_usage_calls':0}}
+        with tempfile.TemporaryDirectory() as tmp:
+            path=Path(tmp)/'report.json';path.write_text(json.dumps(report))
+            actual=comparison.validated_stage_report(path,fixture,args,'gpt-5.6-luna','high','controls')
+            self.assertEqual(actual['runs'][0]['unsafe_positives'],[case['case_id']])
+            for field,value in [('selected_case_hash','changed'),('state','checkpointed'),('workers',1),
+                                ('implementation_hashes',{}),('usage',{'missing_usage_calls':1})]:
+                changed={**report,field:value};path.write_text(json.dumps(changed))
+                with self.assertRaises(ValueError):
+                    comparison.validated_stage_report(path,fixture,args,'gpt-5.6-luna','high','controls')
 
     def test_failure_review_requires_current_reports_and_model_attribution(self):
         case={'case_id':'a','split':'development','classifier_input':{'product':{'name':'Carrots'}}}

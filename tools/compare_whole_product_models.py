@@ -55,7 +55,52 @@ def failed_report(entry):
     return entry.get('development',entry['pilot'])
 
 
+def stage_reuse_mapping(args):
+    path=getattr(args,'primary_stage_reports',None)
+    if not path:return {}
+    if getattr(args,'primary_control_reports',None):
+        raise ValueError('Use either primary stage reuse or control-only reuse, not both')
+    mapping=json.loads(path.read_text())
+    names={model+'/'+effort for model,effort in PRIMARY}
+    if not mapping or not set(mapping)<=names or any(set(stages)!={'controls','pilot'} for stages in mapping.values()):
+        raise ValueError('Stage reuse must preserve controls AND pilot for each supplied inexpensive candidate')
+    return mapping
+
+
+def validated_stage_report(path, fixture, args, model, effort, stage):
+    """Runner-only changes may reuse observations, never changed decisions.
+
+    Check all production/persistence/export modules and the exact evidence,
+    prompts, schema and call settings. Keep failed reports as failed reports.
+    New runner/tests still require their own current preflight manifest.
+    """
+    report=json.loads(Path(path).read_text())
+    split,subset=('synthetic','all') if stage=='controls' else ('development','pilot')
+    cases=[case for case in fixture['cases'] if case['split']==split]
+    if subset=='pilot':
+        selected=set(fixture.get('selection',{}).get('pilot_case_ids',[]))
+        cases=[case for case in cases if case['case_id'] in selected]
+    expected={'fixture_sha256':classifier.context_hash(fixture),'selected_case_hash':classifier.context_hash(cases),
+        'state':'completed','split':split,'subset':subset,'mode':'pipeline','model':model,'effort':effort,
+        'policy_version':policy.POLICY_VERSION,'knowledge_version':policy.KNOWLEDGE_VERSION,
+        'prompt_version':classifier.PROMPT_VERSION,'arbitration_prompt_version':classifier.ARBITRATION_PROMPT_VERSION,
+        'arbitration_model':classifier.ARBITRATION_MODEL,'arbitration_effort':classifier.ARBITRATION_REASONING_EFFORT,
+        'schema_sha256':classifier.context_hash(classifier.CODEX_OUTPUT_SCHEMA),
+        'workers':args.workers,'batch_size':8,'repetitions':1,'seed':20261006}
+    if not cases or any(report.get(key)!=value for key,value in expected.items()):
+        raise ValueError('Reused stage has different inputs/configuration or is incomplete')
+    required={'vegan_policy.py','classify_ocado_vegan.py','codex_evidence.py','benchmark_whole_product.py','manufacturer_evidence.py','update_userscript_allowlists.py'}
+    if set(report.get('implementation_hashes',{}))!=required or any(classifier.context_hash((benchmark.ROOT/'tools'/name).read_text())!=value
+            for name,value in report['implementation_hashes'].items()):
+        raise ValueError('Reused stage has different classification/persistence/export code')
+    if len(report.get('runs',[]))!=1 or report['runs'][0].get('cases')!=len(cases) or report.get('usage',{}).get('missing_usage_calls')!=0:
+        raise ValueError('Reused stage lacks complete case/call accounting')
+    return report
+
+
 def primary_controls(args, fixture, model, effort):
+    stages=stage_reuse_mapping(args).get(model+'/'+effort)
+    if stages:return validated_stage_report(stages['controls'],fixture,args,model,effort,'controls')
     paths=getattr(args,'primary_control_reports',None)
     if not paths:
         return execute(args,'controls-'+model+'-'+effort,split='synthetic',mode='pipeline',model=model,effort=effort)
@@ -75,6 +120,25 @@ def primary_controls(args, fixture, model, effort):
             for name,value in report['implementation_hashes'].items()):
         raise ValueError('Reused controls have different classification/persistence/export code')
     return report
+
+
+def primary_pilot(args, fixture, model, effort):
+    stages=stage_reuse_mapping(args).get(model+'/'+effort)
+    if stages:return validated_stage_report(stages['pilot'],fixture,args,model,effort,'pilot')
+    return execute(args,'pilot-'+model+'-'+effort,split='development',subset='pilot',mode='pipeline',model=model,effort=effort)
+
+
+def diagnostic_fixture(fixture, report, output):
+    failed={case_id for run in report['runs'] for field in FAILURE_FIELDS for case_id in run[field]}
+    cases=[case for case in fixture.get('cases',[]) if case['case_id'] in failed]
+    if not failed or {case['case_id'] for case in cases}!=failed:
+        raise ValueError('Every diagnostic failure needs its original frozen case')
+    result={**fixture,'cases':[{**case,'split':'diagnostic'} for case in cases],
+        'diagnostic_selection':{'source_fixture_sha256':classifier.context_hash(fixture),
+            'failed_report_sha256':classifier.context_hash(report),'case_ids':sorted(failed),
+            'qualification_evaluation':False}}
+    benchmark.save(output,result)
+    return result
 
 
 def validate_failure_review(review, entries, fixture):
@@ -113,10 +177,13 @@ def validate_failure_review(review, entries, fixture):
 
 def comparison_manifest(args, fixture, checks):
     control_paths=getattr(args,'primary_control_reports',None)
+    stage_paths=stage_reuse_mapping(args)
     return {'fixture_sha256':classifier.context_hash(fixture),'candidate_hashes':benchmark.candidate_hashes(),
             'checks_sha256':classifier.context_hash(checks),'workers':args.workers,
             'reused_controls':None if not control_paths else {key:classifier.context_hash(json.loads(Path(path).read_text()))
                 for key,path in json.loads(control_paths.read_text()).items()},
+            'reused_primary_stages':{name:{stage:classifier.context_hash(json.loads(Path(path).read_text()))
+                for stage,path in stages.items()} for name,stages in stage_paths.items()},
             'development_only':getattr(args,'development_only',False),'primary':PRIMARY,'arbitration':ARBITRATION}
 
 
@@ -163,6 +230,7 @@ def run(args):
     benchmark.save(manifest_path,manifest)
     result={'state':'running','pricing_source':PRICING_SOURCE,'pricing_checked':'2026-10-06',
             'credit_equivalents_are_not_included_quota_or_charges':True,'defaults_changed':False,
+            'reused_primary_stages':manifest['reused_primary_stages'],
             'development_only':diagnostic_only,'reference_shortfalls':{
                 key:fixture.get('selection',{}).get(key,{}) for key in ('development_shortfalls','locked_shortfalls')},
             'primary':{},'arbitration':{},'locked':{},'workload':{},'recommendation':None}
@@ -171,11 +239,14 @@ def run(args):
         for model,effort in PRIMARY:
             name=model+'/'+effort;slug=model+'-'+effort
             controls=primary_controls(args,fixture,model,effort)
-            pilot=execute(args,'pilot-'+slug,split='development',subset='pilot',mode='pipeline',model=model,effort=effort)
-            # Model-only diagnostic uses the same blind inputs and final gate.
+            pilot=primary_pilot(args,fixture,model,effort)
+            # Diagnostic failures use the same blind evidence and final gate;
+            # do not repeat already passing natural cases to attribute errors.
             entry={'controls':controls,'pilot':pilot};result['primary'][name]=entry
             if not development_eligible(pilot):
-                diagnostic=execute(args,'diagnostic-'+slug,split='development',subset='pilot',mode='primary',model=model,effort=effort)
+                diagnostic_path=args.output/('diagnostic-fixture-'+slug+'.json')
+                diagnostic_fixture(fixture,pilot,diagnostic_path)
+                diagnostic=execute(args,'diagnostic-'+slug,fixture=diagnostic_path,split='diagnostic',mode='primary',model=model,effort=effort)
                 entry['model_only_diagnostic']=diagnostic
             if benchmark.successful(controls) and development_eligible(pilot):
                 development=execute(args,'development-'+slug,split='development',mode='pipeline',model=model,effort=effort)
@@ -256,5 +327,6 @@ if __name__=='__main__':
     p.add_argument('--checks',type=Path,required=True,help='Current passing validate_whole_product_candidate.py checks.json')
     p.add_argument('--primary-failure-review',type=Path,help='Frozen-input attribution of both Luna failures; never required when a Luna qualifies')
     p.add_argument('--primary-control-reports',type=Path,help='JSON model/effort-to-report paths; reuse only identical controlled inputs and classification code, retaining failures')
+    p.add_argument('--primary-stage-reports',type=Path,help='JSON model/effort to controls/pilot report paths; preserve both stages including failures, with exact production code/inputs/settings')
     result=run(p.parse_args());print(json.dumps({key:value for key,value in result.items() if key not in {'primary','arbitration','locked','workload'}},indent=2))
     raise SystemExit(0 if result['state'] in {'comparison_completed','development_comparison_completed'} else 1)
