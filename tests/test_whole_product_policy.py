@@ -27,6 +27,38 @@ def source_check(value, path='/manufacturer_source_candidates/0', scope='product
 
 
 class WholeProductPolicyTests(unittest.TestCase):
+    def test_missing_packaging_and_modal_can_do_not_invent_components(self):
+        value=context('Carrots',None,detailed_description='These carrots can be steamed or roasted.')
+        self.assertFalse(policy.material_risks(value))
+        self.assertEqual(classifier.classify_by_rules(value).vegan_reason,'ingredients')
+        value['product']['package_type']='Can'
+        self.assertEqual(classifier.classify_by_rules(value).vegan_status,'unknown')
+        for description in ['Supplied in a box.','Supplied in boxes.']:
+            value=context('Carrots',None,detailed_description=description)
+            self.assertEqual(classifier.classify_by_rules(value).vegan_status,'unknown')
+
+    def test_ingredient_only_faq_does_not_confirm_the_complete_product(self):
+        value=context('Example Coffee Pods','Coffee')
+        value['manufacturer_source_candidates']=[{'source_id':'capture','source_url':'https://example.test/faq',
+            'source_text':'Are the ingredients vegan? No animal ingredients are used.',
+            'association_status':'catalogue_match'}]
+        value['manufacturer_source_candidates'][0]['source_sha256']=__import__('hashlib').sha256(
+            value['manufacturer_source_candidates'][0]['source_text'].encode()).hexdigest()
+        assessment=policy.base_assessment(value,complete=True)
+        assessment['source_applicability']=[source_check(value,scope='product')]
+        assessment['positive_support']=[{'reason':'manufacturer','evidence_refs':[
+            policy.reference('/manufacturer_source_candidates/0/source_text','Are the ingredients vegan?'),
+            policy.reference('/manufacturer_source_candidates/0/source_text','No animal ingredients are used.')]}]
+        self.assertEqual(policy.evaluate(value,**classifier.policy_facts(value),assessment=assessment,
+            requested_status='vegan',requested_reason='manufacturer')['vegan_status'],'unknown')
+        value['manufacturer_source_candidates'][0]['source_text']='Are the products suitable for vegans? No animal ingredients are used.'
+        value['manufacturer_source_candidates'][0]['source_sha256']=__import__('hashlib').sha256(
+            value['manufacturer_source_candidates'][0]['source_text'].encode()).hexdigest()
+        assessment['source_applicability']=[source_check(value,scope='product')]
+        assessment['positive_support'][0]['evidence_refs'][0]=policy.reference('/manufacturer_source_candidates/0/source_text','Are the products suitable for vegans?')
+        self.assertEqual(policy.evaluate(value,**classifier.policy_facts(value),assessment=assessment,
+            requested_status='vegan',requested_reason='manufacturer')['vegan_reason'],'manufacturer')
+
     def test_registry_resolution_survives_repeated_policy_gates(self):
         value=context('Example Coffee Pods','Coffee',features='Complete component composition: aluminium pod and lid, plant-derived adhesive. All components manufactured without animal inputs.')
         assessment=policy.base_assessment(value,complete=True)

@@ -12,7 +12,7 @@ import re
 from typing import Any
 
 POLICY_VERSION = "whole-product-v2"
-KNOWLEDGE_VERSION = "vegan-risk-registry-v3"
+KNOWLEDGE_VERSION = "vegan-risk-registry-v4"
 SCHEMA_VERSION = 4
 REASONS = ("tagged", "manufacturer", "name", "ingredients")
 DIMENSIONS = ("identity", "composition", "sourcing", "processing", "components")
@@ -91,7 +91,7 @@ RISK_REGISTRY = (
      "source": "https://www.vegansociety.com/vegan-trademark/vegan-trademark-standards",
      "resolution": "Applicable whole-product claim or explicit complete composition of the sold article with relevant source/process issues resolved. One material entry is not automatically the complete article."},
     {"id": "supplied-components-composition-v1", "code": "composition_incomplete",
-     "pattern": r"\b(?:pods?|cup filters?|coffee filters?|tea bags?|brewing filters?|packaging|wrappers?|bags?|boxes?|cartons?|pouches?|bottles?|jars?|trays?|tins?|cans?|foil|blisters?|sleeves?|lids?|caps?)\b",
+     "pattern": r"\b(?:pods?|cup filters?|coffee filters?|tea bags?|brewing filters?|packaging|wrappers?|bags?|box(?:es)?|cartons?|pouches?|bottles?|jars?|trays?|tins?|cans|foil|blisters?|sleeves?|lids?|caps?)\b",
      "source": "project-policy:ethical-whole-product-components-2026-10-06",
      "resolution": "Assess supplied packaging and non-edible components as part of the sold product. Applicable whole-product assurance or adequately established complete relevant component composition, sourcing and manufacture can resolve uncertainty. A food-only claim or one headline fibre/material cannot."},
 )
@@ -534,6 +534,13 @@ def manufacturer_claim_quote(text):
     return scoped_claim(text) or bool(re.search(r'\b(?:is|are) (?:suitable for (?:a )?vegans?|vegan)\b',text,re.I))
 
 
+def whole_product_vegan_question(text):
+    # An answer to an ingredients/materials question is composition evidence,
+    # not a published assurance about the complete product and its processes.
+    return bool(re.search(r'\bvegans?\b',text,re.I)) and not component_only_claim(text) and not re.search(
+        r'\b(?:ingredients?|formula|components?|materials?|fibres?|fibers?)\b',text,re.I)
+
+
 def interpreted_manufacturer_support(context, assessment):
     if not assessment or any(assessment[d]['status'] in {'insufficient','unresolved','conflicted'} for d in DIMENSIONS):return []
     refs=next((support['evidence_refs'] for support in assessment['positive_support'] if support['reason']=='manufacturer'),[])
@@ -541,7 +548,7 @@ def interpreted_manufacturer_support(context, assessment):
             '/product/manufacturer_marketing','/product/brand_marketing','/product/other_information','/product/specification','/product/vinification_details'}
     if any((source_reference(context,ref,assessment) or ref['path'] in fields) and manufacturer_claim_quote(ref['quote'])
            and not component_only_claim(normalized(resolve_reference(context,ref))) for ref in refs):return refs
-    if any(source_reference(context,question,assessment) and re.search(r'\bvegan\b',question['quote'],re.I) and any(
+    if any(source_reference(context,question,assessment) and whole_product_vegan_question(question['quote']) and any(
             answer['path']==question['path'] and re.search(r'\b(?:no|none|does not|do not|without)\b.*\b(?:animal|animal origin)\b',answer['quote'],re.I)
             for answer in refs) for question in refs):return refs
     return []
@@ -731,7 +738,7 @@ def evaluate(context: dict[str, Any], *, animal_matches: list[str], cleaned_ingr
                             "/product/manufacturer_marketing", "/product/brand_marketing", "/product/other_information", "/product/specification", "/product/vinification_details"})
                         and manufacturer_claim_quote(ref['quote']) and not component_only_claim(normalized(resolve_reference(context,ref))) for ref in refs):
                     status, reason = "vegan", "manufacturer"
-                elif requested_reason=='manufacturer' and any(source_reference(context,ref,assessment) and re.search(r'\bvegan\b',ref['quote'],re.I) and any(
+                elif requested_reason=='manufacturer' and any(source_reference(context,ref,assessment) and whole_product_vegan_question(ref['quote']) and any(
                         source_reference(context,answer,assessment) and answer['path']==ref['path'] and re.search(r'\b(?:no|none|does not|do not|without)\b.*\b(?:animal|animal origin)\b',answer['quote'],re.I) for answer in refs) for ref in refs):
                     # A scoped answer to a vegan-suitability question can be
                     # explicit confirmation without repeating 'vegan' in it.
@@ -798,6 +805,7 @@ def policy_prompt() -> str:
         "A compound ingredient such as vegetable suet or margarine requires its complete constituents or an applicable whole-product claim; a plant descriptor alone is insufficient. "
         "For manufactured non-food goods, headline materials such as cotton, plastic, metal or glass do not establish complete composition, dyes, adhesives, coatings or relevant processing. "
         "The same assessment applies to explicitly described packaging (bags, cartons, jars and other formats), not just coffee pods. Ordinary-food permission does not itself prove a stated manufactured package's complete composition. Conversely, do not invent a supplied component solely because its absence is not proved; an ordinary food with no evidenced material component concern remains eligible. Tie every component doubt to the supplied evidence identifying that component. "
+        "For plain produce with no packaging details and no evidenced material component concern, common-sense suitability is permitted. Missing packaging information alone is not composition_incomplete or an unresolved components assessment. Cite the clear ordinary product identity and assess components as established under this policy; do not claim the packaging is absent or invent its materials. A modal verb such as 'can be cooked' is not evidence of a metal can. "
         "Check relevant processing (wine fining, sugar refining, coatings) and source-dependent ingredients/E numbers, including within compound ingredients. An applicable whole-product claim resolves generic risks, but cannot defeat definite animal content. "
         "No probability, brand reputation, category assumptions or 'usually vegan'. May-contain warnings are not intentional ingredients. Distinguish cocoa butter, coconut milk, oyster mushrooms, plant alternatives, serving suggestions, component claims and other variants. "
         "Manufacturer website records include full source_text and publisher/market metadata. Inspect all complete captures and their exceptions; verified_status and prior scope_match are previous assertions, not independent proof. manufacturer_source_candidates includes other associated retained pages, without inherited decisions. Catalogue-changed associations need fresh exact applicability proof and cannot independently establish a positive. Legacy reviews must be reassessed for this product before promotion. "

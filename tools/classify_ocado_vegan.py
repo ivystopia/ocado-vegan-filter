@@ -29,9 +29,9 @@ DEFAULT_CODEX_MODEL = "gpt-5.6-luna"
 DEFAULT_REASONING_EFFORT = "high"
 ARBITRATION_MODEL = "gpt-6.1-sol"
 ARBITRATION_REASONING_EFFORT = "medium"
-ARBITRATION_PROMPT_VERSION = "ocado-vegan-whole-product-arbitration-v8"
-CLASSIFIER_VERSION = "db-vegan-codex-v17"
-PROMPT_VERSION = "ocado-vegan-whole-product-json-v17"
+ARBITRATION_PROMPT_VERSION = "ocado-vegan-whole-product-arbitration-v9"
+CLASSIFIER_VERSION = "db-vegan-codex-v19"
+PROMPT_VERSION = "ocado-vegan-whole-product-json-v18"
 VALID_STATUSES = {"vegan", "nonvegan", "unknown"}
 VALID_VEGAN_REASONS = {"tagged", "manufacturer", "ingredients", "name"}
 
