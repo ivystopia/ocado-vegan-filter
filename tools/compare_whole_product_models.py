@@ -206,11 +206,14 @@ def execute(args, label, **options):
     candidate_checks.validate_record(json.loads(args.checks.read_text()))
     values=['--fixture',str(options.pop('fixture',args.fixture)),'--output',str(args.output/label),
             '--workers',str(args.workers),'--stop-file',str(args.output/'STOP')]
-    for key,value in options.items():values += ['--'+key.replace('_','-'),str(value)]
+    for key,value in options.items():
+        if isinstance(value,bool):
+            if value:values.append('--'+key.replace('_','-'))
+        else:values += ['--'+key.replace('_','-'),str(value)]
     result=benchmark.run(benchmark.parser().parse_args(values))
     if result['state']=='checkpointed':raise codex_evidence.StopRequestedError(result['error'])
     if result['state']=='quota_exhausted':raise codex_evidence.UsageLimitError(result['error'])
-    if result['state']!='completed':raise RuntimeError('Benchmark did not complete: '+label)
+    if result['state'] not in {'completed','disqualified'}:raise RuntimeError('Benchmark did not complete: '+label)
     return result
 
 
@@ -235,7 +238,7 @@ def run(args):
                 key:fixture.get('selection',{}).get(key,{}) for key in ('development_shortfalls','locked_shortfalls')},
             'primary':{},'arbitration':{},'locked':{},'workload':{},'recommendation':None}
     try:
-        reports=[];eligible=[]
+        reports=[];eligible=[];pilot_candidates=[]
         for model,effort in PRIMARY:
             name=model+'/'+effort;slug=model+'-'+effort
             controls=primary_controls(args,fixture,model,effort)
@@ -249,9 +252,13 @@ def run(args):
                 diagnostic=execute(args,'diagnostic-'+slug,fixture=diagnostic_path,split='diagnostic',mode='primary',model=model,effort=effort)
                 entry['model_only_diagnostic']=diagnostic
             if benchmark.successful(controls) and development_eligible(pilot):
-                development=execute(args,'development-'+slug,split='development',mode='pipeline',model=model,effort=effort)
-                entry['development']=development;reports.append(development)
-                if development_eligible(development):eligible.append((model,effort,development))
+                pilot_candidates.append((model,effort))
+        # Compare both cheap pilots before spending on either larger stage.
+        for model,effort in pilot_candidates:
+            development=execute(args,'development-'+model+'-'+effort,split='development',mode='pipeline',
+                                model=model,effort=effort,stop_on_disqualification=True)
+            result['primary'][model+'/'+effort]['development']=development;reports.append(development)
+            if development_eligible(development):eligible.append((model,effort,development))
         if not eligible:
             review_path=getattr(args,'primary_failure_review',None)
             if not review_path:

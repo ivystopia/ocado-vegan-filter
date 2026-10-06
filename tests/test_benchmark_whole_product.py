@@ -22,6 +22,27 @@ from types import SimpleNamespace
 
 
 class WholeProductBenchmarkTests(unittest.TestCase):
+    def test_reference_audit_changes_only_two_references_and_preserves_all_inputs(self):
+        root=Path(__file__).resolve().parents[1]/'benchmarks/vegan-classifier-v2'
+        previous=json.loads((root/'ethical-cases-v3.json').read_text())
+        current=benchmark.load_fixture(root/'ethical-cases-v4.json')
+        old={case['case_id']:case for case in previous['cases']};new={case['case_id']:case for case in current['cases']}
+        reviewed={'natural.565984011','natural.680838011'}
+        for key,case in old.items():
+            self.assertEqual(case['classifier_input'],new[key]['classifier_input'],key)
+            self.assertEqual(case['input_sha256'],new[key]['input_sha256'],key)
+            if key not in reviewed:self.assertEqual(case,new[key],key)
+            else:
+                self.assertEqual(new[key]['expected']['vegan_status'],'unknown')
+                for reading in new[key]['adjudication']['readings']:
+                    self.assertEqual(reading['prompt_version'],'blind-evidence-adjudication-v8')
+                    for ref in reading['annotation']['input_refs']:policy.resolve_reference(case['classifier_input'],ref)
+        self.assertEqual(current['selection']['pilot_case_ids'],previous['selection']['pilot_case_ids'])
+        self.assertEqual(len(new)-len(old),9)
+        self.assertEqual(current['selection']['counts']['synthetic'],374)
+        self.assertEqual({case['case_id']:case for case in assemble.synthetic_cases()},
+                         {key:case for key,case in new.items() if case['split']=='synthetic'})
+
     def test_new_processing_controls_preserve_every_frozen_predecessor_case(self):
         root=Path(__file__).resolve().parents[1]/'benchmarks/vegan-classifier-v2'
         previous=json.loads((root/'ethical-cases-v2.json').read_text())
@@ -30,7 +51,7 @@ class WholeProductBenchmarkTests(unittest.TestCase):
         new={case['case_id']:case for case in current['cases']}
         self.assertEqual(len(new)-len(old),38)
         for key,value in old.items():self.assertEqual(new[key],value,key)
-        generated={case['case_id']:case for case in assemble.synthetic_cases()}
+        generated={case['case_id']:case for case in assemble.synthetic_cases() if not case['case_id'].startswith('synthetic.planting-seeds.')}
         controlled={key:case for key,case in new.items() if case['case_kind']=='synthetic'}
         self.assertEqual(generated,controlled)
         self.assertEqual(current['selection']['counts']['synthetic'],365)
@@ -163,6 +184,24 @@ class WholeProductBenchmarkTests(unittest.TestCase):
             self.assertEqual(result['state'],'primary_failure_review_required')
             self.assertEqual({call.kwargs['model'] for call in execute.call_args_list},
                 {'gpt-5.6-luna','gpt-6-luna'})
+
+    def test_both_cheap_pilots_precede_expanded_development(self):
+        passing={'state':'completed','runs':[{**{field:[] for field in comparison.FAILURE_FIELDS},
+            'vegan_recall':1,'per_route_recall':{}}]}
+        failed={**passing,'state':'disqualified','unrun_cases':['later']}
+        with tempfile.TemporaryDirectory() as tmp:
+            root=Path(tmp);checks=root/'checks.json';checks.write_text('{}')
+            args=SimpleNamespace(fixture=root/'fixture.json',checks=checks,output=root/'results',
+                workers=1,development_only=True,primary_failure_review=None)
+            def execute(args,label,**kwargs):return failed if label.startswith('development-') else passing
+            with mock.patch.object(benchmark,'load_fixture',return_value={'selection':{'target_complete':False},'cases':[]}),\
+                 mock.patch.object(candidate_checks,'validate_record'),\
+                 mock.patch.object(comparison,'execute',side_effect=execute) as run:
+                result=comparison.run(args)
+            labels=[call.args[1] for call in run.call_args_list]
+            self.assertEqual([label.split('-')[0] for label in labels],['controls','pilot','controls','pilot','development','development'])
+            self.assertTrue(all(call.kwargs['stop_on_disqualification'] for call in run.call_args_list[-2:]))
+            self.assertEqual(result['state'],'primary_failure_review_required')
 
     def test_passing_natural_pilots_cannot_hide_unsafe_control_results(self):
         passing={'state':'completed','runs':[{**{field:[] for field in comparison.FAILURE_FIELDS},
@@ -307,7 +346,28 @@ class WholeProductBenchmarkTests(unittest.TestCase):
             self.assertEqual(result['state'],'completed')
             self.assertEqual(result['runs'][0]['exact_matches'],5)
             self.assertFalse(result['release_challenge_passed'])
-            self.assertIn('implementation_hashes',result)
+
+    def test_disqualification_stops_new_batches_and_cannot_qualify_or_resume(self):
+        with tempfile.TemporaryDirectory() as tmp:
+            root=Path(tmp);path=root/'fixture.json';cases=self.fixture(path)
+            fixture=json.loads(path.read_text())
+            for case in fixture['cases']:
+                case['split']='development'
+                case['expected']={'vegan_status':'unknown','vegan_reason':None,'required_issue_codes':[]}
+            path.write_text(json.dumps(fixture))
+            args=benchmark.parser().parse_args(['--fixture',str(path),'--split','development','--workers','1',
+                '--batch-size','1','--stop-on-disqualification','--output',str(root/'results')])
+            with mock.patch.object(benchmark,'execute_batch',wraps=benchmark.execute_batch) as execute:
+                report=benchmark.run(args)
+                called=execute.call_count
+                self.assertEqual(report['state'],'disqualified')
+                self.assertGreater(len(report['unrun_cases']),0)
+                self.assertLess(called,len(cases))
+                self.assertFalse(benchmark.successful(report))
+                self.assertFalse(report['release_challenge_passed'])
+                self.assertEqual(benchmark.run(args),report)
+                self.assertEqual(execute.call_count,called)
+            self.assertIn('implementation_hashes',report)
 
     def test_all_unknown_fails_release_gate(self):
         cases=[];decisions={}

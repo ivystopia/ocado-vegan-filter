@@ -13,7 +13,7 @@ import json
 from pathlib import Path
 import random
 import sqlite3
-from concurrent.futures import ThreadPoolExecutor, as_completed
+from concurrent.futures import ThreadPoolExecutor, wait, FIRST_COMPLETED
 import time
 import statistics
 
@@ -25,7 +25,7 @@ import vegan_policy as policy
 import update_userscript_allowlists as exporter
 
 ROOT = Path(__file__).resolve().parents[1]
-FIXTURE = ROOT / 'benchmarks/vegan-classifier-v2/ethical-cases-v3.json'
+FIXTURE = ROOT / 'benchmarks/vegan-classifier-v2/ethical-cases-v4.json'
 ISSUE_RUBRIC_VERSION = 'grounded-unknown-blocker-v2'
 
 
@@ -254,7 +254,33 @@ def execute_batch(batch, args, journal):
         calls.USAGE_JOURNAL.reset(token)
 
 
+def bounded_batches(pool, batches, args, admit):
+    """Start only the worker window; a failed gate cannot launch queued calls."""
+    pending=iter(batches);active={}
+    def submit():
+        batch=next(pending,None)
+        if batch is not None:active[pool.submit(execute_batch,batch,args,args.output/'calls.jsonl')]=batch
+    for _ in range(args.workers):
+        if admit():submit()
+    while active:
+        done,_=wait(active,return_when=FIRST_COMPLETED)
+        for future in done:
+            yield future,active.pop(future)
+            if admit():submit()
+
+
+def disqualification(cases, decisions):
+    scored=[case for case in cases if case['case_id'] in decisions]
+    result=metrics(scored,decisions)
+    fields=('unsafe_positives','operational_errors','reason_errors','mandatory_control_failures',
+            'reportable_negative_errors','missing_required_issues','false_nonvegan_decisions')
+    return {key:result[key] for key in fields if result[key]}
+
+
 def run(args):
+    fail_fast=getattr(args,'stop_on_disqualification',False)
+    if fail_fast and (args.split!='development' or args.subset!='all' or args.mode!='pipeline' or args.repetitions!=1):
+        raise ValueError('Early disqualification is only for a single complete-development pipeline diagnostic')
     fixture = load_fixture(args.fixture)
     cases = [case for case in fixture['cases'] if case['split']==args.split]
     if args.subset=='pilot':
@@ -273,10 +299,14 @@ def run(args):
         'prompt_version':classifier.PROMPT_VERSION,'arbitration_prompt_version':classifier.ARBITRATION_PROMPT_VERSION,
         'schema_sha256':classifier.context_hash(classifier.CODEX_OUTPUT_SCHEMA),
         'mode':args.mode,'model':args.model,'effort':args.effort,'arbitration_model':args.arbitration_model,
-        'arbitration_effort':args.arbitration_effort,'batch_size':args.batch_size,'repetitions':args.repetitions,'seed':args.seed,'split':args.split,'subset':args.subset,'workers':args.workers}
+        'arbitration_effort':args.arbitration_effort,'batch_size':args.batch_size,'repetitions':args.repetitions,'seed':args.seed,'split':args.split,'subset':args.subset,'workers':args.workers,
+        'stop_on_disqualification':fail_fast}
     path = args.output/'manifest.json'
     if path.exists() and json.loads(path.read_text())!=manifest: raise ValueError('Resume configuration/input changed; choose a fresh output directory')
     save(path,manifest)
+    prior=args.output/'report.json'
+    if prior.exists() and json.loads(prior.read_text()).get('state')=='disqualified':
+        return json.loads(prior.read_text())
     report = {**manifest,'runs':[],'state':'running'}
     previous_stop = calls.STOP_FILE
     calls.STOP_FILE = getattr(args, 'stop_file', None) or args.output/'STOP'
@@ -289,17 +319,14 @@ def run(args):
             token = calls.USAGE_JOURNAL.set(args.output/'calls.jsonl')
             try:
                 batches = [pending[start:start+args.batch_size] for start in range(0,len(pending),args.batch_size)]
-                quota_error = None
+                quota_error = None; disqualified=False
                 with ThreadPoolExecutor(max_workers=args.workers) as pool:
-                    futures = {pool.submit(execute_batch,batch,args,args.output/'calls.jsonl'):batch for batch in batches}
-                    for future in as_completed(futures):
-                        batch = futures[future]
+                    for future,batch in bounded_batches(pool,batches,args,lambda:not disqualified and quota_error is None):
                         if future.cancelled(): continue
                         try:
                             generated = future.result()
-                        except (calls.UsageLimitError,calls.IsolationViolationError) as exc:
+                        except (calls.UsageLimitError,calls.IsolationViolationError,calls.StopRequestedError) as exc:
                             quota_error = exc
-                            for queued in futures: queued.cancel()
                             continue
                         with closing(fixture_database(batch)) as conn:
                             run_id = classifier.start_run(conn,mode='benchmark',model=args.model,reasoning_effort=args.effort)
@@ -317,10 +344,16 @@ def run(args):
                             if not any(result.validation_error for result in generated.values()): exporter.load_allowlists(conn)
                         save(result_path,{'decisions':decisions,'metrics':metrics(cases,decisions)})
                         print(f'{args.model}/{args.effort} {args.mode} run {repetition+1}: {len(decisions)}/{len(cases)}',flush=True)
+                        if fail_fast and (failures:=disqualification(cases,decisions)):
+                            disqualified=True;report['disqualification']=failures
                 if quota_error is not None: raise quota_error
                 report['runs'].append(metrics(cases,decisions))
+                if disqualified:
+                    report.update(state='disqualified',unrun_cases=report['runs'][-1]['missing_cases'],
+                        note='Predeclared zero-tolerance gate failed. All active batches finished; remaining cases were not called and this partial stage cannot qualify a candidate.')
+                    break
             finally: calls.USAGE_JOURNAL.reset(token)
-        report['state']='completed'
+        if report['state']!='disqualified':report['state']='completed'
     except calls.StopRequestedError as exc:
         report['state']='checkpointed'
         report['error']=str(exc)
@@ -359,6 +392,7 @@ def parser():
     p.add_argument('--repetitions',type=int,default=1);p.add_argument('--seed',type=int,default=20261006)
     p.add_argument('--limit',type=int);p.add_argument('--output',type=Path,required=True)
     p.add_argument('--stop-file',type=Path,help='Checkpoint between calls when this file exists (default OUTPUT/STOP)')
+    p.add_argument('--stop-on-disqualification',action='store_true',help='Stop a development diagnostic after an irreversible zero-tolerance failure, retaining active calls and explicit unrun cases')
     p.add_argument('--codex-bin',default='codex')
     return p
 
