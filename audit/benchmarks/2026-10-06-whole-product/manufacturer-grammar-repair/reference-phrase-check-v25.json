@@ -1,0 +1,165 @@
+{
+  "method": "Read-only reference phrase diagnostic; not classifier/model qualification or automatic relabelling. Locked excluded.",
+  "cases": [
+    {
+      "case_id": "natural.561429011",
+      "quotes": [
+        {
+          "path": "/manufacturer_vegan_evidence/0/content",
+          "quote": "A 98% biodegradable formula, Vegan, Made from 30% recycled plastic bottle"
+        },
+        {
+          "path": "/product/features",
+          "quote": "A 98% biodegradable formula, Vegan, Made from 30% recycled plastic bottle"
+        }
+      ]
+    },
+    {
+      "case_id": "natural.561490011",
+      "quotes": [
+        {
+          "path": "/product/features",
+          "quote": "Vegan, Made from 30% recycled plastic bottle, Recyclable bottle"
+        },
+        {
+          "path": "/product/features",
+          "quote": "Vegan, Made from 30% recycled plastic bottle, Recyclable bottle"
+        },
+        {
+          "path": "/product/further_description",
+          "quote": "this vegan shower gel"
+        }
+      ]
+    },
+    {
+      "case_id": "natural.561499011",
+      "quotes": [
+        {
+          "path": "/manufacturer_vegan_evidence/0/content",
+          "quote": "Recyclable Paper Wrapper, Vegan"
+        },
+        {
+          "path": "/product/features",
+          "quote": "Recyclable Paper Wrapper, Vegan"
+        }
+      ]
+    },
+    {
+      "case_id": "natural.587217011",
+      "quotes": [
+        {
+          "path": "/product/detailed_description",
+          "quote": "this is the perfect vegan weight loss shake"
+        },
+        {
+          "path": "/product/detailed_description",
+          "quote": "we\u2019ve created a Vegan version of our best-selling weight loss shake"
+        }
+      ]
+    },
+    {
+      "case_id": "natural.587218011",
+      "quotes": [
+        {
+          "path": "/product/detailed_description",
+          "quote": "this is the perfect vegan weight loss shake"
+        },
+        {
+          "path": "/product/detailed_description",
+          "quote": "we\u2019ve created a Vegan version of our best-selling weight loss shake"
+        }
+      ]
+    },
+    {
+      "case_id": "natural.587219011",
+      "quotes": [
+        {
+          "path": "/product/detailed_description",
+          "quote": "we\u2019ve created a Vegan version of our best-selling weight loss shake"
+        },
+        {
+          "path": "/product/detailed_description",
+          "quote": "this is the perfect vegan weight loss shake"
+        }
+      ]
+    },
+    {
+      "case_id": "natural.570269011",
+      "quotes": [
+        {
+          "path": "/manufacturer_vegan_evidence/0/content",
+          "quote": "Vegetarian Society Approved - Vegan"
+        },
+        {
+          "path": "/product/features",
+          "quote": "Vegetarian Society Approved - Vegan"
+        }
+      ]
+    },
+    {
+      "case_id": "natural.659989011",
+      "quotes": [
+        {
+          "path": "/product/dietary_information",
+          "quote": "Vegan and gluten free, source of protein"
+        },
+        {
+          "path": "/product/dietary_information",
+          "quote": "Vegan and gluten free, source of protein"
+        }
+      ]
+    },
+    {
+      "case_id": "natural.576303011",
+      "quotes": [
+        {
+          "path": "/product/dietary_information",
+          "quote": "Gluten Free, Vegan, High Fibre, High Protein"
+        },
+        {
+          "path": "/manufacturer_vegan_evidence/0/content",
+          "quote": "Gluten Free, Vegan, High Fibre, High Protein"
+        }
+      ]
+    },
+    {
+      "case_id": "natural.576304011",
+      "quotes": [
+        {
+          "path": "/product/dietary_information",
+          "quote": "Gluten Free, Vegan, High Fibre, Source of Protein"
+        },
+        {
+          "path": "/manufacturer_vegan_evidence/0/content",
+          "quote": "Gluten Free, Vegan, High Fibre, Source of Protein"
+        }
+      ]
+    },
+    {
+      "case_id": "natural.576305011",
+      "quotes": [
+        {
+          "path": "/product/dietary_information",
+          "quote": "Gluten Free, Vegan, High Fibre, Source of Protein"
+        },
+        {
+          "path": "/manufacturer_vegan_evidence/0/content",
+          "quote": "Gluten Free, Vegan, High Fibre, Source of Protein"
+        }
+      ]
+    },
+    {
+      "case_id": "natural.652864011",
+      "quotes": [
+        {
+          "path": "/manufacturer_source_candidates/0/source_text",
+          "quote": "Are your products vegan?"
+        },
+        {
+          "path": "/manufacturer_source_candidates/0/source_text",
+          "quote": "Are your products vegan?"
+        }
+      ]
+    }
+  ]
+}

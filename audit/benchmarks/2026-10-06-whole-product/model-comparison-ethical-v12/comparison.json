@@ -1,0 +1,30 @@
+{
+  "state": "checkpointed",
+  "pricing_source": "https://learn.chatgpt.com/docs/pricing",
+  "pricing_checked": "2026-10-06",
+  "credit_equivalents_are_not_included_quota_or_charges": true,
+  "defaults_changed": false,
+  "reused_primary_stages": {},
+  "development_only": true,
+  "reference_shortfalls": {
+    "development_shortfalls": {
+      "name": 11,
+      "ingredients": 5
+    },
+    "locked_shortfalls": {
+      "tagged": 30,
+      "manufacturer": 30,
+      "name": 30,
+      "ingredients": 30,
+      "unknown": 180,
+      "nonvegan": 60
+    }
+  },
+  "primary": {},
+  "arbitration": {},
+  "locked": {},
+  "workload": {},
+  "recommendation": null,
+  "error": "Benchmark stop file found; active calls are accounted for, no new calls started.",
+  "next_step": "Remove STOP and resume the identical command, or choose a fresh directory if code changes."
+}
