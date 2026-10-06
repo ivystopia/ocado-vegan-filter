@@ -1,0 +1,2414 @@
+[
+  {
+    "product_id": "200050011",
+    "name": "Sweet Freedom Choc Shot",
+    "old_rule_preview": [
+      "semantic_review_required",
+      null
+    ],
+    "new_rule_preview": [
+      "vegan",
+      "tagged"
+    ]
+  },
+  {
+    "product_id": "209118011",
+    "name": "Gro-Sure Smart Lawn Grass Seed 25sq.m",
+    "old_rule_preview": [
+      "semantic_review_required",
+      null
+    ],
+    "new_rule_preview": [
+      "unknown",
+      null
+    ]
+  },
+  {
+    "product_id": "20956011",
+    "name": "Yarden Houmous",
+    "old_rule_preview": [
+      "semantic_review_required",
+      null
+    ],
+    "new_rule_preview": [
+      "unknown",
+      null
+    ]
+  },
+  {
+    "product_id": "20987011",
+    "name": "Yarden Houmous Extra",
+    "old_rule_preview": [
+      "semantic_review_required",
+      null
+    ],
+    "new_rule_preview": [
+      "unknown",
+      null
+    ]
+  },
+  {
+    "product_id": "213974011",
+    "name": "Green People Organic Hydrate & Renew Serum, Age Defy+ by Cha Vohtz, Vegan",
+    "old_rule_preview": [
+      "semantic_review_required",
+      null
+    ],
+    "new_rule_preview": [
+      "vegan",
+      "tagged"
+    ]
+  },
+  {
+    "product_id": "213975011",
+    "name": "Green People Organic Line Eraser Serum, Age Defy+ by Cha Vohtz, Vegan",
+    "old_rule_preview": [
+      "semantic_review_required",
+      null
+    ],
+    "new_rule_preview": [
+      "vegan",
+      "tagged"
+    ]
+  },
+  {
+    "product_id": "213976011",
+    "name": "Green People Brightening Moisturiser, Age Defy+ By Cha Vohtz, Vegan",
+    "old_rule_preview": [
+      "semantic_review_required",
+      null
+    ],
+    "new_rule_preview": [
+      "vegan",
+      "tagged"
+    ]
+  },
+  {
+    "product_id": "213979011",
+    "name": "Green People Organic Facial Oil, Cell Enrich Age Defy+ by Cha Vohtz, Vegan",
+    "old_rule_preview": [
+      "semantic_review_required",
+      null
+    ],
+    "new_rule_preview": [
+      "vegan",
+      "tagged"
+    ]
+  },
+  {
+    "product_id": "226642011",
+    "name": "Le Conserve Della Nonna Vegan Green Pesto",
+    "old_rule_preview": [
+      "semantic_review_required",
+      null
+    ],
+    "new_rule_preview": [
+      "vegan",
+      "tagged"
+    ]
+  },
+  {
+    "product_id": "263511011",
+    "name": "Le Conserve Della Nonna Organic Tomato & Basil Sauce",
+    "old_rule_preview": [
+      "semantic_review_required",
+      null
+    ],
+    "new_rule_preview": [
+      "vegan",
+      "tagged"
+    ]
+  },
+  {
+    "product_id": "269878011",
+    "name": "Biona Organic Asia Noodles",
+    "old_rule_preview": [
+      "semantic_review_required",
+      null
+    ],
+    "new_rule_preview": [
+      "vegan",
+      "manufacturer"
+    ]
+  },
+  {
+    "product_id": "269886011",
+    "name": "Biona Organic Spelt Fusilli White Pasta",
+    "old_rule_preview": [
+      "semantic_review_required",
+      null
+    ],
+    "new_rule_preview": [
+      "vegan",
+      "tagged"
+    ]
+  },
+  {
+    "product_id": "269930011",
+    "name": "Biona Organic Spelt Noodles",
+    "old_rule_preview": [
+      "semantic_review_required",
+      null
+    ],
+    "new_rule_preview": [
+      "vegan",
+      "manufacturer"
+    ]
+  },
+  {
+    "product_id": "269961011",
+    "name": "Biona Organic Dark Chocolate Spread",
+    "old_rule_preview": [
+      "semantic_review_required",
+      null
+    ],
+    "new_rule_preview": [
+      "vegan",
+      "tagged"
+    ]
+  },
+  {
+    "product_id": "269968011",
+    "name": "Biona Organic Spelt Spaghetti White Pasta",
+    "old_rule_preview": [
+      "semantic_review_required",
+      null
+    ],
+    "new_rule_preview": [
+      "vegan",
+      "tagged"
+    ]
+  },
+  {
+    "product_id": "269986011",
+    "name": "Biona Organic Spelt Penne White Pasta",
+    "old_rule_preview": [
+      "semantic_review_required",
+      null
+    ],
+    "new_rule_preview": [
+      "vegan",
+      "tagged"
+    ]
+  },
+  {
+    "product_id": "277489011",
+    "name": "Daylesford Organic Hazelnuts",
+    "old_rule_preview": [
+      "semantic_review_required",
+      null
+    ],
+    "new_rule_preview": [
+      "unknown",
+      null
+    ]
+  },
+  {
+    "product_id": "279920011",
+    "name": "Green People SPF 15 Sun Cream With Tan Accelerator",
+    "old_rule_preview": [
+      "semantic_review_required",
+      null
+    ],
+    "new_rule_preview": [
+      "vegan",
+      "tagged"
+    ]
+  },
+  {
+    "product_id": "289766011",
+    "name": "Mornflake Extra Crispy Favourite Fruit & Nut",
+    "old_rule_preview": [
+      "semantic_review_required",
+      null
+    ],
+    "new_rule_preview": [
+      "vegan",
+      "tagged"
+    ]
+  },
+  {
+    "product_id": "289769011",
+    "name": "Mornflake Extra Crispy Notoriously Nutty Muesli",
+    "old_rule_preview": [
+      "semantic_review_required",
+      null
+    ],
+    "new_rule_preview": [
+      "vegan",
+      "tagged"
+    ]
+  },
+  {
+    "product_id": "289821011",
+    "name": "Le Conserve Della Nonna Vegan Red Pesto",
+    "old_rule_preview": [
+      "semantic_review_required",
+      null
+    ],
+    "new_rule_preview": [
+      "vegan",
+      "tagged"
+    ]
+  },
+  {
+    "product_id": "290955011",
+    "name": "Green People Organic Protein Boost Hair Serum",
+    "old_rule_preview": [
+      "semantic_review_required",
+      null
+    ],
+    "new_rule_preview": [
+      "vegan",
+      "tagged"
+    ]
+  },
+  {
+    "product_id": "291317011",
+    "name": "Biona Organic Spelt Wholegrain Fusilli Pasta",
+    "old_rule_preview": [
+      "semantic_review_required",
+      null
+    ],
+    "new_rule_preview": [
+      "vegan",
+      "tagged"
+    ]
+  },
+  {
+    "product_id": "291320011",
+    "name": "Biona Organic Spelt Wholegrain Spaghetti Pasta",
+    "old_rule_preview": [
+      "semantic_review_required",
+      null
+    ],
+    "new_rule_preview": [
+      "vegan",
+      "tagged"
+    ]
+  },
+  {
+    "product_id": "29224011",
+    "name": "Tyrrells Sea Salt & Cider Vinegar Sharing Crisps",
+    "old_rule_preview": [
+      "semantic_review_required",
+      null
+    ],
+    "new_rule_preview": [
+      "vegan",
+      "tagged"
+    ]
+  },
+  {
+    "product_id": "34182011",
+    "name": "Biona Organic Wholegrain Spelt Penne Pasta",
+    "old_rule_preview": [
+      "semantic_review_required",
+      null
+    ],
+    "new_rule_preview": [
+      "vegan",
+      "tagged"
+    ]
+  },
+  {
+    "product_id": "352670011",
+    "name": "Mornflake Fruit & Fibre",
+    "old_rule_preview": [
+      "semantic_review_required",
+      null
+    ],
+    "new_rule_preview": [
+      "vegan",
+      "tagged"
+    ]
+  },
+  {
+    "product_id": "372723011",
+    "name": "Yarden Houmous Tahina",
+    "old_rule_preview": [
+      "semantic_review_required",
+      null
+    ],
+    "new_rule_preview": [
+      "unknown",
+      null
+    ]
+  },
+  {
+    "product_id": "372724011",
+    "name": "Yarden Houmous Prestige Za'atar",
+    "old_rule_preview": [
+      "semantic_review_required",
+      null
+    ],
+    "new_rule_preview": [
+      "unknown",
+      null
+    ]
+  },
+  {
+    "product_id": "375197011",
+    "name": "Sweet Freedom Choc Pot Chocolate Spread",
+    "old_rule_preview": [
+      "semantic_review_required",
+      null
+    ],
+    "new_rule_preview": [
+      "vegan",
+      "tagged"
+    ]
+  },
+  {
+    "product_id": "385666011",
+    "name": "Green & Black's Organic Mint Dark Chocolate Bar",
+    "old_rule_preview": [
+      "semantic_review_required",
+      null
+    ],
+    "new_rule_preview": [
+      "vegan",
+      "manufacturer"
+    ]
+  },
+  {
+    "product_id": "385672011",
+    "name": "Green & Black's Organic Smooth 50% Dark Chocolate Bar",
+    "old_rule_preview": [
+      "semantic_review_required",
+      null
+    ],
+    "new_rule_preview": [
+      "vegan",
+      "manufacturer"
+    ]
+  },
+  {
+    "product_id": "39269011",
+    "name": "The Bay Tree Mint Jelly",
+    "old_rule_preview": [
+      "semantic_review_required",
+      null
+    ],
+    "new_rule_preview": [
+      "unknown",
+      null
+    ]
+  },
+  {
+    "product_id": "419585011",
+    "name": "Lensi La Buona Vita Gluten Free Penne",
+    "old_rule_preview": [
+      "semantic_review_required",
+      null
+    ],
+    "new_rule_preview": [
+      "vegan",
+      "tagged"
+    ]
+  },
+  {
+    "product_id": "419586011",
+    "name": "Lensi La Buona Vita Gluten Free Fusilli",
+    "old_rule_preview": [
+      "semantic_review_required",
+      null
+    ],
+    "new_rule_preview": [
+      "vegan",
+      "tagged"
+    ]
+  },
+  {
+    "product_id": "419587011",
+    "name": "Lensi La Buona Vita Gluten Free Spaghetti",
+    "old_rule_preview": [
+      "semantic_review_required",
+      null
+    ],
+    "new_rule_preview": [
+      "vegan",
+      "tagged"
+    ]
+  },
+  {
+    "product_id": "428565011",
+    "name": "Montezuma's 70% Dark Chocolate Peanut Butter Truffle Bites",
+    "old_rule_preview": [
+      "semantic_review_required",
+      null
+    ],
+    "new_rule_preview": [
+      "vegan",
+      "tagged"
+    ]
+  },
+  {
+    "product_id": "450411011",
+    "name": "Gro-Sure Aqua Gel Coated Fast Start Smart Grass Lawn Seed",
+    "old_rule_preview": [
+      "semantic_review_required",
+      null
+    ],
+    "new_rule_preview": [
+      "unknown",
+      null
+    ]
+  },
+  {
+    "product_id": "450760011",
+    "name": "Mr Organic Vegetable Tortellini",
+    "old_rule_preview": [
+      "semantic_review_required",
+      null
+    ],
+    "new_rule_preview": [
+      "vegan",
+      "tagged"
+    ]
+  },
+  {
+    "product_id": "450762011",
+    "name": "Mr Organic Porcini Mushroom Tortellini",
+    "old_rule_preview": [
+      "semantic_review_required",
+      null
+    ],
+    "new_rule_preview": [
+      "vegan",
+      "tagged"
+    ]
+  },
+  {
+    "product_id": "452001011",
+    "name": "Tony's Chocolonely Dark Chocolate 51% Almond Sea Salt",
+    "old_rule_preview": [
+      "semantic_review_required",
+      null
+    ],
+    "new_rule_preview": [
+      "unknown",
+      null
+    ]
+  },
+  {
+    "product_id": "455616011",
+    "name": "Epicure Manzanilla Olives Stuffed with Almonds",
+    "old_rule_preview": [
+      "semantic_review_required",
+      null
+    ],
+    "new_rule_preview": [
+      "unknown",
+      null
+    ]
+  },
+  {
+    "product_id": "45878011",
+    "name": "Montezuma's Fitzroy Dark Chocolate Bar",
+    "old_rule_preview": [
+      "semantic_review_required",
+      null
+    ],
+    "new_rule_preview": [
+      "vegan",
+      "tagged"
+    ]
+  },
+  {
+    "product_id": "45880011",
+    "name": "Montezuma's Chilli Bonkers Dark Organic Chocolate Bar",
+    "old_rule_preview": [
+      "semantic_review_required",
+      null
+    ],
+    "new_rule_preview": [
+      "vegan",
+      "tagged"
+    ]
+  },
+  {
+    "product_id": "480911011",
+    "name": "Little Moons Vegan Passionfruit & Mango Mochi Ice Cream",
+    "old_rule_preview": [
+      "semantic_review_required",
+      null
+    ],
+    "new_rule_preview": [
+      "vegan",
+      "tagged"
+    ]
+  },
+  {
+    "product_id": "488706011",
+    "name": "Village Bakery Brown Rolls",
+    "old_rule_preview": [
+      "semantic_review_required",
+      null
+    ],
+    "new_rule_preview": [
+      "unknown",
+      null
+    ]
+  },
+  {
+    "product_id": "491350011",
+    "name": "Mornflake Chocolatey Squares",
+    "old_rule_preview": [
+      "semantic_review_required",
+      null
+    ],
+    "new_rule_preview": [
+      "vegan",
+      "manufacturer"
+    ]
+  },
+  {
+    "product_id": "499211011",
+    "name": "Howdah Bombay Mix",
+    "old_rule_preview": [
+      "semantic_review_required",
+      null
+    ],
+    "new_rule_preview": [
+      "vegan",
+      "tagged"
+    ]
+  },
+  {
+    "product_id": "509468011",
+    "name": "M&S Made Without Baking Powder",
+    "old_rule_preview": [
+      "semantic_review_required",
+      null
+    ],
+    "new_rule_preview": [
+      "vegan",
+      "tagged"
+    ]
+  },
+  {
+    "product_id": "509672011",
+    "name": "M&S Spiced Lentil & Tomato Soup",
+    "old_rule_preview": [
+      "semantic_review_required",
+      null
+    ],
+    "new_rule_preview": [
+      "vegan",
+      "manufacturer"
+    ]
+  },
+  {
+    "product_id": "51063011",
+    "name": "Biona Organic Gluten Free Millet Wholegrain Bread Loaf",
+    "old_rule_preview": [
+      "semantic_review_required",
+      null
+    ],
+    "new_rule_preview": [
+      "unknown",
+      null
+    ]
+  },
+  {
+    "product_id": "510714011",
+    "name": "M&S Small White Pittas",
+    "old_rule_preview": [
+      "semantic_review_required",
+      null
+    ],
+    "new_rule_preview": [
+      "unknown",
+      null
+    ]
+  },
+  {
+    "product_id": "510735011",
+    "name": "M&S White Pittas",
+    "old_rule_preview": [
+      "semantic_review_required",
+      null
+    ],
+    "new_rule_preview": [
+      "vegan",
+      "tagged"
+    ]
+  },
+  {
+    "product_id": "512790011",
+    "name": "M&S Colin The Caterpillar Fruit Gums",
+    "old_rule_preview": [
+      "semantic_review_required",
+      null
+    ],
+    "new_rule_preview": [
+      "vegan",
+      "tagged"
+    ]
+  },
+  {
+    "product_id": "512791011",
+    "name": "M&S Colin The Caterpillar Cola Gums",
+    "old_rule_preview": [
+      "semantic_review_required",
+      null
+    ],
+    "new_rule_preview": [
+      "vegan",
+      "tagged"
+    ]
+  },
+  {
+    "product_id": "512793011",
+    "name": "M&S Colin The Caterpillar Cherry Gums",
+    "old_rule_preview": [
+      "semantic_review_required",
+      null
+    ],
+    "new_rule_preview": [
+      "vegan",
+      "tagged"
+    ]
+  },
+  {
+    "product_id": "512795011",
+    "name": "M&S Colin The Caterpillar Fruit Sours",
+    "old_rule_preview": [
+      "semantic_review_required",
+      null
+    ],
+    "new_rule_preview": [
+      "vegan",
+      "tagged"
+    ]
+  },
+  {
+    "product_id": "514220011",
+    "name": "Montezuma's Absolute Black Bar",
+    "old_rule_preview": [
+      "semantic_review_required",
+      null
+    ],
+    "new_rule_preview": [
+      "vegan",
+      "tagged"
+    ]
+  },
+  {
+    "product_id": "515187011",
+    "name": "M&S Made Without 6 Vegetable Spring Rolls",
+    "old_rule_preview": [
+      "semantic_review_required",
+      null
+    ],
+    "new_rule_preview": [
+      "vegan",
+      "tagged"
+    ]
+  },
+  {
+    "product_id": "516387011",
+    "name": "M&S Roasted Carrot & Golden Couscous",
+    "old_rule_preview": [
+      "semantic_review_required",
+      null
+    ],
+    "new_rule_preview": [
+      "vegan",
+      "tagged"
+    ]
+  },
+  {
+    "product_id": "517685011",
+    "name": "M&S Balsamic Beetroot",
+    "old_rule_preview": [
+      "semantic_review_required",
+      null
+    ],
+    "new_rule_preview": [
+      "vegan",
+      "tagged"
+    ]
+  },
+  {
+    "product_id": "518707011",
+    "name": "M&S Singapore Noodles",
+    "old_rule_preview": [
+      "semantic_review_required",
+      null
+    ],
+    "new_rule_preview": [
+      "vegan",
+      "manufacturer"
+    ]
+  },
+  {
+    "product_id": "521900011",
+    "name": "M&S Nutrient Dense Nutty Super Wholefood Salad",
+    "old_rule_preview": [
+      "semantic_review_required",
+      null
+    ],
+    "new_rule_preview": [
+      "vegan",
+      "tagged"
+    ]
+  },
+  {
+    "product_id": "52699011",
+    "name": "Montezuma's Happy Hippy Orange & Geranium",
+    "old_rule_preview": [
+      "semantic_review_required",
+      null
+    ],
+    "new_rule_preview": [
+      "vegan",
+      "tagged"
+    ]
+  },
+  {
+    "product_id": "532175011",
+    "name": "M&S Plant Kitchen No Chicken Kyivs Frozen",
+    "old_rule_preview": [
+      "semantic_review_required",
+      null
+    ],
+    "new_rule_preview": [
+      "vegan",
+      "tagged"
+    ]
+  },
+  {
+    "product_id": "545454011",
+    "name": "M&S Mushroom Spaghetti Bolognese Serves 1",
+    "old_rule_preview": [
+      "semantic_review_required",
+      null
+    ],
+    "new_rule_preview": [
+      "vegan",
+      "manufacturer"
+    ]
+  },
+  {
+    "product_id": "548039011",
+    "name": "Dunns River Everyday Seasoning",
+    "old_rule_preview": [
+      "semantic_review_required",
+      null
+    ],
+    "new_rule_preview": [
+      "unknown",
+      null
+    ]
+  },
+  {
+    "product_id": "548040011",
+    "name": "Dunns River All Purpose Seasoning",
+    "old_rule_preview": [
+      "semantic_review_required",
+      null
+    ],
+    "new_rule_preview": [
+      "unknown",
+      null
+    ]
+  },
+  {
+    "product_id": "549846011",
+    "name": "Gro-Sure Fast Acting Lawn Seed 10m2",
+    "old_rule_preview": [
+      "semantic_review_required",
+      null
+    ],
+    "new_rule_preview": [
+      "unknown",
+      null
+    ]
+  },
+  {
+    "product_id": "552748011",
+    "name": "M&S Sesame & Linseed Wholegrain Flatbread",
+    "old_rule_preview": [
+      "semantic_review_required",
+      null
+    ],
+    "new_rule_preview": [
+      "unknown",
+      null
+    ]
+  },
+  {
+    "product_id": "553868011",
+    "name": "Le Conserve Della Nonna Smooth Tomato Passata",
+    "old_rule_preview": [
+      "semantic_review_required",
+      null
+    ],
+    "new_rule_preview": [
+      "vegan",
+      "tagged"
+    ]
+  },
+  {
+    "product_id": "554037011",
+    "name": "Hovis Premium Burger Rolls",
+    "old_rule_preview": [
+      "semantic_review_required",
+      null
+    ],
+    "new_rule_preview": [
+      "unknown",
+      null
+    ]
+  },
+  {
+    "product_id": "554157011",
+    "name": "M&S Super Nutty Wholefood Salad",
+    "old_rule_preview": [
+      "semantic_review_required",
+      null
+    ],
+    "new_rule_preview": [
+      "vegan",
+      "tagged"
+    ]
+  },
+  {
+    "product_id": "554742011",
+    "name": "Nibble Simply Fantastically Fudgy Lemon Shortbread Low Carb Biscuit Bites",
+    "old_rule_preview": [
+      "semantic_review_required",
+      null
+    ],
+    "new_rule_preview": [
+      "vegan",
+      "tagged"
+    ]
+  },
+  {
+    "product_id": "554743011",
+    "name": "Nibble Simply Doubly Delicious Choc Choc Chip Low Carb Biscuit Bites",
+    "old_rule_preview": [
+      "semantic_review_required",
+      null
+    ],
+    "new_rule_preview": [
+      "vegan",
+      "tagged"
+    ]
+  },
+  {
+    "product_id": "554744011",
+    "name": "Nibble Simply Cheeky Choc Chip Cookie Dough Low Carb Biscuit Bites",
+    "old_rule_preview": [
+      "semantic_review_required",
+      null
+    ],
+    "new_rule_preview": [
+      "vegan",
+      "tagged"
+    ]
+  },
+  {
+    "product_id": "555293011",
+    "name": "M&S Classic Tomato Everything Pasta Sauce",
+    "old_rule_preview": [
+      "semantic_review_required",
+      null
+    ],
+    "new_rule_preview": [
+      "vegan",
+      "manufacturer"
+    ]
+  },
+  {
+    "product_id": "555448011",
+    "name": "Montezuma's Black Forest Dark Chocolate with Cherry",
+    "old_rule_preview": [
+      "semantic_review_required",
+      null
+    ],
+    "new_rule_preview": [
+      "vegan",
+      "tagged"
+    ]
+  },
+  {
+    "product_id": "556061011",
+    "name": "Tivall Vegan Burger",
+    "old_rule_preview": [
+      "semantic_review_required",
+      null
+    ],
+    "new_rule_preview": [
+      "vegan",
+      "tagged"
+    ]
+  },
+  {
+    "product_id": "559662011",
+    "name": "M&S Colin The Caterpillar Softies",
+    "old_rule_preview": [
+      "semantic_review_required",
+      null
+    ],
+    "new_rule_preview": [
+      "vegan",
+      "tagged"
+    ]
+  },
+  {
+    "product_id": "560318011",
+    "name": "M&S Made Without 4 Vegetable Samosas",
+    "old_rule_preview": [
+      "semantic_review_required",
+      null
+    ],
+    "new_rule_preview": [
+      "vegan",
+      "tagged"
+    ]
+  },
+  {
+    "product_id": "562054011",
+    "name": "M&S Gastropub Greens Side",
+    "old_rule_preview": [
+      "semantic_review_required",
+      null
+    ],
+    "new_rule_preview": [
+      "vegan",
+      "manufacturer"
+    ]
+  },
+  {
+    "product_id": "563512011",
+    "name": "M&S Calabrian Chilli & Fennel Ragu",
+    "old_rule_preview": [
+      "semantic_review_required",
+      null
+    ],
+    "new_rule_preview": [
+      "vegan",
+      "manufacturer"
+    ]
+  },
+  {
+    "product_id": "569347011",
+    "name": "Perkier Crunchy Peanut Protein bars",
+    "old_rule_preview": [
+      "semantic_review_required",
+      null
+    ],
+    "new_rule_preview": [
+      "vegan",
+      "tagged"
+    ]
+  },
+  {
+    "product_id": "57013011",
+    "name": "Crosta Mollica Chilli Crostini Toasted Bread",
+    "old_rule_preview": [
+      "semantic_review_required",
+      null
+    ],
+    "new_rule_preview": [
+      "vegan",
+      "tagged"
+    ]
+  },
+  {
+    "product_id": "572633011",
+    "name": "M&S 8 Vegan Breaded Fish Fingers Frozen",
+    "old_rule_preview": [
+      "semantic_review_required",
+      null
+    ],
+    "new_rule_preview": [
+      "vegan",
+      "manufacturer"
+    ]
+  },
+  {
+    "product_id": "572635011",
+    "name": "M&S Plant Kitchen Vegan No Chicken Nuggets Frozen",
+    "old_rule_preview": [
+      "semantic_review_required",
+      null
+    ],
+    "new_rule_preview": [
+      "vegan",
+      "manufacturer"
+    ]
+  },
+  {
+    "product_id": "577015011",
+    "name": "Dunn's River Hot & Spicy Chicken Fry Mix",
+    "old_rule_preview": [
+      "semantic_review_required",
+      null
+    ],
+    "new_rule_preview": [
+      "unknown",
+      null
+    ]
+  },
+  {
+    "product_id": "577016011",
+    "name": "Dunns River Original Fry Mix",
+    "old_rule_preview": [
+      "semantic_review_required",
+      null
+    ],
+    "new_rule_preview": [
+      "unknown",
+      null
+    ]
+  },
+  {
+    "product_id": "580564011",
+    "name": "Mr Organic Chocolate Chip Digestives",
+    "old_rule_preview": [
+      "semantic_review_required",
+      null
+    ],
+    "new_rule_preview": [
+      "vegan",
+      "tagged"
+    ]
+  },
+  {
+    "product_id": "584051011",
+    "name": "Hovis Premium Hot Dog Rolls",
+    "old_rule_preview": [
+      "semantic_review_required",
+      null
+    ],
+    "new_rule_preview": [
+      "unknown",
+      null
+    ]
+  },
+  {
+    "product_id": "586110011",
+    "name": "The Spice Tailor Malaysian Laksa Curry Sauce Kit",
+    "old_rule_preview": [
+      "semantic_review_required",
+      null
+    ],
+    "new_rule_preview": [
+      "unknown",
+      null
+    ]
+  },
+  {
+    "product_id": "596943011",
+    "name": "M&S Made Without Wheat Rice Pops",
+    "old_rule_preview": [
+      "semantic_review_required",
+      null
+    ],
+    "new_rule_preview": [
+      "vegan",
+      "tagged"
+    ]
+  },
+  {
+    "product_id": "596944011",
+    "name": "M&S Made Without Wheat Special Flakes",
+    "old_rule_preview": [
+      "semantic_review_required",
+      null
+    ],
+    "new_rule_preview": [
+      "vegan",
+      "tagged"
+    ]
+  },
+  {
+    "product_id": "596945011",
+    "name": "M&S Made Without Wheat Choco Pops",
+    "old_rule_preview": [
+      "semantic_review_required",
+      null
+    ],
+    "new_rule_preview": [
+      "vegan",
+      "tagged"
+    ]
+  },
+  {
+    "product_id": "601179011",
+    "name": "M&S Made Without Very Berry & Orange Granola",
+    "old_rule_preview": [
+      "semantic_review_required",
+      null
+    ],
+    "new_rule_preview": [
+      "vegan",
+      "manufacturer"
+    ]
+  },
+  {
+    "product_id": "601181011",
+    "name": "M&S Made Without 4 Nut & Flame Raisin Granola",
+    "old_rule_preview": [
+      "semantic_review_required",
+      null
+    ],
+    "new_rule_preview": [
+      "vegan",
+      "manufacturer"
+    ]
+  },
+  {
+    "product_id": "601187011",
+    "name": "M&S Made Without Fruit & Nut Muesli",
+    "old_rule_preview": [
+      "semantic_review_required",
+      null
+    ],
+    "new_rule_preview": [
+      "vegan",
+      "manufacturer"
+    ]
+  },
+  {
+    "product_id": "603019011",
+    "name": "La Vie Plant-based Smoked Bacon Rashers, Vegan",
+    "old_rule_preview": [
+      "semantic_review_required",
+      null
+    ],
+    "new_rule_preview": [
+      "vegan",
+      "tagged"
+    ]
+  },
+  {
+    "product_id": "60361011",
+    "name": "Tyrrells Furrows Sea Salt & Vinegar Sharing Crisps",
+    "old_rule_preview": [
+      "semantic_review_required",
+      null
+    ],
+    "new_rule_preview": [
+      "vegan",
+      "tagged"
+    ]
+  },
+  {
+    "product_id": "604685011",
+    "name": "M&S Made Without Dairy Honeycomb & Caramel Choc Bar",
+    "old_rule_preview": [
+      "semantic_review_required",
+      null
+    ],
+    "new_rule_preview": [
+      "vegan",
+      "manufacturer"
+    ]
+  },
+  {
+    "product_id": "604686011",
+    "name": "M&S Made Without Dairy Giant Choc Buttons",
+    "old_rule_preview": [
+      "semantic_review_required",
+      null
+    ],
+    "new_rule_preview": [
+      "vegan",
+      "tagged"
+    ]
+  },
+  {
+    "product_id": "604687011",
+    "name": "M&S Made Without Dairy White Chocolate Bar",
+    "old_rule_preview": [
+      "semantic_review_required",
+      null
+    ],
+    "new_rule_preview": [
+      "vegan",
+      "manufacturer"
+    ]
+  },
+  {
+    "product_id": "604688011",
+    "name": "M&S Made Without Dairy Rocky Road Pieces",
+    "old_rule_preview": [
+      "semantic_review_required",
+      null
+    ],
+    "new_rule_preview": [
+      "vegan",
+      "tagged"
+    ]
+  },
+  {
+    "product_id": "605641011",
+    "name": "Freee Organic Gluten Free Chocolate Chip Oat Bars",
+    "old_rule_preview": [
+      "semantic_review_required",
+      null
+    ],
+    "new_rule_preview": [
+      "vegan",
+      "tagged"
+    ]
+  },
+  {
+    "product_id": "606407011",
+    "name": "M&S Colin the Caterpillar Large Fruit Gums",
+    "old_rule_preview": [
+      "semantic_review_required",
+      null
+    ],
+    "new_rule_preview": [
+      "vegan",
+      "manufacturer"
+    ]
+  },
+  {
+    "product_id": "606568011",
+    "name": "M&S Ready Rolled Puff Pastry",
+    "old_rule_preview": [
+      "semantic_review_required",
+      null
+    ],
+    "new_rule_preview": [
+      "vegan",
+      "tagged"
+    ]
+  },
+  {
+    "product_id": "609279011",
+    "name": "M&S Made Without Waffle Cones",
+    "old_rule_preview": [
+      "semantic_review_required",
+      null
+    ],
+    "new_rule_preview": [
+      "vegan",
+      "manufacturer"
+    ]
+  },
+  {
+    "product_id": "609915011",
+    "name": "Northern Dough Co. Beer Crust Pizza Dough",
+    "old_rule_preview": [
+      "semantic_review_required",
+      null
+    ],
+    "new_rule_preview": [
+      "vegan",
+      "manufacturer"
+    ]
+  },
+  {
+    "product_id": "612147011",
+    "name": "M&S Vegetable Stock Pot",
+    "old_rule_preview": [
+      "semantic_review_required",
+      null
+    ],
+    "new_rule_preview": [
+      "vegan",
+      "manufacturer"
+    ]
+  },
+  {
+    "product_id": "613478011",
+    "name": "Mornflake Pixels Chocolate & Hazelnut",
+    "old_rule_preview": [
+      "semantic_review_required",
+      null
+    ],
+    "new_rule_preview": [
+      "vegan",
+      "manufacturer"
+    ]
+  },
+  {
+    "product_id": "613939011",
+    "name": "Lajkonik Pretzels",
+    "old_rule_preview": [
+      "semantic_review_required",
+      null
+    ],
+    "new_rule_preview": [
+      "unknown",
+      null
+    ]
+  },
+  {
+    "product_id": "614226011",
+    "name": "Kucharek Vegetable Seasoning",
+    "old_rule_preview": [
+      "semantic_review_required",
+      null
+    ],
+    "new_rule_preview": [
+      "unknown",
+      null
+    ]
+  },
+  {
+    "product_id": "615186011",
+    "name": "FUEL 10K Golden Syrup Protein Porridge Oat Cereal Sachets",
+    "old_rule_preview": [
+      "semantic_review_required",
+      null
+    ],
+    "new_rule_preview": [
+      "vegan",
+      "tagged"
+    ]
+  },
+  {
+    "product_id": "615187011",
+    "name": "FUEL 10K Chocolate Protein Porridge Sachets Oat Cereal Sachets",
+    "old_rule_preview": [
+      "semantic_review_required",
+      null
+    ],
+    "new_rule_preview": [
+      "vegan",
+      "tagged"
+    ]
+  },
+  {
+    "product_id": "617095011",
+    "name": "Mama Korean Udon Kimchi Instant Noodles",
+    "old_rule_preview": [
+      "semantic_review_required",
+      null
+    ],
+    "new_rule_preview": [
+      "unknown",
+      null
+    ]
+  },
+  {
+    "product_id": "617098011",
+    "name": "Mama Korean Udon Hot & Spicy Instant Noodles",
+    "old_rule_preview": [
+      "semantic_review_required",
+      null
+    ],
+    "new_rule_preview": [
+      "unknown",
+      null
+    ]
+  },
+  {
+    "product_id": "617205011",
+    "name": "Dell'Ugo Italian Pinsa with Garlic Oil",
+    "old_rule_preview": [
+      "semantic_review_required",
+      null
+    ],
+    "new_rule_preview": [
+      "vegan",
+      "tagged"
+    ]
+  },
+  {
+    "product_id": "620548011",
+    "name": "Urban Noodle Spicy Pho Ramen Pot",
+    "old_rule_preview": [
+      "semantic_review_required",
+      null
+    ],
+    "new_rule_preview": [
+      "vegan",
+      "manufacturer"
+    ]
+  },
+  {
+    "product_id": "620549011",
+    "name": "Urban Noodle Tom Yum Ramen Pot",
+    "old_rule_preview": [
+      "semantic_review_required",
+      null
+    ],
+    "new_rule_preview": [
+      "vegan",
+      "manufacturer"
+    ]
+  },
+  {
+    "product_id": "620550011",
+    "name": "Urban Noodle Yaki Umami Ramen Pot",
+    "old_rule_preview": [
+      "semantic_review_required",
+      null
+    ],
+    "new_rule_preview": [
+      "vegan",
+      "manufacturer"
+    ]
+  },
+  {
+    "product_id": "620913011",
+    "name": "Biona Organic Sesame Grissini Breadsticks with Extra Virgin Olive Oil",
+    "old_rule_preview": [
+      "semantic_review_required",
+      null
+    ],
+    "new_rule_preview": [
+      "unknown",
+      null
+    ]
+  },
+  {
+    "product_id": "621172011",
+    "name": "Sweet Freedom Choc Shot Brownie",
+    "old_rule_preview": [
+      "semantic_review_required",
+      null
+    ],
+    "new_rule_preview": [
+      "vegan",
+      "tagged"
+    ]
+  },
+  {
+    "product_id": "62135011",
+    "name": "Montezuma's Lordy Lord Cocoa Nibs Dark Chocolate Bar",
+    "old_rule_preview": [
+      "semantic_review_required",
+      null
+    ],
+    "new_rule_preview": [
+      "vegan",
+      "tagged"
+    ]
+  },
+  {
+    "product_id": "621820011",
+    "name": "M&S Classic Tomato Everything Sauce",
+    "old_rule_preview": [
+      "semantic_review_required",
+      null
+    ],
+    "new_rule_preview": [
+      "vegan",
+      "manufacturer"
+    ]
+  },
+  {
+    "product_id": "624294011",
+    "name": "M&S Oat & 3 Seed Crispbread",
+    "old_rule_preview": [
+      "semantic_review_required",
+      null
+    ],
+    "new_rule_preview": [
+      "unknown",
+      null
+    ]
+  },
+  {
+    "product_id": "627673011",
+    "name": "The Vegetarian Butcher Hentastic Vegan Chicken Fillet",
+    "old_rule_preview": [
+      "semantic_review_required",
+      null
+    ],
+    "new_rule_preview": [
+      "vegan",
+      "manufacturer"
+    ]
+  },
+  {
+    "product_id": "628797011",
+    "name": "Ben & Jerry's Sundae Non Dairy Vegan Oat of this Swirled Ice Cream Tub",
+    "old_rule_preview": [
+      "semantic_review_required",
+      null
+    ],
+    "new_rule_preview": [
+      "vegan",
+      "manufacturer"
+    ]
+  },
+  {
+    "product_id": "629295011",
+    "name": "Sweet Freedom Barista Syrup Hazelnut",
+    "old_rule_preview": [
+      "semantic_review_required",
+      null
+    ],
+    "new_rule_preview": [
+      "vegan",
+      "manufacturer"
+    ]
+  },
+  {
+    "product_id": "629296011",
+    "name": "Sweet Freedom Barista Syrup Vanilla",
+    "old_rule_preview": [
+      "semantic_review_required",
+      null
+    ],
+    "new_rule_preview": [
+      "vegan",
+      "manufacturer"
+    ]
+  },
+  {
+    "product_id": "629542011",
+    "name": "Ben & Jerry's Non Dairy Cookies on Cookie Dough Vegan Ice Cream Tub",
+    "old_rule_preview": [
+      "semantic_review_required",
+      null
+    ],
+    "new_rule_preview": [
+      "vegan",
+      "manufacturer"
+    ]
+  },
+  {
+    "product_id": "63654011",
+    "name": "Organic Babies Scent Free Wash & Shampoo",
+    "old_rule_preview": [
+      "semantic_review_required",
+      null
+    ],
+    "new_rule_preview": [
+      "vegan",
+      "tagged"
+    ]
+  },
+  {
+    "product_id": "639364011",
+    "name": "M&S Plant Kitchen Vegan Basil Pesto",
+    "old_rule_preview": [
+      "semantic_review_required",
+      null
+    ],
+    "new_rule_preview": [
+      "vegan",
+      "manufacturer"
+    ]
+  },
+  {
+    "product_id": "644068011",
+    "name": "Snack a Jacks Caramel Jumbo Rice Cakes",
+    "old_rule_preview": [
+      "semantic_review_required",
+      null
+    ],
+    "new_rule_preview": [
+      "unknown",
+      null
+    ]
+  },
+  {
+    "product_id": "645596011",
+    "name": "M&S Family Chilli Sauce",
+    "old_rule_preview": [
+      "semantic_review_required",
+      null
+    ],
+    "new_rule_preview": [
+      "vegan",
+      "manufacturer"
+    ]
+  },
+  {
+    "product_id": "645600011",
+    "name": "M&S Family Bolognese Sauce",
+    "old_rule_preview": [
+      "semantic_review_required",
+      null
+    ],
+    "new_rule_preview": [
+      "vegan",
+      "manufacturer"
+    ]
+  },
+  {
+    "product_id": "645645011",
+    "name": "M&S Spaghetti Bolognese Cooking Paste",
+    "old_rule_preview": [
+      "semantic_review_required",
+      null
+    ],
+    "new_rule_preview": [
+      "vegan",
+      "manufacturer"
+    ]
+  },
+  {
+    "product_id": "646406011",
+    "name": "M&S Plant Kitchen Vegan No Chicken Kyiv",
+    "old_rule_preview": [
+      "semantic_review_required",
+      null
+    ],
+    "new_rule_preview": [
+      "vegan",
+      "manufacturer"
+    ]
+  },
+  {
+    "product_id": "646407011",
+    "name": "M&S Plant Kitchen Vegan 2 No Fish Cakes",
+    "old_rule_preview": [
+      "semantic_review_required",
+      null
+    ],
+    "new_rule_preview": [
+      "vegan",
+      "manufacturer"
+    ]
+  },
+  {
+    "product_id": "646410011",
+    "name": "M&S Plant Kitchen Vegan No Chicken Nuggets",
+    "old_rule_preview": [
+      "semantic_review_required",
+      null
+    ],
+    "new_rule_preview": [
+      "vegan",
+      "manufacturer"
+    ]
+  },
+  {
+    "product_id": "649107011",
+    "name": "M&S High Protein Bang Bang Cauliflower",
+    "old_rule_preview": [
+      "semantic_review_required",
+      null
+    ],
+    "new_rule_preview": [
+      "vegan",
+      "manufacturer"
+    ]
+  },
+  {
+    "product_id": "649265011",
+    "name": "M&S Firecracker Chilli Sauce",
+    "old_rule_preview": [
+      "semantic_review_required",
+      null
+    ],
+    "new_rule_preview": [
+      "vegan",
+      "manufacturer"
+    ]
+  },
+  {
+    "product_id": "649277011",
+    "name": "Yutaka Vegetable Bao Buns",
+    "old_rule_preview": [
+      "semantic_review_required",
+      null
+    ],
+    "new_rule_preview": [
+      "vegan",
+      "manufacturer"
+    ]
+  },
+  {
+    "product_id": "649280011",
+    "name": "M&S Mushroom & Miso Ramen Broth",
+    "old_rule_preview": [
+      "semantic_review_required",
+      null
+    ],
+    "new_rule_preview": [
+      "vegan",
+      "manufacturer"
+    ]
+  },
+  {
+    "product_id": "649283011",
+    "name": "M&S Spring Onion Rice",
+    "old_rule_preview": [
+      "semantic_review_required",
+      null
+    ],
+    "new_rule_preview": [
+      "vegan",
+      "manufacturer"
+    ]
+  },
+  {
+    "product_id": "649511011",
+    "name": "M&S Oat Crunch",
+    "old_rule_preview": [
+      "semantic_review_required",
+      null
+    ],
+    "new_rule_preview": [
+      "unknown",
+      null
+    ]
+  },
+  {
+    "product_id": "650203011",
+    "name": "M&S Plant Kitchen Vegan No Beef Steak Pie",
+    "old_rule_preview": [
+      "nonvegan",
+      null
+    ],
+    "new_rule_preview": [
+      "vegan",
+      "manufacturer"
+    ]
+  },
+  {
+    "product_id": "650561011",
+    "name": "M&S Plant Kitchen Lentil Lasagne Serves 1",
+    "old_rule_preview": [
+      "semantic_review_required",
+      null
+    ],
+    "new_rule_preview": [
+      "vegan",
+      "manufacturer"
+    ]
+  },
+  {
+    "product_id": "654611011",
+    "name": "Ben & Jerry's Non Dairy Bohemian Raspberry Vegan Ice Cream Tub",
+    "old_rule_preview": [
+      "semantic_review_required",
+      null
+    ],
+    "new_rule_preview": [
+      "vegan",
+      "manufacturer"
+    ]
+  },
+  {
+    "product_id": "658060011",
+    "name": "Nibble Simply Nutty Choc Fix Trail Mix",
+    "old_rule_preview": [
+      "semantic_review_required",
+      null
+    ],
+    "new_rule_preview": [
+      "vegan",
+      "tagged"
+    ]
+  },
+  {
+    "product_id": "658061011",
+    "name": "Nibble Simply Choccy Hazelnut Mango Trail Mix",
+    "old_rule_preview": [
+      "semantic_review_required",
+      null
+    ],
+    "new_rule_preview": [
+      "vegan",
+      "tagged"
+    ]
+  },
+  {
+    "product_id": "659736011",
+    "name": "Mummy Meegz M'z Gems Peanut",
+    "old_rule_preview": [
+      "semantic_review_required",
+      null
+    ],
+    "new_rule_preview": [
+      "vegan",
+      "manufacturer"
+    ]
+  },
+  {
+    "product_id": "659941011",
+    "name": "Laila Sweet Chilli Grills",
+    "old_rule_preview": [
+      "semantic_review_required",
+      null
+    ],
+    "new_rule_preview": [
+      "unknown",
+      null
+    ]
+  },
+  {
+    "product_id": "660005011",
+    "name": "Ole & Steen Chia Rye",
+    "old_rule_preview": [
+      "semantic_review_required",
+      null
+    ],
+    "new_rule_preview": [
+      "unknown",
+      null
+    ]
+  },
+  {
+    "product_id": "660036011",
+    "name": "Jaimin Dry Fruit Samosa",
+    "old_rule_preview": [
+      "semantic_review_required",
+      null
+    ],
+    "new_rule_preview": [
+      "unknown",
+      null
+    ]
+  },
+  {
+    "product_id": "660235011",
+    "name": "M&S Only 5 Ingredients Dark Chocolate and Almond Date Bar Serves 1",
+    "old_rule_preview": [
+      "semantic_review_required",
+      null
+    ],
+    "new_rule_preview": [
+      "vegan",
+      "manufacturer"
+    ]
+  },
+  {
+    "product_id": "660547011",
+    "name": "Mr Fothergills Seeds - Rocket Wild",
+    "old_rule_preview": [
+      "semantic_review_required",
+      null
+    ],
+    "new_rule_preview": [
+      "unknown",
+      null
+    ]
+  },
+  {
+    "product_id": "660548011",
+    "name": "Mr Fothergills Seeds Crazy Creeper Nasturtiums",
+    "old_rule_preview": [
+      "semantic_review_required",
+      null
+    ],
+    "new_rule_preview": [
+      "unknown",
+      null
+    ]
+  },
+  {
+    "product_id": "660550011",
+    "name": "Mr Fothergills Seeds - Johnsons Little Gardeners Egg Heads Cress",
+    "old_rule_preview": [
+      "semantic_review_required",
+      null
+    ],
+    "new_rule_preview": [
+      "unknown",
+      null
+    ]
+  },
+  {
+    "product_id": "660551011",
+    "name": "Mr Fothergills Seeds - Johnsons Little Gardeners Mini Basketball Carrots",
+    "old_rule_preview": [
+      "semantic_review_required",
+      null
+    ],
+    "new_rule_preview": [
+      "unknown",
+      null
+    ]
+  },
+  {
+    "product_id": "660649011",
+    "name": "Mr Fothergills Seeds - Oh Sow Simple California Poppy Mix",
+    "old_rule_preview": [
+      "semantic_review_required",
+      null
+    ],
+    "new_rule_preview": [
+      "unknown",
+      null
+    ]
+  },
+  {
+    "product_id": "660651011",
+    "name": "Mr Fothergills Seeds - Oh Sow Simple Larkspur Dwarf Mix",
+    "old_rule_preview": [
+      "semantic_review_required",
+      null
+    ],
+    "new_rule_preview": [
+      "unknown",
+      null
+    ]
+  },
+  {
+    "product_id": "660653011",
+    "name": "Mr Fothergills Seeds - Oh Sow Simple Lupin Mix",
+    "old_rule_preview": [
+      "semantic_review_required",
+      null
+    ],
+    "new_rule_preview": [
+      "unknown",
+      null
+    ]
+  },
+  {
+    "product_id": "660697011",
+    "name": "Mr Fothergills Seeds - Oh Sow Simple Nasturtium Mix",
+    "old_rule_preview": [
+      "semantic_review_required",
+      null
+    ],
+    "new_rule_preview": [
+      "unknown",
+      null
+    ]
+  },
+  {
+    "product_id": "660698011",
+    "name": "Mr Fothergills Seeds - Oh Sow Simple Stock Scented",
+    "old_rule_preview": [
+      "semantic_review_required",
+      null
+    ],
+    "new_rule_preview": [
+      "unknown",
+      null
+    ]
+  },
+  {
+    "product_id": "660700011",
+    "name": "Mr Fothergills Seeds - Oh Sow Simple Wildflower Wildlife Mix",
+    "old_rule_preview": [
+      "semantic_review_required",
+      null
+    ],
+    "new_rule_preview": [
+      "unknown",
+      null
+    ]
+  },
+  {
+    "product_id": "660750011",
+    "name": "Laila Bombay Mix Hot",
+    "old_rule_preview": [
+      "semantic_review_required",
+      null
+    ],
+    "new_rule_preview": [
+      "vegan",
+      "manufacturer"
+    ]
+  },
+  {
+    "product_id": "660805011",
+    "name": "M&S 2 Spanish Traditional Plain Pan De Cristal",
+    "old_rule_preview": [
+      "semantic_review_required",
+      null
+    ],
+    "new_rule_preview": [
+      "unknown",
+      null
+    ]
+  },
+  {
+    "product_id": "661146011",
+    "name": "Dell'Ugo Hand Stretched Italian Pizza Base",
+    "old_rule_preview": [
+      "semantic_review_required",
+      null
+    ],
+    "new_rule_preview": [
+      "vegan",
+      "tagged"
+    ]
+  },
+  {
+    "product_id": "667743011",
+    "name": "M&S Tomato & Hidden Veg Pasta Sauce Serves 4",
+    "old_rule_preview": [
+      "semantic_review_required",
+      null
+    ],
+    "new_rule_preview": [
+      "vegan",
+      "manufacturer"
+    ]
+  },
+  {
+    "product_id": "670215011",
+    "name": "Bibigo Udon Noodles Chilli Flavour",
+    "old_rule_preview": [
+      "semantic_review_required",
+      null
+    ],
+    "new_rule_preview": [
+      "unknown",
+      null
+    ]
+  },
+  {
+    "product_id": "671804011",
+    "name": "Eat Natural Maple Syrup, Pecan and Peanut Bars",
+    "old_rule_preview": [
+      "semantic_review_required",
+      null
+    ],
+    "new_rule_preview": [
+      "vegan",
+      "manufacturer"
+    ]
+  },
+  {
+    "product_id": "672321011",
+    "name": "M&S Pesto & Slow Roasted Tomatoes Pasta Bowl",
+    "old_rule_preview": [
+      "semantic_review_required",
+      null
+    ],
+    "new_rule_preview": [
+      "vegan",
+      "manufacturer"
+    ]
+  },
+  {
+    "product_id": "673179011",
+    "name": "Pip & Nut Protein Peanut Butter Bars",
+    "old_rule_preview": [
+      "semantic_review_required",
+      null
+    ],
+    "new_rule_preview": [
+      "unknown",
+      null
+    ]
+  },
+  {
+    "product_id": "673415011",
+    "name": "Lo Bros Kombucha Pineapple & Lime Low Sugar Multipack",
+    "old_rule_preview": [
+      "semantic_review_required",
+      null
+    ],
+    "new_rule_preview": [
+      "vegan",
+      "manufacturer"
+    ]
+  },
+  {
+    "product_id": "673418011",
+    "name": "Lo Bros Kombucha Raspberry & Blackcurrant Low Sugar Multipack",
+    "old_rule_preview": [
+      "semantic_review_required",
+      null
+    ],
+    "new_rule_preview": [
+      "vegan",
+      "manufacturer"
+    ]
+  },
+  {
+    "product_id": "677086011",
+    "name": "Vivera Plant Steak",
+    "old_rule_preview": [
+      "semantic_review_required",
+      null
+    ],
+    "new_rule_preview": [
+      "vegan",
+      "manufacturer"
+    ]
+  },
+  {
+    "product_id": "679160011",
+    "name": "M&S Plant Kitchen Mushroom No-Meatballs Frozen",
+    "old_rule_preview": [
+      "semantic_review_required",
+      null
+    ],
+    "new_rule_preview": [
+      "vegan",
+      "manufacturer"
+    ]
+  },
+  {
+    "product_id": "679161011",
+    "name": "M&S Plant Kitchen Sweet & Spicy Pulled Mushrooms Frozen",
+    "old_rule_preview": [
+      "semantic_review_required",
+      null
+    ],
+    "new_rule_preview": [
+      "vegan",
+      "manufacturer"
+    ]
+  },
+  {
+    "product_id": "679162011",
+    "name": "M&S Plant Kitchen No Beef Mince Frozen",
+    "old_rule_preview": [
+      "semantic_review_required",
+      null
+    ],
+    "new_rule_preview": [
+      "vegan",
+      "manufacturer"
+    ]
+  },
+  {
+    "product_id": "680811011",
+    "name": "Vivera Plant Mince",
+    "old_rule_preview": [
+      "semantic_review_required",
+      null
+    ],
+    "new_rule_preview": [
+      "vegan",
+      "manufacturer"
+    ]
+  },
+  {
+    "product_id": "681551011",
+    "name": "M&S Made Without Dairy Baking Drops",
+    "old_rule_preview": [
+      "semantic_review_required",
+      null
+    ],
+    "new_rule_preview": [
+      "vegan",
+      "manufacturer"
+    ]
+  },
+  {
+    "product_id": "682607011",
+    "name": "Bold Bean Co Rich Tomato Baked Beans",
+    "old_rule_preview": [
+      "semantic_review_required",
+      null
+    ],
+    "new_rule_preview": [
+      "unknown",
+      null
+    ]
+  },
+  {
+    "product_id": "683415011",
+    "name": "DOZZ Vegetable Soup",
+    "old_rule_preview": [
+      "semantic_review_required",
+      null
+    ],
+    "new_rule_preview": [
+      "vegan",
+      "manufacturer"
+    ]
+  },
+  {
+    "product_id": "683523011",
+    "name": "Tony's Chocolonely Dark Almond Sea Salt Small Snack Bar",
+    "old_rule_preview": [
+      "semantic_review_required",
+      null
+    ],
+    "new_rule_preview": [
+      "vegan",
+      "manufacturer"
+    ]
+  },
+  {
+    "product_id": "688024011",
+    "name": "Arnott's Shapes Barbecue Snack Crackers",
+    "old_rule_preview": [
+      "semantic_review_required",
+      null
+    ],
+    "new_rule_preview": [
+      "unknown",
+      null
+    ]
+  },
+  {
+    "product_id": "68835011",
+    "name": "Green People Organic SPF 15 Day Cream Solution, Vegan",
+    "old_rule_preview": [
+      "semantic_review_required",
+      null
+    ],
+    "new_rule_preview": [
+      "vegan",
+      "tagged"
+    ]
+  },
+  {
+    "product_id": "71133011",
+    "name": "Marigold Health Foods Swiss Vegetable Bouillon Reduced Salt Family",
+    "old_rule_preview": [
+      "semantic_review_required",
+      null
+    ],
+    "new_rule_preview": [
+      "vegan",
+      "tagged"
+    ]
+  },
+  {
+    "product_id": "74824011",
+    "name": "Sharwood's Chinese Curry Cooking Sauce",
+    "old_rule_preview": [
+      "semantic_review_required",
+      null
+    ],
+    "new_rule_preview": [
+      "unknown",
+      null
+    ]
+  },
+  {
+    "product_id": "76944011",
+    "name": "Lindt 51% Dark Cooking Chocolate Bar",
+    "old_rule_preview": [
+      "semantic_review_required",
+      null
+    ],
+    "new_rule_preview": [
+      "unknown",
+      null
+    ]
+  },
+  {
+    "product_id": "76949011",
+    "name": "Lindt 70% Dark Cooking Chocolate Bar",
+    "old_rule_preview": [
+      "semantic_review_required",
+      null
+    ],
+    "new_rule_preview": [
+      "unknown",
+      null
+    ]
+  },
+  {
+    "product_id": "78567011",
+    "name": "Ainsley Harriott Roasted Vegetable Cous Cous",
+    "old_rule_preview": [
+      "semantic_review_required",
+      null
+    ],
+    "new_rule_preview": [
+      "vegan",
+      "manufacturer"
+    ]
+  },
+  {
+    "product_id": "80047011",
+    "name": "Ocado Diced Beef",
+    "old_rule_preview": [
+      "semantic_review_required",
+      null
+    ],
+    "new_rule_preview": [
+      "unknown",
+      null
+    ]
+  },
+  {
+    "product_id": "82979011",
+    "name": "Yarden Houmous Lite",
+    "old_rule_preview": [
+      "semantic_review_required",
+      null
+    ],
+    "new_rule_preview": [
+      "unknown",
+      null
+    ]
+  },
+  {
+    "product_id": "513539011",
+    "name": "M&S Gers",
+    "old_rule_preview": [
+      "nonvegan",
+      null
+    ],
+    "new_rule_preview": [
+      "unknown",
+      null
+    ]
+  },
+  {
+    "product_id": "689948011",
+    "name": "CJ Dashida Soup Stock Beef 300g",
+    "old_rule_preview": [
+      "semantic_review_required",
+      null
+    ],
+    "new_rule_preview": [
+      "vegan",
+      "manufacturer"
+    ]
+  },
+  {
+    "product_id": "689084011",
+    "name": "Indomie Chicken Noodles",
+    "old_rule_preview": [
+      "semantic_review_required",
+      null
+    ],
+    "new_rule_preview": [
+      "unknown",
+      null
+    ]
+  },
+  {
+    "product_id": "689082011",
+    "name": "Indomie Special Chicken Noodles",
+    "old_rule_preview": [
+      "semantic_review_required",
+      null
+    ],
+    "new_rule_preview": [
+      "unknown",
+      null
+    ]
+  },
+  {
+    "product_id": "365066011",
+    "name": "Mr Fothergills Seed Zinnia Sombrero",
+    "old_rule_preview": [
+      "semantic_review_required",
+      null
+    ],
+    "new_rule_preview": [
+      "unknown",
+      null
+    ]
+  },
+  {
+    "product_id": "670493011",
+    "name": "Green and Blacks Ginger Chocolate",
+    "old_rule_preview": [
+      "semantic_review_required",
+      null
+    ],
+    "new_rule_preview": [
+      "unknown",
+      null
+    ]
+  },
+  {
+    "product_id": "700145011",
+    "name": "Mummy Meegz Advent Calendar",
+    "old_rule_preview": [
+      "semantic_review_required",
+      null
+    ],
+    "new_rule_preview": [
+      "vegan",
+      "manufacturer"
+    ]
+  }
+]
