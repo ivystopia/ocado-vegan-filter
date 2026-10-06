@@ -1,0 +1,399 @@
+{
+  "state": "completed_stage",
+  "failed_call_attempts": 14,
+  "invalid_reference_occurrences": [
+    {
+      "call_id": "94b20907-5287-48ae-83e1-a8fa38947d52",
+      "product_id": "634499011",
+      "path": "/product/ingredients",
+      "quote": "Sugar, Glucose Syrup, Palm Fat, ... Flavourings",
+      "error": "Evidence quote is absent at /product/ingredients"
+    },
+    {
+      "call_id": "94b20907-5287-48ae-83e1-a8fa38947d52",
+      "product_id": "656809011",
+      "path": "/product/specification",
+      "quote": "Trousers 65% polyester, 35% viscose (exclusive of trimmings), Pocketing (pocket fabric composition) - 100% polyester",
+      "error": "Evidence quote is absent at /product/specification"
+    },
+    {
+      "call_id": "32a101a4-ecb4-4e53-b159-9b902d66ec39",
+      "product_id": "691043011",
+      "path": "/product/specification",
+      "quote": "StayNew technology: longer-lasting colour and finish",
+      "error": "Evidence quote is absent at /product/specification"
+    },
+    {
+      "call_id": "32a101a4-ecb4-4e53-b159-9b902d66ec39",
+      "product_id": "691043011",
+      "path": "/product/specification",
+      "quote": "StayNew technology: longer-lasting colour and finish",
+      "error": "Evidence quote is absent at /product/specification"
+    },
+    {
+      "call_id": "32a101a4-ecb4-4e53-b159-9b902d66ec39",
+      "product_id": "691043011",
+      "path": "/product/specification",
+      "quote": "StayNew technology: longer-lasting colour and finish",
+      "error": "Evidence quote is absent at /product/specification"
+    },
+    {
+      "call_id": "32a101a4-ecb4-4e53-b159-9b902d66ec39",
+      "product_id": "691043011",
+      "path": "/product/specification",
+      "quote": "Button fastening; StayNew technology: longer-lasting colour and finish",
+      "error": "Evidence quote is absent at /product/specification"
+    },
+    {
+      "call_id": "4e1443f6-9296-4774-a47e-11ff5a3b5c7b",
+      "product_id": "565041011",
+      "path": "/product/ingredients",
+      "quote": "Sugar, Glucose Syrup, Palm Fat, Acid (Malic Acid), Dextrin, Modified Starch, Maltodextrin, Acid (Citric Acid), Flavourings, Colours (E163, E162, E170, E100, E153, E133), Sweet Potato Concentrate, Acidity Regulator (Trisodium Citrate), Glazing Agent (Carnauba Wax), Radish Concentrate.",
+      "error": "Evidence quote is absent at /product/ingredients"
+    },
+    {
+      "call_id": "4e1443f6-9296-4774-a47e-11ff5a3b5c7b",
+      "product_id": "687282011",
+      "path": "/manufacturer_source_candidates/1/market_scope",
+      "quote": "M&S Clothing, Home and Beauty sourcing policy; June 2020 document, not a new universal vegan commitment.",
+      "error": "Evidence quote is absent at /manufacturer_source_candidates/1/market_scope"
+    },
+    {
+      "call_id": "4e1443f6-9296-4774-a47e-11ff5a3b5c7b",
+      "product_id": "687282011",
+      "path": "/manufacturer_source_candidates/1/retrieved_at",
+      "quote": "2026-09-13T17:33:50.593083+00:00",
+      "error": "Evidence quote is absent at /manufacturer_source_candidates/1/retrieved_at"
+    },
+    {
+      "call_id": "fad53e3d-d601-4d5d-965a-a3054790d938",
+      "product_id": "651228011",
+      "path": "/product/detailed_description",
+      "quote": "This fragrance combines top notes of apple and raspberry with a heart of rose and jasmine, and a base of earthy moss and sandalwood.",
+      "error": "Evidence quote is absent at /product/detailed_description"
+    },
+    {
+      "call_id": "2bb351c3-a7ae-4c8e-8fe1-c04454878422",
+      "product_id": "690894011",
+      "path": "/product/detailed_description",
+      "quote": "easy zip closure",
+      "error": "Evidence quote is absent at /product/detailed_description"
+    },
+    {
+      "call_id": "2bb351c3-a7ae-4c8e-8fe1-c04454878422",
+      "product_id": "690894011",
+      "path": "/product/detailed_description",
+      "quote": "easy zip closure",
+      "error": "Evidence quote is absent at /product/detailed_description"
+    },
+    {
+      "call_id": "2bb351c3-a7ae-4c8e-8fe1-c04454878422",
+      "product_id": "690894011",
+      "path": "/product/detailed_description",
+      "quote": "easy zip closure",
+      "error": "Evidence quote is absent at /product/detailed_description"
+    },
+    {
+      "call_id": "2bb351c3-a7ae-4c8e-8fe1-c04454878422",
+      "product_id": "690894011",
+      "path": "/product/detailed_description",
+      "quote": "easy zip closure",
+      "error": "Evidence quote is absent at /product/detailed_description"
+    },
+    {
+      "call_id": "b7903ce9-dadc-4f8a-babf-7c4602e5abc7",
+      "product_id": "683360011",
+      "path": "/manufacturer_source_candidates/0/source_text",
+      "quote": "all other animal derived materials must be sourced in accordance with this policy",
+      "error": "Evidence quote is absent at /manufacturer_source_candidates/0/source_text"
+    },
+    {
+      "call_id": "b7903ce9-dadc-4f8a-babf-7c4602e5abc7",
+      "product_id": "683360011",
+      "path": "/manufacturer_source_candidates/0/source_text",
+      "quote": "all other animal derived materials must be sourced in accordance with this policy",
+      "error": "Evidence quote is absent at /manufacturer_source_candidates/0/source_text"
+    },
+    {
+      "call_id": "b7903ce9-dadc-4f8a-babf-7c4602e5abc7",
+      "product_id": "687170011",
+      "path": "/manufacturer_source_candidates/0/source_text",
+      "quote": "all other animal derived materials must be sourced in accordance with this policy",
+      "error": "Evidence quote is absent at /manufacturer_source_candidates/0/source_text"
+    },
+    {
+      "call_id": "b7903ce9-dadc-4f8a-babf-7c4602e5abc7",
+      "product_id": "687170011",
+      "path": "/manufacturer_source_candidates/0/source_text",
+      "quote": "all other animal derived materials must be sourced in accordance with this policy",
+      "error": "Evidence quote is absent at /manufacturer_source_candidates/0/source_text"
+    },
+    {
+      "call_id": "b7903ce9-dadc-4f8a-babf-7c4602e5abc7",
+      "product_id": "636454011",
+      "path": "/manufacturer_source_candidates/0/source_text",
+      "quote": "This policy covers products sold in all Clothing, Home and Beauty areas that contain any animal derived raw materials.",
+      "error": "Evidence quote is absent at /manufacturer_source_candidates/0/source_text"
+    },
+    {
+      "call_id": "b7903ce9-dadc-4f8a-babf-7c4602e5abc7",
+      "product_id": "636454011",
+      "path": "/manufacturer_source_candidates/1/source_text",
+      "quote": "it is topped with a decorative lid and ribbon",
+      "error": "Evidence pointer does not exist: /manufacturer_source_candidates/1/source_text"
+    },
+    {
+      "call_id": "b7903ce9-dadc-4f8a-babf-7c4602e5abc7",
+      "product_id": "636454011",
+      "path": "/manufacturer_source_candidates/0/source_text",
+      "quote": "This policy covers products sold in all Clothing, Home and Beauty areas",
+      "error": "Evidence quote is absent at /manufacturer_source_candidates/0/source_text"
+    },
+    {
+      "call_id": "b7903ce9-dadc-4f8a-babf-7c4602e5abc7",
+      "product_id": "636454011",
+      "path": "/manufacturer_source_candidates/0/source_text",
+      "quote": "This policy covers products sold in all Clothing, Home and Beauty areas",
+      "error": "Evidence quote is absent at /manufacturer_source_candidates/0/source_text"
+    },
+    {
+      "call_id": "b7903ce9-dadc-4f8a-babf-7c4602e5abc7",
+      "product_id": "636454011",
+      "path": "/manufacturer_source_candidates/0/market_scope",
+      "quote": "M&S Clothing, Home and Beauty sourcing policy; June 2020 document, not a new universal vegan commitment.",
+      "error": "Evidence quote is absent at /manufacturer_source_candidates/0/market_scope"
+    },
+    {
+      "call_id": "b7903ce9-dadc-4f8a-babf-7c4602e5abc7",
+      "product_id": "636454011",
+      "path": "/manufacturer_source_candidates/0/source_text",
+      "quote": "Latest Version Date June 2020",
+      "error": "Evidence quote is absent at /manufacturer_source_candidates/0/source_text"
+    },
+    {
+      "call_id": "b7903ce9-dadc-4f8a-babf-7c4602e5abc7",
+      "product_id": "636454011",
+      "path": "/manufacturer_source_candidates/0/retrieved_at",
+      "quote": "2026-09-13T17:33:50.593083+00:00",
+      "error": "Evidence quote is absent at /manufacturer_source_candidates/0/retrieved_at"
+    },
+    {
+      "call_id": "b7903ce9-dadc-4f8a-babf-7c4602e5abc7",
+      "product_id": "636454011",
+      "path": "/manufacturer_source_candidates/1/source_text",
+      "quote": "Seashells Scented Candle",
+      "error": "Evidence pointer does not exist: /manufacturer_source_candidates/1/source_text"
+    },
+    {
+      "call_id": "b7903ce9-dadc-4f8a-babf-7c4602e5abc7",
+      "product_id": "636454011",
+      "path": "/manufacturer_source_candidates/1/source_text",
+      "quote": "Product ID: T80/5404L",
+      "error": "Evidence pointer does not exist: /manufacturer_source_candidates/1/source_text"
+    },
+    {
+      "call_id": "b7903ce9-dadc-4f8a-babf-7c4602e5abc7",
+      "product_id": "636454011",
+      "path": "/manufacturer_source_candidates/1/market_scope",
+      "quote": "Greece manufacturer storefront; not treated as UK vegan confirmation.",
+      "error": "Evidence pointer does not exist: /manufacturer_source_candidates/1/market_scope"
+    },
+    {
+      "call_id": "b7903ce9-dadc-4f8a-babf-7c4602e5abc7",
+      "product_id": "636454011",
+      "path": "/manufacturer_source_candidates/1/retrieved_at",
+      "quote": "2026-09-13T18:36:01.573435+00:00",
+      "error": "Evidence pointer does not exist: /manufacturer_source_candidates/1/retrieved_at"
+    },
+    {
+      "call_id": "b7903ce9-dadc-4f8a-babf-7c4602e5abc7",
+      "product_id": "636454011",
+      "path": "/manufacturer_source_candidates/1/source_text",
+      "quote": "© 2025 Marks and Spencer plc",
+      "error": "Evidence pointer does not exist: /manufacturer_source_candidates/1/source_text"
+    },
+    {
+      "call_id": "241547ab-ca31-4942-8aec-5c29c75354df",
+      "product_id": "681866011",
+      "path": "/product/detailed_description",
+      "quote": "bedding set come with one pillowcase",
+      "error": "Evidence quote is absent at /product/detailed_description"
+    },
+    {
+      "call_id": "b08d9e44-9e12-4f6d-9e7d-72901dcc4d6c",
+      "product_id": "577736011",
+      "path": "/product/detailed_description",
+      "quote": "all packaged in a handy reusable drum.",
+      "error": "Evidence quote is absent at /product/detailed_description"
+    },
+    {
+      "call_id": "b08d9e44-9e12-4f6d-9e7d-72901dcc4d6c",
+      "product_id": "577736011",
+      "path": "/product/detailed_description",
+      "quote": "all packaged in a handy reusable drum.",
+      "error": "Evidence quote is absent at /product/detailed_description"
+    },
+    {
+      "call_id": "dc6ce1ab-ab0b-44f6-9bd9-3e762a855c8b",
+      "product_id": "657080011",
+      "path": "/product/specification",
+      "quote": "65% polyester, 35% viscose (exclusive of trimmings), Pocketing (pocket fabric composition) - 100% polyester",
+      "error": "Evidence quote is absent at /product/specification"
+    },
+    {
+      "call_id": "dc6ce1ab-ab0b-44f6-9bd9-3e762a855c8b",
+      "product_id": "657080011",
+      "path": "/product/detailed_description",
+      "quote": "a durable Stain & Weatherproof finish repels water and marks",
+      "error": "Evidence quote is absent at /product/detailed_description"
+    },
+    {
+      "call_id": "dc6ce1ab-ab0b-44f6-9bd9-3e762a855c8b",
+      "product_id": "657080011",
+      "path": "/product/detailed_description",
+      "quote": "a durable Stain & Weatherproof finish repels water and marks",
+      "error": "Evidence quote is absent at /product/detailed_description"
+    },
+    {
+      "call_id": "dc6ce1ab-ab0b-44f6-9bd9-3e762a855c8b",
+      "product_id": "657080011",
+      "path": "/product/specification",
+      "quote": "65% polyester, 35% viscose (exclusive of trimmings), Pocketing (pocket fabric composition) - 100% polyester",
+      "error": "Evidence quote is absent at /product/specification"
+    },
+    {
+      "call_id": "dc6ce1ab-ab0b-44f6-9bd9-3e762a855c8b",
+      "product_id": "657080011",
+      "path": "/product/detailed_description",
+      "quote": "a durable Stain & Weatherproof finish repels water and marks",
+      "error": "Evidence quote is absent at /product/detailed_description"
+    },
+    {
+      "call_id": "5c84c22b-bad8-4024-ad12-3191c488721c",
+      "product_id": "510718011",
+      "path": "/product/ingredients",
+      "quote": "Humectant: Glycerol, ... Emulsifier: E471, ... Flour Treatment Agent: E920",
+      "error": "Evidence quote is absent at /product/ingredients"
+    },
+    {
+      "call_id": "5c84c22b-bad8-4024-ad12-3191c488721c",
+      "product_id": "510718011",
+      "path": "/product/ingredients",
+      "quote": "Wheatflour *, Water, ... Vinegar",
+      "error": "Evidence quote is absent at /product/ingredients"
+    },
+    {
+      "call_id": "b347bf8f-9d25-4804-ae2a-0688f50e371e",
+      "product_id": "691543011",
+      "path": "/product/detailed_description",
+      "quote": "They've got elasticated waistbands for maximum comfort.",
+      "error": "Evidence quote is absent at /product/detailed_description"
+    },
+    {
+      "call_id": "b347bf8f-9d25-4804-ae2a-0688f50e371e",
+      "product_id": "661164011",
+      "path": "/product/detailed_description",
+      "quote": "This card features embossed elements and gold foil details.",
+      "error": "Evidence quote is absent at /product/detailed_description"
+    },
+    {
+      "call_id": "b347bf8f-9d25-4804-ae2a-0688f50e371e",
+      "product_id": "661164011",
+      "path": "/product/detailed_description",
+      "quote": "This card features embossed elements and gold foil details.",
+      "error": "Evidence quote is absent at /product/detailed_description"
+    },
+    {
+      "call_id": "b347bf8f-9d25-4804-ae2a-0688f50e371e",
+      "product_id": "661164011",
+      "path": "/product/detailed_description",
+      "quote": "This card features embossed elements and gold foil details.",
+      "error": "Evidence quote is absent at /product/detailed_description"
+    },
+    {
+      "call_id": "b347bf8f-9d25-4804-ae2a-0688f50e371e",
+      "product_id": "635402011",
+      "path": "/product/detailed_description",
+      "quote": "This bathmat has been given M&S' StayNEW™ finish to keep it looking good as new even after daily use.",
+      "error": "Evidence quote is absent at /product/detailed_description"
+    },
+    {
+      "call_id": "b347bf8f-9d25-4804-ae2a-0688f50e371e",
+      "product_id": "635402011",
+      "path": "/product/detailed_description",
+      "quote": "This bathmat has been given M&S' StayNEW™ finish",
+      "error": "Evidence quote is absent at /product/detailed_description"
+    },
+    {
+      "call_id": "b347bf8f-9d25-4804-ae2a-0688f50e371e",
+      "product_id": "635402011",
+      "path": "/product/detailed_description",
+      "quote": "This bathmat has been given M&S' StayNEW™ finish",
+      "error": "Evidence quote is absent at /product/detailed_description"
+    },
+    {
+      "call_id": "b347bf8f-9d25-4804-ae2a-0688f50e371e",
+      "product_id": "635402011",
+      "path": "/product/detailed_description",
+      "quote": "This bathmat has been given M&S' StayNEW™ finish",
+      "error": "Evidence quote is absent at /product/detailed_description"
+    },
+    {
+      "call_id": "b347bf8f-9d25-4804-ae2a-0688f50e371e",
+      "product_id": "635402011",
+      "path": "/product/detailed_description",
+      "quote": "This bathmat has been given M&S' StayNEW™ finish to keep it looking good as new even after daily use.",
+      "error": "Evidence quote is absent at /product/detailed_description"
+    },
+    {
+      "call_id": "b347bf8f-9d25-4804-ae2a-0688f50e371e",
+      "product_id": "657080011",
+      "path": "/product/specification",
+      "quote": "65% polyester, 35% viscose (exclusive of trimmings), Pocketing (pocket fabric composition) - 100% polyester",
+      "error": "Evidence quote is absent at /product/specification"
+    },
+    {
+      "call_id": "9c0f2a36-9fb3-4f44-92ae-553d067bc816",
+      "product_id": "691543011",
+      "path": "/product/detailed_description",
+      "quote": "They’re made with added stretch and have elasticated waistbands",
+      "error": "Evidence quote is absent at /product/detailed_description"
+    },
+    {
+      "call_id": "891706fc-e9df-45e6-a091-9ff9f71e533d",
+      "product_id": "691543011",
+      "path": "/product/preparation_and_usage",
+      "quote": "pack of five",
+      "error": "Evidence quote is absent at /product/preparation_and_usage"
+    },
+    {
+      "call_id": "891706fc-e9df-45e6-a091-9ff9f71e533d",
+      "product_id": "691543011",
+      "path": "/product/categories/0",
+      "quote": "clothing-accessories/men-s-clothing-accessories/men-s-underwear",
+      "error": "Evidence pointer does not exist: /product/categories/0"
+    },
+    {
+      "call_id": "891706fc-e9df-45e6-a091-9ff9f71e533d",
+      "product_id": "691543011",
+      "path": "/product/preparation_and_usage",
+      "quote": "pack of five",
+      "error": "Evidence quote is absent at /product/preparation_and_usage"
+    },
+    {
+      "call_id": "891706fc-e9df-45e6-a091-9ff9f71e533d",
+      "product_id": "661164011",
+      "path": "/product/categories/0",
+      "quote": "occasions-entertaining/greeting-cards-stamps/birthday/for-him/son",
+      "error": "Evidence pointer does not exist: /product/categories/0"
+    },
+    {
+      "call_id": "e34a1b66-f25d-4441-a15f-5ef7f0a531f0",
+      "product_id": "661164011",
+      "path": "/product/detailed_description",
+      "quote": "this card comes complete with an M&S branded, Brown Kraft envelope",
+      "error": "Evidence quote is absent at /product/detailed_description"
+    }
+  ],
+  "note": "Several invalid citations may occur within one rejected call; occurrence counts are not independent calls/cases."
+}
