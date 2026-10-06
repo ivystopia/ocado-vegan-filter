@@ -188,9 +188,14 @@ def official_tag(context: dict[str, Any]) -> bool:
     return context["product"].get("official_vegan") == 1 or "vegan" in context.get("flags", [])
 
 
-def affirmative_name(name: str) -> bool:
+def affirmative_name(name: str, brand: str = '') -> bool:
+    # A producer's name/reputation is not a claim about the sold article.
+    if re.search(r'\bvegan\b',brand,re.I):
+        name=re.sub(re.escape(brand),'',name,count=1,flags=re.I).strip()
     if '?' in name or not re.search(r"\bvegan\b", name, re.I):
         return False
+    if re.search(r"\b(?:cookbook|recipe book|guide|diary|book)\b|\bvegan[’']s\b",name,re.I):
+        return False  # A vegan topic/author is not manufacturing assurance.
     # Difficult scope is deliberately left to structured model interpretation.
     return not re.search(r"\b(?:non[- ]?vegan|(?:no|not)\s+(?:\w+\s+){0,2}vegan|veganism|for\s+vegans?|vegan\s+(?:option|variant|alternative)\s+(?:available|also)|vegan\s+(?:certification|claims?|ingredients?|components?|leather|collagen|keratin|coating|lining|bristles|handle|upper))\b|\bwith\b.*\bvegan\b|\b(?:serve|serving|brand|recipe)\b", name, re.I)
 
@@ -466,7 +471,7 @@ def evaluate(context: dict[str, Any], *, animal_matches: list[str], cleaned_ingr
                 definite = False
             if definite and not issue["resolution_refs"]:
                 substantive_negative.append(issue)
-        claim_reason = "tagged" if official_tag(context) else "manufacturer" if positive else "name" if affirmative_name(name) else None
+        claim_reason = "tagged" if official_tag(context) else "manufacturer" if positive else "name" if affirmative_name(name,normalized(product.get('brand'))) else None
         if substantive_negative and not unresolved_blocks:
             status = "nonvegan"
         elif substantive_negative and all(issue["code"] in {"animal_processing", "animal_ingredient", "explicit_nonvegan"} for issue in unresolved_blocks):
@@ -518,7 +523,7 @@ def evaluate(context: dict[str, Any], *, animal_matches: list[str], cleaned_ingr
                     # A scoped answer to a vegan-suitability question can be
                     # explicit confirmation without repeating 'vegan' in it.
                     status,reason='vegan','manufacturer'
-                elif requested_reason == "name" and affirmative_name(name) and any(ref["path"] == "/product/name" for ref in refs):
+                elif requested_reason == "name" and affirmative_name(name,normalized(product.get('brand'))) and any(ref["path"] == "/product/name" for ref in refs):
                     status, reason = "vegan", "name"
         if assessment and requested_status == "nonvegan" and status == "unknown" and not block:
             # Evidence-backed model negatives must identify the actual source;

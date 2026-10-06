@@ -185,6 +185,12 @@ class WholeProductPolicyTests(unittest.TestCase):
         result=classifier.classify_by_rules(value)
         self.assertEqual(result.vegan_status,'unknown')
         self.assertTrue(result.evidence['positive_block'])
+        for value in [context('The Vegan Company Classic Product',None,brand='The Vegan Company'),
+                      context('A Vegan’s Guide to Gardening',None),context('Vegan Cookbook',None)]:
+            result=classifier.classify_by_rules(value)
+            self.assertTrue(result is None or result.vegan_status=='unknown')
+        value=context('The Vegan Company Vegan Beans',None,brand='The Vegan Company')
+        self.assertEqual(classifier.classify_by_rules(value).vegan_reason,'name')
 
     def test_a_whole_product_dressing_name_is_a_positive_claim(self):
         result=classifier.classify_by_rules(context('Example Vegan Caesar Dressing',None))
