@@ -41,6 +41,9 @@ class ArbitrationTests(unittest.TestCase):
                 if reason:
                     refs = classifier.policy.claim_sources(context)[0] if reason == "manufacturer" else [classifier.policy.reference("/product/name", context["product"]["name"])]
                     assessment["positive_support"] = [{"reason": reason, "evidence_refs": refs}] if refs else []
+                    if refs and reason in {'manufacturer','name'}:
+                        for dimension in ('composition','sourcing','processing','components'):
+                            assessment[dimension]={'status':'covered_by_claim','evidence_refs':refs}
                 decision["assessment"] = assessment
             raw = json.dumps({"decisions": list(decisions.values())})
             enriched.append((decisions, raw, raw, exit_status))

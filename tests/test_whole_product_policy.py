@@ -27,6 +27,98 @@ def source_check(value, path='/manufacturer_source_candidates/0', scope='product
 
 
 class WholeProductPolicyTests(unittest.TestCase):
+    def test_ordinary_food_does_not_clear_explicit_packaging(self):
+        for package in ['Plastic Bag','Carton','Glass Jar','Heat Sealed Tray','Blister']:
+            value=context('Carrots',None,package_type=package)
+            result=classifier.classify_by_rules(value)
+            self.assertEqual(result.vegan_status,'unknown')
+            self.assertIn('supplied-components-composition-v1',{
+                issue['rule_id'] for issue in result.evidence['assessment']['material_issues']})
+            value['product']['dietary_information']='Suitable for vegans.'
+            self.assertEqual(classifier.classify_by_rules(value).vegan_reason,'manufacturer')
+        self.assertEqual(classifier.classify_by_rules(context('Carrots',None,package_type='Loose')).vegan_reason,'ingredients')
+
+    def test_fruit_flavour_names_do_not_prove_plain_fruit(self):
+        examples = [
+            context('Example Pineapple & Ginger',None,brand='Example',
+                other_information='Full Product Name: Pineapple & Ginger Gin Liqueur. Storage: Cool.'),
+            context('Example Mango',None,brand='Example',
+                features='Sparkling Water with Alcohol and a Hint of Natural Flavours, Contains Alcohol'),
+            context('Example Mango',None,brand='Example',detailed_description='A triple distilled spirit hard seltzer.'),
+        ]
+        category_only=context('Example Mango',None,brand='Example')
+        category_only['categories']=['beer-wine-spirits/cocktails/individual-serving']
+        examples.append(category_only)
+        for value in examples:
+            self.assertFalse(classifier.policy_facts(value)['ordinary_identity'])
+            decision=classifier.classify_by_rules(value)
+            self.assertTrue(decision is None or decision.vegan_status!='vegan')
+        plain=context('Example Mango',None,brand='Example',other_information='Full Product Name: Fresh Mango. Storage: Cool.')
+        self.assertTrue(classifier.policy_facts(plain)['ordinary_identity'])
+        self.assertEqual(classifier.classify_by_rules(plain).vegan_reason,'ingredients')
+
+    def test_mixed_factory_warning_is_not_definite_animal_content(self):
+        value=context('Sea Salted Popcorn','Wholegrain Corn, Rapeseed Oil, Sea Salt',official_vegan=1,
+            allergens='Contains Milk Made in a factory that handles Milk.')
+        facts=classifier.policy_facts(value)
+        self.assertFalse(facts['animal_declarations'])
+        self.assertTrue(facts['qualified_animal_declarations'])
+        decision=classifier.classify_by_rules(value)
+        self.assertTrue(decision is None or decision.vegan_status=='unknown')
+        value['product']['ingredients']+=' , Milk'
+        self.assertEqual(classifier.classify_by_rules(value).vegan_status,'nonvegan')
+        value['product']['ingredients']='Wholegrain Corn, Rapeseed Oil, Sea Salt'
+        value['product']['allergens']='Contains Milk.'
+        self.assertEqual(classifier.classify_by_rules(value).vegan_status,'nonvegan')
+        value['product']['allergens']='May contain Milk.'
+        self.assertEqual(classifier.classify_by_rules(value).vegan_status,'vegan')
+
+    def test_supplied_components_are_assessed_even_when_not_eaten(self):
+        value=context('Example Cup Filters Coffee','Coffee',features='Filters made from sugar cane fibres.')
+        result=classifier.classify_by_rules(value)
+        self.assertEqual(result.vegan_status,'unknown')
+        self.assertIn('supplied-components-composition-v1',{
+            issue['rule_id'] for issue in result.evidence['assessment']['material_issues']})
+        self.assertNotIn('sugar-refining-v1',{
+            issue['rule_id'] for issue in result.evidence['assessment']['material_issues']})
+        for fields,reason in [({'official_vegan':1},'tagged'),
+                              ({'dietary_information':'Suitable for vegans.'},'manufacturer'),
+                              ({'name':'Vegan Cup Filters Coffee'},'name')]:
+            claimed=copy.deepcopy(value);claimed['product'].update(fields)
+            self.assertEqual(classifier.classify_by_rules(claimed).vegan_reason,reason)
+        value['product']['specification']='Wrapper: Gelatine.'
+        value['product']['official_vegan']=1
+        result=classifier.classify_by_rules(value)
+        self.assertEqual(result.vegan_status,'nonvegan')
+        self.assertTrue(result.evidence['tag_animal_conflict'])
+
+    def test_food_only_claim_cannot_clear_component_uncertainty(self):
+        value=context('Example Coffee Pods','Coffee',dietary_information='Suitable for vegans; packaging not assessed.')
+        result=classifier.classify_by_rules(value)
+        self.assertEqual(result.vegan_status,'unknown')
+        assessment=policy.base_assessment(value,complete=True)
+        assessment['positive_support']=[{'reason':'manufacturer','evidence_refs':[
+            policy.reference('/product/dietary_information','Suitable for vegans')]}]
+        result=policy.evaluate(value,**classifier.policy_facts(value),assessment=assessment,
+            requested_status='vegan',requested_reason='manufacturer')
+        self.assertEqual(result['vegan_status'],'unknown')
+        value['product']['dietary_information']='Suitable for vegans.'
+        assessment['components']={'status':'unresolved','evidence_refs':[policy.reference('/product/name',value['product']['name'])]}
+        result=policy.evaluate(value,**classifier.policy_facts(value),assessment=assessment,
+            requested_status='vegan',requested_reason='manufacturer')
+        self.assertEqual(result['vegan_status'],'unknown')
+
+    def test_full_field_and_identity_are_not_a_reassurance_against_an_animal_declaration(self):
+        value=context('Example Coffee Pods','Coffee',features='Wrapper: Gelatine. This wrapper is part of the supplied product and is used with every cup.')
+        refs=[policy.reference('/product/features',value['product']['features']),policy.reference('/product/name',value['product']['name'])]
+        assessment=policy.base_assessment(value,complete=True)
+        assessment['positive_support']=[{'reason':'ingredients','evidence_refs':[policy.reference('/product/ingredients','Coffee')]}]
+        assessment['material_issues']=[{'code':'evidence_conflict','target':'wrapper','rule_id':'animal-declaration-context-v1',
+            'evidence_refs':refs,'resolution_refs':refs,'blocks_claim':True}]
+        result=policy.evaluate(value,**classifier.policy_facts(value),assessment=assessment,
+            requested_status='vegan',requested_reason='ingredients')
+        self.assertNotEqual(result['vegan_status'],'vegan')
+
     def test_capsule_ingredients_on_a_volume_labelled_liquid_need_identity_resolution(self):
         value=context('Example Oil Blend','Flax seed oil, Gelatin Capsule (North American Source)',pack_size='500ml',official_vegan=1)
         result=classifier.classify_by_rules(value)
@@ -66,6 +158,60 @@ class WholeProductPolicyTests(unittest.TestCase):
         result=policy.evaluate(value,**classifier.policy_facts(value),assessment=assessment,requested_status='vegan',requested_reason='manufacturer')
         self.assertEqual(result['vegan_reason'],'manufacturer')
 
+    def test_raw_product_information_is_not_mistaken_for_an_external_website(self):
+        value=context('Vegan Body Cream',None)
+        text='Store in a cool place. Cruelty Free Suitable for vegans'
+        value['manufacturer_vegan_evidence']=[{'field_title':'specification','content':text}]
+        assessment=policy.base_assessment(value,complete=True)
+        assessment['positive_support']=[{'reason':'manufacturer','evidence_refs':[{'path':'/manufacturer_vegan_evidence/0/content','quote':'Suitable for vegans'}]}]
+        result=policy.evaluate(value,**classifier.policy_facts(value),assessment=assessment,requested_status='vegan',requested_reason='manufacturer')
+        self.assertEqual(result['vegan_reason'],'manufacturer')
+        self.assertFalse(result['positive_block'])
+        for quote in ['Another variant is vegan.', 'This body cream is vegan?']:
+            value['manufacturer_vegan_evidence'][0]['content']=quote
+            assessment['positive_support'][0]['evidence_refs'][0]['quote']=quote
+            value['product']['name']='Body Cream'
+            assessment=policy.base_assessment(value,complete=True)
+            assessment['positive_support']=[{'reason':'manufacturer','evidence_refs':[policy.reference('/manufacturer_vegan_evidence/0/content',quote)]}]
+            self.assertEqual(policy.evaluate(value,**classifier.policy_facts(value),assessment=assessment,
+                requested_status='vegan',requested_reason='manufacturer')['vegan_status'],'unknown')
+
+    def test_declared_animal_fining_agent_overrides_an_official_tag(self):
+        for text in ['Fining agent: Isinglass.', 'Fining agents: Gelatine, casein.', 'Refining aid: Bone char.']:
+            value=context('Wine',None,official_vegan=1,vinification_details=text)
+            result=classifier.classify_by_rules(value)
+            self.assertEqual(result.vegan_status,'nonvegan')
+            self.assertTrue(result.evidence['tag_animal_conflict'])
+            self.assertIn('animal_processing',{issue['code'] for issue in result.evidence['assessment']['material_issues']})
+
+    def test_malformed_botanical_descriptor_is_uncertain_not_dairy_proof(self):
+        value=context('Beard Balm','Vitis vinifera seed oil, butyrospermum parkiiy, butter, parfum',
+            specification='Product texture: Balm. Suitable for vegans')
+        self.assertIsNone(classifier.classify_by_rules(value))
+        assessment=policy.base_assessment(value,complete=True)
+        assessment['positive_support']=[{'reason':'manufacturer','evidence_refs':[{'path':'/product/specification','quote':'Suitable for vegans'}]}]
+        self.assertEqual(policy.evaluate(value,**classifier.policy_facts(value),assessment=assessment,
+            requested_status='vegan',requested_reason='manufacturer')['vegan_reason'],'manufacturer')
+        value['product']['specification']=None
+        self.assertEqual(classifier.classify_by_rules(value).vegan_status,'unknown')
+        value['product']['ingredients']+=', Milk, Gelatine'
+        value['product']['official_vegan']=1
+        self.assertEqual(classifier.classify_by_rules(value).vegan_status,'nonvegan')
+
+    def test_corroborated_animal_food_identity_and_intentional_allergens_are_negative_proof(self):
+        for name, full in [('Example Goat’s Milk','Pasteurised Goat’s Milk'),
+                           ('Example Ribeye Steak','British Beef Ribeye Steak')]:
+            value=context(name,None,official_vegan=1,other_information='Full Product Name: '+full+' Storage: Keep refrigerated.')
+            result=classifier.classify_by_rules(value)
+            self.assertEqual(result.vegan_status,'nonvegan')
+            self.assertTrue(result.evidence['tag_animal_conflict'])
+        for name in ['Vegan Ribeye Steak','Ribeye Steak Flavour Crisps','Ribeye Steak Recipe Book']:
+            result=classifier.classify_by_rules(context(name,None,other_information='Full Product Name: '+name))
+            self.assertTrue(result is None or result.vegan_status!='nonvegan')
+        self.assertEqual(classifier.classify_by_rules(context('Example Cheese',None,allergens='Contains Milk Contains Milk.')).vegan_status,'nonvegan')
+        result=classifier.classify_by_rules(context('Example Vegan Beans',None,allergens='May contain milk.'))
+        self.assertEqual(result.vegan_status,'vegan')
+
     def test_retained_source_quotes_accept_visible_words_but_not_invented_text(self):
         value=context()
         value['manufacturer_source_candidates']=[{'source_text':'L4: **Suitable for vegans.**\nL5: Except the honey variant.'}]
@@ -103,6 +249,7 @@ class WholeProductPolicyTests(unittest.TestCase):
         value['product']['name']='Example Candle, Pink Mix'
         assessment['identity']['evidence_refs']=[policy.reference('/product/name',value['product']['name'])]
         assessment['composition']['evidence_refs']=[policy.reference('/product/name',value['product']['name'])]
+        assessment['components']['evidence_refs']=[policy.reference('/product/name',value['product']['name'])]
         assessment['source_applicability']=[source_check(value)]
         result=policy.evaluate(value,**classifier.policy_facts(value),assessment=assessment,requested_status='vegan',requested_reason='manufacturer')
         self.assertEqual(result['vegan_reason'],'manufacturer')

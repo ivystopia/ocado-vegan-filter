@@ -29,9 +29,9 @@ DEFAULT_CODEX_MODEL = "gpt-5.6-luna"
 DEFAULT_REASONING_EFFORT = "high"
 ARBITRATION_MODEL = "gpt-6.1-sol"
 ARBITRATION_REASONING_EFFORT = "medium"
-ARBITRATION_PROMPT_VERSION = "ocado-vegan-whole-product-arbitration-v5"
-CLASSIFIER_VERSION = "db-vegan-codex-v13"
-PROMPT_VERSION = "ocado-vegan-whole-product-json-v14"
+ARBITRATION_PROMPT_VERSION = "ocado-vegan-whole-product-arbitration-v8"
+CLASSIFIER_VERSION = "db-vegan-codex-v16"
+PROMPT_VERSION = "ocado-vegan-whole-product-json-v17"
 VALID_STATUSES = {"vegan", "nonvegan", "unknown"}
 VALID_VEGAN_REASONS = {"tagged", "manufacturer", "ingredients", "name"}
 
@@ -1031,8 +1031,23 @@ def looks_like_single_ingredient_vegan_product(context: dict[str, Any]) -> bool:
     term = next((term for term in SINGLE_INGREDIENT_NAME_TERMS if re.search(rf"\b{re.escape(term)}\b", name)), None)
     if not term:
         return False
-    full_name = re.search(r"\bfull product name:\s*([^.;]+)", normalize_space(product.get("other_information")), re.I)
+    full_name = re.search(r"\bfull product name:\s*(.*?)(?:\s+(?:storage|usage|origin|country of origin|additional information|manufacturer|distributor|return to address):|$)", normalize_space(product.get("other_information")), re.I)
     if full_name and not re.search(rf"\b{re.escape(term)}\b", full_name.group(1), re.I):
+        return False
+    # A fruit in both names does not prove plain fruit: the full identity may
+    # be a gin liqueur. Likewise a short flavour name can identify a seltzer.
+    # Contrary category/detail evidence only defers this shortcut; it never
+    # establishes an animal ingredient or a nonvegan decision by itself.
+    manufactured_identity = r"\b(?:alcohol|alcoholic|gin|liqueur|liquor|spirit|spirits|seltzer|cocktail|wine|beer|cider|fermented|infused|flavou?r(?:ed|ing|s)?|juice|smoothie|sauce|dressing|extract|concentrate)\b"
+    if full_name and (re.search(manufactured_identity, full_name.group(1), re.I)
+            or any(re.search(rf"\b{re.escape(word)}\b", full_name.group(1), re.I) for word in PROCESSED_NAME_BLOCKLIST)):
+        return False
+    details = ' '.join(normalize_space(product.get(key)) for key in
+        ('features', 'detailed_description', 'further_description', 'manufacturer_marketing'))
+    if re.search(manufactured_identity, details, re.I):
+        return False
+    if any(re.search(r'(?:^|/)(?:beer-wine-spirits|cocktails|liqueurs|spirits|wine|beer|cider)(?:/|$)',
+            str(category), re.I) for category in context.get('categories', [])):
         return False
     # A produce category cannot legitimise an arbitrary product whose name
     # merely contains a vegetable word. Keep this fast path to complete plain
@@ -1051,12 +1066,19 @@ def looks_like_single_ingredient_vegan_product(context: dict[str, Any]) -> bool:
 def policy_facts(context: dict[str, Any]) -> dict[str, Any]:
     ingredients = normalize_space(context["product"].get("ingredients"))
     cleaned = strip_explicit_absence_and_plant_names(strip_safe_flour_fortification(strip_allergen_warnings(ingredients)))
+    # A comma splitting a botanical INCI name from "butter"/"cream" makes
+    # the ingredient's identity ambiguous. Do not silently correct the source
+    # to a plant ingredient or accuse it of containing dairy. Other explicit
+    # animal ingredients still take precedence.
+    ambiguous_inci = r'\b(?:butyrospermum|theobroma|mangifera|garcinia|astrocaryum)\s+[a-z]+(?:\s+(?:seed|kernel))?\s*,\s*(?:butter|cream)\b'
+    ambiguous_refs = [policy.reference('/product/ingredients', ingredients)] if re.search(ambiguous_inci, cleaned, re.I) else []
+    animal_text = re.sub(ambiguous_inci, 'unresolved botanical ingredient', cleaned, flags=re.I)
     checker=lambda text: bool(ingredient_matches(strip_explicit_absence_and_plant_names(
         strip_allergen_warnings(text)), NONVEGAN_INGREDIENT_PATTERNS))
     declarations=[];qualified=[]
-    for key in ('dietary_information','detailed_description','further_description','manufacturer_marketing','other_information','specification','vinification_details'):
+    for key in ('dietary_information','features','allergens','detailed_description','further_description','manufacturer_marketing','other_information','specification','vinification_details'):
         text=normalize_space(context['product'].get(key))
-        marker=r'\b(?:contains|includes|made with|ingredients?\s*:|(?:fined|clarified|processed|refined)\s+(?:with|using))\s*'
+        marker=r'\b(?:contains|includes|made (?:with|from)|ingredients?\s*:|(?:packaging|wrapper|pod|filter|coating)(?:\s+(?:materials?|composition))?\s*:|(?:fined|clarified|processed|refined)\s+(?:with|using)|(?:fining|clarifying|refining)\s+(?:agents?|aids?)\s*:)\s*'
         spans=[]
         for match in re.finditer(marker,text,re.I):
             # Inspect the declared target, not unrelated animal words elsewhere
@@ -1068,10 +1090,28 @@ def policy_facts(context: dict[str, Any]) -> dict[str, Any]:
         refs=[policy.reference('/product/'+key,text)]
         scope_text=re.sub(r'\bnot (?:suitable for (?:a )?vegans?|vegan)\b','',text,flags=re.I)
         literal=bool(re.match(r'^'+marker,scope_text.strip(' .;'),re.I)) and len(text.split())<=12
-        if not literal or re.search(r'\b(?:no|not|never|without|free from|another|other|some|certain|selected|may|can|except|excluding|recipe|serve|serving|prepare|free)\b',scope_text,re.I):qualified.extend(refs)
+        factory_warning = re.search(r'\b(?:factory|facility|site|equipment|production line)\b.*\b(?:handles?|handling|processes?|processing|uses?|using)\b|\b(?:cross[- ]contamination|cross[- ]contact)\b',scope_text,re.I)
+        if not literal or factory_warning or re.search(r'\b(?:no|not|never|without|free from|another|other|some|certain|selected|may|can|except|excluding|recipe|serve|serving|prepare|free)\b',scope_text,re.I):qualified.extend(refs)
         else:declarations.extend(refs)
+    # Whole-food identity can establish animal content without a separately
+    # populated ingredients list, just as ordinary carrots can establish a
+    # plant identity. Require a corroborating full product name, not an animal
+    # word in a brand, flavour, recipe, serving suggestion or topical article.
+    name=normalize_space(context['product'].get('name'))
+    full=re.search(r'\bfull product name:\s*(.*?)(?:\s+(?:storage|usage|additional information):|$)',
+                   normalize_space(context['product'].get('other_information')),re.I)
+    excluded=r'\b(?:vegan|vegetarian|plant|meatless|meat[- ]free|dairy[- ]free|flavou?r(?:ed|ing)?|style|alternative|imitation|books?|guides?|toys?|cards?|napkins?|plates?|candles?)\b'
+    identities=(r"\b(?:cow|goat|ewe|sheep)(?:[’']s)?\s+milk\b",
+                r'\b(?:ribeye|sirloin|rump|t[- ]bone)\s+steak\b',
+                r'\b(?:beef|pork|lamb|mutton|venison)\s+(?:mince|steak|chops?|fillets?)\b',
+                r'\b(?:chicken|turkey|duck)\s+(?:breasts?|thighs?|legs?|fillets?)\b')
+    if full and not re.search(excluded,name+' '+full.group(1),re.I) and any(
+            re.search(pattern,name,re.I) and re.search(pattern,full.group(1),re.I) for pattern in identities):
+        declarations.extend([policy.reference('/product/name',name),
+            {'path':'/product/other_information','quote':full.group()}])
     return {
-        "animal_matches": ingredient_matches(cleaned, NONVEGAN_INGREDIENT_PATTERNS),
+        "animal_matches": ingredient_matches(animal_text, NONVEGAN_INGREDIENT_PATTERNS),
+        "uncertain_ingredient_refs": ambiguous_refs,
         "animal_quote_checker": checker,
         "animal_declarations":declarations,"qualified_animal_declarations":qualified,
         "cleaned_ingredients": cleaned,
@@ -1127,6 +1167,12 @@ def classify_by_rules(context: dict[str, Any]) -> ClassificationResult | None:
         return None
     if outcome['vegan_status']=='unknown' and facts['qualified_animal_declarations']:
         return None
+    if outcome['vegan_status']=='unknown' and any(policy.resolved_risk(issue,{'material_issues':[
+            {**issue,'resolution_refs':[policy.reference('/product/'+key,text)]}]})
+            for issue in outcome['assessment']['material_issues']
+            for key in ('features','detailed_description','further_description','other_information')
+            if (text:=normalize_space(context['product'].get(key)))):
+        return None  # Relevant supplied resolution facts need interpretation.
     if not definite_animal and not outcome["positive_block"] and any(
             row.get("source_kind") == "manufacturer_website"
             for row in context.get("manufacturer_vegan_evidence", [])):
