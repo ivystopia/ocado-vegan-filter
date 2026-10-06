@@ -81,7 +81,7 @@ python3 tools/update_userscript_allowlists.py --dry-run
 
 Use `products.vegan_status` and `vegan_reason` for current decisions. `product_vegan_classification_audit` and `vegan_classification_runs` explain them; `sync_product_context_changes` retains before/after evidence. Legacy `classifier_decisions` and `precheck_results` are historical evidence, not alternative canonical classifications. Inspect `.schema` / `PRAGMA table_info(...)` before assuming a column exists on an older copy.
 
-The export deliberately includes all known classified IDs, including products temporarily absent from Ocado. `unknown` is a completed conservative decision; `NULL` is unfinished. A canonical conflict with an official vegan tag blocks export, while an apparent animal-ingredient conflict on a correctly classified `vegan/tagged` product is retained for manual review without downgrading the official tag.
+The export deliberately includes all known classified IDs, including products temporarily absent from Ocado. `unknown` is a completed conservative decision; `NULL` is unfinished. Under the whole-product policy, correctly matched definite animal evidence overrides an official vegan tag to `nonvegan` and is retained for reporting. Unresolved identity/material conflicts become blocked `unknown`. Export accepts these outcomes when their audit and evidence are valid, and refuses legacy/stale positives or missing provenance. The live catalogue remains on its historical classifications until the gated migration.
 
 ## Recovery and classifier pitfalls
 

@@ -1,6 +1,6 @@
 # Whole-product vegan classification
 
-This specification replaces the older ingredient-first and confirmation-only policies. Implementation is development work on `dev`; model selection, canonical catalogue migration and release activation remain gated by the revised benchmark and the user's model-pair decision.
+This specification replaces the older ingredient-first and confirmation-only policies. Implementation is development work on `dev`; model selection, canonical catalogue migration and release activation remain gated by the revised benchmark and the user's model-pair decision. Follow [the remaining implementation plan](whole-product-implementation-plan.md) for the ordered checks and open scope decision before further model comparisons.
 
 ## Evidence policy
 
@@ -24,7 +24,7 @@ Deterministic rules first resolve clear positives, negatives and missing-fact un
 
 Two independent primary calls assess identical frozen evidence. Only a raw status/reason disagreement triggers exactly two fresh arbitration calls. Arbitration sees evidence, not the primary conclusions, uses the same whole-product policy and can accept all four positive routes. Agreed primary unknowns do not escalate. Arbitration disagreement remains unknown, without recursion. A policy gate may reject an agreed unsupported positive without creating another escalation stage. Substantive issues and unresolved dimensions raised by either agreeing pass survive merging.
 
-Historical production defaults remain `gpt-5.6-luna`/`high` and `gpt-6.1-sol`/`medium` pending new selection. The supervising coding model is separate. Compare primary Luna 5.6/high and Luna 6/high; consider Sol 6.1/medium as primary only if both Lunas fail. Compare arbitration Sol 6.1/medium, Sol 6.1/high and Astra 6/medium. Do not change defaults based on a smoke test or historical benchmark.
+Historical production defaults remain `gpt-5.6-luna`/`high` and `gpt-6.1-sol`/`medium` pending new selection. The supervising coding model is separate. Compare primary Luna 5.6/high and Luna 6/high; consider Sol 6.1/medium as primary only if both Lunas fail after implementation/reference checks and policy ambiguities are resolved. Shared rule/gate failures and incomplete references do not justify an expensive primary fallback. Compare arbitration Sol 6.1/medium, Sol 6.1/high and Astra 6/medium. Do not change defaults based on a smoke test or historical benchmark.
 
 `tools/codex_evidence.py` runs invocation-scoped, fresh evidence sessions with user rules/config, host skills, shell, browser, apps and other tools disabled, web disabled, a fresh temporary working directory and read-only sandbox. API-key environment variables are removed; use the existing ChatGPT sign-in. JSONL events are checked for tool execution; observed tool use invalidates the call. This configuration plus runtime monitoring must be validated on the installed CLI; a prompt alone is not an access boundary, and “no observed tool call” is not proof about all future executions.
 
