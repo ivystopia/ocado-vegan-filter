@@ -269,17 +269,7 @@ def build_review_prompt(inputs: list[dict[str, Any]]) -> str:
 
 def visible_source_text(value: str) -> str:
     """Remove retrieval/markup decoration without changing the source's words."""
-    value = re.sub(r"(?m)^L\d+:\s?", "", value)
-
-    def citation_label(match: re.Match[str]) -> str:
-        parts = match.group(1).split("†")
-        return parts[1] if len(parts) > 1 else ""
-
-    value = re.sub("\ue200cite\ue202([^\ue201]*)\ue201", citation_label, value)
-    value = re.sub(r"\[([^\]\n]+)\]\(https?://[^\s)]+\)", r"\1", value)
-    value = value.replace("**", "").replace("__", "")
-    value = classifier.normalize_space(html.unescape(value))
-    return re.sub(r"\s+([,.;:!?])", r"\1", value)
+    return policy.visible_source_text(value)
 
 
 def validate_review(payload: dict[str, Any], inputs: list[dict[str, Any]]) -> dict[str, dict[str, Any]]:

@@ -18,6 +18,17 @@ def context(name='Plain beans',ingredients='Beans',**fields):
 
 
 class WholeProductPolicyTests(unittest.TestCase):
+    def test_pdf_source_markers_do_not_interrupt_exact_visible_quotations(self):
+        source='L12@P1: Scope includes fabrics, trims,\nL13@P1: packaging and dyes.\nL14: Exceptions apply.'
+        self.assertEqual(policy.visible_source_text(source),'Scope includes fabrics, trims, packaging and dyes. Exceptions apply.')
+        self.assertEqual(policy.visible_source_text('Product code L12@P1: remains text.'),'Product code L12@P1: remains text.')
+        value=context()
+        value['manufacturer_source_candidates']=[{'source_text':source}]
+        ref={'path':'/manufacturer_source_candidates/0/source_text','quote':'Scope includes fabrics, trims, packaging and dyes.'}
+        self.assertEqual(policy.resolve_reference(value,ref),source)
+        with self.assertRaises(ValueError):
+            policy.resolve_reference(value,{**ref,'quote':'Scope includes all fabrics, trims, packaging and dyes.'})
+
     def test_specific_wine_category_supplies_risk_without_generalising_to_spirits(self):
         value=context('Chateau Example','Water')
         value['categories']=['beer-wine-spirits/wine/red-wine']

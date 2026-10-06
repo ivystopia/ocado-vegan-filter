@@ -92,7 +92,7 @@ def normalized(value: Any) -> str:
 
 def visible_source_text(value: str) -> str:
     """Canonical visible words, preserving the separately hashed raw capture."""
-    value=re.sub(r'(?m)^L\d+:\s?', '',value)
+    value=re.sub(r'(?m)^L\d+(?:@P\d+)?:[ \t]?', '',value)
     value=re.sub('\ue200cite\ue202([^\ue201]*)\ue201',lambda match:match.group(1).split('†')[1] if '†' in match.group(1) else '',value)
     value=re.sub(r'\[([^\]\n]+)\]\(https?://[^\s)]+\)',r'\1',value)
     value=html.unescape(value.replace('**','').replace('__',''))
