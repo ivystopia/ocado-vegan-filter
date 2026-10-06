@@ -49,6 +49,34 @@ FAILURE_FIELDS=('unsafe_positives','operational_errors','missing_cases','mismatc
                 'mandatory_control_failures','reportable_negative_errors','missing_required_issues','false_nonvegan_decisions')
 
 
+def failed_report(entry):
+    controls=entry.get('controls')
+    if controls and not benchmark.successful(controls):return controls
+    return entry.get('development',entry['pilot'])
+
+
+def primary_controls(args, fixture, model, effort):
+    paths=getattr(args,'primary_control_reports',None)
+    if not paths:
+        return execute(args,'controls-'+model+'-'+effort,split='synthetic',mode='pipeline',model=model,effort=effort)
+    mapping=json.loads(paths.read_text())
+    if set(mapping)!={name+'/'+level for name,level in PRIMARY}:
+        raise ValueError('Control reuse must retain both inexpensive candidates, including failures')
+    report=json.loads(Path(mapping[model+'/'+effort]).read_text())
+    cases=[case for case in fixture['cases'] if case['split']=='synthetic']
+    expected={'selected_case_hash':classifier.context_hash(cases),'state':'completed','split':'synthetic','mode':'pipeline',
+        'model':model,'effort':effort,'policy_version':policy.POLICY_VERSION,'knowledge_version':policy.KNOWLEDGE_VERSION,
+        'prompt_version':classifier.PROMPT_VERSION,'arbitration_prompt_version':classifier.ARBITRATION_PROMPT_VERSION,
+        'arbitration_model':classifier.ARBITRATION_MODEL,'arbitration_effort':classifier.ARBITRATION_REASONING_EFFORT,
+        'schema_sha256':classifier.context_hash(classifier.CODEX_OUTPUT_SCHEMA)}
+    if any(report.get(key)!=value for key,value in expected.items()):raise ValueError('Reused controls have different inputs/configuration')
+    required={'vegan_policy.py','classify_ocado_vegan.py','codex_evidence.py','benchmark_whole_product.py','manufacturer_evidence.py','update_userscript_allowlists.py'}
+    if set(report.get('implementation_hashes',{}))!=required or any(classifier.context_hash((benchmark.ROOT/'tools'/name).read_text())!=value
+            for name,value in report['implementation_hashes'].items()):
+        raise ValueError('Reused controls have different classification/persistence/export code')
+    return report
+
+
 def validate_failure_review(review, entries, fixture):
     """No expensive primary on shared code/reference/scope failures.
 
@@ -61,15 +89,15 @@ def validate_failure_review(review, entries, fixture):
         raise ValueError('Primary failure review is for another frozen fixture')
     if not all(review.get(key) is True for key in ('policy_settled','implementation_verified','references_verified')):
         raise ValueError('Resolve policy, implementation and reference problems before expensive-primary comparison')
-    cases={case['case_id']:case for case in fixture['cases'] if case['split']=='development'}
+    cases={case['case_id']:case for case in fixture['cases'] if case['split'] in {'development','synthetic'}}
     expected_names={model+'/'+effort for model,effort in PRIMARY}
     if set(review.get('models',{}))!=expected_names:
         raise ValueError('Failure review must cover both inexpensive primary candidates')
     for name in expected_names:
         entry=entries[name]
-        report=entry.get('development',entry['pilot'])
+        report=failed_report(entry)
         item=review['models'][name]
-        if development_eligible(report) or item.get('report_sha256')!=classifier.context_hash(report):
+        if (development_eligible(report) and benchmark.successful(report)) or item.get('report_sha256')!=classifier.context_hash(report):
             raise ValueError('Failure review does not match a failed candidate report')
         failed={case_id for run in report['runs'] for field in FAILURE_FIELDS for case_id in run[field]}
         if not failed or set(item.get('cases',{}))!=failed:
@@ -84,8 +112,11 @@ def validate_failure_review(review, entries, fixture):
 
 
 def comparison_manifest(args, fixture, checks):
+    control_paths=getattr(args,'primary_control_reports',None)
     return {'fixture_sha256':classifier.context_hash(fixture),'candidate_hashes':benchmark.candidate_hashes(),
             'checks_sha256':classifier.context_hash(checks),'workers':args.workers,
+            'reused_controls':None if not control_paths else {key:classifier.context_hash(json.loads(Path(path).read_text()))
+                for key,path in json.loads(control_paths.read_text()).items()},
             'development_only':getattr(args,'development_only',False),'primary':PRIMARY,'arbitration':ARBITRATION}
 
 
@@ -139,13 +170,14 @@ def run(args):
         reports=[];eligible=[]
         for model,effort in PRIMARY:
             name=model+'/'+effort;slug=model+'-'+effort
+            controls=primary_controls(args,fixture,model,effort)
             pilot=execute(args,'pilot-'+slug,split='development',subset='pilot',mode='pipeline',model=model,effort=effort)
             # Model-only diagnostic uses the same blind inputs and final gate.
-            entry={'pilot':pilot};result['primary'][name]=entry
+            entry={'controls':controls,'pilot':pilot};result['primary'][name]=entry
             if not development_eligible(pilot):
                 diagnostic=execute(args,'diagnostic-'+slug,split='development',subset='pilot',mode='primary',model=model,effort=effort)
                 entry['model_only_diagnostic']=diagnostic
-            if development_eligible(pilot):
+            if benchmark.successful(controls) and development_eligible(pilot):
                 development=execute(args,'development-'+slug,split='development',mode='pipeline',model=model,effort=effort)
                 entry['development']=development;reports.append(development)
                 if development_eligible(development):eligible.append((model,effort,development))
@@ -158,9 +190,10 @@ def run(args):
             validate_failure_review(review,result['primary'],fixture)
             result['primary_failure_review_sha256']=classifier.context_hash(review)
             model,effort='gpt-6.1-sol','medium';name=model+'/'+effort
+            controls=execute(args,'controls-sol-primary',split='synthetic',mode='pipeline',model=model,effort=effort)
             pilot=execute(args,'pilot-sol-primary',split='development',subset='pilot',mode='pipeline',model=model,effort=effort)
-            result['primary'][name]={'pilot':pilot,'conditional_fallback':'both Luna candidates failed development gates'}
-            if development_eligible(pilot):
+            result['primary'][name]={'controls':controls,'pilot':pilot,'conditional_fallback':'both Luna candidates failed development gates'}
+            if benchmark.successful(controls) and development_eligible(pilot):
                 development=execute(args,'development-sol-primary',split='development',mode='pipeline',model=model,effort=effort)
                 result['primary'][name]['development']=development;reports.append(development)
                 if development_eligible(development):eligible.append((model,effort,development))
@@ -179,6 +212,12 @@ def run(args):
         primary=min(eligible,key=lambda item:credit_equivalent(item[2]['runs'][0]))
         arb=min(arbiters,key=lambda item:credit_equivalent(item[2]['runs'][0]))
         pair=(primary[0],primary[1],arb[0],arb[1]);baseline=('gpt-5.6-luna','high','gpt-6.1-sol','medium')
+        paired_controls=execute(args,'controls-selected-pair',split='synthetic',mode='pipeline',model=pair[0],effort=pair[1],
+            arbitration_model=pair[2],arbitration_effort=pair[3])
+        result['paired_controls']=paired_controls
+        if not benchmark.successful(paired_controls):
+            result.update(state='selected_pair_failed_controls',next_step='Investigate retained fixed-pair failures; no default change or activation.')
+            return result
         if diagnostic_only:
             result.update(state='development_comparison_completed',recommendation={
                 'primary_model':pair[0],'primary_effort':pair[1],'arbitration_model':pair[2],'arbitration_effort':pair[3],
@@ -216,5 +255,6 @@ if __name__=='__main__':
     p.add_argument('--development-only',action='store_true',help='Run development/model diagnostics without locked evaluation or a release recommendation')
     p.add_argument('--checks',type=Path,required=True,help='Current passing validate_whole_product_candidate.py checks.json')
     p.add_argument('--primary-failure-review',type=Path,help='Frozen-input attribution of both Luna failures; never required when a Luna qualifies')
+    p.add_argument('--primary-control-reports',type=Path,help='JSON model/effort-to-report paths; reuse only identical controlled inputs and classification code, retaining failures')
     result=run(p.parse_args());print(json.dumps({key:value for key,value in result.items() if key not in {'primary','arbitration','locked','workload'}},indent=2))
     raise SystemExit(0 if result['state'] in {'comparison_completed','development_comparison_completed'} else 1)

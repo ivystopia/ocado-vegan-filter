@@ -1,5 +1,6 @@
 """Frozen benchmark, provenance and gate contracts (no authenticated calls)."""
 from dataclasses import asdict
+import copy
 import json
 from pathlib import Path
 import sys
@@ -91,7 +92,7 @@ class WholeProductBenchmarkTests(unittest.TestCase):
         failed={'state':'completed','runs':[{'unsafe_positives':[],'operational_errors':[],
             'missing_cases':[],'reason_errors':[],'mandatory_control_failures':[],
             'reportable_negative_errors':[],'missing_required_issues':[],
-            'false_nonvegan_decisions':[],'vegan_recall':0,'per_route_recall':{}}]}
+            'mismatches':['a'],'false_nonvegan_decisions':[],'vegan_recall':0,'per_route_recall':{}}]}
         with tempfile.TemporaryDirectory() as tmp:
             root=Path(tmp);checks=root/'checks.json';checks.write_text('{}')
             args=SimpleNamespace(fixture=root/'fixture.json',checks=checks,output=root/'results',
@@ -103,6 +104,31 @@ class WholeProductBenchmarkTests(unittest.TestCase):
             self.assertEqual(result['state'],'primary_failure_review_required')
             self.assertEqual({call.kwargs['model'] for call in execute.call_args_list},
                 {'gpt-5.6-luna','gpt-6-luna'})
+
+    def test_passing_natural_pilots_cannot_hide_unsafe_control_results(self):
+        passing={'state':'completed','runs':[{**{field:[] for field in comparison.FAILURE_FIELDS},
+            'vegan_recall':1,'per_route_recall':{}}]}
+        failed=copy.deepcopy(passing);failed['runs'][0]['unsafe_positives']=['culture']
+        failed['runs'][0]['mismatches']=['culture']
+        labels=[]
+        def execute(args,label,**options):
+            labels.append(label)
+            return failed if label.startswith('controls-') else passing
+        with tempfile.TemporaryDirectory() as tmp:
+            root=Path(tmp);checks=root/'checks.json';checks.write_text('{}')
+            args=SimpleNamespace(fixture=root/'fixture.json',checks=checks,output=root/'results',
+                workers=1,development_only=True,primary_failure_review=None)
+            with mock.patch.object(benchmark,'load_fixture',return_value={'selection':{'target_complete':False}}),\
+                 mock.patch.object(candidate_checks,'validate_record'),mock.patch.object(comparison,'execute',side_effect=execute):
+                result=comparison.run(args)
+        self.assertEqual(result['state'],'primary_failure_review_required')
+        self.assertFalse(any(label.startswith(('development-','arbitration-')) for label in labels))
+
+    def test_control_reuse_cannot_drop_a_failed_candidate(self):
+        with tempfile.TemporaryDirectory() as tmp:
+            path=Path(tmp)/'controls.json';path.write_text(json.dumps({'gpt-6-luna/high':'passing.json'}))
+            with self.assertRaisesRegex(ValueError,'both inexpensive'):
+                comparison.primary_controls(SimpleNamespace(primary_control_reports=path),{'cases':[]},'gpt-6-luna','high')
 
     def test_failure_review_requires_current_reports_and_model_attribution(self):
         case={'case_id':'a','split':'development','classifier_input':{'product':{'name':'Carrots'}}}
