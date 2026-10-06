@@ -1,0 +1,515 @@
+{
+  "schema_version": 2,
+  "policy_version": "whole-product-v2",
+  "cases": [
+    {
+      "case_id": "natural.612145011",
+      "case_kind": "natural",
+      "sampling_stratum": "unknown",
+      "current_on_ocado": 1,
+      "classifier_input": {
+        "product": {
+          "id": "612145011",
+          "name": "M&S Cider Vinegar",
+          "brand": "M&S",
+          "url": "https://www.ocado.com/products/612145011/details",
+          "official_vegan": 0,
+          "allergens": "Contains Sulphur Dioxide/Sulphites Contains Sulphites.",
+          "features": "Light Fruity Flavour, Ideal for salad dressings & cooking",
+          "detailed_description": "M&S Cider Vinegar Cider vinegar, perfect for dressings, sauces and marinades.",
+          "brand_marketing": "M&S Food has been at the heart of the nation since 1884. Giving our customers their best-loved products at the incredible quality and value that only M&S can deliver. From Percy Pig to the freshest M&S Select Farms produce, we grow, source, and develop our own products to give you family-ready food that's unbeatable on flavour and innovation. And that's whether you come to us for your family favourites, an indulgent treat, or your perfect party food spread. After all, this is not just food\u2026 This is M&S Food.",
+          "other_information": "Full Product Name: Cider vinegar Storage: Store in a cool, dry place, away from sunlight. Additional Information: Acidity: 5% \u00a9 Marks and Spencer plc",
+          "country_of_origin": "Italy",
+          "pack_size": "500ml",
+          "manufacturer": "Marks and Spencer plc, PO Box 3339, Chester, CH99 9QS, United Kingdom. M&S (Ireland) Ltd, PO Box 13022, Ravensdale, Dublin 2, Ireland.",
+          "return_to_address": "Marks and Spencer plc, PO Box 3339, Chester, CH99 9QS, United Kingdom. M&S (Ireland) Ltd, PO Box 13022, Ravensdale, Dublin 2, Ireland."
+        },
+        "flags": [],
+        "categories": [
+          "food-cupboard/oils-fats-vinegars/vinegars/apple-cider-vinegars"
+        ],
+        "manufacturer_vegan_evidence": []
+      },
+      "input_sha256": "c7b8461c56fae2c458b5674f5b385ecf1d4ec755543323eec92c4bbfed04723e",
+      "adjudication": {
+        "state": "accepted",
+        "reference_type": "frozen-evidence-sufficiency",
+        "policy_version": "whole-product-v2",
+        "method": "two fresh automated evidence readings with validated citations; no human review",
+        "readings": [
+          {
+            "annotation": {
+              "case_id": "natural.612145011",
+              "expected_status": "unknown",
+              "expected_reason": null,
+              "required_issue_codes": [
+                "processing_unresolved"
+              ],
+              "input_refs": [
+                {
+                  "path": "/product/other_information",
+                  "quote": "Full Product Name: Cider vinegar"
+                }
+              ],
+              "rationale": "Cider-vinegar identity establishes the food but does not resolve potential animal fining of its cider base. No applicable vegan or processing confirmation is supplied.",
+              "external_status": "unknown",
+              "source_id": null,
+              "external_quote": "",
+              "scope_match": "No retained external primary sources supplied.",
+              "component_assessment": {
+                "status": "established",
+                "evidence_refs": [
+                  {
+                    "path": "/product/other_information",
+                    "quote": "Full Product Name: Cider vinegar"
+                  }
+                ]
+              }
+            },
+            "input_sha256": "c7b8461c56fae2c458b5674f5b385ecf1d4ec755543323eec92c4bbfed04723e",
+            "call_id": "7e37ac6a-c15e-4522-a691-4957c0e5c8ba",
+            "model": "gpt-6.1-sol",
+            "effort": "high",
+            "prompt_version": "blind-evidence-adjudication-v7"
+          },
+          {
+            "annotation": {
+              "case_id": "natural.612145011",
+              "expected_status": "unknown",
+              "expected_reason": null,
+              "required_issue_codes": [
+                "processing_unresolved"
+              ],
+              "input_refs": [
+                {
+                  "path": "/product/other_information",
+                  "quote": "Full Product Name: Cider vinegar"
+                }
+              ],
+              "rationale": "Cider-vinegar identity alone does not resolve potential animal-derived fining of its cider precursor. No applicable vegan claim or processing evidence is supplied. Missing packaging information adds no separate concern.",
+              "external_status": "unknown",
+              "source_id": null,
+              "external_quote": "",
+              "scope_match": "No retained external primary source supplied.",
+              "component_assessment": {
+                "status": "established",
+                "evidence_refs": [
+                  {
+                    "path": "/product/other_information",
+                    "quote": "Full Product Name: Cider vinegar"
+                  }
+                ]
+              }
+            },
+            "input_sha256": "c7b8461c56fae2c458b5674f5b385ecf1d4ec755543323eec92c4bbfed04723e",
+            "call_id": "ff32d28a-e9f3-4db4-9e2a-29eee21809b6",
+            "model": "gpt-6.1-sol",
+            "effort": "high",
+            "prompt_version": "blind-evidence-adjudication-v7"
+          }
+        ]
+      },
+      "expected": {
+        "vegan_status": "unknown",
+        "vegan_reason": null,
+        "required_issue_codes": [
+          "processing_unresolved"
+        ]
+      },
+      "split": "diagnostic",
+      "leakage_group": "family.m s",
+      "source_metadata": [],
+      "mandatory_control": false
+    },
+    {
+      "case_id": "natural.565041011",
+      "case_kind": "natural",
+      "sampling_stratum": "name",
+      "current_on_ocado": 1,
+      "classifier_input": {
+        "product": {
+          "id": "565041011",
+          "name": "Skittles Giants Vegan Chewy Sour Sweets Fruit Flavoured Pouch Bag",
+          "brand": "Skittles",
+          "url": "https://www.ocado.com/products/565041011/details",
+          "official_vegan": 0,
+          "ingredients": "Sugar, Glucose Syrup, Palm Fat, Acid (Malic Acid), Dextrin, Modified Starch, Maltodextrin, Acid (Citric Acid), Flavourings, Colours (E163, E162, E170, E100, E153, E160A, E133), Sweet Potato Concentrate, Acidity Regulator (Trisodium Citrate), Glazing Agent (Carnauba Wax), Radish Concentrate.",
+          "dietary_information": "Suitable for Vegetarians",
+          "detailed_description": "Sour Pineapple, Sour Raspberry, Sour Cherry, Sour Mandarin, Sour Apple",
+          "further_description": "CHEWY CANDIES IN A CRISP SUGAR SHELL WITH SOUR FRUIT FLAVOURS.",
+          "brand_marketing": "No two rainbows are the same. Neither are two packs of Skittles. Enjoy an odd mix. Share the Rainbow, Taste the Rainbow Somewhere over the rainbow at the top of the beanstalk",
+          "other_information": "Full Product Name: Chewy Candies in a Crisp Sugar Shell with Sour Fruit Flavours. Storage: Best before: See on the label",
+          "pack_size": "132g",
+          "manufacturer": "GB: Freepost Mars Wrigley Confectionery UK Ltd. IE: Mars Foods Ireland Ltd., PO Box 3856, Dublin 4.",
+          "return_to_address": "GET IN TOUCH: 0800 952 0077 www.mars.co.uk/contact FREEPOST MARS WRIGLEY CONFECTIONERY UK LTD.MARS FOODS IRELAND LTD. PO BOX 3856 DUBLIN 4. Contact us: https://ire.mars.com/ 1890 812 315 www.mars.co.uk/contact"
+        },
+        "flags": [
+          "vegetarian"
+        ],
+        "categories": [
+          "treats-snacks/brands-we-love/mars-maltesers-m-ms-more/sharing",
+          "treats-snacks/brands-we-love/mars-maltesers-m-ms-more/skittles",
+          "treats-snacks/sweets/jelly-chewy-sweets/fruit-gums-pastilles"
+        ],
+        "manufacturer_vegan_evidence": []
+      },
+      "input_sha256": "c72763db18b7efd4624a7b1352128b0254253ce6a840b3febdb95d5d6e96f5b9",
+      "adjudication": {
+        "state": "accepted",
+        "reference_type": "frozen-evidence-sufficiency",
+        "policy_version": "whole-product-v2",
+        "method": "two fresh automated evidence readings with validated citations; no human review",
+        "readings": [
+          {
+            "annotation": {
+              "case_id": "natural.565041011",
+              "expected_status": "vegan",
+              "expected_reason": "name",
+              "required_issue_codes": [],
+              "input_refs": [
+                {
+                  "path": "/product/name",
+                  "quote": "Skittles Giants Vegan Chewy Sour Sweets Fruit Flavoured Pouch Bag"
+                }
+              ],
+              "rationale": "The affirmative vegan name applies to this sour variant and covers generic ingredient, processing and supplied-packaging uncertainty. No definite animal content contradicts it.",
+              "external_status": "unknown",
+              "source_id": null,
+              "external_quote": "",
+              "scope_match": "No retained external primary sources supplied.",
+              "component_assessment": {
+                "status": "covered_by_claim",
+                "evidence_refs": [
+                  {
+                    "path": "/product/name",
+                    "quote": "Skittles Giants Vegan Chewy Sour Sweets Fruit Flavoured Pouch Bag"
+                  }
+                ]
+              }
+            },
+            "input_sha256": "c72763db18b7efd4624a7b1352128b0254253ce6a840b3febdb95d5d6e96f5b9",
+            "call_id": "2a60806c-4e3a-430d-8f46-a2191d2bdfbe",
+            "model": "gpt-6.1-sol",
+            "effort": "high",
+            "prompt_version": "blind-evidence-adjudication-v7"
+          },
+          {
+            "annotation": {
+              "case_id": "natural.565041011",
+              "expected_status": "vegan",
+              "expected_reason": "name",
+              "required_issue_codes": [],
+              "input_refs": [
+                {
+                  "path": "/product/name",
+                  "quote": "Skittles Giants Vegan Chewy Sour Sweets Fruit Flavoured Pouch Bag"
+                }
+              ],
+              "rationale": "The affirmative whole-product vegan name applies to Giants Sour and resolves generic sugar, additive and pouch uncertainty. Vegetarian suitability supplies no contrary evidence.",
+              "external_status": "unknown",
+              "source_id": null,
+              "external_quote": "",
+              "scope_match": "No retained external primary sources supplied.",
+              "component_assessment": {
+                "status": "covered_by_claim",
+                "evidence_refs": [
+                  {
+                    "path": "/product/name",
+                    "quote": "Skittles Giants Vegan Chewy Sour Sweets Fruit Flavoured Pouch Bag"
+                  }
+                ]
+              }
+            },
+            "input_sha256": "c72763db18b7efd4624a7b1352128b0254253ce6a840b3febdb95d5d6e96f5b9",
+            "call_id": "7520aa13-cb06-420a-83f3-5e6aafae4406",
+            "model": "gpt-6.1-sol",
+            "effort": "high",
+            "prompt_version": "blind-evidence-adjudication-v7"
+          }
+        ]
+      },
+      "expected": {
+        "vegan_status": "vegan",
+        "vegan_reason": "name",
+        "required_issue_codes": []
+      },
+      "split": "diagnostic",
+      "leakage_group": "family.skittles",
+      "source_metadata": [],
+      "mandatory_control": true
+    },
+    {
+      "case_id": "natural.634499011",
+      "case_kind": "natural",
+      "sampling_stratum": "name",
+      "current_on_ocado": 1,
+      "classifier_input": {
+        "product": {
+          "id": "634499011",
+          "name": "Skittles Vegan Chewy Sweets Fruit Flavoured Pouch Bag",
+          "brand": "Skittles",
+          "url": "https://www.ocado.com/products/634499011/details",
+          "official_vegan": 0,
+          "ingredients": "Sugar, Glucose Syrup, Palm Fat, Acids (Citric Acid, Malic Acid), Dextrin, Maltodextrin, Flavourings, Modified Starch, Colours (E162, E163, E170, E160A, E100, E132, E133), Acidity Regulator (Trisodium Citrate), Glazing Agent (Carnauba Wax).",
+          "dietary_information": "Suitable for Vegetarians",
+          "features": "Skittles Fruits bag includes Orange, Lime, Lemon, Blackcurrant and Strawberry flavours Makes every celebration sweeter: perfect for birthday parties, big nights in with friends, or Halloween \u2018trick or treat' sweets. Celebrate special occasions like weddings, or holidays such as Easter, Halloween, Christmas and more with the classic taste of Skittles sweets.",
+          "detailed_description": "Skittles Fruits Vegan Chewy Sweets are a colourful mix of chewy sweets with a crisp sugar shell. Each 136 g bag brings an unexpected, bold fruit flavoured experience to your day. These fruit sweets are designed for those looking for an unconventional, playful escape from the everyday. - A vibrant mix of fruit flavoured sweets in a crisp sugar shell. - Each 136 g bag of Skittles offers a bold and colourful experience. - Perfect for sharing during a relaxed evening. - Suitable for vegetarians.",
+          "further_description": "CHEWY CANDIES IN A CRISP SUGAR SHELL WITH FRUIT FLAVOURS.",
+          "brand_marketing": "No two Rainbows are the same. Neither are two packs of Skittles. Enjoy an odd mix. Share the Rainbow, Taste the Rainbow!",
+          "other_information": "Full Product Name: CHEWY CANDIES IN A CRISP SUGAR SHELL WITH FRUIT FLAVOURS. Storage: Best before: See on the label",
+          "pack_size": "136g",
+          "manufacturer": "IE: Mars Food Ireland Ltd., PO Box 3856, Dublin 4. GB: Freepost Mars Wrigley Confectionery UK Ltd.",
+          "return_to_address": "GET IN TOUCH: 0800 952 0077 www.mars.co.uk/contact FREEPOST MARS WRIGLEY CONFECTIONERY UK LTD.MARS FOODS IRELAND LTD. PO BOX 3856 DUBLIN 4. Contact us: https://ire.mars.com/ 1800 013 011 www.mars.co.uk/contact"
+        },
+        "flags": [
+          "ocado_price_promise",
+          "vegetarian"
+        ],
+        "categories": [
+          "treats-snacks/brands-we-love/mars-maltesers-m-ms-more/sharing",
+          "treats-snacks/brands-we-love/mars-maltesers-m-ms-more/skittles",
+          "treats-snacks/sweets/jelly-chewy-sweets/fruit-gums-pastilles"
+        ],
+        "manufacturer_vegan_evidence": []
+      },
+      "input_sha256": "b18a0baa30bb633e71d86b51190f9233bef29383633470986fcedd7f6388d244",
+      "adjudication": {
+        "state": "accepted",
+        "reference_type": "frozen-evidence-sufficiency",
+        "policy_version": "whole-product-v2",
+        "method": "two fresh automated evidence readings with validated citations; no human review",
+        "readings": [
+          {
+            "annotation": {
+              "case_id": "natural.634499011",
+              "expected_status": "vegan",
+              "expected_reason": "name",
+              "required_issue_codes": [],
+              "input_refs": [
+                {
+                  "path": "/product/name",
+                  "quote": "Skittles Vegan Chewy Sweets Fruit Flavoured Pouch Bag"
+                }
+              ],
+              "rationale": "The affirmative vegan product name supplies the basis. The description repeats that identity; vegetarian suitability is compatible but is not independent vegan confirmation.",
+              "external_status": "unknown",
+              "source_id": null,
+              "external_quote": "",
+              "scope_match": "No retained external primary sources supplied.",
+              "component_assessment": {
+                "status": "covered_by_claim",
+                "evidence_refs": [
+                  {
+                    "path": "/product/name",
+                    "quote": "Skittles Vegan Chewy Sweets Fruit Flavoured Pouch Bag"
+                  }
+                ]
+              }
+            },
+            "input_sha256": "b18a0baa30bb633e71d86b51190f9233bef29383633470986fcedd7f6388d244",
+            "call_id": "2a60806c-4e3a-430d-8f46-a2191d2bdfbe",
+            "model": "gpt-6.1-sol",
+            "effort": "high",
+            "prompt_version": "blind-evidence-adjudication-v7"
+          },
+          {
+            "annotation": {
+              "case_id": "natural.634499011",
+              "expected_status": "vegan",
+              "expected_reason": "name",
+              "required_issue_codes": [],
+              "input_refs": [
+                {
+                  "path": "/product/name",
+                  "quote": "Skittles Vegan Chewy Sweets Fruit Flavoured Pouch Bag"
+                }
+              ],
+              "rationale": "The affirmative whole-product vegan name resolves generic sugar, additive and supplied-pouch uncertainty. Vegetarian-only dietary wording does not negate the vegan name.",
+              "external_status": "unknown",
+              "source_id": null,
+              "external_quote": "",
+              "scope_match": "No retained external primary sources supplied.",
+              "component_assessment": {
+                "status": "covered_by_claim",
+                "evidence_refs": [
+                  {
+                    "path": "/product/name",
+                    "quote": "Skittles Vegan Chewy Sweets Fruit Flavoured Pouch Bag"
+                  }
+                ]
+              }
+            },
+            "input_sha256": "b18a0baa30bb633e71d86b51190f9233bef29383633470986fcedd7f6388d244",
+            "call_id": "7520aa13-cb06-420a-83f3-5e6aafae4406",
+            "model": "gpt-6.1-sol",
+            "effort": "high",
+            "prompt_version": "blind-evidence-adjudication-v7"
+          }
+        ]
+      },
+      "expected": {
+        "vegan_status": "vegan",
+        "vegan_reason": "name",
+        "required_issue_codes": []
+      },
+      "split": "diagnostic",
+      "leakage_group": "family.skittles",
+      "source_metadata": [],
+      "mandatory_control": true
+    }
+  ],
+  "selection": {
+    "targets": {
+      "development": {
+        "tagged": 20,
+        "manufacturer": 20,
+        "name": 20,
+        "ingredients": 20,
+        "unknown": 120,
+        "nonvegan": 40
+      },
+      "locked": {
+        "tagged": 30,
+        "manufacturer": 30,
+        "name": 30,
+        "ingredients": 30,
+        "unknown": 180,
+        "nonvegan": 60
+      }
+    },
+    "development_shortfalls": {
+      "name": 11,
+      "ingredients": 4
+    },
+    "locked_shortfalls": {
+      "tagged": 30,
+      "manufacturer": 30,
+      "name": 30,
+      "ingredients": 30,
+      "unknown": 180,
+      "nonvegan": 60
+    },
+    "target_complete": false,
+    "pilot_case_ids": [
+      "natural.509074011",
+      "natural.515989011",
+      "natural.528131011",
+      "natural.529409011",
+      "natural.554160011",
+      "natural.554161011",
+      "natural.605260011",
+      "natural.609444011",
+      "natural.632478011",
+      "natural.646409011",
+      "natural.647258011",
+      "natural.663711011",
+      "natural.484034011",
+      "natural.565041011",
+      "natural.602406011",
+      "natural.602407011",
+      "natural.634499011",
+      "natural.694648011",
+      "natural.508936011",
+      "natural.518700011",
+      "natural.620106011",
+      "natural.502815011",
+      "natural.517969011",
+      "natural.517981011",
+      "natural.510718011",
+      "natural.518915011",
+      "natural.528649011",
+      "natural.549839011",
+      "natural.551762011",
+      "natural.557814011",
+      "natural.573592011",
+      "natural.577736011",
+      "natural.578862011",
+      "natural.608303011",
+      "natural.612145011",
+      "natural.614437011",
+      "natural.635402011",
+      "natural.636454011",
+      "natural.650241011",
+      "natural.651228011",
+      "natural.656809011",
+      "natural.656864011",
+      "natural.657080011",
+      "natural.657190011",
+      "natural.661164011",
+      "natural.662698011",
+      "natural.663918011",
+      "natural.665753011",
+      "natural.671620011",
+      "natural.676881011",
+      "natural.677973011",
+      "natural.680362011",
+      "natural.681866011",
+      "natural.682584011",
+      "natural.682897011",
+      "natural.683100011",
+      "natural.683360011",
+      "natural.684600011",
+      "natural.684861011",
+      "natural.686746011",
+      "natural.686758011",
+      "natural.686846011",
+      "natural.686850011",
+      "natural.686922011",
+      "natural.687170011",
+      "natural.687282011",
+      "natural.687623011",
+      "natural.690369011",
+      "natural.690390011",
+      "natural.690894011",
+      "natural.691043011",
+      "natural.691543011",
+      "natural.502443011",
+      "natural.505516011",
+      "natural.506091011",
+      "natural.509652011",
+      "natural.512534011",
+      "natural.515430011",
+      "natural.515860011",
+      "natural.518821011",
+      "natural.524003011",
+      "natural.558449011",
+      "natural.569165011",
+      "natural.573831011",
+      "natural.587562011",
+      "natural.587583011",
+      "natural.606781011",
+      "natural.615849011",
+      "natural.619834011",
+      "natural.637695011",
+      "natural.642823011",
+      "natural.650323011",
+      "natural.652622011",
+      "natural.672028011",
+      "natural.679003011",
+      "natural.684175011"
+    ],
+    "counts": {
+      "development": 378,
+      "synthetic": 327,
+      "workload": 200
+    },
+    "disputed_cases": [
+      "natural.649092011",
+      "natural.509775011",
+      "natural.530031011"
+    ],
+    "annotation_hash": "ec0f167c2731701ea3087168bc0fc29ea546e4a82a60cfd94023733ced78549b",
+    "parent_fixture_hash": "6c5ff8057ff771d7ea5df3523d9c370cabccc445edee467dd24f9dde6d07a743",
+    "note": "Current-policy development diagnostic only. Original locked evidence remains protected and is not eligible under superseded references. No release approval."
+  },
+  "diagnostic_selection": {
+    "source_fixture_sha256": "f0ae4ceddd48e3caa8b9c804bef9379ce2dd0e94fa3991cd3f324989b8062226",
+    "failed_report_sha256": "fb13c658e3476d86ea3419e89b3e34ed8a70e48cf9a2f989901b14f062686c44",
+    "case_ids": [
+      "natural.565041011",
+      "natural.612145011",
+      "natural.634499011"
+    ],
+    "qualification_evaluation": false
+  }
+}

@@ -1,0 +1,104 @@
+{
+  "controls-gpt-6-luna-high": {
+    "exact_matches": 325,
+    "cases": 327,
+    "mismatches": [
+      "synthetic.47.3",
+      "synthetic.04.3"
+    ],
+    "unsafe_positives": [],
+    "vegan_recall": 0.9851851851851852,
+    "usage": {
+      "calls": 63,
+      "failed_calls": 1,
+      "guard_rejections": 0,
+      "missing_usage_calls": 0,
+      "input_tokens": 848587,
+      "cached_input_tokens": 35840,
+      "output_tokens": 82745,
+      "reasoning_output_tokens": 42629
+    },
+    "credit_equivalent_proxy": 6.28538,
+    "arbitrated_cases": [
+      "synthetic.32.3",
+      "synthetic.42.0"
+    ]
+  },
+  "diagnostic-gpt-5.6-luna-high": {
+    "exact_matches": 0,
+    "cases": 5,
+    "mismatches": [
+      "natural.634499011",
+      "natural.612145011",
+      "natural.484034011",
+      "natural.502815011",
+      "natural.565041011"
+    ],
+    "unsafe_positives": [
+      "natural.612145011"
+    ],
+    "vegan_recall": 0.0,
+    "usage": {
+      "calls": 2,
+      "failed_calls": 0,
+      "guard_rejections": 0,
+      "missing_usage_calls": 0,
+      "input_tokens": 31716,
+      "cached_input_tokens": 0,
+      "output_tokens": 18436,
+      "reasoning_output_tokens": 11655
+    },
+    "credit_equivalent_proxy": 0.71166,
+    "arbitrated_cases": []
+  },
+  "diagnostic-gpt-6-luna-high": {
+    "exact_matches": 0,
+    "cases": 3,
+    "mismatches": [
+      "natural.634499011",
+      "natural.612145011",
+      "natural.565041011"
+    ],
+    "unsafe_positives": [
+      "natural.612145011"
+    ],
+    "vegan_recall": 0.0,
+    "usage": {
+      "calls": 2,
+      "failed_calls": 0,
+      "guard_rejections": 0,
+      "missing_usage_calls": 0,
+      "input_tokens": 29944,
+      "cached_input_tokens": 0,
+      "output_tokens": 6667,
+      "reasoning_output_tokens": 3849
+    },
+    "credit_equivalent_proxy": 0.1581975,
+    "arbitrated_cases": []
+  },
+  "pilot-gpt-6-luna-high": {
+    "exact_matches": 93,
+    "cases": 96,
+    "mismatches": [
+      "natural.565041011",
+      "natural.634499011",
+      "natural.612145011"
+    ],
+    "unsafe_positives": [
+      "natural.612145011"
+    ],
+    "vegan_recall": 0.9166666666666666,
+    "usage": {
+      "calls": 30,
+      "failed_calls": 4,
+      "guard_rejections": 0,
+      "missing_usage_calls": 0,
+      "input_tokens": 1074813,
+      "cached_input_tokens": 26880,
+      "output_tokens": 118930,
+      "reasoning_output_tokens": 48682
+    },
+    "credit_equivalent_proxy": 4.1131775,
+    "arbitrated_cases": []
+  }
+}
