@@ -18,6 +18,8 @@ There are also 249 synthetic/metamorphic contracts and 200 reproducibly uniform 
 
 `synthetic.json` preserves the initial 240 contracts. `synthetic-v2.json` adds five E1105 variants: its food-additive specification defines lysozyme from hens' egg whites (https://www.legislation.gov.uk/eur/2012/231/pdfs/eur_20120231_adopted_en.pdf, printed L83/276). `synthetic-v3.json` corrects two provisional `Not Vegan Wine` tag/manufacturer variants to unknown: the negative whole-product wording is an unresolved material contradiction. This is an explicit policy clarification, not an independent natural label or a silent replacement of historical results. `synthetic-v4.json` adds four brand/topic name contrasts. Each earlier fixture remains available, and reports identify the exact fixture/implementation hashes they actually tested.
 
+`synthetic-v5.json` adds five liquid-versus-capsule formulation conflicts (254 controlled cases total). `cases.json` retains its originally frozen 249 controlled cases alongside the natural corpus; use v5 explicitly for current synthetic validation. Changing synthetic coverage does not refresh natural inputs or turn missing natural observations into controls.
+
 `legacy-policy-preview.json` compares deterministic current-policy outcomes with the original 48 frozen legacy contexts. It is a rules-only crosswalk preview, not new gold: one conclusive status differs and 27 cases require semantic assessment. Older expectations must not constrain superseded policy or be relabelled just to obtain a pass.
 
 ## Reproduction

@@ -86,6 +86,19 @@ def synthetic_cases():
             'expected':{'vegan_status':status,'vegan_reason':reason},
             'adjudication':{'state':'accepted','reference_type':'explicit-policy-contract',
                 'rationale':'Brand/topic wording is not a whole-product suitability claim; a separate affirmative assertion can qualify.'}})
+    for variant in range(5):
+        product={'id':str(903000000+variant),'name':'Example Oil Blend','pack_size':'500ml',
+            'ingredients':'Flax seed oil, Gelatin Capsule (North American Source).'}
+        if variant==1:product['official_vegan']=1
+        elif variant==2:product['dietary_information']='Suitable for vegans.'
+        elif variant==3:product['name']='Vegan Example Oil Blend'
+        elif variant==4:product['dietary_information']='Another variant is suitable for vegans.'
+        context=classifier.product_context_for_llm({'product':product,'flags':[],'categories':[],'manufacturer_vegan_evidence':[]})
+        cases.append({'case_id':f'synthetic.form-scope.{variant}','case_kind':'synthetic','split':'synthetic',
+            'leakage_group':'synthetic.form-scope','classifier_input':context,'input_sha256':classifier.context_hash(context),
+            'expected':{'vegan_status':'unknown','vegan_reason':None,'required_issue_codes':['identity_conflict']},
+            'adjudication':{'state':'accepted','reference_type':'explicit-policy-contract',
+                'rationale':'Liquid volume form conflicts with a capsule ingredient declaration; a positive claim cannot resolve which formulation applies.'}})
     return cases
 
 
