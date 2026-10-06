@@ -1069,7 +1069,8 @@ def finalize_context_changes(conn: sqlite3.Connection, run_id: int) -> None:
         conn.execute(
             """
             UPDATE products SET vegan_status = NULL, vegan_reason = NULL,
-              vegan_classifier_version = NULL, vegan_classified_at_epoch = NULL
+              vegan_classifier_version = NULL, vegan_classified_at_epoch = NULL,
+              vegan_policy_version = NULL, vegan_evidence_hash = NULL, vegan_audit_id = NULL
             WHERE id = ?
             """,
             (product_id,),

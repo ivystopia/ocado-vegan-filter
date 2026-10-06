@@ -26,14 +26,32 @@ class ArbitrationTests(unittest.TestCase):
         return {d["product_id"]: d for d in decisions}, payload, payload, 0
 
     def run_pipeline(self, contexts, responses):
-        with mock.patch.object(classifier, "call_codex_batch", side_effect=responses) as calls:
+        by_id = {row["product"]["id"]: row for row in contexts}
+        enriched = []
+        for response in responses:
+            if isinstance(response, Exception):
+                enriched.append(response)
+                continue
+            decisions, _, _, exit_status = response
+            decisions = json.loads(json.dumps(decisions))
+            for product_id, decision in decisions.items():
+                context = by_id[product_id]
+                assessment = classifier.policy.base_assessment(context, complete=bool(context["product"].get("ingredients")))
+                reason = decision["vegan_reason"]
+                if reason:
+                    refs = classifier.policy.claim_sources(context)[0] if reason == "manufacturer" else [classifier.policy.reference("/product/name", context["product"]["name"])]
+                    assessment["positive_support"] = [{"reason": reason, "evidence_refs": refs}] if refs else []
+                decision["assessment"] = assessment
+            raw = json.dumps({"decisions": list(decisions.values())})
+            enriched.append((decisions, raw, raw, exit_status))
+        with mock.patch.object(classifier, "call_codex_batch", side_effect=enriched) as calls:
             results = classifier.classify_with_arbitration(
                 contexts, passes=2, retries=0, model=classifier.DEFAULT_CODEX_MODEL,
                 reasoning_effort="high", codex_bin="unused")
         return results, calls
 
     def test_arbitrates_only_disagreement_with_two_blind_medium_passes(self):
-        contexts = [self.context(), self.context("2")]
+        contexts = [self.context(dietary_information="Not suitable for vegans"), self.context("2", dietary_information="Not suitable for vegans")]
         yes = self.decision(status="vegan", reason="ingredients")
         unknown = self.decision()
         stable = self.decision("2", "nonvegan")
@@ -79,16 +97,16 @@ class ArbitrationTests(unittest.TestCase):
         self.assertEqual(results[0].vegan_status, "unknown")
         self.assertIn("independent_codex_disagreement", results[0].evidence["ambiguity_notes"])
 
-    def test_ingredient_and_name_only_arbitration_agreement_cannot_promote(self):
+    def test_supported_ingredient_and_name_arbitration_agreement_can_promote(self):
         for reason in ["ingredients", "name"]:
             with self.subTest(reason=reason):
                 yes = self.response(self.decision(status="vegan", reason=reason))
                 unknown = self.response(self.decision())
-                results, _ = self.run_pipeline([self.context(name="Vegan beans", ingredients="Beans")],
+                results, _ = self.run_pipeline([self.context(name="Vegan beans" if reason == "name" else "Plain beans", ingredients="Beans")],
                                                [yes, unknown, yes, yes])
                 result = results[0]
-                self.assertEqual(result.vegan_status, "unknown")
-                self.assertIn("arbitration_confirmation_required", result.evidence["ambiguity_notes"])
+                self.assertEqual(result.vegan_status, "vegan")
+                self.assertEqual(result.vegan_reason, reason)
                 self.assertEqual(result.evidence["arbitration"]["assessment"]["vegan_status"], "vegan")
 
     def test_manufacturer_agreement_requires_stored_confirmation(self):
@@ -105,7 +123,7 @@ class ArbitrationTests(unittest.TestCase):
         unknown = self.response(self.decision())
         results, _ = self.run_pipeline([self.context(ingredients="Milk", dietary_information="Suitable for vegans")],
                                        [yes, unknown, yes, yes])
-        self.assertEqual(results[0].vegan_status, "unknown")
+        self.assertEqual(results[0].vegan_status, "nonvegan")
 
     def test_arbitration_failure_retains_primary_disagreement_and_error(self):
         no = self.response(self.decision(status="nonvegan"))
@@ -156,22 +174,24 @@ class ArbitrationTests(unittest.TestCase):
                 conn.row_factory = sqlite3.Row
                 build_ocado_database.create_schema(conn)
                 classifier.ensure_classification_schema(conn)
-                conn.execute("INSERT INTO products(id, name) VALUES ('1', 'Sample')")
-                no = self.response(self.decision(status="nonvegan"))
+                conn.execute("INSERT INTO products(id, name, dietary_information) VALUES ('1', 'Sample', 'Not suitable for vegans')")
+                no_decision = self.decision(status="nonvegan")
+                no_decision["assessment"] = classifier.policy.base_assessment(self.context(dietary_information="Not suitable for vegans"))
+                no = self.response(no_decision)
                 unknown = self.response(self.decision())
                 responses = [no, unknown, RuntimeError("arbitration failed")] if failure else [no, unknown, no, no]
                 with mock.patch.object(classifier, "call_codex_batch", side_effect=responses):
                     count = classifier.classify_codex(
                         conn, limit=0, batch_size=10, passes=2, retries=0,
                         model=classifier.DEFAULT_CODEX_MODEL, reasoning_effort="high", codex_bin="unused")
-                self.assertEqual(count, 1)
+                self.assertEqual(count, int(not failure))
                 row = conn.execute("SELECT * FROM product_vegan_classification_audit").fetchone()
                 self.assertEqual(row["model"], "gpt-6.1-sol")
                 self.assertEqual(row["prompt_version"], classifier.ARBITRATION_PROMPT_VERSION)
                 self.assertIn("primary", json.loads(row["evidence_json"])["arbitration"])
                 self.assertEqual(conn.execute("SELECT errors FROM vegan_classification_runs").fetchone()[0], int(failure))
                 self.assertEqual(conn.execute("SELECT vegan_status FROM products").fetchone()[0],
-                                 "unknown" if failure else "nonvegan")
+                                 None if failure else "nonvegan")
 
     def test_nonzero_arbitration_exit_cannot_promote_valid_json(self):
         no = self.response(self.decision(status="nonvegan"))
@@ -183,8 +203,8 @@ class ArbitrationTests(unittest.TestCase):
 
     def test_prompt_restricts_positive_evidence_and_excludes_prior_answers(self):
         prompt = classifier.build_arbitration_prompt([self.context()])
-        self.assertIn("do not return vegan/ingredients or vegan/name", prompt)
-        self.assertIn("exact product, variant", prompt)
+        self.assertIn("four positive routes", prompt)
+        self.assertIn("Applicable official tags", prompt)
         self.assertNotIn("Luna", prompt)
         self.assertNotIn("disagreement", prompt)
 

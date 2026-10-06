@@ -4,10 +4,14 @@
 from __future__ import annotations
 
 import argparse
+import json
 import re
 import sqlite3
 from contextlib import closing
 from pathlib import Path
+
+
+import vegan_policy as policy
 
 
 REPO_ROOT = Path(__file__).resolve().parents[1]
@@ -19,6 +23,7 @@ SET_QUERIES = {
     "MANUFACTURER_OR_NAME_VEGAN_PRODUCT_IDS": "vegan_status = 'vegan' AND vegan_reason IN ('manufacturer', 'name')",
     "INGREDIENTS_VEGAN_PRODUCT_IDS": "vegan_status = 'vegan' AND vegan_reason = 'ingredients'",
     "KNOWN_NON_VEGAN_PRODUCT_IDS": "vegan_status = 'nonvegan'",
+    "BLOCKED_VEGAN_PROMOTION_PRODUCT_IDS": "vegan_status = 'unknown' AND vegan_positive_block = 1",
 }
 
 
@@ -39,45 +44,67 @@ def validate_export_readiness(conn: sqlite3.Connection) -> None:
             raise ValueError(f"Refusing to export {unfinished} unclassified current products")
 
 
-def validate_official_tag_precedence(conn: sqlite3.Connection) -> None:
-    conflicts = [
-        row[0]
-        for row in conn.execute(
-            """
-            SELECT p.id
-            FROM products AS p
-            WHERE (
-                p.official_vegan = 1
-                OR EXISTS (
-                    SELECT 1 FROM product_flags AS f
-                    WHERE f.product_id = p.id AND f.flag = 'vegan'
-                )
-              )
-              AND (
-                p.vegan_status IS NOT 'vegan'
-                OR p.vegan_reason IS NOT 'tagged'
-              )
-            ORDER BY CAST(p.id AS INTEGER), p.id
-            """
-        )
-    ]
-    if conflicts:
-        sample = " ".join(conflicts[:20])
-        raise ValueError(
-            f"Refusing to export {len(conflicts)} products whose official Ocado vegan tag "
-            f"conflicts with the canonical classification: {sample}"
-        )
+def validate_policy_decisions(conn: sqlite3.Connection) -> None:
+    columns = {row[1] for row in conn.execute("PRAGMA table_info(products)")}
+    required = {"vegan_policy_version", "vegan_evidence_hash", "vegan_positive_block", "vegan_audit_id"}
+    if not required <= columns:
+        raise ValueError("Refusing to export before whole-product shadow migration: missing policy provenance")
+    tables = {row[0] for row in conn.execute("SELECT name FROM sqlite_master WHERE type='table'")}
+    if "product_vegan_classification_audit" not in tables:
+        raise ValueError("Refusing to export without classification audit provenance")
+    invalid = conn.execute("""
+        SELECT p.id FROM products p LEFT JOIN product_vegan_classification_audit a ON a.id=p.vegan_audit_id
+        WHERE p.vegan_status='vegan' AND (
+          p.vegan_policy_version IS NOT ? OR length(p.vegan_evidence_hash) IS NOT 64 OR p.vegan_positive_block IS NOT 0
+          OR a.product_id IS NOT p.id OR a.vegan_status IS NOT p.vegan_status OR a.vegan_reason IS NOT p.vegan_reason
+          OR a.policy_version IS NOT ? OR a.context_hash IS NOT p.vegan_evidence_hash
+          OR p.vegan_reason NOT IN ('tagged','manufacturer','name','ingredients')
+          OR a.knowledge_version IS NOT ? OR a.schema_version IS NOT ?
+        ) ORDER BY p.id
+    """, (policy.POLICY_VERSION, policy.POLICY_VERSION, policy.KNOWLEDGE_VERSION, policy.SCHEMA_VERSION)).fetchall()
+    if invalid:
+        raise ValueError(f"Refusing to export {len(invalid)} unsupported/stale vegan decisions: {' '.join(row[0] for row in invalid[:20])}")
+    invalid_blocks = conn.execute("SELECT COUNT(*) FROM products WHERE vegan_positive_block=1 AND (vegan_status IS NOT 'unknown' OR vegan_policy_version IS NOT ?)", (policy.POLICY_VERSION,)).fetchone()[0]
+    if invalid_blocks:
+        raise ValueError("Refusing to export inconsistent promotion blocks")
+    # Audit-to-row agreement alone cannot detect an edited ingredient field.
+    # Rebuild only positive contexts, read-only, before permitting export.
+    import classify_ocado_vegan as classifier
+    previous_factory = conn.row_factory
+    conn.row_factory = sqlite3.Row
+    try:
+        rows = conn.execute("""SELECT p.id,p.vegan_evidence_hash,p.vegan_status,p.vegan_reason,a.source,a.confidence,a.summary,a.evidence_json
+                               FROM products p JOIN product_vegan_classification_audit a ON a.id=p.vegan_audit_id WHERE p.vegan_status='vegan'""").fetchall()
+        for start in range(0,len(rows),500):
+            for row, loaded in zip(rows[start:start+500], classifier.load_product_contexts(conn,[r['id'] for r in rows[start:start+500]])):
+                context = classifier.product_context_for_llm(loaded)
+                if classifier.context_hash(context) != row["vegan_evidence_hash"]:
+                    raise ValueError(f"Refusing to export stale product evidence: {row['id']}")
+                candidate = classifier.ClassificationResult(product_id=row['id'],vegan_status=row['vegan_status'],vegan_reason=row['vegan_reason'],
+                    confidence=row['confidence'],summary=row['summary'],evidence=json.loads(row['evidence_json']),source=row['source'])
+                accepted = classifier.apply_policy_gate(loaded,candidate)
+                if (accepted.vegan_status,accepted.vegan_reason)!=(row['vegan_status'],row['vegan_reason']):
+                    raise ValueError(f"Refusing to export a positive rejected by the current policy: {row['id']}")
+    finally:
+        conn.row_factory = previous_factory
+
+
+# Compatibility name for callers; unconditional tag precedence is superseded.
+validate_official_tag_precedence = validate_policy_decisions
 
 
 def load_allowlists(conn: sqlite3.Connection) -> dict[str, list[str]]:
     validate_export_readiness(conn)
-    validate_official_tag_precedence(conn)
+    validate_policy_decisions(conn)
     result = {}
     for name, status_clause in SET_QUERIES.items():
         rows = conn.execute(
             f"SELECT id FROM products WHERE {status_clause} ORDER BY CAST(id AS INTEGER), id"
         )
         result[name] = [row[0] for row in rows]
+    positives = set().union(*(set(result[name]) for name in ("OFFICIAL_VEGAN_PRODUCT_IDS", "MANUFACTURER_OR_NAME_VEGAN_PRODUCT_IDS", "INGREDIENTS_VEGAN_PRODUCT_IDS")))
+    if positives & (set(result["KNOWN_NON_VEGAN_PRODUCT_IDS"]) | set(result["BLOCKED_VEGAN_PROMOTION_PRODUCT_IDS"])):
+        raise ValueError("Exported positive and excluded sets overlap")
     return result
 
 
@@ -124,6 +151,7 @@ def update_counts(source: str, allowlists: dict[str, list[str]]) -> str:
         "Manufacturer/name evidence product IDs": manufacturer,
         "Ingredients evidence product IDs": ingredients,
         "Known non-vegan product IDs": nonvegan,
+        "Blocked vegan promotion product IDs": len(allowlists["BLOCKED_VEGAN_PROMOTION_PRODUCT_IDS"]),
     }
     for label, value in replacements.items():
         source, count = re.subn(rf"(\* {re.escape(label)}: )[\d,]+", rf"\g<1>{value:,}", source, count=1)

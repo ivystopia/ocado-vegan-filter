@@ -401,7 +401,6 @@ def fixture_smoke_test() -> None:
         "cajun",
         "cajun-hyphen",
         "official",
-        "official-overrides-known-nonvegan",
         "official-hidden-icon",
         "name-vegan",
         "hydration-vegan",
@@ -420,6 +419,7 @@ def fixture_smoke_test() -> None:
     assert_card_state(rows, "unknown", muted=True, label="Unknown vegan")
     assert_card_state(rows, "late-hydration-vegan", muted=True, label="Unknown vegan", check_link_target=False)
     assert_card_state(rows, "known-nonvegan", muted=True, label="Not vegan", check_link_target=False)
+    assert_card_state(rows, "official-overrides-known-nonvegan", muted=True, label="Not vegan", check_link_target=False)
     assert click_counts == {"add": 1, "image": 1}, click_counts
     assert rows["unknown"]["unknownHoverText"] == "Add anyway", rows["unknown"]
     assert rows["unknown"]["unknownLeaveText"] == "Unknown vegan", rows["unknown"]
@@ -834,6 +834,41 @@ def additional_vegan_search_smoke_test() -> None:
 
 
 class UserscriptTests(unittest.TestCase):
+    def test_unreviewed_name_and_slug_cannot_promote(self) -> None:
+        html = """<!doctype html><article class="product-card-container">
+          <a href="https://www.ocado.com/products/vegan-example-999880011">Vegan example</a>
+          <button data-test="counter-button" aria-label="Add vegan example">Add</button></article>"""
+        driver = headless_firefox()
+        self.addCleanup(driver.quit)
+        driver.get("data:text/html;base64," + base64.b64encode(html.encode()).decode())
+        driver.execute_script(userscript())
+        WebDriverWait(driver, 5).until(lambda d: d.find_element(By.TAG_NAME, "button").text == "Unknown vegan")
+
+    def test_recorded_identity_block_overrides_live_tag(self) -> None:
+        html = """<!doctype html><article class="product-card-container">
+          <a href="https://www.ocado.com/products/999880011">Vegan example</a><svg id="vegan"></svg>
+          <button data-test="counter-button" aria-label="Add example">Add</button></article>"""
+        driver = headless_firefox()
+        self.addCleanup(driver.quit)
+        driver.get("data:text/html;base64," + base64.b64encode(html.encode()).decode())
+        source = userscript()
+        source = re.sub(r"(const BLOCKED_VEGAN_PROMOTION_PRODUCT_IDS = new Set\(\s*`)[^`]*", r"\g<1>999880011", source, count=1)
+        driver.execute_script(source)
+        WebDriverWait(driver, 5).until(lambda d: d.find_element(By.TAG_NAME, "button").text == "Unknown vegan")
+
+    def test_recorded_nonvegan_overrides_live_tag_and_name(self) -> None:
+        html = """<!doctype html><article class="product-card-container">
+          <a href="https://www.ocado.com/products/vegan-example-17959011">Vegan example</a>
+          <svg id="vegan"></svg>
+          <button data-test="counter-button" aria-label="Add vegan example">Add</button>
+        </article>"""
+        driver = headless_firefox()
+        self.addCleanup(driver.quit)
+        driver.get("data:text/html;base64," + base64.b64encode(html.encode()).decode())
+        driver.execute_script(userscript())
+        WebDriverWait(driver, 5).until(lambda d: d.find_element(By.TAG_NAME, "button").text == "Not vegan")
+        self.assertFalse(driver.find_element(By.TAG_NAME, "button").get_attribute("disabled"))
+
     def test_cloned_muted_buttons_can_be_reclassified(self) -> None:
         html = """<!doctype html><main><article class="product-card-container">
           <a href="https://www.ocado.com/products/999880011">Sample</a>

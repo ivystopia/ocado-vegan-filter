@@ -22,6 +22,7 @@
  * Manufacturer/name evidence product IDs: 9,689
  * Ingredients evidence product IDs: 6,153
  * Known non-vegan product IDs: 13,933
+ * Blocked vegan promotion product IDs: 0
  *
  * These counts are generated from the embedded product ID sets below. Update
  * them whenever the sets are regenerated.
@@ -162,6 +163,15 @@
   // Weak maps keep cosmetic state out of Ocado's DOM and release detached nodes.
   const buttonStates = new WeakMap();
   const imageStyleOverrides = new WeakMap();
+
+  // Populated only by the versioned database exporter after shadow validation.
+  const BLOCKED_VEGAN_PROMOTION_PRODUCT_IDS = new Set(
+    `
+  `
+      .trim()
+      .split(/\s+/)
+      .filter(Boolean),
+  );
 
   // Products Ocado officially tagged vegan.
   const OFFICIAL_VEGAN_PRODUCT_IDS = new Set(
@@ -5356,42 +5366,6 @@
     return productAttributesContainVegan(product.attributes) || productAttributesContainVegan(product.iconAttributes);
   }
 
-  function productNameForCard(card) {
-    const nameSelectors = [
-      '[data-test="fop-title"]',
-      '[data-testid="fop-title"]',
-      '[data-test="product-title"]',
-      '[data-testid="product-title"]',
-      'a[data-test="fop-product-link"]',
-      'a[data-testid="fop-product-link"]',
-      'a[href*="/products/"]',
-    ];
-
-    for (const selector of nameSelectors) {
-      const element = card.querySelector(selector);
-      const name = textOf(element || {});
-
-      if (name) {
-        return name;
-      }
-    }
-
-    return "";
-  }
-
-  function productUrlSlugForCard(card) {
-    const link = card.querySelector('a[href*="/products/"]');
-    const href = link ? link.href || link.getAttribute("href") : "";
-    const match = String(href || "").match(/\/products\/([^/?#]+)/);
-    return match ? match[1].replace(/[-_]+/g, " ") : "";
-  }
-
-  function productNameOrSlugSaysVegan(card) {
-    // Cheap fallback for products whose rendered name or URL slug is explicit,
-    // e.g. "vegan mozzarella". This deliberately requires the standalone word.
-    return /\bvegan\b/i.test(`${productNameForCard(card)} ${productUrlSlugForCard(card)}`);
-  }
-
   function hasOfficialVeganTag(card) {
     // Prefer Ocado's own metadata/icon when it is present in the card DOM.
     if (card.querySelector(['[data-test="product-card-lifestyle-vegan"]', '[data-testid="product-card-lifestyle-vegan"]', "svg#vegan", 'svg[data-icon="icon__vegan"]'].join(","))) {
@@ -5407,15 +5381,20 @@
   function veganStatusForCard(card) {
     const productId = productIdForCard(card);
 
-    /*
-     * Positive evidence is intentionally checked before the known non-vegan
-     * fallback. In particular, Ocado's official metadata is authoritative.
-     */
-    if (isKnownVeganProductId(productId) || hasOfficialVeganTag(card) || productNameOrSlugSaysVegan(card) || hydrationProductHasVeganAttribute(productId)) {
+    if (isKnownNonVeganProductId(productId)) {
+      return "nonvegan";
+    }
+
+    if (BLOCKED_VEGAN_PROMOTION_PRODUCT_IDS.has(productId)) {
+      return "unknown";
+    }
+
+    // Name claims are interpreted offline and included in the validated IDs.
+    if (isKnownVeganProductId(productId) || hasOfficialVeganTag(card) || hydrationProductHasVeganAttribute(productId)) {
       return "vegan";
     }
 
-    return isKnownNonVeganProductId(productId) ? "nonvegan" : "unknown";
+    return "unknown";
   }
 
   function processCard(card) {

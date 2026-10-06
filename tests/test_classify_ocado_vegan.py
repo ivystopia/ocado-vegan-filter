@@ -79,19 +79,16 @@ class ClassifyOcadoVeganTests(unittest.TestCase):
         self.assertEqual(result.vegan_status, "vegan")
         self.assertEqual(result.vegan_reason, "tagged")
 
-    def test_official_vegan_tag_overrides_conflicting_ingredient_text(self) -> None:
+    def test_explicit_animal_ingredients_override_official_tag_and_are_reportable(self) -> None:
         conn = self.create_db()
         self.insert_product(conn, official_vegan=1, name="Conflicting capsules", ingredients="Starch, gelatine")
 
         result = self.classify(conn)
 
-        self.assertEqual(result.vegan_status, "vegan")
-        self.assertEqual(result.vegan_reason, "tagged")
-        self.assertIn("apparent_animal_ingredient_conflict", result.evidence)
-        self.assertIn(
-            r"\bgelati(?:n|ne)\b",
-            result.evidence["apparent_animal_ingredient_conflict"]["matched_patterns"],
-        )
+        self.assertEqual(result.vegan_status, "nonvegan")
+        self.assertIsNone(result.vegan_reason)
+        self.assertTrue(result.evidence["tag_animal_conflict"])
+        self.assertIn("tag_animal_conflict", [i["code"] for i in result.evidence["assessment"]["material_issues"]])
 
     def test_explicit_animal_ingredient_overrides_manufacturer_claim(self) -> None:
         conn = self.create_db()
@@ -343,7 +340,7 @@ class ClassifyOcadoVeganTests(unittest.TestCase):
 
     def test_single_ingredient_product_identity_classifies_vegan(self) -> None:
         conn = self.create_db()
-        self.insert_product(conn, name="M&S Extra Fine Beans")
+        self.insert_product(conn, name="M&S Extra Fine Beans",brand="M&S")
         self.insert_category(conn)
 
         result = self.classify(conn)
@@ -363,7 +360,6 @@ class ClassifyOcadoVeganTests(unittest.TestCase):
     def test_single_ingredient_examples_classify_vegan(self) -> None:
         examples = {
             "281646011": ("Wholegood Organic Mixed Peppers", "fresh-chilled-food/vegetables/peppers"),
-            "349510011": ("Albert Bartlett Butter Gold Bakers", "fresh-chilled-food/vegetables/potatoes/baking-potatoes"),
             "310608011": ("Ocado Washed Baby Spinach", "fresh-chilled-food/vegetables/cabbage-spinach-greens/spinach"),
             "518478011": ("M&S British White Mushrooms", "fresh-chilled-food/vegetables/mushrooms/white"),
             "518483011": ("M&S British Baby Parsnips", "fresh-chilled-food/vegetables/carrots-root-vegetables/parsnips"),
@@ -371,13 +367,22 @@ class ClassifyOcadoVeganTests(unittest.TestCase):
         for product_id, (name, category_path) in examples.items():
             with self.subTest(product_id=product_id):
                 conn = self.create_db()
-                self.insert_product(conn, product_id=product_id, name=name)
+                # The plain-produce rule removes only the stored exact brand;
+                # a category cannot justify arbitrary additional name words.
+                brand='Wholegood' if name.startswith('Wholegood') else 'Ocado' if name.startswith('Ocado') else 'M&S'
+                self.insert_product(conn, product_id=product_id, name=name,brand=brand)
                 self.insert_category(conn, product_id=product_id, category_path=category_path)
 
                 result = self.classify(conn, product_id=product_id)
 
                 self.assertEqual(result.vegan_status, "vegan")
                 self.assertEqual(result.vegan_reason, "ingredients")
+
+    def test_category_does_not_supply_missing_ordinary_food_identity(self):
+        conn = self.create_db()
+        self.insert_product(conn, name="Albert Bartlett Butter Gold Bakers")
+        self.insert_category(conn, category_path="fresh-chilled-food/vegetables/potatoes/baking-potatoes")
+        self.assertIsNone(self.classify(conn))
 
     def test_codex_payload_validation_and_disagreement_merge(self) -> None:
         pass_a = {
@@ -403,6 +408,7 @@ class ClassifyOcadoVeganTests(unittest.TestCase):
             }
         }
 
+        pass_a["1"]["assessment"] = classifier.policy.base_assessment({"product": {"id": "1", "name": "Beans", "ingredients": "Beans"}}, complete=True)
         validated = classifier.validate_codex_payload({"decisions": list(pass_a.values())}, {"1"})
         merged = classifier.merge_pass_decisions([pass_a, pass_b], "1")
 
@@ -436,13 +442,14 @@ class ClassifyOcadoVeganTests(unittest.TestCase):
         conn.execute("insert into sync_product_context_changes values (7, '1', 'changed')")
         self.assertEqual(classifier.select_unclassified_product_ids(conn, sync_run_id=7), ["1"])
 
-    def test_codex_refuses_unclassified_officially_tagged_products(self) -> None:
+    def test_codex_can_assess_tagged_products_that_need_semantic_review(self) -> None:
         conn = self.create_db()
         self.insert_product(conn, "1", name="Tagged product")
         conn.execute("insert into product_flags(product_id, flag) values ('1', 'vegan')")
 
-        with self.assertRaisesRegex(RuntimeError, "officially tagged vegan products"):
-            classifier.classify_codex(
+        result=classifier.ClassificationResult(product_id='1',vegan_status='unknown',vegan_reason=None,confidence='uncertain',summary='Scope unresolved',source='codex',evidence={})
+        with mock.patch.object(classifier,'classify_with_arbitration',return_value=[result]) as call:
+            count=classifier.classify_codex(
                 conn,
                 limit=0,
                 batch_size=10,
@@ -452,6 +459,9 @@ class ClassifyOcadoVeganTests(unittest.TestCase):
                 reasoning_effort="high",
                 codex_bin="unused",
             )
+        self.assertEqual(count,1)
+        self.assertEqual(call.call_count,1)
+        self.assertEqual(conn.execute("SELECT vegan_status FROM products WHERE id='1'").fetchone()[0],'unknown')
 
     def test_codex_commits_completed_run_status(self) -> None:
         with tempfile.TemporaryDirectory() as tmp:
@@ -525,8 +535,8 @@ class ClassifyOcadoVeganTests(unittest.TestCase):
         self.assertEqual(args.reasoning_effort, "high")
         prompt = classifier.build_codex_prompt([])
         self.assertIn("manufactured non-food goods", prompt)
-        self.assertIn("fields materially conflict", prompt)
-        self.assertIn("official Ocado vegan tag is authoritative", prompt)
+        self.assertIn("Identity conflicts", prompt)
+        self.assertIn("EVEN WITH an official vegan tag", prompt)
 
 
 if __name__ == "__main__":

@@ -28,9 +28,11 @@ from urllib.parse import urlparse
 import classify_ocado_vegan as classifier
 import manufacturer_evidence
 import update_userscript_allowlists as exporter
+import codex_evidence
+import vegan_policy as policy
 
 
-PROMPT_VERSION = "manufacturer-source-scope-v2"
+PROMPT_VERSION = "manufacturer-source-scope-v3"
 OUTCOMES = {"confirmed_vegan", "no_confirmation", "blocked", "pending"}
 
 
@@ -281,6 +283,7 @@ def visible_source_text(value: str) -> str:
 
 
 def validate_review(payload: dict[str, Any], inputs: list[dict[str, Any]]) -> dict[str, dict[str, Any]]:
+    policy.validate_schema(payload, REVIEW_SCHEMA)
     by_id = {row["product_id"]: row for row in inputs}
     result = {}
     for row in payload.get("products", []):
@@ -305,32 +308,20 @@ def validate_review(payload: dict[str, Any], inputs: list[dict[str, Any]]) -> di
 
 
 def call_review(inputs: list[dict[str, Any]], codex_bin: str) -> dict[str, Any]:
-    with tempfile.TemporaryDirectory(prefix="ocado-manufacturer-review-") as tmp:
-        temporary = Path(tmp)
-        schema = temporary / "schema.json"
-        output = temporary / "output.json"
-        write_json(schema, REVIEW_SCHEMA)
-        command = [
-            codex_bin, "exec", "--ephemeral", "--output-schema", str(schema),
-            "--output-last-message", str(output), "-C", str(Path.cwd()), "-s", "read-only",
-            "-m", classifier.DEFAULT_CODEX_MODEL, "-c", f'model_reasoning_effort="{classifier.DEFAULT_REASONING_EFFORT}"',
-            "-c", 'web_search="disabled"', "-",
-        ]
-        process = subprocess.run(command, input=build_review_prompt(inputs), text=True, capture_output=True, check=False)
-        if process.returncode:
-            # Do not echo CLI stderr: it can contain local configuration details.
-            raise RuntimeError(f"Manufacturer review exited with status {process.returncode}")
-        if not output.is_file():
-            raise RuntimeError("Manufacturer review returned no output")
-        payload = json.loads(output.read_text(encoding="utf-8"))
+    def validate(payload):
         try:
-            decisions = validate_review(payload, inputs)
+            validate_review(payload, inputs)
         except ValueError as exc:
             raise ReviewValidationError(str(exc), payload) from exc
-        return {"products": decisions, "raw_response": payload}
+    record = codex_evidence.run(build_review_prompt(inputs), REVIEW_SCHEMA,
+        model=classifier.DEFAULT_CODEX_MODEL, effort=classifier.DEFAULT_REASONING_EFFORT,
+        codex_bin=codex_bin, stage="manufacturer-review", product_ids=[item["product_id"] for item in inputs],
+        prompt_version=PROMPT_VERSION, context_hash=digest(inputs), validator=validate)
+    payload = record["parsed_response"]
+    return {"products": validate_review(payload, inputs), "raw_response": payload, "model_call": record}
 
 
-def review_batch(inputs: list[dict[str, Any]], codex_bin: str, *, failure_dir: Path | None = None) -> dict[str, Any]:
+def _review_batch(inputs: list[dict[str, Any]], codex_bin: str, *, failure_dir: Path | None = None) -> dict[str, Any]:
     passes = []
     validation_retries = 0
     for pass_index in range(2):
@@ -379,6 +370,22 @@ def review_batch(inputs: list[dict[str, Any]], codex_bin: str, *, failure_dir: P
             "validation_retries": validation_retries,
         }
     return result
+
+
+def review_batch(inputs, codex_bin, *, failure_dir=None):
+    own = codex_evidence.CALL_RECORDS.get() is None
+    token = codex_evidence.CALL_RECORDS.set([]) if own else None
+    start = len(codex_evidence.CALL_RECORDS.get() or [])
+    journal = codex_evidence.USAGE_JOURNAL.set(failure_dir.parent / "calls.jsonl") if failure_dir is not None else None
+    try:
+        result = _review_batch(inputs, codex_bin, failure_dir=failure_dir)
+        records = (codex_evidence.CALL_RECORDS.get() or [])[start:]
+        for product_id, row in result.items():
+            row["model_calls"] = [call for call in records if product_id in call["product_ids"]]
+        return result
+    finally:
+        if token is not None: codex_evidence.CALL_RECORDS.reset(token)
+        if journal is not None: codex_evidence.USAGE_JOURNAL.reset(journal)
 
 
 def benchmark_sources(fixture_path: Path, output_path: Path, codex_bin: str) -> dict[str, Any]:
@@ -526,6 +533,8 @@ def application_plan(conn: sqlite3.Connection, bundle: dict[str, Any], reviews: 
             "source_kind": "manufacturer_website", "verified_status": "vegan",
             "source_url": source["url"], "source_sha256": source["content_sha256"],
             "retrieved_at": source["retrieved_at"], "scope_match": decision["scope_match"],
+            "source_text": source["source_text"], "official_identity": source["official_identity"],
+            "market_scope": source["market_scope"], "review_policy_version": policy.POLICY_VERSION,
         }
         context["manufacturer_vegan_evidence"].append(evidence)
         result = classifier.classify_by_rules(context)
@@ -533,7 +542,7 @@ def application_plan(conn: sqlite3.Connection, bundle: dict[str, Any], reviews: 
             rejected[product_id] = result.summary if result else "Canonical rules did not confirm this manufacturer claim"
             continue
         accepted[product_id] = {
-            "decision": decision, "source": source,
+            "decision": decision, "source": source, "policy_result": result,
             "binding_hash": manufacturer_evidence.binding_hash(
                 catalogue_payload(context), product.get("pack_size"),
                 **{key: product.get(key) for key in manufacturer_evidence.PUBLISHER_FIELDS}),
@@ -611,11 +620,16 @@ def apply_bundle(root: Path, db: Path, bundle: dict[str, Any], *, dry_run: bool,
             for product_id, accepted in plan["accepted"].items():
                 decision = accepted["decision"]
                 conn.execute(
-                    "INSERT INTO manufacturer_website_evidence VALUES (?, ?, ?, ?, ?, ?, ?)",
-                    (research_run_id, product_id, accepted["source"]["id"], accepted["binding_hash"], decision["quote"], decision["scope_match"], utc_now()),
+                    "INSERT INTO manufacturer_website_evidence (run_id, product_id, source_id, catalogue_binding_hash, statement, scope_match, accepted_at, review_policy_version) VALUES (?, ?, ?, ?, ?, ?, ?, ?)",
+                    (research_run_id, product_id, accepted["source"]["id"], accepted["binding_hash"], decision["quote"], decision["scope_match"], utc_now(), policy.POLICY_VERSION),
                 )
+                manufacturer_evidence.assertion_event(conn,run_id=research_run_id,product_id=product_id,source_id=accepted['source']['id'],
+                    from_state=None,to_state='active',reason='Two fresh complete-source/scope reviews: '+PROMPT_VERSION)
                 context = classifier.load_product_context(conn, product_id)
-                result = classifier.classify_by_rules(context)
+                # These exact complete sources have just received two fresh
+                # scope reviews. Revalidate that reviewed decision against the
+                # retained evidence rather than re-entering the semantic queue.
+                result = classifier.apply_policy_gate(context,accepted['policy_result'])
                 if not result or result.vegan_status != "vegan" or result.vegan_reason != "manufacturer":
                     raise ValueError(f"{product_id}: retained evidence did not reproduce the reviewed decision")
                 result = classifier.ClassificationResult(
@@ -623,6 +637,7 @@ def apply_bundle(root: Path, db: Path, bundle: dict[str, Any], *, dry_run: bool,
                        "reasoning_effort": classifier.DEFAULT_REASONING_EFFORT, "prompt_version": PROMPT_VERSION,
                        "context_hash": digest(classifier.product_context_for_llm(context)),
                        "parsed_response_json": json.dumps(reviews[product_id]),
+                       "model_calls": tuple(reviews[product_id].get("model_calls", [])),
                        "evidence": {**result.evidence, "research_run_id": research_run_id,
                                     "previous_status": "unknown", "independent_passes": reviews[product_id]["passes"]}},
                 )
