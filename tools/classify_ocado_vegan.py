@@ -30,7 +30,7 @@ DEFAULT_REASONING_EFFORT = "high"
 ARBITRATION_MODEL = "gpt-6.1-sol"
 ARBITRATION_REASONING_EFFORT = "medium"
 ARBITRATION_PROMPT_VERSION = "ocado-vegan-whole-product-arbitration-v11"
-CLASSIFIER_VERSION = "db-vegan-codex-v23"
+CLASSIFIER_VERSION = "db-vegan-codex-v24"
 PROMPT_VERSION = "ocado-vegan-whole-product-json-v20"
 VALID_STATUSES = {"vegan", "nonvegan", "unknown"}
 VALID_VEGAN_REASONS = {"tagged", "manufacturer", "ingredients", "name"}
@@ -913,6 +913,12 @@ def strip_allergen_warnings(text: str) -> str:
 def strip_explicit_absence_and_plant_names(text: str) -> str:
     """Remove contexts where an animal-term token explicitly means absence or a plant name."""
     text = re.sub(r"\bfree from\s*:?\s*(?:(?!\b(?:but|except|contains?|ingredients?)\b)[^.;\n])*", " ", text, flags=re.I)
+    # Resolve the referenced animal token only, retaining all adjacent and
+    # nested ingredients. An alternative may still contain actual animal inputs.
+    animals = r"(?:chicken|beef|pork|bacon|ham|turkey|duck|lamb|mutton|fish|prawn|shrimp|crab|lobster)"
+    text = re.sub(r"\bno\s+" + animals + r"\b", "alternative", text, flags=re.I)
+    text = re.sub(r"\b(?:alternative|substitute)\s+(?:to|for)\s+" + animals + r"\b", "alternative", text, flags=re.I)
+    text = re.sub(r"\bnon[- ]dairy\s+ice[- ]?cream\b", "frozen alternative", text, flags=re.I)
     text = re.sub(r"\bhoney\s*bush\b", "rooibos plant", text, flags=re.IGNORECASE)
     # INCI botanical names often interleave the common name in parentheses.
     # Remove only the resolved plant-butter span, never adjacent ingredients.
@@ -1080,12 +1086,15 @@ def policy_facts(context: dict[str, Any]) -> dict[str, Any]:
     declarations=[];qualified=[];identity_conflicts=[]
     for key in ('dietary_information','features','allergens','detailed_description','further_description','manufacturer_marketing','other_information','specification','vinification_details'):
         text=normalize_space(context['product'].get(key))
-        marker=r'\b(?:contains|includes|made (?:with|from)|(?:derived|obtained|sourced|extracted) from|ingredients?\s*:|(?:packaging|wrapper|pod|filter|coating)(?:\s+(?:materials?|composition))?\s*:|(?:fined|clarified|processed|refined)\s+(?:with|using)|(?:fining|clarifying|refining)\s+(?:agents?|aids?)\s*:)\s*'
+        marker=r'\b(?:(?:contains|includes|made (?:with|from)|(?:derived|obtained|sourced|extracted) from|(?:fined|clarified|processed|refined)\s+(?:with|using))\b|ingredients?\s*:|(?:packaging|wrapper|pod|filter|coating)(?:\s+(?:materials?|composition))?\s*:|(?:fining|clarifying|refining)\s+(?:agents?|aids?)\s*:)\s*'
         spans=[]
         for match in re.finditer(marker,text,re.I):
             # Inspect the declared target, not unrelated animal words elsewhere
             # in the same marketing field (e.g. body cream containing vitamins).
             tail=re.split(r'[.;!?]',text[match.end():],maxsplit=1)[0]
+            # A later warning/declaration or a new prose clause is not part
+            # of this target. Keep the complete field for semantic review.
+            tail=re.split(r'\b(?:may (?:also )?contain|contains|not suitable for|prepared to)\b|,\s*(?:the|this|our|it|its)\b',tail,maxsplit=1,flags=re.I)[0]
             span=' '.join(tail.split()[:8])
             if checker(span) or re.search(r'\b(?:isinglass|bone char|casein|egg album\w*)\b',span,re.I):spans.append(span)
         processing_use=re.search(r'\b(?:isinglass|bone char|gelati(?:n|ne)|casein|egg album\w*|animal[- ]derived milk|animal fats?)\b\s+(?:is|are)\s+used\s+(?:during|in|for)\s+(?:the\s+)?(?:manufactur\w*|process\w*|refin\w*|fining)\b',text,re.I)
@@ -1118,6 +1127,17 @@ def policy_facts(context: dict[str, Any]) -> dict[str, Any]:
         # animal-food identity in the stored full product name. Which identity
         # applies is unresolved; do not accuse either formulation by guessing.
         identity_conflicts=[policy.reference('/product/name',name),
+            {'path':'/product/other_information','quote':full.group()}]
+    # A volume label and an opaque title cannot validate a full identity for
+    # solid meat/cuts. Queue a possible misjoin rather than accuse that SKU.
+    # An agreeing meat title, soup or liquid recipe remains intentional content.
+    solid_meat = r'\b(?:chopped\s+pork\s+and\s+ham|(?:beef|pork|lamb|mutton|venison)\s+(?:mince|steak|chops?|fillets?)|(?:chicken|turkey|duck)\s+(?:breasts?|thighs?|legs?|fillets?))\b'
+    pack=normalize_space(context['product'].get('pack_size'))
+    if (full and re.search(r'\d\s*(?:ml|cl|litres?|liters?|l)\b',pack,re.I)
+            and re.search(solid_meat,full.group(1),re.I)
+            and not re.search(solid_meat,name,re.I)
+            and not re.search(r'\b(?:soup|broth|stock|drink|liquid|sauce|gravy|alternative|vegan|plant)\b',full.group(1),re.I)):
+        identity_conflicts=[policy.reference('/product/name',name),policy.reference('/product/pack_size',pack),
             {'path':'/product/other_information','quote':full.group()}]
     return {
         "animal_matches": ingredient_matches(animal_text, NONVEGAN_INGREDIENT_PATTERNS),

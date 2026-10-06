@@ -27,6 +27,44 @@ def source_check(value, path='/manufacturer_source_candidates/0', scope='product
 
 
 class WholeProductPolicyTests(unittest.TestCase):
+    def test_explicit_meat_alternatives_preserve_adjacent_animal_ingredients(self):
+        for ingredients in ['No Beef Protein Pieces (Mycoprotein, Rapeseed Protein), Carrots',
+                            'Mycoprotein based alternative to beef, Carrots',
+                            'Non-Dairy Ice Cream (Water, Coconut Fat)']:
+            with self.subTest(ingredients=ingredients):
+                value=context('Example Vegan Product',ingredients,dietary_information='Suitable for vegans.')
+                self.assertFalse(classifier.policy_facts(value)['animal_matches'])
+                self.assertEqual(classifier.classify_by_rules(value).vegan_reason,'manufacturer')
+                for animal in ['Beef','Milk','Gelatine']:
+                    value['product']['ingredients']=ingredients+', '+animal
+                    self.assertEqual(classifier.classify_by_rules(value).vegan_status,'nonvegan')
+
+    def test_declaration_boundaries_do_not_create_animal_content(self):
+        for key,text in [('features','Made without meat, fish, dairy, eggs.'),
+                         ('features','Made from soy, The Example Southern Fried Chicken is our vegan alternative.'),
+                         ('features','This vegan ice cream contains Chocolate Non-Dairy Ice Cream with Brownie Pieces.'),
+                         ('allergens','Contains Barley, May Contain Eggs, May Contain Milk, Contains Wheat Not suitable for those with a Milk or Egg allergy because these allergens are present in the environment.')]:
+            with self.subTest(text=text):
+                value=context('Example Vegan Product','Rice',dietary_information='Suitable for vegans.',**{key:text})
+                facts=classifier.policy_facts(value)
+                self.assertFalse(facts['animal_declarations'])
+                self.assertFalse(facts['qualified_animal_declarations'])
+                self.assertEqual(classifier.classify_by_rules(value).vegan_reason,'manufacturer')
+                value['product'][key]+=' Contains Gelatine.'
+                decision=classifier.classify_by_rules(value)
+                self.assertTrue(decision is None or decision.vegan_status!='vegan')
+
+    def test_volume_labelled_opaque_title_does_not_validate_solid_meat_context(self):
+        value=context('Example Gers','Pork (89%), Ham (2%)',pack_size='75cl',official_vegan=1,
+                      other_information='Full Product Name: Chopped Pork and Ham Storage: Best Before: See Base of Can')
+        result=classifier.classify_by_rules(value)
+        self.assertEqual(result.vegan_status,'unknown')
+        self.assertTrue(result.evidence['positive_block'])
+        self.assertFalse(result.evidence['tag_animal_conflict'])
+        for name,full in [('Chopped Pork and Ham','Chopped Pork and Ham'),('Example Soup','Pork Soup')]:
+            value['product']['name']=name;value['product']['other_information']='Full Product Name: '+full+' Storage: Refrigerate'
+            self.assertEqual(classifier.classify_by_rules(value).vegan_status,'nonvegan')
+
     def test_liquid_processing_risks_block_agreed_unsupported_positives(self):
         for name,ingredients in [('Cider Vinegar',None),('Cider','Apple Juice'),('Lager','Water, Malt, Hops'),
                                  ('Apple Juice','Apple Juice'),('Maple Syrup','Maple Syrup')]:

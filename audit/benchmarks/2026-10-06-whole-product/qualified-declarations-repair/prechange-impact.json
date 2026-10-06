@@ -1,0 +1,31 @@
+{
+  "inspection": "SQLite mode=ro; text-match candidate upper bounds, overlapping, not final classifications",
+  "candidate_cohorts": {
+    "explicit_no_meat_alternative": {
+      "all_known": 34,
+      "stored_current": 31,
+      "existing_positive": 19
+    },
+    "alternative_reference": {
+      "all_known": 3,
+      "stored_current": 3,
+      "existing_positive": 1
+    },
+    "non_dairy_ice_cream": {
+      "all_known": 8,
+      "stored_current": 5,
+      "existing_positive": 8
+    },
+    "made_without": {
+      "all_known": 282,
+      "stored_current": 251,
+      "existing_positive": 77
+    },
+    "mixed_allergen_field": {
+      "all_known": 6780,
+      "stored_current": 6383,
+      "existing_positive": 1966
+    }
+  },
+  "safety_argument": "Only explicitly negated/alternative spans and precautionary targets are removed from animal detection. Adjacent definite animal ingredients remain visible; generic plant claims do not erase real content. Tests pair alternatives and warnings with added beef/milk/gelatine."
+}
