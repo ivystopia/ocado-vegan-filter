@@ -17,7 +17,7 @@ from benchmark_whole_product import save
 def preview(db, output, *, all_products=False):
     output.mkdir(parents=True,exist_ok=True)
     conn=sqlite3.connect(db.resolve().as_uri()+'?mode=ro',uri=True);conn.row_factory=sqlite3.Row
-    transitions=Counter();current_transitions=Counter();records=[];conflicts=[];semantic=[]
+    transitions=Counter();current_transitions=Counter();records=[];conflicts=[];identity_conflicts=[];semantic=[]
     try:
         population={row['id']:dict(row) for row in conn.execute('SELECT id,vegan_status,vegan_reason,current_on_ocado FROM products')}
         ids=list(population) if all_products else [key for key,row in population.items() if row['vegan_status']=='vegan']
@@ -38,14 +38,17 @@ def preview(db, output, *, all_products=False):
                 records.append(record)
                 if not result:semantic.append({'product_id':product_id,'classifier_input':classifier.product_context_for_llm(context),'input_sha256':record['input_sha256']})
                 elif result.evidence.get('tag_animal_conflict'):conflicts.append(record)
+                elif policy.official_tag(context) and any(issue['code']=='identity_conflict' for issue in result.evidence.get('assessment',{}).get('material_issues',[])):
+                    identity_conflicts.append(record)
             print(f'Rule preview: {min(start+500,len(ids))}/{len(ids)}',flush=True)
         report={'policy_version':policy.POLICY_VERSION,'catalogue_all_known':len(population),'catalogue_current':sum(r['current_on_ocado']==1 for r in population.values()),
             'reviewed_all_known':len(ids),'reviewed_current':sum(population[key]['current_on_ocado']==1 for key in ids),
             'scope':'all-known' if all_products else 'all-existing-positive-labels','transitions_all_known':dict(transitions),'transitions_current':dict(current_transitions),
-            'semantic_queue':len(semantic),'tag_animal_conflicts':len(conflicts),'live_database_modified':False,
+            'semantic_queue':len(semantic),'tag_animal_conflicts':len(conflicts),'tag_identity_conflicts':len(identity_conflicts),'live_database_modified':False,
             'note':'Rule preview only. Semantic cases are unassessed, not gold unknowns. Historical current flags do not prove current live listing.'}
         save(output/'rule-preview.json',{'summary':report,'products':records})
         save(output/'semantic-queue.json',semantic)
+        save(output/'tag-identity-conflicts.json',identity_conflicts)
         with (output/'ocado-tag-conflicts.csv').open('w',newline='') as handle:
             writer=csv.DictWriter(handle,fieldnames=['product_id','name','url','current_on_ocado','ingredients','matched_patterns','input_sha256'])
             writer.writeheader()

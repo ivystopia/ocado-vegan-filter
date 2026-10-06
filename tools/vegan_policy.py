@@ -435,9 +435,17 @@ def evaluate(context: dict[str, Any], *, animal_matches: list[str], cleaned_ingr
     different_plain_food = bool(re.search(r'\b(?:carrots?|apples?|bananas?|spinach|lettuce|green beans|cumin)\b',identity_composition,re.I))
     mismatched_identity = bool(plant_identity and not recipe_name and (animal_matches or animal_declarations or different_plain_food) and identity_composition
                                and not re.search(re.escape(identity_term), identity_composition, re.I))
+    # A volume-labelled liquid cannot be assumed to have an ingredient list
+    # explicitly describing a capsule shell. Do not accuse a bottled product
+    # from a potentially misjoined formulation/market declaration.
+    pack=normalized(product.get('pack_size'))
+    capsule_form_mismatch=bool(re.search(r'\b(?:gelati(?:n|ne)\s+capsules?|capsule\s+shell)\b',ingredients,re.I)
+        and re.search(r'\d\s*(?:ml|litres?|liters?|l)\b',pack,re.I)
+        and not re.search(r'\b(?:capsules?|softgels?|tablets?)\b',name,re.I))
+    mismatched_identity = mismatched_identity or capsule_form_mismatch
     identity_conflict = mismatched_identity or result_assessment["identity"]["status"] in {"conflicted", "insufficient", "unresolved"}
     if mismatched_identity:
-        issues.append({"code": "identity_conflict", "target": "whole_product", "rule_id": "identity-consistency-v1", "evidence_refs": [reference("/product/name", name), *([reference("/product/ingredients", ingredients)] if ingredients else animal_declarations)], "resolution_refs": [], "blocks_claim": True})
+        issues.append({"code": "identity_conflict", "target": "whole_product", "rule_id": "identity-consistency-v1", "evidence_refs": [reference("/product/name", name), *([reference("/product/ingredients", ingredients)] if ingredients else animal_declarations), *([reference('/product/pack_size',pack)] if capsule_form_mismatch else [])], "resolution_refs": [], "blocks_claim": True})
     elif identity_conflict:
         issues.append({"code": "identity_conflict" if result_assessment["identity"]["status"] == "conflicted" else "identity_insufficient",
             "target": "whole_product", "rule_id": "identity-consistency-v1",

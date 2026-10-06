@@ -18,6 +18,17 @@ def context(name='Plain beans',ingredients='Beans',**fields):
 
 
 class WholeProductPolicyTests(unittest.TestCase):
+    def test_capsule_ingredients_on_a_volume_labelled_liquid_need_identity_resolution(self):
+        value=context('Example Oil Blend','Flax seed oil, Gelatin Capsule (North American Source)',pack_size='500ml',official_vegan=1)
+        result=classifier.classify_by_rules(value)
+        self.assertEqual(result.vegan_status,'unknown')
+        self.assertTrue(result.evidence['positive_block'])
+        self.assertFalse(result.evidence['tag_animal_conflict'])
+        for name,pack in [('Example Oil Capsules','90 capsules'),('Example Oil Softgels','60 tablets')]:
+            result=classifier.classify_by_rules(context(name,value['product']['ingredients'],pack_size=pack,official_vegan=1))
+            self.assertEqual(result.vegan_status,'nonvegan')
+            self.assertTrue(result.evidence['tag_animal_conflict'])
+
     def test_pdf_source_markers_do_not_interrupt_exact_visible_quotations(self):
         source='L12@P1: Scope includes fabrics, trims,\nL13@P1: packaging and dyes.\nL14: Exceptions apply.'
         self.assertEqual(policy.visible_source_text(source),'Scope includes fabrics, trims, packaging and dyes. Exceptions apply.')
