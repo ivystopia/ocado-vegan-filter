@@ -22,6 +22,50 @@ from types import SimpleNamespace
 
 
 class WholeProductBenchmarkTests(unittest.TestCase):
+    def issue_fixture(self, kind='natural'):
+        context={'product':{'name':'Cotton tops','preparation_and_usage':'100% cotton (exclusive of trimmings)'}}
+        case={'case_id':'a','case_kind':kind,'classifier_input':context,
+              'expected':{'vegan_status':'unknown','vegan_reason':None,
+                          'required_issue_codes':['composition_incomplete','identity_conflict']}}
+        issue={'code':'composition_incomplete','resolution_refs':[],
+               'evidence_refs':[{'path':'/product/preparation_and_usage','quote':'exclusive of trimmings'}]}
+        decision={'vegan_status':'unknown','vegan_reason':None,'validation_error':None,
+                  'evidence':{'assessment':{'material_issues':[issue]}}}
+        return case,decision
+
+    def test_natural_unknown_accepts_a_grounded_sufficient_blocker_and_reports_completeness(self):
+        case,decision=self.issue_fixture()
+        report=benchmark.metrics([case],{'a':decision})
+        self.assertEqual(report['missing_required_issues'],[])
+        self.assertEqual(report['incomplete_reference_issue_reporting'],{'a':['identity_conflict']})
+        self.assertEqual(report['issue_rubric_version'],benchmark.ISSUE_RUBRIC_VERSION)
+
+    def test_unknown_blocker_must_be_unresolved_cited_and_reference_supported(self):
+        case,decision=self.issue_fixture()
+        for field,value in [('resolution_refs',[{'path':'/product/name','quote':'Cotton tops'}]),
+                            ('evidence_refs',[]),('code','processing_unresolved'),
+                            ('evidence_refs',[{'path':'/product/name','quote':'Invented quotation'}])]:
+            changed=copy.deepcopy(decision)
+            changed['evidence']['assessment']['material_issues'][0][field]=value
+            self.assertEqual(benchmark.metrics([case],{'a':changed})['missing_required_issues'],['a'])
+
+    def test_controlled_contracts_still_require_every_expected_issue(self):
+        case,decision=self.issue_fixture('synthetic')
+        self.assertEqual(benchmark.metrics([case],{'a':decision})['missing_required_issues'],['a'])
+
+    def test_one_unknown_blocker_cannot_excuse_an_unsafe_promotion_or_false_animal_allegation(self):
+        case,decision=self.issue_fixture()
+        for status in ('vegan','nonvegan'):
+            changed=copy.deepcopy(decision);changed['vegan_status']=status
+            changed['vegan_reason']='ingredients' if status=='vegan' else None
+            report=benchmark.metrics([case],{'a':changed})
+            self.assertEqual(report['missing_required_issues'],['a'])
+            self.assertEqual(report['unsafe_positives'] if status=='vegan' else report['false_nonvegan_decisions'],['a'])
+
+    def test_identity_only_reference_cannot_be_replaced_with_an_unrelated_composition_issue(self):
+        case,decision=self.issue_fixture();case['expected']['required_issue_codes']=['identity_conflict']
+        self.assertEqual(benchmark.metrics([case],{'a':decision})['missing_required_issues'],['a'])
+
     def test_annotation_schema_rejects_uncited_component_assessment(self):
         row={'case_id':'a','expected_status':'nonvegan','expected_reason':None,
             'required_issue_codes':[],'input_refs':[{'path':'/product/ingredients','quote':'Milk'}],

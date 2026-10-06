@@ -25,7 +25,8 @@ import vegan_policy as policy
 import update_userscript_allowlists as exporter
 
 ROOT = Path(__file__).resolve().parents[1]
-FIXTURE = ROOT / 'benchmarks/vegan-classifier-v2/ethical-cases.json'
+FIXTURE = ROOT / 'benchmarks/vegan-classifier-v2/ethical-cases-v2.json'
+ISSUE_RUBRIC_VERSION = 'grounded-unknown-blocker-v2'
 
 
 def save(path, value):
@@ -121,6 +122,7 @@ def metrics(cases, decisions):
     scored = {key:value for key,value in valid.items() if by_id[key].get('expected')}
     unsafe, unsupported, contradicted, false_negatives = [], [], [], []
     mismatches, reason_errors, missing_issues, mandatory_failures, reportable_errors = [], [], [], [], []
+    incomplete_issue_reporting = {}
     recall = Counter(); eligible = Counter(case['expected']['vegan_reason'] for case in cases
         if case.get('expected',{} ) and case['expected']['vegan_status']=='vegan')
     negative_ids={case['case_id'] for case in cases if case.get('expected') and case['expected']['vegan_status']=='nonvegan'}
@@ -141,8 +143,28 @@ def metrics(cases, decisions):
         if result['vegan_status']=='nonvegan' and status!='nonvegan': false_negatives.append(key)
         if result['vegan_status']!=status: mismatches.append(key)
         if result['vegan_status']=='vegan' and result['vegan_reason']!=expected.get('vegan_reason'): reason_errors.append(key)
-        issues = {issue['code'] for issue in result['evidence'].get('assessment',{}).get('material_issues',[])}
-        if not set(expected.get('required_issue_codes',[])) <= issues: missing_issues.append(key)
+        material_issues = result['evidence'].get('assessment',{}).get('material_issues',[])
+        issues = {issue['code'] for issue in material_issues}
+        required = set(expected.get('required_issue_codes',[]))
+        absent = required - issues
+        if absent: incomplete_issue_reporting[key] = sorted(absent)
+        if by_id[key].get('case_kind')=='natural' and status==result['vegan_status']=='unknown':
+            # Natural references can enumerate independent sufficient blockers,
+            # including an unused source's inapplicability. A grounded unknown
+            # need not mistake that for unresolved target-product identity.
+            # Positives, animal allegations and controlled contracts stay strict.
+            grounded = set()
+            for issue in material_issues:
+                if issue['code'] not in required or issue.get('resolution_refs') or not issue.get('evidence_refs'):
+                    continue
+                try:
+                    for ref in issue['evidence_refs']: policy.resolve_reference(by_id[key]['classifier_input'],ref)
+                except ValueError:
+                    continue
+                grounded.add(issue['code'])
+            if required and not grounded: missing_issues.append(key)
+        elif absent:
+            missing_issues.append(key)
         if by_id[key].get('mandatory_control') and (result['vegan_status'],result['vegan_reason'])!=(status,expected['vegan_reason']):
             mandatory_failures.append(key)
         if 'tag_animal_conflict' in issues and status!='nonvegan': reportable_errors.append(key)
@@ -182,6 +204,8 @@ def metrics(cases, decisions):
             'note':'Separately scoped retained-source reference B; unknown evidence decisions are not physical-status errors.'},
         'mandatory_control_failures':mandatory_failures,
         'reason_errors':reason_errors,'missing_required_issues':missing_issues,
+        'issue_rubric_version':ISSUE_RUBRIC_VERSION,
+        'incomplete_reference_issue_reporting':incomplete_issue_reporting,
         'vegan_recall':sum(recall.values())/sum(eligible.values()) if eligible else None,
         'per_route_recall':{key:{'eligible':eligible[key],'recovered':recall[key], 'recall':recall[key]/eligible[key]} for key in eligible},
         'outcomes':dict(Counter(value['vegan_status'] for value in valid.values())),
