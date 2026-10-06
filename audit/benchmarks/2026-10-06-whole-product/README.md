@@ -30,7 +30,7 @@ Two primary calls remain fresh and independent. Exactly two fresh blind arbitrat
 
 ## Read-only impact
 
-`impact-ethical-v10/` covers 54,418 all-known products and 49,951 stored-current products. It collects 19 definite animal/tag contradictions, 16 with current flags, separately from one tagged identity mismatch. All 23 proposed new rule positives cite explicit stored product-level vegan claims, rather than ingredient probability; complete evidence is retained. There are 19,558 semantic-review candidates across all known products. Of these, 3,802 have existing positive labels; the rest are other historical statuses. A preview queue is neither a completed unknown classification nor authorisation for a catalogue-wide model sweep. No live database was modified. Stored current flags do not prove live listing; verify currency before sending any report.
+`impact-ethical-v11/` covers 54,418 all-known products and 49,951 stored-current products. It collects 19 definite animal/tag contradictions, 16 with current flags, separately from one tagged identity mismatch. All 23 proposed new rule positives cite explicit stored product-level vegan claims, rather than ingredient probability; complete evidence is retained. There are 19,548 semantic-review candidates across all known products. Of these, 3,793 have existing positive labels; the rest are other historical statuses. A preview queue is neither a completed unknown classification nor authorisation for a catalogue-wide model sweep. No live database was modified. Stored current flags do not prove live listing; verify currency before sending any report.
 
 ## Model comparison and cost
 

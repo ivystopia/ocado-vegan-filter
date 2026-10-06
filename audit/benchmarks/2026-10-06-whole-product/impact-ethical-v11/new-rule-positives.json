@@ -1,0 +1,3891 @@
+[
+  {
+    "product_id": "248826011",
+    "name": "Carbzone LowCarb Fibre Rich Small Tortillas",
+    "url": "https://www.ocado.com/products/248826011",
+    "current_on_ocado": 1,
+    "previous_status": "unknown",
+    "previous_reason": null,
+    "candidate_status": "vegan",
+    "candidate_reason": "manufacturer",
+    "input_sha256": "e5a8cc04f6009abbe162296c0c49315570243f69992fe2418b46a73f378859a0",
+    "candidate": {
+      "product_id": "248826011",
+      "vegan_status": "vegan",
+      "vegan_reason": "manufacturer",
+      "confidence": "certain",
+      "summary": "Shared whole-product evidence policy: vegan",
+      "evidence": {
+        "rule": "whole_product_policy",
+        "vegan_status": "vegan",
+        "vegan_reason": "manufacturer",
+        "positive_block": false,
+        "policy_version": "whole-product-v2",
+        "knowledge_version": "vegan-risk-registry-v6",
+        "assessment": {
+          "identity": {
+            "status": "established",
+            "evidence_refs": [
+              {
+                "path": "/product/name",
+                "quote": "Carbzone LowCarb Fibre Rich Small Tortillas"
+              }
+            ]
+          },
+          "composition": {
+            "status": "covered_by_claim",
+            "evidence_refs": [
+              {
+                "path": "/product/dietary_information",
+                "quote": "Low Carb, High Protein, Vegan, Keto, LCHF, No Added Sugar"
+              }
+            ]
+          },
+          "sourcing": {
+            "status": "covered_by_claim",
+            "evidence_refs": [
+              {
+                "path": "/product/dietary_information",
+                "quote": "Low Carb, High Protein, Vegan, Keto, LCHF, No Added Sugar"
+              }
+            ]
+          },
+          "processing": {
+            "status": "covered_by_claim",
+            "evidence_refs": [
+              {
+                "path": "/product/dietary_information",
+                "quote": "Low Carb, High Protein, Vegan, Keto, LCHF, No Added Sugar"
+              }
+            ]
+          },
+          "components": {
+            "status": "covered_by_claim",
+            "evidence_refs": [
+              {
+                "path": "/product/dietary_information",
+                "quote": "Low Carb, High Protein, Vegan, Keto, LCHF, No Added Sugar"
+              }
+            ]
+          },
+          "positive_support": [
+            {
+              "reason": "manufacturer",
+              "evidence_refs": [
+                {
+                  "path": "/product/dietary_information",
+                  "quote": "Low Carb, High Protein, Vegan, Keto, LCHF, No Added Sugar"
+                }
+              ]
+            }
+          ],
+          "material_issues": [],
+          "source_applicability": []
+        },
+        "tag_animal_conflict": false,
+        "matched_patterns": [],
+        "sources": [
+          {
+            "table": "products",
+            "column": "dietary_information",
+            "text": "Low Carb, High Protein, Vegan, Keto, LCHF, No Added Sugar"
+          },
+          {
+            "table": "products",
+            "column": "detailed_description",
+            "text": "It's a wrap. CarbZone's Low Carb® Tortilla is now Europe's ¿Best Selling¿ low carb tortilla. Regardless the endgame, you deserve the most savory and nutritious products available to help fuel your body past the finish line. Containing only 4g of net carbs, this protein-rich, high fiber tortilla serves as the perfect choice for any snack or low carb meal. At home or on-the-go, satisfy your appetite with these soft, full-flavoured, ready to serve tortillas today."
+          },
+          {
+            "table": "products",
+            "column": "other_information",
+            "text": "Full Product Name: Tortilla Bread Storage: In a dry cool place. Origin: Produced in Spain"
+          },
+          {
+            "table": "products",
+            "column": "preparation_and_usage",
+            "text": "Serving Suggestions: Fill the tortilla with fried vegetables, tasty dips, or your favourite cooked meat. To enjoy your tortilla even more heat it before adding the filling. The tortillas can be used as wraps, burritos, quesadillas, tacos or nachos."
+          },
+          {
+            "table": "products",
+            "column": "ingredients",
+            "text": "Water, Wheat Gluten, Wheat Fibre, Whole Wheat Flour, Modified Wheat Starch, Vegetable Palmfat, Emulsifier (Mono- and Diglycerides of Fatty Acids), Acidifiers (Malic Acid, Citric Acid), Salt, Preservatives (Potassium Sorbate, Calcium Propionate), Stabilizer (Xanthan Gum), Gasifier (Sodium Bicarbonate), Inactive Yeast"
+          },
+          {
+            "table": "manufacturer_vegan_evidence",
+            "column": "dietaryInformation",
+            "text": "Low Carb, High Protein, Vegan, Keto, LCHF, No Added Sugar"
+          }
+        ]
+      },
+      "source": "rule",
+      "model": null,
+      "reasoning_effort": null,
+      "prompt_version": null,
+      "context_hash": "e5a8cc04f6009abbe162296c0c49315570243f69992fe2418b46a73f378859a0",
+      "raw_response": null,
+      "parsed_response_json": null,
+      "validation_error": null,
+      "exit_status": null,
+      "model_calls": []
+    }
+  },
+  {
+    "product_id": "248827011",
+    "name": "Carbzone LowCarb Fibre Rich Large Tortillas",
+    "url": "https://www.ocado.com/products/248827011",
+    "current_on_ocado": 1,
+    "previous_status": "unknown",
+    "previous_reason": null,
+    "candidate_status": "vegan",
+    "candidate_reason": "manufacturer",
+    "input_sha256": "47c2986911749843eb5be26065ccdd7108e77a0158b3bd51a597738c8e851331",
+    "candidate": {
+      "product_id": "248827011",
+      "vegan_status": "vegan",
+      "vegan_reason": "manufacturer",
+      "confidence": "certain",
+      "summary": "Shared whole-product evidence policy: vegan",
+      "evidence": {
+        "rule": "whole_product_policy",
+        "vegan_status": "vegan",
+        "vegan_reason": "manufacturer",
+        "positive_block": false,
+        "policy_version": "whole-product-v2",
+        "knowledge_version": "vegan-risk-registry-v6",
+        "assessment": {
+          "identity": {
+            "status": "established",
+            "evidence_refs": [
+              {
+                "path": "/product/name",
+                "quote": "Carbzone LowCarb Fibre Rich Large Tortillas"
+              }
+            ]
+          },
+          "composition": {
+            "status": "covered_by_claim",
+            "evidence_refs": [
+              {
+                "path": "/product/dietary_information",
+                "quote": "Low Carb, High Protein, Vegan, Keto, LCHF, No Added Sugar."
+              }
+            ]
+          },
+          "sourcing": {
+            "status": "covered_by_claim",
+            "evidence_refs": [
+              {
+                "path": "/product/dietary_information",
+                "quote": "Low Carb, High Protein, Vegan, Keto, LCHF, No Added Sugar."
+              }
+            ]
+          },
+          "processing": {
+            "status": "covered_by_claim",
+            "evidence_refs": [
+              {
+                "path": "/product/dietary_information",
+                "quote": "Low Carb, High Protein, Vegan, Keto, LCHF, No Added Sugar."
+              }
+            ]
+          },
+          "components": {
+            "status": "covered_by_claim",
+            "evidence_refs": [
+              {
+                "path": "/product/dietary_information",
+                "quote": "Low Carb, High Protein, Vegan, Keto, LCHF, No Added Sugar."
+              }
+            ]
+          },
+          "positive_support": [
+            {
+              "reason": "manufacturer",
+              "evidence_refs": [
+                {
+                  "path": "/product/dietary_information",
+                  "quote": "Low Carb, High Protein, Vegan, Keto, LCHF, No Added Sugar."
+                }
+              ]
+            }
+          ],
+          "material_issues": [],
+          "source_applicability": []
+        },
+        "tag_animal_conflict": false,
+        "matched_patterns": [],
+        "sources": [
+          {
+            "table": "products",
+            "column": "dietary_information",
+            "text": "Low Carb, High Protein, Vegan, Keto, LCHF, No Added Sugar."
+          },
+          {
+            "table": "products",
+            "column": "detailed_description",
+            "text": "Low Carb Tortillas Our Low Carb® Tortilla is a fibre and protein rich tortilla for the carb conscious. We have carefully selected ingredients in order to obtain a soft and tasty tortilla that can be filled with vegetables and meats. Each tortilla contains 6 g carbohydrates."
+          },
+          {
+            "table": "products",
+            "column": "other_information",
+            "text": "Full Product Name: LowCarb Tortillas Storage: In a dry cool place. Origin: Produced in Spain"
+          },
+          {
+            "table": "products",
+            "column": "preparation_and_usage",
+            "text": "Serving Suggestions: Fill the tortilla with fried vegetables, tasty dips, or your favourite cooked meat. To enjoy your tortilla even more heat it before adding the filling. The tortillas can be used as wraps, burritos, quesadillas, tacos or nachos."
+          },
+          {
+            "table": "products",
+            "column": "ingredients",
+            "text": "Water, Wheat Gluten, Wheat Fibre, Whole Wheat Flour, Modified Wheat Starch, Vegetable Palmfat, Emulsifier (Mono- and Diglycerides of Fatty Acids), Acidifiers (Malic Acid, Citric Acid), Salt, Preservatives (Potassium Sorbate, Calcium Propionate), Stabilizer (Xanthan Gum), Gasifier (Sodium Bicarbonate), Inactive Yeast"
+          },
+          {
+            "table": "manufacturer_vegan_evidence",
+            "column": "dietaryInformation",
+            "text": "Low Carb, High Protein, Vegan, Keto, LCHF, No Added Sugar."
+          }
+        ]
+      },
+      "source": "rule",
+      "model": null,
+      "reasoning_effort": null,
+      "prompt_version": null,
+      "context_hash": "47c2986911749843eb5be26065ccdd7108e77a0158b3bd51a597738c8e851331",
+      "raw_response": null,
+      "parsed_response_json": null,
+      "validation_error": null,
+      "exit_status": null,
+      "model_calls": []
+    }
+  },
+  {
+    "product_id": "383156011",
+    "name": "Carbzone LowCarb Tomato Tortillas Pack of 8",
+    "url": "https://www.ocado.com/products/383156011",
+    "current_on_ocado": 1,
+    "previous_status": "unknown",
+    "previous_reason": null,
+    "candidate_status": "vegan",
+    "candidate_reason": "manufacturer",
+    "input_sha256": "5ff700cf4d0b7c0c95310462704193a5462034477cb3b45cb84c7194fba56f1f",
+    "candidate": {
+      "product_id": "383156011",
+      "vegan_status": "vegan",
+      "vegan_reason": "manufacturer",
+      "confidence": "certain",
+      "summary": "Shared whole-product evidence policy: vegan",
+      "evidence": {
+        "rule": "whole_product_policy",
+        "vegan_status": "vegan",
+        "vegan_reason": "manufacturer",
+        "positive_block": false,
+        "policy_version": "whole-product-v2",
+        "knowledge_version": "vegan-risk-registry-v6",
+        "assessment": {
+          "identity": {
+            "status": "established",
+            "evidence_refs": [
+              {
+                "path": "/product/name",
+                "quote": "Carbzone LowCarb Tomato Tortillas Pack of 8"
+              }
+            ]
+          },
+          "composition": {
+            "status": "covered_by_claim",
+            "evidence_refs": [
+              {
+                "path": "/product/dietary_information",
+                "quote": "Low Carb, High Protein, Vegan, Keto, LCHF, No Added Sugar"
+              }
+            ]
+          },
+          "sourcing": {
+            "status": "covered_by_claim",
+            "evidence_refs": [
+              {
+                "path": "/product/dietary_information",
+                "quote": "Low Carb, High Protein, Vegan, Keto, LCHF, No Added Sugar"
+              }
+            ]
+          },
+          "processing": {
+            "status": "covered_by_claim",
+            "evidence_refs": [
+              {
+                "path": "/product/dietary_information",
+                "quote": "Low Carb, High Protein, Vegan, Keto, LCHF, No Added Sugar"
+              }
+            ]
+          },
+          "components": {
+            "status": "covered_by_claim",
+            "evidence_refs": [
+              {
+                "path": "/product/dietary_information",
+                "quote": "Low Carb, High Protein, Vegan, Keto, LCHF, No Added Sugar"
+              }
+            ]
+          },
+          "positive_support": [
+            {
+              "reason": "manufacturer",
+              "evidence_refs": [
+                {
+                  "path": "/product/dietary_information",
+                  "quote": "Low Carb, High Protein, Vegan, Keto, LCHF, No Added Sugar"
+                }
+              ]
+            }
+          ],
+          "material_issues": [],
+          "source_applicability": []
+        },
+        "tag_animal_conflict": false,
+        "matched_patterns": [],
+        "sources": [
+          {
+            "table": "products",
+            "column": "dietary_information",
+            "text": "Low Carb, High Protein, Vegan, Keto, LCHF, No Added Sugar"
+          },
+          {
+            "table": "products",
+            "column": "detailed_description",
+            "text": "Whether it be part of your balanced breakfast, lunch or low carb dinner, CarbZone knows the day to day struggle of eating clean, without sacrificing taste. Now, Europe's “Best Selling” low carb tortilla comes in a remarkably mild tomato flavour. Containing only 4g of net carbs, this protein-rich, high fibre tortilla serves as the perfect choice for any snack or low carb meal. And with it's unique taste, the Carbzone Low Carb® Tomato Tortilla is ideal for your wraps, salads or even a delicious low carb pizza recipe"
+          },
+          {
+            "table": "products",
+            "column": "other_information",
+            "text": "For net carbs, deduct polyols. Fibre is already deducted."
+          },
+          {
+            "table": "products",
+            "column": "preparation_and_usage",
+            "text": "Fill the tortilla with fried vegetables, tasty dips, or your favorite cooked meat. To enjoy your tortilla even more heat it before adding the filling. The tortillas can be used as wraps, burritos, quesadillas, tacos or nachos."
+          },
+          {
+            "table": "products",
+            "column": "ingredients",
+            "text": "Water, Wheat Gluten, Wheat Fibre, Modified Wheat Starch, Wheat Flour, Certified Vegetable Palmfat, Tomato Powder (1.4%), Emulsifier (Mono- and Diglycerides of Fatty Acids), Acidifiers (Malic Acid, Citric Acid), Gasifier (Potassium and Sodium Di-Phosphates, Sodium Bicarbonate), Salt, Preservatives (Potassium Sorbate, Calcium Propionate), Stabilizer (Guar Gum), Tomato Flavour, Inactive Yeast"
+          },
+          {
+            "table": "manufacturer_vegan_evidence",
+            "column": "dietaryInformation",
+            "text": "Low Carb, High Protein, Vegan, Keto, LCHF, No Added Sugar"
+          }
+        ]
+      },
+      "source": "rule",
+      "model": null,
+      "reasoning_effort": null,
+      "prompt_version": null,
+      "context_hash": "5ff700cf4d0b7c0c95310462704193a5462034477cb3b45cb84c7194fba56f1f",
+      "raw_response": null,
+      "parsed_response_json": null,
+      "validation_error": null,
+      "exit_status": null,
+      "model_calls": []
+    }
+  },
+  {
+    "product_id": "401520011",
+    "name": "Karma Drinks Sugar Free Karma Cola",
+    "url": "https://www.ocado.com/products/401520011",
+    "current_on_ocado": 0,
+    "previous_status": "unknown",
+    "previous_reason": null,
+    "candidate_status": "vegan",
+    "candidate_reason": "manufacturer",
+    "input_sha256": "46fd32181f574998ecaf0772ca0df5280035d0c78823330b608adc3041286245",
+    "candidate": {
+      "product_id": "401520011",
+      "vegan_status": "vegan",
+      "vegan_reason": "manufacturer",
+      "confidence": "certain",
+      "summary": "Shared whole-product evidence policy: vegan",
+      "evidence": {
+        "rule": "whole_product_policy",
+        "vegan_status": "vegan",
+        "vegan_reason": "manufacturer",
+        "positive_block": false,
+        "policy_version": "whole-product-v2",
+        "knowledge_version": "vegan-risk-registry-v6",
+        "assessment": {
+          "identity": {
+            "status": "established",
+            "evidence_refs": [
+              {
+                "path": "/product/name",
+                "quote": "Karma Drinks Sugar Free Karma Cola"
+              }
+            ]
+          },
+          "composition": {
+            "status": "covered_by_claim",
+            "evidence_refs": [
+              {
+                "path": "/product/dietary_information",
+                "quote": "Vegan, vegetarian, gluten free, dairy free."
+              }
+            ]
+          },
+          "sourcing": {
+            "status": "covered_by_claim",
+            "evidence_refs": [
+              {
+                "path": "/product/dietary_information",
+                "quote": "Vegan, vegetarian, gluten free, dairy free."
+              }
+            ]
+          },
+          "processing": {
+            "status": "covered_by_claim",
+            "evidence_refs": [
+              {
+                "path": "/product/dietary_information",
+                "quote": "Vegan, vegetarian, gluten free, dairy free."
+              }
+            ]
+          },
+          "components": {
+            "status": "covered_by_claim",
+            "evidence_refs": [
+              {
+                "path": "/product/dietary_information",
+                "quote": "Vegan, vegetarian, gluten free, dairy free."
+              }
+            ]
+          },
+          "positive_support": [
+            {
+              "reason": "manufacturer",
+              "evidence_refs": [
+                {
+                  "path": "/product/dietary_information",
+                  "quote": "Vegan, vegetarian, gluten free, dairy free."
+                }
+              ]
+            }
+          ],
+          "material_issues": [
+            {
+              "code": "source_unresolved",
+              "target": "whole_product",
+              "rule_id": "unspecified-composition-v1",
+              "evidence_refs": [
+                {
+                  "path": "/product/ingredients",
+                  "quote": "Carbonated Water, Sweeteners (Erythritol, Steviol Glycosides), Natural Flavouring, Acidity Regulators (Malic Acid, Citric Acid)"
+                }
+              ],
+              "resolution_refs": [
+                {
+                  "path": "/product/dietary_information",
+                  "quote": "Vegan, vegetarian, gluten free, dairy free."
+                }
+              ],
+              "blocks_claim": false
+            },
+            {
+              "code": "composition_incomplete",
+              "target": "supplied components",
+              "rule_id": "supplied-components-composition-v1",
+              "evidence_refs": [
+                {
+                  "path": "/product/package_type",
+                  "quote": "Bottle"
+                },
+                {
+                  "path": "/product/other_information",
+                  "quote": "Full Product Name: Sparkling Cola Flavoured Soft Drink Storage: Best before: See bottle. Store in a cool, dry place."
+                }
+              ],
+              "resolution_refs": [
+                {
+                  "path": "/product/dietary_information",
+                  "quote": "Vegan, vegetarian, gluten free, dairy free."
+                }
+              ],
+              "blocks_claim": false
+            }
+          ],
+          "source_applicability": []
+        },
+        "tag_animal_conflict": false,
+        "matched_patterns": [],
+        "sources": [
+          {
+            "table": "products",
+            "column": "dietary_information",
+            "text": "Vegan, vegetarian, gluten free, dairy free."
+          },
+          {
+            "table": "products",
+            "column": "features",
+            "text": "Natural, Sugar Free"
+          },
+          {
+            "table": "products",
+            "column": "detailed_description",
+            "text": "What Goes Around Comes Around Drink no evil (or sugar) with this natural, sugar-free cola. It tastes just as sweet for supporting our cola grower communities in Sierra Leone."
+          },
+          {
+            "table": "products",
+            "column": "further_description",
+            "text": "By drinking Karma, you've helped build 9 new bridges connecting 7 communities"
+          },
+          {
+            "table": "products",
+            "column": "other_information",
+            "text": "Full Product Name: Sparkling Cola Flavoured Soft Drink Storage: Best before: See bottle. Store in a cool, dry place."
+          },
+          {
+            "table": "products",
+            "column": "ingredients",
+            "text": "Carbonated Water, Sweeteners (Erythritol, Steviol Glycosides), Natural Flavouring, Acidity Regulators (Malic Acid, Citric Acid)"
+          }
+        ]
+      },
+      "source": "rule",
+      "model": null,
+      "reasoning_effort": null,
+      "prompt_version": null,
+      "context_hash": "46fd32181f574998ecaf0772ca0df5280035d0c78823330b608adc3041286245",
+      "raw_response": null,
+      "parsed_response_json": null,
+      "validation_error": null,
+      "exit_status": null,
+      "model_calls": []
+    }
+  },
+  {
+    "product_id": "548305011",
+    "name": "Spinached Organic Gut Wellness Probiotic Growth & Digestion supplement",
+    "url": "https://www.ocado.com/products/548305011",
+    "current_on_ocado": 1,
+    "previous_status": "unknown",
+    "previous_reason": null,
+    "candidate_status": "vegan",
+    "candidate_reason": "manufacturer",
+    "input_sha256": "d45b525c5a6aad8d03500cd93d2d8f172ec2e3a38601aaf1576e38d6f4ee3a7f",
+    "candidate": {
+      "product_id": "548305011",
+      "vegan_status": "vegan",
+      "vegan_reason": "manufacturer",
+      "confidence": "certain",
+      "summary": "Shared whole-product evidence policy: vegan",
+      "evidence": {
+        "rule": "whole_product_policy",
+        "vegan_status": "vegan",
+        "vegan_reason": "manufacturer",
+        "positive_block": false,
+        "policy_version": "whole-product-v2",
+        "knowledge_version": "vegan-risk-registry-v6",
+        "assessment": {
+          "identity": {
+            "status": "established",
+            "evidence_refs": [
+              {
+                "path": "/product/name",
+                "quote": "Spinached Organic Gut Wellness Probiotic Growth & Digestion supplement"
+              }
+            ]
+          },
+          "composition": {
+            "status": "covered_by_claim",
+            "evidence_refs": [
+              {
+                "path": "/product/dietary_information",
+                "quote": "Organic, Vegan, Gluten Free, Loaded with Antioxidants, Rich in Vitamin C. Declared Free From: Allergens, sweeteners, additives, GMO & preservatives"
+              }
+            ]
+          },
+          "sourcing": {
+            "status": "covered_by_claim",
+            "evidence_refs": [
+              {
+                "path": "/product/dietary_information",
+                "quote": "Organic, Vegan, Gluten Free, Loaded with Antioxidants, Rich in Vitamin C. Declared Free From: Allergens, sweeteners, additives, GMO & preservatives"
+              }
+            ]
+          },
+          "processing": {
+            "status": "covered_by_claim",
+            "evidence_refs": [
+              {
+                "path": "/product/dietary_information",
+                "quote": "Organic, Vegan, Gluten Free, Loaded with Antioxidants, Rich in Vitamin C. Declared Free From: Allergens, sweeteners, additives, GMO & preservatives"
+              }
+            ]
+          },
+          "components": {
+            "status": "covered_by_claim",
+            "evidence_refs": [
+              {
+                "path": "/product/dietary_information",
+                "quote": "Organic, Vegan, Gluten Free, Loaded with Antioxidants, Rich in Vitamin C. Declared Free From: Allergens, sweeteners, additives, GMO & preservatives"
+              }
+            ]
+          },
+          "positive_support": [
+            {
+              "reason": "manufacturer",
+              "evidence_refs": [
+                {
+                  "path": "/product/dietary_information",
+                  "quote": "Organic, Vegan, Gluten Free, Loaded with Antioxidants, Rich in Vitamin C. Declared Free From: Allergens, sweeteners, additives, GMO & preservatives"
+                }
+              ]
+            }
+          ],
+          "material_issues": [
+            {
+              "code": "source_unresolved",
+              "target": "whole_product",
+              "rule_id": "unspecified-composition-v1",
+              "evidence_refs": [
+                {
+                  "path": "/product/ingredients",
+                  "quote": "Ingredients: Spinach - Here at SPINACHED, Spinach is everything! The superfood is packed full of vitamins and minerals, and has multiple health benefits, including healthier hair and skin and more energy throughout the day. Chlorella - a nutrient packed algae that helps enhance the body’s natural ability to clear toxins. Ginger - supports the healthy digestion of food and nutrient absorption. Wheatgrass - proven to stunt the growth and development of unfriendly bacteria and natural healer and promoter of gut health Flaxseeds - Rich in fibre and Omega 3 to improve bowel regularity and support digestive and gut health. Lucuma - an optimal gut-supporting and digestive aid."
+                }
+              ],
+              "resolution_refs": [
+                {
+                  "path": "/product/dietary_information",
+                  "quote": "Organic, Vegan, Gluten Free, Loaded with Antioxidants, Rich in Vitamin C. Declared Free From: Allergens, sweeteners, additives, GMO & preservatives"
+                }
+              ],
+              "blocks_claim": false
+            },
+            {
+              "code": "composition_incomplete",
+              "target": "supplied components",
+              "rule_id": "supplied-components-composition-v1",
+              "evidence_refs": [
+                {
+                  "path": "/product/package_type",
+                  "quote": "Pouch"
+                }
+              ],
+              "resolution_refs": [
+                {
+                  "path": "/product/dietary_information",
+                  "quote": "Organic, Vegan, Gluten Free, Loaded with Antioxidants, Rich in Vitamin C. Declared Free From: Allergens, sweeteners, additives, GMO & preservatives"
+                }
+              ],
+              "blocks_claim": false
+            }
+          ],
+          "source_applicability": []
+        },
+        "tag_animal_conflict": false,
+        "matched_patterns": [],
+        "sources": [
+          {
+            "table": "products",
+            "column": "dietary_information",
+            "text": "Organic, Vegan, Gluten Free, Loaded with Antioxidants, Rich in Vitamin C. Declared Free From: Allergens, sweeteners, additives, GMO & preservatives"
+          },
+          {
+            "table": "products",
+            "column": "detailed_description",
+            "text": "Your daily 'spoonful' of gut-loving greens to support healthy digestion and gut health. #FACTS • Only 6 superfoods specially selected to support gut health - and nothing else! • Plant based • Certified Organic by Organic Farmers & Growers (OF&G) • Gluten Free • Absolutely No Junk: Free from sweeteners, GMO, additives and preservatives • 40 Servings: This magic number indicates that 40 days is what's required to change behaviour or 'retrain' the subconscious. Here's to 40 days of creating healthy habits! What is Gut Wellness? This delicious gut-loving supplement was formulated to help you build a heathy routine so that you feel amazing everyday! Give your gut the love it deserves with these powerful ingredients chosen for their 'Gut Health' properties. Keeping your gut healthy leads to better immunity, better mental performance, healthy sleep, boosted energy levels and so much more. A clean blend of 6 organic ingredients, including Chlorella, Wheatgrass and Ginger, designed to support a bloat-free digestion, immunity and energy."
+          },
+          {
+            "table": "products",
+            "column": "other_information",
+            "text": "Natural Food Supplement"
+          },
+          {
+            "table": "products",
+            "column": "preparation_and_usage",
+            "text": "Simply add a teaspoon to water, juice, smoothies or plant-based milk."
+          },
+          {
+            "table": "products",
+            "column": "ingredients",
+            "text": "Ingredients: Spinach - Here at SPINACHED, Spinach is everything! The superfood is packed full of vitamins and minerals, and has multiple health benefits, including healthier hair and skin and more energy throughout the day. Chlorella - a nutrient packed algae that helps enhance the body’s natural ability to clear toxins. Ginger - supports the healthy digestion of food and nutrient absorption. Wheatgrass - proven to stunt the growth and development of unfriendly bacteria and natural healer and promoter of gut health Flaxseeds - Rich in fibre and Omega 3 to improve bowel regularity and support digestive and gut health. Lucuma - an optimal gut-supporting and digestive aid."
+          },
+          {
+            "table": "manufacturer_vegan_evidence",
+            "column": "dietaryInformation",
+            "text": "Organic, Vegan, Gluten Free, Loaded with Antioxidants, Rich in Vitamin C. Declared Free From: Allergens, sweeteners, additives, GMO & preservatives"
+          }
+        ]
+      },
+      "source": "rule",
+      "model": null,
+      "reasoning_effort": null,
+      "prompt_version": null,
+      "context_hash": "d45b525c5a6aad8d03500cd93d2d8f172ec2e3a38601aaf1576e38d6f4ee3a7f",
+      "raw_response": null,
+      "parsed_response_json": null,
+      "validation_error": null,
+      "exit_status": null,
+      "model_calls": []
+    }
+  },
+  {
+    "product_id": "647541011",
+    "name": "Living Things Raspberry & Pomegranate Biotic Soda",
+    "url": "https://www.ocado.com/products/647541011",
+    "current_on_ocado": 1,
+    "previous_status": "unknown",
+    "previous_reason": null,
+    "candidate_status": "vegan",
+    "candidate_reason": "manufacturer",
+    "input_sha256": "75710ed110fc45c8bb2f82ed8b4ad20b08bbae3cd70793bba8599ebf68626fb1",
+    "candidate": {
+      "product_id": "647541011",
+      "vegan_status": "vegan",
+      "vegan_reason": "manufacturer",
+      "confidence": "certain",
+      "summary": "Shared whole-product evidence policy: vegan",
+      "evidence": {
+        "rule": "whole_product_policy",
+        "vegan_status": "vegan",
+        "vegan_reason": "manufacturer",
+        "positive_block": false,
+        "policy_version": "whole-product-v2",
+        "knowledge_version": "vegan-risk-registry-v6",
+        "assessment": {
+          "identity": {
+            "status": "established",
+            "evidence_refs": [
+              {
+                "path": "/product/name",
+                "quote": "Living Things Raspberry & Pomegranate Biotic Soda"
+              }
+            ]
+          },
+          "composition": {
+            "status": "covered_by_claim",
+            "evidence_refs": [
+              {
+                "path": "/product/dietary_information",
+                "quote": "Free From Artificial Sweeteners. No added Sugar, Artificial Colors, No Artificial Flavours, No Preservatives, Vegan-Friendly, Gluten-Free"
+              }
+            ]
+          },
+          "sourcing": {
+            "status": "covered_by_claim",
+            "evidence_refs": [
+              {
+                "path": "/product/dietary_information",
+                "quote": "Free From Artificial Sweeteners. No added Sugar, Artificial Colors, No Artificial Flavours, No Preservatives, Vegan-Friendly, Gluten-Free"
+              }
+            ]
+          },
+          "processing": {
+            "status": "covered_by_claim",
+            "evidence_refs": [
+              {
+                "path": "/product/dietary_information",
+                "quote": "Free From Artificial Sweeteners. No added Sugar, Artificial Colors, No Artificial Flavours, No Preservatives, Vegan-Friendly, Gluten-Free"
+              }
+            ]
+          },
+          "components": {
+            "status": "covered_by_claim",
+            "evidence_refs": [
+              {
+                "path": "/product/dietary_information",
+                "quote": "Free From Artificial Sweeteners. No added Sugar, Artificial Colors, No Artificial Flavours, No Preservatives, Vegan-Friendly, Gluten-Free"
+              }
+            ]
+          },
+          "positive_support": [
+            {
+              "reason": "manufacturer",
+              "evidence_refs": [
+                {
+                  "path": "/product/dietary_information",
+                  "quote": "Free From Artificial Sweeteners. No added Sugar, Artificial Colors, No Artificial Flavours, No Preservatives, Vegan-Friendly, Gluten-Free"
+                }
+              ]
+            }
+          ],
+          "material_issues": [
+            {
+              "code": "processing_unresolved",
+              "target": "whole_product",
+              "rule_id": "liquid-clarification-v1",
+              "evidence_refs": [
+                {
+                  "path": "/product/ingredients",
+                  "quote": "Carbonated Water, Chicory Root Inulin (2.4%), White Grape Juice from Concentrate (8.6%), Natural Flavouring, Acid, Malic Acid, Black Carrot Concentrate, Lactic Acid Bacillus"
+                }
+              ],
+              "resolution_refs": [
+                {
+                  "path": "/product/dietary_information",
+                  "quote": "Free From Artificial Sweeteners. No added Sugar, Artificial Colors, No Artificial Flavours, No Preservatives, Vegan-Friendly, Gluten-Free"
+                }
+              ],
+              "blocks_claim": false
+            },
+            {
+              "code": "source_unresolved",
+              "target": "whole_product",
+              "rule_id": "unspecified-composition-v1",
+              "evidence_refs": [
+                {
+                  "path": "/product/ingredients",
+                  "quote": "Carbonated Water, Chicory Root Inulin (2.4%), White Grape Juice from Concentrate (8.6%), Natural Flavouring, Acid, Malic Acid, Black Carrot Concentrate, Lactic Acid Bacillus"
+                }
+              ],
+              "resolution_refs": [
+                {
+                  "path": "/product/dietary_information",
+                  "quote": "Free From Artificial Sweeteners. No added Sugar, Artificial Colors, No Artificial Flavours, No Preservatives, Vegan-Friendly, Gluten-Free"
+                }
+              ],
+              "blocks_claim": false
+            },
+            {
+              "code": "composition_incomplete",
+              "target": "supplied components",
+              "rule_id": "supplied-components-composition-v1",
+              "evidence_refs": [
+                {
+                  "path": "/product/package_type",
+                  "quote": "Box"
+                },
+                {
+                  "path": "/product/detailed_description",
+                  "quote": "Living Things Raspberry & Pomegranate Soda is a refreshingly bold, all-natural drink bursting with the rich taste of raspberry and the sweet depth of pomegranate. This low-sugar, low-calorie beverage delivers full flavour without compromise. With 6.5 grams of prebiotic fibre and 2 billion live cultures per can, it’s designed to provide belly-loving benefits and promote gut health with every sip. Lightly sparkling to beat the bloat and best enjoyed fridge cold or over ice, this is the perfect refreshment for those seeking a crisp, revitalising drink that’s as good for your gut as it is for your taste buds. Packaging may vary."
+                }
+              ],
+              "resolution_refs": [
+                {
+                  "path": "/product/dietary_information",
+                  "quote": "Free From Artificial Sweeteners. No added Sugar, Artificial Colors, No Artificial Flavours, No Preservatives, Vegan-Friendly, Gluten-Free"
+                }
+              ],
+              "blocks_claim": false
+            }
+          ],
+          "source_applicability": []
+        },
+        "tag_animal_conflict": false,
+        "matched_patterns": [],
+        "sources": [
+          {
+            "table": "products",
+            "column": "dietary_information",
+            "text": "Free From Artificial Sweeteners. No added Sugar, Artificial Colors, No Artificial Flavours, No Preservatives, Vegan-Friendly, Gluten-Free"
+          },
+          {
+            "table": "products",
+            "column": "features",
+            "text": "All-Natural Soda, Gut Friendly, Low Sugar, Prebiotic Soda, Low Calorie, High Fibre, 2 Billion Live Cultures"
+          },
+          {
+            "table": "products",
+            "column": "detailed_description",
+            "text": "Living Things Raspberry & Pomegranate Soda is a refreshingly bold, all-natural drink bursting with the rich taste of raspberry and the sweet depth of pomegranate. This low-sugar, low-calorie beverage delivers full flavour without compromise. With 6.5 grams of prebiotic fibre and 2 billion live cultures per can, it’s designed to provide belly-loving benefits and promote gut health with every sip. Lightly sparkling to beat the bloat and best enjoyed fridge cold or over ice, this is the perfect refreshment for those seeking a crisp, revitalising drink that’s as good for your gut as it is for your taste buds. Packaging may vary."
+          },
+          {
+            "table": "products",
+            "column": "other_information",
+            "text": "Full Product Name: Low Calorie Sparkling Soft Drink with Live Cultures and Fibre. Storage: Best before: See base"
+          },
+          {
+            "table": "products",
+            "column": "preparation_and_usage",
+            "text": "Serve me chilled"
+          },
+          {
+            "table": "products",
+            "column": "ingredients",
+            "text": "Carbonated Water, Chicory Root Inulin (2.4%), White Grape Juice from Concentrate (8.6%), Natural Flavouring, Acid, Malic Acid, Black Carrot Concentrate, Lactic Acid Bacillus"
+          },
+          {
+            "table": "manufacturer_vegan_evidence",
+            "column": "dietaryInformation",
+            "text": "Free From Artificial Sweeteners. No added Sugar, Artificial Colors, No Artificial Flavours, No Preservatives, Vegan-Friendly, Gluten-Free"
+          }
+        ]
+      },
+      "source": "rule",
+      "model": null,
+      "reasoning_effort": null,
+      "prompt_version": null,
+      "context_hash": "75710ed110fc45c8bb2f82ed8b4ad20b08bbae3cd70793bba8599ebf68626fb1",
+      "raw_response": null,
+      "parsed_response_json": null,
+      "validation_error": null,
+      "exit_status": null,
+      "model_calls": []
+    }
+  },
+  {
+    "product_id": "647542011",
+    "name": "Living Things Lemon & Ginger Biotic Soda",
+    "url": "https://www.ocado.com/products/647542011",
+    "current_on_ocado": 1,
+    "previous_status": "unknown",
+    "previous_reason": null,
+    "candidate_status": "vegan",
+    "candidate_reason": "manufacturer",
+    "input_sha256": "e3c5c57580bf089c931478816c2d7f14a4adaccc7ee439cac578c8848701c553",
+    "candidate": {
+      "product_id": "647542011",
+      "vegan_status": "vegan",
+      "vegan_reason": "manufacturer",
+      "confidence": "certain",
+      "summary": "Shared whole-product evidence policy: vegan",
+      "evidence": {
+        "rule": "whole_product_policy",
+        "vegan_status": "vegan",
+        "vegan_reason": "manufacturer",
+        "positive_block": false,
+        "policy_version": "whole-product-v2",
+        "knowledge_version": "vegan-risk-registry-v6",
+        "assessment": {
+          "identity": {
+            "status": "established",
+            "evidence_refs": [
+              {
+                "path": "/product/name",
+                "quote": "Living Things Lemon & Ginger Biotic Soda"
+              }
+            ]
+          },
+          "composition": {
+            "status": "covered_by_claim",
+            "evidence_refs": [
+              {
+                "path": "/product/dietary_information",
+                "quote": "Free From Artificial Sweeteners. No added Sugar, Artificial Colors, No Artificial Flavours, No Preservatives, Vegan-Friendly, Gluten-Free"
+              }
+            ]
+          },
+          "sourcing": {
+            "status": "covered_by_claim",
+            "evidence_refs": [
+              {
+                "path": "/product/dietary_information",
+                "quote": "Free From Artificial Sweeteners. No added Sugar, Artificial Colors, No Artificial Flavours, No Preservatives, Vegan-Friendly, Gluten-Free"
+              }
+            ]
+          },
+          "processing": {
+            "status": "covered_by_claim",
+            "evidence_refs": [
+              {
+                "path": "/product/dietary_information",
+                "quote": "Free From Artificial Sweeteners. No added Sugar, Artificial Colors, No Artificial Flavours, No Preservatives, Vegan-Friendly, Gluten-Free"
+              }
+            ]
+          },
+          "components": {
+            "status": "covered_by_claim",
+            "evidence_refs": [
+              {
+                "path": "/product/dietary_information",
+                "quote": "Free From Artificial Sweeteners. No added Sugar, Artificial Colors, No Artificial Flavours, No Preservatives, Vegan-Friendly, Gluten-Free"
+              }
+            ]
+          },
+          "positive_support": [
+            {
+              "reason": "manufacturer",
+              "evidence_refs": [
+                {
+                  "path": "/product/dietary_information",
+                  "quote": "Free From Artificial Sweeteners. No added Sugar, Artificial Colors, No Artificial Flavours, No Preservatives, Vegan-Friendly, Gluten-Free"
+                }
+              ]
+            }
+          ],
+          "material_issues": [
+            {
+              "code": "processing_unresolved",
+              "target": "whole_product",
+              "rule_id": "liquid-clarification-v1",
+              "evidence_refs": [
+                {
+                  "path": "/product/ingredients",
+                  "quote": "Carbonated Water, White Grape Juice from Concentrate (9.8%), Chicory Root Inulin (2.4%), Natural Flavouring, Acid, Citric Acid, Ginger Root Extract, Antioxidant, Ascorbic Acid, Lactic Acid Bacillus"
+                }
+              ],
+              "resolution_refs": [
+                {
+                  "path": "/product/dietary_information",
+                  "quote": "Free From Artificial Sweeteners. No added Sugar, Artificial Colors, No Artificial Flavours, No Preservatives, Vegan-Friendly, Gluten-Free"
+                }
+              ],
+              "blocks_claim": false
+            },
+            {
+              "code": "processing_unresolved",
+              "target": "whole_product",
+              "rule_id": "citrus-coating-v1",
+              "evidence_refs": [
+                {
+                  "path": "/product/name",
+                  "quote": "Living Things Lemon & Ginger Biotic Soda"
+                }
+              ],
+              "resolution_refs": [
+                {
+                  "path": "/product/dietary_information",
+                  "quote": "Free From Artificial Sweeteners. No added Sugar, Artificial Colors, No Artificial Flavours, No Preservatives, Vegan-Friendly, Gluten-Free"
+                }
+              ],
+              "blocks_claim": false
+            },
+            {
+              "code": "source_unresolved",
+              "target": "whole_product",
+              "rule_id": "unspecified-composition-v1",
+              "evidence_refs": [
+                {
+                  "path": "/product/ingredients",
+                  "quote": "Carbonated Water, White Grape Juice from Concentrate (9.8%), Chicory Root Inulin (2.4%), Natural Flavouring, Acid, Citric Acid, Ginger Root Extract, Antioxidant, Ascorbic Acid, Lactic Acid Bacillus"
+                }
+              ],
+              "resolution_refs": [
+                {
+                  "path": "/product/dietary_information",
+                  "quote": "Free From Artificial Sweeteners. No added Sugar, Artificial Colors, No Artificial Flavours, No Preservatives, Vegan-Friendly, Gluten-Free"
+                }
+              ],
+              "blocks_claim": false
+            },
+            {
+              "code": "composition_incomplete",
+              "target": "supplied components",
+              "rule_id": "supplied-components-composition-v1",
+              "evidence_refs": [
+                {
+                  "path": "/product/package_type",
+                  "quote": "Box"
+                },
+                {
+                  "path": "/product/detailed_description",
+                  "quote": "Living Things Ginger & Lemon Soda is a refreshingly bold, all-natural drink bursting with zesty lemon and warming ginger. This low-sugar, low-calorie beverage delivers full flavour without compromise. With 6.5 grams of prebiotic fibre and 2 billion live cultures per can, it’s designed to provide belly-loving benefits and promote gut health with every sip. Lightly sparkling to beat the bloat and best enjoyed fridge cold or over ice, this is the perfect refreshment for those seeking a crisp, revitalising drink that’s as good for your gut as it is for your taste buds. Packaging may vary."
+                }
+              ],
+              "resolution_refs": [
+                {
+                  "path": "/product/dietary_information",
+                  "quote": "Free From Artificial Sweeteners. No added Sugar, Artificial Colors, No Artificial Flavours, No Preservatives, Vegan-Friendly, Gluten-Free"
+                }
+              ],
+              "blocks_claim": false
+            }
+          ],
+          "source_applicability": []
+        },
+        "tag_animal_conflict": false,
+        "matched_patterns": [],
+        "sources": [
+          {
+            "table": "products",
+            "column": "dietary_information",
+            "text": "Free From Artificial Sweeteners. No added Sugar, Artificial Colors, No Artificial Flavours, No Preservatives, Vegan-Friendly, Gluten-Free"
+          },
+          {
+            "table": "products",
+            "column": "features",
+            "text": "All-Natural Soda, Gut Friendly, Low Sugar, Prebiotic Soda, Low Calorie, High Fibre, 2 Billion Live Cultures"
+          },
+          {
+            "table": "products",
+            "column": "detailed_description",
+            "text": "Living Things Ginger & Lemon Soda is a refreshingly bold, all-natural drink bursting with zesty lemon and warming ginger. This low-sugar, low-calorie beverage delivers full flavour without compromise. With 6.5 grams of prebiotic fibre and 2 billion live cultures per can, it’s designed to provide belly-loving benefits and promote gut health with every sip. Lightly sparkling to beat the bloat and best enjoyed fridge cold or over ice, this is the perfect refreshment for those seeking a crisp, revitalising drink that’s as good for your gut as it is for your taste buds. Packaging may vary."
+          },
+          {
+            "table": "products",
+            "column": "other_information",
+            "text": "Full Product Name: Low Calorie Sparkling Soft Drink with Live Cultures and Fibre. Storage: Best before: See base"
+          },
+          {
+            "table": "products",
+            "column": "preparation_and_usage",
+            "text": "Serve me chilled"
+          },
+          {
+            "table": "products",
+            "column": "ingredients",
+            "text": "Carbonated Water, White Grape Juice from Concentrate (9.8%), Chicory Root Inulin (2.4%), Natural Flavouring, Acid, Citric Acid, Ginger Root Extract, Antioxidant, Ascorbic Acid, Lactic Acid Bacillus"
+          },
+          {
+            "table": "manufacturer_vegan_evidence",
+            "column": "dietaryInformation",
+            "text": "Free From Artificial Sweeteners. No added Sugar, Artificial Colors, No Artificial Flavours, No Preservatives, Vegan-Friendly, Gluten-Free"
+          }
+        ]
+      },
+      "source": "rule",
+      "model": null,
+      "reasoning_effort": null,
+      "prompt_version": null,
+      "context_hash": "e3c5c57580bf089c931478816c2d7f14a4adaccc7ee439cac578c8848701c553",
+      "raw_response": null,
+      "parsed_response_json": null,
+      "validation_error": null,
+      "exit_status": null,
+      "model_calls": []
+    }
+  },
+  {
+    "product_id": "647543011",
+    "name": "Living Things Watermelon & Lime Biotic Soda",
+    "url": "https://www.ocado.com/products/647543011",
+    "current_on_ocado": 1,
+    "previous_status": "unknown",
+    "previous_reason": null,
+    "candidate_status": "vegan",
+    "candidate_reason": "manufacturer",
+    "input_sha256": "b27903148c03aa32172e646c9d8f71f6f70cf332fe0e9f0330f494a816df9c5d",
+    "candidate": {
+      "product_id": "647543011",
+      "vegan_status": "vegan",
+      "vegan_reason": "manufacturer",
+      "confidence": "certain",
+      "summary": "Shared whole-product evidence policy: vegan",
+      "evidence": {
+        "rule": "whole_product_policy",
+        "vegan_status": "vegan",
+        "vegan_reason": "manufacturer",
+        "positive_block": false,
+        "policy_version": "whole-product-v2",
+        "knowledge_version": "vegan-risk-registry-v6",
+        "assessment": {
+          "identity": {
+            "status": "established",
+            "evidence_refs": [
+              {
+                "path": "/product/name",
+                "quote": "Living Things Watermelon & Lime Biotic Soda"
+              }
+            ]
+          },
+          "composition": {
+            "status": "covered_by_claim",
+            "evidence_refs": [
+              {
+                "path": "/product/dietary_information",
+                "quote": "Free From Artificial Sweeteners. No added Sugar, Artificial Colors, No Artificial Flavours, No Preservatives, Vegan-Friendly, Gluten-Free"
+              }
+            ]
+          },
+          "sourcing": {
+            "status": "covered_by_claim",
+            "evidence_refs": [
+              {
+                "path": "/product/dietary_information",
+                "quote": "Free From Artificial Sweeteners. No added Sugar, Artificial Colors, No Artificial Flavours, No Preservatives, Vegan-Friendly, Gluten-Free"
+              }
+            ]
+          },
+          "processing": {
+            "status": "covered_by_claim",
+            "evidence_refs": [
+              {
+                "path": "/product/dietary_information",
+                "quote": "Free From Artificial Sweeteners. No added Sugar, Artificial Colors, No Artificial Flavours, No Preservatives, Vegan-Friendly, Gluten-Free"
+              }
+            ]
+          },
+          "components": {
+            "status": "covered_by_claim",
+            "evidence_refs": [
+              {
+                "path": "/product/dietary_information",
+                "quote": "Free From Artificial Sweeteners. No added Sugar, Artificial Colors, No Artificial Flavours, No Preservatives, Vegan-Friendly, Gluten-Free"
+              }
+            ]
+          },
+          "positive_support": [
+            {
+              "reason": "manufacturer",
+              "evidence_refs": [
+                {
+                  "path": "/product/dietary_information",
+                  "quote": "Free From Artificial Sweeteners. No added Sugar, Artificial Colors, No Artificial Flavours, No Preservatives, Vegan-Friendly, Gluten-Free"
+                }
+              ]
+            }
+          ],
+          "material_issues": [
+            {
+              "code": "processing_unresolved",
+              "target": "whole_product",
+              "rule_id": "liquid-clarification-v1",
+              "evidence_refs": [
+                {
+                  "path": "/product/ingredients",
+                  "quote": "Carbonated Water, Chicory Root Inulin (2.4%), White Grape Juice from Concentrate (8.6%), Natural Flavouring, Acid, Citric Acid, Carrot and Blackcurrant Concentrates, Lactic Acid Bacillus"
+                }
+              ],
+              "resolution_refs": [
+                {
+                  "path": "/product/dietary_information",
+                  "quote": "Free From Artificial Sweeteners. No added Sugar, Artificial Colors, No Artificial Flavours, No Preservatives, Vegan-Friendly, Gluten-Free"
+                }
+              ],
+              "blocks_claim": false
+            },
+            {
+              "code": "processing_unresolved",
+              "target": "whole_product",
+              "rule_id": "citrus-coating-v1",
+              "evidence_refs": [
+                {
+                  "path": "/product/name",
+                  "quote": "Living Things Watermelon & Lime Biotic Soda"
+                }
+              ],
+              "resolution_refs": [
+                {
+                  "path": "/product/dietary_information",
+                  "quote": "Free From Artificial Sweeteners. No added Sugar, Artificial Colors, No Artificial Flavours, No Preservatives, Vegan-Friendly, Gluten-Free"
+                }
+              ],
+              "blocks_claim": false
+            },
+            {
+              "code": "source_unresolved",
+              "target": "whole_product",
+              "rule_id": "unspecified-composition-v1",
+              "evidence_refs": [
+                {
+                  "path": "/product/ingredients",
+                  "quote": "Carbonated Water, Chicory Root Inulin (2.4%), White Grape Juice from Concentrate (8.6%), Natural Flavouring, Acid, Citric Acid, Carrot and Blackcurrant Concentrates, Lactic Acid Bacillus"
+                }
+              ],
+              "resolution_refs": [
+                {
+                  "path": "/product/dietary_information",
+                  "quote": "Free From Artificial Sweeteners. No added Sugar, Artificial Colors, No Artificial Flavours, No Preservatives, Vegan-Friendly, Gluten-Free"
+                }
+              ],
+              "blocks_claim": false
+            },
+            {
+              "code": "composition_incomplete",
+              "target": "supplied components",
+              "rule_id": "supplied-components-composition-v1",
+              "evidence_refs": [
+                {
+                  "path": "/product/package_type",
+                  "quote": "Box"
+                },
+                {
+                  "path": "/product/detailed_description",
+                  "quote": "Living Things Watermelon & Lime Soda is a refreshingly bold, all-natural drink that combines the juicy sweetness of watermelon with the zesty kick of lime, delivering a delicious soda with a vibrant, fruity flavour. This low-sugar, low-calorie beverage provides full flavour without compromise. With 6.5 grams of prebiotic fibre and 2 billion live cultures per can, it’s designed to offer belly-loving benefits and promote gut health with every sip. Lightly sparkling to beat the bloat and best enjoyed fridge cold or over ice, it’s the perfect refreshment for those seeking a crisp, revitalising drink that’s as good for your gut as it is for your taste buds. Packaging may vary."
+                }
+              ],
+              "resolution_refs": [
+                {
+                  "path": "/product/dietary_information",
+                  "quote": "Free From Artificial Sweeteners. No added Sugar, Artificial Colors, No Artificial Flavours, No Preservatives, Vegan-Friendly, Gluten-Free"
+                }
+              ],
+              "blocks_claim": false
+            }
+          ],
+          "source_applicability": []
+        },
+        "tag_animal_conflict": false,
+        "matched_patterns": [],
+        "sources": [
+          {
+            "table": "products",
+            "column": "dietary_information",
+            "text": "Free From Artificial Sweeteners. No added Sugar, Artificial Colors, No Artificial Flavours, No Preservatives, Vegan-Friendly, Gluten-Free"
+          },
+          {
+            "table": "products",
+            "column": "features",
+            "text": "All-Natural Soda, Gut Friendly, Low Sugar, Low Calorie, High Fibre, 2 Billion Live Cultures"
+          },
+          {
+            "table": "products",
+            "column": "detailed_description",
+            "text": "Living Things Watermelon & Lime Soda is a refreshingly bold, all-natural drink that combines the juicy sweetness of watermelon with the zesty kick of lime, delivering a delicious soda with a vibrant, fruity flavour. This low-sugar, low-calorie beverage provides full flavour without compromise. With 6.5 grams of prebiotic fibre and 2 billion live cultures per can, it’s designed to offer belly-loving benefits and promote gut health with every sip. Lightly sparkling to beat the bloat and best enjoyed fridge cold or over ice, it’s the perfect refreshment for those seeking a crisp, revitalising drink that’s as good for your gut as it is for your taste buds. Packaging may vary."
+          },
+          {
+            "table": "products",
+            "column": "other_information",
+            "text": "Full Product Name: Low Calorie Sparkling Soft Drink with Live Cultures and Fibre. Storage: Best before: See base"
+          },
+          {
+            "table": "products",
+            "column": "preparation_and_usage",
+            "text": "Serve me chilled"
+          },
+          {
+            "table": "products",
+            "column": "ingredients",
+            "text": "Carbonated Water, Chicory Root Inulin (2.4%), White Grape Juice from Concentrate (8.6%), Natural Flavouring, Acid, Citric Acid, Carrot and Blackcurrant Concentrates, Lactic Acid Bacillus"
+          },
+          {
+            "table": "manufacturer_vegan_evidence",
+            "column": "dietaryInformation",
+            "text": "Free From Artificial Sweeteners. No added Sugar, Artificial Colors, No Artificial Flavours, No Preservatives, Vegan-Friendly, Gluten-Free"
+          }
+        ]
+      },
+      "source": "rule",
+      "model": null,
+      "reasoning_effort": null,
+      "prompt_version": null,
+      "context_hash": "b27903148c03aa32172e646c9d8f71f6f70cf332fe0e9f0330f494a816df9c5d",
+      "raw_response": null,
+      "parsed_response_json": null,
+      "validation_error": null,
+      "exit_status": null,
+      "model_calls": []
+    }
+  },
+  {
+    "product_id": "647544011",
+    "name": "Living Things Peach & Blood Orange Biotic Soda",
+    "url": "https://www.ocado.com/products/647544011",
+    "current_on_ocado": 1,
+    "previous_status": "unknown",
+    "previous_reason": null,
+    "candidate_status": "vegan",
+    "candidate_reason": "manufacturer",
+    "input_sha256": "d0406d3d2ce59ce9324a20ff6f38d483b48b0472fdc00b1612712e11dfd66757",
+    "candidate": {
+      "product_id": "647544011",
+      "vegan_status": "vegan",
+      "vegan_reason": "manufacturer",
+      "confidence": "certain",
+      "summary": "Shared whole-product evidence policy: vegan",
+      "evidence": {
+        "rule": "whole_product_policy",
+        "vegan_status": "vegan",
+        "vegan_reason": "manufacturer",
+        "positive_block": false,
+        "policy_version": "whole-product-v2",
+        "knowledge_version": "vegan-risk-registry-v6",
+        "assessment": {
+          "identity": {
+            "status": "established",
+            "evidence_refs": [
+              {
+                "path": "/product/name",
+                "quote": "Living Things Peach & Blood Orange Biotic Soda"
+              }
+            ]
+          },
+          "composition": {
+            "status": "covered_by_claim",
+            "evidence_refs": [
+              {
+                "path": "/product/dietary_information",
+                "quote": "Free From Artificial Sweeteners. No added Sugar, Artificial Colors, No Artificial Flavours, No Preservatives, Vegan-Friendly, Gluten-Free"
+              }
+            ]
+          },
+          "sourcing": {
+            "status": "covered_by_claim",
+            "evidence_refs": [
+              {
+                "path": "/product/dietary_information",
+                "quote": "Free From Artificial Sweeteners. No added Sugar, Artificial Colors, No Artificial Flavours, No Preservatives, Vegan-Friendly, Gluten-Free"
+              }
+            ]
+          },
+          "processing": {
+            "status": "covered_by_claim",
+            "evidence_refs": [
+              {
+                "path": "/product/dietary_information",
+                "quote": "Free From Artificial Sweeteners. No added Sugar, Artificial Colors, No Artificial Flavours, No Preservatives, Vegan-Friendly, Gluten-Free"
+              }
+            ]
+          },
+          "components": {
+            "status": "covered_by_claim",
+            "evidence_refs": [
+              {
+                "path": "/product/dietary_information",
+                "quote": "Free From Artificial Sweeteners. No added Sugar, Artificial Colors, No Artificial Flavours, No Preservatives, Vegan-Friendly, Gluten-Free"
+              }
+            ]
+          },
+          "positive_support": [
+            {
+              "reason": "manufacturer",
+              "evidence_refs": [
+                {
+                  "path": "/product/dietary_information",
+                  "quote": "Free From Artificial Sweeteners. No added Sugar, Artificial Colors, No Artificial Flavours, No Preservatives, Vegan-Friendly, Gluten-Free"
+                }
+              ]
+            }
+          ],
+          "material_issues": [
+            {
+              "code": "processing_unresolved",
+              "target": "whole_product",
+              "rule_id": "liquid-clarification-v1",
+              "evidence_refs": [
+                {
+                  "path": "/product/ingredients",
+                  "quote": "Carbonated Water, Chicory Root Inulin (2%), Peach Juice from Concentrate (13%), Natural Flavouring, Blood Orange Extract, Acid: Citric Acid, Vegetable Concentrates (Carrot, Pumpkin, Black Carrot), Lactic Acid Bacillus"
+                }
+              ],
+              "resolution_refs": [
+                {
+                  "path": "/product/dietary_information",
+                  "quote": "Free From Artificial Sweeteners. No added Sugar, Artificial Colors, No Artificial Flavours, No Preservatives, Vegan-Friendly, Gluten-Free"
+                }
+              ],
+              "blocks_claim": false
+            },
+            {
+              "code": "processing_unresolved",
+              "target": "whole_product",
+              "rule_id": "citrus-coating-v1",
+              "evidence_refs": [
+                {
+                  "path": "/product/ingredients",
+                  "quote": "Carbonated Water, Chicory Root Inulin (2%), Peach Juice from Concentrate (13%), Natural Flavouring, Blood Orange Extract, Acid: Citric Acid, Vegetable Concentrates (Carrot, Pumpkin, Black Carrot), Lactic Acid Bacillus"
+                }
+              ],
+              "resolution_refs": [
+                {
+                  "path": "/product/dietary_information",
+                  "quote": "Free From Artificial Sweeteners. No added Sugar, Artificial Colors, No Artificial Flavours, No Preservatives, Vegan-Friendly, Gluten-Free"
+                }
+              ],
+              "blocks_claim": false
+            },
+            {
+              "code": "source_unresolved",
+              "target": "whole_product",
+              "rule_id": "unspecified-composition-v1",
+              "evidence_refs": [
+                {
+                  "path": "/product/ingredients",
+                  "quote": "Carbonated Water, Chicory Root Inulin (2%), Peach Juice from Concentrate (13%), Natural Flavouring, Blood Orange Extract, Acid: Citric Acid, Vegetable Concentrates (Carrot, Pumpkin, Black Carrot), Lactic Acid Bacillus"
+                }
+              ],
+              "resolution_refs": [
+                {
+                  "path": "/product/dietary_information",
+                  "quote": "Free From Artificial Sweeteners. No added Sugar, Artificial Colors, No Artificial Flavours, No Preservatives, Vegan-Friendly, Gluten-Free"
+                }
+              ],
+              "blocks_claim": false
+            },
+            {
+              "code": "composition_incomplete",
+              "target": "supplied components",
+              "rule_id": "supplied-components-composition-v1",
+              "evidence_refs": [
+                {
+                  "path": "/product/package_type",
+                  "quote": "Box"
+                },
+                {
+                  "path": "/product/detailed_description",
+                  "quote": "Living Things Peach & Blood Orange Soda is a refreshingly bold, all-natural drink that blends juicy peach with zesty blood orange for a bold, fruity taste. This low-sugar, low-calorie soda delivers full flavour without compromise. With 6.5 grams of prebiotic fibre and 2 billion live cultures per can, it supports gut health and provides belly-loving benefits with every sip. Lightly sparkling to help beat the bloat, it’s best enjoyed chilled from the fridge or over ice. Perfect for those who crave a crisp, revitalizing drink that’s as kind to your gut as it is to your taste buds. Packaging may vary."
+                }
+              ],
+              "resolution_refs": [
+                {
+                  "path": "/product/dietary_information",
+                  "quote": "Free From Artificial Sweeteners. No added Sugar, Artificial Colors, No Artificial Flavours, No Preservatives, Vegan-Friendly, Gluten-Free"
+                }
+              ],
+              "blocks_claim": false
+            }
+          ],
+          "source_applicability": []
+        },
+        "tag_animal_conflict": false,
+        "matched_patterns": [],
+        "sources": [
+          {
+            "table": "products",
+            "column": "dietary_information",
+            "text": "Free From Artificial Sweeteners. No added Sugar, Artificial Colors, No Artificial Flavours, No Preservatives, Vegan-Friendly, Gluten-Free"
+          },
+          {
+            "table": "products",
+            "column": "features",
+            "text": "All-Natural Soda, Gut Friendly, Low Sugar, Lightly Sparkling, Prebiotic Soda, Low Calorie, High Fibre, 2 Billion Live Cultures"
+          },
+          {
+            "table": "products",
+            "column": "detailed_description",
+            "text": "Living Things Peach & Blood Orange Soda is a refreshingly bold, all-natural drink that blends juicy peach with zesty blood orange for a bold, fruity taste. This low-sugar, low-calorie soda delivers full flavour without compromise. With 6.5 grams of prebiotic fibre and 2 billion live cultures per can, it supports gut health and provides belly-loving benefits with every sip. Lightly sparkling to help beat the bloat, it’s best enjoyed chilled from the fridge or over ice. Perfect for those who crave a crisp, revitalizing drink that’s as kind to your gut as it is to your taste buds. Packaging may vary."
+          },
+          {
+            "table": "products",
+            "column": "other_information",
+            "text": "Full Product Name: Low Calorie Sparkling Soft Drink with Live Cultures and Fibre. Storage: Best before: See base"
+          },
+          {
+            "table": "products",
+            "column": "preparation_and_usage",
+            "text": "Serve me chilled"
+          },
+          {
+            "table": "products",
+            "column": "ingredients",
+            "text": "Carbonated Water, Chicory Root Inulin (2%), Peach Juice from Concentrate (13%), Natural Flavouring, Blood Orange Extract, Acid: Citric Acid, Vegetable Concentrates (Carrot, Pumpkin, Black Carrot), Lactic Acid Bacillus"
+          },
+          {
+            "table": "manufacturer_vegan_evidence",
+            "column": "dietaryInformation",
+            "text": "Free From Artificial Sweeteners. No added Sugar, Artificial Colors, No Artificial Flavours, No Preservatives, Vegan-Friendly, Gluten-Free"
+          }
+        ]
+      },
+      "source": "rule",
+      "model": null,
+      "reasoning_effort": null,
+      "prompt_version": null,
+      "context_hash": "d0406d3d2ce59ce9324a20ff6f38d483b48b0472fdc00b1612712e11dfd66757",
+      "raw_response": null,
+      "parsed_response_json": null,
+      "validation_error": null,
+      "exit_status": null,
+      "model_calls": []
+    }
+  },
+  {
+    "product_id": "648950011",
+    "name": "H&B Precision Engineered Plant Protein Bar Dark Chocolate & Salt",
+    "url": "https://www.ocado.com/products/648950011",
+    "current_on_ocado": 1,
+    "previous_status": "unknown",
+    "previous_reason": null,
+    "candidate_status": "vegan",
+    "candidate_reason": "manufacturer",
+    "input_sha256": "39f3920db7934f85668264613f00b2c1cb2ca8bbf2e86f17712a2ebd6410f8d0",
+    "candidate": {
+      "product_id": "648950011",
+      "vegan_status": "vegan",
+      "vegan_reason": "manufacturer",
+      "confidence": "certain",
+      "summary": "Shared whole-product evidence policy: vegan",
+      "evidence": {
+        "rule": "whole_product_policy",
+        "vegan_status": "vegan",
+        "vegan_reason": "manufacturer",
+        "positive_block": false,
+        "policy_version": "whole-product-v2",
+        "knowledge_version": "vegan-risk-registry-v6",
+        "assessment": {
+          "identity": {
+            "status": "established",
+            "evidence_refs": [
+              {
+                "path": "/product/name",
+                "quote": "H&B Precision Engineered Plant Protein Bar Dark Chocolate & Salt"
+              }
+            ]
+          },
+          "composition": {
+            "status": "covered_by_claim",
+            "evidence_refs": [
+              {
+                "path": "/product/dietary_information",
+                "quote": "Vegan; Vegetarian"
+              }
+            ]
+          },
+          "sourcing": {
+            "status": "covered_by_claim",
+            "evidence_refs": [
+              {
+                "path": "/product/dietary_information",
+                "quote": "Vegan; Vegetarian"
+              }
+            ]
+          },
+          "processing": {
+            "status": "covered_by_claim",
+            "evidence_refs": [
+              {
+                "path": "/product/dietary_information",
+                "quote": "Vegan; Vegetarian"
+              }
+            ]
+          },
+          "components": {
+            "status": "covered_by_claim",
+            "evidence_refs": [
+              {
+                "path": "/product/dietary_information",
+                "quote": "Vegan; Vegetarian"
+              }
+            ]
+          },
+          "positive_support": [
+            {
+              "reason": "manufacturer",
+              "evidence_refs": [
+                {
+                  "path": "/product/dietary_information",
+                  "quote": "Vegan; Vegetarian"
+                }
+              ]
+            }
+          ],
+          "material_issues": [
+            {
+              "code": "processing_unresolved",
+              "target": "whole_product",
+              "rule_id": "sugar-refining-v1",
+              "evidence_refs": [
+                {
+                  "path": "/product/ingredients",
+                  "quote": "Protein Blend [Soy Protein Isolate, Hydrolysed Wheat Protein, Pea Protein Isolate], Couverture Chocolate with Sweetener [Cocoa Mass, Sweetener (Maltitol), Cocoa Butter, Emulsifier: Lecithins (Soya), Natural Vanilla Flavouring], Humectant [Glycerine], Low Sugar Caramel [Humectant (Glycerol), Maltitol Powder, Maltodextrin, Inulin, Water, Coconut Oil, Thickening Agent (Modified Starch), Caramel Colour E150a, Gelling Agent (Pectin), Natural Flavourings, Acidity Regulator (Calcium Lactate), Emulsifier (Rapeseed Lecithin), Salt, Thickening Agent (Xanthan Gum)], Soluble Tapioca Fibre, Sweetener [Maltitol Syrup, Steviol Glycosides from Stevia (E960a)], Water, Soy Protein Crisp [Soy Protein Isolate, Calcium Carbonate], Fat-Reduced Cocoa Powder, Acacia Gum, Sodium Chloride, Natural Flavouring."
+                }
+              ],
+              "resolution_refs": [
+                {
+                  "path": "/product/dietary_information",
+                  "quote": "Vegan; Vegetarian"
+                }
+              ],
+              "blocks_claim": false
+            },
+            {
+              "code": "source_unresolved",
+              "target": "glycerine",
+              "rule_id": "source-dependent-additives-v1",
+              "evidence_refs": [
+                {
+                  "path": "/product/ingredients",
+                  "quote": "Protein Blend [Soy Protein Isolate, Hydrolysed Wheat Protein, Pea Protein Isolate], Couverture Chocolate with Sweetener [Cocoa Mass, Sweetener (Maltitol), Cocoa Butter, Emulsifier: Lecithins (Soya), Natural Vanilla Flavouring], Humectant [Glycerine], Low Sugar Caramel [Humectant (Glycerol), Maltitol Powder, Maltodextrin, Inulin, Water, Coconut Oil, Thickening Agent (Modified Starch), Caramel Colour E150a, Gelling Agent (Pectin), Natural Flavourings, Acidity Regulator (Calcium Lactate), Emulsifier (Rapeseed Lecithin), Salt, Thickening Agent (Xanthan Gum)], Soluble Tapioca Fibre, Sweetener [Maltitol Syrup, Steviol Glycosides from Stevia (E960a)], Water, Soy Protein Crisp [Soy Protein Isolate, Calcium Carbonate], Fat-Reduced Cocoa Powder, Acacia Gum, Sodium Chloride, Natural Flavouring."
+                }
+              ],
+              "resolution_refs": [
+                {
+                  "path": "/product/dietary_information",
+                  "quote": "Vegan; Vegetarian"
+                }
+              ],
+              "blocks_claim": false
+            },
+            {
+              "code": "source_unresolved",
+              "target": "glycerol",
+              "rule_id": "source-dependent-additives-v1",
+              "evidence_refs": [
+                {
+                  "path": "/product/ingredients",
+                  "quote": "Protein Blend [Soy Protein Isolate, Hydrolysed Wheat Protein, Pea Protein Isolate], Couverture Chocolate with Sweetener [Cocoa Mass, Sweetener (Maltitol), Cocoa Butter, Emulsifier: Lecithins (Soya), Natural Vanilla Flavouring], Humectant [Glycerine], Low Sugar Caramel [Humectant (Glycerol), Maltitol Powder, Maltodextrin, Inulin, Water, Coconut Oil, Thickening Agent (Modified Starch), Caramel Colour E150a, Gelling Agent (Pectin), Natural Flavourings, Acidity Regulator (Calcium Lactate), Emulsifier (Rapeseed Lecithin), Salt, Thickening Agent (Xanthan Gum)], Soluble Tapioca Fibre, Sweetener [Maltitol Syrup, Steviol Glycosides from Stevia (E960a)], Water, Soy Protein Crisp [Soy Protein Isolate, Calcium Carbonate], Fat-Reduced Cocoa Powder, Acacia Gum, Sodium Chloride, Natural Flavouring."
+                }
+              ],
+              "resolution_refs": [
+                {
+                  "path": "/product/dietary_information",
+                  "quote": "Vegan; Vegetarian"
+                }
+              ],
+              "blocks_claim": false
+            },
+            {
+              "code": "source_unresolved",
+              "target": "lecithin",
+              "rule_id": "source-dependent-additives-v1",
+              "evidence_refs": [
+                {
+                  "path": "/product/ingredients",
+                  "quote": "Protein Blend [Soy Protein Isolate, Hydrolysed Wheat Protein, Pea Protein Isolate], Couverture Chocolate with Sweetener [Cocoa Mass, Sweetener (Maltitol), Cocoa Butter, Emulsifier: Lecithins (Soya), Natural Vanilla Flavouring], Humectant [Glycerine], Low Sugar Caramel [Humectant (Glycerol), Maltitol Powder, Maltodextrin, Inulin, Water, Coconut Oil, Thickening Agent (Modified Starch), Caramel Colour E150a, Gelling Agent (Pectin), Natural Flavourings, Acidity Regulator (Calcium Lactate), Emulsifier (Rapeseed Lecithin), Salt, Thickening Agent (Xanthan Gum)], Soluble Tapioca Fibre, Sweetener [Maltitol Syrup, Steviol Glycosides from Stevia (E960a)], Water, Soy Protein Crisp [Soy Protein Isolate, Calcium Carbonate], Fat-Reduced Cocoa Powder, Acacia Gum, Sodium Chloride, Natural Flavouring."
+                }
+              ],
+              "resolution_refs": [
+                {
+                  "path": "/product/dietary_information",
+                  "quote": "Vegan; Vegetarian"
+                }
+              ],
+              "blocks_claim": false
+            },
+            {
+              "code": "source_unresolved",
+              "target": "whole_product",
+              "rule_id": "unspecified-composition-v1",
+              "evidence_refs": [
+                {
+                  "path": "/product/ingredients",
+                  "quote": "Protein Blend [Soy Protein Isolate, Hydrolysed Wheat Protein, Pea Protein Isolate], Couverture Chocolate with Sweetener [Cocoa Mass, Sweetener (Maltitol), Cocoa Butter, Emulsifier: Lecithins (Soya), Natural Vanilla Flavouring], Humectant [Glycerine], Low Sugar Caramel [Humectant (Glycerol), Maltitol Powder, Maltodextrin, Inulin, Water, Coconut Oil, Thickening Agent (Modified Starch), Caramel Colour E150a, Gelling Agent (Pectin), Natural Flavourings, Acidity Regulator (Calcium Lactate), Emulsifier (Rapeseed Lecithin), Salt, Thickening Agent (Xanthan Gum)], Soluble Tapioca Fibre, Sweetener [Maltitol Syrup, Steviol Glycosides from Stevia (E960a)], Water, Soy Protein Crisp [Soy Protein Isolate, Calcium Carbonate], Fat-Reduced Cocoa Powder, Acacia Gum, Sodium Chloride, Natural Flavouring."
+                }
+              ],
+              "resolution_refs": [
+                {
+                  "path": "/product/dietary_information",
+                  "quote": "Vegan; Vegetarian"
+                }
+              ],
+              "blocks_claim": false
+            }
+          ],
+          "source_applicability": []
+        },
+        "tag_animal_conflict": false,
+        "matched_patterns": [],
+        "sources": [
+          {
+            "table": "products",
+            "column": "dietary_information",
+            "text": "Vegan; Vegetarian"
+          },
+          {
+            "table": "products",
+            "column": "detailed_description",
+            "text": "The sports science sorted Packed with 22g of protein to support the growth and maintenance of muscle mass in just a few sweet and salty bites. This bar is coated in couverture chocolate with a hint of salt and is loaded with an irresistible caramel flavour filling. It’s also high in fibre and low in sugar. This Precision Engineered Protein Bar doubles up as a smart and tasty pre or post workout snack, as well as a grab and go bite that’ll top up your protein intake. Protein contributes to the growth and maintenance of muscle mass and complements a healthy, balanced and varied lifestyle. This bar is Informed Sport certified to provide the highest level of assurance for athletes. What’s inside? 22g of protein per serving 198 kcal per serving Low in sugar per serving How to enjoy? Take his protein bar with you when heading to the gym or for after a workout Grab and go, this sweet and salty on-the-go snack is great during commutes and breaks Enjoy with a protein shake or isolate, or indulge in a moment of bliss with a warm drink WARNING: Excessive consumption may produce laxative effects."
+          },
+          {
+            "table": "products",
+            "column": "other_information",
+            "text": "Advisory Information: Excessive consumption may produce laxative effects."
+          },
+          {
+            "table": "products",
+            "column": "ingredients",
+            "text": "Protein Blend [Soy Protein Isolate, Hydrolysed Wheat Protein, Pea Protein Isolate], Couverture Chocolate with Sweetener [Cocoa Mass, Sweetener (Maltitol), Cocoa Butter, Emulsifier: Lecithins (Soya), Natural Vanilla Flavouring], Humectant [Glycerine], Low Sugar Caramel [Humectant (Glycerol), Maltitol Powder, Maltodextrin, Inulin, Water, Coconut Oil, Thickening Agent (Modified Starch), Caramel Colour E150a, Gelling Agent (Pectin), Natural Flavourings, Acidity Regulator (Calcium Lactate), Emulsifier (Rapeseed Lecithin), Salt, Thickening Agent (Xanthan Gum)], Soluble Tapioca Fibre, Sweetener [Maltitol Syrup, Steviol Glycosides from Stevia (E960a)], Water, Soy Protein Crisp [Soy Protein Isolate, Calcium Carbonate], Fat-Reduced Cocoa Powder, Acacia Gum, Sodium Chloride, Natural Flavouring."
+          },
+          {
+            "table": "manufacturer_vegan_evidence",
+            "column": "dietaryInformation",
+            "text": "Vegan; Vegetarian"
+          }
+        ]
+      },
+      "source": "rule",
+      "model": null,
+      "reasoning_effort": null,
+      "prompt_version": null,
+      "context_hash": "39f3920db7934f85668264613f00b2c1cb2ca8bbf2e86f17712a2ebd6410f8d0",
+      "raw_response": null,
+      "parsed_response_json": null,
+      "validation_error": null,
+      "exit_status": null,
+      "model_calls": []
+    }
+  },
+  {
+    "product_id": "657123011",
+    "name": "Pulsin Keto Almond & Salted Caramel Multipack",
+    "url": "https://www.ocado.com/products/657123011",
+    "current_on_ocado": 1,
+    "previous_status": "unknown",
+    "previous_reason": null,
+    "candidate_status": "vegan",
+    "candidate_reason": "manufacturer",
+    "input_sha256": "914ecfed83ea6d21387ff291c7f04a50301bd34c9e12ae555c10b95d36ea4374",
+    "candidate": {
+      "product_id": "657123011",
+      "vegan_status": "vegan",
+      "vegan_reason": "manufacturer",
+      "confidence": "certain",
+      "summary": "Shared whole-product evidence policy: vegan",
+      "evidence": {
+        "rule": "whole_product_policy",
+        "vegan_status": "vegan",
+        "vegan_reason": "manufacturer",
+        "positive_block": false,
+        "policy_version": "whole-product-v2",
+        "knowledge_version": "vegan-risk-registry-v6",
+        "assessment": {
+          "identity": {
+            "status": "established",
+            "evidence_refs": [
+              {
+                "path": "/product/name",
+                "quote": "Pulsin Keto Almond & Salted Caramel Multipack"
+              }
+            ]
+          },
+          "composition": {
+            "status": "covered_by_claim",
+            "evidence_refs": [
+              {
+                "path": "/product/dietary_information",
+                "quote": "High Protein, Low Sugar, High Fibre. Gluten Free, Dairy Free, Vegan"
+              }
+            ]
+          },
+          "sourcing": {
+            "status": "covered_by_claim",
+            "evidence_refs": [
+              {
+                "path": "/product/dietary_information",
+                "quote": "High Protein, Low Sugar, High Fibre. Gluten Free, Dairy Free, Vegan"
+              }
+            ]
+          },
+          "processing": {
+            "status": "covered_by_claim",
+            "evidence_refs": [
+              {
+                "path": "/product/dietary_information",
+                "quote": "High Protein, Low Sugar, High Fibre. Gluten Free, Dairy Free, Vegan"
+              }
+            ]
+          },
+          "components": {
+            "status": "covered_by_claim",
+            "evidence_refs": [
+              {
+                "path": "/product/dietary_information",
+                "quote": "High Protein, Low Sugar, High Fibre. Gluten Free, Dairy Free, Vegan"
+              }
+            ]
+          },
+          "positive_support": [
+            {
+              "reason": "manufacturer",
+              "evidence_refs": [
+                {
+                  "path": "/product/dietary_information",
+                  "quote": "High Protein, Low Sugar, High Fibre. Gluten Free, Dairy Free, Vegan"
+                }
+              ]
+            }
+          ],
+          "material_issues": [
+            {
+              "code": "source_unresolved",
+              "target": "whole_product",
+              "rule_id": "unspecified-composition-v1",
+              "evidence_refs": [
+                {
+                  "path": "/product/ingredients",
+                  "quote": "Peanuts (18%), Almonds (10%), Chocolate Chips* (Cocoa Mass, Sweetener (Xylitol), Cocoa Butter, Emulsifier (Sunflower Lecithin)) (10%), Pea Protein, Soluble Tapioca Fibre, Chicory Fibre, Peanut Butter (7%), Sweetener (Xylitol), Peanut Flour (5%), Shea Butter, Faba Protein, MCT Oil (3%), Emulsifier (Sunflower Lecithin), Natural Flavourings, Sea Salt (0.3%), Antioxidants (Vitamin C, Vitamin E). *Chocolate Chips contain cocoa solids 72% minimum"
+                }
+              ],
+              "resolution_refs": [
+                {
+                  "path": "/product/dietary_information",
+                  "quote": "High Protein, Low Sugar, High Fibre. Gluten Free, Dairy Free, Vegan"
+                }
+              ],
+              "blocks_claim": false
+            }
+          ],
+          "source_applicability": []
+        },
+        "tag_animal_conflict": false,
+        "matched_patterns": [],
+        "sources": [
+          {
+            "table": "products",
+            "column": "dietary_information",
+            "text": "High Protein, Low Sugar, High Fibre. Gluten Free, Dairy Free, Vegan"
+          },
+          {
+            "table": "products",
+            "column": "detailed_description",
+            "text": "Our delicious Almond & Salted Caramel Keto Bars are now in a convenient multipack, for lighter keto snacking. Each bar still pack 7.3g plant based protein and is full of chunky almonds and no added sugar chocolate chips. It's the perfect on-the-go keto protein bar snack for those following a keto or low carb diet."
+          },
+          {
+            "table": "products",
+            "column": "preparation_and_usage",
+            "text": "Ready to eat"
+          },
+          {
+            "table": "products",
+            "column": "ingredients",
+            "text": "Peanuts (18%), Almonds (10%), Chocolate Chips* (Cocoa Mass, Sweetener (Xylitol), Cocoa Butter, Emulsifier (Sunflower Lecithin)) (10%), Pea Protein, Soluble Tapioca Fibre, Chicory Fibre, Peanut Butter (7%), Sweetener (Xylitol), Peanut Flour (5%), Shea Butter, Faba Protein, MCT Oil (3%), Emulsifier (Sunflower Lecithin), Natural Flavourings, Sea Salt (0.3%), Antioxidants (Vitamin C, Vitamin E). *Chocolate Chips contain cocoa solids 72% minimum"
+          },
+          {
+            "table": "manufacturer_vegan_evidence",
+            "column": "dietaryInformation",
+            "text": "High Protein, Low Sugar, High Fibre. Gluten Free, Dairy Free, Vegan"
+          }
+        ]
+      },
+      "source": "rule",
+      "model": null,
+      "reasoning_effort": null,
+      "prompt_version": null,
+      "context_hash": "914ecfed83ea6d21387ff291c7f04a50301bd34c9e12ae555c10b95d36ea4374",
+      "raw_response": null,
+      "parsed_response_json": null,
+      "validation_error": null,
+      "exit_status": null,
+      "model_calls": []
+    }
+  },
+  {
+    "product_id": "657124011",
+    "name": "Pulsin Keto Choc Fudge & Peanut Multipack",
+    "url": "https://www.ocado.com/products/657124011",
+    "current_on_ocado": 1,
+    "previous_status": "unknown",
+    "previous_reason": null,
+    "candidate_status": "vegan",
+    "candidate_reason": "manufacturer",
+    "input_sha256": "daea5e7fe56dcb9c8f7a691af3ec35fc0a191ca6699d55c99671763710c83670",
+    "candidate": {
+      "product_id": "657124011",
+      "vegan_status": "vegan",
+      "vegan_reason": "manufacturer",
+      "confidence": "certain",
+      "summary": "Shared whole-product evidence policy: vegan",
+      "evidence": {
+        "rule": "whole_product_policy",
+        "vegan_status": "vegan",
+        "vegan_reason": "manufacturer",
+        "positive_block": false,
+        "policy_version": "whole-product-v2",
+        "knowledge_version": "vegan-risk-registry-v6",
+        "assessment": {
+          "identity": {
+            "status": "established",
+            "evidence_refs": [
+              {
+                "path": "/product/name",
+                "quote": "Pulsin Keto Choc Fudge & Peanut Multipack"
+              }
+            ]
+          },
+          "composition": {
+            "status": "covered_by_claim",
+            "evidence_refs": [
+              {
+                "path": "/product/dietary_information",
+                "quote": "High Protein. Low Sugar. High Fibre. Gluten Free, Dairy Free, Vegan"
+              }
+            ]
+          },
+          "sourcing": {
+            "status": "covered_by_claim",
+            "evidence_refs": [
+              {
+                "path": "/product/dietary_information",
+                "quote": "High Protein. Low Sugar. High Fibre. Gluten Free, Dairy Free, Vegan"
+              }
+            ]
+          },
+          "processing": {
+            "status": "covered_by_claim",
+            "evidence_refs": [
+              {
+                "path": "/product/dietary_information",
+                "quote": "High Protein. Low Sugar. High Fibre. Gluten Free, Dairy Free, Vegan"
+              }
+            ]
+          },
+          "components": {
+            "status": "covered_by_claim",
+            "evidence_refs": [
+              {
+                "path": "/product/dietary_information",
+                "quote": "High Protein. Low Sugar. High Fibre. Gluten Free, Dairy Free, Vegan"
+              }
+            ]
+          },
+          "positive_support": [
+            {
+              "reason": "manufacturer",
+              "evidence_refs": [
+                {
+                  "path": "/product/dietary_information",
+                  "quote": "High Protein. Low Sugar. High Fibre. Gluten Free, Dairy Free, Vegan"
+                }
+              ]
+            }
+          ],
+          "material_issues": [
+            {
+              "code": "source_unresolved",
+              "target": "whole_product",
+              "rule_id": "unspecified-composition-v1",
+              "evidence_refs": [
+                {
+                  "path": "/product/ingredients",
+                  "quote": "Peanuts (27%), Chocolate Chips* (Cocoa Mass, Sweetener (Xylitol), Cocoa Butter, Emulsifier (Sunflower Lecithin)) (10%), Soluble Tapioca Fibre, Pea Protein, Chicory Fibre, Peanut Butter (7%), Sweetener (Xylitol), Shea Butter, Faba Protein, Peanut Flour (3%), MCT Oil (3%), Cacao Powder, Natural Flavouring, Emulsifier (Sunflower Lecithin), Sea Salt, Antioxidants (Vitamin C, Vitamin E). *Chocolate Chips contain cocoa solids 72% minimum"
+                }
+              ],
+              "resolution_refs": [
+                {
+                  "path": "/product/dietary_information",
+                  "quote": "High Protein. Low Sugar. High Fibre. Gluten Free, Dairy Free, Vegan"
+                }
+              ],
+              "blocks_claim": false
+            }
+          ],
+          "source_applicability": []
+        },
+        "tag_animal_conflict": false,
+        "matched_patterns": [],
+        "sources": [
+          {
+            "table": "products",
+            "column": "dietary_information",
+            "text": "High Protein. Low Sugar. High Fibre. Gluten Free, Dairy Free, Vegan"
+          },
+          {
+            "table": "products",
+            "column": "detailed_description",
+            "text": "Our delicious Choc Fudge & Peanut Keto Bars are now in a convenient multipack, for lighter keto snacking. Each bar still pack 7.6g plant based protein and is full of crunchy peanuts and no added sugar chocolate chips. It's the perfect on-the-go keto protein bar snack for those following a keto or low carb diet."
+          },
+          {
+            "table": "products",
+            "column": "ingredients",
+            "text": "Peanuts (27%), Chocolate Chips* (Cocoa Mass, Sweetener (Xylitol), Cocoa Butter, Emulsifier (Sunflower Lecithin)) (10%), Soluble Tapioca Fibre, Pea Protein, Chicory Fibre, Peanut Butter (7%), Sweetener (Xylitol), Shea Butter, Faba Protein, Peanut Flour (3%), MCT Oil (3%), Cacao Powder, Natural Flavouring, Emulsifier (Sunflower Lecithin), Sea Salt, Antioxidants (Vitamin C, Vitamin E). *Chocolate Chips contain cocoa solids 72% minimum"
+          },
+          {
+            "table": "manufacturer_vegan_evidence",
+            "column": "dietaryInformation",
+            "text": "High Protein. Low Sugar. High Fibre. Gluten Free, Dairy Free, Vegan"
+          }
+        ]
+      },
+      "source": "rule",
+      "model": null,
+      "reasoning_effort": null,
+      "prompt_version": null,
+      "context_hash": "daea5e7fe56dcb9c8f7a691af3ec35fc0a191ca6699d55c99671763710c83670",
+      "raw_response": null,
+      "parsed_response_json": null,
+      "validation_error": null,
+      "exit_status": null,
+      "model_calls": []
+    }
+  },
+  {
+    "product_id": "657125011",
+    "name": "Pulsin Keto Raspberry & Choc Chip Multipack",
+    "url": "https://www.ocado.com/products/657125011",
+    "current_on_ocado": 1,
+    "previous_status": "unknown",
+    "previous_reason": null,
+    "candidate_status": "vegan",
+    "candidate_reason": "manufacturer",
+    "input_sha256": "7a3d492437c0ccaba68223bc5576d80ae142233fab2182a77125386e2d660507",
+    "candidate": {
+      "product_id": "657125011",
+      "vegan_status": "vegan",
+      "vegan_reason": "manufacturer",
+      "confidence": "certain",
+      "summary": "Shared whole-product evidence policy: vegan",
+      "evidence": {
+        "rule": "whole_product_policy",
+        "vegan_status": "vegan",
+        "vegan_reason": "manufacturer",
+        "positive_block": false,
+        "policy_version": "whole-product-v2",
+        "knowledge_version": "vegan-risk-registry-v6",
+        "assessment": {
+          "identity": {
+            "status": "established",
+            "evidence_refs": [
+              {
+                "path": "/product/name",
+                "quote": "Pulsin Keto Raspberry & Choc Chip Multipack"
+              }
+            ]
+          },
+          "composition": {
+            "status": "covered_by_claim",
+            "evidence_refs": [
+              {
+                "path": "/product/dietary_information",
+                "quote": "High Protein, Low Sugar, High Fibre. Gluten Free, Dairy Free, Vegan"
+              }
+            ]
+          },
+          "sourcing": {
+            "status": "covered_by_claim",
+            "evidence_refs": [
+              {
+                "path": "/product/dietary_information",
+                "quote": "High Protein, Low Sugar, High Fibre. Gluten Free, Dairy Free, Vegan"
+              }
+            ]
+          },
+          "processing": {
+            "status": "covered_by_claim",
+            "evidence_refs": [
+              {
+                "path": "/product/dietary_information",
+                "quote": "High Protein, Low Sugar, High Fibre. Gluten Free, Dairy Free, Vegan"
+              }
+            ]
+          },
+          "components": {
+            "status": "covered_by_claim",
+            "evidence_refs": [
+              {
+                "path": "/product/dietary_information",
+                "quote": "High Protein, Low Sugar, High Fibre. Gluten Free, Dairy Free, Vegan"
+              }
+            ]
+          },
+          "positive_support": [
+            {
+              "reason": "manufacturer",
+              "evidence_refs": [
+                {
+                  "path": "/product/dietary_information",
+                  "quote": "High Protein, Low Sugar, High Fibre. Gluten Free, Dairy Free, Vegan"
+                }
+              ]
+            }
+          ],
+          "material_issues": [
+            {
+              "code": "source_unresolved",
+              "target": "whole_product",
+              "rule_id": "unspecified-composition-v1",
+              "evidence_refs": [
+                {
+                  "path": "/product/ingredients",
+                  "quote": "Peanuts (27%), Chocolate Chips* (Cocoa Mass, Sweetener (Xylitol), Cocoa Butter, Emulsifier (Sunflower Lecithin)) (10%), Soluble Tapioca Fibre, Pea Protein, Chicory Fibre, Peanut Butter (7%), Sweetener (Xylitol), Shea Butter, Faba Protein, Peanut Flour (4%), MCT Oil (3%), Emulsifier (Sunflower Lecithin), Freeze Dried Raspberry (1%), Natural Flavourings, Sea Salt, Antioxidants (Vitamin C, Vitamin E). *Chocolate Chips contain cocoa solids 72% minimum"
+                }
+              ],
+              "resolution_refs": [
+                {
+                  "path": "/product/dietary_information",
+                  "quote": "High Protein, Low Sugar, High Fibre. Gluten Free, Dairy Free, Vegan"
+                }
+              ],
+              "blocks_claim": false
+            }
+          ],
+          "source_applicability": []
+        },
+        "tag_animal_conflict": false,
+        "matched_patterns": [],
+        "sources": [
+          {
+            "table": "products",
+            "column": "dietary_information",
+            "text": "High Protein, Low Sugar, High Fibre. Gluten Free, Dairy Free, Vegan"
+          },
+          {
+            "table": "products",
+            "column": "detailed_description",
+            "text": "Our delicious Raspberry & Choc Chip Keto Bars are now in a convenient multipack, for lighter keto snacking. Each bar still pack 7.5g plant based protein and has bursts of freeze dried raspberry and no added sugar chocolate chips. It's the perfect on-the-go keto protein bar snack for those following a keto or low carb diet."
+          },
+          {
+            "table": "products",
+            "column": "preparation_and_usage",
+            "text": "Ready to eat"
+          },
+          {
+            "table": "products",
+            "column": "ingredients",
+            "text": "Peanuts (27%), Chocolate Chips* (Cocoa Mass, Sweetener (Xylitol), Cocoa Butter, Emulsifier (Sunflower Lecithin)) (10%), Soluble Tapioca Fibre, Pea Protein, Chicory Fibre, Peanut Butter (7%), Sweetener (Xylitol), Shea Butter, Faba Protein, Peanut Flour (4%), MCT Oil (3%), Emulsifier (Sunflower Lecithin), Freeze Dried Raspberry (1%), Natural Flavourings, Sea Salt, Antioxidants (Vitamin C, Vitamin E). *Chocolate Chips contain cocoa solids 72% minimum"
+          },
+          {
+            "table": "manufacturer_vegan_evidence",
+            "column": "dietaryInformation",
+            "text": "High Protein, Low Sugar, High Fibre. Gluten Free, Dairy Free, Vegan"
+          }
+        ]
+      },
+      "source": "rule",
+      "model": null,
+      "reasoning_effort": null,
+      "prompt_version": null,
+      "context_hash": "7a3d492437c0ccaba68223bc5576d80ae142233fab2182a77125386e2d660507",
+      "raw_response": null,
+      "parsed_response_json": null,
+      "validation_error": null,
+      "exit_status": null,
+      "model_calls": []
+    }
+  },
+  {
+    "product_id": "660991011",
+    "name": "Casalinga Crackers with Rosemary",
+    "url": "https://www.ocado.com/products/660991011",
+    "current_on_ocado": 1,
+    "previous_status": "unknown",
+    "previous_reason": null,
+    "candidate_status": "vegan",
+    "candidate_reason": "manufacturer",
+    "input_sha256": "49b3c5e29b8c30bf5f33e24aead02c6cd0764e0a6c1fe919f45ef985811fec02",
+    "candidate": {
+      "product_id": "660991011",
+      "vegan_status": "vegan",
+      "vegan_reason": "manufacturer",
+      "confidence": "certain",
+      "summary": "Shared whole-product evidence policy: vegan",
+      "evidence": {
+        "rule": "whole_product_policy",
+        "vegan_status": "vegan",
+        "vegan_reason": "manufacturer",
+        "positive_block": false,
+        "policy_version": "whole-product-v2",
+        "knowledge_version": "vegan-risk-registry-v6",
+        "assessment": {
+          "identity": {
+            "status": "established",
+            "evidence_refs": [
+              {
+                "path": "/product/name",
+                "quote": "Casalinga Crackers with Rosemary"
+              }
+            ]
+          },
+          "composition": {
+            "status": "covered_by_claim",
+            "evidence_refs": [
+              {
+                "path": "/product/dietary_information",
+                "quote": "Vegan, Vegetarian."
+              }
+            ]
+          },
+          "sourcing": {
+            "status": "covered_by_claim",
+            "evidence_refs": [
+              {
+                "path": "/product/dietary_information",
+                "quote": "Vegan, Vegetarian."
+              }
+            ]
+          },
+          "processing": {
+            "status": "covered_by_claim",
+            "evidence_refs": [
+              {
+                "path": "/product/dietary_information",
+                "quote": "Vegan, Vegetarian."
+              }
+            ]
+          },
+          "components": {
+            "status": "covered_by_claim",
+            "evidence_refs": [
+              {
+                "path": "/product/dietary_information",
+                "quote": "Vegan, Vegetarian."
+              }
+            ]
+          },
+          "positive_support": [
+            {
+              "reason": "manufacturer",
+              "evidence_refs": [
+                {
+                  "path": "/product/dietary_information",
+                  "quote": "Vegan, Vegetarian."
+                }
+              ]
+            }
+          ],
+          "material_issues": [
+            {
+              "code": "source_unresolved",
+              "target": "whole_product",
+              "rule_id": "unspecified-composition-v1",
+              "evidence_refs": [
+                {
+                  "path": "/product/ingredients",
+                  "quote": "Soft WHEAT flour, olive oil, sunflower oil, salt, yeast, rosemary (0.9%), natural rosemary flavouring"
+                }
+              ],
+              "resolution_refs": [
+                {
+                  "path": "/product/dietary_information",
+                  "quote": "Vegan, Vegetarian."
+                }
+              ],
+              "blocks_claim": false
+            },
+            {
+              "code": "composition_incomplete",
+              "target": "supplied components",
+              "rule_id": "supplied-components-composition-v1",
+              "evidence_refs": [
+                {
+                  "path": "/product/package_type",
+                  "quote": "Bag"
+                }
+              ],
+              "resolution_refs": [
+                {
+                  "path": "/product/dietary_information",
+                  "quote": "Vegan, Vegetarian."
+                }
+              ],
+              "blocks_claim": false
+            }
+          ],
+          "source_applicability": []
+        },
+        "tag_animal_conflict": false,
+        "matched_patterns": [],
+        "sources": [
+          {
+            "table": "products",
+            "column": "dietary_information",
+            "text": "Vegan, Vegetarian."
+          },
+          {
+            "table": "products",
+            "column": "detailed_description",
+            "text": "Italian-made crackers, with the sublime taste of rosemary, make these crackers wonderful to eat with Casalinga Italian olives"
+          },
+          {
+            "table": "products",
+            "column": "other_information",
+            "text": "Keep in a cool, dry place, away from sources of heat."
+          },
+          {
+            "table": "products",
+            "column": "preparation_and_usage",
+            "text": "Ready to eat. The subtle hints of rosemary make this a wonderful cracker to eat with our Italian Olives."
+          },
+          {
+            "table": "products",
+            "column": "ingredients",
+            "text": "Soft WHEAT flour, olive oil, sunflower oil, salt, yeast, rosemary (0.9%), natural rosemary flavouring"
+          },
+          {
+            "table": "manufacturer_vegan_evidence",
+            "column": "dietaryInformation",
+            "text": "Vegan, Vegetarian."
+          }
+        ]
+      },
+      "source": "rule",
+      "model": null,
+      "reasoning_effort": null,
+      "prompt_version": null,
+      "context_hash": "49b3c5e29b8c30bf5f33e24aead02c6cd0764e0a6c1fe919f45ef985811fec02",
+      "raw_response": null,
+      "parsed_response_json": null,
+      "validation_error": null,
+      "exit_status": null,
+      "model_calls": []
+    }
+  },
+  {
+    "product_id": "662062011",
+    "name": "Casalinga Artisan Grissini with Cereals",
+    "url": "https://www.ocado.com/products/662062011",
+    "current_on_ocado": 1,
+    "previous_status": "unknown",
+    "previous_reason": null,
+    "candidate_status": "vegan",
+    "candidate_reason": "manufacturer",
+    "input_sha256": "de3765f96a0b7cc511d198b2be8dfee9acacf5103e3db4fd9492b3ce52c8841f",
+    "candidate": {
+      "product_id": "662062011",
+      "vegan_status": "vegan",
+      "vegan_reason": "manufacturer",
+      "confidence": "certain",
+      "summary": "Shared whole-product evidence policy: vegan",
+      "evidence": {
+        "rule": "whole_product_policy",
+        "vegan_status": "vegan",
+        "vegan_reason": "manufacturer",
+        "positive_block": false,
+        "policy_version": "whole-product-v2",
+        "knowledge_version": "vegan-risk-registry-v6",
+        "assessment": {
+          "identity": {
+            "status": "established",
+            "evidence_refs": [
+              {
+                "path": "/product/name",
+                "quote": "Casalinga Artisan Grissini with Cereals"
+              }
+            ]
+          },
+          "composition": {
+            "status": "covered_by_claim",
+            "evidence_refs": [
+              {
+                "path": "/product/dietary_information",
+                "quote": "Vegan, Vegetarian."
+              }
+            ]
+          },
+          "sourcing": {
+            "status": "covered_by_claim",
+            "evidence_refs": [
+              {
+                "path": "/product/dietary_information",
+                "quote": "Vegan, Vegetarian."
+              }
+            ]
+          },
+          "processing": {
+            "status": "covered_by_claim",
+            "evidence_refs": [
+              {
+                "path": "/product/dietary_information",
+                "quote": "Vegan, Vegetarian."
+              }
+            ]
+          },
+          "components": {
+            "status": "covered_by_claim",
+            "evidence_refs": [
+              {
+                "path": "/product/dietary_information",
+                "quote": "Vegan, Vegetarian."
+              }
+            ]
+          },
+          "positive_support": [
+            {
+              "reason": "manufacturer",
+              "evidence_refs": [
+                {
+                  "path": "/product/dietary_information",
+                  "quote": "Vegan, Vegetarian."
+                }
+              ]
+            }
+          ],
+          "material_issues": [
+            {
+              "code": "source_unresolved",
+              "target": "whole_product",
+              "rule_id": "unspecified-composition-v1",
+              "evidence_refs": [
+                {
+                  "path": "/product/ingredients",
+                  "quote": "\"Soft Wheat Flour, Cereals & Seed Mix (10,8%) (Soft Wheat Flour, Sesame Seeds, Wholemeal Soya, Maize Flour, Linseed, Wholemeal Rye Flour, Oat Flakes, Sourdough dried by natural fermentation (Wheat), Barley Flour, Millet, Wheat Gluten, Malted Wheat Flour, Flour treatment agent: ascorbic acid), Olive Oil, Iodised Salt (Salt, Potassium iodide), Yeast, Natural Rosemary Flavouring.\""
+                }
+              ],
+              "resolution_refs": [
+                {
+                  "path": "/product/dietary_information",
+                  "quote": "Vegan, Vegetarian."
+                }
+              ],
+              "blocks_claim": false
+            },
+            {
+              "code": "composition_incomplete",
+              "target": "supplied components",
+              "rule_id": "supplied-components-composition-v1",
+              "evidence_refs": [
+                {
+                  "path": "/product/package_type",
+                  "quote": "Bag"
+                }
+              ],
+              "resolution_refs": [
+                {
+                  "path": "/product/dietary_information",
+                  "quote": "Vegan, Vegetarian."
+                }
+              ],
+              "blocks_claim": false
+            }
+          ],
+          "source_applicability": []
+        },
+        "tag_animal_conflict": false,
+        "matched_patterns": [],
+        "sources": [
+          {
+            "table": "products",
+            "column": "dietary_information",
+            "text": "Vegan, Vegetarian."
+          },
+          {
+            "table": "products",
+            "column": "detailed_description",
+            "text": "These delicious breadsticks with cereals are baked in Ferrara, Italy."
+          },
+          {
+            "table": "products",
+            "column": "other_information",
+            "text": "Keep in a cool, dry place, away from sources of heat."
+          },
+          {
+            "table": "products",
+            "column": "preparation_and_usage",
+            "text": "We love to wrap them with thin slices of prosciutto and pair with a chilled Italian Prosecco."
+          },
+          {
+            "table": "products",
+            "column": "ingredients",
+            "text": "\"Soft Wheat Flour, Cereals & Seed Mix (10,8%) (Soft Wheat Flour, Sesame Seeds, Wholemeal Soya, Maize Flour, Linseed, Wholemeal Rye Flour, Oat Flakes, Sourdough dried by natural fermentation (Wheat), Barley Flour, Millet, Wheat Gluten, Malted Wheat Flour, Flour treatment agent: ascorbic acid), Olive Oil, Iodised Salt (Salt, Potassium iodide), Yeast, Natural Rosemary Flavouring.\""
+          },
+          {
+            "table": "manufacturer_vegan_evidence",
+            "column": "dietaryInformation",
+            "text": "Vegan, Vegetarian."
+          }
+        ]
+      },
+      "source": "rule",
+      "model": null,
+      "reasoning_effort": null,
+      "prompt_version": null,
+      "context_hash": "de3765f96a0b7cc511d198b2be8dfee9acacf5103e3db4fd9492b3ce52c8841f",
+      "raw_response": null,
+      "parsed_response_json": null,
+      "validation_error": null,
+      "exit_status": null,
+      "model_calls": []
+    }
+  },
+  {
+    "product_id": "662063011",
+    "name": "Casalinga Artisan Grissini Torinesi",
+    "url": "https://www.ocado.com/products/662063011",
+    "current_on_ocado": 1,
+    "previous_status": "unknown",
+    "previous_reason": null,
+    "candidate_status": "vegan",
+    "candidate_reason": "manufacturer",
+    "input_sha256": "f56286cb088406459d374e3074bdef2b640894831598613a0c7c89ffdcf31958",
+    "candidate": {
+      "product_id": "662063011",
+      "vegan_status": "vegan",
+      "vegan_reason": "manufacturer",
+      "confidence": "certain",
+      "summary": "Shared whole-product evidence policy: vegan",
+      "evidence": {
+        "rule": "whole_product_policy",
+        "vegan_status": "vegan",
+        "vegan_reason": "manufacturer",
+        "positive_block": false,
+        "policy_version": "whole-product-v2",
+        "knowledge_version": "vegan-risk-registry-v6",
+        "assessment": {
+          "identity": {
+            "status": "established",
+            "evidence_refs": [
+              {
+                "path": "/product/name",
+                "quote": "Casalinga Artisan Grissini Torinesi"
+              }
+            ]
+          },
+          "composition": {
+            "status": "covered_by_claim",
+            "evidence_refs": [
+              {
+                "path": "/product/dietary_information",
+                "quote": "Vegan, Vegetarian."
+              }
+            ]
+          },
+          "sourcing": {
+            "status": "covered_by_claim",
+            "evidence_refs": [
+              {
+                "path": "/product/dietary_information",
+                "quote": "Vegan, Vegetarian."
+              }
+            ]
+          },
+          "processing": {
+            "status": "covered_by_claim",
+            "evidence_refs": [
+              {
+                "path": "/product/dietary_information",
+                "quote": "Vegan, Vegetarian."
+              }
+            ]
+          },
+          "components": {
+            "status": "covered_by_claim",
+            "evidence_refs": [
+              {
+                "path": "/product/dietary_information",
+                "quote": "Vegan, Vegetarian."
+              }
+            ]
+          },
+          "positive_support": [
+            {
+              "reason": "manufacturer",
+              "evidence_refs": [
+                {
+                  "path": "/product/dietary_information",
+                  "quote": "Vegan, Vegetarian."
+                }
+              ]
+            }
+          ],
+          "material_issues": [
+            {
+              "code": "source_unresolved",
+              "target": "whole_product",
+              "rule_id": "unspecified-composition-v1",
+              "evidence_refs": [
+                {
+                  "path": "/product/ingredients",
+                  "quote": "Soft Wheat Flour, Extra Virgin Olive Oil (3.5%), Olive oil, Iodised salt (Salt, Potassium Iodide), Yeast, Soft Wheat Flour, Malted Wheat Flour, Emulsifier (Mono- and Diacetyltartaric Acid Esters of Mono- and diglycerides of fatty acids), Natural Rosemary Flavouring."
+                }
+              ],
+              "resolution_refs": [
+                {
+                  "path": "/product/dietary_information",
+                  "quote": "Vegan, Vegetarian."
+                }
+              ],
+              "blocks_claim": false
+            },
+            {
+              "code": "composition_incomplete",
+              "target": "supplied components",
+              "rule_id": "supplied-components-composition-v1",
+              "evidence_refs": [
+                {
+                  "path": "/product/package_type",
+                  "quote": "Bag"
+                }
+              ],
+              "resolution_refs": [
+                {
+                  "path": "/product/dietary_information",
+                  "quote": "Vegan, Vegetarian."
+                }
+              ],
+              "blocks_claim": false
+            }
+          ],
+          "source_applicability": []
+        },
+        "tag_animal_conflict": false,
+        "matched_patterns": [],
+        "sources": [
+          {
+            "table": "products",
+            "column": "dietary_information",
+            "text": "Vegan, Vegetarian."
+          },
+          {
+            "table": "products",
+            "column": "detailed_description",
+            "text": "Artisan made breadsticks. Thin, light and beautifully crispy, these breadsticks are baked to an age-old recipe. 1 Star Great Taste Award Winner."
+          },
+          {
+            "table": "products",
+            "column": "other_information",
+            "text": "1 Star Great Taste Award Winner. Keep in a cool, dry place, away from sources of heat."
+          },
+          {
+            "table": "products",
+            "column": "preparation_and_usage",
+            "text": "Ready to eat. Delicious dipped in baked cheese or in one of our bruschetta dips."
+          },
+          {
+            "table": "products",
+            "column": "ingredients",
+            "text": "Soft Wheat Flour, Extra Virgin Olive Oil (3.5%), Olive oil, Iodised salt (Salt, Potassium Iodide), Yeast, Soft Wheat Flour, Malted Wheat Flour, Emulsifier (Mono- and Diacetyltartaric Acid Esters of Mono- and diglycerides of fatty acids), Natural Rosemary Flavouring."
+          },
+          {
+            "table": "manufacturer_vegan_evidence",
+            "column": "dietaryInformation",
+            "text": "Vegan, Vegetarian."
+          }
+        ]
+      },
+      "source": "rule",
+      "model": null,
+      "reasoning_effort": null,
+      "prompt_version": null,
+      "context_hash": "f56286cb088406459d374e3074bdef2b640894831598613a0c7c89ffdcf31958",
+      "raw_response": null,
+      "parsed_response_json": null,
+      "validation_error": null,
+      "exit_status": null,
+      "model_calls": []
+    }
+  },
+  {
+    "product_id": "666171011",
+    "name": "Nourished Revive+ Nutrient Stacks",
+    "url": "https://www.ocado.com/products/666171011",
+    "current_on_ocado": 1,
+    "previous_status": "unknown",
+    "previous_reason": null,
+    "candidate_status": "vegan",
+    "candidate_reason": "manufacturer",
+    "input_sha256": "6705199062e035bf261c97f1c192af505a1e72c8509b4858c1b17b095b987dd7",
+    "candidate": {
+      "product_id": "666171011",
+      "vegan_status": "vegan",
+      "vegan_reason": "manufacturer",
+      "confidence": "certain",
+      "summary": "Shared whole-product evidence policy: vegan",
+      "evidence": {
+        "rule": "whole_product_policy",
+        "vegan_status": "vegan",
+        "vegan_reason": "manufacturer",
+        "positive_block": false,
+        "policy_version": "whole-product-v2",
+        "knowledge_version": "vegan-risk-registry-v6",
+        "assessment": {
+          "identity": {
+            "status": "established",
+            "evidence_refs": [
+              {
+                "path": "/product/name",
+                "quote": "Nourished Revive+ Nutrient Stacks"
+              }
+            ]
+          },
+          "composition": {
+            "status": "covered_by_claim",
+            "evidence_refs": [
+              {
+                "path": "/product/dietary_information",
+                "quote": "Sugar-Free, Vegan"
+              }
+            ]
+          },
+          "sourcing": {
+            "status": "covered_by_claim",
+            "evidence_refs": [
+              {
+                "path": "/product/dietary_information",
+                "quote": "Sugar-Free, Vegan"
+              }
+            ]
+          },
+          "processing": {
+            "status": "covered_by_claim",
+            "evidence_refs": [
+              {
+                "path": "/product/dietary_information",
+                "quote": "Sugar-Free, Vegan"
+              }
+            ]
+          },
+          "components": {
+            "status": "covered_by_claim",
+            "evidence_refs": [
+              {
+                "path": "/product/dietary_information",
+                "quote": "Sugar-Free, Vegan"
+              }
+            ]
+          },
+          "positive_support": [
+            {
+              "reason": "manufacturer",
+              "evidence_refs": [
+                {
+                  "path": "/product/dietary_information",
+                  "quote": "Sugar-Free, Vegan"
+                }
+              ]
+            }
+          ],
+          "material_issues": [
+            {
+              "code": "source_unresolved",
+              "target": "whole_product",
+              "rule_id": "unspecified-composition-v1",
+              "evidence_refs": [
+                {
+                  "path": "/product/ingredients",
+                  "quote": "Maltitol Syrup, Erythritol, Pectin, Potassium Citrate, Citric Acid, Ginger, Vitamin C, Vitamin E, Ferrous Citrate, Zinc Citrate, Vitamin D3, Vitamin B12, Malic Acid, Natural Colours & Natural Flavours from Plants & Fruit Extracts."
+                }
+              ],
+              "resolution_refs": [
+                {
+                  "path": "/product/dietary_information",
+                  "quote": "Sugar-Free, Vegan"
+                }
+              ],
+              "blocks_claim": false
+            }
+          ],
+          "source_applicability": []
+        },
+        "tag_animal_conflict": false,
+        "matched_patterns": [],
+        "sources": [
+          {
+            "table": "products",
+            "column": "dietary_information",
+            "text": "Sugar-Free, Vegan"
+          },
+          {
+            "table": "products",
+            "column": "detailed_description",
+            "text": "Fuel your day with the new, limited edition Nourished Energy+ Mini Stacks — expertly formulated to combat fatigue, boost vitality, and support sustained energy throughout the day. These easy-to-consume stacks are a convenient addition to your daily routine, designed to deliver powerful results in a compact format. Each mini stack contains a curated blend of 7 high-impact nutrients, including Ginger, Iron, Vitamin B12, and Vitamin C, selected to help reduce tiredness, support energy-yielding metabolism, and enhance overall wellbeing. Ginger supports digestion and energy balance, while Vitamin B12 and Iron contribute to the reduction of fatigue. Vitamin C and Zinc help maintain a healthy immune system and support skin health, while Vitamin E and Vitamin D3 promote general vitality and long-term wellness. Crafted using Nourished’s patented 3D printing technology and produced in the UK, these delicious, sugar-free mini stacks offer flexible, targeted nutrition that fits seamlessly into busy lifestyles — whether taken on their own or alongside our core Energy Life Stacks for enhanced daily support. Nourished: Precision Nutrition, Layered for Life."
+          },
+          {
+            "table": "products",
+            "column": "other_information",
+            "text": "Contains polyols, excessive consumption may cause a laxative effect. Suitable for ages 17 and above. Nutrient gummies must not be used to substitute a healthy diet. If you are pregnant, breastfeeding, have any medical conditions, or are taking other medication, please contact your doctor or a healthcare professional before use."
+          },
+          {
+            "table": "products",
+            "column": "preparation_and_usage",
+            "text": "Chew 2 gummies daily. Do not exceed recommended dose. Chew before swallowing."
+          },
+          {
+            "table": "products",
+            "column": "ingredients",
+            "text": "Maltitol Syrup, Erythritol, Pectin, Potassium Citrate, Citric Acid, Ginger, Vitamin C, Vitamin E, Ferrous Citrate, Zinc Citrate, Vitamin D3, Vitamin B12, Malic Acid, Natural Colours & Natural Flavours from Plants & Fruit Extracts."
+          },
+          {
+            "table": "manufacturer_vegan_evidence",
+            "column": "dietaryInformation",
+            "text": "Sugar-Free, Vegan"
+          }
+        ]
+      },
+      "source": "rule",
+      "model": null,
+      "reasoning_effort": null,
+      "prompt_version": null,
+      "context_hash": "6705199062e035bf261c97f1c192af505a1e72c8509b4858c1b17b095b987dd7",
+      "raw_response": null,
+      "parsed_response_json": null,
+      "validation_error": null,
+      "exit_status": null,
+      "model_calls": []
+    }
+  },
+  {
+    "product_id": "673813011",
+    "name": "Epic Disco Dots Cake Sprinkles",
+    "url": "https://www.ocado.com/products/673813011",
+    "current_on_ocado": 1,
+    "previous_status": "unknown",
+    "previous_reason": null,
+    "candidate_status": "vegan",
+    "candidate_reason": "manufacturer",
+    "input_sha256": "ddff7651ee5abee52dfd3d7f9e70fa267258fd255429b13dbccc1b8922597e7c",
+    "candidate": {
+      "product_id": "673813011",
+      "vegan_status": "vegan",
+      "vegan_reason": "manufacturer",
+      "confidence": "certain",
+      "summary": "Shared whole-product evidence policy: vegan",
+      "evidence": {
+        "rule": "whole_product_policy",
+        "vegan_status": "vegan",
+        "vegan_reason": "manufacturer",
+        "positive_block": false,
+        "policy_version": "whole-product-v2",
+        "knowledge_version": "vegan-risk-registry-v6",
+        "assessment": {
+          "identity": {
+            "status": "established",
+            "evidence_refs": [
+              {
+                "path": "/product/name",
+                "quote": "Epic Disco Dots Cake Sprinkles"
+              }
+            ]
+          },
+          "composition": {
+            "status": "covered_by_claim",
+            "evidence_refs": [
+              {
+                "path": "/product/dietary_information",
+                "quote": "100% natural food colouring, Guten Free, Vegan"
+              }
+            ]
+          },
+          "sourcing": {
+            "status": "covered_by_claim",
+            "evidence_refs": [
+              {
+                "path": "/product/dietary_information",
+                "quote": "100% natural food colouring, Guten Free, Vegan"
+              }
+            ]
+          },
+          "processing": {
+            "status": "covered_by_claim",
+            "evidence_refs": [
+              {
+                "path": "/product/dietary_information",
+                "quote": "100% natural food colouring, Guten Free, Vegan"
+              }
+            ]
+          },
+          "components": {
+            "status": "covered_by_claim",
+            "evidence_refs": [
+              {
+                "path": "/product/dietary_information",
+                "quote": "100% natural food colouring, Guten Free, Vegan"
+              }
+            ]
+          },
+          "positive_support": [
+            {
+              "reason": "manufacturer",
+              "evidence_refs": [
+                {
+                  "path": "/product/dietary_information",
+                  "quote": "100% natural food colouring, Guten Free, Vegan"
+                }
+              ]
+            }
+          ],
+          "material_issues": [
+            {
+              "code": "processing_unresolved",
+              "target": "whole_product",
+              "rule_id": "sugar-refining-v1",
+              "evidence_refs": [
+                {
+                  "path": "/product/ingredients",
+                  "quote": "Sugar, Glucose Syrup, Water, Vegetable Oil (Coconut), Colouring Food (Safflower Concentrate, Spirulina Concentrate, Radish Concentrate, Sweet Potato Concentrate, Lemon Concentrate), Glazing Agent: Carnauba Wax"
+                }
+              ],
+              "resolution_refs": [
+                {
+                  "path": "/product/dietary_information",
+                  "quote": "100% natural food colouring, Guten Free, Vegan"
+                }
+              ],
+              "blocks_claim": false
+            },
+            {
+              "code": "composition_incomplete",
+              "target": "supplied components",
+              "rule_id": "supplied-components-composition-v1",
+              "evidence_refs": [
+                {
+                  "path": "/product/package_type",
+                  "quote": "Box"
+                }
+              ],
+              "resolution_refs": [
+                {
+                  "path": "/product/dietary_information",
+                  "quote": "100% natural food colouring, Guten Free, Vegan"
+                }
+              ],
+              "blocks_claim": false
+            }
+          ],
+          "source_applicability": []
+        },
+        "tag_animal_conflict": false,
+        "matched_patterns": [],
+        "sources": [
+          {
+            "table": "products",
+            "column": "dietary_information",
+            "text": "100% natural food colouring, Guten Free, Vegan"
+          },
+          {
+            "table": "products",
+            "column": "features",
+            "text": "All Natural Colouring"
+          },
+          {
+            "table": "products",
+            "column": "detailed_description",
+            "text": "At Epic Snax Co. we’re all about creating a flavour packed experience for all –for little ones or just kids at heart. We’re here to bring you the most exciting, taste-bud-tantalizing snacks, perfect for turning any event into an EPIC celebration. We believe every moment should be nothing short of Epic! So, whatever the occasion, whether it’s a family birthday, weekend camping trip or just want to bake, make it EPIC with our painfully fluffy mallows and indulgent Epic home baking range. Truly EPIC!! Bring the party fun to your bakes with our groovy Disco Dots sprinkles. Truly EPIC Perfect for topping cakes, ice cream, pancakes and more! Be Epic. Recycle."
+          },
+          {
+            "table": "products",
+            "column": "other_information",
+            "text": "Storage: Once baked store in a cool dry place."
+          },
+          {
+            "table": "products",
+            "column": "ingredients",
+            "text": "Sugar, Glucose Syrup, Water, Vegetable Oil (Coconut), Colouring Food (Safflower Concentrate, Spirulina Concentrate, Radish Concentrate, Sweet Potato Concentrate, Lemon Concentrate), Glazing Agent: Carnauba Wax"
+          },
+          {
+            "table": "manufacturer_vegan_evidence",
+            "column": "dietaryInformation",
+            "text": "100% natural food colouring, Guten Free, Vegan"
+          }
+        ]
+      },
+      "source": "rule",
+      "model": null,
+      "reasoning_effort": null,
+      "prompt_version": null,
+      "context_hash": "ddff7651ee5abee52dfd3d7f9e70fa267258fd255429b13dbccc1b8922597e7c",
+      "raw_response": null,
+      "parsed_response_json": null,
+      "validation_error": null,
+      "exit_status": null,
+      "model_calls": []
+    }
+  },
+  {
+    "product_id": "673814011",
+    "name": "Epic Sugar Strands Cake Sprinkles",
+    "url": "https://www.ocado.com/products/673814011",
+    "current_on_ocado": 1,
+    "previous_status": "unknown",
+    "previous_reason": null,
+    "candidate_status": "vegan",
+    "candidate_reason": "manufacturer",
+    "input_sha256": "90bb54c27f3de5f42235c4329a939f667b56d6f73b9083b6875e515fa1d26020",
+    "candidate": {
+      "product_id": "673814011",
+      "vegan_status": "vegan",
+      "vegan_reason": "manufacturer",
+      "confidence": "certain",
+      "summary": "Shared whole-product evidence policy: vegan",
+      "evidence": {
+        "rule": "whole_product_policy",
+        "vegan_status": "vegan",
+        "vegan_reason": "manufacturer",
+        "positive_block": false,
+        "policy_version": "whole-product-v2",
+        "knowledge_version": "vegan-risk-registry-v6",
+        "assessment": {
+          "identity": {
+            "status": "established",
+            "evidence_refs": [
+              {
+                "path": "/product/name",
+                "quote": "Epic Sugar Strands Cake Sprinkles"
+              }
+            ]
+          },
+          "composition": {
+            "status": "covered_by_claim",
+            "evidence_refs": [
+              {
+                "path": "/product/dietary_information",
+                "quote": "100% natural food colouring, Vegan, GlutenFree"
+              }
+            ]
+          },
+          "sourcing": {
+            "status": "covered_by_claim",
+            "evidence_refs": [
+              {
+                "path": "/product/dietary_information",
+                "quote": "100% natural food colouring, Vegan, GlutenFree"
+              }
+            ]
+          },
+          "processing": {
+            "status": "covered_by_claim",
+            "evidence_refs": [
+              {
+                "path": "/product/dietary_information",
+                "quote": "100% natural food colouring, Vegan, GlutenFree"
+              }
+            ]
+          },
+          "components": {
+            "status": "covered_by_claim",
+            "evidence_refs": [
+              {
+                "path": "/product/dietary_information",
+                "quote": "100% natural food colouring, Vegan, GlutenFree"
+              }
+            ]
+          },
+          "positive_support": [
+            {
+              "reason": "manufacturer",
+              "evidence_refs": [
+                {
+                  "path": "/product/dietary_information",
+                  "quote": "100% natural food colouring, Vegan, GlutenFree"
+                }
+              ]
+            }
+          ],
+          "material_issues": [
+            {
+              "code": "processing_unresolved",
+              "target": "whole_product",
+              "rule_id": "sugar-refining-v1",
+              "evidence_refs": [
+                {
+                  "path": "/product/ingredients",
+                  "quote": "Sugar, Water, Glucose Syrup, Vegetable Oil (Coconut), Colouring Foods (Safflower Concentrate, Spirulina Concentrate, Sweet Potato Concentrate, Radish Concentrate, Lemon Concentrate), Glazing Agent: Carnauba Wax"
+                }
+              ],
+              "resolution_refs": [
+                {
+                  "path": "/product/dietary_information",
+                  "quote": "100% natural food colouring, Vegan, GlutenFree"
+                }
+              ],
+              "blocks_claim": false
+            },
+            {
+              "code": "composition_incomplete",
+              "target": "supplied components",
+              "rule_id": "supplied-components-composition-v1",
+              "evidence_refs": [
+                {
+                  "path": "/product/package_type",
+                  "quote": "Box"
+                }
+              ],
+              "resolution_refs": [
+                {
+                  "path": "/product/dietary_information",
+                  "quote": "100% natural food colouring, Vegan, GlutenFree"
+                }
+              ],
+              "blocks_claim": false
+            }
+          ],
+          "source_applicability": []
+        },
+        "tag_animal_conflict": false,
+        "matched_patterns": [],
+        "sources": [
+          {
+            "table": "products",
+            "column": "dietary_information",
+            "text": "100% natural food colouring, Vegan, GlutenFree"
+          },
+          {
+            "table": "products",
+            "column": "features",
+            "text": "All Natural Colouring"
+          },
+          {
+            "table": "products",
+            "column": "detailed_description",
+            "text": "At Epic Snax Co. we’re all about creating a flavour packed experience for all –for little ones or just kids at heart. We’re here to bring you the most exciting, taste-bud-tantalizing snacks, perfect for turning any event into an EPIC celebration. We believe every moment should be nothing short of Epic! So, whatever the occasion, whether it’s a family birthday, weekend camping trip or just want to bake, make it EPIC with our painfully fluffy mallows and indulgent Epic home baking range. Truly EPIC!! Add a splash of colour to your bakes with our Sugar Strands sprinkles! Truly Epic Perfect for topping cakes, ice cream, pancakes and more! Be Epic. Recycle."
+          },
+          {
+            "table": "products",
+            "column": "other_information",
+            "text": "Storage: Once baked store in a cool dry place."
+          },
+          {
+            "table": "products",
+            "column": "ingredients",
+            "text": "Sugar, Water, Glucose Syrup, Vegetable Oil (Coconut), Colouring Foods (Safflower Concentrate, Spirulina Concentrate, Sweet Potato Concentrate, Radish Concentrate, Lemon Concentrate), Glazing Agent: Carnauba Wax"
+          },
+          {
+            "table": "manufacturer_vegan_evidence",
+            "column": "dietaryInformation",
+            "text": "100% natural food colouring, Vegan, GlutenFree"
+          }
+        ]
+      },
+      "source": "rule",
+      "model": null,
+      "reasoning_effort": null,
+      "prompt_version": null,
+      "context_hash": "90bb54c27f3de5f42235c4329a939f667b56d6f73b9083b6875e515fa1d26020",
+      "raw_response": null,
+      "parsed_response_json": null,
+      "validation_error": null,
+      "exit_status": null,
+      "model_calls": []
+    }
+  },
+  {
+    "product_id": "675616011",
+    "name": "Bio-Synergy Electrolite berry - 20 tablets",
+    "url": "https://www.ocado.com/products/675616011",
+    "current_on_ocado": 1,
+    "previous_status": "unknown",
+    "previous_reason": null,
+    "candidate_status": "vegan",
+    "candidate_reason": "manufacturer",
+    "input_sha256": "7560f0020746f51a283fdb0358c44384ad10d2d2dd727c93e1b674edabe49e41",
+    "candidate": {
+      "product_id": "675616011",
+      "vegan_status": "vegan",
+      "vegan_reason": "manufacturer",
+      "confidence": "certain",
+      "summary": "Shared whole-product evidence policy: vegan",
+      "evidence": {
+        "rule": "whole_product_policy",
+        "vegan_status": "vegan",
+        "vegan_reason": "manufacturer",
+        "positive_block": false,
+        "policy_version": "whole-product-v2",
+        "knowledge_version": "vegan-risk-registry-v6",
+        "assessment": {
+          "identity": {
+            "status": "established",
+            "evidence_refs": [
+              {
+                "path": "/product/name",
+                "quote": "Bio-Synergy Electrolite berry - 20 tablets"
+              }
+            ]
+          },
+          "composition": {
+            "status": "covered_by_claim",
+            "evidence_refs": [
+              {
+                "path": "/product/dietary_information",
+                "quote": "Vegan. Contains sucralose."
+              }
+            ]
+          },
+          "sourcing": {
+            "status": "covered_by_claim",
+            "evidence_refs": [
+              {
+                "path": "/product/dietary_information",
+                "quote": "Vegan. Contains sucralose."
+              }
+            ]
+          },
+          "processing": {
+            "status": "covered_by_claim",
+            "evidence_refs": [
+              {
+                "path": "/product/dietary_information",
+                "quote": "Vegan. Contains sucralose."
+              }
+            ]
+          },
+          "components": {
+            "status": "covered_by_claim",
+            "evidence_refs": [
+              {
+                "path": "/product/dietary_information",
+                "quote": "Vegan. Contains sucralose."
+              }
+            ]
+          },
+          "positive_support": [
+            {
+              "reason": "manufacturer",
+              "evidence_refs": [
+                {
+                  "path": "/product/dietary_information",
+                  "quote": "Vegan. Contains sucralose."
+                }
+              ]
+            }
+          ],
+          "material_issues": [
+            {
+              "code": "source_unresolved",
+              "target": "whole_product",
+              "rule_id": "unspecified-composition-v1",
+              "evidence_refs": [
+                {
+                  "path": "/product/ingredients",
+                  "quote": "Acidity Regulator, Dextrose Anhydrous, Maltodextrin, Potassium Chloride, Calcium Carbonate, Flavour (Contains Added Nature Identical Flavouring Mixed berry), Sodium Chloride, Magnesium Oxide, Zinc Oxide, Vitamin C, Sweetener (Sucralose), Anticaking agent, Preservative, Glidant, Vitamin D,Vitamin B12 & Permitted Food Colour."
+                }
+              ],
+              "resolution_refs": [
+                {
+                  "path": "/product/dietary_information",
+                  "quote": "Vegan. Contains sucralose."
+                }
+              ],
+              "blocks_claim": false
+            },
+            {
+              "code": "composition_incomplete",
+              "target": "supplied components",
+              "rule_id": "supplied-components-composition-v1",
+              "evidence_refs": [
+                {
+                  "path": "/product/package_type",
+                  "quote": "Plastic tube"
+                }
+              ],
+              "resolution_refs": [
+                {
+                  "path": "/product/dietary_information",
+                  "quote": "Vegan. Contains sucralose."
+                }
+              ],
+              "blocks_claim": false
+            }
+          ],
+          "source_applicability": []
+        },
+        "tag_animal_conflict": false,
+        "matched_patterns": [],
+        "sources": [
+          {
+            "table": "products",
+            "column": "dietary_information",
+            "text": "Vegan. Contains sucralose."
+          },
+          {
+            "table": "products",
+            "column": "detailed_description",
+            "text": "Bio-Synergy Effervescent Electrolyte Tablets – Mixed Berry (20 Tablets) Hydration. Recharged. Delicious. Stay energised, balanced, and refreshed with Bio-Synergy’s Effervescent Electrolyte Tablets – your daily hydration solution with a tasty mixed berry twist. Packed with essential electrolytes (sodium, potassium, calcium, magnesium) and boosted by key vitamins including C, D, B12, and zinc, each one-a-day tablet is designed to help restore balance, fight fatigue, and support your immune system – whether you're at the gym, at work, or on-the-go. Simply drop into water and enjoy. No sugar, no calories, just effective hydration support. Why You'll Love It: Delicious Mixed Berry Flavour ⚡ Immune & Energy Support – With vitamins C, D, B12 & zinc Zero Calories, Sugar-Free – Hydration without compromise ✅ One-a-Day Convenience – Just dissolve water"
+          },
+          {
+            "table": "products",
+            "column": "preparation_and_usage",
+            "text": "Add one effervescent tablet to 200-300ml water and drink once dissolved."
+          },
+          {
+            "table": "products",
+            "column": "ingredients",
+            "text": "Acidity Regulator, Dextrose Anhydrous, Maltodextrin, Potassium Chloride, Calcium Carbonate, Flavour (Contains Added Nature Identical Flavouring Mixed berry), Sodium Chloride, Magnesium Oxide, Zinc Oxide, Vitamin C, Sweetener (Sucralose), Anticaking agent, Preservative, Glidant, Vitamin D,Vitamin B12 & Permitted Food Colour."
+          },
+          {
+            "table": "manufacturer_vegan_evidence",
+            "column": "dietaryInformation",
+            "text": "Vegan. Contains sucralose."
+          }
+        ]
+      },
+      "source": "rule",
+      "model": null,
+      "reasoning_effort": null,
+      "prompt_version": null,
+      "context_hash": "7560f0020746f51a283fdb0358c44384ad10d2d2dd727c93e1b674edabe49e41",
+      "raw_response": null,
+      "parsed_response_json": null,
+      "validation_error": null,
+      "exit_status": null,
+      "model_calls": []
+    }
+  },
+  {
+    "product_id": "675617011",
+    "name": "Bio-Synergy Creatine Boost Effervescent 20",
+    "url": "https://www.ocado.com/products/675617011",
+    "current_on_ocado": 1,
+    "previous_status": "unknown",
+    "previous_reason": null,
+    "candidate_status": "vegan",
+    "candidate_reason": "manufacturer",
+    "input_sha256": "46faf148dbb9516f350c16b932e2f19228e529d931f09693304ce0febd8f41dd",
+    "candidate": {
+      "product_id": "675617011",
+      "vegan_status": "vegan",
+      "vegan_reason": "manufacturer",
+      "confidence": "certain",
+      "summary": "Shared whole-product evidence policy: vegan",
+      "evidence": {
+        "rule": "whole_product_policy",
+        "vegan_status": "vegan",
+        "vegan_reason": "manufacturer",
+        "positive_block": false,
+        "policy_version": "whole-product-v2",
+        "knowledge_version": "vegan-risk-registry-v6",
+        "assessment": {
+          "identity": {
+            "status": "established",
+            "evidence_refs": [
+              {
+                "path": "/product/name",
+                "quote": "Bio-Synergy Creatine Boost Effervescent 20"
+              }
+            ]
+          },
+          "composition": {
+            "status": "covered_by_claim",
+            "evidence_refs": [
+              {
+                "path": "/product/dietary_information",
+                "quote": "Vegan. Contains sucralose."
+              }
+            ]
+          },
+          "sourcing": {
+            "status": "covered_by_claim",
+            "evidence_refs": [
+              {
+                "path": "/product/dietary_information",
+                "quote": "Vegan. Contains sucralose."
+              }
+            ]
+          },
+          "processing": {
+            "status": "covered_by_claim",
+            "evidence_refs": [
+              {
+                "path": "/product/dietary_information",
+                "quote": "Vegan. Contains sucralose."
+              }
+            ]
+          },
+          "components": {
+            "status": "covered_by_claim",
+            "evidence_refs": [
+              {
+                "path": "/product/dietary_information",
+                "quote": "Vegan. Contains sucralose."
+              }
+            ]
+          },
+          "positive_support": [
+            {
+              "reason": "manufacturer",
+              "evidence_refs": [
+                {
+                  "path": "/product/dietary_information",
+                  "quote": "Vegan. Contains sucralose."
+                }
+              ]
+            }
+          ],
+          "material_issues": [
+            {
+              "code": "processing_unresolved",
+              "target": "whole_product",
+              "rule_id": "citrus-coating-v1",
+              "evidence_refs": [
+                {
+                  "path": "/product/ingredients",
+                  "quote": "Acidity Regulator, Creatine Monohydrate, Maltodextrin, Contains Permitted Nature Identical Flavouring Orange, Sweetener (Sucralose), Anticaking Agent, Preservative, Glidant & Permitted Food Colouring."
+                }
+              ],
+              "resolution_refs": [
+                {
+                  "path": "/product/dietary_information",
+                  "quote": "Vegan. Contains sucralose."
+                }
+              ],
+              "blocks_claim": false
+            },
+            {
+              "code": "source_unresolved",
+              "target": "whole_product",
+              "rule_id": "unspecified-composition-v1",
+              "evidence_refs": [
+                {
+                  "path": "/product/ingredients",
+                  "quote": "Acidity Regulator, Creatine Monohydrate, Maltodextrin, Contains Permitted Nature Identical Flavouring Orange, Sweetener (Sucralose), Anticaking Agent, Preservative, Glidant & Permitted Food Colouring."
+                }
+              ],
+              "resolution_refs": [
+                {
+                  "path": "/product/dietary_information",
+                  "quote": "Vegan. Contains sucralose."
+                }
+              ],
+              "blocks_claim": false
+            },
+            {
+              "code": "composition_incomplete",
+              "target": "supplied components",
+              "rule_id": "supplied-components-composition-v1",
+              "evidence_refs": [
+                {
+                  "path": "/product/package_type",
+                  "quote": "Plastic tube"
+                }
+              ],
+              "resolution_refs": [
+                {
+                  "path": "/product/dietary_information",
+                  "quote": "Vegan. Contains sucralose."
+                }
+              ],
+              "blocks_claim": false
+            }
+          ],
+          "source_applicability": []
+        },
+        "tag_animal_conflict": false,
+        "matched_patterns": [],
+        "sources": [
+          {
+            "table": "products",
+            "column": "dietary_information",
+            "text": "Vegan. Contains sucralose."
+          },
+          {
+            "table": "products",
+            "column": "detailed_description",
+            "text": "Bio-Synergy Effervescent Creatine Boost is a convenient, tasty way to support your energy, hydration, and daily performance. Each zesty orange tablet delivers 1,000mg of pure creatine monohydrate, plus essential electrolytes, helping fuel your body and brain through workouts, workdays, and hormonal shifts. With zero sugar, just 2.5 kcal per tablet it’s your go-to daily boost — no scoop, no shaker, no fuss. Why You Will Love It: • Supports Mental Clarity & Focus – Emerging research links creatine to cognitive health and energy metabolism • Hydrates from Within – With sodium & electrolytes to help balance hydration • Daily Strength & Recovery Support – Creatine helps maintain energy and muscle performance over time • Delicious Orange Flavour – Light, fizzy, and refreshing • Sugar-Free & Low-Calorie – Ideal for low-sugar or fasting lifestyles Perfect for: • If you want to to stay sharp, energised & hydrated • Those wanting the benefits of creatine in a gentler daily dose • Anyone seeking muscle and mental wellness support at every life stage 20 effervescent tablets per tube | Use 1–3 daily as needed Made in the UK | Backed by Bio-Synergy’s 25+ years of innovation"
+          },
+          {
+            "table": "products",
+            "column": "preparation_and_usage",
+            "text": "Add one effervescent tablet to 200-300ml water and drink once dissolved."
+          },
+          {
+            "table": "products",
+            "column": "ingredients",
+            "text": "Acidity Regulator, Creatine Monohydrate, Maltodextrin, Contains Permitted Nature Identical Flavouring Orange, Sweetener (Sucralose), Anticaking Agent, Preservative, Glidant & Permitted Food Colouring."
+          },
+          {
+            "table": "manufacturer_vegan_evidence",
+            "column": "dietaryInformation",
+            "text": "Vegan. Contains sucralose."
+          }
+        ]
+      },
+      "source": "rule",
+      "model": null,
+      "reasoning_effort": null,
+      "prompt_version": null,
+      "context_hash": "46faf148dbb9516f350c16b932e2f19228e529d931f09693304ce0febd8f41dd",
+      "raw_response": null,
+      "parsed_response_json": null,
+      "validation_error": null,
+      "exit_status": null,
+      "model_calls": []
+    }
+  },
+  {
+    "product_id": "682269011",
+    "name": "Jude Bladder Health Supplements",
+    "url": "https://www.ocado.com/products/682269011",
+    "current_on_ocado": 1,
+    "previous_status": "unknown",
+    "previous_reason": null,
+    "candidate_status": "vegan",
+    "candidate_reason": "manufacturer",
+    "input_sha256": "fc906626ace86c7565c43e004c724df0210fd6d1276431bf8e0110b6552b0d06",
+    "candidate": {
+      "product_id": "682269011",
+      "vegan_status": "vegan",
+      "vegan_reason": "manufacturer",
+      "confidence": "certain",
+      "summary": "Shared whole-product evidence policy: vegan",
+      "evidence": {
+        "rule": "whole_product_policy",
+        "vegan_status": "vegan",
+        "vegan_reason": "manufacturer",
+        "positive_block": false,
+        "policy_version": "whole-product-v2",
+        "knowledge_version": "vegan-risk-registry-v6",
+        "assessment": {
+          "identity": {
+            "status": "established",
+            "evidence_refs": [
+              {
+                "path": "/product/name",
+                "quote": "Jude Bladder Health Supplements"
+              }
+            ]
+          },
+          "composition": {
+            "status": "covered_by_claim",
+            "evidence_refs": [
+              {
+                "path": "/product/dietary_information",
+                "quote": "Gluten Free, Vegan, Vegetarian"
+              }
+            ]
+          },
+          "sourcing": {
+            "status": "covered_by_claim",
+            "evidence_refs": [
+              {
+                "path": "/product/dietary_information",
+                "quote": "Gluten Free, Vegan, Vegetarian"
+              }
+            ]
+          },
+          "processing": {
+            "status": "covered_by_claim",
+            "evidence_refs": [
+              {
+                "path": "/product/dietary_information",
+                "quote": "Gluten Free, Vegan, Vegetarian"
+              }
+            ]
+          },
+          "components": {
+            "status": "covered_by_claim",
+            "evidence_refs": [
+              {
+                "path": "/product/dietary_information",
+                "quote": "Gluten Free, Vegan, Vegetarian"
+              }
+            ]
+          },
+          "positive_support": [
+            {
+              "reason": "manufacturer",
+              "evidence_refs": [
+                {
+                  "path": "/product/dietary_information",
+                  "quote": "Gluten Free, Vegan, Vegetarian"
+                }
+              ]
+            }
+          ],
+          "material_issues": [
+            {
+              "code": "source_unresolved",
+              "target": "whole_product",
+              "rule_id": "unspecified-composition-v1",
+              "evidence_refs": [
+                {
+                  "path": "/product/ingredients",
+                  "quote": "Pumpkin Seed Extract (Cucurbita Pepo L), Capsule Shell (HydroxyPropylMethylCellulose, Colours: Annatto, Iron Oxide Yellow, Iron Oxide Red), Bulking Agent (Microcrystalline Cellulose), Maltodextrin, Soy Germ extract (Glycine max L.), Magnesium Oxide, Lubricant (Magnesium Stearate), Sage Leaf 10:1 Extract 4% Rosmarinic Acid, Antioxidant (Rosemary Leaf Extract 90% Carnosic Acid), Anti-Caking agent (Silicon Dioxide), Bifidobacterium lactis, Zinc Citrate Dihydrate, Vitamin B3 (Nicotinamide), Vegan Vitamin D3 (Cholecalciferol), Vitamin B6 (Pyridoxine Hydrochloride)."
+                }
+              ],
+              "resolution_refs": [
+                {
+                  "path": "/product/dietary_information",
+                  "quote": "Gluten Free, Vegan, Vegetarian"
+                }
+              ],
+              "blocks_claim": false
+            },
+            {
+              "code": "composition_incomplete",
+              "target": "supplied components",
+              "rule_id": "supplied-components-composition-v1",
+              "evidence_refs": [
+                {
+                  "path": "/product/package_type",
+                  "quote": "Cardboard Box + Plastic Tub"
+                }
+              ],
+              "resolution_refs": [
+                {
+                  "path": "/product/dietary_information",
+                  "quote": "Gluten Free, Vegan, Vegetarian"
+                }
+              ],
+              "blocks_claim": false
+            }
+          ],
+          "source_applicability": []
+        },
+        "tag_animal_conflict": false,
+        "matched_patterns": [],
+        "sources": [
+          {
+            "table": "products",
+            "column": "dietary_information",
+            "text": "Gluten Free, Vegan, Vegetarian"
+          },
+          {
+            "table": "products",
+            "column": "features",
+            "text": "● Urobiome support - clever bacteria added for better absorption and to nourish urobiome balance ● Min-muscle connection - support neurotransmitter synthesis and muscle function ● Rich amino acid profile - ais protein synthesis to help maintain healthy muscle tissue"
+          },
+          {
+            "table": "products",
+            "column": "detailed_description",
+            "text": "Your bladder and pelvic floor do serious work. They lift, stabilise and give you strength. Made up of hardworking muscles and resilient tissues, like any part of your body that works hard, they deserve nourishment that truly understands them. At the heart of our formula is a rare strain of Cucurbita Pepo, only found in the Austrian. These nutrient-dense seeds are a plant-based source of L-Arginine — an amino acid found in our muscles and tissues. Precisely blended with bifidobacterium lactis and soy isoflavones — specifically selected for their quality, natural origin, and independent scientific research. This clever bacteria blended with isoflavones supports your urobiome with better absorption. Together, they form a daily foundation of support, designed to nourish the systems that matter most as we age. Vegan-friendly. Gluten-free. Made in the UK. For daily strength, steady support, and a body that backs you. At Jude, we believe our pelvic health is part of women’s strength — but it’s long been ignored, whispered about, or shrugged off as “just part of ageing.” Jude exists to change that. Jude was created to support people seeking strength, steadiness, and confidence with science-backed, stigma-free solutions rooted in care. Our approach is grounded in science, guided by deep respect for women’s biology, and refined alongside experts in bladder and muscle health. From supplements to pads to supportive communities, we’re building a new standard — one that puts dignity, confidence, and daily strength back into your hands."
+          },
+          {
+            "table": "products",
+            "column": "other_information",
+            "text": "Food Supplements should not be used as a substitue for a varied and balanced diet and a healthy lifestyle. Always consult a healthcare practitioner if you are experiencing any concerns with frequency of urination, have an existing medical condition or are taking any medicatoin. Not suitable for under 18s, pregnant or breastfeeding women or those trying to conceive."
+          },
+          {
+            "table": "products",
+            "column": "preparation_and_usage",
+            "text": "Take 2 tablets a day. For best results take the supplements every day. We recommend taking these supplements for a minimum of 12 weeks. Please take with a glass of water."
+          },
+          {
+            "table": "products",
+            "column": "ingredients",
+            "text": "Pumpkin Seed Extract (Cucurbita Pepo L), Capsule Shell (HydroxyPropylMethylCellulose, Colours: Annatto, Iron Oxide Yellow, Iron Oxide Red), Bulking Agent (Microcrystalline Cellulose), Maltodextrin, Soy Germ extract (Glycine max L.), Magnesium Oxide, Lubricant (Magnesium Stearate), Sage Leaf 10:1 Extract 4% Rosmarinic Acid, Antioxidant (Rosemary Leaf Extract 90% Carnosic Acid), Anti-Caking agent (Silicon Dioxide), Bifidobacterium lactis, Zinc Citrate Dihydrate, Vitamin B3 (Nicotinamide), Vegan Vitamin D3 (Cholecalciferol), Vitamin B6 (Pyridoxine Hydrochloride)."
+          },
+          {
+            "table": "manufacturer_vegan_evidence",
+            "column": "ingredients",
+            "text": "Pumpkin Seed Extract (Cucurbita Pepo L), Capsule Shell (HydroxyPropylMethylCellulose, Colours: Annatto, Iron Oxide Yellow, Iron Oxide Red), Bulking Agent (Microcrystalline Cellulose), Maltodextrin, Soy Germ extract (Glycine max L.), Magnesium Oxide, Lubricant (Magnesium Stearate), Sage Leaf 10:1 Extract 4% Rosmarinic Acid, Antioxidant (Rosemary Leaf Extract 90% Carnosic Acid), Anti-Caking agent (Silicon Dioxide), Bifidobacterium lactis, Zinc Citrate Dihydrate, Vitamin B3 (Nicotinamide), Vegan Vitamin D3 (Cholecalciferol), Vitamin B6 (Pyridoxine Hydrochloride)."
+          },
+          {
+            "table": "manufacturer_vegan_evidence",
+            "column": "dietaryInformation",
+            "text": "Gluten Free, Vegan, Vegetarian"
+          }
+        ]
+      },
+      "source": "rule",
+      "model": null,
+      "reasoning_effort": null,
+      "prompt_version": null,
+      "context_hash": "fc906626ace86c7565c43e004c724df0210fd6d1276431bf8e0110b6552b0d06",
+      "raw_response": null,
+      "parsed_response_json": null,
+      "validation_error": null,
+      "exit_status": null,
+      "model_calls": []
+    }
+  },
+  {
+    "product_id": "683460011",
+    "name": "Grass & Co. FOCUS Lion's Mane Gummies - Lemon & Elderflower",
+    "url": "https://www.ocado.com/products/683460011",
+    "current_on_ocado": 1,
+    "previous_status": "unknown",
+    "previous_reason": null,
+    "candidate_status": "vegan",
+    "candidate_reason": "manufacturer",
+    "input_sha256": "8dca74663713c0efa4269c6e41ba3fad59473a4c2df11ec8baaf284d2c4815fc",
+    "candidate": {
+      "product_id": "683460011",
+      "vegan_status": "vegan",
+      "vegan_reason": "manufacturer",
+      "confidence": "certain",
+      "summary": "Shared whole-product evidence policy: vegan",
+      "evidence": {
+        "rule": "whole_product_policy",
+        "vegan_status": "vegan",
+        "vegan_reason": "manufacturer",
+        "positive_block": false,
+        "policy_version": "whole-product-v2",
+        "knowledge_version": "vegan-risk-registry-v6",
+        "assessment": {
+          "identity": {
+            "status": "established",
+            "evidence_refs": [
+              {
+                "path": "/product/name",
+                "quote": "Grass & Co. FOCUS Lion's Mane Gummies - Lemon & Elderflower"
+              }
+            ]
+          },
+          "composition": {
+            "status": "covered_by_claim",
+            "evidence_refs": [
+              {
+                "path": "/product/dietary_information",
+                "quote": "Vegan, Low Sugar, Contain no artificial colours or preservatives."
+              }
+            ]
+          },
+          "sourcing": {
+            "status": "covered_by_claim",
+            "evidence_refs": [
+              {
+                "path": "/product/dietary_information",
+                "quote": "Vegan, Low Sugar, Contain no artificial colours or preservatives."
+              }
+            ]
+          },
+          "processing": {
+            "status": "covered_by_claim",
+            "evidence_refs": [
+              {
+                "path": "/product/dietary_information",
+                "quote": "Vegan, Low Sugar, Contain no artificial colours or preservatives."
+              }
+            ]
+          },
+          "components": {
+            "status": "covered_by_claim",
+            "evidence_refs": [
+              {
+                "path": "/product/dietary_information",
+                "quote": "Vegan, Low Sugar, Contain no artificial colours or preservatives."
+              }
+            ]
+          },
+          "positive_support": [
+            {
+              "reason": "manufacturer",
+              "evidence_refs": [
+                {
+                  "path": "/product/dietary_information",
+                  "quote": "Vegan, Low Sugar, Contain no artificial colours or preservatives."
+                }
+              ]
+            }
+          ],
+          "material_issues": [
+            {
+              "code": "processing_unresolved",
+              "target": "whole_product",
+              "rule_id": "citrus-coating-v1",
+              "evidence_refs": [
+                {
+                  "path": "/product/ingredients",
+                  "quote": "Sweeteners (Maltilol Syrop, Erythritol, Steviol Glycosides), Purified Water, Lion's Mane Mushroom Extract(10:1), Humectants (Sorbitol Syrup), Ginseng Extract (10:1), Gelling Agent (Pectin), Modified Starch, Acidity Regulators (Citric Acid, Sodium Citrate), Natural Flavourings (Lemon, Elderflower), Docosahexaenoic Aid (DHA) from Algal Oil (Schizochytrium sp.), Glazing Agents (Fatty Acids, Carnauba Wax), Pantothenic Acid (Vitamin B5), Vitamin K2 (Menaquinone MK-7), Colour (Beta Carotene), Vitamin D3 (Cholecalciferol), Emulsifier (Soy Lecithin), Vitamin B12 (Cyanocobalamin), Vitamin E (D-alpha-tacopherol)"
+                }
+              ],
+              "resolution_refs": [
+                {
+                  "path": "/product/dietary_information",
+                  "quote": "Vegan, Low Sugar, Contain no artificial colours or preservatives."
+                }
+              ],
+              "blocks_claim": false
+            },
+            {
+              "code": "source_unresolved",
+              "target": "whole_product",
+              "rule_id": "unspecified-composition-v1",
+              "evidence_refs": [
+                {
+                  "path": "/product/ingredients",
+                  "quote": "Sweeteners (Maltilol Syrop, Erythritol, Steviol Glycosides), Purified Water, Lion's Mane Mushroom Extract(10:1), Humectants (Sorbitol Syrup), Ginseng Extract (10:1), Gelling Agent (Pectin), Modified Starch, Acidity Regulators (Citric Acid, Sodium Citrate), Natural Flavourings (Lemon, Elderflower), Docosahexaenoic Aid (DHA) from Algal Oil (Schizochytrium sp.), Glazing Agents (Fatty Acids, Carnauba Wax), Pantothenic Acid (Vitamin B5), Vitamin K2 (Menaquinone MK-7), Colour (Beta Carotene), Vitamin D3 (Cholecalciferol), Emulsifier (Soy Lecithin), Vitamin B12 (Cyanocobalamin), Vitamin E (D-alpha-tacopherol)"
+                }
+              ],
+              "resolution_refs": [
+                {
+                  "path": "/product/dietary_information",
+                  "quote": "Vegan, Low Sugar, Contain no artificial colours or preservatives."
+                }
+              ],
+              "blocks_claim": false
+            },
+            {
+              "code": "composition_incomplete",
+              "target": "supplied components",
+              "rule_id": "supplied-components-composition-v1",
+              "evidence_refs": [
+                {
+                  "path": "/product/package_type",
+                  "quote": "Plastic Jar and Cardboard Case"
+                }
+              ],
+              "resolution_refs": [
+                {
+                  "path": "/product/dietary_information",
+                  "quote": "Vegan, Low Sugar, Contain no artificial colours or preservatives."
+                }
+              ],
+              "blocks_claim": false
+            }
+          ],
+          "source_applicability": []
+        },
+        "tag_animal_conflict": false,
+        "matched_patterns": [],
+        "sources": [
+          {
+            "table": "products",
+            "column": "dietary_information",
+            "text": "Vegan, Low Sugar, Contain no artificial colours or preservatives."
+          },
+          {
+            "table": "products",
+            "column": "detailed_description",
+            "text": "Grass & Co.'s FOCUS Gummies combine 100% Fruiting Bodt Lion's Mane Extract (10:1) with Ginseng, Omega-3 DHA from algae, and essential Vitamins B5, B12, D3, and K2 These delicious elderflower and lemon flavoured gummies are designed to support psychological function, and focus* Our gummies are vegan, low sugar, and contain no artificial colours, or preservatives."
+          },
+          {
+            "table": "products",
+            "column": "other_information",
+            "text": "Keep out of reach of children. Food supplements should not b used as a substitute for a varied diet and healthy lifestyle. Excessive consumption may cause stomach upset in sensitive individuals."
+          },
+          {
+            "table": "products",
+            "column": "preparation_and_usage",
+            "text": "60 gummies per pack. 2 gummies per day."
+          },
+          {
+            "table": "products",
+            "column": "ingredients",
+            "text": "Sweeteners (Maltilol Syrop, Erythritol, Steviol Glycosides), Purified Water, Lion's Mane Mushroom Extract(10:1), Humectants (Sorbitol Syrup), Ginseng Extract (10:1), Gelling Agent (Pectin), Modified Starch, Acidity Regulators (Citric Acid, Sodium Citrate), Natural Flavourings (Lemon, Elderflower), Docosahexaenoic Aid (DHA) from Algal Oil (Schizochytrium sp.), Glazing Agents (Fatty Acids, Carnauba Wax), Pantothenic Acid (Vitamin B5), Vitamin K2 (Menaquinone MK-7), Colour (Beta Carotene), Vitamin D3 (Cholecalciferol), Emulsifier (Soy Lecithin), Vitamin B12 (Cyanocobalamin), Vitamin E (D-alpha-tacopherol)"
+          },
+          {
+            "table": "manufacturer_vegan_evidence",
+            "column": "dietaryInformation",
+            "text": "Vegan, Low Sugar, Contain no artificial colours or preservatives."
+          }
+        ]
+      },
+      "source": "rule",
+      "model": null,
+      "reasoning_effort": null,
+      "prompt_version": null,
+      "context_hash": "8dca74663713c0efa4269c6e41ba3fad59473a4c2df11ec8baaf284d2c4815fc",
+      "raw_response": null,
+      "parsed_response_json": null,
+      "validation_error": null,
+      "exit_status": null,
+      "model_calls": []
+    }
+  }
+]
