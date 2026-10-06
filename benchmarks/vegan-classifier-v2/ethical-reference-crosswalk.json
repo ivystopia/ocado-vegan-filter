@@ -1,0 +1,575 @@
+{
+  "policy_before": "whole-product-v1",
+  "policy_after": "whole-product-v2",
+  "parent_fixture_hash": "6c5ff8057ff771d7ea5df3523d9c370cabccc445edee467dd24f9dde6d07a743",
+  "candidate_fixture_hash": "a5e26975971e3601d4842f70035322b8034ff9a431e1fe397767d367d11de091",
+  "reference_changes": [
+    {
+      "case_id": "natural.518915011",
+      "input_sha256": "d08e6e0e04ff30e595322f00f6a9f2753f11f09ca6a457423fddb17d7c088e7f",
+      "before": {
+        "vegan_status": "vegan",
+        "vegan_reason": "ingredients",
+        "required_issue_codes": []
+      },
+      "after": {
+        "vegan_status": "unknown",
+        "vegan_reason": null,
+        "required_issue_codes": [
+          "composition_incomplete"
+        ]
+      },
+      "rationale": [
+        "The coffee is ordinary vegan food, but sugar-cane fibre and board descriptions do not establish complete manufactured filter and packaging composition. Sugar-cane fibres are not refined sugar.",
+        "The coffee is ordinary plant food, but sugar-cane fibre and board descriptions do not establish complete manufactured filter and packaging composition. No whole-product vegan claim resolves this; sugar-cane fibres are not refined sugar."
+      ]
+    },
+    {
+      "case_id": "natural.528649011",
+      "input_sha256": "9861fe14ad31d6e6cb961ecaf10e940c3170b241bd18ec5a5ca17f4250f6dfd7",
+      "before": {
+        "vegan_status": "vegan",
+        "vegan_reason": "ingredients",
+        "required_issue_codes": []
+      },
+      "after": {
+        "vegan_status": "unknown",
+        "vegan_reason": null,
+        "required_issue_codes": [
+          "composition_incomplete"
+        ]
+      },
+      "rationale": [
+        "The dried beans qualify as ordinary vegan food, but FSC paper describes only a material and certification, not complete manufactured packaging composition. Chilli con carne is a serving suggestion.",
+        "The dried beans qualify as ordinary vegan food; chilli con carne is a serving suggestion. The explicitly described paper packaging is a manufactured component whose complete composition is not established by FSC certification."
+      ]
+    },
+    {
+      "case_id": "natural.528652011",
+      "input_sha256": "e4d93164d0e8ccdf0d9508147048063ec1bd14ab974147eef9ae2cc4a64f4a91",
+      "before": {
+        "vegan_status": "vegan",
+        "vegan_reason": "ingredients",
+        "required_issue_codes": []
+      },
+      "after": {
+        "vegan_status": "unknown",
+        "vegan_reason": null,
+        "required_issue_codes": [
+          "composition_incomplete"
+        ]
+      },
+      "rationale": [
+        "The plain lentils qualify as ordinary vegan food. Explicitly described paper packaging lacks complete manufactured-component composition or an applicable whole-product claim.",
+        "The lentils qualify as ordinary vegan food. The explicitly described manufactured paper packaging has only a material/certification description, leaving complete sold-product composition insufficiently established."
+      ]
+    },
+    {
+      "case_id": "natural.557814011",
+      "input_sha256": "884cf27dc250058b794ade8190c839f45671a1c9ab66d6f782c65da4526137d9",
+      "before": {
+        "vegan_status": "vegan",
+        "vegan_reason": "ingredients",
+        "required_issue_codes": []
+      },
+      "after": {
+        "vegan_status": "unknown",
+        "vegan_reason": null,
+        "required_issue_codes": [
+          "composition_incomplete"
+        ]
+      },
+      "rationale": [
+        "The food composition qualifies, but the explicitly supplied resealing sticker has no complete composition evidence or applicable whole-product vegan claim.",
+        "The food composition qualifies as ordinary vegan food. However, the explicitly supplied resealing sticker and pack lack complete component evidence or an applicable whole-product vegan claim."
+      ]
+    },
+    {
+      "case_id": "natural.649943011",
+      "input_sha256": "51929f00be50c20640fc98cde878770b74e4a6d56d5ff44907e5f635ae9dd641",
+      "before": {
+        "vegan_status": "unknown",
+        "vegan_reason": null,
+        "required_issue_codes": [
+          "processing_unresolved"
+        ]
+      },
+      "after": {
+        "vegan_status": "unknown",
+        "vegan_reason": null,
+        "required_issue_codes": [
+          "composition_incomplete"
+        ]
+      },
+      "rationale": [
+        "The juice identity is supplied, but the explicitly described carton board does not establish complete packaging composition. No applicable whole-product vegan claim covers it.",
+        "The ordinary juice identity supports the food composition, but FSC-certified board does not establish the complete manufactured carton composition. No applicable whole-product vegan claim covers it."
+      ]
+    },
+    {
+      "case_id": "natural.686746011",
+      "input_sha256": "78fdd5e8b6aab24d7af12cf75815fa74a125782836e3626cda759cd981f75b11",
+      "before": {
+        "vegan_status": "unknown",
+        "vegan_reason": null,
+        "required_issue_codes": [
+          "composition_incomplete"
+        ]
+      },
+      "after": {
+        "vegan_status": "unknown",
+        "vegan_reason": null,
+        "required_issue_codes": [
+          "composition_incomplete",
+          "identity_conflict"
+        ]
+      },
+      "rationale": [
+        "Composition excludes the lace trimmings and cannot establish the complete article. The source concerns five Pink Mix vests, rather than three Navy Mix vests. The animal-welfare policy supplies no applicable vegan confirmation.",
+        "The composition excludes the described lace trimmings and provides no complete-article vegan assurance. The source is a five-pack in Pink Mix, conflicting with the three-pack in Navy Mix. The general animal-welfare policy cannot resolve either gap."
+      ]
+    },
+    {
+      "case_id": "natural.686748011",
+      "input_sha256": "be983cea487bcc0e74574977c27324b9682988d35d40402bcbbbc21adbcc02c6",
+      "before": {
+        "vegan_status": "unknown",
+        "vegan_reason": null,
+        "required_issue_codes": [
+          "composition_incomplete"
+        ]
+      },
+      "after": {
+        "vegan_status": "unknown",
+        "vegan_reason": null,
+        "required_issue_codes": [
+          "composition_incomplete",
+          "identity_conflict"
+        ]
+      },
+      "rationale": [
+        "The fibre declaration excludes trimmings and does not establish the complete manufactured garments. The catalogue source describes a different pack and colour; the animal-welfare policy permits animal materials and supplies no vegan confirmation for these vests.",
+        "The fibre declaration explicitly excludes trimmings, leaving the complete garments unestablished. The manufacturer page describes five Pink Mix vests rather than three Navy Mix vests. The animal-welfare policy provides no whole-product vegan assurance or definite animal content for these garments."
+      ]
+    },
+    {
+      "case_id": "natural.691236011",
+      "input_sha256": "5b287d77012759319223642a3f8c0a56ca86d14bd50aab9aa841bfc6f09b793e",
+      "before": {
+        "vegan_status": "unknown",
+        "vegan_reason": null,
+        "required_issue_codes": [
+          "composition_incomplete"
+        ]
+      },
+      "after": {
+        "vegan_status": "unknown",
+        "vegan_reason": null,
+        "required_issue_codes": [
+          "composition_incomplete",
+          "identity_conflict"
+        ]
+      },
+      "rationale": [
+        "The children's top has an incomplete composition declaration excluding its trimmings. The supplied catalogue page concerns women's vests, and the animal-welfare policy provides no whole-product vegan assurance or definite animal content for this top.",
+        "The top's composition excludes its trimmings. The supplied catalogue page concerns women's vests, not this children's top. The general animal-welfare policy neither establishes vegan suitability nor proves animal content in this article."
+      ]
+    },
+    {
+      "case_id": "natural.510718011",
+      "input_sha256": "320132b689f35deb864cb7011f10fb2d7189f4ef1327a5e3580f7f89e4fcd8ca",
+      "before": {
+        "vegan_status": "unknown",
+        "vegan_reason": null,
+        "required_issue_codes": [
+          "source_unresolved"
+        ]
+      },
+      "after": {
+        "vegan_status": "unknown",
+        "vegan_reason": null,
+        "required_issue_codes": [
+          "evidence_conflict",
+          "source_unresolved"
+        ]
+      },
+      "rationale": [
+        "Glycerol, E471 and E920 have unresolved sources; vegetarian suitability does not resolve vegan suitability. Standard flour fortification is acceptable, and chicken is only a serving suggestion. The manufacturer page supplies a different formulation, including sugar and vitamin-D yeast, without a vegan claim or resolution of relevant sourcing and refining issues.",
+        "Glycerol, E471 and E920 lack resolved sourcing or an applicable vegan claim. Standard flour fortification is acceptable, and the chicken suggestion is not an ingredient. The manufacturer capture gives a different recipe, including sugar with unresolved refining, so it cannot resolve the stored formulation. No material packaging concern is evidenced."
+      ]
+    },
+    {
+      "case_id": "natural.80142011",
+      "input_sha256": "0dd6a1d7e1ee3464b82a143fc7bea2e9ffc0a704705c3628d930aa28af42a818",
+      "before": {
+        "vegan_status": "unknown",
+        "vegan_reason": null,
+        "required_issue_codes": [
+          "processing_unresolved",
+          "source_unresolved"
+        ]
+      },
+      "after": {
+        "vegan_status": "unknown",
+        "vegan_reason": null,
+        "required_issue_codes": [
+          "composition_incomplete",
+          "processing_unresolved",
+          "source_unresolved"
+        ]
+      },
+      "rationale": [
+        "Vitamin D sourcing and sugar refining remain unresolved; vegetarian suitability does not resolve them. The explicitly supplied can lacks complete-component evidence. The retained sources add no applicable vegan assurance. May-contain eggs and linked animal-food recipes are not intentional ingredients.",
+        "Vitamin D sourcing and sugar refining remain unresolved; vegetarian suitability is insufficient. May-contain eggs and linked recipes do not establish intentional animal ingredients. The explicitly supplied can also lacks complete component evidence. Neither retained manufacturer page resolves these gaps."
+      ]
+    },
+    {
+      "case_id": "natural.690369011",
+      "input_sha256": "615fdc03ac7d09b9611a5f296dea442eb1d68124fcf637e68b7d18585a338360",
+      "before": {
+        "vegan_status": "unknown",
+        "vegan_reason": null,
+        "required_issue_codes": [
+          "composition_incomplete",
+          "processing_unresolved"
+        ]
+      },
+      "after": {
+        "vegan_status": "unknown",
+        "vegan_reason": null,
+        "required_issue_codes": [
+          "composition_incomplete"
+        ]
+      },
+      "rationale": [
+        "Cotton establishes the fibre, but does not establish complete manufactured-towel composition, including the described StayNew finish. No applicable whole-product vegan claim resolves this gap. The animal-welfare policy permits animal materials; it proves neither vegan suitability nor animal content in this towel.",
+        "A and B remain unknown: cotton fibre composition does not establish the complete manufactured towel, including its described finish. No applicable whole-product vegan claim resolves this gap. The animal-welfare policy permits animal-derived materials but does not establish their presence in this towel."
+      ]
+    },
+    {
+      "case_id": "natural.578862011",
+      "input_sha256": "c4979e1ad98929718d6be64b02e4d0332b8bc76de811301621b561bbdc6d0dd6",
+      "before": {
+        "vegan_status": "unknown",
+        "vegan_reason": null,
+        "required_issue_codes": [
+          "composition_incomplete"
+        ]
+      },
+      "after": {
+        "vegan_status": "unknown",
+        "vegan_reason": null,
+        "required_issue_codes": [
+          "composition_incomplete",
+          "identity_conflict"
+        ]
+      },
+      "rationale": [
+        "Polyester content explicitly excludes trimmings, leaving complete garment composition unestablished. The catalogue candidate concerns underwear, not football shorts. The animal-welfare policy permits animal materials under sourcing conditions; it neither confirms vegan suitability nor establishes animal content in these shorts.",
+        "Polyester fibre content excludes trimmings and does not establish the finish or complete article composition. The catalogue source concerns underwear, not football shorts. The animal-welfare policy permits animal materials under conditions; it neither confirms vegan suitability nor proves animal content in these shorts."
+      ]
+    },
+    {
+      "case_id": "natural.690894011",
+      "input_sha256": "44b014bb178181f87f27eb90b35c1fadaf447cef877ac754cb28d32e438ccb3a",
+      "before": {
+        "vegan_status": "unknown",
+        "vegan_reason": null,
+        "required_issue_codes": [
+          "composition_incomplete",
+          "identity_conflict"
+        ]
+      },
+      "after": {
+        "vegan_status": "unknown",
+        "vegan_reason": null,
+        "required_issue_codes": [
+          "composition_incomplete"
+        ]
+      },
+      "rationale": [
+        "A: Cotton content excludes trimmings and does not resolve the complete set's fastenings or described finishes. No applicable whole-product vegan claim is supplied. B: The manufacturer page also excludes trimmings and displays Dove, leaving the exact white variant unverified. The animal-welfare policy does not establish vegan suitability or definite animal content.",
+        "A: Cotton composition excludes trimmings and does not establish the composition of fastenings or described finishes. No whole-product vegan claim resolves those gaps. B: The retained page shows Dove rather than White and retains the trimmings exclusion. The welfare policy provides no vegan assurance or product-specific animal evidence."
+      ]
+    },
+    {
+      "case_id": "natural.598987011",
+      "input_sha256": "07550e027a9731a748815f1a3a87142a16b654d3cc534ef96d6435663c670f1b",
+      "before": {
+        "vegan_status": "unknown",
+        "vegan_reason": null,
+        "required_issue_codes": [
+          "composition_incomplete",
+          "identity_conflict",
+          "source_unresolved"
+        ]
+      },
+      "after": {
+        "vegan_status": "unknown",
+        "vegan_reason": null,
+        "required_issue_codes": [
+          "claim_scope_mismatch",
+          "composition_incomplete",
+          "source_unresolved"
+        ]
+      },
+      "rationale": [
+        "A: Unspecified other fibres and the undisclosed antibacterial finish prevent establishing complete vegan composition. The animal-welfare policy permits animal materials and supplies no whole-product vegan assurance. B: The retained product page leaves these uncertainties unresolved and displays Dark Grey rather than Blue. Neither source establishes definite animal content.",
+        "Unspecified fibres and the antibacterial finish leave complete composition and sourcing unresolved. The animal-welfare policy permits animal materials rather than confirming vegan suitability. The retained catalogue capture also does not establish the blue variant. Neither A nor B establishes vegan or definite animal content."
+      ]
+    },
+    {
+      "case_id": "natural.693025011",
+      "input_sha256": "33332cb63558e4613e838c1af455c1a6bfeca6b286ceb201a32c4441764e7355",
+      "before": {
+        "vegan_status": "unknown",
+        "vegan_reason": null,
+        "required_issue_codes": [
+          "composition_incomplete",
+          "identity_conflict"
+        ]
+      },
+      "after": {
+        "vegan_status": "unknown",
+        "vegan_reason": null,
+        "required_issue_codes": [
+          "claim_scope_mismatch",
+          "composition_incomplete"
+        ]
+      },
+      "rationale": [
+        "A: Stoneware identifies a material, not the complete manufactured mug composition. No applicable whole-product vegan claim resolves that gap; the animal-welfare policy permits animal materials. B: The retained page adds no complete-composition proof and displays Grey rather than Blue. No definite animal content is established.",
+        "Stoneware is a material description, not complete composition evidence for the manufactured mug. No applicable whole-product vegan assurance is supplied; the welfare policy permits animal materials. The retained capture shows grey rather than confirmed blue. Neither A nor B establishes vegan or definite animal content."
+      ]
+    },
+    {
+      "case_id": "natural.680684011",
+      "input_sha256": "0cf8852a5ceeee205644788496c69ce541952bb27ae8f173a58ab0490ed8c164",
+      "before": {
+        "vegan_status": "unknown",
+        "vegan_reason": null,
+        "required_issue_codes": [
+          "composition_incomplete",
+          "processing_unresolved"
+        ]
+      },
+      "after": {
+        "vegan_status": "unknown",
+        "vegan_reason": null,
+        "required_issue_codes": [
+          "composition_incomplete"
+        ]
+      },
+      "rationale": [
+        "A: Cotton fibre content does not establish the complete manufactured article or resolve the explicitly described finishes. No applicable whole-product vegan claim is supplied. B: The retained product-family page repeats these limitations; the welfare policy permits animal-derived materials and supplies no product-specific resolution.",
+        "Cotton identifies the textile fibre, not the complete manufactured cover. The explicitly described StayNew and non-iron finishes lack composition evidence or applicable whole-product vegan assurance. The welfare policy does not resolve them, and no definite animal content is established."
+      ]
+    },
+    {
+      "case_id": "natural.687282011",
+      "input_sha256": "77cffe7158f425530bb9535fdffd537da2705a3c7825362ffec8908e154c288c",
+      "before": {
+        "vegan_status": "unknown",
+        "vegan_reason": null,
+        "required_issue_codes": [
+          "claim_scope_mismatch",
+          "composition_incomplete",
+          "identity_conflict"
+        ]
+      },
+      "after": {
+        "vegan_status": "unknown",
+        "vegan_reason": null,
+        "required_issue_codes": [
+          "composition_incomplete",
+          "identity_conflict"
+        ]
+      },
+      "rationale": [
+        "Fibre percentages do not establish complete manufactured-article composition. The candidate page describes a different polyester fitted top. The animal-welfare policy permits animal materials and provides no product-specific vegan assurance or definite animal evidence.",
+        "Fibre percentages do not establish complete manufactured-garment composition. The candidate page describes a different polyester fitted top; the animal-welfare policy permits animal materials and supplies no vegan assurance. Neither A nor B establishes definite animal content or complete-product vegan suitability."
+      ]
+    },
+    {
+      "case_id": "natural.687290011",
+      "input_sha256": "9fb6e41821912f1044f33159a4692dcb2221565230de71bdb12e50e59e8632c4",
+      "before": {
+        "vegan_status": "unknown",
+        "vegan_reason": null,
+        "required_issue_codes": [
+          "claim_scope_mismatch",
+          "composition_incomplete",
+          "identity_conflict"
+        ]
+      },
+      "after": {
+        "vegan_status": "unknown",
+        "vegan_reason": null,
+        "required_issue_codes": [
+          "composition_incomplete",
+          "identity_conflict"
+        ]
+      },
+      "rationale": [
+        "Composition explicitly excludes trimmings, leaving the complete set unresolved. The candidate page concerns children's bottoms rather than this women's set. The welfare policy supplies no applicable vegan assurance or definite animal-content evidence.",
+        "The composition explicitly excludes trimmings, leaving the complete set unresolved. The manufacturer candidate concerns children's bottoms rather than the women's set. The welfare policy permits animal-derived materials but does not establish their presence in this product or provide vegan confirmation."
+      ]
+    },
+    {
+      "case_id": "natural.687477011",
+      "input_sha256": "d48c81ecbdf8ad5272ccba6b0bf1c6f8b1a36fc446971ff39ffd5d49264ee56d",
+      "before": {
+        "vegan_status": "unknown",
+        "vegan_reason": null,
+        "required_issue_codes": [
+          "claim_scope_mismatch",
+          "composition_incomplete",
+          "identity_conflict"
+        ]
+      },
+      "after": {
+        "vegan_status": "unknown",
+        "vegan_reason": null,
+        "required_issue_codes": [
+          "composition_incomplete",
+          "identity_conflict"
+        ]
+      },
+      "rationale": [
+        "A: Cotton composition expressly excludes trimmings, leaving the complete garments unestablished. The candidate page describes children's bottoms, not this women's set. B: Neither that mismatched page nor the animal-welfare policy establishes vegan suitability; the policy permits animal materials without proving their presence here.",
+        "A: The cotton declaration excludes trimmings and does not establish complete garment composition. The candidate page describes children's bottoms, not this women's set. The animal-welfare policy permits animal materials and supplies no applicable vegan assurance. B: The retained sources likewise establish neither vegan suitability nor definite animal content for this exact set."
+      ]
+    },
+    {
+      "case_id": "natural.635402011",
+      "input_sha256": "54bb1753e4f123475cf6b3247584abedff89b78d0c0bb40b48660973d5e89755",
+      "before": {
+        "vegan_status": "unknown",
+        "vegan_reason": null,
+        "required_issue_codes": [
+          "claim_scope_mismatch",
+          "composition_incomplete"
+        ]
+      },
+      "after": {
+        "vegan_status": "unknown",
+        "vegan_reason": null,
+        "required_issue_codes": [
+          "composition_incomplete"
+        ]
+      },
+      "rationale": [
+        "Cotton fibre percentages do not establish complete bath-mat composition, including the stated finish and backing. No applicable whole-product vegan claim resolves these gaps. The retained manufacturer page shows Linen rather than confirming the Dark Green variant; the animal-welfare policy supplies no product-specific vegan proof.",
+        "Cotton fibre content does not establish the complete manufactured mat, including its stated finish. The candidate page additionally describes silicone backing but displays Linen rather than Dark Green; it supplies no complete-composition or vegan assurance. The welfare policy permits animal materials, leaving both A and B unknown."
+      ]
+    },
+    {
+      "case_id": "natural.614437011",
+      "input_sha256": "8dcbf9b0231fa1756e61486d2e3bebcb873fc7202eb914e4e9794520e3473d70",
+      "before": {
+        "vegan_status": "unknown",
+        "vegan_reason": null,
+        "required_issue_codes": [
+          "processing_unresolved",
+          "source_unresolved"
+        ]
+      },
+      "after": {
+        "vegan_status": "unknown",
+        "vegan_reason": null,
+        "required_issue_codes": [
+          "composition_incomplete",
+          "processing_unresolved",
+          "source_unresolved"
+        ]
+      },
+      "rationale": [
+        "The matching manufacturer page supplies no vegan confirmation or resolution of sugar refining and flavouring sourcing. FSC certification does not establish the complete composition of the supplied packaging. Neither A nor B establishes vegan suitability; no definite animal content is evidenced.",
+        "Neither input nor retained manufacturer page supplies an applicable vegan claim. Sugar refining and flavouring sources remain unresolved. FSC certification does not establish complete packaging composition; no definite animal content is evidenced."
+      ]
+    },
+    {
+      "case_id": "natural.655640011",
+      "input_sha256": "3b92b1e9cf2a6582b1c1d22798ce25b1febc334bd8145b6bb3cf165244e3905d",
+      "before": {
+        "vegan_status": "unknown",
+        "vegan_reason": null,
+        "required_issue_codes": [
+          "processing_unresolved",
+          "source_unresolved"
+        ]
+      },
+      "after": {
+        "vegan_status": "unknown",
+        "vegan_reason": null,
+        "required_issue_codes": [
+          "composition_incomplete",
+          "processing_unresolved",
+          "source_unresolved"
+        ]
+      },
+      "rationale": [
+        "The matching UK formulation leaves sugar refining and natural-flavouring sourcing unresolved. Vegetarian status and the absence of artificial additives do not establish vegan suitability. The explicitly supplied can and paper packaging lack complete composition evidence. A and B remain unknown.",
+        "Matching composition supports the differently named manufacturer candidate, but neither record supplies an applicable vegan claim. Sugar refining and natural-flavouring sources remain unresolved. The can and FSC paper description do not establish complete packaging suitability; vegetarian status is insufficient."
+      ]
+    },
+    {
+      "case_id": "natural.671620011",
+      "input_sha256": "6ce0df8a97ea576c60d438195634b44d7e91f4a4d804d34513cc82a0177e5175",
+      "before": {
+        "vegan_status": "unknown",
+        "vegan_reason": null,
+        "required_issue_codes": [
+          "processing_unresolved",
+          "source_unresolved"
+        ]
+      },
+      "after": {
+        "vegan_status": "unknown",
+        "vegan_reason": null,
+        "required_issue_codes": [
+          "composition_incomplete",
+          "processing_unresolved",
+          "source_unresolved"
+        ]
+      },
+      "rationale": [
+        "Sugar refining and flavouring sourcing remain unresolved, and supplied muffin cases lack complete composition evidence. Added eggs, butter and milk are preparation ingredients, not sold contents; allergy warnings do not establish intentional animal ingredients. The retained manufacturer page supplies no vegan confirmation.",
+        "Sugar refining, flavouring sources and supplied muffin-case composition remain unresolved. The matched manufacturer page confirms only vegetarian suitability. Eggs, butter and milk are preparation additions; allergy warnings and standard flour fortification do not establish animal content."
+      ]
+    },
+    {
+      "case_id": "natural.578262011",
+      "input_sha256": "01f1c53bfe4e5e9b01875aa55d16aea254e919814e7082b4acc4da97b6368941",
+      "before": {
+        "vegan_status": "unknown",
+        "vegan_reason": null,
+        "required_issue_codes": [
+          "claim_scope_mismatch",
+          "composition_incomplete"
+        ]
+      },
+      "after": {
+        "vegan_status": "unknown",
+        "vegan_reason": null,
+        "required_issue_codes": [
+          "composition_incomplete"
+        ]
+      },
+      "rationale": [
+        "The sold article is a manufactured recipe card with no complete composition or applicable vegan claim. Cow\u2019s milk concerns the separately purchased recipe ingredients. The corporate policy index provides no product-specific proof.",
+        "The sold article is a manufactured recipe card with no complete composition or applicable vegan claim. Cow\u2019s milk in the recipe is not an ingredient of the card. The corporate policy index provides no product-specific proof."
+      ]
+    }
+  ],
+  "disputes": [
+    "natural.649092011",
+    "natural.509775011",
+    "natural.530031011"
+  ],
+  "shortfalls": {
+    "name": 11,
+    "ingredients": 4
+  },
+  "note": "Fresh blind source readings; no previous labels supplied. Original contexts/results preserved. Disputes stay unscored and prevent release qualification."
+}
