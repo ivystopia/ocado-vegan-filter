@@ -64,12 +64,12 @@ The large local SQLite database and raw scrape streams are intentionally not tra
 - `tools/sync_ocado_database.py` - imports and synchronises scraped Ocado product data into SQLite.
 - `tools/classify_ocado_vegan.py` - classifies products as `vegan`, `nonvegan`, or `unknown` from stored database data.
 - `tools/research_ocado_manufacturers.py` - tracks exhaustive manufacturer-site research, independently reviews retained sources, and imports product-specific confirmations; see `docs/manufacturer-research.md`.
-- `tools/benchmark_ocado_vegan.py` - runs the fixed, read-only classifier safety benchmark.
+- `tools/benchmark_ocado_vegan.py` - retains the historical frozen safety benchmark; `tools/benchmark_whole_product.py` exercises the revised policy in isolated fixture databases.
 - `tools/update_userscript_allowlists.py` - previews and regenerates the embedded sets from canonical SQLite classifications while preserving retained ID order.
 - `docs/working-guide.md` - environment setup, code map, safe inspection, and troubleshooting for maintainers.
 - `docs/vegan-classifier-design.md` - notes describing the intended offline vegan-classification workflow.
 - `docs/monthly-maintenance.md` - the monthly scrape, classification, validation, and userscript update runbook.
-- `docs/model-benchmark-2026-08-21.md` - evidence supporting the current Luna/high classifier default.
+- `docs/model-benchmark-2026-08-21.md` - historical model evidence; current defaults are provisional pending the revised comparison in `docs/whole-product-implementation-plan.md`.
 - `docs/firemonkey-installation.md` - installs and verifies the tagged release in local FireMonkey for pre-publication testing.
 
 ### Scraping Tooling
