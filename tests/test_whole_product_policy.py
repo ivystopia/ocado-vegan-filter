@@ -27,6 +27,14 @@ def source_check(value, path='/manufacturer_source_candidates/0', scope='product
 
 
 class WholeProductPolicyTests(unittest.TestCase):
+    def test_postal_addresses_do_not_establish_supplied_boxes(self):
+        for address in ['PO Box 3339','P.O. Box 3339','P O Box 3339']:
+            value=context('Carrots',None,other_information='Return to: '+address+', Chester.')
+            self.assertFalse(policy.material_risks(value))
+            self.assertEqual(classifier.classify_by_rules(value).vegan_reason,'ingredients')
+            value['product']['package_type']='Box'
+            self.assertEqual(classifier.classify_by_rules(value).vegan_status,'unknown')
+
     def test_missing_packaging_and_modal_can_do_not_invent_components(self):
         value=context('Carrots',None,detailed_description='These carrots can be steamed or roasted.')
         self.assertFalse(policy.material_risks(value))

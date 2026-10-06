@@ -12,7 +12,7 @@ import re
 from typing import Any
 
 POLICY_VERSION = "whole-product-v2"
-KNOWLEDGE_VERSION = "vegan-risk-registry-v4"
+KNOWLEDGE_VERSION = "vegan-risk-registry-v5"
 SCHEMA_VERSION = 4
 REASONS = ("tagged", "manufacturer", "name", "ingredients")
 DIMENSIONS = ("identity", "composition", "sourcing", "processing", "components")
@@ -306,7 +306,12 @@ def material_risks(context: dict[str, Any], cleaned_ingredients: str = "") -> li
         target_text = cleaned_ingredients if rule["id"] == "unspecified-composition-v1" else ingredients if rule["id"] in {"sugar-refining-v1", "source-dependent-additives-v1"} else f"{name} {ingredients}"
         if rule['id']=='supplied-components-composition-v1':
             fields=('name','package_type','features','specification','other_information','detailed_description','further_description')
-            matches=[(key,normalized(product.get(key))) for key in fields if re.search(rule['pattern'],normalized(product.get(key)),re.I)
+            # A numbered PO Box is a postal address, not a supplied box. Keep
+            # the full original field for citations; remove only that locator
+            # from the component applicability check.
+            component_text=lambda key: re.sub(r'\bP\.?\s*O\.?\s*Box(?=\s+\d)',
+                'postal address',normalized(product.get(key)),flags=re.I)
+            matches=[(key,normalized(product.get(key))) for key in fields if re.search(rule['pattern'],component_text(key),re.I)
                 or (key=='package_type' and normalized(product.get(key))
                     and not re.fullmatch(r'(?:loose|none|not applicable|unpackaged)',normalized(product.get(key)),re.I))]
             if matches:
