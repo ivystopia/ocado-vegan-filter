@@ -227,7 +227,7 @@ def negated_name_claim(name: str) -> bool:
     # Punctuation cannot turn a literal negative into an affirmative claim.
     # Certification absence is different: "not certified vegan" is not a
     # contradiction of an independently applicable vegan tag/assurance.
-    return bool(re.search(r'\b(?:(?:non\W*|(?:not|no)\W+)vegan|not\W+suitable\W+for\W+vegans?)\b',name,re.I))
+    return bool(re.search(r'\b(?:(?:non\W*|(?:not|no|never|almost)\W+)vegan|not\W+suitable\W+for\W+vegans?)\b',name,re.I))
 
 
 def affirmative_name(name: str, brand: str = '') -> bool:
@@ -236,6 +236,8 @@ def affirmative_name(name: str, brand: str = '') -> bool:
         name=re.sub(re.escape(brand),'',name,count=1,flags=re.I).strip()
     if '?' in name or negated_name_claim(name) or not re.search(r"\bvegan\b", name, re.I):
         return False
+    if re.search(r'\b(?:probably|possibly|potentially|perhaps|maybe|usually|sometimes|likely)(?:\W+(?:is|to|be))*\W+vegan\b',name,re.I):
+        return False  # A hedged assertion cannot establish suitability.
     if re.search(r"\b(?:cookbook|recipe book|guide|diary|book)\b|\bvegan[’']s\b",name,re.I):
         return False  # A vegan topic/author is not manufacturing assurance.
     # Difficult scope is deliberately left to structured model interpretation.
@@ -707,7 +709,9 @@ def evaluate(context: dict[str, Any], *, animal_matches: list[str], cleaned_ingr
                 definite = False
             if definite and not issue["resolution_refs"]:
                 substantive_negative.append(issue)
-        claim_reason = "tagged" if official_tag(context) else "manufacturer" if positive else "name" if affirmative_name(name,normalized(product.get('brand'))) else None
+        name_supported=assessment is None or any(item['reason']=='name' and any(
+            ref['path']=='/product/name' for ref in item['evidence_refs']) for item in assessment['positive_support'])
+        claim_reason = "tagged" if official_tag(context) else "manufacturer" if positive else "name" if name_supported and affirmative_name(name,normalized(product.get('brand'))) else None
         animal_negative=any(issue['code'] in {'animal_processing','animal_ingredient'} for issue in substantive_negative)
         if animal_negative and all(issue["code"] in {"animal_processing", "animal_ingredient", "explicit_nonvegan"} for issue in unresolved_blocks):
             status = "nonvegan"
@@ -816,6 +820,7 @@ def policy_prompt() -> str:
         "Identity conflicts come first and mean unknown. Correctly matched explicit animal ingredients or animal-derived processing mean nonvegan EVEN WITH an official vegan tag or manufacturer/name claim. "
         "Other unresolved material contradictions mean unknown. Applicable official tags, explicit manufacturer claims, affirmative whole-product vegan names, and unambiguous ordinary vegan identity/composition are the four positive routes. "
         "When more than one positive route applies, canonical reason priority is tagged, manufacturer, name, ingredients. Preserve manufacturer ahead of name. "
+        "A name-only positive needs an affirmative assertion about the complete sold article. Negated, hedged ('probably/possibly vegan'), topical, brand-only, component/formula and serving-suggestion wording are not that assertion. Other applicable whole-product evidence may qualify, but actual contrary evidence must be resolved. "
         "When animal words in marketing clearly describe another recipe, serving suggestion or product rather than this product's contents, record evidence_conflict with rule_id animal-declaration-context-v1 and resolve it by citing BOTH the complete marketing field and /product/name in resolution_refs. Do not clear a real animal-content declaration merely from a vegan assurance. "
         "Missing ingredients is not proof of simplicity. Carrots and simple leaf salads can qualify. Standard flour fortification (calcium, iron, niacin, thiamin, folic acid) is permitted. "
         "A compound ingredient such as vegetable suet or margarine requires its complete constituents or an applicable whole-product claim; a plant descriptor alone is insufficient. "

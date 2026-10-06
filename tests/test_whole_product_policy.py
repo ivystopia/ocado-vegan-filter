@@ -27,6 +27,33 @@ def source_check(value, path='/manufacturer_source_candidates/0', scope='product
 
 
 class WholeProductPolicyTests(unittest.TestCase):
+    def test_hypothetical_qualified_names_are_not_guaranteed_positive_labels(self):
+        for name in ['Never Vegan Wine','Almost Vegan Wine','Probably Vegan Wine','Possibly Vegan Wine','Usually Vegan Wine']:
+            value=context(name,None)
+            result=classifier.classify_by_rules(value)
+            self.assertTrue(result is None or result.vegan_status=='unknown',name)
+            self.assertFalse(policy.affirmative_name(name))
+            assessment=policy.base_assessment(value,complete=True)
+            assessment['positive_support']=[{'reason':'name','evidence_refs':[policy.reference('/product/name',name)]}]
+            raw=classifier.ClassificationResult(product_id='1',vegan_status='vegan',vegan_reason='name',confidence='certain',
+                summary='Unsupported whole-product assertion',source='codex',evidence={'assessment':assessment})
+            self.assertEqual(classifier.apply_policy_gate(value,raw).vegan_status,'unknown')
+
+    def test_each_positive_pass_must_cite_its_own_positive_basis(self):
+        value=context('Vegan White Wine',None)
+        assessment=policy.base_assessment(value,complete=True)
+        decision={'product_id':'1','vegan_status':'vegan','vegan_reason':'name','confidence':'certain',
+                  'summary':'A whole-product assertion','evidence':[],'ambiguity_notes':[],'assessment':assessment}
+        def invoke(prompt,schema,**kwargs):
+            kwargs['validator']({'decisions':[decision]})
+            return {'parsed_response':{'decisions':[decision]},'raw_response':'{}','exit_status':0}
+        with mock.patch.object(codex_evidence,'run',side_effect=invoke):
+            with self.assertRaisesRegex(ValueError,'Each positive pass'):
+                classifier.call_codex_batch([value],model='gpt-6-luna',reasoning_effort='high',codex_bin='codex')
+            assessment['positive_support']=[{'reason':'name','evidence_refs':[policy.reference('/product/name',value['product']['name'])]}]
+            results=classifier.call_codex_batch([value],model='gpt-6-luna',reasoning_effort='high',codex_bin='codex')
+            self.assertEqual(results[0]['1']['vegan_reason'],'name')
+
     def test_origin_and_manufacturing_declarations_override_positive_claims(self):
         for text in ['Derived from milk.','Obtained from gelatine.','Isinglass is used during manufacture.',
                      'Animal-derived milk is used during manufacture.','Bone char is used during refining.']:
@@ -47,7 +74,7 @@ class WholeProductPolicyTests(unittest.TestCase):
             self.assertTrue(decision.evidence['positive_block'])
             self.assertIn('identity_conflict',{issue['code'] for issue in decision.evidence['assessment']['material_issues']})
         value=context("Vegan Cow's Milk",None,other_information="Full Product Name: Vegan Cow's Milk.")
-        self.assertEqual(classifier.classify_by_rules(value).vegan_reason,'name')
+        self.assertIsNone(classifier.classify_by_rules(value))
 
     def test_unsupported_negative_is_rejected_without_promoting_agreed_unknown(self):
         value=context('Example Product',None,official_vegan=1)
@@ -222,7 +249,8 @@ class WholeProductPolicyTests(unittest.TestCase):
                               ({'dietary_information':'Suitable for vegans.'},'manufacturer'),
                               ({'name':'Vegan Cup Filters Coffee'},'name')]:
             claimed=copy.deepcopy(value);claimed['product'].update(fields)
-            self.assertEqual(classifier.classify_by_rules(claimed).vegan_reason,reason)
+            if reason=='name':self.assertIsNone(classifier.classify_by_rules(claimed))
+            else:self.assertEqual(classifier.classify_by_rules(claimed).vegan_reason,reason)
         value['product']['specification']='Wrapper: Gelatine.'
         value['product']['official_vegan']=1
         result=classifier.classify_by_rules(value)
@@ -347,7 +375,7 @@ class WholeProductPolicyTests(unittest.TestCase):
             self.assertTrue(result is None or result.vegan_status!='nonvegan')
         self.assertEqual(classifier.classify_by_rules(context('Example Cheese',None,allergens='Contains Milk Contains Milk.')).vegan_status,'nonvegan')
         result=classifier.classify_by_rules(context('Example Vegan Beans',None,allergens='May contain milk.'))
-        self.assertEqual(result.vegan_status,'vegan')
+        self.assertIsNone(result)
 
     def test_retained_source_quotes_accept_visible_words_but_not_invented_text(self):
         value=context()
@@ -543,6 +571,13 @@ class WholeProductPolicyTests(unittest.TestCase):
             with self.subTest(reason=reason):
                 value=context('White wine',None);value['product'].update(fields)
                 result=classifier.classify_by_rules(value)
+                if reason=='name':
+                    self.assertIsNone(result)
+                    assessment=policy.base_assessment(value,complete=True)
+                    assessment['positive_support']=[{'reason':'name','evidence_refs':[policy.reference('/product/name',value['product']['name'])]}]
+                    result=classifier.apply_policy_gate(value,classifier.ClassificationResult(product_id='1',vegan_status='vegan',
+                        vegan_reason='name',confidence='certain',summary='Whole-product assertion assessed',source='codex',
+                        evidence={'assessment':assessment}))
                 self.assertEqual((result.vegan_status,result.vegan_reason),('vegan',reason))
                 risks=result.evidence['assessment']['material_issues']
                 self.assertTrue(all(issue['resolution_refs'] for issue in risks))
@@ -617,11 +652,21 @@ class WholeProductPolicyTests(unittest.TestCase):
             result=classifier.classify_by_rules(value)
             self.assertTrue(result is None or result.vegan_status=='unknown')
         value=context('The Vegan Company Vegan Beans',None,brand='The Vegan Company')
-        self.assertEqual(classifier.classify_by_rules(value).vegan_reason,'name')
+        self.assertIsNone(classifier.classify_by_rules(value))
 
     def test_a_whole_product_dressing_name_is_a_positive_claim(self):
-        result=classifier.classify_by_rules(context('Example Vegan Caesar Dressing',None))
-        self.assertEqual((result.vegan_status,result.vegan_reason),('vegan','name'))
+        value=context('Example Vegan Caesar Dressing',None)
+        self.assertIsNone(classifier.classify_by_rules(value))
+        assessment=policy.base_assessment(value,complete=True)
+        assessment['positive_support']=[{'reason':'name','evidence_refs':[policy.reference('/product/name',value['product']['name'])]}]
+        result=classifier.ClassificationResult(product_id='1',vegan_status='vegan',vegan_reason='name',confidence='certain',
+            summary='Whole-product name assessed',source='codex',evidence={'assessment':assessment})
+        final=classifier.apply_policy_gate(value,result)
+        self.assertEqual((final.vegan_status,final.vegan_reason),('vegan','name'))
+        shortcut=classifier.apply_policy_gate(value,__import__('dataclasses').replace(result,source='rule'))
+        self.assertEqual(shortcut.vegan_status,'unknown')
+        assessment['positive_support']=[]
+        self.assertEqual(classifier.apply_policy_gate(value,result).vegan_status,'unknown')
 
     def test_an_uncertain_model_positive_cannot_become_certain_at_the_gate(self):
         value=context();assessment=policy.base_assessment(value,complete=True)

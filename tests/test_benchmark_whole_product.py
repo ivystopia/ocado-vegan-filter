@@ -172,7 +172,9 @@ class WholeProductBenchmarkTests(unittest.TestCase):
         self.assertIn('shared_source_texts',prompt)
 
     def fixture(self,path):
-        cases=assemble.synthetic_cases()[:5]
+        # Conclusive rule contracts only; name candidates require models.
+        ids={'synthetic.00.0','synthetic.00.1','synthetic.00.2','synthetic.00.4','synthetic.18.0'}
+        cases=[case for case in assemble.synthetic_cases() if case['case_id'] in ids]
         path.write_text(json.dumps({'schema_version':2,'policy_version':policy.POLICY_VERSION,'cases':cases}))
         return cases
 

@@ -29,9 +29,9 @@ DEFAULT_CODEX_MODEL = "gpt-5.6-luna"
 DEFAULT_REASONING_EFFORT = "high"
 ARBITRATION_MODEL = "gpt-6.1-sol"
 ARBITRATION_REASONING_EFFORT = "medium"
-ARBITRATION_PROMPT_VERSION = "ocado-vegan-whole-product-arbitration-v9"
-CLASSIFIER_VERSION = "db-vegan-codex-v21"
-PROMPT_VERSION = "ocado-vegan-whole-product-json-v18"
+ARBITRATION_PROMPT_VERSION = "ocado-vegan-whole-product-arbitration-v10"
+CLASSIFIER_VERSION = "db-vegan-codex-v22"
+PROMPT_VERSION = "ocado-vegan-whole-product-json-v19"
 VALID_STATUSES = {"vegan", "nonvegan", "unknown"}
 VALID_VEGAN_REASONS = {"tagged", "manufacturer", "ingredients", "name"}
 
@@ -1146,6 +1146,8 @@ def apply_policy_gate(context: dict[str, Any], result: ClassificationResult) -> 
     # unsupported negative is also rejected, rather than preserved as fact.
     if result.vegan_status != "vegan" and status == "vegan":
         status, reason = "unknown", None
+    if status=='vegan' and reason=='name' and result.source=='rule':
+        status,reason='unknown',None  # Candidate-name shortcuts cannot write positives.
     if result.vegan_status == "vegan" and assessment is None and result.source != "rule":
         # Real model calls require structured assessments. Legacy mocked or
         # imported answers cannot silently bypass that requirement.
@@ -1170,9 +1172,10 @@ def classify_by_rules(context: dict[str, Any]) -> ClassificationResult | None:
     facts = policy_facts(context)
     definite_animal = bool(facts['animal_matches'] or facts['animal_declarations'])
     conclusive = outcome["vegan_status"] != "unknown" or outcome["positive_block"] or bool(outcome["assessment"]["material_issues"])
-    if outcome['vegan_reason']=='name' and any(policy.scoped_claim(source['text']) for source in text_sources(context)):
-        # A non-literal confirmation needs scope interpretation before choosing
-        # the canonical manufacturer reason ahead of a valid name reason.
+    if outcome['vegan_reason']=='name':
+        # A token/phrase filter only identifies a candidate. Both independent
+        # interpreters must assess assertion polarity and whole-article scope,
+        # as well as any manufacturer basis with higher canonical precedence.
         return None
     unreviewed_sources=bool(context.get('manufacturer_source_candidates'))
     if unreviewed_sources and not definite_animal and not outcome['positive_block']:
@@ -1376,7 +1379,12 @@ def call_codex_batch(
     def validate_output(payload):
         decisions = validate_codex_payload(payload, expected_ids)
         for context in products:
-            policy.validate_assessment(decisions[context["product"]["id"]]["assessment"], context)
+            decision=decisions[context["product"]["id"]]
+            assessment=decision['assessment']
+            policy.validate_assessment(assessment, context)
+            if decision['vegan_status']=='vegan' and not any(item['reason']==decision['vegan_reason'] and item['evidence_refs']
+                    for item in assessment['positive_support']):
+                raise ValueError('Each positive pass must cite its proposed positive basis')
     record = codex_evidence.run(
         prompt, batch_output_schema(expected_ids), model=model, effort=reasoning_effort, codex_bin=codex_bin,
         stage="arbitration" if arbitration_policy else "primary", product_ids=sorted(expected_ids),

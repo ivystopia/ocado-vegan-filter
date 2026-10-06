@@ -168,6 +168,13 @@ def synthetic_cases():
         ('Example Product',{'features':'Derived from coconut milk.','official_vegan':1},'vegan','tagged',[]),
         ('Not Certified Vegan Wine',{'official_vegan':1},'vegan','tagged',[]),
     ])
+    for name in ['Never Vegan Wine','Almost Vegan Wine','Probably Vegan Wine','Possibly Vegan Wine','Usually Vegan Wine']:
+        for variant in range(3):
+            fields={} if variant==0 else {'official_vegan':1} if variant==1 else {'dietary_information':'Suitable for vegans.'}
+            negative=name.startswith(('Never','Almost'))
+            status='unknown' if negative or not variant else 'vegan'
+            reason=('tagged' if variant==1 else 'manufacturer') if status=='vegan' else None
+            contrasts.append((name,fields,status,reason,['evidence_conflict'] if negative else []))
     for index,(name,fields,status,reason,issues) in enumerate(contrasts):
         value=classifier.product_context_for_llm({'product':{'id':str(906000000+index),'name':name,**fields},
             'flags':[],'categories':[],'manufacturer_vegan_evidence':[]})

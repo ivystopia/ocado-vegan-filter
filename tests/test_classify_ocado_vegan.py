@@ -251,14 +251,13 @@ class ClassifyOcadoVeganTests(unittest.TestCase):
         self.assertEqual(result.vegan_status, "unknown")
         self.assertIsNone(result.vegan_reason)
 
-    def test_product_name_contains_vegan_classifies_as_name(self) -> None:
+    def test_product_name_requires_whole_claim_interpretation(self) -> None:
         conn = self.create_db()
         self.insert_product(conn, name="Quorn Vegan Chicken Free Slices")
 
         result = self.classify(conn)
 
-        self.assertEqual(result.vegan_status, "vegan")
-        self.assertEqual(result.vegan_reason, "name")
+        self.assertIsNone(result)
 
     def test_obvious_nonvegan_ingredients_classify_as_nonvegan(self) -> None:
         conn = self.create_db()

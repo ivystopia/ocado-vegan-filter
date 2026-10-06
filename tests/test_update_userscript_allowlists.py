@@ -52,7 +52,14 @@ class UpdateUserscriptAllowlistsTests(unittest.TestCase):
         ]:
             conn.execute("INSERT INTO products(id,name,ingredients,official_vegan,dietary_information) VALUES (?,?,?,?,?)",
                          (product_id,name,ingredients,tag,text))
-            result = classifier.classify_by_rules(classifier.load_product_context(conn,product_id))
+            context=classifier.load_product_context(conn,product_id)
+            result = classifier.classify_by_rules(context)
+            if product_id=='20':
+                self.assertIsNone(result)  # Offline name interpretation is required.
+                assessment=classifier.policy.base_assessment(context,complete=True)
+                assessment['positive_support']=[{'reason':'name','evidence_refs':[classifier.policy.reference('/product/name',name)]}]
+                result=classifier.ClassificationResult(product_id=product_id,vegan_status='vegan',vegan_reason='name',
+                    confidence='certain',summary='Fixture with assessed whole-product name',source='codex',evidence={'assessment':assessment})
             self.assertIsNotNone(result, product_id)
             classifier.write_classification(conn,run_id,result)
         conn.commit()
