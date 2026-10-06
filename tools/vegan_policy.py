@@ -12,7 +12,7 @@ import re
 from typing import Any
 
 POLICY_VERSION = "whole-product-v2"
-KNOWLEDGE_VERSION = "vegan-risk-registry-v5"
+KNOWLEDGE_VERSION = "vegan-risk-registry-v6"
 SCHEMA_VERSION = 4
 REASONS = ("tagged", "manufacturer", "name", "ingredients")
 DIMENSIONS = ("identity", "composition", "sourcing", "processing", "components")
@@ -71,6 +71,13 @@ ASSESSMENT_SCHEMA = {
 RISK_REGISTRY = (
     {"id": "wine-fining-v1", "code": "processing_unresolved", "pattern": r"\b(?:wine|prosecco|champagne|sherry|port)\b",
      "source": "https://www.oiv.int/node/3247", "resolution": "Applicable whole-product claim or adequately established animal-free processing."},
+    {"id": "liquid-clarification-v1", "code": "processing_unresolved",
+     "pattern": r"\b(?:ciders?|beers?|lagers?|ales?|stouts?|vinegars?|juices?)\b",
+     "source": "https://vegan.org/vegan-faq/clarifying-agents",
+     "resolution": "Applicable whole-product claim or established animal-free production covering clarification and relevant precursors. Identity, plant ingredients, distillation or an unfiltered final product alone do not establish that animal aids were never used."},
+    {"id": "maple-defoaming-v1", "code": "processing_unresolved", "pattern": r"\bmaple\s+syrup\b",
+     "source": "https://vegan.org/vegan-faq/clarifying-agents",
+     "resolution": "Applicable whole-product claim or explicit animal-free manufacturing/defoaming evidence. Maple origin alone does not resolve processing-aid use."},
     {"id": "sugar-refining-v1", "code": "processing_unresolved", "pattern": r"\b(?:sugar|sucrose)\b",
      "source": "https://www.wearetateandlylesugars.com/faq/", "resolution": "Applicable whole-product claim, unrefined identity, or supplier/process assurance with exceptions applied."},
     {"id": "source-dependent-additives-v1", "code": "source_unresolved",
@@ -364,6 +371,14 @@ def material_risks(context: dict[str, Any], cleaned_ingredients: str = "") -> li
                 risks.append({'code':'processing_unresolved','target':'whole_product','rule_id':'wine-fining-v1',
                     'evidence_refs':[reference(f'/categories/{index}',category)],'resolution_refs':[],'blocks_claim':False})
                 break
+    if not any(issue['rule_id']=='liquid-clarification-v1' for issue in risks):
+        for index,category in enumerate(context.get('categories',[])):
+            if any(re.search(r'\b(?:ciders?|beers?|ales?|lagers?|stouts?|vinegars?|juices?)\b',segment)
+                   and not re.search(r'\b(?:wines?|spirits|oils?|fats?|sauces?|condiments?|glass(?:es|ware)?|accessories|gifts)\b',segment)
+                   for segment in category.lower().split('/')):
+                risks.append({'code':'processing_unresolved','target':'whole_product','rule_id':'liquid-clarification-v1',
+                    'evidence_refs':[reference(f'/categories/{index}',category)],'resolution_refs':[],'blocks_claim':False})
+                break
     return risks
 
 
@@ -392,6 +407,8 @@ def resolved_risk(risk: dict[str, Any], assessment: dict[str, Any]) -> bool:
         "source-dependent-additives-v1": r"\b(?:plant|vegetable|soya?|sunflower|rapeseed|vegan)\b",
         "unspecified-composition-v1": r"\b(?:plant|vegetable|soya?|sunflower|lichen|vegan)\b|\([^()]+\)",
         "wine-fining-v1": r"\bunfined\b|\b(?:fining|fined|processing|processed|manufactur\w*)\b.*\b(?:no animal|without animal|animal[- ]free|vegan)\b|\b(?:no animal|without animal|animal[- ]free|vegan)\b.*\b(?:fining|fined|processing|processed|manufactur\w*)\b",
+        "liquid-clarification-v1": r"\b(?:all production stages including (?:all )?ingredient and precursor production|from (?:the )?whole (?:fruit|apples|grapes|grains) to (?:the )?finished product)\b.*\b(?:no animal|without animal|animal[- ]free|vegan)\b|\b(?:no animal|without animal|animal[- ]free|vegan)\b.*\b(?:all production stages including (?:all )?ingredient and precursor production|from (?:the )?whole (?:fruit|apples|grapes|grains) to (?:the )?finished product)\b",
+        "maple-defoaming-v1": r"\b(?:defoam\w*|processing aids?|manufactur\w*|production)\b.*\b(?:no animal|without animal|animal[- ]free|vegan)\b|\b(?:no animal|without animal|animal[- ]free|vegan)\b.*\b(?:defoam\w*|processing aids?|manufactur\w*|production)\b",
         "sugar-refining-v1": r"\bunrefined\b|\b(?:refining|refined|processing|processed|manufactur\w*)\b.*\b(?:no animal|without animal|animal[- ]free|no bone char|without bone char|vegan)\b|\b(?:no animal|without animal|animal[- ]free|no bone char|without bone char|vegan)\b.*\b(?:refining|refined|processing|processed|manufactur\w*)\b",
         "citrus-coating-v1": r"\b(?:unwaxed|no animal|without animal|animal[- ]free|vegan)\b",
         "compound-ingredient-composition-v1": r"\b(?:vegetable suet|margarine)\s*\([^()]+\)|\b(?:constituents|composed of|consists of)\b",
@@ -403,6 +420,9 @@ def resolved_risk(risk: dict[str, Any], assessment: dict[str, Any]) -> bool:
             continue
         for ref in issue["resolution_refs"]:
             text = ref["quote"].strip()
+            if risk['rule_id'] in {'liquid-clarification-v1','maple-defoaming-v1'} and re.search(
+                    r'\b(?:not|never|may|might|could|except|excluding|another|other variant)\b',text,re.I):
+                continue
             if risk['rule_id']=='source-dependent-additives-v1':
                 target=re.escape(risk['target']).replace(r'\ ',r'\s*')
                 marker=r'(?:plant[- ]derived|vegetable|soya?|sunflower|rapeseed|vegan)'
@@ -821,13 +841,14 @@ def policy_prompt() -> str:
         "Other unresolved material contradictions mean unknown. Applicable official tags, explicit manufacturer claims, affirmative whole-product vegan names, and unambiguous ordinary vegan identity/composition are the four positive routes. "
         "When more than one positive route applies, canonical reason priority is tagged, manufacturer, name, ingredients. Preserve manufacturer ahead of name. "
         "A name-only positive needs an affirmative assertion about the complete sold article. Negated, hedged ('probably/possibly vegan'), topical, brand-only, component/formula and serving-suggestion wording are not that assertion. Other applicable whole-product evidence may qualify, but actual contrary evidence must be resolved. "
+        "A normal affirmative vegan SKU name asserts suitability for the named product. A food noun or ordinary pack-format suffix alone does not restrict that assertion to edible contents; require actual restrictive wording or evidence for food-only/component scope. Apply the same whole-product assertion standard to names, official tags and manufacturer claims. "
         "When animal words in marketing clearly describe another recipe, serving suggestion or product rather than this product's contents, record evidence_conflict with rule_id animal-declaration-context-v1 and resolve it by citing BOTH the complete marketing field and /product/name in resolution_refs. Do not clear a real animal-content declaration merely from a vegan assurance. "
         "Missing ingredients is not proof of simplicity. Carrots and simple leaf salads can qualify. Standard flour fortification (calcium, iron, niacin, thiamin, folic acid) is permitted. "
         "A compound ingredient such as vegetable suet or margarine requires its complete constituents or an applicable whole-product claim; a plant descriptor alone is insufficient. "
         "For manufactured non-food goods, headline materials such as cotton, plastic, metal or glass do not establish complete composition, dyes, adhesives, coatings or relevant processing. "
         "The same assessment applies to explicitly described packaging (bags, cartons, jars and other formats), not just coffee pods. Ordinary-food permission does not itself prove a stated manufactured package's complete composition. Conversely, do not invent a supplied component solely because its absence is not proved; an ordinary food with no evidenced material component concern remains eligible. Tie every component doubt to the supplied evidence identifying that component. "
         "For plain produce with no packaging details and no evidenced material component concern, common-sense suitability is permitted. Missing packaging information alone is not composition_incomplete or an unresolved components assessment. Cite the clear ordinary product identity and assess components as established under this policy; do not claim the packaging is absent or invent its materials. A modal verb such as 'can be cooked' is not evidence of a metal can. "
-        "Check relevant processing (wine fining, sugar refining, coatings) and source-dependent ingredients/E numbers, including within compound ingredients. An applicable whole-product claim resolves generic risks, but cannot defeat definite animal content. "
+        "Check relevant processing (wine/cider/beer/vinegar/juice clarification, maple-syrup defoaming, sugar refining, coatings) and source-dependent ingredients/E numbers, including within compound ingredients. Vinegar identity and plant origin do not prove animal-free clarification of the final product or its precursor. An applicable whole-product claim resolves generic risks, but cannot defeat definite animal content. "
         "No probability, brand reputation, category assumptions or 'usually vegan'. May-contain warnings are not intentional ingredients. Distinguish cocoa butter, coconut milk, oyster mushrooms, plant alternatives, serving suggestions, component claims and other variants. "
         "Manufacturer website records include full source_text and publisher/market metadata. Inspect all complete captures and their exceptions; verified_status and prior scope_match are previous assertions, not independent proof. manufacturer_source_candidates includes other associated retained pages, without inherited decisions. Catalogue-changed associations need fresh exact applicability proof and cannot independently establish a positive. Legacy reviews must be reassessed for this product before promotion. "
         "Rows in manufacturer_vegan_evidence WITHOUT source_kind=manufacturer_website are stored Ocado product-information fields (field_title/content), not external websites; interpret their product-level claim scope directly, with no website source_applicability entry. "
@@ -839,9 +860,11 @@ def policy_prompt() -> str:
         "Each applicable unresolved issue must state its code, target, rule_id, supporting references, empty resolution_refs and whether it blocks even a positive claim. "
         "Also retain each applicable registry issue that supplied facts resolve, with the same rule_id and exact resolution_refs quoting those facts. Establishing a dimension alone does not clear a registry issue without its resolution references. "
         "For qualified animal declarations in product information, use rule_id animal-declaration-context-v1 and quote the actual qualifier in resolution_refs only if it establishes non-applicability to this product. A vegan tag/name is not such a resolution. "
-        "Generic sourcing/processing uncertainty has blocks_claim=false; concrete contradictions/identity mismatches have blocks_claim=true. Resolutions must quote actual supplied evidence, not model knowledge. "
+        "Generic missing composition, component, sourcing or processing information has blocks_claim=false and may be resolved by an applicable whole-product claim. Missing compound constituents alone do not contradict a whole-product vegan name. Concrete contrary evidence, identity mismatch or a genuinely inapplicable/restricted claim has blocks_claim=true. Keep a resolved generic issue with the claim in resolution_refs and assess covered dimensions covered_by_claim, rather than retaining insufficient/unresolved for that same resolved question. Resolutions must quote actual supplied evidence, not model knowledge. "
+        "Confidence describes evidence sufficiency under this policy, not a probability estimate about undisclosed physical facts. A supported vegan decision has confidence=certain; if material uncertainty remains, return unknown with confidence=uncertain. Generic missing facts already covered by an applicable whole-product claim are not remaining material uncertainty. "
         "Resolve each ambiguous additive separately, linking the quoted source to that additive, not to a different ingredient. No-animal-content statements alone do not resolve animal-derived fining/refining processes. "
         "For missing information, cite the product name or ID establishing what is being assessed; do not use empty issue references. "
+        "Copy short exact reference excerpts; do not retype entire ingredient lists, insert ellipses, change case/punctuation or invent pointer fields. Preserve the complete qualifier where it is needed to establish claim/declaration scope. "
         "An ingredients-only positive requires adequately established composition, applicable sourcing and processing; no empty risk list as a substitute for those assessments. Prefer unknown over unsupported assertions.\n"
         + "Known mechanism registry: " + json.dumps(RISK_REGISTRY, ensure_ascii=True) + "\n"
     )

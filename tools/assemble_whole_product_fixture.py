@@ -183,6 +183,58 @@ def synthetic_cases():
             'expected':{'vegan_status':status,'vegan_reason':reason,'required_issue_codes':issues},
             'adjudication':{'state':'accepted','policy_version':policy.POLICY_VERSION,'reference_type':'explicit-policy-contract',
                 'rationale':'Negative or formula-scoped names cannot assert whole-product suitability; contrary full identity remains unresolved; actual animal inputs override claims; plant sources and absent certification are distinct.'}})
+    cases.extend(liquid_processing_cases())
+    return cases
+
+
+def liquid_processing_cases():
+    """Source-backed processing contrasts; these are policy contracts, not SKUs."""
+    cases=[]
+    products=[('Cider','Apples, Water'),('Cider Vinegar','Apples, Water'),
+              ('Beer','Water, Malted barley, Hops'),('Apple Juice','Apples, Water'),
+              ('Maple Syrup','Maple sap')]
+    for group,(name,ingredients) in enumerate(products):
+        for variant in range(7):
+            product={'id':str(907000000+group*7+variant),'name':'Example '+name,'ingredients':ingredients}
+            if variant==1:product['official_vegan']=1
+            elif variant==2:product['dietary_information']='Suitable for vegans.'
+            elif variant==3:product['name']='Vegan Example '+name
+            elif variant==4:
+                product.update(official_vegan=1,features='Gelatine is used during manufacture.')
+            elif variant==5:
+                product['features']='All production stages including ingredient and precursor production are animal-free.'
+            elif variant==6:
+                product['features']='Another variant is suitable for vegans.'
+                if group!=4:product['features']='Unfiltered final product. '+product['features']
+            status='unknown' if variant in (0,6) else 'nonvegan' if variant==4 else 'vegan'
+            reason={1:'tagged',2:'manufacturer',3:'name',5:'ingredients'}.get(variant)
+            value=classifier.product_context_for_llm({'product':product,'flags':[],
+                'categories':[],'manufacturer_vegan_evidence':[]})
+            cases.append({'case_id':f'synthetic.liquid-processing.{group}.{variant}',
+                'case_kind':'synthetic','split':'synthetic','leakage_group':f'synthetic.liquid-processing.{group}',
+                'classifier_input':value,'input_sha256':classifier.context_hash(value),
+                'expected':{'vegan_status':status,'vegan_reason':reason,
+                    'required_issue_codes':['processing_unresolved'] if status=='unknown' else []},
+                'adjudication':{'state':'accepted','policy_version':policy.POLICY_VERSION,
+                    'reference_type':'explicit-policy-contract',
+                    'mechanism_source_url':'https://vegan.org/vegan-faq/clarifying-agents',
+                    'rationale':'Animal clarification/defoaming inputs can be absent from ingredients. A complete applicable claim or whole-chain animal-free facts resolve the generic risk; wrong-variant claims and final filtering descriptions do not. Definite animal use overrides a tag.'}})
+    for variant in range(3):
+        product={'id':str(907000100+variant),'name':'Example Dressing','ingredients':'Water, Cider vinegar'}
+        if variant==1:product['name']='Vegan Example Dressing'
+        elif variant==2:product['features']='All production stages are animal-free.'
+        value=classifier.product_context_for_llm({'product':product,'flags':[],
+            'categories':[],'manufacturer_vegan_evidence':[]})
+        cases.append({'case_id':f'synthetic.liquid-constituent.{variant}',
+            'case_kind':'synthetic','split':'synthetic','leakage_group':'synthetic.liquid-constituent',
+            'classifier_input':value,'input_sha256':classifier.context_hash(value),
+            'expected':{'vegan_status':'vegan' if variant==1 else 'unknown',
+                'vegan_reason':'name' if variant==1 else None,
+                'required_issue_codes':[] if variant==1 else ['processing_unresolved']},
+            'adjudication':{'state':'accepted','policy_version':policy.POLICY_VERSION,
+                'reference_type':'explicit-policy-contract',
+                'mechanism_source_url':'https://vegan.org/vegan-faq/clarifying-agents',
+                'rationale':'Constituent vinegar carries the same mechanism. A final-product factory assurance does not establish precursor processing; a whole-product vegan assertion may resolve the generic uncertainty.'}})
     return cases
 
 

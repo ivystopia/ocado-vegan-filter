@@ -22,6 +22,20 @@ from types import SimpleNamespace
 
 
 class WholeProductBenchmarkTests(unittest.TestCase):
+    def test_new_processing_controls_preserve_every_frozen_predecessor_case(self):
+        root=Path(__file__).resolve().parents[1]/'benchmarks/vegan-classifier-v2'
+        previous=json.loads((root/'ethical-cases-v2.json').read_text())
+        current=json.loads((root/'ethical-cases-v3.json').read_text())
+        old={case['case_id']:case for case in previous['cases']}
+        new={case['case_id']:case for case in current['cases']}
+        self.assertEqual(len(new)-len(old),38)
+        for key,value in old.items():self.assertEqual(new[key],value,key)
+        generated={case['case_id']:case for case in assemble.synthetic_cases()}
+        controlled={key:case for key,case in new.items() if case['case_kind']=='synthetic'}
+        self.assertEqual(generated,controlled)
+        self.assertEqual(current['selection']['counts']['synthetic'],365)
+        self.assertFalse(current['selection']['target_complete'])
+
     def issue_fixture(self, kind='natural'):
         context={'product':{'name':'Cotton tops','preparation_and_usage':'100% cotton (exclusive of trimmings)'}}
         case={'case_id':'a','case_kind':kind,'classifier_input':context,

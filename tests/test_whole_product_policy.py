@@ -27,6 +27,49 @@ def source_check(value, path='/manufacturer_source_candidates/0', scope='product
 
 
 class WholeProductPolicyTests(unittest.TestCase):
+    def test_liquid_processing_risks_block_agreed_unsupported_positives(self):
+        for name,ingredients in [('Cider Vinegar',None),('Cider','Apple Juice'),('Lager','Water, Malt, Hops'),
+                                 ('Apple Juice','Apple Juice'),('Maple Syrup','Maple Syrup')]:
+            value=context(name,ingredients)
+            assessment=policy.base_assessment(value,complete=True)
+            assessment['positive_support']=[{'reason':'ingredients','evidence_refs':[policy.reference('/product/name',name)]}]
+            raw=classifier.ClassificationResult(product_id='1',vegan_status='vegan',vegan_reason='ingredients',
+                confidence='certain',summary='Unsupported ordinary-food inference',source='codex',evidence={'assessment':assessment})
+            result=classifier.apply_policy_gate(value,raw)
+            self.assertEqual(result.vegan_status,'unknown',name)
+            self.assertIn('processing_unresolved',{issue['code'] for issue in result.evidence['assessment']['material_issues']})
+
+    def test_liquid_risk_is_not_a_negative_verdict_and_claims_can_resolve_it(self):
+        for name in ['Cider Vinegar','Cider','Lager','Apple Juice','Maple Syrup']:
+            for fields,reason in [({'official_vegan':1},'tagged'),({'dietary_information':'Suitable for vegans.'},'manufacturer')]:
+                result=classifier.classify_by_rules(context(name,None,**fields))
+                self.assertEqual((result.vegan_status,result.vegan_reason),('vegan',reason),name)
+            value=context('Vegan '+name,None)
+            self.assertIsNone(classifier.classify_by_rules(value))
+            assessment=policy.base_assessment(value,complete=True)
+            assessment['positive_support']=[{'reason':'name','evidence_refs':[policy.reference('/product/name',value['product']['name'])]}]
+            raw=classifier.ClassificationResult(product_id='1',vegan_status='vegan',vegan_reason='name',confidence='certain',
+                summary='Applicable whole-product assertion',source='codex',evidence={'assessment':assessment})
+            self.assertEqual(classifier.apply_policy_gate(value,raw).vegan_reason,'name')
+
+    def test_clarification_resolution_must_cover_relevant_production_not_just_final_filtering(self):
+        value=context('Cider Vinegar',None)
+        risk=next(issue for issue in policy.material_risks(value) if issue['rule_id']=='liquid-clarification-v1')
+        for text,expected in [('Unfiltered cider vinegar',False),('Distilled vinegar',False),
+                              ('All stages of bottle production are animal-free.',False),
+                              ('All production stages are animal-free.',False),
+                              ('All production stages including ingredient and precursor production are animal-free.',True),
+                              ('Not all production stages including ingredient and precursor production are animal-free.',False),
+                              ('Animal-free from whole fruit to finished product.',True)]:
+            assessment={'material_issues':[{**risk,'resolution_refs':[policy.reference('/product/features',text)]}]}
+            self.assertEqual(policy.resolved_risk(risk,assessment),expected,text)
+
+    def test_specific_liquid_taxonomy_catches_names_without_the_beverage_word(self):
+        value=context('Example Orchard Blend',None);value['categories']=['beer-wine-spirits/ciders']
+        self.assertIn('liquid-clarification-v1',{issue['rule_id'] for issue in policy.material_risks(value)})
+        value['categories']=['beer-wine-spirits']
+        self.assertNotIn('liquid-clarification-v1',{issue['rule_id'] for issue in policy.material_risks(value)})
+
     def test_hypothetical_qualified_names_are_not_guaranteed_positive_labels(self):
         for name in ['Never Vegan Wine','Almost Vegan Wine','Probably Vegan Wine','Possibly Vegan Wine','Usually Vegan Wine']:
             value=context(name,None)

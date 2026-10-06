@@ -25,7 +25,7 @@ import vegan_policy as policy
 import update_userscript_allowlists as exporter
 
 ROOT = Path(__file__).resolve().parents[1]
-FIXTURE = ROOT / 'benchmarks/vegan-classifier-v2/ethical-cases-v2.json'
+FIXTURE = ROOT / 'benchmarks/vegan-classifier-v2/ethical-cases-v3.json'
 ISSUE_RUBRIC_VERSION = 'grounded-unknown-blocker-v2'
 
 
