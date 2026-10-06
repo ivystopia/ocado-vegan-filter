@@ -27,6 +27,21 @@ def source_check(value, path='/manufacturer_source_candidates/0', scope='product
 
 
 class WholeProductPolicyTests(unittest.TestCase):
+    def test_manufacturer_self_description_keeps_precedence_over_the_name(self):
+        for claim in ['This is the perfect vegan weight loss shake.','This vegan shower gel.',
+                      'Vegan, High Fibre, Source of Protein.']:
+            value=context('Example Vegan Product','Rice',detailed_description=claim)
+            assessment=policy.base_assessment(value,complete=True)
+            assessment['positive_support']=[{'reason':'manufacturer','evidence_refs':[policy.reference('/product/detailed_description',claim)]},
+                {'reason':'name','evidence_refs':[policy.reference('/product/name',value['product']['name'])]}]
+            result=policy.evaluate(value,**classifier.policy_facts(value),assessment=assessment,
+                requested_status='vegan',requested_reason='manufacturer')
+            self.assertEqual(result['vegan_reason'],'manufacturer',claim)
+        for claim in ['This is not the perfect vegan shake.','This is the perfect vegan lining.',
+                      'This vegan formula.','This is the perfect vegan cookbook.',
+                      'Another product is the perfect vegan shake.','Is this the perfect vegan shake?']:
+            self.assertFalse(policy.manufacturer_claim_quote(claim),claim)
+
     def test_cited_certification_is_manufacturer_evidence_not_an_ocado_tag(self):
         for claim in ['Vegan Society Approved.','Kosher, Halal & Vegan certified.']:
             value=context('Example Vegan Treat','Rice',features=claim)

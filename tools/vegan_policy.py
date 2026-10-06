@@ -584,7 +584,13 @@ def source_reference(context, ref, assessment=None):
 def manufacturer_claim_quote(text):
     if '?' in text or component_only_claim(text) or re.search(r'\b(?:not|never|no longer|may not|another|other|sibling|variant|except|excluding|some|certain|selected|serving|recipe|components?|ingredients?)\b', text, re.I):
         return False
-    return scoped_claim(text) or bool(re.search(r'\b(?:is|are) (?:suitable for (?:a )?vegans?|vegan)\b',text,re.I))
+    if re.search(r'\bvegan\s+(?:formula|formulation|ingredients?|components?|materials?|leather|lining|coating|bristles|handle|upper|filling|topping|cookbook|guide)\b',text,re.I):
+        return False
+    # Product-level attribute lists and affirmative self-description are
+    # valid claims too. Semantic applicability still needs the model's cited
+    # complete assessment; this helper never establishes it independently.
+    return direct_claim(text,'/product/features') or scoped_claim(text) or bool(re.search(
+        r'\b(?:is|are) (?:suitable for (?:a )?vegans?|vegan)\b|\bthis\s+(?:is\s+(?:[a-z][\w-]*\s+){0,4})?vegan\b',text,re.I))
 
 
 def whole_product_vegan_question(text):
