@@ -1,6 +1,12 @@
 # Whole-product benchmark
 
-This is a frozen development corpus for `whole-product-v1`, not a release approval or an independent physical guarantee. The canonical catalogue has not been migrated. Historical fixture files in `benchmarks/vegan-classifier-v1*.json` remain unchanged.
+This directory preserves the earlier `whole-product-v1` corpus and the current ethical whole-product controls/reference refresh. Neither is a release approval or an independent physical guarantee. The canonical catalogue has not been migrated. Historical fixture files in `benchmarks/vegan-classifier-v1*.json` and the original `cases.json` remain unchanged.
+
+## Current ethical scope
+
+Policy `whole-product-v2` includes supplied packaging and non-edible components, with schema 4's separate components assessment. `synthetic-ethical-v2.json` preserves the first 264 ethical controls; `synthetic-ethical-v3.json` adds explicit ordinary-food packaging and fruit-versus-manufactured-drink contrasts (271 controls). The independent expectations remain policy contracts, not additional natural observations.
+
+`tools/refresh_whole_product_references.py` prepares a blind current-policy development packet from unchanged earlier development inputs plus unused name/ordinary/unknown sampling signals, protecting earlier locked families/shared sources. Two fresh source-backed readings create new references and an explicit old/new crosswalk; earlier labels/readings never enter those model inputs. The earlier locked references require a separate current-policy refresh before release qualification. Current development assembly uses `ethical-cases.json` and `ethical-reference-crosswalk.json`; these are generated only after the readings complete, with disputes and original quota shortfalls disclosed. Do not reuse v1 expectations as current gold or silently replace them.
 
 ## References and separation
 
@@ -30,13 +36,17 @@ Use the development virtual environment. Preparation and annotation produce loca
 .venv/bin/python tools/prepare_whole_product_corpus.py --output .whole-product-work/new-candidates.json
 .venv/bin/python tools/adjudicate_whole_product_corpus.py --packet .whole-product-work/new-candidates.json --output .whole-product-work/new-annotation
 .venv/bin/python tools/assemble_whole_product_fixture.py --annotations .whole-product-work/new-annotation/annotated-candidates.json --output .whole-product-work/new-fixture.json
-.venv/bin/python tools/compare_whole_product_models.py --fixture benchmarks/vegan-classifier-v2/cases.json --development-only --output audit/benchmarks/2026-10-06-whole-product/model-comparison
-.venv/bin/python tools/benchmark_whole_product.py --fixture benchmarks/vegan-classifier-v2/synthetic-v4.json --split synthetic --model gpt-6-luna --effort high --output audit/benchmarks/2026-10-06-whole-product/synthetic-current-luna6
+.venv/bin/python tools/refresh_whole_product_references.py --output .whole-product-work/fresh-ethical-packet.json
+.venv/bin/python tools/adjudicate_whole_product_corpus.py --packet .whole-product-work/fresh-ethical-packet.json --output .whole-product-work/fresh-ethical-annotation
+.venv/bin/python tools/refresh_whole_product_references.py --annotations .whole-product-work/fresh-ethical-annotation/annotated-candidates.json --output .whole-product-work/fresh-ethical-fixture.json --crosswalk .whole-product-work/fresh-ethical-crosswalk.json
+.venv/bin/python tools/validate_whole_product_candidate.py --output .whole-product-work/fresh-checks
+.venv/bin/python tools/compare_whole_product_models.py --fixture .whole-product-work/fresh-ethical-fixture.json --checks .whole-product-work/fresh-checks/checks.json --development-only --output audit/benchmarks/2026-10-06-whole-product/fresh-model-comparison
+.venv/bin/python tools/benchmark_whole_product.py --fixture benchmarks/vegan-classifier-v2/synthetic-ethical-v3.json --split synthetic --model gpt-6-luna --effort high --output audit/benchmarks/2026-10-06-whole-product/fresh-synthetic-luna6
 ```
 
 The frozen corpus was prepared with an earlier 1,000-candidate sampling target, then explicitly augmented with complete associated retained captures. The current preparer requests 1,040 candidates (a larger name signal stratum). A fresh preparation is a new corpus, not a way to overwrite these inputs. Saved annotation readouts are reused only for identical evidence/source/group/model configurations and currently valid cited bases; their original prompt versions are retained.
 
-Model comparisons use 5.6-Luna/high and 6-Luna/high first; 6.1-Sol/medium is conditional primary fallback only if both fail. Arbitration candidates are 6.1-Sol/medium, 6.1-Sol/high and 6-Astra/medium on balanced development contrasts plus actual primary disagreements. Each call is fresh and blind to earlier conclusions. Both primary and arbitration paths use exactly two passes. Models receive no reference labels, earlier classifier outputs, local rules, repository access or live research tools. Included-plan exhaustion stops and checkpoints; no paid/API fallback or default change is authorised.
+Model comparisons require passing current implementation checks and use 5.6-Luna/high and 6-Luna/high first. Two failed pipelines do not automatically trigger an expensive primary: 6.1-Sol/medium requires a current, hash-bound, cited failure review accounting for both models' failed cases and ruling out implementation/reference/policy problems. Arbitration candidates are 6.1-Sol/medium, 6.1-Sol/high and 6-Astra/medium on balanced development contrasts plus actual primary disagreements. Each call is fresh and blind to earlier conclusions. Both primary and arbitration paths use exactly two passes. Models receive no reference labels, earlier classifier outputs, local rules, repository access or live research tools. Included-plan exhaustion stops and checkpoints; no paid/API fallback or default change is authorised.
 
 Results contain immutable configuration/code/fixture manifests, checkpoints, raw pass decisions, exact deduplicated call usage, failures/retries, latency, stage disagreements and policy/export results. Operationally failed positives remain in recall denominators. Raw unsafe model proposals are reported separately from final gated unsafe positives. Reasoning tokens are already included in output tokens. Credit equivalents at https://learn.chatgpt.com/docs/pricing are a comparative proxy, not included-plan quota rates, actual charges or a GBP price. Resume identical commands only; changes require new output directories.
 

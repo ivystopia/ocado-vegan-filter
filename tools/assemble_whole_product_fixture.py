@@ -99,6 +99,44 @@ def synthetic_cases():
             'expected':{'vegan_status':'unknown','vegan_reason':None,'required_issue_codes':['identity_conflict']},
             'adjudication':{'state':'accepted','reference_type':'explicit-policy-contract',
                 'rationale':'Liquid volume form conflicts with a capsule ingredient declaration; a positive claim cannot resolve which formulation applies.'}})
+    components=[
+        ('Example Cup Filters Coffee','Coffee',{'features':'Filters made from sugar cane fibres.'},'unknown',None),
+        ('Example Coffee Pods','Coffee',{'dietary_information':'Suitable for vegans; packaging not assessed.'},'unknown',None),
+        ('Example Coffee Pods','Coffee',{'features':'Pod material: aluminium.'},'unknown',None),
+        ('Example Coffee Pods','Coffee',{'official_vegan':1},'vegan','tagged'),
+        ('Example Coffee Pods','Coffee',{'dietary_information':'Suitable for vegans.'},'vegan','manufacturer'),
+        ('Vegan Coffee Pods','Coffee',{},'vegan','name'),
+        ('Example Coffee Pods','Coffee',{'specification':'Wrapper: Gelatine.','official_vegan':1},'nonvegan',None),
+        ('Example Tea Bags','Tea leaves',{},'unknown',None),
+        ('Vegan Tea Bags','Tea leaves',{},'vegan','name'),
+        ('Example Coffee Pods','Coffee',{'features':'Complete component composition: aluminium pod and lid, plant-derived adhesive. All components manufactured without animal inputs.'},'vegan','ingredients'),
+        ('Carrots',None,{'package_type':'Plastic Bag'},'unknown',None),
+        ('Carrots',None,{'package_type':'Plastic Bag','official_vegan':1},'vegan','tagged'),
+        ('Carrots',None,{'package_type':'Loose'},'vegan','ingredients'),
+        ('Plain Rice','Rice',{'package_type':'Carton'},'unknown',None),
+    ]
+    for index,(name,ingredients,fields,status,reason) in enumerate(components):
+        context=classifier.product_context_for_llm({'product':{'id':str(904000000+index),'name':name,'ingredients':ingredients,**fields},
+            'flags':[],'categories':[],'manufacturer_vegan_evidence':[]})
+        cases.append({'case_id':f'synthetic.ethical-components.{index}','case_kind':'synthetic','split':'synthetic',
+            'leakage_group':'synthetic.ethical-components','classifier_input':context,'input_sha256':classifier.context_hash(context),
+            'expected':{'vegan_status':status,'vegan_reason':reason,
+                'required_issue_codes':['composition_incomplete'] if status=='unknown' else []},
+            'adjudication':{'state':'accepted','policy_version':policy.POLICY_VERSION,'reference_type':'explicit-policy-contract',
+                'rationale':'User ethical-product scope includes supplied non-edible components; a food-only assurance or headline material is insufficient.'}})
+    identities=[
+        ('Example Pineapple & Ginger',{'brand':'Example','other_information':'Full Product Name: Pineapple & Ginger Gin Liqueur.'},'unknown',None),
+        ('Example Mango',{'brand':'Example','features':'Sparkling Water with Alcohol and a Hint of Natural Flavours.'},'unknown',None),
+        ('Example Mango',{'brand':'Example','other_information':'Full Product Name: Fresh Mango.'},'vegan','ingredients'),
+    ]
+    for index,(name,fields,status,reason) in enumerate(identities):
+        context=classifier.product_context_for_llm({'product':{'id':str(905000000+index),'name':name,**fields},
+            'flags':[],'categories':[],'manufacturer_vegan_evidence':[]})
+        cases.append({'case_id':f'synthetic.fruit-identity.{index}','case_kind':'synthetic','split':'synthetic',
+            'leakage_group':'synthetic.fruit-identity','classifier_input':context,'input_sha256':classifier.context_hash(context),
+            'expected':{'vegan_status':status,'vegan_reason':reason},
+            'adjudication':{'state':'accepted','policy_version':policy.POLICY_VERSION,'reference_type':'explicit-policy-contract',
+                'rationale':'Stored manufactured-drink identity defeats a fruit-only name shortcut; unambiguous fresh fruit remains eligible.'}})
     return cases
 
 

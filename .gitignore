@@ -17,3 +17,4 @@ __pycache__/
 # Full local model-call traces/checkpoints; retain compact reports/manifests.
 audit/benchmarks/2026-10-06-whole-product/**/calls.json
 audit/benchmarks/2026-10-06-whole-product/**/run-*.json
+audit/benchmarks/2026-10-06-whole-product/**/STOP

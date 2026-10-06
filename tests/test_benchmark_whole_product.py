@@ -13,9 +13,124 @@ import classify_ocado_vegan as classifier
 import vegan_policy as policy
 import codex_evidence
 import compare_whole_product_models as comparison
+import validate_whole_product_candidate as candidate_checks
+import adjudicate_whole_product_corpus as adjudication
+import refresh_whole_product_references as refresh
+import audit_whole_product_positives as positive_audit
+from types import SimpleNamespace
 
 
 class WholeProductBenchmarkTests(unittest.TestCase):
+    def test_annotation_schema_rejects_uncited_component_assessment(self):
+        row={'case_id':'a','expected_status':'nonvegan','expected_reason':None,
+            'required_issue_codes':[],'input_refs':[{'path':'/product/ingredients','quote':'Milk'}],
+            'rationale':'Intentional milk.','external_status':'unknown','source_id':None,
+            'external_quote':'','scope_match':'','component_assessment':{'status':'insufficient','evidence_refs':[]}}
+        with self.assertRaises(ValueError):policy.validate_schema(row,adjudication.ROW_SCHEMA)
+        row['component_assessment']['evidence_refs']=[{'path':'/product/name','quote':'Milk'}]
+        policy.validate_schema(row,adjudication.ROW_SCHEMA)
+
+    def test_positive_audit_does_not_hide_disputes_or_changed_inputs(self):
+        context={'product':{'id':'1','name':'Carrots'}}
+        case={'case_id':'a','classifier_input':context,'input_sha256':classifier.context_hash(context)}
+        packet={'policy_version':policy.POLICY_VERSION,'candidates':[case],'sampling':{'size':1}}
+        predictions={'packet_sha256':classifier.context_hash(packet),'predictions':{'a':{'vegan_status':'vegan'}}}
+        reading={**case,'expected':None,'adjudication':{'state':'disputed','policy_version':policy.POLICY_VERSION}}
+        annotations={'policy_version':policy.POLICY_VERSION,'candidates':[reading]}
+        report=positive_audit.score(packet,predictions,annotations)
+        self.assertEqual(report['state'],'failed')
+        self.assertEqual(report['reference_counts'],{'disputed':1})
+        self.assertIsNone(report['zero_error_binomial_upper_95'])
+        annotations['candidates']=[reading,reading]
+        with self.assertRaisesRegex(ValueError,'duplicate'):positive_audit.score(packet,predictions,annotations)
+        annotations['candidates']=[{**reading,'input_sha256':'changed'}]
+        with self.assertRaisesRegex(ValueError,'different evidence'):positive_audit.score(packet,predictions,annotations)
+        annotations['candidates']=[{**reading,'expected':{'vegan_status':'vegan','vegan_reason':'ingredients'},
+            'adjudication':{'state':'accepted','policy_version':policy.POLICY_VERSION}}]
+        with self.assertRaisesRegex(ValueError,'two distinct'):positive_audit.score(packet,predictions,annotations)
+
+    def test_refresh_packet_excludes_old_labels_and_adjudications(self):
+        case={'case_id':'a','case_kind':'natural','sampling_stratum':'ordinary','current_on_ocado':1,
+            'classifier_input':{'product':{'id':'1','name':'Carrots','brand':'Example'}},'input_sha256':'frozen',
+            'source_metadata':[],'expected':{'vegan_status':'nonvegan'},'adjudication':{'old_model':'wrong'}}
+        packet=refresh.blind_case(case)
+        self.assertNotIn('expected',packet)
+        self.assertNotIn('adjudication',packet)
+        self.assertEqual(packet['classifier_input'],case['classifier_input'])
+
+    def test_explicit_reference_crosswalk_preserves_parent_and_disputes(self):
+        case={'case_id':'a','case_kind':'natural','sampling_stratum':'ordinary','current_on_ocado':1,
+            'classifier_input':{'product':{'id':'1','name':'Example Cup Filters Coffee'}},
+            'input_sha256':'frozen','split':'development','source_metadata':[],
+            'expected':{'vegan_status':'vegan','vegan_reason':'ingredients','required_issue_codes':[]}}
+        parent={'policy_version':'whole-product-v1','cases':[case],
+            'selection':{'targets':{'locked':{'name':30}},'pilot_case_ids':['a']}}
+        candidate=refresh.blind_case(case)
+        candidate.update(expected={'vegan_status':'unknown','vegan_reason':None,'required_issue_codes':['composition_incomplete']},
+            adjudication={'state':'accepted','policy_version':policy.POLICY_VERSION,
+                'readings':[{'annotation':{'rationale':'Supplied filter composition is unresolved.'}}]*2})
+        with tempfile.TemporaryDirectory() as tmp:
+            root=Path(tmp);source=root/'parent.json';source.write_text(json.dumps(parent));original=source.read_bytes()
+            annotations=root/'annotations.json';annotations.write_text(json.dumps({'policy_version':policy.POLICY_VERSION,
+                'candidates':[candidate],'workload':[]}))
+            refresh.build_fixture(source,annotations,root/'current.json',root/'crosswalk.json')
+            self.assertEqual(source.read_bytes(),original)
+            crosswalk=json.loads((root/'crosswalk.json').read_text())
+            self.assertEqual(crosswalk['reference_changes'][0]['before']['vegan_status'],'vegan')
+            self.assertEqual(crosswalk['reference_changes'][0]['after']['vegan_status'],'unknown')
+            self.assertFalse(json.loads((root/'current.json').read_text())['selection']['target_complete'])
+    def test_stale_or_failed_checks_block_comparison(self):
+        record={'state':'passed','candidate_hashes':benchmark.candidate_hashes(),
+            'checks':[{'name':name,'exit_code':0} for name in ('unittest','userscript-syntax','diff-check')]}
+        candidate_checks.validate_record(record)
+        for changed in ({**record,'state':'failed'},{**record,'candidate_hashes':{}},
+                        {**record,'checks':[{'name':'unittest','exit_code':0}]}):
+            with self.assertRaises(ValueError):candidate_checks.validate_record(changed)
+
+    def test_two_failed_lunas_do_not_automatically_start_an_expensive_primary(self):
+        failed={'state':'completed','runs':[{'unsafe_positives':[],'operational_errors':[],
+            'missing_cases':[],'reason_errors':[],'mandatory_control_failures':[],
+            'reportable_negative_errors':[],'missing_required_issues':[],
+            'false_nonvegan_decisions':[],'vegan_recall':0,'per_route_recall':{}}]}
+        with tempfile.TemporaryDirectory() as tmp:
+            root=Path(tmp);checks=root/'checks.json';checks.write_text('{}')
+            args=SimpleNamespace(fixture=root/'fixture.json',checks=checks,output=root/'results',
+                workers=1,development_only=True,primary_failure_review=None)
+            with mock.patch.object(benchmark,'load_fixture',return_value={'selection':{'target_complete':False}}),\
+                 mock.patch.object(candidate_checks,'validate_record'),\
+                 mock.patch.object(comparison,'execute',return_value=failed) as execute:
+                result=comparison.run(args)
+            self.assertEqual(result['state'],'primary_failure_review_required')
+            self.assertEqual({call.kwargs['model'] for call in execute.call_args_list},
+                {'gpt-5.6-luna','gpt-6-luna'})
+
+    def test_failure_review_requires_current_reports_and_model_attribution(self):
+        case={'case_id':'a','split':'development','classifier_input':{'product':{'name':'Carrots'}}}
+        fixture={'cases':[case]}
+        run={field:[] for field in comparison.FAILURE_FIELDS}
+        run.update(mismatches=['a'],vegan_recall=0,per_route_recall={})
+        report={'state':'completed','runs':[run]}
+        entries={model+'/'+effort:{'pilot':report} for model,effort in comparison.PRIMARY}
+        review={'policy_version':policy.POLICY_VERSION,'candidate_hashes':benchmark.candidate_hashes(),
+            'fixture_sha256':classifier.context_hash(fixture),'policy_settled':True,
+            'implementation_verified':True,'references_verified':True,
+            'models':{name:{'report_sha256':classifier.context_hash(report),'cases':{'a':{
+                'cause':'model_reasoning','rationale':'The frozen ordinary-food identity was rejected.',
+                'evidence_refs':[{'path':'/product/name','quote':'Carrots'}]}}} for name in entries}}
+        comparison.validate_failure_review(review,entries,fixture)
+        for item in review['models'].values():item['cases']['a']['cause']='implementation'
+        with self.assertRaisesRegex(ValueError,'cannot trigger'):comparison.validate_failure_review(review,entries,fixture)
+
+    def test_annotation_positive_requires_a_resolved_component_assessment(self):
+        value=classifier.product_context_for_llm({'product':{'id':'1','name':'Vegan Coffee Pods'},
+            'flags':[],'categories':[],'manufacturer_vegan_evidence':[]})
+        row={'expected_status':'vegan','expected_reason':'name','rationale':'Affirmative whole-product claim.',
+            'input_refs':[{'path':'/product/name','quote':'Vegan Coffee Pods'}],
+            'component_assessment':{'status':'unresolved','evidence_refs':[{'path':'/product/name','quote':'Vegan Coffee Pods'}]}}
+        with self.assertRaisesRegex(ValueError,'unresolved'):adjudication.validate_basis(row,value)
+        row['component_assessment']['status']='covered_by_claim'
+        adjudication.validate_basis(row,value)
+
     def test_complete_associated_source_roundtrip_and_transport(self):
         case=assemble.synthetic_cases()[0]
         context=case['classifier_input']
@@ -62,6 +177,7 @@ class WholeProductBenchmarkTests(unittest.TestCase):
         result=benchmark.metrics(cases,decisions)
         self.assertEqual(result['vegan_recall'],0)
         self.assertFalse(benchmark.acceptance({'split':'locked','runs':[result]*3}))
+        self.assertFalse(benchmark.successful({'state':'completed','runs':[result]}))
 
     def test_resume_rejects_changed_inputs_or_model(self):
         with tempfile.TemporaryDirectory() as tmp:

@@ -13,6 +13,7 @@ import re
 import sqlite3
 
 import classify_ocado_vegan as classifier
+import vegan_policy as policy
 from benchmark_whole_product import save
 
 
@@ -67,7 +68,7 @@ def prepare(db, output, seed=20261006):
             workload.append({'case_id':'workload.'+product_id,'case_kind':'natural','split':'workload','leakage_group':'workload.'+product_id,
                 'classifier_input':context,'input_sha256':classifier.context_hash(context),'expected':None,
                 'adjudication':{'state':'unlabelled','reference_type':'workload-only'}})
-        packet={'schema_version':2,'seed':seed,'policy_version':'whole-product-v1','candidates':list(records.values()),'workload':workload,
+        packet={'schema_version':2,'seed':seed,'policy_version':policy.POLICY_VERSION,'candidates':list(records.values()),'workload':workload,
             'sampling_counts':{key:len(value) for key,value in strata.items()},
             'note':'No existing vegan status, classifier output, old adjudication or gold labels were selected.'}
         save(output,packet)

@@ -25,7 +25,7 @@ import vegan_policy as policy
 import update_userscript_allowlists as exporter
 
 ROOT = Path(__file__).resolve().parents[1]
-FIXTURE = ROOT / 'benchmarks/vegan-classifier-v2/cases.json'
+FIXTURE = ROOT / 'benchmarks/vegan-classifier-v2/ethical-cases.json'
 
 
 def save(path, value):
@@ -33,6 +33,13 @@ def save(path, value):
     temporary = path.with_suffix(path.suffix + '.tmp')
     temporary.write_text(json.dumps(value,ensure_ascii=True,indent=2)+'\n')
     temporary.replace(path)
+
+
+def candidate_hashes():
+    """Bind checks and resumable evaluations to production, runner and tests."""
+    import hashlib
+    paths=[*ROOT.joinpath('tools').glob('*.py'),*ROOT.joinpath('tests').glob('*.py'),ROOT/'ocado-vegan-filter.user.js']
+    return {str(path.relative_to(ROOT)):hashlib.sha256(path.read_bytes()).hexdigest() for path in sorted(paths)}
 
 
 def load_fixture(path):
@@ -237,6 +244,7 @@ def run(args):
     args.output.mkdir(parents=True,exist_ok=True)
     manifest = {'fixture_sha256':classifier.context_hash(fixture),'selected_case_hash':classifier.context_hash(cases),
         'implementation_hashes':{path.name:classifier.context_hash(path.read_text()) for path in (ROOT/'tools'/name for name in ['vegan_policy.py','classify_ocado_vegan.py','codex_evidence.py','benchmark_whole_product.py','manufacturer_evidence.py','update_userscript_allowlists.py'])},
+        'candidate_hashes':candidate_hashes(),
         'policy_version':policy.POLICY_VERSION,'knowledge_version':policy.KNOWLEDGE_VERSION,
         'prompt_version':classifier.PROMPT_VERSION,'arbitration_prompt_version':classifier.ARBITRATION_PROMPT_VERSION,
         'schema_sha256':classifier.context_hash(classifier.CODEX_OUTPUT_SCHEMA),
@@ -275,6 +283,11 @@ def run(args):
                                 result = generated[case['classifier_input']['product']['id']]
                                 result = classifier.apply_policy_gate(case['classifier_input'],result)
                                 classifier.write_classification(conn,run_id,result)
+                                if not result.validation_error:
+                                    stored=conn.execute('SELECT vegan_status,vegan_reason,vegan_positive_block FROM products WHERE id=?',
+                                        (result.product_id,)).fetchone()
+                                    if tuple(stored)!=(result.vegan_status,result.vegan_reason,int(result.evidence.get('positive_block',False))):
+                                        raise ValueError('Persisted decision differs from the scored decision: '+case['case_id'])
                                 decisions[case['case_id']] = asdict(result)
                             # An operational error must fail export rather than appear complete.
                             if not any(result.validation_error for result in generated.values()): exporter.load_allowlists(conn)
@@ -326,9 +339,16 @@ def parser():
     return p
 
 
+def successful(report):
+    """A completed all-unknown run must not look like a passed benchmark."""
+    return report['state']=='completed' and all(not run[key] for run in report['runs'] for key in (
+        'unsafe_positives','operational_errors','missing_cases','mismatches','reason_errors',
+        'missing_required_issues','mandatory_control_failures','reportable_negative_errors'))
+
+
 if __name__=='__main__':
     args = parser().parse_args()
     if args.batch_size<1 or args.repetitions<1 or args.workers<1: raise SystemExit('Positive batch size/repetitions/workers required')
     result = run(args)
     print(json.dumps({key:value for key,value in result.items() if key not in {'runs'}},indent=2))
-    raise SystemExit(0 if result['state']=='completed' and all(not r['unsafe_positives'] and not r['operational_errors'] and not r['missing_cases'] for r in result['runs']) else 1)
+    raise SystemExit(0 if successful(result) else 1)
