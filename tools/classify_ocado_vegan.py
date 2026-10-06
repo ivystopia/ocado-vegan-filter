@@ -30,7 +30,7 @@ DEFAULT_REASONING_EFFORT = "high"
 ARBITRATION_MODEL = "gpt-6.1-sol"
 ARBITRATION_REASONING_EFFORT = "medium"
 ARBITRATION_PROMPT_VERSION = "ocado-vegan-whole-product-arbitration-v9"
-CLASSIFIER_VERSION = "db-vegan-codex-v20"
+CLASSIFIER_VERSION = "db-vegan-codex-v21"
 PROMPT_VERSION = "ocado-vegan-whole-product-json-v18"
 VALID_STATUSES = {"vegan", "nonvegan", "unknown"}
 VALID_VEGAN_REASONS = {"tagged", "manufacturer", "ingredients", "name"}
@@ -1077,10 +1077,10 @@ def policy_facts(context: dict[str, Any]) -> dict[str, Any]:
     animal_text = re.sub(ambiguous_inci, 'unresolved botanical ingredient', cleaned, flags=re.I)
     checker=lambda text: bool(ingredient_matches(strip_explicit_absence_and_plant_names(
         strip_allergen_warnings(text)), NONVEGAN_INGREDIENT_PATTERNS))
-    declarations=[];qualified=[]
+    declarations=[];qualified=[];identity_conflicts=[]
     for key in ('dietary_information','features','allergens','detailed_description','further_description','manufacturer_marketing','other_information','specification','vinification_details'):
         text=normalize_space(context['product'].get(key))
-        marker=r'\b(?:contains|includes|made (?:with|from)|ingredients?\s*:|(?:packaging|wrapper|pod|filter|coating)(?:\s+(?:materials?|composition))?\s*:|(?:fined|clarified|processed|refined)\s+(?:with|using)|(?:fining|clarifying|refining)\s+(?:agents?|aids?)\s*:)\s*'
+        marker=r'\b(?:contains|includes|made (?:with|from)|(?:derived|obtained|sourced|extracted) from|ingredients?\s*:|(?:packaging|wrapper|pod|filter|coating)(?:\s+(?:materials?|composition))?\s*:|(?:fined|clarified|processed|refined)\s+(?:with|using)|(?:fining|clarifying|refining)\s+(?:agents?|aids?)\s*:)\s*'
         spans=[]
         for match in re.finditer(marker,text,re.I):
             # Inspect the declared target, not unrelated animal words elsewhere
@@ -1088,10 +1088,11 @@ def policy_facts(context: dict[str, Any]) -> dict[str, Any]:
             tail=re.split(r'[.;!?]',text[match.end():],maxsplit=1)[0]
             span=' '.join(tail.split()[:8])
             if checker(span) or re.search(r'\b(?:isinglass|bone char|casein|egg album\w*)\b',span,re.I):spans.append(span)
-        if not spans:continue
+        processing_use=re.search(r'\b(?:isinglass|bone char|gelati(?:n|ne)|casein|egg album\w*|animal[- ]derived milk|animal fats?)\b\s+(?:is|are)\s+used\s+(?:during|in|for)\s+(?:the\s+)?(?:manufactur\w*|process\w*|refin\w*|fining)\b',text,re.I)
+        if not spans and not processing_use:continue
         refs=[policy.reference('/product/'+key,text)]
         scope_text=re.sub(r'\bnot (?:suitable for (?:a )?vegans?|vegan)\b','',text,flags=re.I)
-        literal=bool(re.match(r'^'+marker,scope_text.strip(' .;'),re.I)) and len(text.split())<=12
+        literal=(bool(re.match(r'^'+marker,scope_text.strip(' .;'),re.I)) or bool(processing_use and processing_use.start()==0)) and len(text.split())<=12
         if not literal or policy.factory_warning(scope_text) or re.search(r'\b(?:no|not|never|without|free from|another|other|some|certain|selected|may|can|except|excluding|recipe|serve|serving|prepare|free)\b',scope_text,re.I):qualified.extend(refs)
         else:declarations.extend(refs)
     # Whole-food identity can establish animal content without a separately
@@ -1110,11 +1111,20 @@ def policy_facts(context: dict[str, Any]) -> dict[str, Any]:
             re.search(pattern,name,re.I) and re.search(pattern,full.group(1),re.I) for pattern in identities):
         declarations.extend([policy.reference('/product/name',name),
             {'path':'/product/other_information','quote':full.group()}])
+    elif full and not re.search(excluded,full.group(1),re.I) and re.search(
+            r'\b(?:vegan|plant|meatless|meat[- ]free|dairy[- ]free|alternative|imitation)\b',name,re.I) and any(
+            re.search(pattern,full.group(1),re.I) for pattern in identities):
+        # An affirmative title cannot erase a contradictory, unqualified
+        # animal-food identity in the stored full product name. Which identity
+        # applies is unresolved; do not accuse either formulation by guessing.
+        identity_conflicts=[policy.reference('/product/name',name),
+            {'path':'/product/other_information','quote':full.group()}]
     return {
         "animal_matches": ingredient_matches(animal_text, NONVEGAN_INGREDIENT_PATTERNS),
         "uncertain_ingredient_refs": ambiguous_refs,
         "animal_quote_checker": checker,
         "animal_declarations":declarations,"qualified_animal_declarations":qualified,
+        "identity_conflict_refs":identity_conflicts,
         "cleaned_ingredients": cleaned,
         "composition_safe": all_terms_are_safe(split_ingredient_terms(cleaned)) and not re.search(
             r"\b(?:sake|beer|lager|ale|cider|capsules?|tablets?|cosmetic|soap|shampoo|conditioner|bowl|plates?|napkins?|cotton|plastic|melamine|leather|wax|adhesive)\b",
@@ -1132,9 +1142,10 @@ def apply_policy_gate(context: dict[str, Any], result: ClassificationResult) -> 
                               requested_status=result.vegan_status, requested_reason=result.vegan_reason)
     status, reason = outcome["vegan_status"], outcome["vegan_reason"]
     # A gate removes unsupported assertions; it does not promote an agreed
-    # unknown/nonvegan merely because a deterministic positive route exists.
+    # unknown merely because a deterministic positive route exists. An
+    # unsupported negative is also rejected, rather than preserved as fact.
     if result.vegan_status != "vegan" and status == "vegan":
-        status, reason = result.vegan_status, result.vegan_reason
+        status, reason = "unknown", None
     if result.vegan_status == "vegan" and assessment is None and result.source != "rule":
         # Real model calls require structured assessments. Legacy mocked or
         # imported answers cannot silently bypass that requirement.

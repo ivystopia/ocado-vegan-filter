@@ -137,6 +137,45 @@ def synthetic_cases():
             'expected':{'vegan_status':status,'vegan_reason':reason},
             'adjudication':{'state':'accepted','policy_version':policy.POLICY_VERSION,'reference_type':'explicit-policy-contract',
                 'rationale':'Stored manufactured-drink identity defeats a fruit-only name shortcut; unambiguous fresh fruit remains eligible.'}})
+    # Append newly demonstrated bypasses without changing prior frozen cases.
+    contrasts=[]
+    for name in ['Not-Vegan Wine','Not: Vegan Wine','Not (Vegan) Wine','Non: Vegan Wine',
+                 'Vegan Formula Shampoo','Shampoo Formula Vegan']:
+        for variant in range(3):
+            fields={} if variant==0 else {'official_vegan':1} if variant==1 else {'dietary_information':'Suitable for vegans.'}
+            formula='Formula' in name
+            status='vegan' if formula and variant else 'unknown'
+            reason=('tagged' if variant==1 else 'manufacturer') if status=='vegan' else None
+            contrasts.append((name,fields,status,reason,['evidence_conflict'] if not formula else []))
+    for variant in range(3):
+        fields={'other_information':"Full Product Name: Cow's Milk."}
+        if variant==1:fields['official_vegan']=1
+        if variant==2:fields['dietary_information']='Suitable for vegans.'
+        contrasts.append(("Vegan Cow's Milk",fields,'unknown',None,['identity_conflict']))
+    for text in ['Derived from milk.','Obtained from gelatine.','Isinglass is used during manufacture.',
+                 'Animal-derived milk is used during manufacture.','Bone char is used during refining.']:
+        for variant in range(3):
+            fields={'features':text}
+            if variant==1:fields['official_vegan']=1
+            if variant==2:fields['dietary_information']='Suitable for vegans.'
+            contrasts.append(('Example Product',fields,'nonvegan',None,[]))
+    for variant in range(3):
+        fields={'features':'Not vegan.'}
+        if variant==1:fields['official_vegan']=1
+        if variant==2:fields['dietary_information']='Suitable for vegans.'
+        contrasts.append(('Example Product',fields,'nonvegan' if not variant else 'unknown',None,[]))
+    contrasts.extend([
+        ('Example Product',{'features':'Derived from coconut milk.','official_vegan':1},'vegan','tagged',[]),
+        ('Not Certified Vegan Wine',{'official_vegan':1},'vegan','tagged',[]),
+    ])
+    for index,(name,fields,status,reason,issues) in enumerate(contrasts):
+        value=classifier.product_context_for_llm({'product':{'id':str(906000000+index),'name':name,**fields},
+            'flags':[],'categories':[],'manufacturer_vegan_evidence':[]})
+        cases.append({'case_id':f'synthetic.claim-bypass.{index}','case_kind':'synthetic','split':'synthetic',
+            'leakage_group':'synthetic.claim-bypass','classifier_input':value,'input_sha256':classifier.context_hash(value),
+            'expected':{'vegan_status':status,'vegan_reason':reason,'required_issue_codes':issues},
+            'adjudication':{'state':'accepted','policy_version':policy.POLICY_VERSION,'reference_type':'explicit-policy-contract',
+                'rationale':'Negative or formula-scoped names cannot assert whole-product suitability; contrary full identity remains unresolved; actual animal inputs override claims; plant sources and absent certification are distinct.'}})
     return cases
 
 

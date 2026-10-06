@@ -223,16 +223,23 @@ def official_tag(context: dict[str, Any]) -> bool:
     return context["product"].get("official_vegan") == 1 or "vegan" in context.get("flags", [])
 
 
+def negated_name_claim(name: str) -> bool:
+    # Punctuation cannot turn a literal negative into an affirmative claim.
+    # Certification absence is different: "not certified vegan" is not a
+    # contradiction of an independently applicable vegan tag/assurance.
+    return bool(re.search(r'\b(?:(?:non\W*|(?:not|no)\W+)vegan|not\W+suitable\W+for\W+vegans?)\b',name,re.I))
+
+
 def affirmative_name(name: str, brand: str = '') -> bool:
     # A producer's name/reputation is not a claim about the sold article.
     if re.search(r'\bvegan\b',brand,re.I):
         name=re.sub(re.escape(brand),'',name,count=1,flags=re.I).strip()
-    if '?' in name or not re.search(r"\bvegan\b", name, re.I):
+    if '?' in name or negated_name_claim(name) or not re.search(r"\bvegan\b", name, re.I):
         return False
     if re.search(r"\b(?:cookbook|recipe book|guide|diary|book)\b|\bvegan[’']s\b",name,re.I):
         return False  # A vegan topic/author is not manufacturing assurance.
     # Difficult scope is deliberately left to structured model interpretation.
-    return not re.search(r"\b(?:non[- ]?vegan|(?:no|not)\s+(?:\w+\s+){0,2}vegan|veganism|for\s+vegans?|vegan\s+(?:option|variant|alternative)\s+(?:available|also)|vegan\s+(?:certification|claims?|ingredients?|components?|leather|collagen|keratin|coating|lining|bristles|handle|upper))\b|\bwith\b.*\bvegan\b|\b(?:serve|serving|brand|recipe)\b", name, re.I)
+    return not re.search(r"\b(?:non[- ]?vegan|(?:no|not)\W+(?:\w+\W+){0,2}vegan|veganism|for\s+vegans?|vegan\s+(?:option|variant|alternative)\s+(?:available|also)|vegan\s+(?:certification|claims?|ingredients?|components?|formula|formulation|leather|collagen|keratin|coating|lining|bristles|handle|upper))\b|\b(?:formula|formulation)(?:\W+(?:is|are))?\W+vegan\b|\bwith\b.*\bvegan\b|\b(?:serve|serving|brand|recipe)\b", name, re.I)
 
 
 def scoped_claim(text: str, *, negative: bool = False) -> bool:
@@ -563,7 +570,7 @@ def evaluate(context: dict[str, Any], *, animal_matches: list[str], cleaned_ingr
              composition_safe: bool, ordinary_identity: bool, assessment: dict[str, Any] | None = None,
              requested_status: str | None = None, requested_reason: str | None = None,
              animal_quote_checker=None, animal_declarations=None, qualified_animal_declarations=None,
-             uncertain_ingredient_refs=None) -> dict[str, Any]:
+             uncertain_ingredient_refs=None, identity_conflict_refs=None) -> dict[str, Any]:
     """Apply common precedence, with supplied model assessments as interpretations."""
     product = context["product"]
     positive, negative = claim_sources(context)
@@ -597,7 +604,7 @@ def evaluate(context: dict[str, Any], *, animal_matches: list[str], cleaned_ingr
     issues = list({digest(issue): issue for issue in [*risks, *result_assessment["material_issues"]]}.values())
     hard_codes={'identity_conflict','identity_insufficient','evidence_conflict','evidence_stale','animal_ingredient','animal_processing','explicit_nonvegan'}
     issues=[{**issue,'blocks_claim':True} if issue['code'] in hard_codes else issue for issue in issues]
-    if re.search(r'\b(?:non[- ]?vegan|not vegan|not suitable for vegans?)\b',name,re.I):
+    if negated_name_claim(name):
         issues.append({'code':'evidence_conflict','target':'whole_product','rule_id':'negated-name-claim-v1',
             'evidence_refs':[reference('/product/name',name)],'resolution_refs':[],'blocks_claim':True})
     for ref in qualified_animal_declarations or []:
@@ -658,9 +665,12 @@ def evaluate(context: dict[str, Any], *, animal_matches: list[str], cleaned_ingr
         and re.search(r'\d\s*(?:ml|litres?|liters?|l)\b',pack,re.I)
         and not re.search(r'\b(?:capsules?|softgels?|tablets?)\b',name,re.I))
     mismatched_identity = mismatched_identity or capsule_form_mismatch
-    identity_conflict = mismatched_identity or result_assessment["identity"]["status"] in {"conflicted", "insufficient", "unresolved"}
+    identity_conflict = mismatched_identity or bool(identity_conflict_refs) or result_assessment["identity"]["status"] in {"conflicted", "insufficient", "unresolved"}
     if mismatched_identity:
         issues.append({"code": "identity_conflict", "target": "whole_product", "rule_id": "identity-consistency-v1", "evidence_refs": [reference("/product/name", name), *([reference("/product/ingredients", ingredients)] if ingredients else animal_declarations), *([reference('/product/pack_size',pack)] if capsule_form_mismatch else [])], "resolution_refs": [], "blocks_claim": True})
+    elif identity_conflict_refs:
+        issues.append({'code':'identity_conflict','target':'whole_product','rule_id':'full-product-identity-v1',
+                       'evidence_refs':identity_conflict_refs,'resolution_refs':[],'blocks_claim':True})
     elif identity_conflict:
         issues.append({"code": "identity_conflict" if result_assessment["identity"]["status"] == "conflicted" else "identity_insufficient",
             "target": "whole_product", "rule_id": "identity-consistency-v1",
@@ -672,7 +682,7 @@ def evaluate(context: dict[str, Any], *, animal_matches: list[str], cleaned_ingr
     elif animal_matches or animal_declarations:
         status = "nonvegan"
         animal_refs=[reference("/product/ingredients",ingredients)] if animal_matches else animal_declarations
-        processing = not animal_matches and any(re.search(r'\b(?:fined|fining|clarified|clarifying|processed|refined|refining)\b',ref['quote'],re.I) for ref in animal_refs)
+        processing = not animal_matches and any(re.search(r'\b(?:fined|fining|clarified|clarifying|processed|refined|refining|manufactur\w*)\b',ref['quote'],re.I) for ref in animal_refs)
         issues.append({"code": "animal_processing" if processing else "animal_ingredient", "target": "whole_product", "rule_id": "animal-ingredients-v1", "evidence_refs": animal_refs, "resolution_refs": [], "blocks_claim": True})
         if official_tag(context):
             issues.append({"code": "tag_animal_conflict", "target": "whole_product", "rule_id": "animal-overrides-tag-v1", "evidence_refs": animal_refs, "resolution_refs": [], "blocks_claim": True})
@@ -686,7 +696,7 @@ def evaluate(context: dict[str, Any], *, animal_matches: list[str], cleaned_ingr
                 and re.search(r"\b(?:fined|fining|clarified|processed|processing|refined|refining|manufactur\w*)\b", quotes, re.I)
                 and re.search(r"\b(?:isinglass|gelati(?:n|ne)|casein|egg album\w*|bone char|animal fats?)\b", quotes, re.I)) or (
                 issue['code']=='animal_ingredient' and animal_quote_checker and animal_quote_checker(quotes)
-                and re.search(r'\b(?:contains|includes|made (?:with|from)|ingredients?\s*:|(?:packaging|wrapper|pod|filter|coating)(?:\s+(?:materials?|composition))?\s*:)',quotes,re.I))
+                and re.search(r'\b(?:contains|includes|made (?:with|from)|(?:derived|obtained|sourced|extracted) from|ingredients?\s*:|(?:packaging|wrapper|pod|filter|coating)(?:\s+(?:materials?|composition))?\s*:)',quotes,re.I))
             # A substring that omits 'not', 'other variant' or a qualification
             # cannot turn the complete supplied assertion into negative proof.
             full_text = " ".join(normalized(resolve_reference(context, ref)) for ref in issue["evidence_refs"])
@@ -698,9 +708,10 @@ def evaluate(context: dict[str, Any], *, animal_matches: list[str], cleaned_ingr
             if definite and not issue["resolution_refs"]:
                 substantive_negative.append(issue)
         claim_reason = "tagged" if official_tag(context) else "manufacturer" if positive else "name" if affirmative_name(name,normalized(product.get('brand'))) else None
-        if substantive_negative and not unresolved_blocks:
+        animal_negative=any(issue['code'] in {'animal_processing','animal_ingredient'} for issue in substantive_negative)
+        if animal_negative and all(issue["code"] in {"animal_processing", "animal_ingredient", "explicit_nonvegan"} for issue in unresolved_blocks):
             status = "nonvegan"
-        elif substantive_negative and all(issue["code"] in {"animal_processing", "animal_ingredient", "explicit_nonvegan"} for issue in unresolved_blocks):
+        elif substantive_negative and not claim_reason and all(issue['code']=='explicit_nonvegan' for issue in unresolved_blocks):
             status = "nonvegan"
         elif unresolved_blocks or (negative and claim_reason):
             block = True

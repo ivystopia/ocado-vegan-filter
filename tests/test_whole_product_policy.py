@@ -27,6 +27,67 @@ def source_check(value, path='/manufacturer_source_candidates/0', scope='product
 
 
 class WholeProductPolicyTests(unittest.TestCase):
+    def test_origin_and_manufacturing_declarations_override_positive_claims(self):
+        for text in ['Derived from milk.','Obtained from gelatine.','Isinglass is used during manufacture.',
+                     'Animal-derived milk is used during manufacture.','Bone char is used during refining.']:
+            for fields in ({},{'official_vegan':1},{'dietary_information':'Suitable for vegans.'}):
+                decision=classifier.classify_by_rules(context('Example Product',None,features=text,**fields))
+                self.assertEqual(decision.vegan_status,'nonvegan',text)
+                self.assertEqual(decision.evidence['tag_animal_conflict'],bool(fields.get('official_vegan')))
+        value=context('Example Product',None,official_vegan=1,features='Derived from coconut milk.')
+        self.assertEqual(classifier.classify_by_rules(value).vegan_reason,'tagged')
+        value['product']['features']='Another variant is derived from milk.'
+        self.assertIsNone(classifier.classify_by_rules(value))
+
+    def test_vegan_title_cannot_erase_contrary_full_animal_food_identity(self):
+        for fields in ({},{'official_vegan':1},{'dietary_information':'Suitable for vegans.'}):
+            value=context("Vegan Cow's Milk",None,other_information="Full Product Name: Cow's Milk.",**fields)
+            decision=classifier.classify_by_rules(value)
+            self.assertEqual(decision.vegan_status,'unknown')
+            self.assertTrue(decision.evidence['positive_block'])
+            self.assertIn('identity_conflict',{issue['code'] for issue in decision.evidence['assessment']['material_issues']})
+        value=context("Vegan Cow's Milk",None,other_information="Full Product Name: Vegan Cow's Milk.")
+        self.assertEqual(classifier.classify_by_rules(value).vegan_reason,'name')
+
+    def test_unsupported_negative_is_rejected_without_promoting_agreed_unknown(self):
+        value=context('Example Product',None,official_vegan=1)
+        for status in ['nonvegan','unknown']:
+            result=classifier.ClassificationResult(product_id='1',vegan_status=status,vegan_reason=None,
+                confidence='certain',summary='No supporting contrary evidence',source='codex',
+                evidence={'assessment':policy.base_assessment(value,complete=True)})
+            self.assertEqual(classifier.apply_policy_gate(value,result).vegan_status,'unknown')
+
+    def test_model_negative_claim_is_a_conflict_but_animal_proof_overrides(self):
+        value=context('Example Product',None,official_vegan=1,features='Not vegan.')
+        assessment=policy.base_assessment(value,complete=True)
+        assessment['material_issues']=[{'code':'explicit_nonvegan','target':'whole_product','rule_id':'explicit-negative',
+            'evidence_refs':[policy.reference('/product/features','Not vegan.')],'resolution_refs':[],'blocks_claim':True}]
+        outcome=policy.evaluate(value,**classifier.policy_facts(value),assessment=assessment,requested_status='nonvegan')
+        self.assertEqual(outcome['vegan_status'],'unknown')
+        self.assertTrue(outcome['positive_block'])
+        value['product']['features']='Isinglass is used during manufacture.'
+        assessment['material_issues']=[{'code':'animal_processing','target':'whole_product','rule_id':'animal-input',
+            'evidence_refs':[policy.reference('/product/features',value['product']['features'])],'resolution_refs':[],'blocks_claim':True}]
+        outcome=policy.evaluate(value,**classifier.policy_facts(value),assessment=assessment,requested_status='nonvegan')
+        self.assertEqual(outcome['vegan_status'],'nonvegan')
+        self.assertTrue(outcome['tag_animal_conflict'])
+
+    def test_punctuated_negation_cannot_be_an_affirmative_name(self):
+        for name in ['Not-Vegan Wine','Not: Vegan Wine','Not (Vegan) Wine','Non: Vegan Wine']:
+            for fields in ({},{'official_vegan':1},{'dietary_information':'Suitable for vegans.'}):
+                decision=classifier.classify_by_rules(context(name,None,**fields))
+                self.assertEqual(decision.vegan_status,'unknown',name)
+                self.assertTrue(decision.evidence['positive_block'])
+        value=context('Not Certified Vegan Wine',None,official_vegan=1)
+        self.assertEqual(classifier.classify_by_rules(value).vegan_reason,'tagged')
+
+    def test_formula_name_does_not_assert_whole_product_suitability(self):
+        for name in ['Vegan Formula Shampoo','Shampoo Formula Vegan']:
+            self.assertFalse(policy.affirmative_name(name))
+            self.assertEqual(classifier.classify_by_rules(context(name,None)).vegan_status,'unknown')
+            self.assertEqual(classifier.classify_by_rules(context(name,None,official_vegan=1)).vegan_reason,'tagged')
+            self.assertEqual(classifier.classify_by_rules(context(name,None,dietary_information='Suitable for vegans.')).vegan_reason,'manufacturer')
+
     def test_postal_addresses_do_not_establish_supplied_boxes(self):
         for address in ['PO Box 3339','P.O. Box 3339','P O Box 3339']:
             value=context('Carrots',None,other_information='Return to: '+address+', Chester.')
