@@ -10,3 +10,10 @@ __pycache__/
 
 # Resumable manufacturer-site research work; retained summaries live in audit/.
 .manufacturer-research/
+
+# Frozen source captures, annotation checkpoints and isolated shadow databases.
+.whole-product-work/
+
+# Full local model-call traces/checkpoints; retain compact reports/manifests.
+audit/benchmarks/2026-10-06-whole-product/**/calls.json
+audit/benchmarks/2026-10-06-whole-product/**/run-*.json

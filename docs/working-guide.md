@@ -8,6 +8,7 @@ Read [AGENTS.md](../AGENTS.md) first. This guide maps the current implementation
 | --- | --- |
 | Shopping behaviour | `ocado-vegan-filter.user.js`: self-contained embedded ID sets, page evidence, cosmetic card/button styling, and incremental DOM updates. |
 | Catalogue refresh | `tools/sync_ocado_database.py`: category and sitemap discovery, product detail refresh, retained raw/context evidence, and invalidation of changed classifications. |
+| Whole-product policy/benchmarks | `tools/vegan_policy.py`, `tools/codex_evidence.py`, `tools/benchmark_whole_product.py`: shared policy, evidence-only metered calls, frozen end-to-end evaluation. |
 | Classification | `tools/classify_ocado_vegan.py`: deterministic rules, JSON-only Luna fallback, bounded two-pass GPT-6.1-Sol/medium arbitration, canonical fields, and audit writes. |
 | Manufacturer research | `tools/research_ocado_manufacturers.py`: unknown-product cohort, research coverage, independent source/scope review and audited imports; [manufacturer research](manufacturer-research.md) describes the separate website-gathering workflow. |
 | Export | `tools/update_userscript_allowlists.py`: read-only SQLite validation, all-known-product ID sets, header counts, and optional userscript version update. `--dry-run` also avoids writing the userscript. |
@@ -17,7 +18,7 @@ Read [AGENTS.md](../AGENTS.md) first. This guide maps the current implementation
 | Historical import | `tools/build_ocado_database.py` and the `tools/scan_ocado_vegan_according_to_*` entry points: historical import/scraping workflows. The DB-first sync still imports parsing helpers from the builder. |
 | Verification | `tests/` uses `unittest.TestCase`; `.github/workflows/test.yml` runs the suite, and `release.yml` requires it before publishing tag assets. |
 
-In the userscript, start at `veganStatusForCard()` for evidence precedence, `processCard()` for appearance, and `queueMutations()` / `run()` for scheduling. Page icons and hydration, standalone vegan names/slugs, and embedded sets provide positive evidence before the non-vegan fallback. The offline classifier has its own decision order in [the design](vegan-classifier-design.md); keep that distinction explicit when investigating a classification mismatch.
+In the userscript, start at `veganStatusForCard()` for evidence precedence, `processCard()` for appearance, and `queueMutations()` / `run()` for scheduling. Recorded nonvegan IDs and blocked unknown IDs take precedence over embedded positives and live official icons/hydration. Names and URL slugs cannot promote at runtime. The offline classifier has its own decision order in [the design](vegan-classifier-design.md); keep that distinction explicit when investigating a classification mismatch.
 
 ## Environment and first checks
 
@@ -34,7 +35,7 @@ python3 -m unittest discover -s tests -v
 
 The normal suite uses temporary/in-memory databases and mocks classifier model calls. It needs Firefox and the development dependencies, but neither `ocado_products.sqlite` nor a Codex login. `FIREFOX_BINARY` selects a non-default Firefox executable. Selenium may obtain a driver if one is not cached.
 
-The live page test is skipped unless `OCADO_LIVE_TESTS=1`. The real 48-product classifier safety benchmark is separate from these unit tests: it calls authenticated Codex and is required before monthly syncs or classifier model/prompt/schema/rule changes. A documentation-only change does not require model calls.
+The live page test is skipped unless `OCADO_LIVE_TESTS=1`. The historical 48-product benchmark is separate from unit tests and remains frozen. Current policy validation uses the revised whole-product suite; see the classifier design before monthly maintenance or model/prompt/schema/rule changes. A documentation-only change does not require model calls.
 
 For a targeted test file, use discovery rather than treating `tests` as an installed package:
 
@@ -111,3 +112,7 @@ Userscript development, tooling changes, and local testing take place on `dev`. 
 Greasy Fork release notes should use brief imperative bullets about shopping behaviour and evidence changes. Count additions/removals from the last published version, explain whether changes came from new catalogue evidence or a classification-rule change, and include skipped local versions in that interval. Keep release notes in the signed tag annotation and text prepared for Greasy Fork; a standalone changelog was deliberately removed during the September release.
 
 For unresolved historical intent, use the `codex-history-search` skill to locate the relevant session and read the specific user requests. Older conversations contain authentication material: avoid dumping transcripts or copying their private contents into the repository. The main lessons are already reflected here and in the current instructions; old one-off permissions to restart browsers, rewrite history, or publish are not standing instructions for a new task.
+
+## Whole-product transition
+
+Follow the rewritten classifier design for current semantics. `tools/shadow_vegan_policy.py` previews all existing positives read-only and retains a reportable tag-conflict list; the live SQLite database and embedded ID sets remain on their historical policy until the user chooses a benchmarked model pair and approves activation. Export intentionally refuses legacy/stale positives. New research candidates/checkpoints/raw captures live in ignored `.whole-product-work/`; retain reviewable fixture metadata/results under `benchmarks/` and `audit/`.

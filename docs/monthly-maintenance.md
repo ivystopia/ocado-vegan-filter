@@ -4,37 +4,19 @@ This runbook refreshes the SQLite source of truth, reclassifies only new or chan
 
 The live scrape itself does not use an LLM. Luna/high is used only after the scrape, for products that remain unresolved after deterministic rules.
 
-Changing the disagreement arbitrator to GPT-6.1 Sol does not authorize reclassification. The revised whole-product policy migration is pending; its existing confirmation-only arbitration gate remains in place until that policy is implemented. Reconcile the policy before executing the legacy catalogue classification/export steps below.
+The whole-product policy is implemented as unreleased development. Canonical migration/model selection remain gated. Do not execute the classification/export steps below until the revised benchmark, shadow transitions and selected model pair are approved; the existing 48-case expectations contain historical policy and cannot be the new release gate.
 
-## 1. Prepare And Benchmark
+## 1. Prepare and benchmark
 
-Start from the repository root on `dev` with a clean tracked working tree and the [development environment](../README.md#development) active. The local SQLite database is intentionally untracked. If resuming an interrupted refresh, inspect the latest run and follow [the recovery guidance](working-guide.md#recovery-and-classifier-pitfalls) before starting another writer.
+Work on `dev`, inspect the tracked tree, use the development environment, and follow [the classifier design](vegan-classifier-design.md) for the revised corpus, full-pipeline checks, model candidates and acceptance gates. The historical benchmark and its frozen labels remain evidence; do not relabel them to obtain a pass.
 
-```bash
-cd /home/ivy/repos/personal/ocado_report
-git status --short
-codex --version
-codex login status
+```sh
 python3 -m unittest discover -s tests
+node --check ocado-vegan-filter.user.js
+python3 tools/benchmark_whole_product.py --split development --mode pipeline --model gpt-6-luna --effort high --output audit/benchmarks/YYYY-MM-DD-whole-product-development
 ```
 
-Run the fixed safety benchmark before contacting Ocado. It is read-only and must finish with `48/48 exact`, no false-vegan result, and no execution errors.
-
-The standard fixture now contains frozen SQLite evidence in `benchmarks/vegan-classifier-v1-contexts.json`, with hashes checked by the runner. It does not reread changing catalogue rows. Keep these inputs and their expected statuses together when adding regression cases.
-
-```bash
-RUN_STAMP="$(date +%F-%H%M%S)"
-
-python3 tools/benchmark_ocado_vegan.py \
-  --arbitrate-disagreements \
-  --model gpt-5.6-luna \
-  --reasoning-effort high \
-  --passes 2 \
-  --batch-size 10 \
-  --json-output "audit/benchmarks/${RUN_STAMP}-luna-high.json"
-```
-
-Stop if the command exits non-zero. Primary disagreements receive two independent GPT-6.1-Sol/medium assessments; unresolved arbitrator disagreements remain `unknown`. Review `arbitrated_ids` and the retained audit evidence; investigate any new disagreement before continuing even when it does not create an exact-status mismatch. The runner retries transient schema/output failures, but any observed retry should still be noted in the monthly review. Use a new output filename for each attempt so failed results remain available alongside successful reruns.
+A development result is not permission to classify the catalogue. Compare locked cases three times with the frozen chosen candidate; report model selection to the user before migration. Never use paid/API fallback on included-plan exhaustion. Keep completed checkpoints and resume the identical command after allowance reset.
 
 ## 2. Refresh The SQLite Catalogue
 
