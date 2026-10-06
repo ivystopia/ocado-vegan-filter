@@ -213,7 +213,7 @@ def run(args):
         arb=min(arbiters,key=lambda item:credit_equivalent(item[2]['runs'][0]))
         pair=(primary[0],primary[1],arb[0],arb[1]);baseline=('gpt-5.6-luna','high','gpt-6.1-sol','medium')
         paired_controls=execute(args,'controls-selected-pair',split='synthetic',mode='pipeline',model=pair[0],effort=pair[1],
-            arbitration_model=pair[2],arbitration_effort=pair[3])
+            arbitration_model=pair[2],arbitration_effort=pair[3],repetitions=3)
         result['paired_controls']=paired_controls
         if not benchmark.successful(paired_controls):
             result.update(state='selected_pair_failed_controls',next_step='Investigate retained fixed-pair failures; no default change or activation.')
