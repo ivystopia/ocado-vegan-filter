@@ -105,6 +105,10 @@ def normalized(value: Any) -> str:
     return re.sub(r"\s+", " ", str(value or "")).strip()
 
 
+def factory_warning(text: str) -> bool:
+    return bool(re.search(r'\b(?:factory|facility|site|equipment|production line)\b.*\b(?:handles?|handling|processes?|processing|uses?|using)\b|\b(?:cross[- ]contamination|cross[- ]contact)\b',text,re.I))
+
+
 def visible_source_text(value: str) -> str:
     """Canonical visible words, preserving the separately hashed raw capture."""
     value=re.sub(r'(?m)^L\d+(?:@P\d+)?:[ \t]?', '',value)
@@ -562,6 +566,14 @@ def evaluate(context: dict[str, Any], *, animal_matches: list[str], cleaned_ingr
         validate_assessment(assessment, context)
         negative = [ref for ref in negative if not source_path(ref) or source_reference(context, ref, assessment)]
         if requested_status=='vegan':positive=positive or interpreted_manufacturer_support(context,assessment)
+        # Carry validated, issue-specific resolutions into generated registry
+        # entries. Otherwise persistence/export sees a fresh unresolved copy
+        # of the same risk and demotes a previously supported positive.
+        # Original model issues remain intact, including any unresolved issue
+        # retained from either independent reading.
+        risks=[{**risk,'resolution_refs':list({digest(ref):ref for issue in assessment['material_issues']
+            if resolved_risk(risk,{'material_issues':[issue]}) for ref in issue['resolution_refs']}.values())}
+            if resolved_risk(risk,assessment) else risk for risk in risks]
     else:
         negative = [ref for ref in negative if not source_path(ref)]
     used_refs = [] if not assessment else [ref for item in assessment['positive_support'] for ref in item['evidence_refs']] + [
@@ -592,7 +604,7 @@ def evaluate(context: dict[str, Any], *, animal_matches: list[str], cleaned_ingr
             # interpreter. Require the actual full declaration plus identity,
             # not a detached reassuring phrase or a bare vegan claim.
             for issue in assessment['material_issues']:
-                if requested_status=='nonvegan' and issue['rule_id']=='animal-declaration-context-v1' and any(
+                if requested_status=='nonvegan' and not factory_warning(ref['quote']) and issue['rule_id']=='animal-declaration-context-v1' and any(
                     resolution['path']==ref['path'] and normalized(resolution['quote'])==normalized(ref['quote'])
                     for resolution in issue['resolution_refs']) and any(
                     resolution['path']=='/product/name' for resolution in issue['resolution_refs']):
@@ -667,7 +679,7 @@ def evaluate(context: dict[str, Any], *, animal_matches: list[str], cleaned_ingr
             # cannot turn the complete supplied assertion into negative proof.
             full_text = " ".join(normalized(resolve_reference(context, ref)) for ref in issue["evidence_refs"])
             full_text = re.sub(r"\bnot (?:suitable for (?:a )?vegans?|vegan)\b", "", full_text, flags=re.I)
-            if re.search(r"\b(?:no|not|never|without|free from|another|other|some|certain|may|can)\b", full_text, re.I):
+            if factory_warning(full_text) or re.search(r"\b(?:no|not|never|without|free from|another|other|some|certain|may|can)\b", full_text, re.I):
                 definite = False
             if any(source_path(ref) and not source_reference(context,ref,assessment) for ref in issue['evidence_refs']):
                 definite = False

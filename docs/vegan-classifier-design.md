@@ -36,6 +36,8 @@ Historical production defaults remain `gpt-5.6-luna`/`high` and `gpt-6.1-sol`/`m
 
 Keep exact ID coverage, strict schema and status/reason validation local. Reject duplicate, unexpected and missing IDs and fabricated pointers/quotes. Structured references improve auditability but do not mathematically prove the model's semantic interpretation. Retain all failed/retried calls and their token usage. Reasoning tokens are part of output usage and must not be added again. Included-plan limits stop/checkpoint work; no paid/API/model fallback is authorised.
 
+Validated issue-specific resolutions must survive repeated policy gates at model acceptance, audit writes and export. Generated registry entries retain those citations, while original unresolved model issues remain intact. The benchmark verifies that the persisted status/reason/promotion block equals the scored decision; divergence is an implementation failure, not a passing model result.
+
 ## Persistence and evidence lifecycle
 
 Products store canonical status/reason, classifier/policy version, per-product evidence hash, promotion-block flag and canonical audit ID. Runs and audit rows also record knowledge/schema/prompt versions. `vegan_model_calls` stores calls once; `vegan_audit_model_calls` links affected product audit rows, avoiding duplicated batch accounting. Failed calls receive audit records without replacing the canonical decision or clearing pending work.

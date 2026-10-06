@@ -30,7 +30,7 @@ DEFAULT_REASONING_EFFORT = "high"
 ARBITRATION_MODEL = "gpt-6.1-sol"
 ARBITRATION_REASONING_EFFORT = "medium"
 ARBITRATION_PROMPT_VERSION = "ocado-vegan-whole-product-arbitration-v8"
-CLASSIFIER_VERSION = "db-vegan-codex-v16"
+CLASSIFIER_VERSION = "db-vegan-codex-v17"
 PROMPT_VERSION = "ocado-vegan-whole-product-json-v17"
 VALID_STATUSES = {"vegan", "nonvegan", "unknown"}
 VALID_VEGAN_REASONS = {"tagged", "manufacturer", "ingredients", "name"}
@@ -1052,15 +1052,17 @@ def looks_like_single_ingredient_vegan_product(context: dict[str, Any]) -> bool:
     # A produce category cannot legitimise an arbitrary product whose name
     # merely contains a vegetable word. Keep this fast path to complete plain
     # produce identities; difficult cultivars/branding/preparation go to models.
-    identity=name
-    brand=normalize_space(product.get('brand')).lower()
-    if brand and identity==brand:return False
-    if brand and identity.startswith(brand+' '):identity=identity[len(brand):].strip()
-    identity=re.sub(r'\b(?:\d+(?:\.\d+)?\s*(?:kg|g|ml|l|pack)|\d+\s*x|\d+)\b',' ',identity)
-    for produce in sorted(SINGLE_INGREDIENT_NAME_TERMS,key=len,reverse=True):
-        identity=re.sub(r'\b'+re.escape(produce)+r'\b',' ',identity)
-    identity=re.sub(r'\b(?:fresh|organic|baby|whole|loose|unwaxed|washed|unwashed|british|scottish|extra|fine|large|small|sweet|ripe|chopped|sliced|pitted|dried|frozen|mixed|red|green|yellow|white|brown|bag|pack|bunch|punnet|and)\b',' ',identity)
-    return not re.sub(r'[\s,&()/-]+','',identity)
+    def plain_identity(text):
+        identity=text.lower()
+        brand=normalize_space(product.get('brand')).lower()
+        if brand and identity==brand:return False
+        if brand and identity.startswith(brand+' '):identity=identity[len(brand):].strip()
+        identity=re.sub(r'\b(?:\d+(?:\.\d+)?\s*(?:kg|g|ml|l|pack)|\d+\s*x|\d+)\b',' ',identity)
+        for produce in sorted(SINGLE_INGREDIENT_NAME_TERMS,key=len,reverse=True):
+            identity=re.sub(r'\b'+re.escape(produce)+r'\b',' ',identity)
+        identity=re.sub(r'\b(?:fresh|organic|baby|whole|loose|unwaxed|washed|unwashed|british|scottish|extra|fine|large|small|sweet|ripe|chopped|sliced|pitted|dried|frozen|mixed|red|green|yellow|white|brown|bag|pack|bunch|punnet|and)\b',' ',identity)
+        return not re.sub(r'[\s.,;&()/-]+','',identity)
+    return plain_identity(name) and (not full_name or plain_identity(full_name.group(1)))
 
 
 def policy_facts(context: dict[str, Any]) -> dict[str, Any]:
@@ -1090,8 +1092,7 @@ def policy_facts(context: dict[str, Any]) -> dict[str, Any]:
         refs=[policy.reference('/product/'+key,text)]
         scope_text=re.sub(r'\bnot (?:suitable for (?:a )?vegans?|vegan)\b','',text,flags=re.I)
         literal=bool(re.match(r'^'+marker,scope_text.strip(' .;'),re.I)) and len(text.split())<=12
-        factory_warning = re.search(r'\b(?:factory|facility|site|equipment|production line)\b.*\b(?:handles?|handling|processes?|processing|uses?|using)\b|\b(?:cross[- ]contamination|cross[- ]contact)\b',scope_text,re.I)
-        if not literal or factory_warning or re.search(r'\b(?:no|not|never|without|free from|another|other|some|certain|selected|may|can|except|excluding|recipe|serve|serving|prepare|free)\b',scope_text,re.I):qualified.extend(refs)
+        if not literal or policy.factory_warning(scope_text) or re.search(r'\b(?:no|not|never|without|free from|another|other|some|certain|selected|may|can|except|excluding|recipe|serve|serving|prepare|free)\b',scope_text,re.I):qualified.extend(refs)
         else:declarations.extend(refs)
     # Whole-food identity can establish animal content without a separately
     # populated ingredients list, just as ordinary carrots can establish a

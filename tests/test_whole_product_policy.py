@@ -27,6 +27,42 @@ def source_check(value, path='/manufacturer_source_candidates/0', scope='product
 
 
 class WholeProductPolicyTests(unittest.TestCase):
+    def test_registry_resolution_survives_repeated_policy_gates(self):
+        value=context('Example Coffee Pods','Coffee',features='Complete component composition: aluminium pod and lid, plant-derived adhesive. All components manufactured without animal inputs.')
+        assessment=policy.base_assessment(value,complete=True)
+        assessment['positive_support']=[{'reason':'ingredients','evidence_refs':[policy.reference('/product/ingredients','Coffee')]}]
+        assessment['material_issues']=[{**issue,'resolution_refs':[policy.reference('/product/features',value['product']['features'])]}
+            for issue in policy.material_risks(value)]
+        for stage in ('model acceptance','audit write','export'):
+            result=policy.evaluate(value,**classifier.policy_facts(value),assessment=assessment,
+                requested_status='vegan',requested_reason='ingredients')
+            self.assertEqual((result['vegan_status'],result['vegan_reason']),('vegan','ingredients'),stage)
+            assessment=result['assessment']
+            self.assertTrue(all(issue['resolution_refs'] for issue in assessment['material_issues']))
+        assessment['material_issues'].append({**policy.material_risks(value)[0],'target':'unresolved concern raised by second reading'})
+        self.assertEqual(policy.evaluate(value,**classifier.policy_facts(value),assessment=assessment,
+            requested_status='vegan',requested_reason='ingredients')['vegan_status'],'unknown')
+
+    def test_full_identity_cannot_add_unassessed_food_components(self):
+        for identity in ['Carrots with Butter','Mango containing Gelatine','Carrots in Honey']:
+            value=context(identity.split()[0],None,other_information='Full Product Name: '+identity+'.')
+            self.assertFalse(classifier.policy_facts(value)['ordinary_identity'])
+            decision=classifier.classify_by_rules(value)
+            self.assertTrue(decision is None or decision.vegan_status!='vegan')
+
+    def test_model_negative_cannot_turn_mixed_factory_warning_into_intentional_milk(self):
+        value=context('Sea Salted Popcorn','Wholegrain Corn, Rapeseed Oil, Sea Salt',official_vegan=1,
+            allergens='Contains Milk Made in a factory that handles Milk.')
+        ref=policy.reference('/product/allergens',value['product']['allergens'])
+        assessment=policy.base_assessment(value,complete=True)
+        assessment['material_issues']=[{'code':'evidence_conflict','target':'whole_product','rule_id':'animal-declaration-context-v1',
+            'evidence_refs':[ref],'resolution_refs':[ref,policy.reference('/product/name',value['product']['name'])],'blocks_claim':True},
+            {'code':'animal_ingredient','target':'whole_product','rule_id':'model-animal-content','evidence_refs':[ref],
+                'resolution_refs':[],'blocks_claim':True}]
+        result=policy.evaluate(value,**classifier.policy_facts(value),assessment=assessment,requested_status='nonvegan')
+        self.assertEqual(result['vegan_status'],'unknown')
+        self.assertFalse(result['tag_animal_conflict'])
+
     def test_ordinary_food_does_not_clear_explicit_packaging(self):
         for package in ['Plastic Bag','Carton','Glass Jar','Heat Sealed Tray','Blister']:
             value=context('Carrots',None,package_type=package)
