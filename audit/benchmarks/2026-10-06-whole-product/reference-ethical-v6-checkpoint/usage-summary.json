@@ -1,0 +1,16 @@
+{
+  "usage": {
+    "calls": 110,
+    "failed_calls": 3,
+    "guard_rejections": 1,
+    "missing_usage_calls": 1,
+    "input_tokens": 2867299,
+    "cached_input_tokens": 638592,
+    "output_tokens": 213367,
+    "reasoning_output_tokens": 52642
+  },
+  "first_readings": 381,
+  "second_readings": 369,
+  "state": "superseded_checkpoint",
+  "reason": "User clarified missing packaging information alone is not a material concern for plain produce. One obsolete call was stalled for 58 minutes and terminated; in-flight usage was not reported, so totals are a lower bound. No results relabelled."
+}

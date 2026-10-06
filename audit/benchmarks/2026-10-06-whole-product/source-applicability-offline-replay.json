@@ -1,0 +1,68 @@
+{
+  "mode": "offline replay of retained raw model outputs, NOT fresh model calls",
+  "classifier_version": "db-vegan-codex-v14",
+  "prompt_version_used_by_original_calls": "ocado-vegan-whole-product-json-v14",
+  "cases": [
+    {
+      "case_id": "natural.663711011",
+      "input_sha256": "710e5e72c2d58f88c36bb38866c154cd6248ee3a071c64ff4bdb0eefa6ef3f11",
+      "status": "vegan",
+      "reason": "manufacturer",
+      "expected": {
+        "vegan_status": "vegan",
+        "vegan_reason": "manufacturer",
+        "required_issue_codes": []
+      },
+      "issue_codes": [
+        "composition_incomplete"
+      ]
+    },
+    {
+      "case_id": "natural.581355011",
+      "input_sha256": "33d86762456040b20ec7c65ae7fc429996336b3431560370d61f47106981d100",
+      "status": "vegan",
+      "reason": "manufacturer",
+      "expected": {
+        "vegan_status": "vegan",
+        "vegan_reason": "manufacturer",
+        "required_issue_codes": []
+      },
+      "issue_codes": []
+    },
+    {
+      "case_id": "natural.651228011",
+      "input_sha256": "d7576ff8fa3c71cf4f2a375582b0eddcbc818da0673ecc912e9226806d0baf43",
+      "status": "unknown",
+      "reason": null,
+      "expected": {
+        "vegan_status": "unknown",
+        "vegan_reason": null,
+        "required_issue_codes": [
+          "claim_scope_mismatch",
+          "composition_incomplete",
+          "identity_conflict"
+        ]
+      },
+      "issue_codes": [
+        "claim_scope_mismatch",
+        "composition_incomplete",
+        "identity_conflict",
+        "processing_unresolved",
+        "source_unresolved"
+      ]
+    },
+    {
+      "case_id": "natural.690250011",
+      "input_sha256": "214eca7575a512bd92bbc9a158865ed74889e64bdff38d18d88c78ebe9c30ca9",
+      "status": "vegan",
+      "reason": "manufacturer",
+      "expected": {
+        "vegan_status": "vegan",
+        "vegan_reason": "manufacturer",
+        "required_issue_codes": []
+      },
+      "issue_codes": []
+    }
+  ],
+  "new_model_calls": 0
+}

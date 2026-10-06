@@ -1,0 +1,40 @@
+{
+  "state": "interrupted_for_validator_bug",
+  "stopped_at_epoch": 1791254993.7535875,
+  "pid": 2459060,
+  "reason": "PDF retrieval markers L14@P1 were not stripped by visible-source quote validation, causing false rejection and retries.",
+  "completed_call_usage": {
+    "calls": 14,
+    "failed_calls": 9,
+    "missing_usage_calls": 0,
+    "input_tokens": 315560,
+    "cached_input_tokens": 111104,
+    "output_tokens": 60606,
+    "reasoning_output_tokens": 41183
+  },
+  "quota_before_stop": {
+    "at_epoch": 1791254994.471682,
+    "auth_type": "chatgpt",
+    "ordinary_usage_allowed": true,
+    "buckets": {
+      "codex": {
+        "primary": {
+          "usedPercent": 92,
+          "windowDurationMins": 10080,
+          "resetsAt": 1791615649
+        },
+        "secondary": null,
+        "credits": {
+          "hasCredits": false,
+          "unlimited": false,
+          "balance": "0"
+        },
+        "rateLimitReachedType": null,
+        "spendControlReached": false
+      }
+    }
+  },
+  "interrupted_call_usage": "Unknown: in-flight processes terminated before a turn.completed usage event. Do not treat measured usage as full cost or use this run for model selection.",
+  "live_database_modified": false,
+  "next_step": "Correct validator and restart in a new directory; preserve this failed run."
+}

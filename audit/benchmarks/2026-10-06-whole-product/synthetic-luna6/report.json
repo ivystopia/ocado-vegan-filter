@@ -1,0 +1,96 @@
+{
+  "fixture_sha256": "af5e03754df2758d84213460f1a9685204a7dcb8cb66e8638e7db3cf851d3fff",
+  "selected_case_hash": "2499d4cb195ad676c846e99d047fdca7b28ea01160e51734fd4d6c95c4fe73a9",
+  "policy_version": "whole-product-v1",
+  "knowledge_version": "vegan-risk-registry-v1",
+  "prompt_version": "ocado-vegan-whole-product-json-v8",
+  "arbitration_prompt_version": "ocado-vegan-whole-product-arbitration-v2",
+  "schema_sha256": "1d38ab3c667c4df8b886b8dbd16d0ca2ee5d83cdfd1b2dd625094be5ffa9bb42",
+  "mode": "pipeline",
+  "model": "gpt-6-luna",
+  "effort": "high",
+  "arbitration_model": "gpt-6.1-sol",
+  "arbitration_effort": "medium",
+  "batch_size": 8,
+  "repetitions": 1,
+  "seed": 20261006,
+  "split": "synthetic",
+  "runs": [
+    {
+      "cases": 240,
+      "scored_cases": 239,
+      "operational_errors": [
+        "synthetic.36.0"
+      ],
+      "missing_cases": [],
+      "exact_matches": 238,
+      "mismatches": [
+        "synthetic.47.4"
+      ],
+      "unsafe_positives": [
+        "synthetic.47.4"
+      ],
+      "unsupported_promotion_rate": 0.008547008547008548,
+      "reason_errors": [
+        "synthetic.47.4"
+      ],
+      "missing_required_issues": [],
+      "vegan_recall": 1.0,
+      "per_route_recall": {
+        "tagged": {
+          "eligible": 34,
+          "recovered": 34,
+          "recall": 1.0
+        },
+        "manufacturer": {
+          "eligible": 34,
+          "recovered": 34,
+          "recall": 1.0
+        },
+        "name": {
+          "eligible": 30,
+          "recovered": 30,
+          "recall": 1.0
+        },
+        "ingredients": {
+          "eligible": 18,
+          "recovered": 18,
+          "recall": 1.0
+        }
+      },
+      "outcomes": {
+        "nonvegan": 60,
+        "unknown": 62,
+        "vegan": 117
+      },
+      "primary_disagreements": [
+        "synthetic.47.0",
+        "synthetic.40.0"
+      ],
+      "arbitrated_cases": [
+        "synthetic.47.0",
+        "synthetic.40.0"
+      ],
+      "usage": {
+        "calls": 47,
+        "failed_calls": 4,
+        "missing_usage_calls": 0,
+        "input_tokens": 490320,
+        "cached_input_tokens": 206336,
+        "output_tokens": 47966,
+        "reasoning_output_tokens": 23980
+      }
+    }
+  ],
+  "state": "completed",
+  "usage": {
+    "calls": 47,
+    "failed_calls": 4,
+    "missing_usage_calls": 0,
+    "input_tokens": 490320,
+    "cached_input_tokens": 206336,
+    "output_tokens": 47966,
+    "reasoning_output_tokens": 23980
+  },
+  "release_challenge_passed": false
+}

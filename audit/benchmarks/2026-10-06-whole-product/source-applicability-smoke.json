@@ -1,0 +1,614 @@
+{
+  "schema_version": 2,
+  "policy_version": "whole-product-v1",
+  "cases": [
+    {
+      "case_id": "natural.663711011",
+      "case_kind": "natural",
+      "sampling_stratum": "manufacturer",
+      "current_on_ocado": 1,
+      "classifier_input": {
+        "product": {
+          "id": "663711011",
+          "name": "M&S Frankincense and Myrrh Star Candle, Chrome",
+          "brand": "M&S",
+          "url": "https://www.ocado.com/products/663711011/details",
+          "official_vegan": 0,
+          "detailed_description": "This scented candle is presented in an elegant star-shaped glass jar and embellished with lustrous mercury detailing. Its sweet and spicy scent combines warming myrrh and frankincense with vanilla, voilet, lavender, zesty orange and rich clove. This fragrance is part of the Amber family of fragrances. Amber scents are rich and warming and may contain notes such as vanilla, pepper, tonka bean and amber.",
+          "preparation_and_usage": "Never leave a burning candle unattended. Not suitable for children. Keep out of the reach of children and pets. Do not burn candles on or near anything that can catch fire. Always read instructions carefully and retain all packaging for future reference.",
+          "specification": "- Burns up to 35 hours - Approved by Cruelty Free International,Suitable for vegans"
+        },
+        "flags": [],
+        "categories": [
+          "home-garden/home-fragrance/scented-candles/jars"
+        ],
+        "manufacturer_vegan_evidence": [
+          {
+            "field_title": "specification",
+            "content": "- Burns up to 35 hours - Approved by Cruelty Free International,Suitable for vegans"
+          }
+        ]
+      },
+      "input_sha256": "710e5e72c2d58f88c36bb38866c154cd6248ee3a071c64ff4bdb0eefa6ef3f11",
+      "adjudication": {
+        "state": "accepted",
+        "reference_type": "frozen-evidence-sufficiency",
+        "method": "two fresh automated evidence readings with validated citations; no human review",
+        "readings": [
+          {
+            "annotation": {
+              "case_id": "natural.663711011",
+              "expected_status": "vegan",
+              "expected_reason": "manufacturer",
+              "required_issue_codes": [],
+              "input_refs": [
+                {
+                  "path": "/manufacturer_vegan_evidence/0/content",
+                  "quote": "Approved by Cruelty Free International,Suitable for vegans"
+                }
+              ],
+              "rationale": "The candle specification explicitly confirms whole-product vegan suitability. The separate cruelty-free claim alone would not suffice.",
+              "external_status": "unknown",
+              "source_id": null,
+              "external_quote": "",
+              "scope_match": "No retained primary source supplied."
+            },
+            "input_sha256": "710e5e72c2d58f88c36bb38866c154cd6248ee3a071c64ff4bdb0eefa6ef3f11",
+            "call_id": "954c872b-1ef0-4815-a74e-5b4a600cdece",
+            "model": "gpt-6.1-sol",
+            "effort": "high",
+            "prompt_version": "blind-evidence-adjudication-v2"
+          },
+          {
+            "annotation": {
+              "case_id": "natural.663711011",
+              "expected_status": "vegan",
+              "expected_reason": "manufacturer",
+              "required_issue_codes": [],
+              "input_refs": [
+                {
+                  "path": "/manufacturer_vegan_evidence/0/content",
+                  "quote": "- Burns up to 35 hours - Approved by Cruelty Free International,Suitable for vegans"
+                }
+              ],
+              "rationale": "The product-specific specification explicitly states suitability for vegans. This establishes the candle's status; cruelty-free approval alone would not.",
+              "external_status": "unknown",
+              "source_id": null,
+              "external_quote": "",
+              "scope_match": "No retained external primary source supplied."
+            },
+            "input_sha256": "710e5e72c2d58f88c36bb38866c154cd6248ee3a071c64ff4bdb0eefa6ef3f11",
+            "call_id": "1c9ef9f0-9aab-4779-8e15-fdd0136502e9",
+            "model": "gpt-6.1-sol",
+            "effort": "high",
+            "prompt_version": "blind-evidence-adjudication-v2"
+          }
+        ]
+      },
+      "expected": {
+        "vegan_status": "vegan",
+        "vegan_reason": "manufacturer",
+        "required_issue_codes": []
+      },
+      "split": "development",
+      "leakage_group": "natural.502443011",
+      "source_metadata": []
+    },
+    {
+      "case_id": "natural.581355011",
+      "case_kind": "natural",
+      "sampling_stratum": "manufacturer",
+      "current_on_ocado": 1,
+      "classifier_input": {
+        "product": {
+          "id": "581355011",
+          "name": "M&S Apothecary Cleansing Balm",
+          "brand": "M&S",
+          "url": "https://www.ocado.com/products/581355011/details",
+          "official_vegan": 0,
+          "ingredients": "Vitis vinifera seed oil, caprylic/capric triglyceride, polysorbate 85, kaolin, cetyl alcohol, euphorbia cerifera cera, silica, butyrospermum parkii butter, carthamus tinctorius seed oil, parfum, theobroma cacao seed butter, tocopheryl acetate, aloe barbadensis leaf extract, hydrogenated vegetable oil, prunus amygdalus dulcis oil, citral, persea gratissima oil, rosa canina fruit oil, simmondsia chinensis seed oil, linalool, limonene, eugenol, geraniol, lavandula angustifolia extract, tocopherol, citric acid.",
+          "detailed_description": "Give your skin a rejuvenated glow with this cleansing balm from our Apothecary range. With its aromatherapeutic blend of essential oils of eucalyptus, lavender, lemongrass and sandalwood, this butter-soft balm will leave skin feeling nourished and with a light scent. It deeply cleanses to remove all traces of makeup, including waterproof formulas.",
+          "preparation_and_usage": "With clean and dry hands massage a small amount of cleanser into skin Soak a muslin cloth in warm water and place over your face for up to a minute Take a few deep breaths and then use the muslin cloth to wash away the cleanser",
+          "specification": "Avoid direct contact with the eyes. Store in a cool dry place. Suitable for all skin types Cruelty Free Suitable for vegans"
+        },
+        "flags": [],
+        "categories": [
+          "beauty-toiletries/skincare/cleanser",
+          "beauty-toiletries/skincare/cleansers-toners/cleansers-face-wash",
+          "beauty-toiletries/skincare/m-s",
+          "m-s/m-s-homeware-beauty/m-s-home-fragrance-beauty/m-s-beauty"
+        ],
+        "manufacturer_vegan_evidence": [
+          {
+            "field_title": "specification",
+            "content": "Avoid direct contact with the eyes. Store in a cool dry place. Suitable for all skin types Cruelty Free Suitable for vegans"
+          }
+        ]
+      },
+      "input_sha256": "33d86762456040b20ec7c65ae7fc429996336b3431560370d61f47106981d100",
+      "adjudication": {
+        "state": "accepted",
+        "reference_type": "frozen-evidence-sufficiency",
+        "method": "two fresh automated evidence readings with validated citations; no human review",
+        "readings": [
+          {
+            "annotation": {
+              "case_id": "natural.581355011",
+              "expected_status": "vegan",
+              "expected_reason": "manufacturer",
+              "required_issue_codes": [],
+              "input_refs": [
+                {
+                  "path": "/manufacturer_vegan_evidence/0/content",
+                  "quote": "Avoid direct contact with the eyes. Store in a cool dry place. Suitable for all skin types Cruelty Free Suitable for vegans"
+                }
+              ],
+              "rationale": "The applicable manufacturer specification explicitly confirms the whole balm is suitable for vegans, resolving generic ingredient-source ambiguity.",
+              "external_status": "unknown",
+              "source_id": null,
+              "external_quote": "",
+              "scope_match": "No retained external primary source supplied."
+            },
+            "input_sha256": "33d86762456040b20ec7c65ae7fc429996336b3431560370d61f47106981d100",
+            "call_id": "8dd76df3-40da-4bde-aebf-422a65d6084d",
+            "model": "gpt-6.1-sol",
+            "effort": "high",
+            "prompt_version": "blind-evidence-adjudication-v2"
+          },
+          {
+            "annotation": {
+              "case_id": "natural.581355011",
+              "expected_status": "vegan",
+              "expected_reason": "manufacturer",
+              "required_issue_codes": [],
+              "input_refs": [
+                {
+                  "path": "/manufacturer_vegan_evidence/0/content",
+                  "quote": "Suitable for all skin types Cruelty Free Suitable for vegans"
+                }
+              ],
+              "rationale": "The applicable whole-product vegan confirmation resolves generic cosmetic ingredient sourcing uncertainties. Cruelty-free wording alone would not establish vegan composition.",
+              "external_status": "unknown",
+              "source_id": null,
+              "external_quote": "",
+              "scope_match": "No retained external primary source supplied."
+            },
+            "input_sha256": "33d86762456040b20ec7c65ae7fc429996336b3431560370d61f47106981d100",
+            "call_id": "dee73bed-3d4d-474e-bcfa-9a946810e8e7",
+            "model": "gpt-6.1-sol",
+            "effort": "high",
+            "prompt_version": "blind-evidence-adjudication-v2"
+          }
+        ]
+      },
+      "expected": {
+        "vegan_status": "vegan",
+        "vegan_reason": "manufacturer",
+        "required_issue_codes": []
+      },
+      "split": "development",
+      "leakage_group": "natural.502443011",
+      "source_metadata": []
+    },
+    {
+      "case_id": "natural.651228011",
+      "case_kind": "natural",
+      "sampling_stratum": "unknown",
+      "current_on_ocado": 1,
+      "classifier_input": {
+        "product": {
+          "id": "651228011",
+          "name": "M&S Wild Meadow Single Candle, Ochre",
+          "brand": "M&S",
+          "url": "https://www.ocado.com/products/651228011/details",
+          "official_vegan": 0,
+          "detailed_description": "Bring the outdoors in with the Wild Meadow scented candle from the Scentiments\u2122 range. This fresh fragrance combines top notes of apple and raspberry with a heart of rose and jasmine, and a base of earthy moss and sandalwood. The candle comes in a stylish glass jar.",
+          "preparation_and_usage": "Height 8.9 cm Width 8.4 cm Length 8.4 cm",
+          "specification": "- Burns up to 35 hours"
+        },
+        "flags": [],
+        "categories": [
+          "events-inspiration/clearance/home-cleaning",
+          "home-garden/home-fragrance/scented-candles/jars",
+          "m-s/m-s-homeware-beauty/m-s-home-fragrance-beauty/m-s-home-fragrance"
+        ],
+        "manufacturer_vegan_evidence": [],
+        "manufacturer_source_candidates": [
+          {
+            "source_id": "5a7a51ca4c4d694283e448e0635dcdff74034c95be54a1f6a5b7d084313c5828",
+            "source_url": "https://www.marksandspencer.com/wild-meadow-scented-candle/p/hbp60780526",
+            "source_text": "Wild Meadow Scented Candle by Scentiments\u2122 at M&S (https://www.marksandspencer.com/wild-meadow-scented-candle/p/hbp60780526)\n\ue200cite\ue202turn3450view0\ue201 [wordlim: 200] Crawled: last week; Content type: text/html; Source: open({\"ref_id\":\"https://www.marksandspencer.com/wild-meadow-scented-candle/p/hbp60780526\",\"lineno\":1030}); Total lines: 1264\nL871: \ue200cite\ue202595\u2020Offers\ue201 L872: \nL873: \ue200cite\ue202596\u2020Price Drop\ue201 L874: \nL875:   * \ue200cite\ue202597\u2020All Price Drop\ue201 L876:   * \ue200cite\ue202598\u2020Women's Price Drop\ue201 L877:   * \ue200cite\ue202599\u2020Men's Price Drop\ue201 L878: \nL879: Shop Women's Offers\nL880: \nL881:   * \ue200cite\ue202600\u2020Up to 30% off Women's Brands\ue201 L882:   * \ue200cite\ue202601\u2020Up to 30% off Beauty\ue201 L883:   * \ue200cite\ue202602\u202020% off selected Monsoon\ue201 L884:   * \ue200cite\ue202603\u202020% off selected Sosandar\ue201 L895: \ue200cite\ue202612\u2020Shop Home offers\ue201 L896: \nL897:   * \ue200cite\ue202613\u202020% off selected Bedding\ue201 L898:   * \ue200cite\ue202614\u202020% off selected Kitchenware\ue201 L899:   * \ue200cite\ue202615\u202020% off selected Lighting\ue201 L900:   * \ue200cite\ue202616\u202020% off selected Home Furnishings\ue201 L901: \nL902: Shop Men's Offers\nL903: \nL904:   * \ue200cite\ue202617\u2020All Men's Offers\ue201 L905:   * \ue200cite\ue202618\u2020Up to 30% off Men's Brands\ue201 L906:   * \ue200cite\ue202619\u202020% off Sportswear\ue201 L907:   * \ue200cite\ue202620\u2020Sartorial Shirts Offers\ue201 L908:   * \ue200cite\ue202621\u20203 for \u00a322 on selected T-Shirts\ue201 L909:   * \ue200cite\ue202622\u202030% off selected Swimwear Brands\ue201 L910: \nL911: Shop Kids' Offers\nL912:   * \ue200cite\ue202623\u202010% off Baby Grows - Join Baby Club\ue201 L913:   * \ue200cite\ue202624\u202020% off selected Skechers\ue201 L914:   * \ue200cite\ue202625\u2020Mamas & Papas Offers\ue201 L915: \nL916: \ue200cite\ue202626\u2020Up to 30% off Beauty\ue201 L917: \nL918: \ue200cite\ue202627\u2020Up to 30% off Women's Brands\ue201 L919: \nL920: \ue200cite\ue202628\u202020% off selected Home\ue201 L921: \nL922: \ue200cite\ue202629\u2020Up to 30% off Men's Brands\ue201 L923: \nL924: \ue200cite\ue202630\u202020% off Sportswear\ue201 L925: \nL926: \ue200cite\ue202631\u2020All Clearance\ue201 L927: \nL928: \ue200cite\ue202632\u2020All Price Drop\ue201 L929: \nL930: \ue200cite\ue202633\u2020Clearance\ue201 L931: \nL932: \ue200cite\ue202634\u2020Women's Clearance\ue201 L933: \nL934:   * \ue200cite\ue202635\u2020All Women's Clearance\ue201 L935:   * \ue200cite\ue202636\u2020Jackets & Coats\ue201 L936:   * \ue200cite\ue202637\u2020Dresses\ue201 L937:   * \ue200cite\ue202638\u2020Jumpers & Cardigans\ue201 L938:   * \ue200cite\ue202639\u2020Tops\ue201 L939:   * \ue200cite\ue202640\u2020Trousers\ue201 L940: \ue200cite\ue202641\u2020Men's Clearance\ue201 L941: \nL942:   * \ue200cite\ue202642\u2020All Men's Clearance\ue201 L943:   * \ue200cite\ue202643\u2020Jackets & Coats\ue201 L944:   * \ue200cite\ue202644\u2020Jumpers\ue201 L945:   * \ue200cite\ue202645\u2020Shirts\ue201 L946:   * \ue200cite\ue202646\u2020Tops\ue201 L947:   * \ue200cite\ue202647\u2020Trousers\ue201 L948: \nL949: \ue200cite\ue202648\u2020Lingerie Clearance\ue201 L950: \nL951:   * \ue200cite\ue202649\u2020All Lingerie Clearance\ue201 L952:   * \ue200cite\ue202650\u2020Bras\ue201 L953:   * \ue200cite\ue202651\u2020Knickers\ue201 L954: \nL955: \ue200cite\ue202652\u2020Price Drop\ue201 L956: \nL957:   * \ue200cite\ue202653\u2020All Price Drop\ue201 L958:   * \ue200cite\ue202654\u2020Women's Price Drop\ue201 L959:   * \ue200cite\ue202655\u2020Men's Price Drop\ue201 L960: \nL961: \ue200cite\ue202656\u2020All Clearance\ue201 L962: \nL963: \ue200cite\ue202657\u2020Women's Clearance\ue201 L964: \nL965: \ue200cite\ue202658\u2020Men's Clearance\ue201 L966: \nL967: \ue200cite\ue202659\u2020Lingerie Clearance\ue201 L968: \nL969: \ue200cite\ue202660\u2020Brands Clearance\ue201 L970: \nL971: \ue200cite\ue202661\u2020Money\ue201 L972: \nL973: \ue200cite\ue202662\u2020Credit Card\ue201 L974:   * \ue200cite\ue202663\u2020M&S Rewards Credit Card\ue201 L975:   * \ue200cite\ue202664\u2020Club Rewards\ue201 L976:   * \ue200cite\ue202665\u2020M&S Credit Card Transfer Plus\ue201 L977:   * \ue200cite\ue202666\u2020M&S Credit Card Purchase Plus\ue201 L978:   * \ue200cite\ue202667\u2020Our Credit Cards\ue201 L979:   * \ue200cite\ue202668\u2020Digital Rewards\ue201 L980:   * \ue200cite\ue202669\u2020Mobile App\u2020bank.marksandspencer.com\ue201 L981: \nL982: \ue200cite\ue202670\u2020Insurance\ue201 L983: \nL984:   * \ue200cite\ue202671\u2020Travel Insurance\ue201 L985:   * \ue200cite\ue202672\u2020Pet Insurance\ue201 L986:   * \ue200cite\ue202673\u2020Home Insurance\ue201 L987:   * \ue200cite\ue202674\u2020Car Insurance\u2020bank.marksandspencer.com\ue201 L988: \nL989: \ue200cite\ue202675\u2020Sparks Pay\ue201 L990: \nL991:   * \ue200cite\ue202676\u2020Sign In\ue201 L992: \nL993: \ue200cite\ue202677\u2020Travel Money\u2020mandstravelmoney.com\ue201 L994:   * \ue200cite\ue202678\u2020Buy Travel Money\u2020mandstravelmoney.com\ue201 L995:   * \ue200cite\ue202679\u2020Buy Euros\u2020mandstravelmoney.com\ue201 L996:   * \ue200cite\ue202680\u2020Buy US Dollars\u2020mandstravelmoney.com\ue201 L997:   * \ue200cite\ue202681\u2020Sell Travel Money\u2020mandstravelmoney.com\ue201 L998:   * \ue200cite\ue202682\u2020Exchange Rates\u2020mandstravelmoney.com\ue201 L999: \nL1000: Additional Services\nL1001: \nL1002:   * \ue200cite\ue202683\u2020Saving & Investing\u2020bank.marksandspencer.com\ue201 L1003:   * \ue200cite\ue202684\u2020Personal Loans\u2020bank.marksandspencer.com\ue201 L1004:   * \ue200cite\ue202685\u2020Financial Support\u2020bank.marksandspencer.com\ue201 L1005:   * \ue200cite\ue202686\u2020Internet Banking\u2020bank.marksandspencer.com\ue201 L1006: \nL1007: \ue200cite\ue202687\u2020Credit Card\ue201 L1008: \nL1009: \ue200cite\ue202688\u2020Club Rewards\ue201 L1010: \ue200cite\ue202689\u2020Travel Money\u2020mandstravelmoney.com\ue201 L1011: \nL1012: \ue200cite\ue202690\u2020Insurance\ue201 L1013: \nL1014: \ue200cite\ue202691\u2020Find store\ue201 \ue200cite\ue202692\u2020Sparks\ue201 L1015: \nL1016:   * \ue200cite\ue202693\u2020Help\ue201 L1017:   * \ue200cite\ue202694\u2020Contact Us\ue201 L1018:   * \ue200cite\ue202695\u2020Register\ue201 L1019: # Wild Meadow Scented Candle\nL1020: \nL1021: You are here:\nL1022: \nL1023:   * \ue200cite\ue202696\u2020Image: Wild Meadow Scented Candle 1 of 4\u2020assets.digitalcontent.marksandspencer.app\ue201 L1024: \nL1025:   * \ue200cite\ue202697\u2020Image: Wild Meadow Scented Candle 2 of 4\u2020assets.digitalcontent.marksandspencer.app\ue201 L1026: \nL1027:   * \ue200cite\ue202698\u2020Image: Wild Meadow Scented Candle 3 of 4\u2020assets.digitalcontent.marksandspencer.app\ue201 L1028: \nL1029:   * \ue200cite\ue202699\u2020Image: Wild Meadow Scented Candle 4 of 4\u2020assets.digitalcontent.marksandspencer.app\ue201 L1030: \nL1031: Product code: T804090M\nL1032: Conjure up memories of calming walks in nature with this wild meadow scented candle from the Scentiments\u2122 collection. It combines notes of fruity cassis with floral rose and earthy sandalwood for a fresh, spring-like scent. Housed in a colourful glass jar, it will burn for up to 35 hours.\nL1033: \nL1034: This fragrance is part of the Floral family of fragrances. Floral scents are feminine, soft and uplifting and will often include notes such as jasmine, mimosa, rose, peony and tuberose amongst others.\nL1035: ## Product details\nL1036: \nL1037: Dimensions\nL1038: \nL1039: \u2022\nL1040: \nL1041: Height: 8.9 cm\nL1042: \nL1043: \u2022\nL1044: \nL1045: Width: 8.4 cm\nL1046: \nL1047: \u2022\nL1048: \nL1049: Length: 8.4 cm\nL1050: \nL1051: Item details\nL1052: \nL1053: \u2022\nL1054: \nL1055: Burns up to 35 hours\nL1056: \nL1057: Safety Warning\nL1058: \nL1059: \u2022\nL1060: \nL1061: Never leave a burning candle unattended.\nL1062: \nL1063: \u2022\nL1064: \nL1065: Not suitable for children.\nL1066: \nL1067: \u2022\nL1068: \nL1069: Keep out of the reach of children and pets.\nL1070: \nL1071: \u2022\nL1072: \nL1073: Do not burn candles on or near anything that can catch fire.Always read instructions carefully and retain all packaging for future reference.\nL1074: \nL1075: Features\nL1076: \nL1077: Approved by Cruelty Free International\nL1078: \nL1079: Suitable for vegans\nL1080: \nL1081: Product details\nL1082: ## Delivery, collection & returns\nL1083: \nL1084: Delivery\nL1085: \nL1086: Standard\nL1087: \nL1088: UK Standard Delivery is available for \u00a33.99 or free on orders over \u00a375 (excluding furniture).\nL1089: \nL1090: Nominated Day\nL1091: \nL1092: UK Next Day Delivery and UK Nominated Day Delivery (excluding Northern Ireland) are available for \u00a35.99 (excluding furniture)\nL1093: \nL1094: Collection\nL1095: \nL1096: Collect from store\nL1097: \nL1098: Store collection is free on all fashion, home and beauty orders.\nL1099: \nL1100: Returns\nL1101: \nL1102: UK returns\nL1103: \nL1104: Free\nL1105: \nL1106: Exclusions apply\nL1107: \nL1108: \ue200cite\ue202700\u2020Full delivery and collection information\ue201 \ue200cite\ue202701\u2020Our returns policy\ue201 L1109: Delivery, collection & returns\nL1110: \nL1111: Scentiments\u2122\nL1112: ## Wild Meadow Scented Candle\nL1113: \nL1114: \u00a310\nL1115: \nL1116: 1 review\nL1117: \nL1118: Colour\nL1119: \nL1120: Colour Pink Mix Out of stock online\nL1121: \nL1122: Add to wishlist\nL1123: \nL1124: Please provide contact details\nL1125: \nL1126: Please enter your contact details and we will notify you if the item becomes available again.\nL1127: \nL1128: email address\nL1129: \nL1130: [Input: Email address]\nL1131: \nL1132: [Button: Notify me]\nL1133: \nL1134: Matching items: \ue200cite\ue202702\u2020Room Spray\ue201 L1135: \nL1136: ### Reviews (1)\nL1137: \nL1138: #### 5.0\nL1139: #### Value for Money\nL1140: \nL1141: Value for Money (1 = Poor, 3 = Average, 5 = Excellent): scores 5 out of 5\nL1142: \nL1143: Poor Average Excellent\nL1144: \nL1145: Rating\nL1146: \nL1147: [Select]\nL1148: \nL1149: Sort by\nL1150: \nL1151: [Select]\nL1152: \nL1153: 27 April 2026 Bobwen\nL1154: \nL1155: Verified Purchase\nL1156: \nL1157: Lovely scented candle\nL1158: \nL1159: Beautiful scented candle in a nice glass jar... ....\nL1160: \nL1161: Reviewer Ratings\nL1162: \nL1163: Value for Money\nL1164: \nL1165: Excellent\nL1166: \nL1167: [Button: Read more]\nL1168: \nL1169: Helpful?\nL1170: \nL1171: 1\nL1172: \nL1173: 0\nL1174: \nL1175: [Button: Report Review]\nL1176: \nL1177: Please tell us why you are reporting this review?\nL1178: \nL1179: [Button: Submit][Button: Cancel]\nL1180: \nL1181: Reviewer Ratings\nL1182: \nL1183: Value for Money\nL1184: Excellent\nL1185: \nL1186:   * \ue200cite\ue202703\u2020Free delivery when you spend over \u00a375*\ue201 L1187:   * \ue200cite\ue202703\u2020Next-day Click & Collect\ue201 L1188:   * \ue200cite\ue202704\u2020Free returns for online orders\ue201 L1189: \nL1190: Register to receive exclusive offers tailored to you, plus rewards and promotions before anyone else. Just select \u2018YES\u2019 on the next page and never miss a thing.\nL1191: \nL1192: Enter your email address\nL1193: \nL1194: [Input]\nL1195: \nL1196: [Button: Sign me up]\nL1197: ## Here to Help\nL1198: \nL1199:   * \ue200cite\ue202705\u2020Help & contact us\ue201 L1200:   * \ue200cite\ue202706\u2020Find a store\ue201 L1201:   * \ue200cite\ue202707\u2020Accessibility in our stores\u2020www.accessable.co.uk\ue201 L1202:   * \ue200cite\ue202708\u2020Product recalls\ue201 L1203: \nL1204: ## Delivery & Returns\nL1205: \nL1206:   * \ue200cite\ue202709\u2020Where's my order?\ue201 L1207:   * \ue200cite\ue202710\u2020Delivery & collection\ue201 L1208:   * \ue200cite\ue202711\u2020Guest order tracking\ue201 L1209:   * \ue200cite\ue202712\u2020Guest order return\ue201 L1210:   * \ue200cite\ue202713\u2020Returns & refunds\ue201 L1211: \nL1212: ## Shopping with Us\nL1213: \nL1214:   * \ue200cite\ue202714\u2020Sparks\ue201 L1215:   * \ue200cite\ue202715\u2020Sparks FAQs\ue201 L1216:   * \ue200cite\ue202716\u2020Gift card balance\ue201 L1217:   * \ue200cite\ue202717\u2020Size guides\ue201 L1218:   * \ue200cite\ue202718\u2020Sustainability\ue201 L1219: ## More from M&S\nL1220: \nL1221:   * \ue200cite\ue202719\u2020Ocado\u2020www.ocado.com\ue201 L1222:   * \ue200cite\ue202720\u2020Corporate site\u2020corporate.marksandspencer.com\ue201 L1223:   * \ue200cite\ue202721\u2020M&S Corporate Gifts\ue201 L1224:   * \ue200cite\ue202722\u2020M&S Money\ue201 L1225:   * \ue200cite\ue202723\u2020M&S Opticians\u2020www.mandsopticians.com\ue201 L1226:   * \ue200cite\ue202724\u2020Careers\u2020careers.marksandspencer.com\ue201 L1227: \nL1228: ## Here to Help\nL1229: \nL1230:   * \ue200cite\ue202705\u2020Help & contact us\ue201 L1231:   * \ue200cite\ue202706\u2020Find a store\ue201 L1232:   * \ue200cite\ue202707\u2020Accessibility in our stores\u2020www.accessable.co.uk\ue201 L1233:   * \ue200cite\ue202708\u2020Product recalls\ue201 L1234: ## Delivery & Returns\nL1235: \nL1236:   * \ue200cite\ue202709\u2020Where's my order?\ue201 L1237:   * \ue200cite\ue202710\u2020Delivery & collection\ue201 L1238:   * \ue200cite\ue202711\u2020Guest order tracking\ue201 L1239:   * \ue200cite\ue202712\u2020Guest order return\ue201 L1240:   * \ue200cite\ue202713\u2020Returns & refunds\ue201 L1241: \nL1242: ## Shopping with Us\nL1243: \nL1244:   * \ue200cite\ue202714\u2020Sparks\ue201 L1245:   * \ue200cite\ue202715\u2020Sparks FAQs\ue201 L1246:   * \ue200cite\ue202716\u2020Gift card balance\ue201 L1247:   * \ue200cite\ue202717\u2020Size guides\ue201 L1248:   * \ue200cite\ue202718\u2020Sustainability\ue201 L1249: ## More from M&S\nL1250: \nL1251:   * \ue200cite\ue202719\u2020Ocado\u2020www.ocado.com\ue201 L1252:   * \ue200cite\ue202720\u2020Corporate site\u2020corporate.marksandspencer.com\ue201 L1253:   * \ue200cite\ue202721\u2020M&S Corporate Gifts\ue201 L1254:   * \ue200cite\ue202722\u2020M&S Money\ue201 L1255:   * \ue200cite\ue202723\u2020M&S Opticians\u2020www.mandsopticians.com\ue201 L1256:   * \ue200cite\ue202724\u2020Careers\u2020careers.marksandspencer.com\ue201 L1257: \nL1258: \ue200cite\ue202725\u2020Image: We accept M&S Money Logo\u2020images.ctfassets.net\ue201 \ue200cite\ue202726\u2020Image: We accept Visa card\u2020images.ctfassets.net\ue201 \ue200cite\ue202727\u2020Image: We accept Mastercard\u2020images.ctfassets.net\ue201 \ue200cite\ue202728\u2020Image: We accept Amex\u2020images.ctfassets.net\ue201 L1259: \ue200cite\ue202729\u2020Image: We accept Apple Pay\u2020images.ctfassets.net\ue201 \ue200cite\ue202730\u2020Image: We accept PayPal\u2020images.ctfassets.net\ue201 L1260: \nL1261: United Kingdom (\u00a3)\nL1262: \nL1263: \u00a9 2026 Marks and Spencer plc (UK)\ue200cite\ue202731\u2020Terms & Conditions\ue201 \ue200cite\ue202732\u2020Privacy\ue201 \ue200cite\ue202733\u2020Cookies\ue201 [Button: Manage cookies]\ue200cite\ue202734\u2020Accessibility\u2020corporate.marksandspencer.com\ue201 \ue200cite\ue202735\u2020Modern Slavery Act\u2020corporate.marksandspencer.com\ue201 \n",
+            "source_sha256": "168ea17b9a8e7485e2a282bac536dd1cc3c16280d496d3f8d0665c86aedf7a7c",
+            "retrieved_at": "2026-09-13T18:36:01.574170+00:00",
+            "official_identity": "Publication on the M&S manufacturer website.",
+            "market_scope": "UK M&S manufacturer publication; its stated product/family and market restrictions apply.",
+            "association_status": "catalogue_match"
+          }
+        ]
+      },
+      "input_sha256": "d7576ff8fa3c71cf4f2a375582b0eddcbc818da0673ecc912e9226806d0baf43",
+      "adjudication": {
+        "state": "accepted",
+        "reference_type": "frozen-evidence-sufficiency",
+        "method": "two fresh automated evidence readings with validated citations; no human review",
+        "readings": [
+          {
+            "annotation": {
+              "case_id": "natural.651228011",
+              "expected_status": "unknown",
+              "expected_reason": null,
+              "required_issue_codes": [
+                "identity_conflict",
+                "claim_scope_mismatch",
+                "composition_incomplete"
+              ],
+              "input_refs": [
+                {
+                  "path": "/product/name",
+                  "quote": "M&S Wild Meadow Single Candle, Ochre"
+                },
+                {
+                  "path": "/product/detailed_description",
+                  "quote": "top notes of apple and raspberry"
+                },
+                {
+                  "path": "/manufacturer_source_candidates/0/source_text",
+                  "quote": "Colour Pink Mix Out of stock online"
+                },
+                {
+                  "path": "/manufacturer_source_candidates/0/source_text",
+                  "quote": "Suitable for vegans"
+                }
+              ],
+              "rationale": "The source's vegan claim concerns a Pink Mix candle with cassis notes, while the supplied product is Ochre with apple and raspberry notes. Matching dimensions and burn time do not establish the exact variant or formulation. Complete candle composition is absent.",
+              "external_status": "unknown",
+              "source_id": "5a7a51ca4c4d694283e448e0635dcdff74034c95be54a1f6a5b7d084313c5828",
+              "external_quote": "Colour Pink Mix Out of stock online",
+              "scope_match": "The UK page retained 13 September 2026 establishes suitability for its displayed Pink Mix product, but does not establish applicability to the supplied Ochre candle or its formulation."
+            },
+            "input_sha256": "d7576ff8fa3c71cf4f2a375582b0eddcbc818da0673ecc912e9226806d0baf43",
+            "call_id": "b2f381ce-af21-4df7-9585-81dca7821c26",
+            "model": "gpt-6.1-sol",
+            "effort": "high",
+            "prompt_version": "blind-evidence-adjudication-v5"
+          },
+          {
+            "annotation": {
+              "case_id": "natural.651228011",
+              "expected_status": "unknown",
+              "expected_reason": null,
+              "required_issue_codes": [
+                "identity_conflict",
+                "claim_scope_mismatch",
+                "composition_incomplete"
+              ],
+              "input_refs": [
+                {
+                  "path": "/product/name",
+                  "quote": "M&S Wild Meadow Single Candle, Ochre"
+                },
+                {
+                  "path": "/product/detailed_description",
+                  "quote": "top notes of apple and raspberry"
+                },
+                {
+                  "path": "/manufacturer_source_candidates/0/source_text",
+                  "quote": "Colour Pink Mix Out of stock online"
+                },
+                {
+                  "path": "/manufacturer_source_candidates/0/source_text",
+                  "quote": "notes of fruity cassis"
+                },
+                {
+                  "path": "/manufacturer_source_candidates/0/source_text",
+                  "quote": "Suitable for vegans"
+                }
+              ],
+              "rationale": "The manufacturer claim accompanies a Pink Mix candle with a different fragrance description, so matching dimensions and burn time do not establish applicability to the Ochre variant. The supplied candle lacks complete composition or an applicable whole-product claim.",
+              "external_status": "unknown",
+              "source_id": "5a7a51ca4c4d694283e448e0635dcdff74034c95be54a1f6a5b7d084313c5828",
+              "external_quote": "Colour Pink Mix Out of stock online",
+              "scope_match": "Retained UK page captured 13 September 2026 identifies Pink Mix, product code T804090M, with cassis fragrance notes. Its vegan claim cannot establish the exact Ochre candle's formulation or status."
+            },
+            "input_sha256": "d7576ff8fa3c71cf4f2a375582b0eddcbc818da0673ecc912e9226806d0baf43",
+            "call_id": "243add00-94d1-4141-bf08-0c9073c73643",
+            "model": "gpt-6.1-sol",
+            "effort": "high",
+            "prompt_version": "blind-evidence-adjudication-v5"
+          }
+        ]
+      },
+      "expected": {
+        "vegan_status": "unknown",
+        "vegan_reason": null,
+        "required_issue_codes": [
+          "claim_scope_mismatch",
+          "composition_incomplete",
+          "identity_conflict"
+        ]
+      },
+      "split": "development",
+      "leakage_group": "natural.502443011",
+      "source_metadata": [
+        {
+          "id": "5a7a51ca4c4d694283e448e0635dcdff74034c95be54a1f6a5b7d084313c5828",
+          "url": "https://www.marksandspencer.com/wild-meadow-scented-candle/p/hbp60780526",
+          "title": "Wild Meadow Scented Candle | M&S",
+          "retrieved_at": "2026-09-13T18:36:01.574170+00:00",
+          "official_identity": "Publication on the M&S manufacturer website.",
+          "market_scope": "UK M&S manufacturer publication; its stated product/family and market restrictions apply.",
+          "content_sha256": "168ea17b9a8e7485e2a282bac536dd1cc3c16280d496d3f8d0665c86aedf7a7c"
+        }
+      ]
+    },
+    {
+      "case_id": "natural.690250011",
+      "case_kind": "natural",
+      "sampling_stratum": "manufacturer",
+      "current_on_ocado": 1,
+      "classifier_input": {
+        "product": {
+          "id": "690250011",
+          "name": "M&S Apothecary Restore Hand Cream",
+          "brand": "M&S",
+          "url": "https://www.ocado.com/products/690250011/details",
+          "official_vegan": 0,
+          "detailed_description": "This rich hand cream from M&S' Apothecary range delivers a moment of calm alongside lasting moisture. It\u2019s infused with an aromatic blend of cedarwood, geranium and eucalyptus essential oils, chosen for their soothing, grounding character. The formula now features more fragrance oils for increased depth of scent. The bestselling Apothecary bath and body range features candles, fragrance diffusers, hand washes, bath salts and more. Each product is scented with a unique blend of essential oils known for their wellbeing benefits",
+          "preparation_and_usage": "Not recommended for facial use.",
+          "specification": "- Now with increased fragrance oils - Suitable for vegans"
+        },
+        "flags": [],
+        "categories": [
+          "beauty-toiletries/skincare/body-lotion/hand-cream",
+          "beauty-toiletries/skincare/hand-foot-lip-care/hand-cream",
+          "beauty-toiletries/skincare/m-s"
+        ],
+        "manufacturer_vegan_evidence": [
+          {
+            "field_title": "specification",
+            "content": "- Now with increased fragrance oils - Suitable for vegans"
+          }
+        ]
+      },
+      "input_sha256": "214eca7575a512bd92bbc9a158865ed74889e64bdff38d18d88c78ebe9c30ca9",
+      "adjudication": {
+        "state": "accepted",
+        "reference_type": "frozen-evidence-sufficiency",
+        "method": "two fresh automated evidence readings with validated citations; no human review",
+        "readings": [
+          {
+            "annotation": {
+              "case_id": "natural.690250011",
+              "expected_status": "vegan",
+              "expected_reason": "manufacturer",
+              "required_issue_codes": [],
+              "input_refs": [
+                {
+                  "path": "/manufacturer_vegan_evidence/0/content",
+                  "quote": "- Now with increased fragrance oils - Suitable for vegans"
+                }
+              ],
+              "rationale": "The supplied manufacturer specification explicitly confirms that the whole hand cream, including the stated fragrance update, is suitable for vegans.",
+              "external_status": "unknown",
+              "source_id": null,
+              "external_quote": "",
+              "scope_match": "No retained external primary source supplied to independently establish the exact formulation and time."
+            },
+            "input_sha256": "214eca7575a512bd92bbc9a158865ed74889e64bdff38d18d88c78ebe9c30ca9",
+            "call_id": "870891f0-c6f5-4bb7-8f4f-66c2cc0c29a0",
+            "model": "gpt-6.1-sol",
+            "effort": "high",
+            "prompt_version": "blind-evidence-adjudication-v2"
+          },
+          {
+            "annotation": {
+              "case_id": "natural.690250011",
+              "expected_status": "vegan",
+              "expected_reason": "manufacturer",
+              "required_issue_codes": [],
+              "input_refs": [
+                {
+                  "path": "/manufacturer_vegan_evidence/0/content",
+                  "quote": "- Now with increased fragrance oils - Suitable for vegans"
+                }
+              ],
+              "rationale": "The supplied manufacturer specification explicitly confirms whole-product vegan suitability for this hand cream, including the described fragrance update.",
+              "external_status": "unknown",
+              "source_id": null,
+              "external_quote": "",
+              "scope_match": "No external primary sources supplied."
+            },
+            "input_sha256": "214eca7575a512bd92bbc9a158865ed74889e64bdff38d18d88c78ebe9c30ca9",
+            "call_id": "2552ba15-3828-4564-8baf-86fd00957832",
+            "model": "gpt-6.1-sol",
+            "effort": "high",
+            "prompt_version": "blind-evidence-adjudication-v2"
+          }
+        ]
+      },
+      "expected": {
+        "vegan_status": "vegan",
+        "vegan_reason": "manufacturer",
+        "required_issue_codes": []
+      },
+      "split": "development",
+      "leakage_group": "natural.502443011",
+      "source_metadata": []
+    }
+  ],
+  "selection": {
+    "annotation_hash": "3a2408d1ff0bbd25feeaccca6603bee4ee26bc4068627fe72410a324b94b6a80",
+    "accepted_candidates": 990,
+    "disputed_cases": [
+      "natural.577144011",
+      "natural.622692011",
+      "natural.431901011",
+      "natural.434283011",
+      "natural.505515011",
+      "natural.587217011",
+      "natural.587218011",
+      "natural.587219011",
+      "natural.594456011",
+      "natural.682752011"
+    ],
+    "targets": {
+      "development": {
+        "tagged": 20,
+        "manufacturer": 20,
+        "name": 20,
+        "ingredients": 20,
+        "unknown": 120,
+        "nonvegan": 40
+      },
+      "locked": {
+        "tagged": 30,
+        "manufacturer": 30,
+        "name": 30,
+        "ingredients": 30,
+        "unknown": 180,
+        "nonvegan": 60
+      }
+    },
+    "available_reference_classes": {
+      "unknown": 293,
+      "nonvegan": 168,
+      "manufacturer": 288,
+      "tagged": 99,
+      "name": 17,
+      "ingredients": 125
+    },
+    "diagnostic_allocations": {
+      "development": {
+        "tagged": 20,
+        "manufacturer": 20,
+        "name": 7,
+        "ingredients": 20,
+        "unknown": 117,
+        "nonvegan": 40
+      },
+      "locked": {
+        "tagged": 30,
+        "manufacturer": 30,
+        "name": 10,
+        "ingredients": 30,
+        "unknown": 176,
+        "nonvegan": 60
+      }
+    },
+    "locked_shortfalls": {
+      "name": 20,
+      "unknown": 4
+    },
+    "development_shortfalls": {
+      "name": 13,
+      "unknown": 3
+    },
+    "target_complete": false,
+    "counts": {
+      "development": 224,
+      "locked": 336,
+      "synthetic": 249,
+      "workload": 200
+    },
+    "pilot_case_ids": [
+      "natural.528131011",
+      "natural.509074011",
+      "natural.554161011",
+      "natural.515989011",
+      "natural.554160011",
+      "natural.529409011",
+      "natural.605260011",
+      "natural.632478011",
+      "natural.647258011",
+      "natural.609444011",
+      "natural.663711011",
+      "natural.646409011",
+      "natural.634499011",
+      "natural.484034011",
+      "natural.565041011",
+      "natural.602406011",
+      "natural.602407011",
+      "natural.694648011",
+      "natural.508936011",
+      "natural.557814011",
+      "natural.518700011",
+      "natural.528649011",
+      "natural.620106011",
+      "natural.518915011",
+      "natural.691543011",
+      "natural.686758011",
+      "natural.657190011",
+      "natural.608303011",
+      "natural.612145011",
+      "natural.687623011",
+      "natural.686850011",
+      "natural.676881011",
+      "natural.663918011",
+      "natural.665753011",
+      "natural.687170011",
+      "natural.692481011",
+      "natural.680362011",
+      "natural.661164011",
+      "natural.691043011",
+      "natural.686846011",
+      "natural.682584011",
+      "natural.677973011",
+      "natural.656809011",
+      "natural.690894011",
+      "natural.577736011",
+      "natural.686746011",
+      "natural.657080011",
+      "natural.684600011",
+      "natural.614437011",
+      "natural.651228011",
+      "natural.682897011",
+      "natural.573592011",
+      "natural.656864011",
+      "natural.578862011",
+      "natural.551762011",
+      "natural.510718011",
+      "natural.671620011",
+      "natural.650241011",
+      "natural.549839011",
+      "natural.684861011",
+      "natural.687282011",
+      "natural.696848011",
+      "natural.693025011",
+      "natural.683100011",
+      "natural.636454011",
+      "natural.662698011",
+      "natural.683360011",
+      "natural.635402011",
+      "natural.690369011",
+      "natural.686922011",
+      "natural.690390011",
+      "natural.681866011",
+      "natural.679003011",
+      "natural.506091011",
+      "natural.518821011",
+      "natural.619834011",
+      "natural.524003011",
+      "natural.606781011",
+      "natural.505516011",
+      "natural.558449011",
+      "natural.573831011",
+      "natural.515430011",
+      "natural.512534011",
+      "natural.587562011",
+      "natural.587583011",
+      "natural.615849011",
+      "natural.502443011",
+      "natural.637695011",
+      "natural.642823011",
+      "natural.684175011",
+      "natural.652622011",
+      "natural.569165011",
+      "natural.672028011",
+      "natural.515860011",
+      "natural.509652011",
+      "natural.650323011"
+    ],
+    "note": "Gold uses two automated source readings, not human-independent truth. Locked candidates have not been tested/tuned."
+  },
+  "scope": "Four development cases for decoder/applicability validation only; not model selection or release acceptance."
+}

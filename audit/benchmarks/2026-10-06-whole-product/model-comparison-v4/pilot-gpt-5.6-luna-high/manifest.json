@@ -1,0 +1,28 @@
+{
+  "fixture_sha256": "6c5ff8057ff771d7ea5df3523d9c370cabccc445edee467dd24f9dde6d07a743",
+  "selected_case_hash": "36019df9ca0eb98f1f4ad4fd64e38073f8fe178637916fcf9a37db770f31f8f5",
+  "implementation_hashes": {
+    "vegan_policy.py": "78b2aec1e68026ce3659c216d8d5a263f13e97b256df148932f404d4481d9713",
+    "classify_ocado_vegan.py": "d815e18d532acf2d0b041d554a474010bf90d69a3de54a667e0aebe13fd228e2",
+    "codex_evidence.py": "e9d9a604a7e7389761f09905d3c6ae1209bde1cab5bb5bed5fd54634bcc4158f",
+    "benchmark_whole_product.py": "d94f41089b4cac2cec910b5b0e65608b395474262f793ed8c795bf8e31ca7704",
+    "manufacturer_evidence.py": "ea77c215717b191b8463a687268a9f0fae599663baa9369c8a3b80b2a51edc79",
+    "update_userscript_allowlists.py": "e116c7751a0334bfe599562c3f004505b702e15f42779ed2133985629c0d50e8"
+  },
+  "policy_version": "whole-product-v1",
+  "knowledge_version": "vegan-risk-registry-v1",
+  "prompt_version": "ocado-vegan-whole-product-json-v15",
+  "arbitration_prompt_version": "ocado-vegan-whole-product-arbitration-v6",
+  "schema_sha256": "9356aa938e93aebeaeb51f28fb72e3371beab764141336167f4a8e15ed34312b",
+  "mode": "pipeline",
+  "model": "gpt-5.6-luna",
+  "effort": "high",
+  "arbitration_model": "gpt-6.1-sol",
+  "arbitration_effort": "medium",
+  "batch_size": 8,
+  "repetitions": 1,
+  "seed": 20261006,
+  "split": "development",
+  "subset": "pilot",
+  "workers": 3
+}

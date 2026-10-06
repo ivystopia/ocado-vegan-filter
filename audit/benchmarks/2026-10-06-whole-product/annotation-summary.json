@@ -1,0 +1,25 @@
+{
+  "schema_version": 2,
+  "policy_version": "whole-product-v1",
+  "accepted": 990,
+  "disputed": [
+    "natural.577144011",
+    "natural.622692011",
+    "natural.431901011",
+    "natural.434283011",
+    "natural.505515011",
+    "natural.587217011",
+    "natural.587218011",
+    "natural.587219011",
+    "natural.594456011",
+    "natural.682752011"
+  ],
+  "annotation_sha256": "3a2408d1ff0bbd25feeaccca6603bee4ee26bc4068627fe72410a324b94b6a80",
+  "method": "two fresh source-backed automatic readings with exact validated references; no human review",
+  "model": "gpt-6.1-sol",
+  "effort": "high",
+  "source_currentness": "Retained historical captures, not current live retrieval",
+  "readout_files": 2000,
+  "no_existing_classifications_used_as_reference": true,
+  "guarantee_limit": "Evidence-policy compliance only; not independent physical truth or human gold."
+}

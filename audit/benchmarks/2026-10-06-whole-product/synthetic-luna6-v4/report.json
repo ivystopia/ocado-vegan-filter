@@ -1,0 +1,114 @@
+{
+  "fixture_sha256": "af5e03754df2758d84213460f1a9685204a7dcb8cb66e8638e7db3cf851d3fff",
+  "selected_case_hash": "2499d4cb195ad676c846e99d047fdca7b28ea01160e51734fd4d6c95c4fe73a9",
+  "implementation_hashes": {
+    "vegan_policy.py": "10dbaf35ae3cc1cee20fd6e582d841819638bcde8f89b4a76f54fd09aa4161c6",
+    "classify_ocado_vegan.py": "6a0bf13c71bfaef05f680104d6e74a491685fb5c78e3b68709871b84e18ce0ee",
+    "codex_evidence.py": "ccf4736a8d8bad58931a26b2593a2b811eeb14bc400dadca88092410f1583016",
+    "benchmark_whole_product.py": "fc5ba47b0407e96dd48ea454c79c991c77d4869c8dd23dbd52b471f4f706fc99",
+    "manufacturer_evidence.py": "a3138a3056cd64806c0b6394551c2021f309c8f6ef61600b0b4e6bcc67e70bf4",
+    "update_userscript_allowlists.py": "e116c7751a0334bfe599562c3f004505b702e15f42779ed2133985629c0d50e8"
+  },
+  "policy_version": "whole-product-v1",
+  "knowledge_version": "vegan-risk-registry-v1",
+  "prompt_version": "ocado-vegan-whole-product-json-v10",
+  "arbitration_prompt_version": "ocado-vegan-whole-product-arbitration-v3",
+  "schema_sha256": "53b2dd90490caaedd879cde0e93fe45de7656d57d12e4a4936279bd41ff846ef",
+  "mode": "pipeline",
+  "model": "gpt-6-luna",
+  "effort": "high",
+  "arbitration_model": "gpt-6.1-sol",
+  "arbitration_effort": "medium",
+  "batch_size": 8,
+  "repetitions": 1,
+  "seed": 20261006,
+  "split": "synthetic",
+  "subset": "all",
+  "workers": 3,
+  "runs": [
+    {
+      "cases": 240,
+      "scored_cases": 240,
+      "operational_errors": [],
+      "missing_cases": [],
+      "exact_matches": 240,
+      "mismatches": [],
+      "unsafe_positives": [],
+      "unsupported_promotions": [],
+      "contradicted_positives": [],
+      "unsupported_promotion_rate": 0.0,
+      "contradicted_positive_rate": 0.0,
+      "unsafe_positive_rate": 0.0,
+      "false_nonvegan_decisions": [],
+      "reportable_negative_errors": [],
+      "mandatory_control_failures": [],
+      "reason_errors": [],
+      "missing_required_issues": [],
+      "vegan_recall": 1.0,
+      "per_route_recall": {
+        "manufacturer": {
+          "eligible": 34,
+          "recovered": 34,
+          "recall": 1.0
+        },
+        "name": {
+          "eligible": 30,
+          "recovered": 30,
+          "recall": 1.0
+        },
+        "tagged": {
+          "eligible": 34,
+          "recovered": 34,
+          "recall": 1.0
+        },
+        "ingredients": {
+          "eligible": 18,
+          "recovered": 18,
+          "recall": 1.0
+        }
+      },
+      "outcomes": {
+        "vegan": 116,
+        "nonvegan": 60,
+        "unknown": 64
+      },
+      "primary_disagreements": [],
+      "arbitrated_cases": [],
+      "usage": {
+        "calls": 23,
+        "failed_calls": 1,
+        "missing_usage_calls": 0,
+        "input_tokens": 254533,
+        "cached_input_tokens": 174592,
+        "output_tokens": 18760,
+        "reasoning_output_tokens": 9033
+      },
+      "usage_by_stage_model": {
+        "primary:gpt-6-luna:high": {
+          "calls": 23,
+          "failed_calls": 1,
+          "missing_usage_calls": 0,
+          "input_tokens": 254533,
+          "cached_input_tokens": 174592,
+          "output_tokens": 18760,
+          "reasoning_output_tokens": 9033
+        }
+      },
+      "call_latency_seconds": {
+        "median": 13.8424,
+        "p95": 36.4084
+      }
+    }
+  ],
+  "state": "completed",
+  "usage": {
+    "calls": 23,
+    "failed_calls": 1,
+    "missing_usage_calls": 0,
+    "input_tokens": 254533,
+    "cached_input_tokens": 174592,
+    "output_tokens": 18760,
+    "reasoning_output_tokens": 9033
+  },
+  "release_challenge_passed": false
+}
