@@ -13,7 +13,7 @@ from typing import Any
 
 POLICY_VERSION = "whole-product-v1"
 KNOWLEDGE_VERSION = "vegan-risk-registry-v1"
-SCHEMA_VERSION = 2
+SCHEMA_VERSION = 3
 REASONS = ("tagged", "manufacturer", "name", "ingredients")
 DIMENSIONS = ("identity", "composition", "sourcing", "processing")
 DIMENSION_STATES = ("established", "resolved", "covered_by_claim", "not_applicable", "insufficient", "unresolved", "conflicted")
@@ -45,13 +45,24 @@ ISSUE_SCHEMA = {
         "blocks_claim": {"type": "boolean"},
     },
 }
+SOURCE_DIMENSIONS = ("product", "variant", "market", "period")
+SOURCE_APPLICABILITY_SCHEMA = {
+    "type": "object", "additionalProperties": False,
+    "required": ["source_path", "scope", *SOURCE_DIMENSIONS],
+    "properties": {
+        "source_path": {"type": "string", "pattern": r"^/manufacturer_(?:vegan_evidence|source_candidates)/\d+$"},
+        "scope": {"type": "string", "enum": ["product", "range", "component", "other_product", "unresolved"]},
+        **{dimension: DIMENSION_SCHEMA for dimension in SOURCE_DIMENSIONS},
+    },
+}
 ASSESSMENT_SCHEMA = {
     "type": "object", "additionalProperties": False,
-    "required": [*DIMENSIONS, "positive_support", "material_issues"],
+    "required": [*DIMENSIONS, "positive_support", "material_issues", "source_applicability"],
     "properties": {
         **{dimension: DIMENSION_SCHEMA for dimension in DIMENSIONS},
         "positive_support": {"type": "array", "items": SUPPORT_SCHEMA},
         "material_issues": {"type": "array", "items": ISSUE_SCHEMA},
+        "source_applicability": {"type": "array", "items": SOURCE_APPLICABILITY_SCHEMA},
     },
 }
 
@@ -137,6 +148,8 @@ def validate_schema(value: Any, schema: dict[str, Any], path: str = "$") -> None
     elif kind == "array":
         if len(value) < schema.get("minItems", 0):
             raise ValueError(f"{path}: too few items")
+        if len(value) > schema.get("maxItems", float("inf")):
+            raise ValueError(f"{path}: too many items")
         for index, item in enumerate(value):
             validate_schema(item, schema["items"], f"{path}/{index}")
 
@@ -182,6 +195,20 @@ def validate_assessment(assessment: dict[str, Any], context: dict[str, Any]) -> 
             raise ValueError("A material issue requires its applicable evidence")
         for ref in [*issue["evidence_refs"], *issue["resolution_refs"]]:
             resolve_reference(context, ref)
+    paths = set()
+    for source in assessment["source_applicability"]:
+        path = source["source_path"]
+        if path in paths:
+            raise ValueError("Duplicate source applicability assessment")
+        paths.add(path)
+        row = source_row(context, path)
+        if not row or not row.get("source_text"):
+            raise ValueError("Source applicability requires a retained complete capture")
+        for dimension in SOURCE_DIMENSIONS:
+            for ref in source[dimension]["evidence_refs"]:
+                resolve_reference(context, ref)
+                if not (ref["path"].startswith(path + "/") or ref["path"].startswith("/product/")):
+                    raise ValueError("Applicability cites a different source or unrelated field")
 
 
 def official_tag(context: dict[str, Any]) -> bool:
@@ -245,7 +272,9 @@ def claim_sources(context: dict[str, Any]) -> tuple[list[dict[str, str]], list[d
             continue
         if (not verified and scoped_claim(text,negative=True)) or (verified and reviewed and status == "nonvegan"):
             negative.append(reference(path, text))
-        if (not verified and (direct_claim(text,path) or (scoped_claim(text,negative=True) and scoped_claim(text)))) or (verified and reviewed and status == "vegan"):
+        # A prior website association/review is not a fresh applicability proof.
+        # Its positive claim is interpreted with the full source assessment.
+        if not verified and (direct_claim(text,path) or (scoped_claim(text,negative=True) and scoped_claim(text))):
             positive.append(reference(path, text))
     return positive, negative
 
@@ -305,7 +334,7 @@ def base_assessment(context: dict[str, Any], *, complete: bool = False) -> dict[
         "composition": {"status": "established" if complete else "insufficient", "evidence_refs": ingredient_refs},
         "sourcing": {"status": "not_applicable", "evidence_refs": []},
         "processing": {"status": "not_applicable", "evidence_refs": []},
-        "positive_support": [], "material_issues": [],
+        "positive_support": [], "material_issues": [], "source_applicability": [],
     }
 
 
@@ -342,14 +371,124 @@ def resolved_risk(risk: dict[str, Any], assessment: dict[str, Any]) -> bool:
     return False
 
 
-def source_reference(context, ref):
+def source_row(context, path):
+    match = re.fullmatch(r"/manufacturer_(vegan_evidence|source_candidates)/(\d+)", path)
+    if not match:
+        return None
+    rows = context.get("manufacturer_" + match.group(1), [])
+    index = int(match.group(2))
+    return rows[index] if index < len(rows) else None
+
+
+def rebind_source_assessment(old_context, new_context, assessment):
+    """Rebind pointers after imports using URL + full capture hash, never title."""
+    mapping = {}
+    for field in ('manufacturer_source_candidates', 'manufacturer_vegan_evidence'):
+        for index, row in enumerate(old_context.get(field, [])):
+            if not row.get('source_text'):
+                continue
+            old_path = f'/{field}/{index}'
+            for new_field in ('manufacturer_source_candidates', 'manufacturer_vegan_evidence'):
+                for new_index, candidate in enumerate(new_context.get(new_field, [])):
+                    if (row.get('source_url'), row.get('source_sha256')) == (candidate.get('source_url'), candidate.get('source_sha256')):
+                        mapping.setdefault(old_path, f'/{new_field}/{new_index}')
+    def replace(value):
+        if isinstance(value, dict):
+            return {key: pointer(item) if key in {'path','source_path'} else replace(item) for key,item in value.items()}
+        if isinstance(value, list):
+            return [replace(item) for item in value]
+        return value
+    def pointer(value):
+        match = re.match(r'^(/manufacturer_(?:vegan_evidence|source_candidates)/\d+)(/.*)?$', value)
+        if not match:
+            return value
+        if match.group(1) not in mapping:
+            raise ValueError('Reviewed source capture is absent after import')
+        return mapping[match.group(1)] + (match.group(2) or '')
+    result = replace(assessment)
+    validate_assessment(result, new_context)
+    return result
+
+
+def source_path(ref):
+    match = re.match(r"^(/manufacturer_(?:vegan_evidence|source_candidates)/\d+)/(?:source_text|content)$", ref["path"])
+    return match.group(1) if match else None
+
+
+def source_variant_conflict(context, path, *, ignore_colour=False, ignore_period=False):
+    """Check explicit variant selectors, independently of model assurances.
+
+    This is deliberately narrow: colour selectors and labelled vintages are
+    facts, while fragrance prose and other semantic equivalences remain model
+    work. A source association hash says nothing about these selectors.
+    """
+    row = source_row(context, path)
+    if not row:
+        return []
+    raw = re.sub(r"(?m)^L\d+(?:@P\d+)?:[ \t]?", "", row.get("source_text", ""))
+    product = context["product"]
+    name = normalized(product.get("name"))
+    target_colour = normalized(product.get("colour") or product.get("color"))
+    if not target_colour and "," in name:
+        suffix = name.rsplit(",", 1)[1].strip()
+        if re.fullmatch(r"[A-Za-z]+(?:[- ][A-Za-z]+){0,2}", suffix):
+            target_colour = suffix
+    conflicts = []
+    for match in re.finditer(r"(?im)^\s*colou?r\s*[:=]?\s+([^\n]+)", raw):
+        colour = re.sub(r"(?i)^colou?r\s+|\s+(?:out of stock|in stock|available|selected|add to).*$", "", match.group(1)).strip()
+        if not ignore_colour and target_colour and colour and normalized(target_colour).lower() != normalized(colour).lower():
+            conflicts.append([reference("/product/name", name),
+                              {"path": path + "/source_text", "quote": visible_source_text(match.group())}])
+    target_period = normalized(product.get("current_vintage"))
+    for match in re.finditer(r"\bvintage\s*[:=]?\s*(20\d{2}|19\d{2})\b", raw, re.I):
+        if not ignore_period and re.fullmatch(r"(?:19|20)\d{2}", target_period) and target_period != match.group(1):
+            conflicts.append([reference("/product/current_vintage", target_period),
+                              {"path": path + "/source_text", "quote": match.group()}])
+    return conflicts
+
+
+def source_applicable(context, path, assessment):
+    if not assessment:
+        return False
+    check = next((item for item in assessment["source_applicability"] if item["source_path"] == path), None)
+    if not check or check["scope"] not in {"product", "range"}:
+        return False
+    for dimension in SOURCE_DIMENSIONS:
+        value = check[dimension]
+        if value["status"] not in {"established", "resolved", "not_applicable"}:
+            return False
+        refs = value["evidence_refs"]
+        # Even a non-material dimension needs a source-grounded explanation.
+        if not any(ref["path"].startswith(path + "/") for ref in refs):
+            return False
+        if dimension == "product" and (value["status"] == "not_applicable" or
+                not any(ref["path"] in {"/product/name", "/product/id"} for ref in refs)):
+            return False
+    range_refs = check["variant"]["evidence_refs"]
+    inclusive_range = check["scope"] == "range" and any(
+        ref["path"].startswith(path + "/") and re.search(
+            r"\b(?:all|every|entire|whole)\b.*\b(?:products?|range|variants?|colou?rs?|wines?|candles?)\b", ref["quote"], re.I)
+        and not re.search(r'\b(?:except|excluding|not all|selected|certain|some)\b',ref['quote'],re.I)
+        for ref in range_refs)
+    if check["scope"] == "range" and not inclusive_range:
+        return False
+    inclusive_period = any(ref['path'].startswith(path + '/') and re.search(
+        r'\b(?:all|every)\s+(?:vintages?|production years?)\b',ref['quote'],re.I)
+        and not re.search(r'\b(?:except|excluding|not all|selected|certain|some)\b',ref['quote'],re.I)
+        for ref in check['period']['evidence_refs'])
+    # An inclusive colour/range assurance does not erase a stated vintage;
+    # explicit assurance covering all vintages can resolve that limitation.
+    return not source_variant_conflict(context, path, ignore_colour=inclusive_range, ignore_period=inclusive_period)
+
+
+def source_reference(context, ref, assessment=None):
     """A raw associated page needs current catalogue binding, not old approval."""
     if ref['path'].startswith('/manufacturer_vegan_evidence/'):
-        return True
+        return bool(source_applicable(context, source_path(ref), assessment))
     match=re.match(r'^/manufacturer_source_candidates/(\d+)/source_text$',ref['path'])
     if not match:return False
     row=context['manufacturer_source_candidates'][int(match.group(1))]
-    return row.get('association_status')=='catalogue_match'
+    return row.get('association_status')=='catalogue_match' and source_applicable(context, source_path(ref), assessment)
 
 
 def interpreted_manufacturer_support(context, assessment):
@@ -357,9 +496,9 @@ def interpreted_manufacturer_support(context, assessment):
     refs=next((support['evidence_refs'] for support in assessment['positive_support'] if support['reason']=='manufacturer'),[])
     fields={'/product/dietary_information','/product/features','/product/detailed_description','/product/further_description',
             '/product/manufacturer_marketing','/product/brand_marketing','/product/other_information','/product/specification','/product/vinification_details'}
-    if any((source_reference(context,ref) or ref['path'] in fields) and (scoped_claim(ref['quote']) or (
-            source_reference(context,ref) and re.search(r'\b(?:is|are) (?:suitable for (?:a )?vegans?|vegan)\b',ref['quote'],re.I))) for ref in refs):return refs
-    if any(source_reference(context,question) and re.search(r'\bvegan\b',question['quote'],re.I) and any(
+    if any((source_reference(context,ref,assessment) or ref['path'] in fields) and (scoped_claim(ref['quote']) or (
+            source_reference(context,ref,assessment) and re.search(r'\b(?:is|are) (?:suitable for (?:a )?vegans?|vegan)\b',ref['quote'],re.I))) for ref in refs):return refs
+    if any(source_reference(context,question,assessment) and re.search(r'\bvegan\b',question['quote'],re.I) and any(
             answer['path']==question['path'] and re.search(r'\b(?:no|none|does not|do not|without)\b.*\b(?:animal|animal origin)\b',answer['quote'],re.I)
             for answer in refs) for question in refs):return refs
     return []
@@ -378,7 +517,16 @@ def evaluate(context: dict[str, Any], *, animal_matches: list[str], cleaned_ingr
     result_assessment = assessment or base_assessment(context, complete=composition_safe or ordinary_identity)
     if assessment is not None:
         validate_assessment(assessment, context)
+        negative = [ref for ref in negative if not source_path(ref) or source_reference(context, ref, assessment)]
         if requested_status=='vegan':positive=positive or interpreted_manufacturer_support(context,assessment)
+    else:
+        negative = [ref for ref in negative if not source_path(ref)]
+    used_refs = [] if not assessment else [ref for item in assessment['positive_support'] for ref in item['evidence_refs']] + [
+        ref for dimension in DIMENSIONS for ref in assessment[dimension]['evidence_refs']
+    ] + [ref for issue in assessment['material_issues'] for ref in [*issue['evidence_refs'], *issue['resolution_refs']]] + [
+        ref for item in assessment['source_applicability'] for dimension in SOURCE_DIMENSIONS for ref in item[dimension]['evidence_refs']]
+    unproven_sources = {source_path(ref) for ref in used_refs if source_path(ref)
+                       and not source_reference(context, ref, assessment)}
     issues = list({digest(issue): issue for issue in [*risks, *result_assessment["material_issues"]]}.values())
     hard_codes={'identity_conflict','identity_insufficient','evidence_conflict','evidence_stale','animal_ingredient','animal_processing','explicit_nonvegan'}
     issues=[{**issue,'blocks_claim':True} if issue['code'] in hard_codes else issue for issue in issues]
@@ -477,6 +625,8 @@ def evaluate(context: dict[str, Any], *, animal_matches: list[str], cleaned_ingr
             full_text = re.sub(r"\bnot (?:suitable for (?:a )?vegans?|vegan)\b", "", full_text, flags=re.I)
             if re.search(r"\b(?:no|not|never|without|free from|another|other|some|certain|may|can)\b", full_text, re.I):
                 definite = False
+            if any(source_path(ref) and not source_reference(context,ref,assessment) for ref in issue['evidence_refs']):
+                definite = False
             if definite and not issue["resolution_refs"]:
                 substantive_negative.append(issue)
         claim_reason = "tagged" if official_tag(context) else "manufacturer" if positive else "name" if affirmative_name(name,normalized(product.get('brand'))) else None
@@ -513,21 +663,21 @@ def evaluate(context: dict[str, Any], *, animal_matches: list[str], cleaned_ingr
             # Applicable whole-product assurances resolve generic source/process
             # risks; composition-only positives need explicit risk resolutions.
             covered_risks = requested_reason != 'ingredients' or all(resolved_risk(risk, assessment) for risk in risks)
-            if requested_reason in supported and complete and not unresolved and covered_risks:
+            if requested_reason in supported and complete and not unresolved and covered_risks and not unproven_sources:
                 refs = supported[requested_reason]["evidence_refs"]
                 if requested_reason == "ingredients" and any(ref["path"] in {
                         "/product/name", "/product/ingredients", "/product/other_information", "/product/detailed_description",
-                        "/product/features", "/product/specification"} or source_reference(context,ref) for ref in refs):
+                        "/product/features", "/product/specification"} or source_reference(context,ref,assessment) for ref in refs):
                     status, reason = "vegan", "ingredients"
                 elif requested_reason == "manufacturer" and any(
-                        (source_reference(context,ref) or ref["path"] in {
+                        (source_reference(context,ref,assessment) or ref["path"] in {
                             "/product/dietary_information", "/product/features", "/product/detailed_description", "/product/further_description",
                             "/product/manufacturer_marketing", "/product/brand_marketing", "/product/other_information", "/product/specification", "/product/vinification_details"})
-                        and (scoped_claim(ref["quote"]) or (source_reference(context,ref)
+                        and (scoped_claim(ref["quote"]) or (source_reference(context,ref,assessment)
                              and re.search(r"\b(?:is|are) (?:suitable for (?:a )?vegans?|vegan)\b",ref["quote"],re.I))) for ref in refs):
                     status, reason = "vegan", "manufacturer"
-                elif requested_reason=='manufacturer' and any(source_reference(context,ref) and re.search(r'\bvegan\b',ref['quote'],re.I) and any(
-                        source_reference(context,answer) and answer['path']==ref['path'] and re.search(r'\b(?:no|none|does not|do not|without)\b.*\b(?:animal|animal origin)\b',answer['quote'],re.I) for answer in refs) for ref in refs):
+                elif requested_reason=='manufacturer' and any(source_reference(context,ref,assessment) and re.search(r'\bvegan\b',ref['quote'],re.I) and any(
+                        source_reference(context,answer,assessment) and answer['path']==ref['path'] and re.search(r'\b(?:no|none|does not|do not|without)\b.*\b(?:animal|animal origin)\b',answer['quote'],re.I) for answer in refs) for ref in refs):
                     # A scoped answer to a vegan-suitability question can be
                     # explicit confirmation without repeating 'vegan' in it.
                     status,reason='vegan','manufacturer'
@@ -538,6 +688,24 @@ def evaluate(context: dict[str, Any], *, animal_matches: list[str], cleaned_ingr
             # an unsupported negative label is never sufficient.
             if substantive_negative:
                 status = "nonvegan"
+    if status == 'unknown' and unproven_sources:
+        block = True
+        for path in sorted(unproven_sources):
+            row = source_row(context, path)
+            refs = [reference('/product/name', name), *[ref for ref in used_refs if source_path(ref) == path]]
+            issues.append({'code': 'claim_scope_mismatch', 'target': path, 'rule_id': 'source-applicability-v1',
+                           'evidence_refs': refs, 'resolution_refs': [], 'blocks_claim': True})
+            for conflict_refs in source_variant_conflict(context, path):
+                issues.append({'code': 'identity_conflict', 'target': path, 'rule_id': 'source-variant-consistency-v1',
+                               'evidence_refs': conflict_refs, 'resolution_refs': [], 'blocks_claim': True})
+    # Preserve an unresolved dimension even if its redundant issue entry was
+    # omitted. This canonicalises the assessment, never the benchmark label.
+    for dimension, code in {'composition':'composition_incomplete', 'sourcing':'source_unresolved',
+                            'processing':'processing_unresolved'}.items():
+        value = result_assessment[dimension]
+        if assessment is not None and status == 'unknown' and value['status'] in {'insufficient', 'unresolved', 'conflicted'} and value['evidence_refs']:
+            issues.append({'code': code, 'target': 'whole_product', 'rule_id': 'assessment-dimension-v1',
+                           'evidence_refs': value['evidence_refs'], 'resolution_refs': [], 'blocks_claim': False})
     if reason:
         refs = ([reference("/product/official_vegan", product["official_vegan"])] if product.get("official_vegan") == 1 else [reference("/flags", context.get("flags", []))]) if reason == "tagged" else (positive or next((support["evidence_refs"] for support in result_assessment["positive_support"] if support["reason"] == reason), [])) if reason == "manufacturer" else [reference("/product/name", name)] if reason == "name" else result_assessment["composition"]["evidence_refs"]
         if reason!='ingredients':
@@ -563,6 +731,7 @@ def policy_prompt() -> str:
         "Assess complete-product vegan suitability from supplied evidence only. General knowledge can identify a material risk; it cannot invent product-specific assurances. "
         "Identity conflicts come first and mean unknown. Correctly matched explicit animal ingredients or animal-derived processing mean nonvegan EVEN WITH an official vegan tag or manufacturer/name claim. "
         "Other unresolved material contradictions mean unknown. Applicable official tags, explicit manufacturer claims, affirmative whole-product vegan names, and unambiguous ordinary vegan identity/composition are the four positive routes. "
+        "When more than one positive route applies, canonical reason priority is tagged, manufacturer, name, ingredients. Preserve manufacturer ahead of name. "
         "When animal words in marketing clearly describe another recipe, serving suggestion or product rather than this product's contents, record evidence_conflict with rule_id animal-declaration-context-v1 and resolve it by citing BOTH the complete marketing field and /product/name in resolution_refs. Do not clear a real animal-content declaration merely from a vegan assurance. "
         "Missing ingredients is not proof of simplicity. Carrots and simple leaf salads can qualify. Standard flour fortification (calcium, iron, niacin, thiamin, folic acid) is permitted. "
         "A compound ingredient such as vegetable suet or margarine requires its complete constituents or an applicable whole-product claim; a plant descriptor alone is insufficient. "
@@ -570,6 +739,7 @@ def policy_prompt() -> str:
         "Check relevant processing (wine fining, sugar refining, coatings) and source-dependent ingredients/E numbers, including within compound ingredients. An applicable whole-product claim resolves generic risks, but cannot defeat definite animal content. "
         "No probability, brand reputation, category assumptions or 'usually vegan'. May-contain warnings are not intentional ingredients. Distinguish cocoa butter, coconut milk, oyster mushrooms, plant alternatives, serving suggestions, component claims and other variants. "
         "Manufacturer website records include full source_text and publisher/market metadata. Inspect all complete captures and their exceptions; verified_status and prior scope_match are previous assertions, not independent proof. manufacturer_source_candidates includes other associated retained pages, without inherited decisions. Catalogue-changed associations need fresh exact applicability proof and cannot independently establish a positive. Legacy reviews must be reassessed for this product before promotion. "
+        "For each website source relied on, supply source_applicability with its source_path container, scope (product/range/component/other_product/unresolved), and separate product, variant, market and period assessments. Product applicability must cite both /product/name and the source identity. Every dimension needs source evidence, even when not_applicable; explain exceptions and relevant colour, flavour, fragrance, format, market, formulation and vintage differences. A matching generic title, URL or catalogue association hash does not establish the exact variant. A different displayed variant cannot support this product without explicit inclusive range evidence. For range scope, variant references must quote the inclusive all/every/entire-range statement and establish this product belongs to it. Cite source_text for page facts, market_scope for market metadata and retrieved_at for capture dates; a recent capture date alone does not resolve a formulation/vintage limitation. Empty source_applicability is appropriate when no external source is relied on. "
         "Manufacturer confirmation means explicit whole-product vegan suitability, including an applicable affirmative answer to a vegan-suitability FAQ. A question alone, '100% plant-based formula', or absence of animal content is not by itself a whole-product manufacturing assurance. Such composition/source facts can support ingredients only when complete and every relevant process/source issue is resolved. "
         "Use canonical reason priority tagged, manufacturer, name, ingredients when multiple valid routes exist. For unknown/nonvegan reason is null. "
         "Return a structured assessment for all four dimensions, with positive_support and material_issues. Every reference is an exact JSON pointer relative to the individual supplied context and a verbatim quote from its value. "

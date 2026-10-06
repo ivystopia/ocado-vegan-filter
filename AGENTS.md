@@ -38,6 +38,7 @@ The project has two related goals:
 - Do not tag a product as vegan from probability, brand reputation, category assumptions, or "usually vegan" reasoning.
 - Valid product statuses are `vegan`, `nonvegan`, and `unknown`.
 - Valid vegan reasons are `tagged`, `manufacturer`, `ingredients`, and `name`.
+- When several positive routes apply, keep canonical reason precedence `tagged`, `manufacturer`, `name`, `ingredients`; manufacturer confirmation takes precedence over a vegan product name.
 - `unknown` means assessed, but not enough database evidence exists to classify safely.
 - `NULL` or missing status means unclassified and should generally be treated as work remaining.
 - May-contain allergen warnings do not make a product non-vegan.

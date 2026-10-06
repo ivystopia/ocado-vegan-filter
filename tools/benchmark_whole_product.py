@@ -246,6 +246,8 @@ def run(args):
     if path.exists() and json.loads(path.read_text())!=manifest: raise ValueError('Resume configuration/input changed; choose a fresh output directory')
     save(path,manifest)
     report = {**manifest,'runs':[],'state':'running'}
+    previous_stop = calls.STOP_FILE
+    calls.STOP_FILE = getattr(args, 'stop_file', None) or args.output/'STOP'
     try:
         for repetition in range(args.repetitions):
             result_path = args.output/f'run-{repetition+1}.json'
@@ -282,14 +284,18 @@ def run(args):
                 report['runs'].append(metrics(cases,decisions))
             finally: calls.USAGE_JOURNAL.reset(token)
         report['state']='completed'
-    except calls.UsageLimitError:
+    except calls.StopRequestedError as exc:
+        report['state']='checkpointed'
+        report['error']=str(exc)
+    except calls.UsageLimitError as exc:
         report['state']='quota_exhausted'
-        report['error']='Included-plan limit reached; resume identical command after reset. No paid fallback.'
+        report['error']=str(exc)+' Resume identical command after included-plan reset. No paid fallback.'
     except BaseException as exc:
         report['state']='failed'
         report['error']=str(exc)
         raise
     finally:
+        calls.STOP_FILE = previous_stop
         journal = args.output/'calls.jsonl'
         all_calls = [json.loads(line) for line in journal.read_text().splitlines()] if journal.exists() else []
         report['usage']=calls.usage_totals(all_calls)
@@ -315,6 +321,7 @@ def parser():
     p.add_argument('--workers',type=int,default=3);p.add_argument('--batch-size',type=int,default=8);p.add_argument('--retries',type=int,default=1)
     p.add_argument('--repetitions',type=int,default=1);p.add_argument('--seed',type=int,default=20261006)
     p.add_argument('--limit',type=int);p.add_argument('--output',type=Path,required=True)
+    p.add_argument('--stop-file',type=Path,help='Checkpoint between calls when this file exists (default OUTPUT/STOP)')
     p.add_argument('--codex-bin',default='codex')
     return p
 

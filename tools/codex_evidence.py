@@ -20,10 +20,15 @@ CALL_RECORDS: contextvars.ContextVar[list[dict[str, Any]] | None] = contextvars.
 USAGE_JOURNAL: contextvars.ContextVar[Path | None] = contextvars.ContextVar("ocado_usage_journal", default=None)
 JOURNAL_LOCK = threading.Lock()
 ISOLATION_VERSION = "codex-evidence-only-v3"
+STOP_FILE: Path | None = None
 
 
 class UsageLimitError(RuntimeError):
     """Included allowance exhausted: checkpoint instead of retrying/falling back."""
+
+
+class StopRequestedError(UsageLimitError):
+    """Finish/account for active calls, then checkpoint before starting another."""
 
 
 class IsolationViolationError(RuntimeError):
@@ -121,8 +126,11 @@ def run(prompt: str, schema: dict[str, Any], *, model: str, effort: str,
         "isolation_version": ISOLATION_VERSION, "service_tier": "standard",
         "started_at_epoch": started, "usage": None, "events": [], "exit_status": None,
         "raw_response": "", "error": None,
+        "invocation_started": False,
     }
     try:
+        if STOP_FILE is not None and STOP_FILE.exists():
+            raise StopRequestedError('Benchmark stop file found; active calls are accounted for, no new calls started.')
         record["quota_before"] = quota_snapshot(codex_bin)
         require_included_allowance(record["quota_before"])
         with tempfile.TemporaryDirectory(prefix="ocado-evidence-only-") as tmp:
@@ -134,6 +142,7 @@ def run(prompt: str, schema: dict[str, Any], *, model: str, effort: str,
             }}
             command=invocation(codex_bin, directory, schema_path, output_path, model, effort)
             record['invocation']=command
+            record['invocation_started']=True
             completed = subprocess.run(command,
                                        input=prompt, text=True, capture_output=True, env=env, check=False)
             record["exit_status"] = completed.returncode
@@ -198,7 +207,8 @@ def usage_totals(calls: list[dict[str, Any]]) -> dict[str, Any]:
     unique = {call["call_id"]: call for call in calls}
     return {
         "calls": len(unique), "failed_calls": sum(bool(call.get("error")) for call in unique.values()),
-        "missing_usage_calls": sum(call.get("usage") is None for call in unique.values()),
+        "guard_rejections": sum(call.get('invocation_started') is False for call in unique.values()),
+        "missing_usage_calls": sum(call.get("usage") is None and call.get('invocation_started',True) for call in unique.values()),
         **{key: sum((call.get("usage") or {}).get(key, 0) for call in unique.values())
            for key in ("input_tokens", "cached_input_tokens", "output_tokens", "reasoning_output_tokens")},
     }

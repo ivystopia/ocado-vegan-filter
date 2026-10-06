@@ -60,9 +60,10 @@ def arbitration_fixture(fixture, primary_reports, output):
 
 def execute(args, label, **options):
     values=['--fixture',str(options.pop('fixture',args.fixture)),'--output',str(args.output/label),
-            '--workers',str(args.workers)]
+            '--workers',str(args.workers),'--stop-file',str(args.output/'STOP')]
     for key,value in options.items():values += ['--'+key.replace('_','-'),str(value)]
     result=benchmark.run(benchmark.parser().parse_args(values))
+    if result['state']=='checkpointed':raise codex_evidence.StopRequestedError(result['error'])
     if result['state']=='quota_exhausted':raise codex_evidence.UsageLimitError(result['error'])
     if result['state']!='completed':raise RuntimeError('Benchmark did not complete: '+label)
     return result
@@ -133,6 +134,8 @@ def run(args):
             'locked_gates_passed':passed,'activation_authorised':False,
             'remaining_gate':'User model-pair selection, fixed shadow migration and random 600-positive audit.'}
         result['state']='comparison_completed' if passed else 'candidate_failed_locked_gates'
+    except codex_evidence.StopRequestedError as exc:
+        result.update(state='checkpointed',error=str(exc),next_step='Remove STOP and resume the identical command, or choose a fresh directory if code changes.')
     except codex_evidence.UsageLimitError as exc:
         result.update(state='quota_exhausted',error=str(exc),next_step='Resume the identical command after included-plan reset; no paid fallback.')
     except Exception as exc:

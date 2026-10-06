@@ -29,9 +29,9 @@ DEFAULT_CODEX_MODEL = "gpt-5.6-luna"
 DEFAULT_REASONING_EFFORT = "high"
 ARBITRATION_MODEL = "gpt-6.1-sol"
 ARBITRATION_REASONING_EFFORT = "medium"
-ARBITRATION_PROMPT_VERSION = "ocado-vegan-whole-product-arbitration-v4"
-CLASSIFIER_VERSION = "db-vegan-codex-v12"
-PROMPT_VERSION = "ocado-vegan-whole-product-json-v13"
+ARBITRATION_PROMPT_VERSION = "ocado-vegan-whole-product-arbitration-v5"
+CLASSIFIER_VERSION = "db-vegan-codex-v13"
+PROMPT_VERSION = "ocado-vegan-whole-product-json-v14"
 VALID_STATUSES = {"vegan", "nonvegan", "unknown"}
 VALID_VEGAN_REASONS = {"tagged", "manufacturer", "ingredients", "name"}
 
@@ -507,6 +507,17 @@ CODEX_OUTPUT_SCHEMA: dict[str, Any] = {
         },
     },
 }
+# Constrain generation as well as local validation: failed unknown/reason
+# combinations were a substantial source of paid-equivalent token waste.
+_decision_schema = CODEX_OUTPUT_SCHEMA['properties']['decisions']['items']
+CODEX_OUTPUT_SCHEMA['properties']['decisions']['items'] = {'anyOf': [
+    {**_decision_schema, 'properties': {**_decision_schema['properties'],
+        'vegan_status': {'type':'string', 'enum':['vegan']},
+        'vegan_reason': {'type':'string', 'enum':sorted(VALID_VEGAN_REASONS)}}},
+    {**_decision_schema, 'properties': {**_decision_schema['properties'],
+        'vegan_status': {'type':'string', 'enum':['unknown','nonvegan']},
+        'vegan_reason': {'type':'null'}}},
+]}
 
 
 CodexUsageLimitError = codex_evidence.UsageLimitError
@@ -1105,22 +1116,19 @@ def classify_by_rules(context: dict[str, Any]) -> ClassificationResult | None:
     # Interpretively difficult claims or manufactured compositions stay in the
     # model queue; known missing source/process facts can finish as unknown.
     facts = policy_facts(context)
+    definite_animal = bool(facts['animal_matches'] or facts['animal_declarations'])
     conclusive = outcome["vegan_status"] != "unknown" or outcome["positive_block"] or bool(outcome["assessment"]["material_issues"])
     if outcome['vegan_reason']=='name' and any(policy.scoped_claim(source['text']) for source in text_sources(context)):
         # A non-literal confirmation needs scope interpretation before choosing
         # the canonical manufacturer reason ahead of a valid name reason.
         return None
-    reviewed_sources={(row.get('source_url'),row.get('source_sha256')) for row in context.get('manufacturer_vegan_evidence',[])
-                      if row.get('source_kind')=='manufacturer_website' and row.get('review_policy_version')==policy.POLICY_VERSION}
-    unreviewed_sources=any(row.get('association_status')!='catalogue_match' or
-                          (row.get('source_url'),row.get('source_sha256')) not in reviewed_sources
-                          for row in context.get('manufacturer_source_candidates',[]))
-    if unreviewed_sources and outcome['vegan_status']!='nonvegan' and not outcome['positive_block']:
+    unreviewed_sources=bool(context.get('manufacturer_source_candidates'))
+    if unreviewed_sources and not definite_animal and not outcome['positive_block']:
         return None
     if outcome['vegan_status']=='unknown' and facts['qualified_animal_declarations']:
         return None
-    if outcome["vegan_status"] != "nonvegan" and not outcome["positive_block"] and any(
-            row.get("source_kind") == "manufacturer_website" and row.get("review_policy_version") != policy.POLICY_VERSION
+    if not definite_animal and not outcome["positive_block"] and any(
+            row.get("source_kind") == "manufacturer_website"
             for row in context.get("manufacturer_vegan_evidence", [])):
         return None
     if outcome["vegan_status"] == "unknown" and not outcome["positive_block"] and any(
@@ -1159,6 +1167,8 @@ def product_context_for_llm(context: dict[str, Any]) -> dict[str, Any]:
         "specification",
         "country_of_origin",
         "pack_size",
+        "package_type",
+        "current_vintage",
         "manufacturer",
         "producer",
         "return_to_address",
@@ -1225,6 +1235,15 @@ def extract_json_object(raw: str) -> dict[str, Any]:
     if not isinstance(parsed, dict):
         raise ValueError("Codex output root is not an object")
     return parsed
+
+
+def batch_output_schema(expected_ids: set[str]) -> dict[str, Any]:
+    schema = json.loads(json.dumps(CODEX_OUTPUT_SCHEMA))
+    decisions = schema['properties']['decisions']
+    decisions.update(minItems=len(expected_ids), maxItems=len(expected_ids))
+    for branch in decisions['items']['anyOf']:
+        branch['properties']['product_id']['enum'] = sorted(expected_ids)
+    return schema
 
 
 def validate_codex_payload(payload: dict[str, Any], expected_ids: set[str]) -> dict[str, dict[str, Any]]:
@@ -1301,7 +1320,7 @@ def call_codex_batch(
         for context in products:
             policy.validate_assessment(decisions[context["product"]["id"]]["assessment"], context)
     record = codex_evidence.run(
-        prompt, CODEX_OUTPUT_SCHEMA, model=model, effort=reasoning_effort, codex_bin=codex_bin,
+        prompt, batch_output_schema(expected_ids), model=model, effort=reasoning_effort, codex_bin=codex_bin,
         stage="arbitration" if arbitration_policy else "primary", product_ids=sorted(expected_ids),
         prompt_version=ARBITRATION_PROMPT_VERSION if arbitration_policy else PROMPT_VERSION,
         context_hash=context_hash(products), validator=validate_output,
@@ -1330,6 +1349,22 @@ def merge_pass_decisions(pass_decisions: list[dict[str, dict[str, Any]]], produc
                 unresolved = next((a[dimension] for a in assessments if a[dimension]["status"] in {"conflicted", "insufficient", "unresolved"}), None)
                 if unresolved:
                     assessment[dimension] = unresolved
+            # A source used to establish the agreed positive needs an
+            # applicability assessment in both independent readings. Preserve
+            # the less conclusive scope/dimension instead of selecting pass 1.
+            source_maps = [{item['source_path']:item for item in value['source_applicability']} for value in assessments]
+            assessment['source_applicability'] = []
+            for path in set.intersection(*(set(mapping) for mapping in source_maps)):
+                values = [mapping[path] for mapping in source_maps]
+                check = {**values[0]}
+                if any(value['scope'] != check['scope'] for value in values):
+                    check['scope'] = 'unresolved'
+                for dimension in policy.SOURCE_DIMENSIONS:
+                    unresolved = next((value[dimension] for value in values
+                        if value[dimension]['status'] in {'conflicted','insufficient','unresolved','covered_by_claim'}), None)
+                    if unresolved:
+                        check[dimension] = unresolved
+                assessment['source_applicability'].append(check)
             merged["assessment"] = assessment
         return merged
     return {

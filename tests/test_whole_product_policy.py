@@ -17,6 +17,15 @@ def context(name='Plain beans',ingredients='Beans',**fields):
     return {'product':{'id':'1','name':name,'ingredients':ingredients,**fields},'flags':[],'categories':[],'manufacturer_vegan_evidence':[]}
 
 
+def source_check(value, path='/manufacturer_source_candidates/0', scope='product'):
+    row = policy.source_row(value, path)
+    source = policy.reference(path + '/source_text', row['source_text'])
+    identity = policy.reference('/product/name', value['product']['name'])
+    return {'source_path':path, 'scope':scope,
+            'product':{'status':'established', 'evidence_refs':[identity,source]},
+            **{key:{'status':'not_applicable', 'evidence_refs':[source]} for key in ('variant','market','period')}}
+
+
 class WholeProductPolicyTests(unittest.TestCase):
     def test_capsule_ingredients_on_a_volume_labelled_liquid_need_identity_resolution(self):
         value=context('Example Oil Blend','Flax seed oil, Gelatin Capsule (North American Source)',pack_size='500ml',official_vegan=1)
@@ -71,11 +80,123 @@ class WholeProductPolicyTests(unittest.TestCase):
         refs=[policy.reference('/manufacturer_source_candidates/0/source_text',text)]
         assessment=policy.base_assessment(value,complete=True)
         assessment['positive_support']=[{'reason':'manufacturer','evidence_refs':refs}]
+        assessment['source_applicability']=[source_check(value)]
         result=policy.evaluate(value,**classifier.policy_facts(value),assessment=assessment,requested_status='vegan',requested_reason='manufacturer')
         self.assertEqual((result['vegan_status'],result['vegan_reason']),('vegan','manufacturer'))
         value['manufacturer_source_candidates'][0]['association_status']='catalogue_changed'
         result=policy.evaluate(value,**classifier.policy_facts(value),assessment=assessment,requested_status='vegan',requested_reason='manufacturer')
         self.assertEqual(result['vegan_status'],'unknown')
+
+    def test_website_claim_requires_product_variant_market_and_period_proof(self):
+        value=context('Example Candle, Ochre',None)
+        text='Example Candle\nColour Pink Mix Out of stock online\nSuitable for vegans.'
+        value['manufacturer_source_candidates']=[{'source_id':'source','source_text':text,
+            'source_sha256':__import__('hashlib').sha256(text.encode()).hexdigest(),'association_status':'catalogue_match'}]
+        assessment=policy.base_assessment(value,complete=True)
+        assessment['positive_support']=[{'reason':'manufacturer','evidence_refs':[{'path':'/manufacturer_source_candidates/0/source_text','quote':'Suitable for vegans.'}]}]
+        for checks in ([], [source_check(value)]):
+            assessment['source_applicability']=checks
+            result=policy.evaluate(value,**classifier.policy_facts(value),assessment=assessment,requested_status='vegan',requested_reason='manufacturer')
+            self.assertEqual(result['vegan_status'],'unknown')
+            self.assertTrue(result['positive_block'])
+            self.assertIn('identity_conflict',{issue['code'] for issue in result['assessment']['material_issues']})
+        value['product']['name']='Example Candle, Pink Mix'
+        assessment['identity']['evidence_refs']=[policy.reference('/product/name',value['product']['name'])]
+        assessment['composition']['evidence_refs']=[policy.reference('/product/name',value['product']['name'])]
+        assessment['source_applicability']=[source_check(value)]
+        result=policy.evaluate(value,**classifier.policy_facts(value),assessment=assessment,requested_status='vegan',requested_reason='manufacturer')
+        self.assertEqual(result['vegan_reason'],'manufacturer')
+        for dimension in policy.SOURCE_DIMENSIONS:
+            incomplete=copy.deepcopy(assessment)
+            incomplete['source_applicability'][0][dimension]['evidence_refs']=[]
+            result=policy.evaluate(value,**classifier.policy_facts(value),assessment=incomplete,requested_status='vegan',requested_reason='manufacturer')
+            self.assertEqual(result['vegan_status'],'unknown')
+
+    def test_inclusive_range_can_cover_a_different_colour_but_generic_title_cannot(self):
+        value=context('Example Candle, Ochre',None)
+        text='Example Candle\nColour Pink Mix\nAll Example Candle colours are suitable for vegans.'
+        value['manufacturer_source_candidates']=[{'source_text':text,'source_id':'source',
+            'source_sha256':__import__('hashlib').sha256(text.encode()).hexdigest(),'association_status':'catalogue_match'}]
+        assessment=policy.base_assessment(value,complete=True)
+        assessment['positive_support']=[{'reason':'manufacturer','evidence_refs':[{'path':'/manufacturer_source_candidates/0/source_text','quote':'All Example Candle colours are suitable for vegans.'}]}]
+        assessment['source_applicability']=[source_check(value,scope='range')]
+        self.assertEqual(policy.evaluate(value,**classifier.policy_facts(value),assessment=assessment,requested_status='vegan',requested_reason='manufacturer')['vegan_reason'],'manufacturer')
+
+    def test_irrelevant_wrong_variant_page_does_not_defeat_an_applicable_tag(self):
+        value=context('Example Candle, Ochre',None,official_vegan=1)
+        text='Example Candle\nColour Pink Mix\nSuitable for vegans.'
+        value['manufacturer_source_candidates']=[{'source_text':text,'source_id':'source',
+            'source_sha256':__import__('hashlib').sha256(text.encode()).hexdigest(),'association_status':'catalogue_match'}]
+        assessment=policy.base_assessment(value,complete=True)
+        assessment['positive_support']=[{'reason':'manufacturer','evidence_refs':[policy.reference('/manufacturer_source_candidates/0/source_text',text)]}]
+        assessment['source_applicability']=[source_check(value)]
+        self.assertEqual(policy.evaluate(value,**classifier.policy_facts(value),assessment=assessment,requested_status='vegan',requested_reason='manufacturer')['vegan_reason'],'tagged')
+
+    def test_vintage_context_invalidates_identity_hash_and_source_applicability(self):
+        value=context('Example Wine',None,current_vintage='2024',package_type='Bottle')
+        text='Example Wine. Vintage: 2023. Suitable for vegans.'
+        value['manufacturer_source_candidates']=[{'source_text':text,'source_id':'source',
+            'source_sha256':__import__('hashlib').sha256(text.encode()).hexdigest(),'association_status':'catalogue_match'}]
+        before=classifier.context_hash(classifier.product_context_for_llm(value))
+        self.assertEqual(classifier.product_context_for_llm(value)['product']['package_type'],'Bottle')
+        assessment=policy.base_assessment(value,complete=True)
+        assessment['positive_support']=[{'reason':'manufacturer','evidence_refs':[policy.reference('/manufacturer_source_candidates/0/source_text',text)]}]
+        assessment['source_applicability']=[source_check(value)]
+        self.assertEqual(policy.evaluate(value,**classifier.policy_facts(value),assessment=assessment,requested_status='vegan',requested_reason='manufacturer')['vegan_status'],'unknown')
+        value['product']['current_vintage']='2023'
+        self.assertNotEqual(before,classifier.context_hash(classifier.product_context_for_llm(value)))
+        assessment['source_applicability']=[source_check(value)]
+        self.assertEqual(policy.evaluate(value,**classifier.policy_facts(value),assessment=assessment,requested_status='vegan',requested_reason='manufacturer')['vegan_reason'],'manufacturer')
+
+    def test_batch_schema_prevents_unknown_with_a_positive_reason(self):
+        decision={'product_id':'1','vegan_status':'unknown','vegan_reason':'ingredients','confidence':'uncertain',
+            'summary':'Insufficient','evidence':[],'ambiguity_notes':[],'assessment':policy.base_assessment(context())}
+        with self.assertRaises(ValueError):policy.validate_schema({'decisions':[decision]},classifier.batch_output_schema({'1'}))
+
+        decision['vegan_reason']=None
+        policy.validate_schema({'decisions':[decision]},classifier.batch_output_schema({'1'}))
+        decision['product_id']='other'
+        with self.assertRaises(ValueError):policy.validate_schema({'decisions':[decision]},classifier.batch_output_schema({'1'}))
+
+    def test_second_pass_scope_doubt_survives_status_reason_agreement(self):
+        value=context('Example Wine',None)
+        text='Example Wine is suitable for vegans.'
+        value['manufacturer_source_candidates']=[{'source_text':text,'source_id':'source',
+            'source_sha256':__import__('hashlib').sha256(text.encode()).hexdigest(),'association_status':'catalogue_match'}]
+        assessment=policy.base_assessment(value,complete=True)
+        assessment['positive_support']=[{'reason':'manufacturer','evidence_refs':[policy.reference('/manufacturer_source_candidates/0/source_text',text)]}]
+        assessment['source_applicability']=[source_check(value)]
+        first={'product_id':'1','vegan_status':'vegan','vegan_reason':'manufacturer','assessment':assessment}
+        second=copy.deepcopy(first)
+        second['assessment']['source_applicability'][0]['period']['status']='unresolved'
+        merged=classifier.merge_pass_decisions([{'1':first},{'1':second}],'1')
+        self.assertEqual(merged['vegan_status'],'vegan')  # Raw agreement remains recorded.
+        self.assertEqual(policy.evaluate(value,**classifier.policy_facts(value),assessment=merged['assessment'],
+            requested_status='vegan',requested_reason='manufacturer')['vegan_status'],'unknown')
+
+    def test_wrong_variant_animal_processing_is_not_definite_negative_proof(self):
+        value=context('Example Wine',None,current_vintage='2024')
+        text='Example Wine. Vintage: 2023. Fined using isinglass.'
+        value['manufacturer_source_candidates']=[{'source_text':text,'source_id':'source',
+            'source_sha256':__import__('hashlib').sha256(text.encode()).hexdigest(),'association_status':'catalogue_match'}]
+        assessment=policy.base_assessment(value,complete=True)
+        assessment['source_applicability']=[source_check(value)]
+        assessment['material_issues']=[{'code':'animal_processing','target':'wine','rule_id':'wine-fining-v1',
+            'evidence_refs':[{'path':'/manufacturer_source_candidates/0/source_text','quote':'Fined using isinglass.'}],
+            'resolution_refs':[],'blocks_claim':True}]
+        self.assertEqual(policy.evaluate(value,**classifier.policy_facts(value),assessment=assessment,
+            requested_status='nonvegan')['vegan_status'],'unknown')
+
+    def test_explicit_all_vintages_assurance_can_resolve_a_page_vintage(self):
+        value=context('Example Wine',None,current_vintage='2024')
+        text='Example Wine. Vintage: 2023. All vintages are suitable for vegans.'
+        value['manufacturer_source_candidates']=[{'source_text':text,'source_id':'source',
+            'source_sha256':__import__('hashlib').sha256(text.encode()).hexdigest(),'association_status':'catalogue_match'}]
+        assessment=policy.base_assessment(value,complete=True)
+        assessment['source_applicability']=[source_check(value)]
+        assessment['positive_support']=[{'reason':'manufacturer','evidence_refs':[policy.reference('/manufacturer_source_candidates/0/source_text',text)]}]
+        self.assertEqual(policy.evaluate(value,**classifier.policy_facts(value),assessment=assessment,
+            requested_status='vegan',requested_reason='manufacturer')['vegan_reason'],'manufacturer')
 
     def test_manufactured_nonfood_single_material_is_not_whole_article_proof(self):
         value=context('Body Cream','Butyrospermum Parkii (Shea) Butter')
@@ -252,6 +373,20 @@ class WholeProductPolicyTests(unittest.TestCase):
 
 
 class CodexMeteringTests(unittest.TestCase):
+    def test_stop_file_prevents_a_call_without_inventing_unmetered_spend(self):
+        import tempfile
+        with tempfile.TemporaryDirectory() as tmp:
+            stop=Path(tmp)/'STOP';stop.touch()
+            records=[];token=codex_evidence.CALL_RECORDS.set(records)
+            try:
+                with mock.patch.object(codex_evidence,'STOP_FILE',stop), mock.patch.object(codex_evidence,'quota_snapshot',side_effect=AssertionError('No new call')):
+                    with self.assertRaises(codex_evidence.StopRequestedError):
+                        codex_evidence.run('Prompt',{},model='gpt-6-luna',effort='high',codex_bin='codex',
+                            stage='test',product_ids=['1'],prompt_version='test',context_hash='hash')
+            finally:codex_evidence.CALL_RECORDS.reset(token)
+            self.assertEqual(codex_evidence.usage_totals(records)['missing_usage_calls'],0)
+            self.assertEqual(codex_evidence.usage_totals(records)['guard_rejections'],1)
+
     def test_included_limit_never_falls_back_to_credits(self):
         for snapshot in [{'ordinary_usage_allowed':False,'buckets':{}},
                          {'buckets':{'codex':{'primary':{'usedPercent':100},'credits':{'hasCredits':False}}}},

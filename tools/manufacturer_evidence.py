@@ -56,13 +56,22 @@ def transition_assertion(conn: sqlite3.Connection, *, run_id: int, product_id: s
         vegan_evidence_hash=NULL,vegan_audit_id=NULL,vegan_positive_block=1 WHERE id=?""", (product_id,))
 
 
+def catalogue_identity_payload(payload):
+    """External captures are evidence, never part of catalogue identity binding."""
+    result = {key:value for key,value in payload.items()
+              if key not in {'manufacturer_source_candidates','manufacturer_assertion_history'}}
+    result['manufacturer_vegan_evidence'] = [row for row in payload.get('manufacturer_vegan_evidence', [])
+        if row.get('source_kind') != 'manufacturer_website']
+    return result
+
+
 def binding_hash(
     catalogue_payload: dict[str, Any], pack_size: str | None, *,
     manufacturer: str | None = None, producer: str | None = None,
     return_to_address: str | None = None,
 ) -> str:
     """Bind a claim to the reviewed catalogue identity, recipe and pack format."""
-    value = {"catalogue": catalogue_payload, "pack_size": pack_size,
+    value = {"catalogue": catalogue_identity_payload(catalogue_payload), "pack_size": pack_size,
              "manufacturer": manufacturer or None, "producer": producer or None,
              "return_to_address": return_to_address or None}
     return hashlib.sha256(json.dumps(value, ensure_ascii=True, sort_keys=True).encode()).hexdigest()
