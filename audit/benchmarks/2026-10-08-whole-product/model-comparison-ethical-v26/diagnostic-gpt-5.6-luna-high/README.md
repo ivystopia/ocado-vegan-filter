@@ -1,5 +1,0 @@
-# Luna 5.6/high failure-only diagnostic
-
-This fresh primary-only diagnostic uses the unchanged frozen inputs of the two operational pilot failures and cannot qualify a model or replace the pilot. Natural.687282011 returns one valid expected unknown; natural.684600011 again exhausts citation-validation retries, with final error `Evidence quote is absent at /manufacturer_source_candidates/1/source_text`. There is no final unsafe positive or status/reason/issue mismatch among valid decisions. No arbitration runs.
-
-All ten actual calls, including five rejected attempts, retain complete usage: 230,767 input and 61,386 output tokens; 43,675 reasoning tokens are included in output. Standard-credit proxy 2.995415 is neither a charge nor included-plan quota. Frozen inputs, hashes, cited decisions and attempts are retained separately from the original pilot. These observations support a model-protocol attribution; they do not erase the original failures or establish physical product suitability.

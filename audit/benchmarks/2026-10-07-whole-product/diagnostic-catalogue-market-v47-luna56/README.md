@@ -1,5 +1,0 @@
-# Bounded catalogue-market diagnostic, classifier v47
-
-GPT-5.6-Luna/high conservatively misses four positives: catalogue-market.3, pouch-component-scope.2, faq-affirmative-answer.3 and mixed-feature-attributes.0. The first three have incomplete first-pass source-variant citations while their second passes qualify. Constructed existing-source proof replays diagnose those omissions; they are not new model tests. The feature case triggers exactly two fresh blind Sol/medium arbitration passes and remains unknown. Fourteen calls include five rejected attempts; input 220,535, output 96,444 (including 63,166 reasoning), Standard-credit proxy 5.730715.
-
-Both diagnostics have zero final unsafe positives, exhausted operational failures or missing required issues. Neither qualifies a model. Every original input/expected label and failed output remains retained. Standard-credit proxies are neither charges nor included-plan quota measurements. See manifest.json, summary.json, frozen-inputs.json.gz and cited-decisions.json.gz for exact version bindings, evidence and usage. No canonical database, default, allowlist or installed userscript changes.

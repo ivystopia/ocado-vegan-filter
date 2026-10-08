@@ -1,7 +1,0 @@
-# Conditional Sol 6.1/medium primary controls on classifier v56
-
-All 479 controls pass status, canonical reason, required issue, protocol and repeated persistence/export checks. No operational failures, rejected attempts, disagreements or arbitration occur. Three agreed unsupported positive proposals are held by the universal policy gate. All four controls that failed the inexpensive candidates pass without modifying their evidence or expected decisions. This is a completed control stage, not overall primary/pair or release qualification; the same frozen natural pilot follows.
-
-All 112 actual invocations are retained: 1,832,107 input tokens, 43,008 cached input tokens and 204,272 output tokens. The 17,099 reasoning tokens are already included in output. The 140.63047 Standard-service credit proxy is approximately 3.34 times Luna 5.6's control proxy and 8.40 times Luna 6's; these are workload-specific proxies, not money charged or included-plan quota rates. Original journals are local, with sanitised cited-decision projections and exact frozen input/hash bindings retained for review.
-
-The conditional primary comparison began only after both inexpensive candidates completed their controls/pilot and the fixed-input failure review validated. Classifier v56, registry v8, fixture ethical-cases-v26, prompts/schema and preflight v57 remained unchanged. Existing completed v28 stages resumed without new model calls. No old changed-code stage was reused. No default, canonical catalogue, embedded set, installed FireMonkey or release was changed.

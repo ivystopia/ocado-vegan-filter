@@ -1,7 +1,0 @@
-# Conditional Sol 6.1/medium primary controls
-
-All 386 controlled contracts pass status, canonical reason, required-issue and persistence/export checks on fixed classifier v33, prompts v23/v14, policy whole-product-v2/schema 4, fixture v9 and preflight v28. This stage follows the validated hash-bound review of both failed cheap pilots; it is not a default switch or catalogue reclassification.
-
-Two raw primary disagreements trigger exactly two fresh blind arbitration assessments each. Two raw agreed unsafe proposals are rejected by the shared gate and retained. Final unsafe positives, operational errors and rejected attempts are zero. All-attempt usage: 92 calls, input 1,412,640, cache 0, output 84,609, including 13,908 reasoning. Reasoning is already part of output. Standard-service credit-equivalent proxy 91.784250, about 4.3 times the matching Luna 5.6 controlled stage, using rates checked 2026-10-06 at https://learn.chatgpt.com/docs/pricing. This is neither included-plan quota nor a charge.
-
-Manifest.json, report.json, summary.json and compressed cited decisions retain every observation. Natural pilot/full-development, arbitration comparisons, repeated pair controls and all release/migration gates remain. Earlier failed cheap pilots are preserved; a passing controlled suite cannot qualify a pair. Canonical data, production defaults, embedded IDs and installed FireMonkey source are unchanged.

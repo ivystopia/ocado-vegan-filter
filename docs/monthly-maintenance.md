@@ -2,36 +2,29 @@
 
 This runbook refreshes the SQLite source of truth, validates classifications and prepares a userscript update. Routine refreshes classify new/changed products; fundamental policy migrations reassess every known product, including historical products and existing nonvegan/unknown decisions. Run it manually about once a month.
 
-The live scrape itself does not use an LLM. The selected primary, GPT-6-Luna/high, is used only after the scrape, for products that remain unresolved after deterministic rules. Two fresh Sol 6.1/medium passes arbitrate only raw primary status/reason disagreements. Luna 5.6 was rejected on 2026-10-08 and must not be called again. Conservative unknowns count against the 98% positive-recall target; safety and evidence contracts remain strict. Fresh qualification and canonical activation remain gated.
+The live scrape itself does not use an LLM. The selected primary, GPT-6-Luna/high, is used only after the scrape, for products that remain unresolved after deterministic rules. Two fresh Sol 6.1/medium passes arbitrate only raw primary status/reason disagreements. GPT-5.6-Luna is excluded. Conservative unknowns count against the 98% positive-recall target; safety and evidence contracts remain strict. New classifier changes require appropriate validation; canonical activation retains its policy, research, audit and export gates.
 
-The whole-product policy is implemented as unreleased development. The model defaults are selected; fresh benchmark qualification and canonical migration remain gated. For new model/policy implementation changes, validate the revised benchmark and shadow transitions before classification/export; the explicit reuse direction below applies to the already benchmarked current classifier. Canonical activation remains subject to its separate policy, research, audit and export checks; the existing 48-case expectations contain historical policy and cannot be the new release gate.
+The whole-product classifier is implemented on `dev`; canonical migration remains gated by policy, research, audit and export checks. Reuse completed benchmarks for the unchanged classifier after catalogue refresh. Genuine model/policy/prompt/schema/rule changes require appropriate validation.
 
 ## Full-policy migration on dev
 
-The 8 October 2026 user authorisation covers a full scrape and reassessment now, not a later conversation. Run `tools/refresh_whole_product.py --root .whole-product-work/refresh-YYYY-MM-DD run` from the development environment. Its working clone preserves the canonical database until qualification, complete research and the positive audit pass. Status/resume commands use the same root; changed inputs/code require a fresh run or an explicitly documented new phase.
+Use `tools/refresh_whole_product.py --root .whole-product-work/refresh-YYYY-MM-DD run`. It preserves the canonical baseline, uses WAL-consistent working snapshots and reassesses every known product, including historical and existing nonvegan/unknown products. Conclusive rules precede models. Sync-run attribution is separate from all-known selection.
 
-The selected pair is Luna 6/high plus Sol 6.1/medium disagreement arbitration; annotation is two blind Sol 6.1/high source readings. The earlier fresh-qualification plan required full natural quotas and three controlled/locked repetitions; its name-only census stopped at 16/50. Preserve that failed report. The later explicit reuse instruction below supersedes fresh qualification for the current run, while strict safety/evidence checks and the previously benchmarked conservative-recall rubric remain unchanged.
+Discovery includes every part advertised by `https://www.ocado.com/sitemaps/sitemap_index.xml`, complete category pagination and current-product details. Preserve historical last-known evidence. Investigate missing/failing captures or implausible changes before assessment. Use the working guide's guarded interrupted-sync and offline-finalization recovery; never rewrite failed statuses or discard the baseline.
 
-Discovery must include every category/product part advertised by `https://www.ocado.com/sitemaps/sitemap_index.xml`; part1 alone is incomplete. Index and part captures are retained per run in SQLite. If a verified sync-only defect interrupts a pre-qualification refresh, use a fresh phase root: `tools/refresh_whole_product.py --root <new-root> fork-scrape-repair --from-root <old-root>`, followed by `run` on the new root. It preserves the interrupted baseline and original reports, runs fresh implementation checks and full discovery/details, and permits preflight reuse only when its classification implementation and frozen inputs are unchanged.
+Evaluate each product on its own evidence, without category or positive-reason sample admission gates. For a completed scrape or drained assessment checkpoint, `continue-assessment --from-root <previous-root> --reuse-benchmark-reason <authorised-reuse-instruction>` on a fresh root preserves applicable benchmark evidence, completed candidate decisions, audit history and any frozen research cohort. It refuses active phases, changed canonical baselines or changed classifier implementation. Run fresh implementation checks, then resume only unclassified products; do not repeat successful model calls or scraping.
 
-If acquisition completed but finalization failed, the coordinator first validates all retained discovery/detail evidence. It may then complete a new finalization-only run without fetching again; the failed acquisition run and its actual fetch counters remain intact and linked in the manifest. Missing captures, failed pages, incomplete pagination, missing details or changed current selection prohibit this recovery. A successful fetch count alone never permits activation.
+Freeze every initially unknown product for fresh manufacturer research, including historical products. Keep all captures, negative findings, withdrawals and coverage outcomes. Reassess products affected by shared source changes. Inaccessible or pending work is unfinished.
 
-After a complete scrape, freeze a shadow candidate with every prior decision preserved and invalidate all statuses. Use `classify-all --scope all-known --sync-run-id <latest>` after qualification or the explicit unchanged-classifier benchmark-reuse decision below; the sync ID is attribution, not a selection restriction. Conclusive rules precede semantic calls. Freeze every initially unknown product for fresh manufacturer-source research, including historical products; retain all outcomes, contrary assertions and withdrawals. Do not treat inaccessible or pending products as completed.
+Database activation and local userscript regeneration are authorised after complete assessment/research, the uniform 600-positive audit, provenance, concurrency and export checks pass. Commit finalized logical changes on `dev`, keeping the current version for user testing. No tag, main advancement, push, publication or installed FireMonkey update. Included-plan limits checkpoint without paid fallback or resets.
 
-The request authorises validated database activation and local userscript regeneration after complete coverage, a passing 600-positive audit and concurrency checks. Keep the current development version and commit final changes on dev for user testing. Release steps below are inactive until separately requested: no tag, main advancement, FireMonkey installation, push or publication. Included-plan exhaustion checkpoints; there is no paid fallback or automatic reset.
+## 1. Prepare and validate
 
-### Reusing the completed benchmark after this scrape
-
-The user explicitly superseded the fresh-qualification/name-quota stop on 8 October 2026: reuse the extensive completed benchmark evidence and reclassify every known product now. Use `continue-assessment --from-root <completed-refresh-root> --reuse-benchmark-reason <explicit-user-instruction>` on a fresh coordinator root, then `run`. It requires an unchanged classifier/model/policy/schema/prompt, an unchanged canonical baseline and a genuinely completed scrape. It preserves the failed quota report and records fresh benchmark preparation/qualification as waived_by_user rather than passed. Implementation checks, complete research accounting, final positive audit and activation/export validation remain active. The user subsequently retired category/reason sample quotas entirely. Assess products individually and never delay classification to fill category counts or change their evidence reasons. A scrape alone does not require another model benchmark; genuine classifier changes still require their appropriate validation.
-
-## 1. Prepare and benchmark
-
-Work on `dev`, inspect the tracked tree, use the development environment, and follow [the classifier design](vegan-classifier-design.md) for the revised corpus, full-pipeline checks, model candidates and acceptance gates. The historical benchmark and its frozen labels remain evidence; do not relabel them to obtain a pass.
+Work on `dev`, inspect the tracked tree and use the development environment. Follow [the classifier design](vegan-classifier-design.md) for current policy, model settings and validation. Reuse applicable benchmarks for this unchanged-classifier refresh; do not relabel frozen expectations or repeat model qualification.
 
 ```sh
 python3 -m unittest discover -s tests
 node --check ocado-vegan-filter.user.js
-python3 tools/benchmark_whole_product.py --split development --mode pipeline --model gpt-6-luna --effort high --output audit/benchmarks/YYYY-MM-DD-whole-product-development
 ```
 
 A development result is not permission to classify the catalogue. Evaluate locked cases three times with the frozen selected candidate; do not ask the already settled model-choice question again. Never use paid/API fallback on included-plan exhaustion. Keep completed checkpoints and resume the identical command after allowance reset.
@@ -54,7 +47,7 @@ BROWSE_WITH_FIREFOX_SCRIPTS="$FIREFOX_SCRIPTS" \
 
 Read the `browse-with-firefox` skill for the current environment/helper paths if the checks above fail. The sync needs this Firefox environment because it imports Selenium's `firefox_session.py` helper and launches a headless snapshot of the current Firefox profile. It does not close, restart, or modify the real Firefox session.
 
-Do not use the legacy `scan_ocado_vegan_according_to_ingredients.py` JSONL pipeline for monthly maintenance.
+Use SQLite as the source of truth throughout maintenance.
 
 Use the full default detail refresh for monthly maintenance. Limit flags are for isolated smoke-test databases; `--missing-details-only` cannot detect changed ingredients on already fetched products.
 
@@ -280,7 +273,7 @@ Release versions describe `ocado-vegan-filter.user.js`, although Git tags snapsh
 
 Do not regenerate or publish the userscript if any of the following occurs:
 
-- benchmark mismatch, false-vegan result, missing product, or model error;
+- a critical validation mismatch, false-vegan result, missing product or unresolved model error;
 - failed or incomplete Ocado sync;
 - classification run error;
 - unresolved `NULL` status for any current or sync-changed product;

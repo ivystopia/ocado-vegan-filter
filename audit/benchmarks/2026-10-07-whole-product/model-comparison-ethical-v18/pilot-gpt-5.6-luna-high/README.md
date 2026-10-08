@@ -1,5 +1,0 @@
-# V34 Luna 5.6/high natural pilot
-
-All 96 frozen cases are attempted. The 95 valid decisions have correct statuses; one case has an operational citation failure. Skittles natural.634499011 retains vegan/name instead of the manufacturer reason required by applicable producer evidence. Both raw passes omit the higher-priority route. No final unsafe positive occurs. The pilot and the two earlier control failures disqualify this candidate; neither diagnostics nor a passing retry erase failures.
-
-All-attempt usage: 67 calls, 22 rejected attempts, input 2,096,760, cache 26,880, output 496,886 including 348,782 reasoning. Standard-service credit-equivalent proxy 27.361340, based on rates checked 2026-10-06 at https://learn.chatgpt.com/docs/pricing; neither included quota nor a charge. Every retry/disagreement/fresh blind arbitration remains in the metrics and compressed cited decisions. The failed-case model-only diagnostic uses unchanged blind evidence. No policy/reference relaxation, default switch or canonical/allowlist activation occurs.

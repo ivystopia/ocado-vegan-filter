@@ -1,5 +1,0 @@
-# Fixed classifier-v48 Luna 6 natural pilot
-
-All 96 frozen natural products pass suitability status, canonical reason, required issues and persistence/export. One raw disagreement on 694648011 receives exactly two fresh blind Sol/medium arbitration readings. No final unsafe or raw agreed unsupported positives, reason errors or exhausted operational failures occur. The seed-name mandatory-control miss still disqualifies this candidate.
-
-All 38 calls include four rejected attempts and complete reported usage: 1,378,674 input, 19,968 cached input and 141,595 output tokens, with 51,364 reasoning tokens included in output. The Standard-credit proxy is 7.2682495. Matching controls/pilot total 16.5477835, about 72.0% below Luna 5.6 matching stages (59.006575); these are not charges or included-plan quota measurements. The separately reported Luna 5.6 single-case diagnostic is excluded from this matched comparison. See summary.json, manifest.json and cited-decisions.json.gz. No reference, model default or canonical changes.

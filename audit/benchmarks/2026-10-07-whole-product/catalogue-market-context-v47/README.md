@@ -1,9 +1,0 @@
-# Explicit target catalogue provenance
-
-The v46 Luna 6 control readings expose a shared input omission: UK-scoped source confirmation was present, but target sale-market provenance was implicit in the application. Both readings conservatively withheld suitability. The model is instructed to use supplied facts, so this cannot be attributed solely to model weakness. Prior market-specific failure attribution is qualified in review.json, with original records retained.
-
-V47 supplies Ocado/UK catalogue provenance in classification and blind annotation, bound in call context hashes and annotation manifests. It changes no individual frozen product record, expected label, manufacturer source, whole-product policy, reasoning setting or deterministic promotion route. A different-country formulation, actual source restriction or country-of-origin description cannot be cleared by the catalogue fact. Tests reject another catalogue's declared provenance and fabricated per-product/shared-object evidence pointers.
-
-Four controlled cases contrast UK and US-only assurances, contradictory UK source metadata, and US manufacturing origin with UK sale-market applicability. Every prior case is preserved in fixture v21, with an explicit crosswalk. Full preflight v47 passes 279 discoverable tests, one live-Ocado skip, JS syntax and diff checks. Eight-case matching cheap-model diagnostics precede further broad comparisons.
-
-The v46 consistent-snapshot inventory has 13,200 semantic-queue products (11,841 stored-current) with UK/GB mentions in scope metadata, including 1,383 previously vegan (1,309 current). This is an overinclusive source-signal bound, not verified applicability, new promotions or a reclassification count. Full captures, scope qualifications and exact identity still require assessment. No canonical/database/script activation occurs.

@@ -1,3 +1,0 @@
-# Combined FAQ replay
-
-The unchanged three-product context set again misses both whole-product FAQ positives in two fresh primary calls. No retry, disagreement or operational failure occurs. Mechanical permutation/hash checks prove identical product contexts to the original control call; the wine contexts are in a different order. This is not an exact ordered replay and does not prove causation. The unchanged isolated cases pass separately. These diagnostics motivate explicit per-product evidence boundaries, not an expensive-primary fallback or relabelling of controls. Full originals remain local; public projections omit private call metadata.

@@ -1,5 +1,0 @@
-# Fresh classifier-v56 Luna 6 diagnostic
-
-Nine of ten frozen cases produce valid decisions, all matching suitability, canonical reason, required issues and isolated persistence/export. The tagged egg-white processing case is correctly nonvegan. Skittles reason disagreement receives exactly two fresh blind Sol/medium readings and resolves to manufacturer. Protein World 587218011 exhausts exact-source quotation validation; that operational failure is retained rather than converted into completed unknown. This run cannot qualify a model.
-
-Twenty actual calls include seven rejected citation attempts with complete usage: 322,049 input (39,936 cached), 40,240 output including 18,308 reasoning tokens. Eighteen primary calls and two arbitration calls. Standard-credit proxy 3.470004 is not a charge or included-plan quota estimate. Source words, expectations, citation rules and code remain unchanged. Sanitised projections and frozen-input bindings are retained; complete originals remain local. No canonical/default/allowlist/installed FireMonkey/release or checkpoint commit change.

@@ -1,5 +1,0 @@
-# Luna6 v31 controls
-
-All497 controls completed;496 expected statuses match. The sole conservative unknown is synthetic.faq-component-scope.3: both actual positive readings omit the scoped FAQ question citation. The existing gate correctly requires question-plus-answer proof; faq-question-citation-review.json retains the actual pair and the expressly constructed added-native-question contrast. No source, label, prompt or implementation change follows. This failed control gate cannot be erased by later pilot results.
-
-No final unsafe positive, reason error, operational failure, missing required issue or confirmed-reporting error occurs. Five raw agreed unsupported positives are blocked. Nine primary product disagreements are recorded. Complete usage includes all attempts and fresh blind arbitration: 182 actual calls /19 rejects, input2,863,964/cache121,600/output364,077, including160,904 reasoning tokens. Standard-credit proxy27.106554, neither a charge nor included-plan quota. Fullprojections and frozen-input bindings retained. Luna5.6 is excluded by direct user decision; no defaults or catalogue decisions changed.

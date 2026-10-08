@@ -1,5 +1,0 @@
-# Interrupted Sol development stage, classifier v56
-
-Stopped and drained at 152/413 valid decisions; 261 remain unrun. One conservative mismatch natural.626755011 is an actual shared parser defect, repaired later in classifier v57. There are no final unsafe positives, reason/issue errors or operationally failed decisions relative to these references. One primary disagreement receives exactly two fresh blind Sol/medium arbitration calls and correctly ends unknown.
-
-44 attempt records contain 42 actual invocations and two STOP guards, no rejected actual invocation, complete usage: 1,446,457 input /104,448 cached input /241,729 output tokens (10,034 reasoning already included). Standard-credit comparative proxy 127.79382 is not a charge or included-plan allowance rate. All run checkpoints, sanitised cited projections, exact fixture binding and summaries are retained. The stop file is permanent after the shared code change. Partial results cannot qualify or be reused by the revised candidate.

@@ -1,3 +1,0 @@
-# Fresh classifier-v58 Luna 6 diagnostic
-
-All 17 status/reason/issue and reporting/persistence/export contracts pass, including native La Vie ham, mixed factory warnings, actual animal ingredients and wine processing. Eight actual invocations, no rejected attempt or operational failure; one primary status disagreement receives exactly two fresh blind Sol/medium arbitration calls. The complete 129,624 input /45,952 cached input /19,322 output usage includes 7,835 reasoning tokens. Standard-credit proxy1.7682005 is comparative only, not a charge or included-plan allowance rate. All attempts and exact input bindings are retained. This bounded diagnostic cannot qualify a model pair; the matching Luna 5.6/high diagnostic uses the identical frozen 17 cases.

@@ -1,5 +1,0 @@
-# V34 Luna 5.6/high controls
-
-All 392 controlled cases complete on v34/v10/preflight v30. Two conservative failures remain: synthetic.liquid-processing.0.5 (cider) and synthetic.liquid-processing.4.5 (maple syrup). Both raw passes choose manufacturer for a complete-process animal-free statement; the supported canonical route is ingredients with resolved processing. The shared gate rejects the unsupported reason to unknown. No final unsafe positive, operational error or missing required issue occurs. This fails the mandatory control gate; a later passing pilot cannot qualify the candidate.
-
-All-attempt usage: 80 calls, 0 rejected attempts, input 1,160,590, cache 0, output 231,865 including 169,035 reasoning. Standard-service credit-equivalent proxy 20.947980, based on rates checked 2026-10-06 at https://learn.chatgpt.com/docs/pricing; neither included quota nor a charge. Raw agreed unsafe proposals, disagreements and fresh blind arbitration remain in the retained metrics and cited decisions. Every earlier fixture/reference/result remains unchanged; no default or canonical/allowlist activation occurs.

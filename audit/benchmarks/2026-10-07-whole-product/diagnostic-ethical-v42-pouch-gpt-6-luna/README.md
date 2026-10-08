@@ -1,3 +1,0 @@
-# Pouch scope diagnostic
-
-Three synthetic source-scope contracts on classifier v42 and fixture v18 pass status, canonical reason, required issues and repeated persistence/export checks. Packaging-only pouch declarations and replies remain unknown; the applicable whole-product reply qualifies as manufacturer evidence. Two fresh Luna 6/high calls were made; no rejected attempts, disagreement or arbitration occurred. All-attempt usage is retained in summary.json. This small diagnostic is not model-pair or release qualification. Frozen inputs and cited decisions are retained in compressed files with an input binding.

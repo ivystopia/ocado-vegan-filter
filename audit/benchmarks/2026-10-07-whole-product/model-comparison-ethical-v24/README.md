@@ -1,7 +1,0 @@
-# Classifier-v49 model comparison: stopped for a reproduced safety defect
-
-The comparison began with both cheap candidates under ethical-cases-v22 and passed preflight v50. Luna 5.6 completes all 443 controls with three conservative misses and no final unsafe positives. Its natural pilot checkpoints at 88/96, all scored cases passing. Eight pilot cases and every subsequent model stage are explicitly unrun. This is not a completed model recommendation.
-
-STOP was introduced after a local constructed assessment exposed a shared code defect: a hedged statement such as may be suitable for vegans can be accepted as manufacturer certainty. The model runs did not discover an unsafe final product; the reproducible local counterexample is retained under audit/benchmarks/2026-10-08-whole-product/claim-certainty-v50/before.json. Current code repairs claim certainty, so these old stages cannot qualify it or be resumed as current evidence. Retain all frozen inputs, manifests, cited projections and usage. No canonical migration, default change, checkpoint commit, release, installed-script update or publication occurred.
-
-Controls: 120 actual calls / seven rejected, Standard-credit proxy 34.74162. Partial pilot: 56 actual calls / fifteen rejected plus one non-invoked STOP guard, proxy 25.38379. Combined proxy 60.12541, not charges or included-plan quota usage. See each stage summary, input binding and cited-decision projection. Reasoning tokens are already part of output.

@@ -1,5 +1,0 @@
-{
-  "original_fixture": "audit/benchmarks/2026-10-08-whole-product/model-comparison-ethical-v26/diagnostic-fixture-gpt-5.6-luna-high.json",
-  "sha256": "b89a319e7097a79d104e83711122c37b0450b78c5879b0db01f58ad0fdf591c8",
-  "retained_copy": "frozen-inputs.json.gz"
-}

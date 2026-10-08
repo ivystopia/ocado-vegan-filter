@@ -1,9 +1,0 @@
-# Completed fixed-revision primary comparison v32
-
-Luna 6/high and conditional Sol 6.1/medium each complete 497 controls with one conservative positive miss, and complete the same 96-case natural pilot. No final unsafe positives occur. Both mandatory-control gates remain failed; state no_eligible_primary. The actual failures are preserved, not erased by replay or passing pilot results. No larger development, arbitration-model comparison, fixed-pair repetitions or locked evaluation starts.
-
-Luna 6 omits the FAQ question establishing its positive answer's scope. Sol treats a separately certified product/flavour assertion as food-only, leaving the tub unassessed. Each is attributed from actual readings and exact retained source evidence under explicit synthetic policy contracts; these references are not externally verified natural-product status. Their reviews demonstrate no shared implementation defect. No source, policy, prompt, schema, fixture, label or gate change follows.
-
-The v31 Luna observations are reused without new calls: 218 actual, 23 rejected, Standard-credit proxy 34.3056735. New v32 Sol observations: 147 actual, 1 rejected, proxy 253.77035. Sol's measured matched-pipeline proxy is 7.40 times Luna 6's. These token-based proxies include actual arbitration and every attempt; they are not money, charges or included-plan quota. Reasoning is already included in output. Full exact totals, per-stage attribution and projection/input bindings are retained.
-
-GPT-5.6-Luna is excluded by the user's decision; GPT-6.1-Luna was clarified to mean GPT-6-Luna. No additional excluded/unsupported model call occurs. Candidate and fixture hashes remain unchanged. Preflight v65 passed 306 tests with one explicit live-Ocado skip, JS syntax and diff checks. This is development evidence, not release qualification. Canonical data, production defaults, embedded allowlists and installed FireMonkey remain unactivated. No checkpoint commit or push is made.

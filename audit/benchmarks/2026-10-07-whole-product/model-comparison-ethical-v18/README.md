@@ -1,7 +1,0 @@
-# V18 fixed-candidate comparison
-
-This comparison used classifier v34, fixture v10 and passing preflight v30, with no reused model stages. It is disqualified, not qualified or activated. Luna 6 passes all 392 controlled contracts and all 96 natural pilot cases, then stops expanded development: 95 valid scores, one operational citation failure, one shared-gate reason error and 317 explicitly unrun cases. Both readings of 659989011 supplied the correct manufacturer claim; v35 repairs the shared recognizer. No expensive primary is justified by that code defect.
-
-Luna 5.6 fails two controlled reason/status contracts, one natural pilot reason and one operational pilot citation check; its fresh two-case diagnostic retains the reason miss. Earlier failures remain failures. Five raw agreed unsafe Luna 6 control proposals and eight Luna 5.6 control proposals are blocked by the gate. Final unsafe positives are zero on scored cases, which does not qualify either model.
-
-All attempts and standard-credit proxies are in summary.json and each stage report. Matching controls are 45.8% lower and matching pilot 74.5% lower for Luna 6 than Luna 5.6, including retries and actual arbitration. Those proxies are neither included-plan quota rates nor charges. No default, canonical database, embedded allowlist or installed userscript changed. V35 requires fresh checks and calls; v18 is retained unchanged.

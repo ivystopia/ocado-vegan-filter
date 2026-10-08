@@ -1,5 +1,0 @@
-# Classifier-v49 bounded Luna 6/high diagnostic
-
-All 15 unchanged natural/control inputs pass suitability status, canonical reason, required issues and actual pipeline persistence/export checks. The actual Protein World producer assertion retains manufacturer, the affirmative seed name qualifies, and serving/formula/packaging contrasts remain appropriately unknown. Two raw disagreements (synthetic.faq-component-scope.3 and synthetic.nutrition-serving.4) receive exactly two fresh blind Sol/medium readings each. No final unsafe or raw agreed unsupported positive occurs.
-
-All ten calls include one rejected attempt and complete usage: 183,074 input, 35,328 cached input and 33,792 output tokens; 10,754 reasoning tokens are included in output. Six primary calls use 118,864 input / 30,359 output; four arbitration calls use 64,210 input / 3,433 output. The Standard-credit proxy is 4.6659095, not a charge or included-plan quota estimate. Frozen inputs, cited decision projection and exact bindings are retained. This bounded diagnostic cannot qualify the model or authorise canonical/default changes.

@@ -1,5 +1,0 @@
-# Classifier-v59 Luna 5.6 bounded diagnostic
-
-All 23 statuses, required issues, reporting and persistence/export checks match, with no unsafe final or operational failure. Skittles 634499011 has one manufacturer-precedence error: both raw readings cite only the name, omitting the applicable producer self-description. The actual pair remains vegan/name. A clearly labelled constructed addition of the exact native manufacturer citation yields manufacturer through repeated gates; it is not model output and does not erase the failure. No shared code/reference defect is demonstrated.
-
-Nine actual invocations include one rejected attempt; complete usage is 144,159 input /62,261 output, including 42,730 reasoning tokens. One raw complete-production wine reason disagreement receives exactly two fresh blind Sol/medium calls. Comparative Standard-credit proxy 4.421325 counts all attempts and arbitration; it is not a charge or included-plan allowance rate. Both bounded diagnostics fail overall and cannot qualify a model or justify an expensive fallback without the full frozen controls/pilot and attributed review. Inputs, labels, sources and code remain unchanged.

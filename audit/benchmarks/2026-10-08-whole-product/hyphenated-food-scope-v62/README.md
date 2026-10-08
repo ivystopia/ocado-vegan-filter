@@ -1,7 +1,0 @@
-# Hyphenated partial-assurance scope — classifier v62
-
-A constructed offline assurance used “food-only”. The same deliberately incorrect positive readings were accepted in both orders on v61 because the existing component-scope detector recognised only spaces. This is a test spelling contrast, not a discovered natural-product error or model output. The retained before.json and failing regression log establish the defect.
-
-V62 recognises ordinary spaces, ASCII hyphens and U+2010/U+2011 between the existing food/contents/drink/coffee qualifier and “only”. It changes no source words, policy, prompts, schema, registry or natural labels. The exact before input/readings now produce unknown in both orders (after.json). The discoverable regression passes; all 137 policy tests and preflight v64's 305 tests pass, with one explicit live-Ocado skip, syntax and diff checks.
-
-Frozen fixture v29 preserves every one of v28's 1,104 cases and selection, adding six partial-assurance spelling contrasts. It has 497 controls, 413 natural development references and 200 workload inputs. All three isolated SQLite split round-trips passed. The bounded diagnostic retains the previous 24 cases, adds the actual v30 flavour-scope miss and these six contrasts: 31 cases. Earlier comparison stages cannot qualify or be reused after this production change. Canonical SQLite, embedded IDs and installed FireMonkey remain unchanged.

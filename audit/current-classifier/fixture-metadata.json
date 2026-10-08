@@ -1,0 +1,9 @@
+{
+  "change": "Remove obsolete selection targets and development chronology only",
+  "fixture_path": "benchmarks/vegan-classifier-v2/ethical-cases-v29.json",
+  "previous_fixture_sha256": "9398101cbf801dcdd09da68260c50aef6cefb68eb06684fedf8af6bfca0130d6",
+  "current_fixture_sha256": "07fa5a59e56cd4050818723b99ef16356b63c29cf8284a12794bb3bb33b7b590",
+  "evaluation_projection_sha256": "2783ebd97dd147265db523d0b93777df7f6428a62db38b8b4a04e3f94a2df2b9",
+  "cases_inputs_references_splits_and_pilot_selection_unchanged": true,
+  "fresh_model_calls": 0
+}

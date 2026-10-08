@@ -1,8 +1,0 @@
-{
-  "case_inputs": {
-    "natural.663918011": "866d1a93672ff3b4fc43895c766c524d4d45ded0b2c4cc180e36758112cd90f1",
-    "natural.662698011": "2ba725a91dba3de80d027bb55ad3d840f680bdf466e1e44c5bbfccb00bcf51d6"
-  },
-  "prompt_sha256": "8345502a709ad8ccab572e97fd648acca0a3b11285180ce39edea44bbfb67197",
-  "review_type": "blind reference/rubric audit; no classifier decisions or earlier expected labels"
-}

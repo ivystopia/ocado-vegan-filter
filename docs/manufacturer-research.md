@@ -26,18 +26,18 @@ python3 tools/research_ocado_manufacturers.py --root .manufacturer-research/YYYY
 
 ## Independent review and import
 
-Run the frozen classifier benchmark after classifier/schema changes, as required by the monthly runbook. The manufacturer reviewer additionally checks publisher identity, UK applicability and exact claim-to-product scope against the retained text. It uses Luna/high twice in independent sessions, with browsing disabled. Every positive review must cite a supplied source and an exact quote found in that capture. Disagreement leaves the product unknown. Candidate notes are untrusted hypotheses, not proof. Reviews are hashed against the prompt, product and captured sources; changed inputs must be reviewed again. Review can run during research and resumes using matching saved reviews.
+Run the frozen classifier benchmark after classifier/schema changes, as required by the monthly runbook. The manufacturer reviewer additionally checks publisher identity, UK applicability and exact claim-to-product scope against the retained text. The full-refresh coordinator imports complete raw captures and applies the normal two-pass Luna 6/high classifier with disagreement-only Sol 6.1/medium arbitration. Browsing is confined to source gathering. For a separately requested positive-only import, pass `--model gpt-6-luna --reasoning-effort high` explicitly to the reviewer. Every positive review must cite a supplied source and an exact quote found in that capture. Disagreement leaves the product unknown. Candidate notes are untrusted hypotheses, not proof. Reviews are hashed against the prompt, product and captured sources; changed inputs must be reviewed again. Review can run during research and resumes using matching saved reviews.
 
 Quote validation removes retrieval line markers and link/formatting decoration while preserving the source's words and qualifications. It never accepts a paraphrase or drops a negation. Incomplete or invalid model output is retained for inspection; individually valid decisions are kept and missing/invalid products receive up to two further attempts within that pass. Every accepted product still needs its own valid decision from each of the two independent passes. Unresolved execution or validation failures remain errors, never implicit unknown decisions or vegan additions.
 
-The retained `benchmarks/manufacturer-source-scope-v2.json` additionally exercises fictional range exclusions, wrong brands/markets/vintages, reformulations, retailer claims, misleading serving suggestions, animal-ingredient conflicts, untrusted page instructions and official-brand versus legal-company identity. Version 1 remains retained; version 2 adds identity cases without changing its earlier inputs or labels. Preserve frozen inputs, hashes and expected labels together. Run it before applying a changed source-review prompt or schema, and investigate mismatches or disagreements.
+The retained `benchmarks/manufacturer-source-scope-v2.json` additionally exercises fictional range exclusions, wrong brands/markets/vintages, reformulations, retailer claims, misleading serving suggestions, animal-ingredient conflicts, untrusted page instructions and official-brand versus legal-company identity. Preserve frozen inputs, hashes and expected labels together. Run it before applying a changed source-review prompt or schema, and investigate mismatches or disagreements.
 
 ```sh
 python3 tools/research_ocado_manufacturers.py --root .manufacturer-research/YYYY-MM-DD benchmark --output audit/benchmarks/YYYY-MM-DD-manufacturer-source-scope-luna-high.json
 ```
 
 ```sh
-python3 tools/research_ocado_manufacturers.py --root .manufacturer-research/YYYY-MM-DD review --workers 4 --batch-size 8
+python3 tools/research_ocado_manufacturers.py --root .manufacturer-research/YYYY-MM-DD review --model gpt-6-luna --reasoning-effort high --workers 4 --batch-size 8
 python3 tools/research_ocado_manufacturers.py --root .manufacturer-research/YYYY-MM-DD apply --dry-run
 ```
 

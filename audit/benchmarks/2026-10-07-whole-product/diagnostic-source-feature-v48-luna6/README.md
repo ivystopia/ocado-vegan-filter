@@ -1,5 +1,0 @@
-# Bounded source and native-feature diagnostic, classifier v48
-
-GPT-6-Luna/high passes all thirteen unchanged-input cases through the complete pipeline: suitability status, canonical reason, required issues, persistence and export. Palmolive triggers exactly two fresh blind Sol/medium arbitration passes. A raw agreed unsupported packaging-feature positive is blocked by the shared gate. Fourteen calls include four rejected citation attempts; all usage is accounted for: 226,005 input, 16,128 cached input and 48,760 output tokens, with 19,555 reasoning tokens already included in output. The Standard-credit proxy is 2.463805; it is neither a charge nor an included-plan quota measurement.
-
-This bounded diagnostic does not qualify a model or replace full development, locked repetitions, workload and shadow audit gates. See summary.json, manifest.json, input-packet-binding.json, frozen-inputs.json.gz and cited-decisions.json.gz. No reference label, live catalogue, default, embedded allowlist or installed userscript changed.
