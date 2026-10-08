@@ -1,0 +1,13 @@
+# Complete sitemap discovery repair
+
+During the authorised 8 October 2026 refresh, category discovery completed 6,353 pages without exhausted failures, finding 48,389 distinct products. The old loader fetched only sitemap-products-part1.xml (50,000 entries); category plus part1 selected 50,683 current products.
+
+The official robots file advertises https://www.ocado.com/sitemaps/sitemap_index.xml . Its retained index advertises both product parts. Part2 contained 725 IDs, of which 42 were outside the working current selection and seven were outside all known products. The supplied completeness JSON retains these exact IDs and comparisons. The repaired loader verified 50,725 unique sitemap products across both parts; readiness captures retain the URLs and content hashes. These are live discovery observations, not classification/reference decisions.
+
+The temporary scrape was interrupted after the defect was confirmed, before any canonical activation or model annotation. Its checkpoint and unfinished sync_context_baseline remain preserved. The isolated v2 phase was forked from the checkpoint using the guarded fork-scrape-repair operation. It preserves the original snapshot, partial working evidence and old preflight reports exactly; source/model/policy/fixture identity and classification implementation hashes were verified. No old report was rewritten or failed sync marked completed.
+
+Commit 0f91e98 reads all advertised category/product sitemap parts, retains index and full part bodies in SQLite sync_discovery_sources, refuses failed/empty discovery, explicitly isolates the browser profile and adds guarded scrape-only recovery. Regressions cover multi-part unions/deduplication, failed-part refusal, multi-part leaf categories, preserved interrupted baseline and rejection of classifier changes during reuse.
+
+The first full check attempt ran in a sandbox that prevented local socket binding: 14 Firefox fixture errors, with no evidence of a product-code failure. The retained second attempt with temporary-browser socket permission passed all 324 tests in 38.909 seconds, with one explicit live-Ocado skip; syntax/diff checks passed. Both attempts are retained in sibling refresh-sitemap-repair-checks directories. Temporary Firefox fixtures are distinct from installed FireMonkey verification.
+
+The unchanged classifier preflight was reused explicitly, not rerun or described as a fresh classifier result for the repaired source. The new scrape, refreshed natural qualification, all-known reassessment, exhaustive manufacturer research, positive audit and activation remain separately gated. Canonical database and userscript were unchanged at this repair milestone. Work stays local on dev; no release or installed-script action occurred.
