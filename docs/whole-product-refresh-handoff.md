@@ -2,6 +2,12 @@
 
 The user authorised execution in this conversation on 8 October 2026, superseding the earlier deferral. Refresh catalogue evidence, qualify the selected pair, reassess every known product and refresh sources for every initially unknown product. Activate validated database decisions and regenerate the local userscript after all gates pass. Keep everything local on dev, at the current development version, without a tag, main advancement, installed FireMonkey update, push or publication. These are standing defaults; do not ask the same scope questions on the next refresh.
 
+## Current execution status: 8 October 2026
+
+The authorised full acquisition and guarded finalization completed in the isolated refresh root, with 58,322 known products (50,725 current and 7,597 historical), all 50,725 current details successfully fetched and historical evidence preserved. The expanded census of all 143 non-official vegan-name signals then stopped qualification at the unchanged natural quota: two blind, citation-validated Sol/high readings yielded 126 manufacturer positives, 16 name-only positives and one nonvegan, with no disputes. The minimum remains 50 name-only products (20 development plus 30 locked), so the shortfall is 34 before family/source separation. Manufacturer precedence remains intact. See [the retained milestone evidence](../audit/benchmarks/2026-10-08-whole-product/refresh-name-quota-stop/README.md).
+
+No full refreshed qualification, all-known reassessment, exhaustive manufacturer-source refresh, 600-positive audit, canonical activation or userscript regeneration has occurred. Canonical database and userscript remain unchanged. The resumable root is .whole-product-work/refresh-2026-10-08-v4; no calls remain active. Preserve the frozen evidence and gate failure. Do not repeat scraping, selectively rerun readings, relabel manufacturer cases or introduce synthetic quota replacements. Resumption past this gate needs a sufficient natural corpus under the unchanged policy or an explicitly authorised benchmark-design revision. The earlier shortage below describes the previous corpus, not this completed fresh census.
+
 ## Selected defaults and acceptance
 
 - Primary: `gpt-6-luna`, reasoning effort `high`, exactly two independent passes.

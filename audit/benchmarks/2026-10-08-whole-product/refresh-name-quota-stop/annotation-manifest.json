@@ -1,0 +1,15 @@
+{
+  "packet_hash": "841dc10be5055863c01dac4d8741e0abee34e6358a4a733db963d31e4240fa58",
+  "model": "gpt-6.1-sol",
+  "effort": "high",
+  "prompt_version": "blind-evidence-adjudication-v16",
+  "catalogue_provenance": {
+    "retailer": "Ocado",
+    "market": "UK"
+  },
+  "policy_version": "whole-product-v2",
+  "schema_sha256": "39a9a9c15d43aeffb16aa609c945abe60f87799f84d63d2ea4b7cdbec9849868",
+  "knowledge_version": "vegan-risk-registry-v8",
+  "knowledge_sha256": "b984fa4965a1187144f172ba0ec490e1789b8929f18ee8b19ea4ec3ad59323d0",
+  "validator_sha256": "e1e2c0f7887a8ea596a4c9c6278fcc962699fc412ea22bc052a3e5bb97aabe44"
+}

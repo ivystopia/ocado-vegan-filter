@@ -1,0 +1,20 @@
+{
+  "state": "passed",
+  "validated_cases": 143,
+  "validated_independent_readings": 286,
+  "validated_input_refs": 921,
+  "packet_hash_valid": true,
+  "case_input_hashes_valid": true,
+  "schema_and_basis_checks_valid": true,
+  "gate_reproduced": {
+    "state": "blocked_natural_quota",
+    "examined": 143,
+    "accepted_name_only": 16,
+    "minimum": 50,
+    "required_development": 20,
+    "required_locked": 30,
+    "disputed": 0,
+    "note": "Source-cited natural references only. A pass is admission, not qualification; family-separated selection may still have shortfalls."
+  },
+  "note": "Offline protocol validation; no model calls, reference relabeling, physical-status verification or threshold change."
+}
