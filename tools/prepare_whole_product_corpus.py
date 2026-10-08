@@ -23,7 +23,7 @@ def external_sources(conn, product_id, context):
     return [dict(conn.execute('SELECT * FROM manufacturer_website_sources WHERE id=?',(source_id,)).fetchone()) for source_id in sorted(ids)]
 
 
-def prepare(db, output, seed=20261006):
+def prepare(db, output, seed=20261006, *, all_name_candidates=False):
     if output.exists(): raise ValueError('Choose a fresh candidate packet')
     conn=sqlite3.connect(db.resolve().as_uri()+'?mode=ro',uri=True)
     conn.row_factory=sqlite3.Row
@@ -33,6 +33,8 @@ def prepare(db, output, seed=20261006):
         rng.shuffle(ids)
         strata={key:[] for key in ['tagged','manufacturer','name','ordinary','unknown','nonvegan']}
         target={'tagged':100,'manufacturer':140,'name':200,'ordinary':100,'unknown':360,'nonvegan':140}
+        if all_name_candidates:
+            target['name']=len(ids)
         records={}
         manufacturer_ids = {row[0] for row in conn.execute('SELECT DISTINCT product_id FROM manufacturer_website_evidence')}
         manufacturer_ids.update(row[0] for row in conn.execute("SELECT DISTINCT product_id FROM manufacturer_vegan_evidence WHERE lower(content) LIKE '%suitable for%vegan%' OR lower(content) LIKE '%certified vegan%' OR lower(content)='vegan'"))
@@ -70,6 +72,7 @@ def prepare(db, output, seed=20261006):
                 'adjudication':{'state':'unlabelled','reference_type':'workload-only'}})
         packet={'schema_version':2,'seed':seed,'policy_version':policy.POLICY_VERSION,'candidates':list(records.values()),'workload':workload,
             'sampling_counts':{key:len(value) for key,value in strata.items()},
+            'all_name_candidates':all_name_candidates,
             'note':'No existing vegan status, classifier output, old adjudication or gold labels were selected.'}
         save(output,packet)
         return packet['sampling_counts']
@@ -109,4 +112,5 @@ def augment(db, original, output):
 if __name__=='__main__':
     p=argparse.ArgumentParser(description=__doc__);p.add_argument('--db',type=Path,default=Path('ocado_products.sqlite'));p.add_argument('--output',type=Path,required=True)
     p.add_argument('--augment-packet',type=Path)
-    args=p.parse_args();print(json.dumps(augment(args.db,args.augment_packet,args.output) if args.augment_packet else prepare(args.db,args.output),indent=2))
+    p.add_argument('--all-name-candidates',action='store_true',help='Census all non-official vegan-name sampling signals before quota qualification')
+    args=p.parse_args();print(json.dumps(augment(args.db,args.augment_packet,args.output) if args.augment_packet else prepare(args.db,args.output,all_name_candidates=args.all_name_candidates),indent=2))

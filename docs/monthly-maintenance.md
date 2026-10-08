@@ -1,10 +1,20 @@
 # Monthly Ocado Catalogue And Userscript Maintenance
 
-This runbook refreshes the SQLite source of truth, reclassifies only new or changed products, validates the result, and prepares a userscript update. Run it manually about once a month.
+This runbook refreshes the SQLite source of truth, validates classifications and prepares a userscript update. Routine refreshes classify new/changed products; fundamental policy migrations reassess every known product, including historical products and existing nonvegan/unknown decisions. Run it manually about once a month.
 
 The live scrape itself does not use an LLM. The selected primary, GPT-6-Luna/high, is used only after the scrape, for products that remain unresolved after deterministic rules. Two fresh Sol 6.1/medium passes arbitrate only raw primary status/reason disagreements. Luna 5.6 was rejected on 2026-10-08 and must not be called again. Conservative unknowns count against the 98% positive-recall target; safety and evidence contracts remain strict. Fresh qualification and canonical activation remain gated.
 
 The whole-product policy is implemented as unreleased development. The model defaults are selected; fresh benchmark qualification and canonical migration remain gated. Do not execute the classification/export steps below until the revised benchmark and shadow transitions validate the selected model pair and activation is approved; the existing 48-case expectations contain historical policy and cannot be the new release gate.
+
+## Full-policy migration on dev
+
+The 8 October 2026 user authorisation covers a full scrape and reassessment now, not a later conversation. Run `tools/refresh_whole_product.py --root .whole-product-work/refresh-YYYY-MM-DD run` from the development environment. Its working clone preserves the canonical database until qualification, complete research and the positive audit pass. Status/resume commands use the same root; changed inputs/code require a fresh run or an explicitly documented new phase.
+
+The selected pair is Luna 6/high plus Sol 6.1/medium disagreement arbitration; annotation is two blind Sol 6.1/high source readings. Keep full natural quotas (including 30 locked name-only positives), three controlled and locked repetitions, all strict safety/evidence gates and the 98%/per-route conservative-recall budget. Census all eligible name signals before spending on the broader annotated corpus; a proven shortfall stops qualification and activation without relaxing the quotas.
+
+After a complete scrape, freeze a shadow candidate with every prior decision preserved and invalidate all statuses. Use `classify-all --scope all-known --sync-run-id <latest>` only after qualification; the sync ID is attribution, not a selection restriction. Conclusive rules precede semantic calls. Freeze every initially unknown product for fresh manufacturer-source research, including historical products; retain all outcomes, contrary assertions and withdrawals. Do not treat inaccessible or pending products as completed.
+
+The request authorises validated database activation and local userscript regeneration after complete coverage, a passing 600-positive audit and concurrency checks. Keep the current development version and commit final changes on dev for user testing. Release steps below are inactive until separately requested: no tag, main advancement, FireMonkey installation, push or publication. Included-plan exhaustion checkpoints; there is no paid fallback or automatic reset.
 
 ## 1. Prepare and benchmark
 
@@ -16,7 +26,7 @@ node --check ocado-vegan-filter.user.js
 python3 tools/benchmark_whole_product.py --split development --mode pipeline --model gpt-6-luna --effort high --output audit/benchmarks/YYYY-MM-DD-whole-product-development
 ```
 
-A development result is not permission to classify the catalogue. Compare locked cases three times with the frozen chosen candidate; report model selection to the user before migration. Never use paid/API fallback on included-plan exhaustion. Keep completed checkpoints and resume the identical command after allowance reset.
+A development result is not permission to classify the catalogue. Evaluate locked cases three times with the frozen selected candidate; do not ask the already settled model-choice question again. Never use paid/API fallback on included-plan exhaustion. Keep completed checkpoints and resume the identical command after allowance reset.
 
 ## 2. Refresh The SQLite Catalogue
 
@@ -191,9 +201,9 @@ Required gates:
 - `unclassified_current_products` is zero.
 - Every `official_tag_conflicts` row is accounted for by current-policy audit evidence: a correctly matched definite animal finding is `nonvegan`, and an unresolved identity/material conflict is blocked `unknown`. Do not require these valid exceptions to be vegan/tagged merely to make the count zero.
 - `validation_error_products` is zero.
-- Every reported pass disagreement is stored as `unknown` and reviewed as a group before export.
+- Every raw primary disagreement is accounted for with exactly two fresh blind arbitration passes; unresolved disagreement remains unknown. Valid agreed arbitration decisions retain their policy-supported status.
 - Counts distinguish all known products from current Ocado products.
-- Any large movement into or out of `vegan`, particularly `vegan/ingredients`, is manually reviewed.
+- Review large status movements using retained product-level source evidence, transitions and the automated positive audit; independent human annotation is not a prerequisite.
 
 For resumed classification, retain earlier failed/interrupted run records and account for their errors; require successful completion of the remaining queue and all product-level gates. Do not rewrite historical run statuses. The `official_tag_conflicts` query is an exception inventory, not an invariant that an official tag must always win. Correctly matched definite animal ingredients or processing override the tag to nonvegan and belong in the retained Ocado contradiction report. A suspected wrong-product join or unresolved material conflict remains blocked unknown. Validate current policy/evidence/audit provenance through the exporter; do not contact Ocado without explicit instructions.
 

@@ -30,7 +30,7 @@ DEFAULT_REASONING_EFFORT = "high"
 ARBITRATION_MODEL = "gpt-6.1-sol"
 ARBITRATION_REASONING_EFFORT = "medium"
 ARBITRATION_PROMPT_VERSION = "ocado-vegan-whole-product-arbitration-v21"
-CLASSIFIER_VERSION = "db-vegan-codex-v63"
+CLASSIFIER_VERSION = "db-vegan-codex-v64"
 PROMPT_VERSION = "ocado-vegan-whole-product-json-v30"
 VALID_STATUSES = {"vegan", "nonvegan", "unknown"}
 VALID_VEGAN_REASONS = {"tagged", "manufacturer", "ingredients", "name"}
@@ -664,6 +664,7 @@ def ensure_classification_schema(conn: sqlite3.Connection, *, drop_legacy: bool 
         """
     )
     ensure_column(conn, "vegan_classification_runs", "sync_run_id", "INTEGER")
+    ensure_column(conn, "vegan_classification_runs", "selection_scope", "TEXT")
     for table in ("vegan_classification_runs", "product_vegan_classification_audit"):
         ensure_column(conn, table, "policy_version", "TEXT")
         ensure_column(conn, table, "knowledge_version", "TEXT")
@@ -683,6 +684,7 @@ def start_run(
     model: str | None = None,
     reasoning_effort: str | None = None,
     sync_run_id: int | None = None,
+    selection_scope: str = "changed",
 ) -> int:
     cursor = conn.execute(
         """
@@ -692,7 +694,9 @@ def start_run(
         """,
         (now_epoch(), mode, CLASSIFIER_VERSION, PROMPT_VERSION, model, reasoning_effort, sync_run_id, policy.POLICY_VERSION, policy.KNOWLEDGE_VERSION, policy.SCHEMA_VERSION),
     )
-    return int(cursor.lastrowid)
+    run_id = int(cursor.lastrowid)
+    conn.execute("UPDATE vegan_classification_runs SET selection_scope=? WHERE id=?", (selection_scope, run_id))
+    return run_id
 
 
 def finish_run(conn: sqlite3.Connection, run_id: int, status: str, error: str | None = None) -> None:
@@ -1726,10 +1730,13 @@ def select_unclassified_product_ids(
     *,
     limit: int = 0,
     sync_run_id: int | None = None,
+    selection_scope: str = "changed",
 ) -> list[str]:
+    if selection_scope not in {"changed", "all-known"}:
+        raise ValueError("Unknown classification selection scope")
     query = "SELECT id FROM products WHERE vegan_status IS NULL ORDER BY id"
     parameters: tuple[Any, ...] = ()
-    if sync_run_id is not None:
+    if sync_run_id is not None and selection_scope == "changed":
         query = """
             SELECT id FROM products
             WHERE vegan_status IS NULL
@@ -1779,6 +1786,7 @@ def classify_rules(
     limit: int = 0,
     force: bool = False,
     sync_run_id: int | None = None,
+    selection_scope: str = "changed",
 ) -> int:
     if force and sync_run_id is None:
         query = "SELECT id FROM products ORDER BY id"
@@ -1788,8 +1796,8 @@ def classify_rules(
             parameters = (limit,)
         ids = [row["id"] for row in conn.execute(query, parameters)]
     else:
-        ids = select_unclassified_product_ids(conn, limit=limit, sync_run_id=sync_run_id)
-    run_id = start_run(conn, mode="rules", sync_run_id=sync_run_id)
+        ids = select_unclassified_product_ids(conn, limit=limit, sync_run_id=sync_run_id, selection_scope=selection_scope)
+    run_id = start_run(conn, mode="rules", sync_run_id=sync_run_id, selection_scope=selection_scope)
     classified = 0
     try:
         increment_run(conn, run_id, "total_products", len(ids))
@@ -1819,13 +1827,14 @@ def classify_codex(
     codex_bin: str,
     workers: int = 1,
     sync_run_id: int | None = None,
+    selection_scope: str = "changed",
     arbitration_model: str = ARBITRATION_MODEL,
     arbitration_reasoning_effort: str = ARBITRATION_REASONING_EFFORT,
     usage_journal: Path | None = None,
 ) -> int:
     if passes != 2:
         raise ValueError("Classification requires exactly two independent primary passes")
-    ids = select_unclassified_product_ids(conn, limit=limit, sync_run_id=sync_run_id)
+    ids = select_unclassified_product_ids(conn, limit=limit, sync_run_id=sync_run_id, selection_scope=selection_scope)
     with conn:
         run_id = start_run(
             conn,
@@ -1833,6 +1842,7 @@ def classify_codex(
             model=model,
             reasoning_effort=reasoning_effort,
             sync_run_id=sync_run_id,
+            selection_scope=selection_scope,
         )
         increment_run(conn, run_id, "total_products", len(ids))
     classified = 0
@@ -1951,6 +1961,7 @@ def status(conn: sqlite3.Connection) -> list[sqlite3.Row]:
 def build_parser() -> argparse.ArgumentParser:
     parser = argparse.ArgumentParser(description=__doc__)
     parser.add_argument("--db", default=DEFAULT_DB)
+    parser.add_argument("--preserve-legacy", action="store_true", help="Preserve historical columns during policy reassessment")
     subparsers = parser.add_subparsers(dest="command", required=True)
 
     subparsers.add_parser("migrate-schema")
@@ -1987,6 +1998,9 @@ def build_parser() -> argparse.ArgumentParser:
         model_parser.add_argument("--arbitration-model", default=ARBITRATION_MODEL)
         model_parser.add_argument("--arbitration-reasoning-effort", default=ARBITRATION_REASONING_EFFORT)
         model_parser.add_argument("--usage-journal", type=Path)
+    for selector in (rules, codex, all_parser):
+        selector.add_argument("--scope", choices=["changed", "all-known"], default="changed",
+                              help="Selection scope; sync-run ID still attributes all-known reassessment")
     subparsers.add_parser("status")
     return parser
 
@@ -2005,11 +2019,11 @@ def main(argv: list[str] | None = None) -> int:
 
     with closing(connect(db_path)) as conn:
         with conn:
-            ensure_classification_schema(conn)
+            ensure_classification_schema(conn, drop_legacy=not args.preserve_legacy)
 
         if args.command == "classify-rules":
             with conn:
-                count = classify_rules(conn, limit=args.limit, force=args.force, sync_run_id=args.sync_run_id)
+                count = classify_rules(conn, limit=args.limit, force=args.force, sync_run_id=args.sync_run_id, selection_scope=args.scope)
             print(f"Rule-classified {count} products")
             return 0
 
@@ -2028,13 +2042,14 @@ def main(argv: list[str] | None = None) -> int:
                 arbitration_reasoning_effort=args.arbitration_reasoning_effort,
                 usage_journal=args.usage_journal,
                 sync_run_id=args.sync_run_id,
+                selection_scope=args.scope,
             )
             print(f"Codex-classified {count} products")
             return 0
 
         if args.command == "classify-all":
             with conn:
-                rule_count = classify_rules(conn, sync_run_id=args.sync_run_id)
+                rule_count = classify_rules(conn, sync_run_id=args.sync_run_id, selection_scope=args.scope)
             print(f"Rule-classified {rule_count} products")
             if args.codex:
                 count = classify_codex(
@@ -2051,6 +2066,7 @@ def main(argv: list[str] | None = None) -> int:
                 arbitration_reasoning_effort=args.arbitration_reasoning_effort,
                 usage_journal=args.usage_journal,
                     sync_run_id=args.sync_run_id,
+                selection_scope=args.scope,
                 )
                 print(f"Codex-classified {count} products")
             return 0
