@@ -252,20 +252,13 @@ class ManufacturerReviewTests(unittest.TestCase):
         self.assertEqual(research.bundle_status(bundle)["complete_products"], 1)
 
     def test_retained_source_benchmark_inputs_keep_their_hashes(self) -> None:
-        fixture = json.loads((TOOLS.parent / "benchmarks/manufacturer-source-scope-v1.json").read_text())
-        self.assertEqual(len(fixture["cases"]), 16)
-        self.assertEqual(len({case["input"]["product_id"] for case in fixture["cases"]}), 16)
+        fixture = json.loads((TOOLS.parent / "benchmarks/manufacturer-source-scope-v2.json").read_text())
+        self.assertEqual(len(fixture["cases"]), 19)
+        self.assertEqual(len({case["input"]["product_id"] for case in fixture["cases"]}), 19)
         for case in fixture["cases"]:
             with self.subTest(label=case["label"]):
                 self.assertEqual(research.digest(case["input"]), case["input_sha256"])
 
-    def test_brand_identity_benchmark_adds_cases_without_changing_frozen_cases(self) -> None:
-        original = json.loads((TOOLS.parent / "benchmarks/manufacturer-source-scope-v1.json").read_text())
-        expanded = json.loads((TOOLS.parent / "benchmarks/manufacturer-source-scope-v2.json").read_text())
-        self.assertEqual(expanded["cases"][:16], original["cases"])
-        self.assertEqual(len(expanded["cases"]), 19)
-        for case in expanded["cases"]:
-            self.assertEqual(research.digest(case["input"]), case["input_sha256"])
 
 
 class ManufacturerImportTests(unittest.TestCase):

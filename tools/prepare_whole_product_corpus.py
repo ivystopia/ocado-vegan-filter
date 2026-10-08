@@ -32,9 +32,7 @@ def prepare(db, output, seed=20261006, *, all_name_candidates=False):
         ids=[row[0] for row in conn.execute('SELECT id FROM products ORDER BY id')]
         rng.shuffle(ids)
         strata={key:[] for key in ['tagged','manufacturer','name','ordinary','unknown','nonvegan']}
-        target={'tagged':100,'manufacturer':140,'name':200,'ordinary':100,'unknown':360,'nonvegan':140}
-        if all_name_candidates:
-            target['name']=len(ids)
+        selected_ids=set(ids[:1040])  # Total diagnostic sample budget, independent of evidence route.
         records={}
         manufacturer_ids = {row[0] for row in conn.execute('SELECT DISTINCT product_id FROM manufacturer_website_evidence')}
         manufacturer_ids.update(row[0] for row in conn.execute("SELECT DISTINCT product_id FROM manufacturer_vegan_evidence WHERE lower(content) LIKE '%suitable for%vegan%' OR lower(content) LIKE '%certified vegan%' OR lower(content)='vegan'"))
@@ -48,7 +46,7 @@ def prepare(db, output, seed=20261006, *, all_name_candidates=False):
             elif re.search(r'\b(?:gelatine|milk|egg|honey|pork|beef|chicken|fish|shellac|beeswax|E120|E901|E904)\b',ingredients,re.I): group='nonvegan'
             elif re.search(r'\b(?:carrots?|lettuce|spinach|cucumber|tomatoes?|potatoes?|beans|lentils|rice|pasta|flour|broccoli|apples?|bananas?|pears|salad)\b',name,re.I): group='ordinary'
             else: group='unknown'
-            if len(strata[group])>=target[group]: continue
+            if product_id not in selected_ids and not (all_name_candidates and group=='name'): continue
             context=classifier.product_context_for_llm(classifier.load_product_context(conn,product_id))
             product=context['product']
             sources=external_sources(conn,product_id,context)
@@ -62,7 +60,6 @@ def prepare(db, output, seed=20261006, *, all_name_candidates=False):
                 'family_key':brand or identity,'source_group_keys':[source['id'] for source in sources],
                 'external_sources':sources}
             strata[group].append(product_id)
-            if all(len(strata[key])>=target[key] for key in target): break
         # Reproducible uniform workload sample separate from curated challenge.
         workload=[]
         for product_id in ids[:200]:
@@ -112,5 +109,5 @@ def augment(db, original, output):
 if __name__=='__main__':
     p=argparse.ArgumentParser(description=__doc__);p.add_argument('--db',type=Path,default=Path('ocado_products.sqlite'));p.add_argument('--output',type=Path,required=True)
     p.add_argument('--augment-packet',type=Path)
-    p.add_argument('--all-name-candidates',action='store_true',help='Census all non-official vegan-name sampling signals before quota qualification')
+    p.add_argument('--all-name-candidates',action='store_true',help='Include every non-official vegan-name signal alongside the uniform diagnostic sample')
     args=p.parse_args();print(json.dumps(augment(args.db,args.augment_packet,args.output) if args.augment_packet else prepare(args.db,args.output,all_name_candidates=args.all_name_candidates),indent=2))

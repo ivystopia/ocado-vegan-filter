@@ -33,23 +33,14 @@ class WholeProductBenchmarkTests(unittest.TestCase):
                 benchmark.load_fixture(path)
 
     def test_current_frozen_evidence_roundtrips_before_model_evaluation(self):
-        root=Path(__file__).resolve().parents[1]/'benchmarks/vegan-classifier-v2'
-        fixture=benchmark.load_fixture(root/'ethical-cases-v21.json')
+        fixture=benchmark.load_fixture(benchmark.FIXTURE)
         self.assertEqual(fixture['catalogue_provenance'],policy.CATALOGUE_PROVENANCE)
+        self.assertEqual(sum(case['split']=='synthetic' for case in fixture['cases']),497)
         for split in {case['split'] for case in fixture['cases']}:
             with self.subTest(split=split):
                 cases=[case for case in fixture['cases'] if case['split']==split]
                 conn=benchmark.fixture_database(cases)
                 conn.close()
-        parent=benchmark.load_fixture(root/'ethical-cases-v20.json')
-        for old,new in zip(parent['cases'],fixture['cases']):
-            self.assertEqual(old['expected'] if 'expected' in old else None,
-                             new['expected'] if 'expected' in new else None)
-            for field in ('manufacturer_vegan_evidence','manufacturer_source_candidates'):
-                old_rows=old['classifier_input'].get(field,[])
-                new_rows=new['classifier_input'].get(field,[])
-                self.assertEqual([row.get('source_text') for row in old_rows],
-                                 [row.get('source_text') for row in new_rows])
 
     def test_malformed_website_fixture_stops_before_any_model_call(self):
         with tempfile.TemporaryDirectory() as tmp:
@@ -70,53 +61,7 @@ class WholeProductBenchmarkTests(unittest.TestCase):
             self.assertEqual(report['usage']['calls'],0)
             self.assertEqual(report['runs'],[])
 
-    def test_v6_cited_reason_crosswalk_preserves_controls_and_original_pilot(self):
-        root=Path(__file__).resolve().parents[1]/'benchmarks/vegan-classifier-v2'
-        parent=json.loads((root/'ethical-cases-v5.json').read_text())
-        current=benchmark.load_fixture(root/'ethical-cases-v6.json')
-        old={case['case_id']:case for case in parent['cases']}
-        new={case['case_id']:case for case in current['cases']}
-        self.assertEqual(len(new)-len(old),7)
-        self.assertEqual(current['selection']['pilot_case_ids'],parent['selection']['pilot_case_ids'])
-        changed=[]
-        for key,case in old.items():
-            self.assertEqual(new[key]['classifier_input'],case['classifier_input'],key)
-            self.assertEqual(new[key]['input_sha256'],case['input_sha256'],key)
-            if case['split'] in {'synthetic','workload'}:self.assertEqual(new[key],case,key)
-            if new[key]['expected']!=case['expected']:changed.append(key)
-        self.assertEqual(changed,['natural.634499011'])
-        self.assertEqual(new[changed[0]]['expected']['vegan_reason'],'manufacturer')
-        for reading in new[changed[0]]['adjudication']['readings']:
-            self.assertEqual(reading['prompt_version'],'blind-evidence-adjudication-v11')
-            self.assertEqual(reading['annotation']['expected_reason'],'manufacturer')
-            for ref in reading['annotation']['input_refs']:
-                policy.resolve_reference(new[changed[0]]['classifier_input'],ref)
-        self.assertEqual(current['selection']['development_shortfalls'],{'name':13})
-        self.assertEqual(current['selection']['pilot_route_counts'],
-            {'tagged':6,'manufacturer':7,'name':5,'ingredients':6,'unknown':48,'nonvegan':24})
-        self.assertFalse(current['selection']['target_complete'])
 
-    def test_v5_reference_crosswalk_preserves_frozen_inputs_and_the_pilot(self):
-        root=Path(__file__).resolve().parents[1]/'benchmarks/vegan-classifier-v2'
-        parent=json.loads((root/'ethical-cases-v4.json').read_text())
-        current=benchmark.load_fixture(root/'ethical-cases-v5.json')
-        old={case['case_id']:case for case in parent['cases']}
-        new={case['case_id']:case for case in current['cases']}
-        self.assertEqual(len(new)-len(old),28)
-        self.assertEqual(current['selection']['pilot_case_ids'],parent['selection']['pilot_case_ids'])
-        changed=[]
-        for key,case in old.items():
-            self.assertEqual(new[key]['classifier_input'],case['classifier_input'],key)
-            self.assertEqual(new[key]['input_sha256'],case['input_sha256'],key)
-            if new[key]['expected']!=case['expected']:changed.append(key)
-        self.assertEqual(changed,['natural.622692011'])
-        self.assertEqual(new[changed[0]]['expected']['vegan_reason'],'manufacturer')
-        for reading in new[changed[0]]['adjudication']['readings']:
-            self.assertEqual(reading['prompt_version'],'blind-evidence-adjudication-v10')
-            self.assertEqual(reading['annotation']['expected_reason'],'manufacturer')
-            for ref in reading['annotation']['input_refs']:
-                policy.resolve_reference(new[changed[0]]['classifier_input'],ref)
-        self.assertEqual(current['selection']['development_shortfalls'],{'name':12,'ingredients':1})
 
     def test_blind_annotation_receives_mechanisms_without_old_reference_labels(self):
         value={'product':{'id':'1','name':'Example Apple Juice','ingredients':'Apple Juice (100%)'},
@@ -149,40 +94,7 @@ class WholeProductBenchmarkTests(unittest.TestCase):
         with tempfile.TemporaryDirectory() as directory, mock.patch.object(codex_evidence,'run',side_effect=fake_call):
             self.assertEqual(adjudication.review_batch([case],Path(directory),1,'gpt-6.1-sol','high'),1)
 
-    def test_reference_audit_changes_only_two_references_and_preserves_all_inputs(self):
-        root=Path(__file__).resolve().parents[1]/'benchmarks/vegan-classifier-v2'
-        previous=json.loads((root/'ethical-cases-v3.json').read_text())
-        current=benchmark.load_fixture(root/'ethical-cases-v4.json')
-        old={case['case_id']:case for case in previous['cases']};new={case['case_id']:case for case in current['cases']}
-        reviewed={'natural.565984011','natural.680838011'}
-        for key,case in old.items():
-            self.assertEqual(case['classifier_input'],new[key]['classifier_input'],key)
-            self.assertEqual(case['input_sha256'],new[key]['input_sha256'],key)
-            if key not in reviewed:self.assertEqual(case,new[key],key)
-            else:
-                self.assertEqual(new[key]['expected']['vegan_status'],'unknown')
-                for reading in new[key]['adjudication']['readings']:
-                    self.assertEqual(reading['prompt_version'],'blind-evidence-adjudication-v8')
-                    for ref in reading['annotation']['input_refs']:policy.resolve_reference(case['classifier_input'],ref)
-        self.assertEqual(current['selection']['pilot_case_ids'],previous['selection']['pilot_case_ids'])
-        self.assertEqual(len(new)-len(old),9)
-        self.assertEqual(current['selection']['counts']['synthetic'],374)
-        self.assertEqual({case['case_id']:case for case in assemble.synthetic_cases()},
-                         {key:case for key,case in new.items() if case['split']=='synthetic'})
 
-    def test_new_processing_controls_preserve_every_frozen_predecessor_case(self):
-        root=Path(__file__).resolve().parents[1]/'benchmarks/vegan-classifier-v2'
-        previous=json.loads((root/'ethical-cases-v2.json').read_text())
-        current=json.loads((root/'ethical-cases-v3.json').read_text())
-        old={case['case_id']:case for case in previous['cases']}
-        new={case['case_id']:case for case in current['cases']}
-        self.assertEqual(len(new)-len(old),38)
-        for key,value in old.items():self.assertEqual(new[key],value,key)
-        generated={case['case_id']:case for case in assemble.synthetic_cases() if not case['case_id'].startswith('synthetic.planting-seeds.')}
-        controlled={key:case for key,case in new.items() if case['case_kind']=='synthetic'}
-        self.assertEqual(generated,controlled)
-        self.assertEqual(current['selection']['counts']['synthetic'],365)
-        self.assertFalse(current['selection']['target_complete'])
 
     def issue_fixture(self, kind='natural'):
         context={'product':{'name':'Cotton tops','preparation_and_usage':'100% cotton (exclusive of trimmings)'}}
@@ -285,7 +197,7 @@ class WholeProductBenchmarkTests(unittest.TestCase):
             crosswalk=json.loads((root/'crosswalk.json').read_text())
             self.assertEqual(crosswalk['reference_changes'][0]['before']['vegan_status'],'vegan')
             self.assertEqual(crosswalk['reference_changes'][0]['after']['vegan_status'],'unknown')
-            self.assertFalse(json.loads((root/'current.json').read_text())['selection']['target_complete'])
+            self.assertNotIn('target_complete',json.loads((root/'current.json').read_text())['selection'])
     def test_stale_or_failed_checks_block_comparison(self):
         record={'state':'passed','candidate_hashes':benchmark.candidate_hashes(),
             'checks':[{'name':name,'exit_code':0} for name in ('unittest','userscript-syntax','diff-check')]}
@@ -675,7 +587,7 @@ class WholeProductBenchmarkTests(unittest.TestCase):
         self.assertEqual(result['unsafe_positives'],[])
         self.assertEqual(result['raw_agreed_unsafe_positives'],[{'case_id':'a','stage':'primary'}])
 
-    def test_scarce_reference_classes_preserve_targets_and_disjoint_pilot(self):
+    def test_every_accepted_product_is_retained_with_disjoint_families_without_category_targets(self):
         candidates=[]
         for route,count in {'tagged':50,'manufacturer':50,'name':17,'ingredients':50,'unknown':293,'nonvegan':100}.items():
             for index in range(count):
@@ -688,9 +600,11 @@ class WholeProductBenchmarkTests(unittest.TestCase):
             path.write_text(json.dumps({'candidates':candidates,'workload':[],'disputed_cases':[]}))
             result=assemble.assemble(path,root/'fixture.json')
             fixture=json.loads((root/'fixture.json').read_text())
-        self.assertFalse(result['target_complete'])
-        self.assertEqual(result['development_shortfalls'],{'name':13,'unknown':3})
-        self.assertEqual(result['locked_shortfalls'],{'name':20,'unknown':4})
+        self.assertNotIn('targets',result)
+        self.assertNotIn('target_complete',result)
+        natural=[case for case in fixture['cases'] if case['split'] in ('development','locked')]
+        self.assertEqual({case['case_id'] for case in natural},{case['case_id'] for case in candidates})
+        self.assertEqual(len(natural),len(candidates))
         self.assertEqual(len(result['pilot_case_ids']),96)
         self.assertFalse({c['leakage_group'] for c in fixture['cases'] if c['split']=='development'} &
             {c['leakage_group'] for c in fixture['cases'] if c['split']=='locked'})

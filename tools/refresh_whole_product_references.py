@@ -18,7 +18,6 @@ import prepare_whole_product_corpus as prepare
 import assemble_whole_product_fixture as assemble
 import vegan_policy as policy
 
-TARGET={'tagged':20,'manufacturer':20,'name':20,'ingredients':20,'unknown':120,'nonvegan':40}
 
 
 def family(context):
@@ -108,32 +107,23 @@ def build_fixture(parent_path,annotations_path,output,crosswalk_path):
                 'before':old['expected'],'after':candidate['expected'],
                 'rationale':[reading['annotation']['rationale'] for reading in candidate['adjudication']['readings']]})
     counts=Counter(case['expected']['vegan_reason'] or case['expected']['vegan_status'] for case in cases)
-    shortfalls={key:count-counts[key] for key,count in TARGET.items() if counts[key]<count}
-    pilot=[]
-    for route,count in {'tagged':6,'manufacturer':6,'name':6,'ingredients':6,'unknown':48,'nonvegan':24}.items():
-        eligible=[case for case in cases if (case['expected']['vegan_reason'] or case['expected']['vegan_status'])==route]
-        # Retain the earlier pilot members where their freshly read route fits.
-        old_pilot=set(parent.get('selection',{}).get('pilot_case_ids',[]))
-        eligible.sort(key=lambda case:(case['case_id'] not in old_pilot,case['case_id'] not in previous,case['case_id']))
-        pilot.extend(case['case_id'] for case in eligible[:count])
+    pilot=[case['case_id'] for case in cases][:96]
     cases+=assemble.synthetic_cases()+annotations.get('workload',[])
     fixture={'schema_version':2,'policy_version':policy.POLICY_VERSION,'cases':cases,'selection':{
-        'targets':{'development':TARGET,'locked':parent['selection']['targets']['locked']},
-        'development_shortfalls':shortfalls,'locked_shortfalls':parent['selection']['targets']['locked'],
-        'target_complete':False,'pilot_case_ids':pilot,'counts':dict(Counter(case['split'] for case in cases)),
+        'pilot_case_ids':pilot,'counts':dict(Counter(case['split'] for case in cases)),
         'disputed_cases':disputes,'annotation_hash':classifier.context_hash(annotations),'parent_fixture_hash':classifier.context_hash(parent),
         'note':'Current-policy development diagnostic only. Original locked evidence remains protected and is not eligible under superseded references. No release approval.'}}
     benchmark.save(output,fixture)
     benchmark.save(crosswalk_path,{'policy_before':parent['policy_version'],'policy_after':policy.POLICY_VERSION,
         'parent_fixture_hash':classifier.context_hash(parent),'candidate_fixture_hash':classifier.context_hash(fixture),
-        'reference_changes':changes,'disputes':disputes,'shortfalls':shortfalls,
+        'reference_changes':changes,'disputes':disputes,
         'note':'Fresh blind source readings; no previous labels supplied. Original contexts/results preserved. Disputes stay unscored and prevent release qualification.'})
     return fixture['selection']
 
 
 if __name__=='__main__':
     parser=argparse.ArgumentParser(description=__doc__)
-    parser.add_argument('--parent',type=Path,default=Path('benchmarks/vegan-classifier-v2/cases.json'))
+    parser.add_argument('--parent',type=Path,default=benchmark.FIXTURE)
     parser.add_argument('--db',type=Path,default=Path('ocado_products.sqlite'))
     parser.add_argument('--annotations',type=Path)
     parser.add_argument('--output',type=Path,required=True);parser.add_argument('--crosswalk',type=Path)

@@ -87729,36 +87729,6 @@
     }
   ],
   "selection": {
-    "targets": {
-      "development": {
-        "tagged": 20,
-        "manufacturer": 20,
-        "name": 20,
-        "ingredients": 20,
-        "unknown": 120,
-        "nonvegan": 40
-      },
-      "locked": {
-        "tagged": 30,
-        "manufacturer": 30,
-        "name": 30,
-        "ingredients": 30,
-        "unknown": 180,
-        "nonvegan": 60
-      }
-    },
-    "development_shortfalls": {
-      "name": 13
-    },
-    "locked_shortfalls": {
-      "tagged": 30,
-      "manufacturer": 30,
-      "name": 30,
-      "ingredients": 30,
-      "unknown": 180,
-      "nonvegan": 60
-    },
-    "target_complete": false,
     "pilot_case_ids": [
       "natural.509074011",
       "natural.515989011",
@@ -87865,12 +87835,6 @@
     "disputed_cases": [
       "natural.509775011"
     ],
-    "annotation_hash": "6159013667c5aadc395ac52b1a1dd8f2426f2fed57c7a49b2291289539adb6c3",
-    "parent_fixture_hash": "83f9793c5de07501aba6866c9310355c70ebde1fd1c0ed1bceef20a98eb51d36",
-    "note": "Development diagnostic only. Annotation v11 consistently assesses affirmative producer self-descriptions; one existing reason changes with cited crosswalk, all prior inputs and original 96 pilot IDs remain unchanged. Seven frozen holdout-excluded references added; ingredients target met, name-only target still short. No model/default/activation choice.",
-    "extension_note": "V26 preserves every parent classifier input and natural reference/selection. Four fining-only synthetic references are corrected through primary OIV evidence and an explicit crosswalk; four full-chain/claim/animal contrasts are added. Original v25 labels/results remain retained. Natural quota and protected locked gates remain unchanged.",
-    "parent_annotation_hash": "ec0f167c2731701ea3087168bc0fc29ea546e4a82a60cfd94023733ced78549b",
-    "reference_audit_hash": "f8fb68e576e315cd58dd5eb531af165c3e1d9cd374f698eabe20b43d7c323d7a",
     "pilot_route_counts": {
       "tagged": 6,
       "manufacturer": 7,

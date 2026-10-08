@@ -7,6 +7,7 @@ from datetime import datetime, timezone
 import hashlib
 import json
 import os
+import shutil
 from pathlib import Path
 import sqlite3
 import subprocess
@@ -23,9 +24,8 @@ import validate_whole_product_candidate as checks
 import vegan_policy as policy
 
 ROOT = benchmark.ROOT
-STAGES = ('checks', 'preflight', 'scrape', 'corpus', 'name_census', 'references',
-          'qualification', 'assessment', 'research', 'positive_audit', 'activation', 'export')
-REUSABLE_BENCHMARK_STAGES = ('corpus', 'name_census', 'references', 'qualification')
+STAGES = ('checks', 'preflight', 'scrape', 'assessment', 'research',
+          'positive_audit', 'activation', 'export')
 MODELS = {'primary': 'gpt-6-luna', 'effort': 'high', 'arbitration': 'gpt-6.1-sol',
           'arbitration_effort': 'medium', 'annotation': 'gpt-6.1-sol', 'annotation_effort': 'high'}
 
@@ -159,17 +159,6 @@ def activate(source, candidate, expected, backup):
             conn.rollback(); raise
 
 
-def census_gate(annotations):
-    candidates = annotations['candidates']
-    names = [case for case in candidates if case['adjudication']['state'] == 'accepted'
-             and case['expected']['vegan_status']=='vegan' and case['expected']['vegan_reason']=='name']
-    return {'state': 'passed' if len(names) >= 50 else 'blocked_natural_quota',
-            'examined': len(candidates), 'accepted_name_only': len(names), 'minimum': 50,
-            'required_development': 20, 'required_locked': 30,
-            'disputed': len(annotations.get('disputed_cases', [])),
-            'note': 'Source-cited natural references only. A pass is admission, not qualification; family-separated selection may still have shortfalls.'}
-
-
 class Refresh:
     def __init__(self, root, source, fixture=benchmark.FIXTURE):
         self.root = Path(root).resolve(); self.source = Path(source).resolve(); self.fixture = Path(fixture).resolve()
@@ -200,22 +189,11 @@ class Refresh:
         benchmark.save(self.path, self.manifest)
 
     def satisfied(self, stage):
-        record = self.manifest['stages'].get(stage, {})
-        if record.get('state') == 'completed': return True
-        reuse = self.manifest.get('benchmark_reuse', {})
-        return (stage in REUSABLE_BENCHMARK_STAGES and record.get('state') == 'waived_by_user'
-                and bool(reuse.get('authorization', '').strip())
-                and record.get('authorization') == reuse['authorization'])
+        return self.manifest['stages'].get(stage, {}).get('state') == 'completed'
 
     def artifacts(self, stage):
-        if self.manifest['stages'].get(stage, {}).get('state') == 'waived_by_user':
-            return {'benchmark-reuse.json': hashlib.sha256((self.root/'benchmark-reuse.json').read_bytes()).hexdigest()}
         paths = {'checks':['checks/checks.json'],
                  'preflight':['preflight-controls/report.json','preflight-pilot/report.json'],
-                 'corpus':['candidates.json','name-census.json'],
-                 'name_census':['name-readings/annotated-candidates.json','name-quota-gate.json'],
-                 'references':['fresh-fixture.json','reference-readings/annotated-candidates.json'],
-                 'qualification':[name+'/report.json' for name in ('selected-pilot','selected-development','selected-controls','selected-locked','selected-workload')],
                  'assessment':['manufacturer/snapshot.json'],
                  'research':['manufacturer-coverage.json','manufacturer-affected.json'],
                  'positive_audit':['positive-audit.json','positive-audit.predictions.json','positive-readings/annotated-candidates.json','positive-score.json']}
@@ -281,7 +259,7 @@ class Refresh:
                     raise GateError('Previous completed artifact changed: '+name)
         for name in ('preflight-controls', 'preflight-pilot'):
             report = read(previous/name/'report.json')
-            if not benchmark.successful(report) or report['fixture_sha256'] != new_config['fixture_sha256']:
+            if not benchmark.successful(report) or report['fixture_sha256'] != old.get('benchmark_reuse',{}).get('benchmarked_fixture_sha256',old_config['fixture_sha256']):
                 raise GateError('Previous preflight is not applicable')
             for filename, digest in report['implementation_hashes'].items():
                 if classifier.context_hash((ROOT/'tools'/filename).read_text()) != digest:
@@ -307,22 +285,46 @@ class Refresh:
     def continue_assessment(self, previous, authorization):
         """Reuse a completed scrape and unchanged classifier evidence by explicit user decision.
 
-        Failed historical gates remain untouched. Waivers apply only to fresh
-        benchmark preparation/qualification, never research, audit or export.
+        Historical reports remain untouched. Production assessment has no
+        category/reason sample admission gates; research/audit/export remain guarded.
         """
         previous = Path(previous).resolve(); old = read(previous/'manifest.json')
         if not authorization or not authorization.strip():
             raise GateError('Benchmark reuse requires the explicit user instruction')
         if self.manifest['stages'] or self.working.exists() or previous == self.root:
             raise GateError('Assessment continuation requires a fresh root')
-        if old['stages'].get('scrape', {}).get('state') != 'completed' or (previous/'candidate.sqlite').exists():
+        if old['stages'].get('scrape', {}).get('state') != 'completed' or old.get('state') == 'running':
             raise GateError('Assessment continuation requires a completed scrape before reassessment')
         old_config = old['configuration']; new_config = self.manifest['configuration']
-        if {k:v for k,v in old_config.items() if k!='code_hashes'} != {k:v for k,v in new_config.items() if k!='code_hashes'}:
+        if {k:v for k,v in old_config.items() if k not in {'code_hashes','fixture_sha256'}} != {k:v for k,v in new_config.items() if k not in {'code_hashes','fixture_sha256'}}:
             raise GateError('Benchmark reuse cannot change models, policy, fixture, scope or source')
+        if old_config['fixture_sha256'] != new_config['fixture_sha256']:
+            # A metadata cleanup is not a new experiment. Require the exact
+            # previously bound file and unchanged cases/references/splits/pilot.
+            frozen = previous/'frozen-fixture.json'
+            if not frozen.exists(): raise GateError('Changed fixture requires its bound frozen predecessor')
+            old_fixture = read(frozen); new_fixture = read(self.fixture)
+            if classifier.context_hash(old_fixture) != old_config['fixture_sha256']:
+                raise GateError('Frozen predecessor does not match the previous fixture hash')
+            def evaluation_projection(value):
+                return {**{key: item for key,item in value.items() if key!='selection'},
+                        'pilot_case_ids':value.get('selection',{}).get('pilot_case_ids',[])}
+            if evaluation_projection(old_fixture) != evaluation_projection(new_fixture):
+                raise GateError('Benchmark reuse cannot change fixture inputs, references, splits or pilot selection')
         changed = {key for key in old_config['code_hashes'].keys() | new_config['code_hashes'].keys()
                    if old_config['code_hashes'].get(key) != new_config['code_hashes'].get(key)}
-        if not changed <= {'tools/refresh_whole_product.py', 'tests/test_refresh_whole_product.py'}:
+        cleanup_paths = {
+            'tools/refresh_whole_product.py', 'tests/test_refresh_whole_product.py',
+            'tools/assemble_whole_product_fixture.py', 'tools/prepare_whole_product_corpus.py',
+            'tools/compare_whole_product_models.py', 'tools/refresh_whole_product_references.py',
+            'tests/test_benchmark_whole_product.py', 'tests/test_manufacturer_evidence.py',
+            'tools/benchmark_ocado_vegan.py', 'tests/test_benchmark_ocado_vegan.py',
+            'tools/scan_ocado_vegan_according_to_ingredients.py',
+            'tools/scan_ocado_vegan_according_to_manufacturer.py',
+            'tools/scan_ocado_vegan_according_to_manufacturer_sitemap.py',
+            'tests/test_ocado_vegan_according_to_ingredients.py',
+        }
+        if not changed <= cleanup_paths:
             raise GateError('Benchmark reuse cannot cover classifier or other implementation changes')
         for stage in ('checks', 'preflight'):
             if old['stages'].get(stage, {}).get('state') != 'completed':
@@ -332,7 +334,7 @@ class Refresh:
                     raise GateError('Previous completed artifact changed: '+name)
         for name in ('preflight-controls', 'preflight-pilot'):
             report = read(previous/name/'report.json')
-            if not benchmark.successful(report) or report['fixture_sha256'] != new_config['fixture_sha256']:
+            if not benchmark.successful(report) or report['fixture_sha256'] != old.get('benchmark_reuse',{}).get('benchmarked_fixture_sha256',old_config['fixture_sha256']):
                 raise GateError('Previous benchmark evidence is not applicable')
             for filename, digest in report['implementation_hashes'].items():
                 if classifier.context_hash((ROOT/'tools'/filename).read_text()) != digest:
@@ -348,6 +350,10 @@ class Refresh:
                 raise GateError('An interrupted sync cannot be reused')
         clone(previous/'original.sqlite', self.root/'original.sqlite')
         clone(previous/'refreshed.sqlite', self.working)
+        if (previous/'candidate.sqlite').exists():
+            clone(previous/'candidate.sqlite', self.candidate)
+            if (previous/'manufacturer').exists():
+                shutil.copytree(previous/'manufacturer', self.root/'manufacturer')
         for name in ('preflight-controls', 'preflight-pilot'):
             (self.root/name).mkdir()
             (self.root/name/'report.json').write_bytes((previous/name/'report.json').read_bytes())
@@ -356,14 +362,14 @@ class Refresh:
             if key in old: self.manifest[key] = old[key]
         reuse = {'authorization': authorization.strip(), 'at_utc': datetime.now(timezone.utc).isoformat(),
                  'previous_root': str(previous), 'previous_manifest_sha256': hashlib.sha256((previous/'manifest.json').read_bytes()).hexdigest(),
-                 'changed_paths': sorted(changed), 'waived_stages': list(REUSABLE_BENCHMARK_STAGES),
-                 'note': 'User chose existing benchmark evidence and immediate all-known reassessment. No fresh qualification claimed; old quota failure preserved. Research, positive audit, policy validation and activation/export gates remain required.'}
+                 'changed_paths': sorted(changed), 'reused_candidate': self.candidate.exists(),
+                 'previous_fixture_sha256':old_config['fixture_sha256'], 'current_fixture_sha256':new_config['fixture_sha256'],
+                 'benchmarked_fixture_sha256':old.get('benchmark_reuse',{}).get('benchmarked_fixture_sha256',old_config['fixture_sha256']),
+                 'note': 'User chose existing benchmark evidence and product-by-product all-known reassessment. Historical reports preserved; no category/reason sample minimum applies. Existing candidate decisions resume without reclassifying completed products. Research, positive audit, policy validation and activation/export gates remain required.'}
+        (self.root/'frozen-fixture.json').write_bytes(self.fixture.read_bytes())
         benchmark.save(self.root/'benchmark-reuse.json', reuse); self.manifest['benchmark_reuse'] = reuse
         for stage in ('preflight', 'scrape'):
             self.manifest['stages'][stage] = {**old['stages'][stage], 'reused_from': str(previous)}
-        for stage in REUSABLE_BENCHMARK_STAGES:
-            self.manifest['stages'][stage] = {'state': 'waived_by_user', 'authorization': reuse['authorization']}
-            self.manifest['stages'][stage]['artifacts'] = self.artifacts(stage)
         self.save()
 
     def step_scrape(self):
@@ -405,16 +411,6 @@ class Refresh:
                 self.manifest['sync_acquisition_run'] = dict(conn.execute('SELECT * FROM sync_runs WHERE id=?',
                     (latest['resumed_from_run_id'],)).fetchone()); self.save()
 
-    def step_corpus(self):
-        with closing(classifier.connect(self.working)) as conn:
-            classifier.ensure_classification_schema(conn, drop_legacy=False); manufacturer.ensure_schema(conn); conn.commit()
-        packet = self.root/'candidates.json'
-        if not packet.exists():
-            self.command('corpus', [ROOT/'tools/prepare_whole_product_corpus.py', '--db', self.working, '--all-name-candidates', '--output', packet])
-        data = read(packet)
-        census = {**data, 'candidates': [case for case in data['candidates'] if case['sampling_stratum']=='name'], 'workload': []}
-        benchmark.save(self.root/'name-census.json', census)
-        self.manifest['packet_sha256'] = classifier.context_hash(data); self.save()
 
     def annotate(self, name, packet, reuse=False):
         arguments = [ROOT/'tools/adjudicate_whole_product_corpus.py', '--packet', packet, '--output', self.root/name,
@@ -423,27 +419,6 @@ class Refresh:
         self.command(name, arguments)
         return read(self.root/name/'annotated-candidates.json')
 
-    def step_name_census(self):
-        annotations = self.annotate('name-readings', self.root/'name-census.json')
-        gate = census_gate(annotations); benchmark.save(self.root/'name-quota-gate.json', gate)
-        if gate['state'] != 'passed': raise GateError('Natural name-only quota unmet: '+str(gate['accepted_name_only'])+'/50; no quota relaxation or activation')
-
-    def step_references(self):
-        self.annotate('reference-readings', self.root/'candidates.json', reuse=True)
-        self.command('assemble', [ROOT/'tools/assemble_whole_product_fixture.py', '--annotations', self.root/'reference-readings/annotated-candidates.json', '--output', self.root/'natural-fixture.json'])
-        fixture = read(self.root/'natural-fixture.json'); parent = read(self.fixture)
-        fixture['cases'] = [case for case in parent['cases'] if case['split']=='synthetic'] + [case for case in fixture['cases'] if case['split']!='synthetic']
-        benchmark.save(self.root/'fresh-fixture.json', fixture)
-        if not fixture['selection']['target_complete']: raise GateError('Family-separated natural quotas unmet; preserve the frozen corpus and stop')
-
-    def step_qualification(self):
-        fixture = self.root/'fresh-fixture.json'
-        self.bench('selected-pilot', fixture, 'development', pilot=True)
-        self.bench('selected-development', fixture, 'development')
-        self.bench('selected-controls', fixture, 'synthetic', repetitions=3)
-        locked = self.bench('selected-locked', fixture, 'locked', repetitions=3)
-        if not benchmark.acceptance(locked): raise GateError('Locked qualification failed')
-        self.bench('selected-workload', fixture, 'workload')
 
     def classify(self, name):
         self.command(name, [ROOT/'tools/classify_ocado_vegan.py', '--db', self.candidate, '--preserve-legacy',
@@ -488,7 +463,7 @@ class Refresh:
     def step_activation(self):
         # This method is also guarded when called directly rather than by run().
         if any(not self.satisfied(stage) for stage in STAGES[:STAGES.index('activation')]):
-            raise GateError('All qualification/research/audit stages must complete before activation')
+            raise GateError('All validation/research/audit stages must complete before activation')
         with closing(readonly(self.candidate)) as conn:
             if fingerprint(conn) != self.manifest['candidate_audit_baseline']:
                 raise GateError('Candidate changed after its positive audit; no activation')

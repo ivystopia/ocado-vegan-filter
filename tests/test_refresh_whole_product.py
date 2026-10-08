@@ -16,17 +16,16 @@ import manufacturer_evidence as manufacturer
 
 
 class RefreshTests(unittest.TestCase):
-    def test_user_benchmark_reuse_only_waives_fresh_benchmark_stages(self):
+    def test_assessment_has_no_category_admission_stage_and_safety_gates_cannot_be_waived(self):
+        self.assertEqual(refresh.STAGES, ('checks','preflight','scrape','assessment','research','positive_audit','activation','export'))
         runner=object.__new__(refresh.Refresh)
-        runner.manifest={'benchmark_reuse':{'authorization':'Use completed benchmarks and classify now'},'stages':{}}
+        runner.manifest={'benchmark_reuse':{'authorization':'Assess every product'},'stages':{}}
         for stage in refresh.STAGES:
-            runner.manifest['stages'][stage]={'state':'waived_by_user','authorization':'Use completed benchmarks and classify now'}
-            self.assertEqual(runner.satisfied(stage),stage in refresh.REUSABLE_BENCHMARK_STAGES)
-        runner.manifest['stages']['qualification']['authorization']='different decision'
-        self.assertFalse(runner.satisfied('qualification'))
-        with self.assertRaisesRegex(refresh.GateError,'All qualification'): runner.step_activation()
+            runner.manifest['stages'][stage]={'state':'waived_by_user','authorization':'Assess every product'}
+            self.assertFalse(runner.satisfied(stage))
+        with self.assertRaisesRegex(refresh.GateError,'All validation'): runner.step_activation()
 
-    def test_assessment_continuation_preserves_failed_quota_and_does_not_repeat_models_or_scrape(self):
+    def test_assessment_continuation_preserves_history_and_does_not_repeat_benchmarks_or_scrape(self):
         with tempfile.TemporaryDirectory() as tmp:
             root=Path(tmp);source=root/'source.sqlite';fixture=root/'fixture.json';fixture.write_text('{}')
             self.make_db(source)
@@ -51,9 +50,37 @@ class RefreshTests(unittest.TestCase):
                 with self.assertRaisesRegex(refresh.GateError,'explicit user'): new.continue_assessment(old.root,'')
                 new.continue_assessment(old.root,'Use completed benchmarks and classify now')
                 self.assertEqual(old.path.read_bytes(),unchanged)
-                self.assertEqual(new.manifest['stages']['name_census']['state'],'waived_by_user')
+                self.assertNotIn('name_census',new.manifest['stages'])
                 self.assertEqual(new.manifest['remaining'],['checks','assessment','research','positive_audit','activation','export'])
                 self.assertEqual((new.root/'preflight-controls/report.json').read_bytes(),(old.root/'preflight-controls/report.json').read_bytes())
+                old.manifest['state']='running';old.save()
+                active=refresh.Refresh(root/'active',source,fixture)
+                with self.assertRaisesRegex(refresh.GateError,'completed scrape'): active.continue_assessment(old.root,'Proceed')
+                old.manifest['state']='checkpointed';old.save()
+                refresh.clone(old.working,old.candidate)
+                with sqlite3.connect(old.candidate) as conn:
+                    conn.execute('ALTER TABLE products ADD COLUMN vegan_status TEXT')
+                    conn.execute("UPDATE products SET vegan_status='unknown'")
+                    conn.execute("INSERT INTO history VALUES (2,'Completed candidate assessment')")
+                    conn.execute("INSERT INTO products VALUES ('pending','Historical product',NULL)")
+                benchmark.save(old.root/'manufacturer/snapshot.json',{'frozen_initial_unknown':['1']})
+                partial=refresh.Refresh(root/'partial',source,fixture)
+                partial.continue_assessment(old.root,'Retire category gates and preserve completed products')
+                self.assertTrue(partial.manifest['benchmark_reuse']['reused_candidate'])
+                with closing(refresh.readonly(partial.candidate)) as conn:
+                    self.assertEqual(conn.execute('SELECT id,vegan_status FROM products ORDER BY id').fetchall()[0]['vegan_status'],'unknown')
+                    self.assertEqual(classifier.select_unclassified_product_ids(conn,selection_scope='all-known'),['pending'])
+                    self.assertEqual(conn.execute('SELECT COUNT(*) FROM history').fetchone()[0],2)
+                self.assertEqual((partial.root/'manufacturer/snapshot.json').read_bytes(),(old.root/'manufacturer/snapshot.json').read_bytes())
+                (old.root/'frozen-fixture.json').write_text('{}')
+                fixture.write_text('{"selection":{"counts":{"synthetic":0}}}')
+                metadata=refresh.Refresh(root/'metadata',source,fixture)
+                metadata.continue_assessment(old.root,'Remove only obsolete fixture metadata')
+                self.assertNotEqual(metadata.manifest['benchmark_reuse']['previous_fixture_sha256'],metadata.manifest['benchmark_reuse']['current_fixture_sha256'])
+                fixture.write_text('{"cases":[{"classifier_input":{"product":{"name":"Changed"}}}]}')
+                changed_inputs=refresh.Refresh(root/'changed-inputs',source,fixture)
+                with self.assertRaisesRegex(refresh.GateError,'fixture inputs'):changed_inputs.continue_assessment(old.root,'Proceed')
+                fixture.write_text('{}')
                 with mock.patch.object(new,'step_checks'), mock.patch.object(new,'step_assessment'), mock.patch.object(new,'artifacts',return_value={}):
                     for record in new.manifest['stages'].values():record['artifacts']={}
                     with mock.patch.object(new,'bench',side_effect=AssertionError('No new benchmark')), mock.patch.object(new,'step_scrape',side_effect=AssertionError('No repeat scrape')):
@@ -126,13 +153,6 @@ class RefreshTests(unittest.TestCase):
         self.assertEqual(conn.execute('SELECT sync_run_id,selection_scope FROM vegan_classification_runs WHERE id=?',(run,)).fetchone(),(5,'all-known'))
         conn.close()
 
-    def test_name_census_does_not_count_manufacturer_unknown_or_disputed_cases(self):
-        def case(status='vegan',reason='name',state='accepted'):
-            return {'adjudication':{'state':state},'expected':{'vegan_status':status,'vegan_reason':reason} if state=='accepted' else None}
-        packet={'candidates':[case() for _ in range(49)]+[case(reason='manufacturer'),case('unknown',None),case(state='disputed')], 'disputed_cases':['one']}
-        self.assertEqual(refresh.census_gate(packet)['state'],'blocked_natural_quota')
-        packet['candidates'].append(case())
-        self.assertEqual(refresh.census_gate(packet)['accepted_name_only'],50)
 
     def make_db(self,path):
         with sqlite3.connect(path) as conn:
@@ -186,7 +206,7 @@ class RefreshTests(unittest.TestCase):
 
     def test_activation_is_not_available_before_all_prerequisites(self):
         runner=object.__new__(refresh.Refresh);runner.manifest={'stages':{}}
-        with self.assertRaisesRegex(refresh.GateError,'All qualification'):
+        with self.assertRaisesRegex(refresh.GateError,'All validation'):
             runner.step_activation()
 
     def test_resume_rejects_source_or_code_changes(self):
