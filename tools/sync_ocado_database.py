@@ -17,6 +17,7 @@ import sqlite3
 import sys
 import time
 import zlib
+import xml.etree.ElementTree as ET
 from collections import deque
 from contextlib import closing
 from pathlib import Path
@@ -61,8 +62,7 @@ def browser_session(*args: Any, **kwargs: Any) -> Any:
 
 
 USER_AGENT = "Mozilla/5.0 (X11; Linux x86_64; rv:150.0) Gecko/20100101 Firefox/150.0"
-CATEGORY_SITEMAP_URL = "https://www.ocado.com/sitemaps/sitemap-categories-part1.xml"
-PRODUCT_SITEMAP_URL = "https://www.ocado.com/sitemaps/sitemap-products-part1.xml"
+SITEMAP_INDEX_URL = "https://www.ocado.com/sitemaps/sitemap_index.xml"
 PRODUCT_URL_ID_RE = re.compile(r"/products/(?:[^/?#]*/)?(?P<id>\d+)(?:[/?#]|$)")
 
 SYNC_PRODUCT_COLUMNS: dict[str, str] = {
@@ -123,6 +123,16 @@ def ensure_sync_schema(conn: sqlite3.Connection) -> None:
           detail_fetch_attempted INTEGER DEFAULT 0,
           detail_fetch_succeeded INTEGER DEFAULT 0,
           detail_fetch_failed INTEGER DEFAULT 0
+        );
+
+        CREATE TABLE IF NOT EXISTS sync_discovery_sources (
+          run_id INTEGER NOT NULL,
+          url TEXT NOT NULL,
+          source_kind TEXT NOT NULL,
+          retrieved_at_epoch INTEGER NOT NULL,
+          content_sha256 TEXT NOT NULL,
+          source_text TEXT NOT NULL,
+          PRIMARY KEY (run_id, url, content_sha256)
         );
 
         CREATE TABLE IF NOT EXISTS sync_category_page_fetches (
@@ -277,14 +287,50 @@ def http_get_text(url: str, timeout: int) -> str:
     return response.text
 
 
-def load_leaf_categories(timeout: int, category_limit: int = 0) -> list[tuple[str, str]]:
-    text = http_get_text(CATEGORY_SITEMAP_URL, timeout)
-    urls = re.findall(r"<loc>(https://www\.ocado\.com/categories/[^<]+)</loc>", text)
+def sitemap_urls(kind: str, timeout: int, source_recorder=None) -> list[str]:
+    """Read every advertised part; failed/empty discovery must not fall back to part1."""
+    text = http_get_text(SITEMAP_INDEX_URL, timeout)
+    if source_recorder:
+        source_recorder(SITEMAP_INDEX_URL, text, "sitemap-index")
+    root = ET.fromstring(text)
+    if root.tag.rsplit('}', 1)[-1] != 'sitemapindex':
+        raise ValueError("Expected Ocado sitemap index")
+    pattern = re.compile(r"https://www\.ocado\.com/sitemaps/sitemap-" + re.escape(kind) + r"-part\d+\.xml")
+    parts = sorted({node.text.strip() for node in root.iter() if node.tag.rsplit('}', 1)[-1] == 'loc'
+                    and node.text and pattern.fullmatch(node.text.strip())})
+    if not parts:
+        raise ValueError("No " + kind + " sitemap parts advertised")
+    urls = []
+    for url in parts:
+        body = http_get_text(url, timeout)
+        if source_recorder:
+            source_recorder(url, body, kind)
+        child = ET.fromstring(body)
+        if child.tag.rsplit('}', 1)[-1] != 'urlset':
+            raise ValueError("Expected sitemap URL set: " + url)
+        urls.extend(node.text.strip() for node in child.iter()
+                    if node.tag.rsplit('}', 1)[-1] == 'loc' and node.text)
+    print(f"Loaded {len(parts)} {kind} sitemap parts", flush=True)
+    return urls
+
+
+def retain_discovery_source(conn, run_id, url, text, kind):
+    conn.execute('INSERT OR IGNORE INTO sync_discovery_sources VALUES (?,?,?,?,?,?)',
+                 (run_id, url, kind, now_epoch(), hashlib.sha256(text.encode()).hexdigest(), text))
+
+
+def load_leaf_categories(timeout: int, category_limit: int = 0, source_recorder=None) -> list[tuple[str, str]]:
+    urls = sitemap_urls('categories', timeout, source_recorder)
     unique_paths: dict[str, str] = {}
     for url in urls:
+        if not url.startswith('https://www.ocado.com/categories/'):
+            continue
         path = url.removeprefix("https://www.ocado.com/categories/")
         slug_path, category_id = path.rsplit("/", 1)
         unique_paths[slug_path] = category_id
+
+    if not unique_paths:
+        raise ValueError('Category sitemaps contained no Ocado categories')
 
     leafs = []
     for slug_path, category_id in unique_paths.items():
@@ -302,13 +348,16 @@ def product_id_from_url(url: str | None) -> str | None:
     return match.group("id") if match else None
 
 
-def product_ids_from_sitemap(timeout: int, product_limit: int = 0) -> list[tuple[str, str]]:
-    text = http_get_text(PRODUCT_SITEMAP_URL, timeout)
+def product_ids_from_sitemap(timeout: int, product_limit: int = 0, source_recorder=None) -> list[tuple[str, str]]:
     products: dict[str, str] = {}
-    for url in re.findall(r"<loc>(https://www\.ocado\.com/products/[^<]+)</loc>", text):
+    for url in sitemap_urls('products', timeout, source_recorder):
+        if not url.startswith('https://www.ocado.com/products/'):
+            continue
         product_id = product_id_from_url(url)
         if product_id:
             products[product_id] = url
+    if not products:
+        raise ValueError('Product sitemaps contained no Ocado products')
     items = sorted(products.items(), key=lambda item: item[0])
     if product_limit:
         return items[:product_limit]
@@ -583,7 +632,8 @@ def record_category_fetch(conn: sqlite3.Connection, run_id: int, result: dict[st
 
 
 def crawl_categories(conn: sqlite3.Connection, run_id: int, driver: Any, args: argparse.Namespace) -> None:
-    leaf_categories = load_leaf_categories(args.timeout, args.category_limit)
+    leaf_categories = load_leaf_categories(args.timeout, args.category_limit,
+        lambda url, text, kind: retain_discovery_source(conn, run_id, url, text, kind))
     record_run_count(conn, run_id, "category_count", len(leaf_categories))
     print(f"Loaded {len(leaf_categories)} leaf categories", flush=True)
 
@@ -681,7 +731,8 @@ def apply_category_replacement(conn: sqlite3.Connection, run_id: int) -> None:
 
 
 def import_product_sitemap(conn: sqlite3.Connection, run_id: int, args: argparse.Namespace) -> None:
-    products = product_ids_from_sitemap(args.timeout, args.product_limit)
+    products = product_ids_from_sitemap(args.timeout, args.product_limit,
+        lambda url, text, kind: retain_discovery_source(conn, run_id, url, text, kind))
     with conn:
         for product_id, url in products:
             upsert_basic_product(
@@ -1124,7 +1175,7 @@ def run_sync(args: argparse.Namespace) -> int:
         print(f"Started sync run {run_id}", flush=True)
 
         try:
-            with browser_session(headless=True, timeout=args.timeout) as session:
+            with browser_session(direct_profile=False, headless=True, timeout=args.timeout) as session:
                 session.driver.get("https://www.ocado.com/")
                 session.wait_for_ready_state(timeout=args.timeout)
                 crawl_categories(conn, run_id, session.driver, args)

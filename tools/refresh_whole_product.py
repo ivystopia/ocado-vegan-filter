@@ -223,8 +223,62 @@ class Refresh:
         checks.validate_record(read(self.root/'checks/checks.json'))
 
     def step_preflight(self):
+        if self.manifest.get('scrape_repair_origin'):
+            for name in ('preflight-controls', 'preflight-pilot'):
+                if not benchmark.successful(read(self.root/name/'report.json')):
+                    raise GateError('Preserved preflight did not pass')
+            return  # Explicitly retained results; no new classifier implementation or claims.
         self.bench('preflight-controls', self.fixture, 'synthetic')
         self.bench('preflight-pilot', self.fixture, 'development', pilot=True)
+
+    def fork_scrape_repair(self, previous):
+        """New provenance phase for a sync-only repair, preserving interrupted evidence."""
+        previous = Path(previous).resolve()
+        old = read(previous/'manifest.json')
+        if self.manifest['stages'] or self.working.exists() or previous == self.root:
+            raise GateError('Scrape repair requires a fresh root')
+        if old['stages'].get('scrape', {}).get('state') != 'checkpointed' or any(
+                key not in ('checks', 'preflight', 'scrape') for key in old['stages']):
+            raise GateError('Only an interrupted pre-qualification scrape can be forked')
+        old_config = old['configuration']; new_config = self.manifest['configuration']
+        if {k:v for k,v in old_config.items() if k!='code_hashes'} != {k:v for k,v in new_config.items() if k!='code_hashes'}:
+            raise GateError('Scrape repair cannot change models, policy, fixture or source')
+        changed = {key for key in old_config['code_hashes'].keys() | new_config['code_hashes'].keys()
+                   if old_config['code_hashes'].get(key) != new_config['code_hashes'].get(key)}
+        allowed = {'tools/sync_ocado_database.py', 'tools/refresh_whole_product.py',
+                   'tests/test_sync_ocado_database.py', 'tests/test_refresh_whole_product.py'}
+        if not changed or not changed <= allowed:
+            raise GateError('Scrape-only reuse cannot cover classifier or other code changes')
+        for stage in ('checks', 'preflight'):
+            if old['stages'].get(stage, {}).get('state') != 'completed':
+                raise GateError('Previous checks and preflight must have completed')
+            for name, digest in old['stages'][stage]['artifacts'].items():
+                if hashlib.sha256((previous/name).read_bytes()).hexdigest() != digest:
+                    raise GateError('Previous completed artifact changed: '+name)
+        for name in ('preflight-controls', 'preflight-pilot'):
+            report = read(previous/name/'report.json')
+            if not benchmark.successful(report) or report['fixture_sha256'] != new_config['fixture_sha256']:
+                raise GateError('Previous preflight is not applicable')
+            for filename, digest in report['implementation_hashes'].items():
+                if classifier.context_hash((ROOT/'tools'/filename).read_text()) != digest:
+                    raise GateError('Preflight classification implementation changed: '+filename)
+        with closing(readonly(self.source)) as conn:
+            if fingerprint(conn) != old['canonical_baseline']:
+                raise GateError('Canonical source changed during repair')
+        with closing(readonly(previous/'refreshed.sqlite')) as conn:
+            if not conn.execute("SELECT 1 FROM sqlite_master WHERE name='sync_context_baseline'").fetchone():
+                raise GateError('Interrupted baseline is missing')
+        clone(previous/'original.sqlite', self.root/'original.sqlite')
+        clone(previous/'refreshed.sqlite', self.working)
+        for name in ('preflight-controls', 'preflight-pilot'):
+            (self.root/name).mkdir()
+            (self.root/name/'report.json').write_bytes((previous/name/'report.json').read_bytes())
+        for key in ('canonical_baseline', 'original_population', 'pre_sync_id'):
+            self.manifest[key] = old[key]
+        self.manifest['scrape_repair_origin'] = {'root': str(previous), 'manifest_sha256':
+            hashlib.sha256((previous/'manifest.json').read_bytes()).hexdigest(), 'changed_paths': sorted(changed),
+            'note': 'Sync-only repair. Preserve old reports exactly; fresh implementation checks and complete sync are required. No classifier calls repeated or results relabelled.'}
+        self.save()
 
     def step_scrape(self):
         if not self.working.exists():
@@ -433,7 +487,8 @@ def main():
     parser.add_argument('--root', type=Path, required=True)
     parser.add_argument('--db', type=Path, default=Path(classifier.DEFAULT_DB))
     parser.add_argument('--fixture', type=Path, default=benchmark.FIXTURE)
-    parser.add_argument('command', choices=['run','status'])
+    parser.add_argument('command', choices=['run','status','fork-scrape-repair'])
+    parser.add_argument('--from-root', type=Path)
     parser.add_argument('--until', choices=STAGES)
     args = parser.parse_args()
     if args.command == 'status':
@@ -442,6 +497,9 @@ def main():
         return 0
     try:
         runner = Refresh(args.root, args.db, args.fixture)
+        if args.command == 'fork-scrape-repair':
+            if not args.from_root: parser.error('fork-scrape-repair requires --from-root')
+            runner.fork_scrape_repair(args.from_root)
         if args.command == 'run': runner.run(args.until)
         print(json.dumps({'state': runner.manifest['state'], 'remaining': runner.manifest['remaining'], 'manifest': str(runner.path)}))
     except (GateError, ValueError) as exc:

@@ -16,6 +16,37 @@ import manufacturer_evidence as manufacturer
 
 
 class RefreshTests(unittest.TestCase):
+    def test_scrape_repair_preserves_baseline_and_reuses_only_unchanged_classifier_preflight(self):
+        with tempfile.TemporaryDirectory() as tmp:
+            root=Path(tmp);source=root/'source.sqlite';fixture=root/'fixture.json';fixture.write_text('{}')
+            self.make_db(source)
+            original_hashes={'tools/sync_ocado_database.py':'old','tools/classify_ocado_vegan.py':'fixed'}
+            with mock.patch.object(refresh.subprocess,'check_output',return_value='dev\n'), mock.patch.object(benchmark,'candidate_hashes',return_value=original_hashes):
+                old=refresh.Refresh(root/'old',source,fixture)
+            refresh.clone(source,old.root/'original.sqlite');refresh.clone(source,old.working)
+            with sqlite3.connect(old.working) as conn:
+                conn.execute('CREATE TABLE sync_context_baseline(product_id TEXT,context_json TEXT)')
+                conn.execute("INSERT INTO sync_context_baseline VALUES ('1','preserved')")
+            with closing(refresh.readonly(source)) as conn: baseline=refresh.fingerprint(conn)
+            report={'fixture_sha256':classifier.context_hash({}), 'implementation_hashes':{'classify_ocado_vegan.py':classifier.context_hash((refresh.ROOT/'tools/classify_ocado_vegan.py').read_text())}}
+            for name in ('preflight-controls','preflight-pilot'):
+                benchmark.save(old.root/name/'report.json',report)
+            benchmark.save(old.root/'checks/checks.json',{})
+            old.manifest.update(canonical_baseline=baseline,original_population={'all_known':1,'current':1},pre_sync_id=4)
+            old.manifest['stages']={stage:{'state':'completed','artifacts':old.artifacts(stage)} for stage in ('checks','preflight')}
+            old.manifest['stages']['scrape']={'state':'checkpointed','error':'verified sitemap omission'};old.save()
+            updated={**original_hashes,'tools/sync_ocado_database.py':'new'}
+            with mock.patch.object(refresh.subprocess,'check_output',return_value='dev\n'), mock.patch.object(benchmark,'candidate_hashes',return_value=updated), mock.patch.object(benchmark,'successful',return_value=True):
+                new=refresh.Refresh(root/'new',source,fixture);new.fork_scrape_repair(old.root)
+                self.assertEqual(new.manifest['canonical_baseline'],baseline)
+                self.assertEqual(new.manifest['scrape_repair_origin']['changed_paths'],['tools/sync_ocado_database.py'])
+                with closing(refresh.readonly(new.working)) as conn:
+                    self.assertEqual(conn.execute('SELECT context_json FROM sync_context_baseline').fetchone()[0],'preserved')
+                with mock.patch.object(new,'bench',side_effect=AssertionError('must not repeat models')): new.step_preflight()
+            with mock.patch.object(refresh.subprocess,'check_output',return_value='dev\n'), mock.patch.object(benchmark,'candidate_hashes',return_value={**updated,'tools/classify_ocado_vegan.py':'changed'}):
+                invalid=refresh.Refresh(root/'invalid',source,fixture)
+                with self.assertRaisesRegex(refresh.GateError,'cannot cover classifier'): invalid.fork_scrape_repair(old.root)
+
     def test_all_known_scope_includes_unchanged_and_historical_with_sync_attribution(self):
         conn = sqlite3.connect(':memory:'); conn.row_factory = sqlite3.Row
         conn.executescript('''CREATE TABLE products(id TEXT,vegan_status TEXT,current_on_ocado INTEGER);

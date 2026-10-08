@@ -9,6 +9,7 @@ import tempfile
 import unittest
 from contextlib import closing
 from pathlib import Path
+from unittest import mock
 
 TOOLS = Path(__file__).resolve().parents[1] / "tools"
 if str(TOOLS) not in sys.path:
@@ -21,6 +22,30 @@ import update_userscript_allowlists as allowlists
 
 
 class SyncOcadoDatabaseTests(unittest.TestCase):
+    def test_sitemap_discovery_reads_all_parts_deduplicates_and_retains_sources(self):
+        index = '<sitemapindex xmlns="http://www.sitemaps.org/schemas/sitemap/0.9"><sitemap><loc>https://www.ocado.com/sitemaps/sitemap-products-part2.xml</loc></sitemap><sitemap><loc>https://www.ocado.com/sitemaps/sitemap-products-part1.xml</loc></sitemap><sitemap><loc>https://www.ocado.com/sitemaps/sitemap-products-part2.xml</loc></sitemap><sitemap><loc>https://elsewhere.test/sitemap-products-part3.xml</loc></sitemap></sitemapindex>'
+        def page(ids):
+            return '<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">'+''.join('<url><loc>https://www.ocado.com/products/item/'+p+'</loc></url>' for p in ids)+'</urlset>'
+        captures = []
+        with mock.patch.object(sync, 'http_get_text', side_effect=[index, page(['1','2']), page(['2','3'])]) as fetch:
+            self.assertEqual(sync.product_ids_from_sitemap(30, source_recorder=lambda *args: captures.append(args)),
+                             [('1','https://www.ocado.com/products/item/1'),('2','https://www.ocado.com/products/item/2'),('3','https://www.ocado.com/products/item/3')])
+        self.assertEqual(fetch.call_count,3)
+        self.assertEqual([row[2] for row in captures],['sitemap-index','products','products'])
+
+    def test_failed_or_missing_sitemap_part_never_silently_returns_partial_catalogue(self):
+        index='<sitemapindex><sitemap><loc>https://www.ocado.com/sitemaps/sitemap-products-part1.xml</loc></sitemap><sitemap><loc>https://www.ocado.com/sitemaps/sitemap-products-part2.xml</loc></sitemap></sitemapindex>'
+        with mock.patch.object(sync,'http_get_text',side_effect=[index,'<urlset><url><loc>https://www.ocado.com/products/1</loc></url></urlset>',RuntimeError('unavailable')]):
+            with self.assertRaisesRegex(RuntimeError,'unavailable'): sync.product_ids_from_sitemap(30)
+        with mock.patch.object(sync,'http_get_text',return_value='<sitemapindex/>'):
+            with self.assertRaisesRegex(ValueError,'No products'): sync.product_ids_from_sitemap(30)
+
+    def test_category_leaf_selection_spans_multiple_parts(self):
+        index='<sitemapindex><sitemap><loc>https://www.ocado.com/sitemaps/sitemap-categories-part1.xml</loc></sitemap><sitemap><loc>https://www.ocado.com/sitemaps/sitemap-categories-part2.xml</loc></sitemap></sitemapindex>'
+        def page(url): return '<urlset><url><loc>'+url+'</loc></url></urlset>'
+        with mock.patch.object(sync,'http_get_text',side_effect=[index,page('https://www.ocado.com/categories/food/10'),page('https://www.ocado.com/categories/food/fruit/20')]):
+            self.assertEqual(sync.load_leaf_categories(30),[('food/fruit','20')])
+
     def create_db(self, path: Path) -> sqlite3.Connection:
         conn = sqlite3.connect(path)
         conn.row_factory = sqlite3.Row
