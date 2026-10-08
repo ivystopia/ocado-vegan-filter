@@ -711,7 +711,7 @@ def crawl_categories(conn: sqlite3.Connection, run_id: int, driver: Any, args: a
 
 
 def apply_category_replacement(conn: sqlite3.Connection, run_id: int) -> None:
-    conn.execute("DELETE FROM product_categories")
+    conn.execute('DELETE FROM product_categories WHERE product_id IN (SELECT product_id FROM sync_product_discoveries WHERE run_id=?)', (run_id,))
     conn.execute(
         """
         INSERT OR IGNORE INTO product_categories (product_id, category_path)
@@ -730,7 +730,7 @@ def apply_category_replacement(conn: sqlite3.Connection, run_id: int) -> None:
           WHERE run_id = ? AND product_id = products.id
         )
         WHERE id IN (
-          SELECT product_id FROM sync_product_discoveries WHERE run_id = ? AND source = 'category'
+          SELECT product_id FROM sync_product_discoveries WHERE run_id = ?
         )
         """,
         (run_id, run_id),
@@ -1186,10 +1186,9 @@ def run_sync(args: argparse.Namespace) -> int:
                 session.driver.get("https://www.ocado.com/")
                 session.wait_for_ready_state(timeout=args.timeout)
                 crawl_categories(conn, run_id, session.driver, args)
-                with conn:
-                    apply_category_replacement(conn, run_id)
                 import_product_sitemap(conn, run_id, args)
                 with conn:
+                    apply_category_replacement(conn, run_id)
                     apply_current_flags(conn, run_id)
                 fetch_missing_product_details(conn, run_id, session.driver, args)
             with conn:

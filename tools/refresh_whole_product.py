@@ -78,6 +78,18 @@ def clone(source, target):
         original.backup(dest)
 
 
+def restore_historical_categories(working, original):
+    """Recover last-known evidence erased by the historical full-table replacement."""
+    with closing(sqlite3.connect(working)) as conn:
+        conn.execute('ATTACH DATABASE ? AS original', (str(original.resolve()),))
+        with conn:
+            before=conn.total_changes
+            conn.execute('''INSERT OR IGNORE INTO main.product_categories(product_id,category_path)
+                SELECT c.product_id,c.category_path FROM original.product_categories c
+                JOIN main.products p ON p.id=c.product_id WHERE p.current_on_ocado=0''')
+            return conn.total_changes-before
+
+
 def validate_candidate(path):
     with closing(readonly(path)) as conn:
         exporter.validate_export_readiness(conn)
@@ -293,6 +305,9 @@ class Refresh:
             latest = dict(conn.execute('SELECT * FROM sync_runs ORDER BY id DESC LIMIT 1').fetchone())
         if 'pre_sync_id' not in self.manifest:
             self.manifest['pre_sync_id'] = latest['id']; self.save()
+        restored=restore_historical_categories(self.working, self.root/'original.sqlite')
+        self.manifest['historical_category_rows_restored']=self.manifest.get('historical_category_rows_restored',0)+restored
+        self.save()
         if latest['id'] <= self.manifest['pre_sync_id'] or latest['status'] != 'completed':
             arguments = [ROOT/'tools/sync_ocado_database.py', '--db', self.working]
             if latest['status'] == 'failed':

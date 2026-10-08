@@ -228,7 +228,11 @@ class SyncOcadoDatabaseTests(unittest.TestCase):
             try:
                 run_id = sync.start_sync_run(conn)
                 conn.execute("insert into products(id) values ('1')")
+                conn.execute("insert into products(id) values ('historical'),('sitemap-only')")
                 conn.execute("insert into product_categories(product_id, category_path) values ('1', 'old/category')")
+                conn.execute("insert into product_categories(product_id,category_path) values ('historical','last/known'),('sitemap-only','stale/current')")
+                sync.record_discovery(conn,run_id,'1','category')
+                sync.record_discovery(conn,run_id,'sitemap-only','sitemap')
                 conn.execute(
                     "insert into sync_product_categories(run_id, product_id, category_path) values (?, '1', 'new/category')",
                     (run_id,),
@@ -236,8 +240,8 @@ class SyncOcadoDatabaseTests(unittest.TestCase):
 
                 sync.apply_category_replacement(conn, run_id)
 
-                categories = [row[0] for row in conn.execute("select category_path from product_categories")]
-                self.assertEqual(categories, ["new/category"])
+                categories = [tuple(row) for row in conn.execute("select product_id,category_path from product_categories order by product_id")]
+                self.assertEqual(categories, [('1','new/category'),('historical','last/known')])
             finally:
                 conn.close()
 

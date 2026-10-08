@@ -16,6 +16,18 @@ import manufacturer_evidence as manufacturer
 
 
 class RefreshTests(unittest.TestCase):
+    def test_historical_category_recovery_preserves_current_evidence_and_resumes(self):
+        with tempfile.TemporaryDirectory() as tmp:
+            root=Path(tmp);original=root/'original.sqlite';working=root/'working.sqlite'
+            with closing(sqlite3.connect(original)) as conn:
+                conn.executescript("CREATE TABLE product_categories(product_id TEXT,category_path TEXT,PRIMARY KEY(product_id,category_path)); INSERT INTO product_categories VALUES ('old','wine'),('current','stale');")
+            with closing(sqlite3.connect(working)) as conn:
+                conn.executescript("CREATE TABLE products(id TEXT,current_on_ocado INTEGER);INSERT INTO products VALUES ('old',0),('current',1); CREATE TABLE product_categories(product_id TEXT,category_path TEXT,PRIMARY KEY(product_id,category_path)); INSERT INTO product_categories VALUES ('current','fresh');")
+            self.assertEqual(refresh.restore_historical_categories(working,original),1)
+            self.assertEqual(refresh.restore_historical_categories(working,original),0)
+            with closing(sqlite3.connect(working)) as conn:
+                self.assertEqual(conn.execute('SELECT * FROM product_categories ORDER BY product_id').fetchall(),[('current','fresh'),('old','wine')])
+
     def test_scrape_repair_preserves_baseline_and_reuses_only_unchanged_classifier_preflight(self):
         with tempfile.TemporaryDirectory() as tmp:
             root=Path(tmp);source=root/'source.sqlite';fixture=root/'fixture.json';fixture.write_text('{}')
