@@ -1,0 +1,17 @@
+{
+  "parent_fixture": "benchmarks/vegan-classifier-v2/ethical-cases-v28.json",
+  "parent_sha256": "c1807ed68376e27b1c053d6dd5d9daaca4162ad23d7c454794e3f380be652afc",
+  "child_fixture": "benchmarks/vegan-classifier-v2/ethical-cases-v29.json",
+  "child_sha256": "ce1d58573fbba6d89d1d50af7c42798fc3e7fda23c6599fb97039faf5a5dffd3",
+  "old_cases_unchanged": 1104,
+  "added_case_ids": [
+    "synthetic.hyphenated-food-scope.0",
+    "synthetic.hyphenated-food-scope.1",
+    "synthetic.hyphenated-food-scope.2",
+    "synthetic.hyphenated-food-scope.3",
+    "synthetic.hyphenated-food-scope.4",
+    "synthetic.hyphenated-food-scope.5"
+  ],
+  "existing_expectations_sources_selection_and_natural_references_unchanged": true,
+  "rationale": "Append six spelling/scope controls for the proved food-only qualifier gap; no relabelling after model failures."
+}

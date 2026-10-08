@@ -1,0 +1,223 @@
+{
+  "parent_fixture_hash": "b5873197333330056a1033d543e3f85e9fcc53a113a5d8b8b0ede9beac6ddf53",
+  "candidate_fixture_hash": "f4a7b6827567448f27de3fb1616d2497d53882ac197f46b33a14e32d1fa58f11",
+  "changed_expectations": [
+    {
+      "case_id": "natural.634499011",
+      "input_sha256": "b18a0baa30bb633e71d86b51190f9233bef29383633470986fcedd7f6388d244",
+      "before": {
+        "vegan_status": "vegan",
+        "vegan_reason": "name",
+        "required_issue_codes": []
+      },
+      "after": {
+        "vegan_status": "vegan",
+        "vegan_reason": "manufacturer",
+        "required_issue_codes": []
+      },
+      "before_reference": {
+        "state": "accepted",
+        "reference_type": "frozen-evidence-sufficiency",
+        "policy_version": "whole-product-v2",
+        "method": "two fresh automated evidence readings with validated citations; no human review",
+        "readings": [
+          {
+            "annotation": {
+              "case_id": "natural.634499011",
+              "expected_status": "vegan",
+              "expected_reason": "name",
+              "required_issue_codes": [],
+              "input_refs": [
+                {
+                  "path": "/product/name",
+                  "quote": "Skittles Vegan Chewy Sweets Fruit Flavoured Pouch Bag"
+                },
+                {
+                  "path": "/product/detailed_description",
+                  "quote": "Skittles Fruits Vegan Chewy Sweets are a colourful mix of chewy sweets with a crisp sugar shell."
+                },
+                {
+                  "path": "/product/dietary_information",
+                  "quote": "Suitable for Vegetarians"
+                }
+              ],
+              "rationale": "The affirmative vegan name covers the complete product and generic pouch, sugar and flavouring uncertainty. The description repeats that vegan product designation rather than supplying a separate manufacturer suitability confirmation.",
+              "external_status": "unknown",
+              "source_id": null,
+              "external_quote": "",
+              "scope_match": "No retained external primary sources supplied.",
+              "component_assessment": {
+                "status": "covered_by_claim",
+                "evidence_refs": [
+                  {
+                    "path": "/product/name",
+                    "quote": "Skittles Vegan Chewy Sweets Fruit Flavoured Pouch Bag"
+                  }
+                ]
+              }
+            },
+            "input_sha256": "b18a0baa30bb633e71d86b51190f9233bef29383633470986fcedd7f6388d244",
+            "call_id": "16183586-b0b4-4a79-8f20-c3951267e480",
+            "model": "gpt-6.1-sol",
+            "effort": "high",
+            "prompt_version": "blind-evidence-adjudication-v10"
+          },
+          {
+            "annotation": {
+              "case_id": "natural.634499011",
+              "expected_status": "vegan",
+              "expected_reason": "name",
+              "required_issue_codes": [],
+              "input_refs": [
+                {
+                  "path": "/product/name",
+                  "quote": "Skittles Vegan Chewy Sweets Fruit Flavoured Pouch Bag"
+                }
+              ],
+              "rationale": "The affirmative whole-product vegan name covers generic sugar-processing, flavouring-source and pouch-composition uncertainty. The description repeats the vegan product name rather than supplying a separate higher-priority manufacturer suitability confirmation.",
+              "external_status": "unknown",
+              "source_id": null,
+              "external_quote": "",
+              "scope_match": "No retained external primary sources supplied.",
+              "component_assessment": {
+                "status": "covered_by_claim",
+                "evidence_refs": [
+                  {
+                    "path": "/product/name",
+                    "quote": "Skittles Vegan Chewy Sweets Fruit Flavoured Pouch Bag"
+                  }
+                ]
+              }
+            },
+            "input_sha256": "b18a0baa30bb633e71d86b51190f9233bef29383633470986fcedd7f6388d244",
+            "call_id": "6c80e2e4-8379-4907-b57c-4ce6f90c573c",
+            "model": "gpt-6.1-sol",
+            "effort": "high",
+            "prompt_version": "blind-evidence-adjudication-v10"
+          }
+        ]
+      },
+      "after_reference": {
+        "state": "accepted",
+        "reference_type": "frozen-evidence-sufficiency",
+        "policy_version": "whole-product-v2",
+        "method": "two fresh automated evidence readings with validated citations; no human review",
+        "readings": [
+          {
+            "annotation": {
+              "case_id": "natural.634499011",
+              "expected_status": "vegan",
+              "expected_reason": "manufacturer",
+              "required_issue_codes": [],
+              "input_refs": [
+                {
+                  "path": "/product/detailed_description",
+                  "quote": "Skittles Fruits Vegan Chewy Sweets are a colourful mix of chewy sweets with a crisp sugar shell."
+                },
+                {
+                  "path": "/product/name",
+                  "quote": "Skittles Vegan Chewy Sweets Fruit Flavoured Pouch Bag"
+                }
+              ],
+              "rationale": "The declarative product self-description identifies these sweets as vegan and constitutes manufacturer evidence, despite the empty extracted evidence array. It takes precedence over the name and covers generic ingredient and pouch uncertainty.",
+              "external_status": "unknown",
+              "source_id": null,
+              "external_quote": "",
+              "scope_match": "No retained external primary source supplied.",
+              "component_assessment": {
+                "status": "covered_by_claim",
+                "evidence_refs": [
+                  {
+                    "path": "/product/detailed_description",
+                    "quote": "Skittles Fruits Vegan Chewy Sweets are a colourful mix of chewy sweets with a crisp sugar shell."
+                  },
+                  {
+                    "path": "/product/name",
+                    "quote": "Skittles Vegan Chewy Sweets Fruit Flavoured Pouch Bag"
+                  }
+                ]
+              }
+            },
+            "input_sha256": "b18a0baa30bb633e71d86b51190f9233bef29383633470986fcedd7f6388d244",
+            "call_id": "a24ed0aa-286f-46a4-b7dd-c10ca201c88c",
+            "model": "gpt-6.1-sol",
+            "effort": "high",
+            "prompt_version": "blind-evidence-adjudication-v11"
+          },
+          {
+            "annotation": {
+              "case_id": "natural.634499011",
+              "expected_status": "vegan",
+              "expected_reason": "manufacturer",
+              "required_issue_codes": [],
+              "input_refs": [
+                {
+                  "path": "/product/detailed_description",
+                  "quote": "Skittles Fruits Vegan Chewy Sweets are a colourful mix of chewy sweets with a crisp sugar shell."
+                },
+                {
+                  "path": "/product/name",
+                  "quote": "Skittles Vegan Chewy Sweets Fruit Flavoured Pouch Bag"
+                }
+              ],
+              "rationale": "The declarative product self-description identifies this article as vegan and qualifies as manufacturer confirmation, taking precedence over its vegan name. It covers generic sugar-processing, flavouring-source and bag uncertainty.",
+              "external_status": "unknown",
+              "source_id": null,
+              "external_quote": "",
+              "scope_match": "No retained external primary sources supplied.",
+              "component_assessment": {
+                "status": "covered_by_claim",
+                "evidence_refs": [
+                  {
+                    "path": "/product/detailed_description",
+                    "quote": "Skittles Fruits Vegan Chewy Sweets are a colourful mix of chewy sweets with a crisp sugar shell."
+                  },
+                  {
+                    "path": "/product/name",
+                    "quote": "Skittles Vegan Chewy Sweets Fruit Flavoured Pouch Bag"
+                  }
+                ]
+              }
+            },
+            "input_sha256": "b18a0baa30bb633e71d86b51190f9233bef29383633470986fcedd7f6388d244",
+            "call_id": "19477c2d-9696-4240-90b2-ddc2a590492f",
+            "model": "gpt-6.1-sol",
+            "effort": "high",
+            "prompt_version": "blind-evidence-adjudication-v11"
+          }
+        ]
+      }
+    }
+  ],
+  "added_cases": [
+    "natural.649092011",
+    "natural.530031011",
+    "natural.517852011",
+    "natural.517861011",
+    "natural.518351011",
+    "natural.518464011",
+    "natural.519955011"
+  ],
+  "resolved_prior_disputes": [
+    "natural.649092011",
+    "natural.530031011"
+  ],
+  "unchanged_pilot_ids": true,
+  "pilot_route_counts_before": {
+    "tagged": 6,
+    "manufacturer": 6,
+    "name": 6,
+    "ingredients": 6,
+    "unknown": 48,
+    "nonvegan": 24
+  },
+  "pilot_route_counts_after": {
+    "tagged": 6,
+    "manufacturer": 7,
+    "name": 5,
+    "ingredients": 6,
+    "unknown": 48,
+    "nonvegan": 24
+  },
+  "note": "Fresh blind citation-validated reference readings with consistent settled producer-assertion criteria, not candidate-label voting. Earlier expectations/readings/results retained. All original evidence hashes, controls, workload and pilot IDs unchanged. Name quota shortfall and original locked exclusions remain."
+}

@@ -22,6 +22,133 @@ from types import SimpleNamespace
 
 
 class WholeProductBenchmarkTests(unittest.TestCase):
+    def test_different_catalogue_provenance_fails_before_classification(self):
+        with tempfile.TemporaryDirectory() as directory:
+            path=Path(directory)/'fixture.json'
+            cases=self.fixture(path)
+            fixture=json.loads(path.read_text())
+            fixture['catalogue_provenance']={'retailer':'Ocado','market':'US'}
+            path.write_text(json.dumps(fixture))
+            with self.assertRaisesRegex(ValueError,'catalogue provenance'):
+                benchmark.load_fixture(path)
+
+    def test_current_frozen_evidence_roundtrips_before_model_evaluation(self):
+        root=Path(__file__).resolve().parents[1]/'benchmarks/vegan-classifier-v2'
+        fixture=benchmark.load_fixture(root/'ethical-cases-v21.json')
+        self.assertEqual(fixture['catalogue_provenance'],policy.CATALOGUE_PROVENANCE)
+        for split in {case['split'] for case in fixture['cases']}:
+            with self.subTest(split=split):
+                cases=[case for case in fixture['cases'] if case['split']==split]
+                conn=benchmark.fixture_database(cases)
+                conn.close()
+        parent=benchmark.load_fixture(root/'ethical-cases-v20.json')
+        for old,new in zip(parent['cases'],fixture['cases']):
+            self.assertEqual(old['expected'] if 'expected' in old else None,
+                             new['expected'] if 'expected' in new else None)
+            for field in ('manufacturer_vegan_evidence','manufacturer_source_candidates'):
+                old_rows=old['classifier_input'].get(field,[])
+                new_rows=new['classifier_input'].get(field,[])
+                self.assertEqual([row.get('source_text') for row in old_rows],
+                                 [row.get('source_text') for row in new_rows])
+
+    def test_malformed_website_fixture_stops_before_any_model_call(self):
+        with tempfile.TemporaryDirectory() as tmp:
+            root=Path(tmp);path=root/'fixture.json';cases=self.fixture(path)
+            cases[0]['classifier_input']['manufacturer_source_candidates']=[{
+                'source_id':'incomplete','source_url':'https://example.test/faq',
+                'source_text':'This product is vegan.','source_sha256':'0'*64,
+                'retrieved_at':'2026-10-07','market_scope':'UK','association_status':'catalogue_match'}]
+            cases[0]['input_sha256']=classifier.context_hash(cases[0]['classifier_input'])
+            path.write_text(json.dumps({'schema_version':2,'policy_version':policy.POLICY_VERSION,'cases':cases}))
+            args=benchmark.parser().parse_args(['--fixture',str(path),'--split','synthetic','--output',str(root/'results')])
+            with mock.patch.object(benchmark,'execute_batch') as execute:
+                with self.assertRaisesRegex(KeyError,'official_identity'):
+                    benchmark.run(args)
+                execute.assert_not_called()
+            report=json.loads((root/'results/report.json').read_text())
+            self.assertEqual(report['state'],'failed')
+            self.assertEqual(report['usage']['calls'],0)
+            self.assertEqual(report['runs'],[])
+
+    def test_v6_cited_reason_crosswalk_preserves_controls_and_original_pilot(self):
+        root=Path(__file__).resolve().parents[1]/'benchmarks/vegan-classifier-v2'
+        parent=json.loads((root/'ethical-cases-v5.json').read_text())
+        current=benchmark.load_fixture(root/'ethical-cases-v6.json')
+        old={case['case_id']:case for case in parent['cases']}
+        new={case['case_id']:case for case in current['cases']}
+        self.assertEqual(len(new)-len(old),7)
+        self.assertEqual(current['selection']['pilot_case_ids'],parent['selection']['pilot_case_ids'])
+        changed=[]
+        for key,case in old.items():
+            self.assertEqual(new[key]['classifier_input'],case['classifier_input'],key)
+            self.assertEqual(new[key]['input_sha256'],case['input_sha256'],key)
+            if case['split'] in {'synthetic','workload'}:self.assertEqual(new[key],case,key)
+            if new[key]['expected']!=case['expected']:changed.append(key)
+        self.assertEqual(changed,['natural.634499011'])
+        self.assertEqual(new[changed[0]]['expected']['vegan_reason'],'manufacturer')
+        for reading in new[changed[0]]['adjudication']['readings']:
+            self.assertEqual(reading['prompt_version'],'blind-evidence-adjudication-v11')
+            self.assertEqual(reading['annotation']['expected_reason'],'manufacturer')
+            for ref in reading['annotation']['input_refs']:
+                policy.resolve_reference(new[changed[0]]['classifier_input'],ref)
+        self.assertEqual(current['selection']['development_shortfalls'],{'name':13})
+        self.assertEqual(current['selection']['pilot_route_counts'],
+            {'tagged':6,'manufacturer':7,'name':5,'ingredients':6,'unknown':48,'nonvegan':24})
+        self.assertFalse(current['selection']['target_complete'])
+
+    def test_v5_reference_crosswalk_preserves_frozen_inputs_and_the_pilot(self):
+        root=Path(__file__).resolve().parents[1]/'benchmarks/vegan-classifier-v2'
+        parent=json.loads((root/'ethical-cases-v4.json').read_text())
+        current=benchmark.load_fixture(root/'ethical-cases-v5.json')
+        old={case['case_id']:case for case in parent['cases']}
+        new={case['case_id']:case for case in current['cases']}
+        self.assertEqual(len(new)-len(old),28)
+        self.assertEqual(current['selection']['pilot_case_ids'],parent['selection']['pilot_case_ids'])
+        changed=[]
+        for key,case in old.items():
+            self.assertEqual(new[key]['classifier_input'],case['classifier_input'],key)
+            self.assertEqual(new[key]['input_sha256'],case['input_sha256'],key)
+            if new[key]['expected']!=case['expected']:changed.append(key)
+        self.assertEqual(changed,['natural.622692011'])
+        self.assertEqual(new[changed[0]]['expected']['vegan_reason'],'manufacturer')
+        for reading in new[changed[0]]['adjudication']['readings']:
+            self.assertEqual(reading['prompt_version'],'blind-evidence-adjudication-v10')
+            self.assertEqual(reading['annotation']['expected_reason'],'manufacturer')
+            for ref in reading['annotation']['input_refs']:
+                policy.resolve_reference(new[changed[0]]['classifier_input'],ref)
+        self.assertEqual(current['selection']['development_shortfalls'],{'name':12,'ingredients':1})
+
+    def test_blind_annotation_receives_mechanisms_without_old_reference_labels(self):
+        value={'product':{'id':'1','name':'Example Apple Juice','ingredients':'Apple Juice (100%)'},
+               'flags':[],'categories':[],'manufacturer_vegan_evidence':[]}
+        case={'case_id':'natural.1','classifier_input':value,'input_sha256':classifier.context_hash(value),
+              'source_group_keys':[],'external_sources':[],
+              'expected':{'old_label':'DO_NOT_LEAK_EXPECTATION'},
+              'adjudication':{'rationale':'DO_NOT_LEAK_PREVIOUS_READING'}}
+        row={'case_id':case['case_id'],'expected_status':'unknown','expected_reason':None,
+             'required_issue_codes':['processing_unresolved'],
+             'input_refs':[policy.reference('/product/name','Example Apple Juice')],
+             'rationale':'Clarification facts are absent.','external_status':'unknown','source_id':None,
+             'external_quote':'','scope_match':'No external product source.',
+             'component_assessment':{'status':'established','evidence_refs':[policy.reference('/product/name','Example Apple Juice')]}}
+        def fake_call(prompt,schema,**kwargs):
+            self.assertNotIn('DO_NOT_LEAK',prompt)
+            self.assertIn(policy.CATALOGUE_CONTEXT_POLICY,prompt)
+            payload_input=json.loads(prompt[prompt.index('{"catalogue_provenance":'):])
+            self.assertEqual(payload_input['catalogue_provenance'],{'retailer':'Ocado','market':'UK'})
+            self.assertEqual(payload_input['products'][0]['classifier_input']['product'],value['product'])
+            self.assertIn(policy.PRODUCER_ASSERTION_POLICY,prompt)
+            self.assertIn('manufacturer evidence even when its subject repeats the vegan SKU designation',prompt)
+            self.assertIn('A name mentioned without an assertion, a quoted title, a serving suggestion',prompt)
+            for mechanism in policy.RISK_REGISTRY:
+                self.assertIn(mechanism['id'],prompt)
+                self.assertIn(mechanism['source'],prompt)
+            payload={'annotations':[row]}
+            kwargs['validator'](payload)
+            return {'parsed_response':payload,'call_id':'isolated-test'}
+        with tempfile.TemporaryDirectory() as directory, mock.patch.object(codex_evidence,'run',side_effect=fake_call):
+            self.assertEqual(adjudication.review_batch([case],Path(directory),1,'gpt-6.1-sol','high'),1)
+
     def test_reference_audit_changes_only_two_references_and_preserves_all_inputs(self):
         root=Path(__file__).resolve().parents[1]/'benchmarks/vegan-classifier-v2'
         previous=json.loads((root/'ethical-cases-v3.json').read_text())
@@ -167,7 +294,7 @@ class WholeProductBenchmarkTests(unittest.TestCase):
                         {**record,'checks':[{'name':'unittest','exit_code':0}]}):
             with self.assertRaises(ValueError):candidate_checks.validate_record(changed)
 
-    def test_two_failed_lunas_do_not_automatically_start_an_expensive_primary(self):
+    def test_failed_remaining_luna_does_not_automatically_start_an_expensive_primary(self):
         failed={'state':'completed','runs':[{'unsafe_positives':[],'operational_errors':[],
             'missing_cases':[],'reason_errors':[],'mandatory_control_failures':[],
             'reportable_negative_errors':[],'missing_required_issues':[],
@@ -183,9 +310,10 @@ class WholeProductBenchmarkTests(unittest.TestCase):
                 result=comparison.run(args)
             self.assertEqual(result['state'],'primary_failure_review_required')
             self.assertEqual({call.kwargs['model'] for call in execute.call_args_list},
-                {'gpt-5.6-luna','gpt-6-luna'})
+                {'gpt-6-luna'})
+            self.assertIn('gpt-5.6-luna/high',result['excluded_primary_candidates'])
 
-    def test_both_cheap_pilots_precede_expanded_development(self):
+    def test_remaining_cheap_pilot_precedes_expanded_development(self):
         passing={'state':'completed','runs':[{**{field:[] for field in comparison.FAILURE_FIELDS},
             'vegan_recall':1,'per_route_recall':{}}]}
         failed={**passing,'state':'disqualified','unrun_cases':['later']}
@@ -199,8 +327,8 @@ class WholeProductBenchmarkTests(unittest.TestCase):
                  mock.patch.object(comparison,'execute',side_effect=execute) as run:
                 result=comparison.run(args)
             labels=[call.args[1] for call in run.call_args_list]
-            self.assertEqual([label.split('-')[0] for label in labels],['controls','pilot','controls','pilot','development','development'])
-            self.assertTrue(all(call.kwargs['stop_on_disqualification'] for call in run.call_args_list[-2:]))
+            self.assertEqual([label.split('-')[0] for label in labels],['controls','pilot','development'])
+            self.assertTrue(run.call_args_list[-1].kwargs['stop_on_disqualification'])
             self.assertEqual(result['state'],'primary_failure_review_required')
 
     def test_passing_natural_pilots_cannot_hide_unsafe_control_results(self):
@@ -222,11 +350,41 @@ class WholeProductBenchmarkTests(unittest.TestCase):
         self.assertEqual(result['state'],'primary_failure_review_required')
         self.assertFalse(any(label.startswith(('development-','arbitration-')) for label in labels))
 
+    def test_conditional_sol_development_uses_the_same_failure_stop(self):
+        passing={'state':'completed','runs':[{**{field:[] for field in comparison.FAILURE_FIELDS},
+            'vegan_recall':1,'per_route_recall':{}}]}
+        failed=copy.deepcopy(passing);failed['runs'][0]['reason_errors']=['a']
+        with tempfile.TemporaryDirectory() as tmp:
+            root=Path(tmp);checks=root/'checks.json';checks.write_text('{}')
+            review=root/'review.json';review.write_text('{}')
+            args=SimpleNamespace(fixture=root/'fixture.json',checks=checks,output=root/'results',
+                workers=1,development_only=True,primary_failure_review=review)
+            def execute(args,label,**kwargs):
+                return passing if label in {'controls-sol-primary','pilot-sol-primary'} else failed
+            with mock.patch.object(benchmark,'load_fixture',return_value={'selection':{'target_complete':False},'cases':[]}),\
+                 mock.patch.object(candidate_checks,'validate_record'),\
+                 mock.patch.object(comparison,'diagnostic_fixture'),\
+                 mock.patch.object(comparison,'validate_failure_review') as validate,\
+                 mock.patch.object(comparison,'execute',side_effect=execute) as run:
+                result=comparison.run(args)
+            validate.assert_called_once()
+            development=[call for call in run.call_args_list if call.args[1]=='development-sol-primary']
+            self.assertEqual(len(development),1)
+            self.assertTrue(development[0].kwargs['stop_on_disqualification'])
+            self.assertEqual(result['state'],'no_eligible_primary')
+
     def test_control_reuse_cannot_drop_a_failed_candidate(self):
         with tempfile.TemporaryDirectory() as tmp:
-            path=Path(tmp)/'controls.json';path.write_text(json.dumps({'gpt-6-luna/high':'passing.json'}))
-            with self.assertRaisesRegex(ValueError,'both inexpensive'):
+            path=Path(tmp)/'controls.json';path.write_text(json.dumps({'gpt-5.6-luna/high':'rejected.json'}))
+            with self.assertRaisesRegex(ValueError,'all remaining inexpensive'):
                 comparison.primary_controls(SimpleNamespace(primary_control_reports=path),{'cases':[]},'gpt-6-luna','high')
+
+    def test_user_excluded_primary_is_bound_to_comparison_manifest(self):
+        args=SimpleNamespace(workers=3,development_only=True)
+        manifest=comparison.comparison_manifest(args,{'cases':[]},{})
+        self.assertEqual(manifest['primary'],[('gpt-6-luna','high')])
+        self.assertEqual(manifest['excluded_primary_candidates'],comparison.EXCLUDED_PRIMARY)
+        self.assertEqual(comparison.EXCLUDED_PRIMARY['gpt-5.6-luna/high']['decided_on'],'2026-10-08')
 
     def test_failure_diagnostic_preserves_inputs_and_excludes_passing_cases(self):
         cases=copy.deepcopy(assemble.synthetic_cases()[:2])
@@ -378,6 +536,96 @@ class WholeProductBenchmarkTests(unittest.TestCase):
         self.assertEqual(result['vegan_recall'],0)
         self.assertFalse(benchmark.acceptance({'split':'locked','runs':[result]*3}))
         self.assertFalse(benchmark.successful({'state':'completed','runs':[result]}))
+
+    def test_conservative_misses_use_recall_without_erasing_control_failures(self):
+        cases=[{'case_id':str(index),'mandatory_control':True,
+                'expected':{'vegan_status':'vegan','vegan_reason':'manufacturer'}} for index in range(100)]
+        decisions={case['case_id']:{'vegan_status':'vegan','vegan_reason':'manufacturer','evidence':{}}
+                   for case in cases}
+        for misses,passed in [(1,True),(2,True),(3,False)]:
+            with self.subTest(misses=misses):
+                current=copy.deepcopy(decisions)
+                for index in range(misses):
+                    current[str(index)].update(vegan_status='unknown',vegan_reason=None)
+                result=benchmark.metrics(cases,current)
+                self.assertEqual(result['conservative_misses'],[str(index) for index in range(misses)])
+                self.assertEqual(result['mismatches'],result['conservative_misses'])
+                self.assertFalse(result['mandatory_control_failures'])
+                self.assertFalse(result['critical_status_failures'])
+                report={'state':'completed','runs':[result]}
+                self.assertEqual(benchmark.successful(report),passed)
+                self.assertEqual(comparison.development_eligible(report),passed)
+
+    def test_recall_allowance_preserves_all_safety_and_reason_contracts(self):
+        cases=[{'case_id':str(index),'mandatory_control':True,
+                'expected':{'vegan_status':'vegan','vegan_reason':'manufacturer'}} for index in range(100)]
+        decisions={case['case_id']:{'vegan_status':'vegan','vegan_reason':'manufacturer','evidence':{}}
+                   for case in cases}
+        for expected,actual,reason in [('unknown','vegan','manufacturer'),('nonvegan','vegan','manufacturer'),
+                                       ('nonvegan','unknown',None),('vegan','nonvegan',None),('vegan','vegan','name')]:
+            with self.subTest(expected=expected,actual=actual,reason=reason):
+                current_cases=copy.deepcopy(cases);current=copy.deepcopy(decisions)
+                current_cases[0]['expected']={'vegan_status':expected,
+                    'vegan_reason':'manufacturer' if expected=='vegan' else None}
+                current['0'].update(vegan_status=actual,vegan_reason=reason)
+                result=benchmark.metrics(current_cases,current)
+                self.assertFalse(benchmark.successful({'state':'completed','runs':[result]}))
+                self.assertFalse(comparison.development_eligible({'state':'completed','runs':[result]}))
+        result=benchmark.metrics(cases,decisions)
+        for field in ('operational_errors','missing_cases','missing_required_issues','reportable_negative_errors'):
+            broken=copy.deepcopy(result);broken[field]=['0']
+            self.assertFalse(benchmark.successful({'state':'completed','runs':[broken]}),field)
+
+    def test_per_route_recall_and_historical_results_remain_explicit(self):
+        cases=[];decisions={}
+        for reason in policy.REASONS:
+            for index in range(30):
+                key=reason+str(index)
+                cases.append({'case_id':key,'mandatory_control':True,
+                              'expected':{'vegan_status':'vegan','vegan_reason':reason}})
+                decisions[key]={'vegan_status':'vegan','vegan_reason':reason,'evidence':{}}
+        decisions['manufacturer0'].update(vegan_status='unknown',vegan_reason=None)
+        result=benchmark.metrics(cases,decisions)
+        self.assertTrue(benchmark.successful({'state':'completed','runs':[result]}))
+        old=copy.deepcopy(result);old.pop('acceptance_rubric_version');old.pop('critical_status_failures')
+        self.assertFalse(benchmark.successful({'state':'completed','runs':[old]}))
+        decisions['manufacturer1'].update(vegan_status='unknown',vegan_reason=None)
+        result=benchmark.metrics(cases,decisions)
+        self.assertGreater(result['vegan_recall'],.98)
+        self.assertFalse(benchmark.successful({'state':'completed','runs':[result]}))
+
+    def test_current_defaults_choose_the_approved_model_and_fixture(self):
+        args=benchmark.parser().parse_args(['--output','unused'])
+        self.assertEqual(args.model,classifier.DEFAULT_CODEX_MODEL)
+        self.assertEqual(args.model,'gpt-6-luna')
+        self.assertEqual(args.effort,'high')
+        self.assertEqual(args.arbitration_model,'gpt-6.1-sol')
+        self.assertEqual(args.arbitration_effort,'medium')
+        self.assertEqual(args.fixture.name,'ethical-cases-v29.json')
+
+    def test_locked_gate_budgets_only_conservative_misses(self):
+        cases=[];decisions={}
+        for reason in policy.REASONS:
+            for index in range(30):
+                key=reason+str(index)
+                cases.append({'case_id':key,'mandatory_control':True,
+                              'expected':{'vegan_status':'vegan','vegan_reason':reason}})
+                decisions[key]={'vegan_status':'vegan','vegan_reason':reason,'evidence':{}}
+        for status,count in [('unknown',180),('nonvegan',60)]:
+            for index in range(count):
+                key=status+str(index)
+                cases.append({'case_id':key,'expected':{'vegan_status':status,'vegan_reason':None}})
+                decisions[key]={'vegan_status':status,'vegan_reason':None,'evidence':{}}
+        for misses,passed in [(['manufacturer0'],True),(['manufacturer0','name0'],True),
+                              (['manufacturer0','manufacturer1'],False),
+                              (['manufacturer0','name0','ingredients0'],False)]:
+            current=copy.deepcopy(decisions)
+            for key in misses:current[key].update(vegan_status='unknown',vegan_reason=None)
+            result=benchmark.metrics(cases,current)
+            self.assertEqual(benchmark.acceptance({'split':'locked','runs':[result]*3}),passed,misses)
+        current=copy.deepcopy(decisions);current['nonvegan0'].update(vegan_status='unknown')
+        result=benchmark.metrics(cases,current)
+        self.assertFalse(benchmark.acceptance({'split':'locked','runs':[result]*3}))
 
     def test_resume_rejects_changed_inputs_or_model(self):
         with tempfile.TemporaryDirectory() as tmp:

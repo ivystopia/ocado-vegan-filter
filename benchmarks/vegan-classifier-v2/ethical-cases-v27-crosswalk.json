@@ -1,0 +1,17 @@
+{
+  "parent_fixture": "benchmarks/vegan-classifier-v2/ethical-cases-v26.json",
+  "parent_fixture_sha256": "2a7289bd8672d80c80e1317536682dbc94f7bb67b51b56214df77ace619689ea",
+  "child_fixture": "benchmarks/vegan-classifier-v2/ethical-cases-v27.json",
+  "child_fixture_sha256": "430a4124295d5266522a2a1c2bbb8c0f0b772e940953d761d537623ab98473de",
+  "preserved_cases": 1092,
+  "changed_cases": {},
+  "new_cases": [
+    "synthetic.factory-warning-boundary.0",
+    "synthetic.factory-warning-boundary.1",
+    "synthetic.factory-warning-boundary.2",
+    "synthetic.factory-warning-boundary.3",
+    "synthetic.factory-warning-boundary.4",
+    "synthetic.factory-warning-boundary.5"
+  ],
+  "note": "All original natural/synthetic/workload inputs, labels, adjudications and selection remain byte-for-byte equivalent as JSON values. Six synthetic warning/content contrasts added; no protected holdout accessed."
+}

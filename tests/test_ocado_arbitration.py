@@ -71,7 +71,7 @@ class ArbitrationTests(unittest.TestCase):
         self.assertEqual(results[0].source, "codex_arbitration")
         self.assertEqual(results[0].model, "gpt-6.1-sol")
         stages = results[0].evidence["arbitration"]
-        self.assertEqual(stages["primary"]["model"], "gpt-5.6-luna")
+        self.assertEqual(stages["primary"]["model"], "gpt-6-luna")
         self.assertEqual(len(json.loads(stages["primary"]["parsed_response_json"])), 2)
         self.assertEqual(len(json.loads(stages["assessment"]["parsed_response_json"])), 2)
         self.assertEqual(stages["outcome"], "resolved")

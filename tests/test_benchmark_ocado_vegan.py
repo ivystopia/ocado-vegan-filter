@@ -63,7 +63,7 @@ class BenchmarkOcadoVeganTests(unittest.TestCase):
     def test_defaults_use_luna_high_with_two_passes(self) -> None:
         args = benchmark.build_parser().parse_args([])
 
-        self.assertEqual(args.model, "gpt-5.6-luna")
+        self.assertEqual(args.model, "gpt-6-luna")
         self.assertEqual(args.reasoning_effort, "high")
         self.assertEqual(args.passes, 2)
         self.assertEqual(args.batch_size, 10)

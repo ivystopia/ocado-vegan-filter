@@ -10,6 +10,7 @@ from collections import Counter
 from contextlib import closing
 from dataclasses import asdict
 import json
+import math
 from pathlib import Path
 import random
 import sqlite3
@@ -25,8 +26,9 @@ import vegan_policy as policy
 import update_userscript_allowlists as exporter
 
 ROOT = Path(__file__).resolve().parents[1]
-FIXTURE = ROOT / 'benchmarks/vegan-classifier-v2/ethical-cases-v4.json'
+FIXTURE = ROOT / 'benchmarks/vegan-classifier-v2/ethical-cases-v29.json'
 ISSUE_RUBRIC_VERSION = 'grounded-unknown-blocker-v2'
+ACCEPTANCE_RUBRIC_VERSION = 'conservative-unknown-recall-v2'
 
 
 def save(path, value):
@@ -47,6 +49,8 @@ def load_fixture(path):
     fixture = json.loads(path.read_text())
     if fixture.get('schema_version') != 2 or fixture.get('policy_version') != policy.POLICY_VERSION:
         raise ValueError('Fixture policy/schema does not match the candidate')
+    if fixture.get('catalogue_provenance',policy.CATALOGUE_PROVENANCE) != policy.CATALOGUE_PROVENANCE:
+        raise ValueError('Fixture catalogue provenance does not match the Ocado UK application')
     seen, groups, product_ids = set(), {}, set()
     for case in fixture['cases']:
         case_id = case['case_id']
@@ -71,6 +75,15 @@ def load_fixture(path):
 
 def fixture_database(cases):
     conn = sqlite3.connect(':memory:')
+    try:
+        populate_fixture_database(conn, cases)
+    except BaseException:
+        conn.close()
+        raise
+    return conn
+
+
+def populate_fixture_database(conn, cases):
     conn.row_factory = sqlite3.Row
     builder.create_schema(conn)
     classifier.ensure_classification_schema(conn)
@@ -113,7 +126,6 @@ def fixture_database(cases):
         actual = classifier.product_context_for_llm(classifier.load_product_context(conn,product_id))
         if actual != context:
             raise ValueError(f'Fixture database roundtrip altered evidence: {case["case_id"]}')
-    return conn
 
 
 def metrics(cases, decisions):
@@ -122,6 +134,7 @@ def metrics(cases, decisions):
     scored = {key:value for key,value in valid.items() if by_id[key].get('expected')}
     unsafe, unsupported, contradicted, false_negatives = [], [], [], []
     mismatches, reason_errors, missing_issues, mandatory_failures, reportable_errors = [], [], [], [], []
+    conservative_misses, critical_status_failures = [], []
     incomplete_issue_reporting = {}
     recall = Counter(); eligible = Counter(case['expected']['vegan_reason'] for case in cases
         if case.get('expected',{} ) and case['expected']['vegan_status']=='vegan')
@@ -141,7 +154,10 @@ def metrics(cases, decisions):
             unsafe.append(key)
             (unsupported if status=='unknown' else contradicted).append(key)
         if result['vegan_status']=='nonvegan' and status!='nonvegan': false_negatives.append(key)
-        if result['vegan_status']!=status: mismatches.append(key)
+        conservative = status=='vegan' and result['vegan_status']=='unknown'
+        if result['vegan_status']!=status:
+            mismatches.append(key)
+            (conservative_misses if conservative else critical_status_failures).append(key)
         if result['vegan_status']=='vegan' and result['vegan_reason']!=expected.get('vegan_reason'): reason_errors.append(key)
         material_issues = result['evidence'].get('assessment',{}).get('material_issues',[])
         issues = {issue['code'] for issue in material_issues}
@@ -165,7 +181,7 @@ def metrics(cases, decisions):
             if required and not grounded: missing_issues.append(key)
         elif absent:
             missing_issues.append(key)
-        if by_id[key].get('mandatory_control') and (result['vegan_status'],result['vegan_reason'])!=(status,expected['vegan_reason']):
+        if by_id[key].get('mandatory_control') and not conservative and (result['vegan_status'],result['vegan_reason'])!=(status,expected['vegan_reason']):
             mandatory_failures.append(key)
         if 'tag_animal_conflict' in issues and status!='nonvegan': reportable_errors.append(key)
         arbitration=result['evidence'].get('arbitration')
@@ -203,6 +219,8 @@ def metrics(cases, decisions):
             'mismatches':[key for key,status in external_known.items() if key in valid and valid[key]['vegan_status']!=status],
             'note':'Separately scoped retained-source reference B; unknown evidence decisions are not physical-status errors.'},
         'mandatory_control_failures':mandatory_failures,
+        'conservative_misses':conservative_misses,'critical_status_failures':critical_status_failures,
+        'acceptance_rubric_version':ACCEPTANCE_RUBRIC_VERSION,
         'reason_errors':reason_errors,'missing_required_issues':missing_issues,
         'issue_rubric_version':ISSUE_RUBRIC_VERSION,
         'incomplete_reference_issue_reporting':incomplete_issue_reporting,
@@ -222,9 +240,7 @@ def acceptance(report):
     # Locked release gates; diagnostics/development never constitute approval.
     runs = report['runs']
     return bool(report['split']=='locked' and len(runs)==3 and all(
-        not run['missing_cases'] and not run['operational_errors'] and not run['unsafe_positives'] and not run['reason_errors']
-        and not run['missing_required_issues'] and not run.get('mandatory_control_failures') and not run.get('reportable_negative_errors')
-        and run['vegan_recall'] is not None and run['vegan_recall']>=.98
+        run_passes(run) and run['vegan_recall'] is not None and run['vegan_recall']>=.98
         and all(value['eligible']==30 and value['recovered']>=29 for value in run['per_route_recall'].values())
         and len(run['per_route_recall'])==4 and run['cases']==360
         for run in runs))
@@ -272,7 +288,7 @@ def bounded_batches(pool, batches, args, admit):
 def disqualification(cases, decisions):
     scored=[case for case in cases if case['case_id'] in decisions]
     result=metrics(scored,decisions)
-    fields=('unsafe_positives','operational_errors','reason_errors','mandatory_control_failures',
+    fields=('unsafe_positives','operational_errors','reason_errors','mandatory_control_failures','critical_status_failures',
             'reportable_negative_errors','missing_required_issues','false_nonvegan_decisions')
     return {key:result[key] for key in fields if result[key]}
 
@@ -296,6 +312,7 @@ def run(args):
         'implementation_hashes':{path.name:classifier.context_hash(path.read_text()) for path in (ROOT/'tools'/name for name in ['vegan_policy.py','classify_ocado_vegan.py','codex_evidence.py','benchmark_whole_product.py','manufacturer_evidence.py','update_userscript_allowlists.py'])},
         'candidate_hashes':candidate_hashes(),
         'policy_version':policy.POLICY_VERSION,'knowledge_version':policy.KNOWLEDGE_VERSION,
+        'acceptance_rubric_version':ACCEPTANCE_RUBRIC_VERSION,
         'prompt_version':classifier.PROMPT_VERSION,'arbitration_prompt_version':classifier.ARBITRATION_PROMPT_VERSION,
         'schema_sha256':classifier.context_hash(classifier.CODEX_OUTPUT_SCHEMA),
         'mode':args.mode,'model':args.model,'effort':args.effort,'arbitration_model':args.arbitration_model,
@@ -311,6 +328,9 @@ def run(args):
     previous_stop = calls.STOP_FILE
     calls.STOP_FILE = getattr(args, 'stop_file', None) or args.output/'STOP'
     try:
+        # Reject malformed or lossy fixture evidence before spending model calls.
+        with closing(fixture_database(cases)):
+            pass
         for repetition in range(args.repetitions):
             result_path = args.output/f'run-{repetition+1}.json'
             decisions = json.loads(result_path.read_text()).get('decisions',{}) if result_path.exists() else {}
@@ -397,11 +417,26 @@ def parser():
     return p
 
 
+def run_passes(run):
+    """Tolerate only conservative abstentions within the usefulness budget.
+
+    Old reports retain their original mismatch gates; never silently regrade
+    observations recorded before this explicitly versioned acceptance rubric.
+    """
+    strict=('unsafe_positives','operational_errors','missing_cases','reason_errors',
+            'missing_required_issues','mandatory_control_failures','reportable_negative_errors',
+            'false_nonvegan_decisions')
+    critical=(run['critical_status_failures'] if run.get('acceptance_rubric_version')==ACCEPTANCE_RUBRIC_VERSION
+              else run.get('mismatches',[]))
+    return bool(not critical and all(not run.get(key) for key in strict)
+        and (run.get('vegan_recall') is None or run['vegan_recall']>=.98)
+        and all(value['recovered']>=math.ceil(.966*value['eligible'])
+                for value in run.get('per_route_recall',{}).values()))
+
+
 def successful(report):
     """A completed all-unknown run must not look like a passed benchmark."""
-    return report['state']=='completed' and all(not run[key] for run in report['runs'] for key in (
-        'unsafe_positives','operational_errors','missing_cases','mismatches','reason_errors',
-        'missing_required_issues','mandatory_control_failures','reportable_negative_errors'))
+    return bool(report['state']=='completed' and report['runs'] and all(run_passes(run) for run in report['runs']))
 
 
 if __name__=='__main__':

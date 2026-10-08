@@ -1,0 +1,17 @@
+{
+  "parent_fixture": "benchmarks/vegan-classifier-v2/ethical-cases-v19.json",
+  "parent_fixture_sha256": "cf2265a80fbfd8b75ae8ca0475f2f1f7ecd12ad6282c05d408132852a62b03ed",
+  "child_fixture": "benchmarks/vegan-classifier-v2/ethical-cases-v20.json",
+  "child_fixture_sha256": "4010a3346fb395a249426ad775771c1f6f92a397220a779b9386e6bf53818980",
+  "preserved_cases": 1038,
+  "changed_cases": [],
+  "added_case_ids": [
+    "synthetic.mixed-feature-attributes.0",
+    "synthetic.mixed-feature-attributes.1",
+    "synthetic.mixed-feature-attributes.2",
+    "synthetic.mixed-feature-attributes.3",
+    "synthetic.mixed-feature-attributes.4",
+    "synthetic.mixed-feature-attributes.5"
+  ],
+  "rationale": "Append six typed product-feature assertion and scope contrasts; preserve every prior input/reference and all natural quotas/sampling."
+}

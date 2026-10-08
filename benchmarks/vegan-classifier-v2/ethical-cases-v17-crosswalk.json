@@ -1,0 +1,19 @@
+{
+  "parent_fixture": "ethical-cases-v16.json",
+  "parent_sha256": "1dae8d479644edf144ea68bcf87ccfca62ddb82be433707a6902d41f73fd3043",
+  "child_fixture": "ethical-cases-v17.json",
+  "child_sha256": "279403993c5f4c4df5dde81f60131f20bfebfde9fe5839e3779001d593f5155c",
+  "policy_version": "whole-product-v2",
+  "unchanged_existing_cases": true,
+  "unchanged_selection": true,
+  "reference_changes": [],
+  "appended_synthetic_case_ids": [
+    "synthetic.faq-affirmative-answer.0",
+    "synthetic.faq-affirmative-answer.1",
+    "synthetic.faq-affirmative-answer.2",
+    "synthetic.faq-affirmative-answer.3"
+  ],
+  "natural_quota_changes": false,
+  "historical_results_unchanged": true,
+  "reason": "Affirmative FAQ answer scope contrasts. No existing input, reference or quota changes."
+}

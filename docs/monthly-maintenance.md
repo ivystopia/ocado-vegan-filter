@@ -2,9 +2,9 @@
 
 This runbook refreshes the SQLite source of truth, reclassifies only new or changed products, validates the result, and prepares a userscript update. Run it manually about once a month.
 
-The live scrape itself does not use an LLM. Luna/high is used only after the scrape, for products that remain unresolved after deterministic rules.
+The live scrape itself does not use an LLM. The selected primary, GPT-6-Luna/high, is used only after the scrape, for products that remain unresolved after deterministic rules. Two fresh Sol 6.1/medium passes arbitrate only raw primary status/reason disagreements. Luna 5.6 was rejected on 2026-10-08 and must not be called again. Conservative unknowns count against the 98% positive-recall target; safety and evidence contracts remain strict. Fresh qualification and canonical activation remain gated.
 
-The whole-product policy is implemented as unreleased development. Canonical migration/model selection remain gated. Do not execute the classification/export steps below until the revised benchmark, shadow transitions and selected model pair are approved; the existing 48-case expectations contain historical policy and cannot be the new release gate.
+The whole-product policy is implemented as unreleased development. The model defaults are selected; fresh benchmark qualification and canonical migration remain gated. Do not execute the classification/export steps below until the revised benchmark and shadow transitions validate the selected model pair and activation is approved; the existing 48-case expectations contain historical policy and cannot be the new release gate.
 
 ## 1. Prepare and benchmark
 
@@ -81,13 +81,13 @@ Stop if the selected run is not `completed`, reports errors, or the change count
 
 ## 3. Classify New And Changed Products
 
-Run deterministic rules first and Luna/high only for the remaining unresolved products. Keep the model ID and effort as separate arguments.
+After fresh qualification and shadow validation, run deterministic rules first and Luna 6/high only for remaining unresolved products. The code defaults already select this primary and Sol 6.1/medium arbitration; keep model and effort as separate arguments. Do not use Luna 5.6.
 
 ```bash
 python3 tools/classify_ocado_vegan.py --db "$DB_PATH" classify-all \
   --codex \
   --sync-run-id "$SYNC_RUN_ID" \
-  --model gpt-5.6-luna \
+  --model gpt-6-luna \
   --reasoning-effort high \
   --passes 2 \
   --retries 2 \
@@ -189,13 +189,13 @@ Required gates:
 - Both classification runs are `completed` with zero errors.
 - `unclassified_changed_products` is zero.
 - `unclassified_current_products` is zero.
-- `official_tag_conflicts` is zero.
+- Every `official_tag_conflicts` row is accounted for by current-policy audit evidence: a correctly matched definite animal finding is `nonvegan`, and an unresolved identity/material conflict is blocked `unknown`. Do not require these valid exceptions to be vegan/tagged merely to make the count zero.
 - `validation_error_products` is zero.
 - Every reported pass disagreement is stored as `unknown` and reviewed as a group before export.
 - Counts distinguish all known products from current Ocado products.
 - Any large movement into or out of `vegan`, particularly `vegan/ingredients`, is manually reviewed.
 
-For resumed classification, retain earlier failed/interrupted run records and account for their errors; require successful completion of the remaining queue and all product-level gates. Do not rewrite historical run statuses. The `official_tag_conflicts` query checks canonical classifications against official tags; apparent ingredient conflicts on correctly classified `vegan/tagged` products belong in a separate manual-review report and do not override the official tag.
+For resumed classification, retain earlier failed/interrupted run records and account for their errors; require successful completion of the remaining queue and all product-level gates. Do not rewrite historical run statuses. The `official_tag_conflicts` query is an exception inventory, not an invariant that an official tag must always win. Correctly matched definite animal ingredients or processing override the tag to nonvegan and belong in the retained Ocado contradiction report. A suspected wrong-product join or unresolved material conflict remains blocked unknown. Validate current policy/evidence/audit provenance through the exporter; do not contact Ocado without explicit instructions.
 
 `unknown` is a valid completed classification. `NULL` is unfinished work and blocks export.
 

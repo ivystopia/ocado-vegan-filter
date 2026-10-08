@@ -1,0 +1,17 @@
+{
+  "parent_fixture": "benchmarks/vegan-classifier-v2/ethical-cases-v27.json",
+  "parent_fixture_sha256": "430a4124295d5266522a2a1c2bbb8c0f0b772e940953d761d537623ab98473de",
+  "child_fixture": "benchmarks/vegan-classifier-v2/ethical-cases-v28.json",
+  "child_fixture_sha256": "c1807ed68376e27b1c053d6dd5d9daaca4162ad23d7c454794e3f380be652afc",
+  "preserved_cases": 1098,
+  "changed_cases": {},
+  "new_cases": [
+    "synthetic.quantified-ingredient-claim.0",
+    "synthetic.quantified-ingredient-claim.1",
+    "synthetic.quantified-ingredient-claim.2",
+    "synthetic.quantified-ingredient-claim.3",
+    "synthetic.quantified-ingredient-claim.4",
+    "synthetic.quantified-ingredient-claim.5"
+  ],
+  "note": "Every parent input, label, source reading and selection preserved. Six synthetic scope contrasts appended; no protected holdout read or natural quota relaxed."
+}

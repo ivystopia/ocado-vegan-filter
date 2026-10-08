@@ -1,0 +1,19 @@
+{
+  "parent_fixture": "benchmarks/vegan-classifier-v2/ethical-cases-v21.json",
+  "parent_fixture_sha256": "4731c4170153fb8a968a91e0bc60f1c4dda502fbea1c3f5bcd9bac2e2d7beb18",
+  "child_fixture": "benchmarks/vegan-classifier-v2/ethical-cases-v22.json",
+  "child_fixture_sha256": "8680058242d8040b9a67e59a040c30979d0aeaced07a2cbd623ed1073a7cdd07",
+  "preserved_cases": 1048,
+  "changed_cases": [],
+  "added_case_ids": [
+    "synthetic.nutrition-serving.0",
+    "synthetic.nutrition-serving.1",
+    "synthetic.nutrition-serving.2",
+    "synthetic.nutrition-serving.3",
+    "synthetic.nutrition-serving.4",
+    "synthetic.nutrition-serving.5",
+    "synthetic.nutrition-serving.6",
+    "synthetic.nutrition-serving.7"
+  ],
+  "rationale": "Append nutrition-versus-serving-scope contracts for the shared claim-parser repair. Preserve every previous input, expectation, reading, natural quota, pilot selection and holdout exclusion."
+}

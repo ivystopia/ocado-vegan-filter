@@ -1,0 +1,22 @@
+{
+  "parent_fixture": "ethical-cases-v10.json",
+  "parent_sha256": "c694348e67d0e5c680df486f869a66c89b9e0b1fe4d59f8f9f69fbfdbaf2f96e",
+  "child_fixture": "ethical-cases-v11.json",
+  "child_sha256": "4a25989990673d5d3b6dad0711428270d39579980868593ecb2808a7ecc73bed",
+  "policy_version": "whole-product-v2",
+  "unchanged_existing_cases": true,
+  "unchanged_selection": true,
+  "reference_changes": [],
+  "appended_synthetic_case_ids": [
+    "synthetic.coordinated-claim.0",
+    "synthetic.coordinated-claim.1",
+    "synthetic.coordinated-claim.2",
+    "synthetic.coordinated-claim.3",
+    "synthetic.coordinated-claim.4",
+    "synthetic.coordinated-claim.5",
+    "synthetic.packaging-fragment.wine"
+  ],
+  "natural_quota_changes": false,
+  "historical_results_unchanged": true,
+  "reason": "Repair cited coordinated dietary-attribute recognition and prevent heterogeneous-feature deterministic promotion. No previous expectations/references change."
+}

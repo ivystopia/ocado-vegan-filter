@@ -1,0 +1,21 @@
+{
+  "parent_fixture": "ethical-cases-v11.json",
+  "parent_sha256": "4a25989990673d5d3b6dad0711428270d39579980868593ecb2808a7ecc73bed",
+  "child_fixture": "ethical-cases-v12.json",
+  "child_sha256": "34faf44dc4e691c4182e3f3d8c7f02f021cdbd2547ab1e08c4283e4b05ca7990",
+  "policy_version": "whole-product-v2",
+  "unchanged_existing_cases": true,
+  "unchanged_selection": true,
+  "reference_changes": [],
+  "appended_synthetic_case_ids": [
+    "synthetic.retained-claim-scope.0",
+    "synthetic.retained-claim-scope.1",
+    "synthetic.retained-claim-scope.2",
+    "synthetic.retained-claim-scope.3",
+    "synthetic.retained-claim-scope.4",
+    "synthetic.retained-claim-scope.5"
+  ],
+  "natural_quota_changes": false,
+  "historical_results_unchanged": true,
+  "reason": "Bind clipped manufacturer quotations to retained sentence scope and reject clearly supplied-component subjects; preserve independent whole-product assurance."
+}

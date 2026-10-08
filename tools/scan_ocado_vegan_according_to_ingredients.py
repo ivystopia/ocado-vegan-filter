@@ -45,7 +45,7 @@ CATEGORY_SITEMAP_URL = "https://www.ocado.com/sitemaps/sitemap-categories-part1.
 REPO_ROOT = Path(__file__).resolve().parents[1]
 DEFAULT_OUTPUT_PREFIX = str(REPO_ROOT / "audit/ingredients/ocado_vegan_according_to_ingredients")
 DEFAULT_MANUFACTURER_URLS = str(REPO_ROOT / "audit/manufacturer/ocado_vegan_according_to_manufacturer_urls.txt")
-DEFAULT_MODEL = os.environ.get("OPENAI_MODEL", "gpt-5.6-luna")
+DEFAULT_MODEL = os.environ.get("OPENAI_MODEL", "gpt-6-luna")
 DEFAULT_REASONING_EFFORT = os.environ.get("OPENAI_REASONING_EFFORT", "high")
 DEFAULT_COOKIES_DB = os.environ.get("OCADO_COOKIES_DB", "")
 

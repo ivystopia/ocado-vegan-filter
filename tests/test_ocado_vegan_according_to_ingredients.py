@@ -86,7 +86,7 @@ class VeganAccordingToIngredientsTests(unittest.TestCase):
     def test_legacy_classifier_defaults_to_luna_high(self) -> None:
         args = self.scraper.build_parser().parse_args(["precheck"])
 
-        self.assertEqual(args.model, "gpt-5.6-luna")
+        self.assertEqual(args.model, "gpt-6-luna")
         self.assertEqual(args.reasoning_effort, "high")
 
     def call_helper(self, name: str, *args, **kwargs):

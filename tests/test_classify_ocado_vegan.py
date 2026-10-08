@@ -530,7 +530,7 @@ class ClassifyOcadoVeganTests(unittest.TestCase):
 
     def test_codex_defaults_use_benchmarked_luna_configuration(self) -> None:
         args = classifier.build_parser().parse_args(["classify-codex"])
-        self.assertEqual(args.model, "gpt-5.6-luna")
+        self.assertEqual(args.model, "gpt-6-luna")
         self.assertEqual(args.reasoning_effort, "high")
         prompt = classifier.build_codex_prompt([])
         self.assertIn("manufactured non-food goods", prompt)

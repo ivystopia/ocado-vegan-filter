@@ -1,0 +1,18 @@
+{
+  "parent_fixture": "ethical-cases-v12.json",
+  "parent_sha256": "34faf44dc4e691c4182e3f3d8c7f02f021cdbd2547ab1e08c4283e4b05ca7990",
+  "child_fixture": "ethical-cases-v13.json",
+  "child_sha256": "a5376f2055573a1d84fa3534f74a4be0e2ead5877fb21c56525c067837d9e02f",
+  "policy_version": "whole-product-v2",
+  "unchanged_existing_cases": true,
+  "unchanged_selection": true,
+  "reference_changes": [],
+  "appended_synthetic_case_ids": [
+    "synthetic.independent-assertion.0",
+    "synthetic.independent-assertion.1",
+    "synthetic.independent-assertion.2"
+  ],
+  "natural_quota_changes": false,
+  "historical_results_unchanged": true,
+  "reason": "Preserve a separately asserted complete-product assurance after an incidental recipe introduction, while retaining explicit scope exceptions."
+}

@@ -1,0 +1,13 @@
+{
+  "parent_fixture": "benchmarks/vegan-classifier-v2/ethical-cases-v23.json",
+  "parent_fixture_sha256": "d530594aea522d6e966a9d4b4e9fa6053542a9898865a6df4d1f36ff5b89bf39",
+  "child_fixture": "benchmarks/vegan-classifier-v2/ethical-cases-v24.json",
+  "child_fixture_sha256": "b4d9d5371d94d6f86e7ddaabeed1fcd1ac5665ce004654bed333e72080749543",
+  "preserved_cases": 1074,
+  "changed_cases": [],
+  "added_case_ids": [
+    "synthetic.claim-certainty.18",
+    "synthetic.claim-certainty.19"
+  ],
+  "rationale": "Extend the same certainty guard to an ordinary wine subject and apparent suitability, preserving every previous input/reference/selection."
+}

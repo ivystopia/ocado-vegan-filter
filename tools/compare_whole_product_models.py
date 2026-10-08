@@ -8,7 +8,6 @@ import argparse
 from collections import Counter
 from pathlib import Path
 import json
-import math
 import random
 
 import benchmark_whole_product as benchmark
@@ -17,7 +16,10 @@ import codex_evidence
 import vegan_policy as policy
 import validate_whole_product_candidate as candidate_checks
 
-PRIMARY = [('gpt-5.6-luna','high'),('gpt-6-luna','high')]
+PRIMARY = [('gpt-6-luna','high')]
+EXCLUDED_PRIMARY = {'gpt-5.6-luna/high': {
+    'decision': 'User rejected further Luna 5.6 evaluation after retained reliability failures.',
+    'decided_on': '2026-10-08'}}
 ARBITRATION = [('gpt-6.1-sol','medium'),('gpt-6.1-sol','high'),('gpt-6-astra','medium')]
 # Standard-service credit equivalents, checked 2026-10-06. These are NOT
 # included-plan quota rates or charges. Reasoning is already in output tokens.
@@ -36,13 +38,8 @@ def credit_equivalent(report):
 
 
 def development_eligible(report):
-    return bool(report['state']=='completed' and all(not run['unsafe_positives'] and not run['operational_errors']
-        and not run['missing_cases'] and not run['reason_errors'] and not run['mandatory_control_failures']
-        and not run['reportable_negative_errors'] and not run['missing_required_issues']
-        and not run['false_nonvegan_decisions']
-        and run['vegan_recall'] is not None and run['vegan_recall']>=.98
-        and all(value['recovered']>=math.ceil(.966*value['eligible']) for value in run['per_route_recall'].values())
-        for run in report['runs']))
+    return bool(benchmark.successful(report) and all(
+        run['vegan_recall'] is not None and run['vegan_recall']>=.98 for run in report['runs']))
 
 
 FAILURE_FIELDS=('unsafe_positives','operational_errors','missing_cases','mismatches','reason_errors',
@@ -106,7 +103,7 @@ def primary_controls(args, fixture, model, effort):
         return execute(args,'controls-'+model+'-'+effort,split='synthetic',mode='pipeline',model=model,effort=effort)
     mapping=json.loads(paths.read_text())
     if set(mapping)!={name+'/'+level for name,level in PRIMARY}:
-        raise ValueError('Control reuse must retain both inexpensive candidates, including failures')
+        raise ValueError('Control reuse must retain all remaining inexpensive candidates, including failures')
     report=json.loads(Path(mapping[model+'/'+effort]).read_text())
     cases=[case for case in fixture['cases'] if case['split']=='synthetic']
     expected={'selected_case_hash':classifier.context_hash(cases),'state':'completed','split':'synthetic','mode':'pipeline',
@@ -156,7 +153,7 @@ def validate_failure_review(review, entries, fixture):
     cases={case['case_id']:case for case in fixture['cases'] if case['split'] in {'development','synthetic'}}
     expected_names={model+'/'+effort for model,effort in PRIMARY}
     if set(review.get('models',{}))!=expected_names:
-        raise ValueError('Failure review must cover both inexpensive primary candidates')
+        raise ValueError('Failure review must cover all remaining inexpensive primary candidates')
     for name in expected_names:
         entry=entries[name]
         report=failed_report(entry)
@@ -179,12 +176,14 @@ def comparison_manifest(args, fixture, checks):
     control_paths=getattr(args,'primary_control_reports',None)
     stage_paths=stage_reuse_mapping(args)
     return {'fixture_sha256':classifier.context_hash(fixture),'candidate_hashes':benchmark.candidate_hashes(),
+            'acceptance_rubric_version':benchmark.ACCEPTANCE_RUBRIC_VERSION,
             'checks_sha256':classifier.context_hash(checks),'workers':args.workers,
             'reused_controls':None if not control_paths else {key:classifier.context_hash(json.loads(Path(path).read_text()))
                 for key,path in json.loads(control_paths.read_text()).items()},
             'reused_primary_stages':{name:{stage:classifier.context_hash(json.loads(Path(path).read_text()))
                 for stage,path in stages.items()} for name,stages in stage_paths.items()},
-            'development_only':getattr(args,'development_only',False),'primary':PRIMARY,'arbitration':ARBITRATION}
+            'development_only':getattr(args,'development_only',False),'primary':PRIMARY,
+            'excluded_primary_candidates':EXCLUDED_PRIMARY,'arbitration':ARBITRATION}
 
 
 def arbitration_fixture(fixture, primary_reports, output):
@@ -232,8 +231,10 @@ def run(args):
         raise ValueError('Comparison configuration/code/checks changed; use a fresh output directory')
     benchmark.save(manifest_path,manifest)
     result={'state':'running','pricing_source':PRICING_SOURCE,'pricing_checked':'2026-10-06',
+            'acceptance_rubric_version':benchmark.ACCEPTANCE_RUBRIC_VERSION,
             'credit_equivalents_are_not_included_quota_or_charges':True,'defaults_changed':False,
             'reused_primary_stages':manifest['reused_primary_stages'],
+            'excluded_primary_candidates':manifest['excluded_primary_candidates'],
             'development_only':diagnostic_only,'reference_shortfalls':{
                 key:fixture.get('selection',{}).get(key,{}) for key in ('development_shortfalls','locked_shortfalls')},
             'primary':{},'arbitration':{},'locked':{},'workload':{},'recommendation':None}
@@ -253,7 +254,7 @@ def run(args):
                 entry['model_only_diagnostic']=diagnostic
             if benchmark.successful(controls) and development_eligible(pilot):
                 pilot_candidates.append((model,effort))
-        # Compare both cheap pilots before spending on either larger stage.
+        # Qualify remaining inexpensive pilots before a larger stage.
         for model,effort in pilot_candidates:
             development=execute(args,'development-'+model+'-'+effort,split='development',mode='pipeline',
                                 model=model,effort=effort,stop_on_disqualification=True)
@@ -262,7 +263,7 @@ def run(args):
         if not eligible:
             review_path=getattr(args,'primary_failure_review',None)
             if not review_path:
-                result.update(state='primary_failure_review_required',next_step='Attribute both inexpensive candidates\' failures to policy, code, references or models. No expensive-primary calls were started; defaults remain unchanged.')
+                result.update(state='primary_failure_review_required',next_step='Attribute remaining inexpensive candidates\' failures to policy, code, references or models. No expensive-primary calls were started; defaults remain unchanged.')
                 return result
             review=json.loads(review_path.read_text())
             validate_failure_review(review,result['primary'],fixture)
@@ -270,9 +271,10 @@ def run(args):
             model,effort='gpt-6.1-sol','medium';name=model+'/'+effort
             controls=execute(args,'controls-sol-primary',split='synthetic',mode='pipeline',model=model,effort=effort)
             pilot=execute(args,'pilot-sol-primary',split='development',subset='pilot',mode='pipeline',model=model,effort=effort)
-            result['primary'][name]={'controls':controls,'pilot':pilot,'conditional_fallback':'both Luna candidates failed development gates'}
+            result['primary'][name]={'controls':controls,'pilot':pilot,'conditional_fallback':'Remaining inexpensive candidates failed attributed development gates; user-excluded candidates were not called.'}
             if benchmark.successful(controls) and development_eligible(pilot):
-                development=execute(args,'development-sol-primary',split='development',mode='pipeline',model=model,effort=effort)
+                development=execute(args,'development-sol-primary',split='development',mode='pipeline',
+                                    model=model,effort=effort,stop_on_disqualification=True)
                 result['primary'][name]['development']=development;reports.append(development)
                 if development_eligible(development):eligible.append((model,effort,development))
         if not eligible:
@@ -289,7 +291,7 @@ def run(args):
             return result
         primary=min(eligible,key=lambda item:credit_equivalent(item[2]['runs'][0]))
         arb=min(arbiters,key=lambda item:credit_equivalent(item[2]['runs'][0]))
-        pair=(primary[0],primary[1],arb[0],arb[1]);baseline=('gpt-5.6-luna','high','gpt-6.1-sol','medium')
+        pair=(primary[0],primary[1],arb[0],arb[1]);baseline=('gpt-6-luna','high','gpt-6.1-sol','medium')
         paired_controls=execute(args,'controls-selected-pair',split='synthetic',mode='pipeline',model=pair[0],effort=pair[1],
             arbitration_model=pair[2],arbitration_effort=pair[3],repetitions=3)
         result['paired_controls']=paired_controls
@@ -332,7 +334,7 @@ if __name__=='__main__':
     p.add_argument('--output',type=Path,required=True);p.add_argument('--workers',type=int,default=3)
     p.add_argument('--development-only',action='store_true',help='Run development/model diagnostics without locked evaluation or a release recommendation')
     p.add_argument('--checks',type=Path,required=True,help='Current passing validate_whole_product_candidate.py checks.json')
-    p.add_argument('--primary-failure-review',type=Path,help='Frozen-input attribution of both Luna failures; never required when a Luna qualifies')
+    p.add_argument('--primary-failure-review',type=Path,help='Frozen-input attribution of remaining inexpensive candidates; never required when one qualifies')
     p.add_argument('--primary-control-reports',type=Path,help='JSON model/effort-to-report paths; reuse only identical controlled inputs and classification code, retaining failures')
     p.add_argument('--primary-stage-reports',type=Path,help='JSON model/effort to controls/pilot report paths; preserve both stages including failures, with exact production code/inputs/settings')
     result=run(p.parse_args());print(json.dumps({key:value for key,value in result.items() if key not in {'primary','arbitration','locked','workload'}},indent=2))

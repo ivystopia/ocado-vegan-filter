@@ -1,0 +1,160 @@
+{
+  "parent_fixture_hash": "4e0a429febcf70bca83caaca9906d22ddc243774a739a6c37b04c6f473569183",
+  "candidate_fixture_hash": "b5873197333330056a1033d543e3f85e9fcc53a113a5d8b8b0ede9beac6ddf53",
+  "changed_expectations": [
+    {
+      "case_id": "natural.622692011",
+      "input_sha256": "de051f398f7eb922425aa220f6b60eca3ce0c3f9bdc4637c173a12ada70c8d74",
+      "before": {
+        "vegan_status": "vegan",
+        "vegan_reason": "name",
+        "required_issue_codes": []
+      },
+      "after": {
+        "vegan_status": "vegan",
+        "vegan_reason": "manufacturer",
+        "required_issue_codes": []
+      },
+      "readings": [
+        {
+          "annotation": {
+            "case_id": "natural.622692011",
+            "expected_status": "vegan",
+            "expected_reason": "manufacturer",
+            "required_issue_codes": [],
+            "input_refs": [
+              {
+                "path": "/product/detailed_description",
+                "quote": "Freja natural Norwegian vegan broth"
+              },
+              {
+                "path": "/product/name",
+                "quote": "Freja Classic Vegan Sipping Broth"
+              },
+              {
+                "path": "/product/other_information",
+                "quote": "Full Product Name: Simply Better Veg Vegan Broth"
+              },
+              {
+                "path": "/product/package_type",
+                "quote": "Carton"
+              }
+            ],
+            "rationale": "The product-specific manufacturer description explicitly calls this broth vegan, taking precedence over its independently affirmative vegan names. These unrestricted assertions cover generic carton uncertainty. General bone-broth brand marketing does not establish animal content in this vegetable SKU.",
+            "external_status": "unknown",
+            "source_id": null,
+            "external_quote": "",
+            "scope_match": "No retained external primary source supplied.",
+            "component_assessment": {
+              "status": "covered_by_claim",
+              "evidence_refs": [
+                {
+                  "path": "/product/detailed_description",
+                  "quote": "Freja natural Norwegian vegan broth"
+                },
+                {
+                  "path": "/product/name",
+                  "quote": "Freja Classic Vegan Sipping Broth"
+                },
+                {
+                  "path": "/product/package_type",
+                  "quote": "Carton"
+                }
+              ]
+            }
+          },
+          "input_sha256": "de051f398f7eb922425aa220f6b60eca3ce0c3f9bdc4637c173a12ada70c8d74",
+          "call_id": "837c4eec-5157-4162-b4c2-eed58561571e",
+          "model": "gpt-6.1-sol",
+          "effort": "high",
+          "prompt_version": "blind-evidence-adjudication-v10"
+        },
+        {
+          "annotation": {
+            "case_id": "natural.622692011",
+            "expected_status": "vegan",
+            "expected_reason": "manufacturer",
+            "required_issue_codes": [],
+            "input_refs": [
+              {
+                "path": "/product/detailed_description",
+                "quote": "Freja natural Norwegian vegan broth is packed full of flavour and essential nutrients"
+              },
+              {
+                "path": "/product/name",
+                "quote": "Freja Classic Vegan Sipping Broth"
+              },
+              {
+                "path": "/manufacturer_vegan_evidence/0/content",
+                "quote": "Full Product Name: Simply Better Veg Vegan Broth"
+              },
+              {
+                "path": "/product/package_type",
+                "quote": "Carton"
+              }
+            ],
+            "rationale": "The product-specific manufacturer description explicitly calls the broth vegan outside its name, taking precedence over the independently affirmative vegan names. These unrestricted whole-product assertions cover the supplied carton. Generic bone-broth brand marketing does not establish animal content in this vegetable SKU.",
+            "external_status": "unknown",
+            "source_id": null,
+            "external_quote": "",
+            "scope_match": "No retained external primary source supplied for this SKU.",
+            "component_assessment": {
+              "status": "covered_by_claim",
+              "evidence_refs": [
+                {
+                  "path": "/product/detailed_description",
+                  "quote": "Freja natural Norwegian vegan broth"
+                },
+                {
+                  "path": "/product/name",
+                  "quote": "Freja Classic Vegan Sipping Broth"
+                },
+                {
+                  "path": "/product/package_type",
+                  "quote": "Carton"
+                }
+              ]
+            }
+          },
+          "input_sha256": "de051f398f7eb922425aa220f6b60eca3ce0c3f9bdc4637c173a12ada70c8d74",
+          "call_id": "d2714aa7-81d1-4801-923c-f1ae630f43ff",
+          "model": "gpt-6.1-sol",
+          "effort": "high",
+          "prompt_version": "blind-evidence-adjudication-v10"
+        }
+      ]
+    }
+  ],
+  "added_cases": [
+    "natural.655401011",
+    "natural.655402011",
+    "natural.655403011",
+    "natural.527578011",
+    "natural.657155011",
+    "natural.671105011",
+    "natural.582923011",
+    "natural.59106011",
+    "natural.613167011",
+    "natural.613168011",
+    "natural.613169011",
+    "natural.613170011",
+    "natural.613171011",
+    "natural.64235011",
+    "natural.672307011",
+    "natural.81849011",
+    "natural.674751011",
+    "natural.679448011",
+    "natural.679449011",
+    "natural.664916011",
+    "natural.658883011",
+    "natural.572905011",
+    "natural.517976011",
+    "natural.519979011",
+    "natural.671234011",
+    "natural.688752011",
+    "natural.54090011",
+    "natural.65343011"
+  ],
+  "unchanged_pilot_ids": true,
+  "note": "Existing inputs remain byte-equivalent JSON evidence and retain their hashes. Prior readings retained in parent; revised references come from new blind source-cited audits, never classifier outcomes. Supplemental v8 juice/coating positives were rejected before inclusion."
+}

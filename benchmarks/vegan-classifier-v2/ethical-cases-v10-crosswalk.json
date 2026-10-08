@@ -1,0 +1,21 @@
+{
+  "parent_fixture": "ethical-cases-v9.json",
+  "parent_sha256": "92d11e1fbd8e52d0c61dcf37a8664f3d90b7adf5c8ec9b8168187ce4e5c7ce5e",
+  "child_fixture": "ethical-cases-v10.json",
+  "child_sha256": "c694348e67d0e5c680df486f869a66c89b9e0b1fe4d59f8f9f69fbfdbaf2f96e",
+  "policy_version": "whole-product-v2",
+  "unchanged_existing_cases": true,
+  "unchanged_selection": true,
+  "reference_changes": [],
+  "appended_synthetic_case_ids": [
+    "synthetic.separate-claim.0",
+    "synthetic.separate-claim.1",
+    "synthetic.separate-claim.2",
+    "synthetic.separate-claim.3",
+    "synthetic.separate-claim.4",
+    "synthetic.separate-claim.5"
+  ],
+  "natural_quota_changes": false,
+  "historical_results_unchanged": true,
+  "reason": "Align classification prompt with the existing annotation v11 separate-claim rule. No previous expectations or references change."
+}

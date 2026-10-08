@@ -69,7 +69,7 @@ The large local SQLite database and raw scrape streams are intentionally not tra
 - `docs/working-guide.md` - environment setup, code map, safe inspection, and troubleshooting for maintainers.
 - `docs/vegan-classifier-design.md` - notes describing the intended offline vegan-classification workflow.
 - `docs/monthly-maintenance.md` - the monthly scrape, classification, validation, and userscript update runbook.
-- `docs/model-benchmark-2026-08-21.md` - historical model evidence; current defaults are provisional pending the revised comparison in `docs/whole-product-implementation-plan.md`.
+- `docs/model-benchmark-2026-08-21.md` - historical model evidence; current defaults are user-selected Luna 6/high with Sol 6.1/medium arbitration. Fresh qualification follows `docs/whole-product-implementation-plan.md`.
 - `docs/firemonkey-installation.md` - installs and verifies the tagged release in local FireMonkey for pre-publication testing.
 
 ### Scraping Tooling
