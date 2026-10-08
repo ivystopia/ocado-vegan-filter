@@ -25,6 +25,7 @@ import vegan_policy as policy
 ROOT = benchmark.ROOT
 STAGES = ('checks', 'preflight', 'scrape', 'corpus', 'name_census', 'references',
           'qualification', 'assessment', 'research', 'positive_audit', 'activation', 'export')
+REUSABLE_BENCHMARK_STAGES = ('corpus', 'name_census', 'references', 'qualification')
 MODELS = {'primary': 'gpt-6-luna', 'effort': 'high', 'arbitration': 'gpt-6.1-sol',
           'arbitration_effort': 'medium', 'annotation': 'gpt-6.1-sol', 'annotation_effort': 'high'}
 
@@ -195,10 +196,20 @@ class Refresh:
         self.working = self.root / 'refreshed.sqlite'; self.candidate = self.root / 'candidate.sqlite'
 
     def save(self):
-        self.manifest['remaining'] = [stage for stage in STAGES if self.manifest['stages'].get(stage, {}).get('state') != 'completed']
+        self.manifest['remaining'] = [stage for stage in STAGES if not self.satisfied(stage)]
         benchmark.save(self.path, self.manifest)
 
+    def satisfied(self, stage):
+        record = self.manifest['stages'].get(stage, {})
+        if record.get('state') == 'completed': return True
+        reuse = self.manifest.get('benchmark_reuse', {})
+        return (stage in REUSABLE_BENCHMARK_STAGES and record.get('state') == 'waived_by_user'
+                and bool(reuse.get('authorization', '').strip())
+                and record.get('authorization') == reuse['authorization'])
+
     def artifacts(self, stage):
+        if self.manifest['stages'].get(stage, {}).get('state') == 'waived_by_user':
+            return {'benchmark-reuse.json': hashlib.sha256((self.root/'benchmark-reuse.json').read_bytes()).hexdigest()}
         paths = {'checks':['checks/checks.json'],
                  'preflight':['preflight-controls/report.json','preflight-pilot/report.json'],
                  'corpus':['candidates.json','name-census.json'],
@@ -291,6 +302,68 @@ class Refresh:
         self.manifest['scrape_repair_origin'] = {'root': str(previous), 'manifest_sha256':
             hashlib.sha256((previous/'manifest.json').read_bytes()).hexdigest(), 'changed_paths': sorted(changed),
             'note': 'Sync-only repair. Preserve old reports exactly; fresh implementation checks and complete sync are required. No classifier calls repeated or results relabelled.'}
+        self.save()
+
+    def continue_assessment(self, previous, authorization):
+        """Reuse a completed scrape and unchanged classifier evidence by explicit user decision.
+
+        Failed historical gates remain untouched. Waivers apply only to fresh
+        benchmark preparation/qualification, never research, audit or export.
+        """
+        previous = Path(previous).resolve(); old = read(previous/'manifest.json')
+        if not authorization or not authorization.strip():
+            raise GateError('Benchmark reuse requires the explicit user instruction')
+        if self.manifest['stages'] or self.working.exists() or previous == self.root:
+            raise GateError('Assessment continuation requires a fresh root')
+        if old['stages'].get('scrape', {}).get('state') != 'completed' or (previous/'candidate.sqlite').exists():
+            raise GateError('Assessment continuation requires a completed scrape before reassessment')
+        old_config = old['configuration']; new_config = self.manifest['configuration']
+        if {k:v for k,v in old_config.items() if k!='code_hashes'} != {k:v for k,v in new_config.items() if k!='code_hashes'}:
+            raise GateError('Benchmark reuse cannot change models, policy, fixture, scope or source')
+        changed = {key for key in old_config['code_hashes'].keys() | new_config['code_hashes'].keys()
+                   if old_config['code_hashes'].get(key) != new_config['code_hashes'].get(key)}
+        if not changed <= {'tools/refresh_whole_product.py', 'tests/test_refresh_whole_product.py'}:
+            raise GateError('Benchmark reuse cannot cover classifier or other implementation changes')
+        for stage in ('checks', 'preflight'):
+            if old['stages'].get(stage, {}).get('state') != 'completed':
+                raise GateError('Previous implementation checks and preflight must have completed')
+            for name, digest in old['stages'][stage]['artifacts'].items():
+                if hashlib.sha256((previous/name).read_bytes()).hexdigest() != digest:
+                    raise GateError('Previous completed artifact changed: '+name)
+        for name in ('preflight-controls', 'preflight-pilot'):
+            report = read(previous/name/'report.json')
+            if not benchmark.successful(report) or report['fixture_sha256'] != new_config['fixture_sha256']:
+                raise GateError('Previous benchmark evidence is not applicable')
+            for filename, digest in report['implementation_hashes'].items():
+                if classifier.context_hash((ROOT/'tools'/filename).read_text()) != digest:
+                    raise GateError('Benchmarked classification implementation changed: '+filename)
+        with closing(readonly(self.source)) as conn:
+            if fingerprint(conn) != old['canonical_baseline']:
+                raise GateError('Canonical source changed before assessment continuation')
+        with closing(readonly(previous/'refreshed.sqlite')) as conn:
+            latest = dict(conn.execute('SELECT * FROM sync_runs ORDER BY id DESC LIMIT 1').fetchone())
+            if latest['status'] != 'completed' or latest != old['sync_run']:
+                raise GateError('Completed scrape provenance changed')
+            if conn.execute("SELECT 1 FROM sqlite_master WHERE name='sync_context_baseline'").fetchone():
+                raise GateError('An interrupted sync cannot be reused')
+        clone(previous/'original.sqlite', self.root/'original.sqlite')
+        clone(previous/'refreshed.sqlite', self.working)
+        for name in ('preflight-controls', 'preflight-pilot'):
+            (self.root/name).mkdir()
+            (self.root/name/'report.json').write_bytes((previous/name/'report.json').read_bytes())
+        for key in ('canonical_baseline', 'original_population', 'pre_sync_id', 'sync_run',
+                    'sync_acquisition_run', 'historical_category_rows_restored'):
+            if key in old: self.manifest[key] = old[key]
+        reuse = {'authorization': authorization.strip(), 'at_utc': datetime.now(timezone.utc).isoformat(),
+                 'previous_root': str(previous), 'previous_manifest_sha256': hashlib.sha256((previous/'manifest.json').read_bytes()).hexdigest(),
+                 'changed_paths': sorted(changed), 'waived_stages': list(REUSABLE_BENCHMARK_STAGES),
+                 'note': 'User chose existing benchmark evidence and immediate all-known reassessment. No fresh qualification claimed; old quota failure preserved. Research, positive audit, policy validation and activation/export gates remain required.'}
+        benchmark.save(self.root/'benchmark-reuse.json', reuse); self.manifest['benchmark_reuse'] = reuse
+        for stage in ('preflight', 'scrape'):
+            self.manifest['stages'][stage] = {**old['stages'][stage], 'reused_from': str(previous)}
+        for stage in REUSABLE_BENCHMARK_STAGES:
+            self.manifest['stages'][stage] = {'state': 'waived_by_user', 'authorization': reuse['authorization']}
+            self.manifest['stages'][stage]['artifacts'] = self.artifacts(stage)
         self.save()
 
     def step_scrape(self):
@@ -414,7 +487,7 @@ class Refresh:
 
     def step_activation(self):
         # This method is also guarded when called directly rather than by run().
-        if any(self.manifest['stages'].get(stage, {}).get('state') != 'completed' for stage in STAGES[:STAGES.index('activation')]):
+        if any(not self.satisfied(stage) for stage in STAGES[:STAGES.index('activation')]):
             raise GateError('All qualification/research/audit stages must complete before activation')
         with closing(readonly(self.candidate)) as conn:
             if fingerprint(conn) != self.manifest['candidate_audit_baseline']:
@@ -443,10 +516,10 @@ class Refresh:
 
     def run(self, until=None):
         for stage, record in self.manifest['stages'].items():
-            if record.get('state')=='completed' and record.get('artifacts',{}) != self.artifacts(stage):
+            if self.satisfied(stage) and record.get('artifacts',{}) != self.artifacts(stage):
                 raise GateError('Completed stage artifacts changed: '+stage)
         for stage in STAGES:
-            if self.manifest['stages'].get(stage, {}).get('state') == 'completed':
+            if self.satisfied(stage):
                 if stage == until: break
                 continue
             self.manifest['state'] = 'running'; self.manifest['stages'][stage] = {'state': 'running'}; self.save()
@@ -516,8 +589,9 @@ def main():
     parser.add_argument('--root', type=Path, required=True)
     parser.add_argument('--db', type=Path, default=Path(classifier.DEFAULT_DB))
     parser.add_argument('--fixture', type=Path, default=benchmark.FIXTURE)
-    parser.add_argument('command', choices=['run','status','fork-scrape-repair'])
+    parser.add_argument('command', choices=['run','status','fork-scrape-repair','continue-assessment'])
     parser.add_argument('--from-root', type=Path)
+    parser.add_argument('--reuse-benchmark-reason')
     parser.add_argument('--until', choices=STAGES)
     args = parser.parse_args()
     if args.command == 'status':
@@ -529,6 +603,10 @@ def main():
         if args.command == 'fork-scrape-repair':
             if not args.from_root: parser.error('fork-scrape-repair requires --from-root')
             runner.fork_scrape_repair(args.from_root)
+        if args.command == 'continue-assessment':
+            if not args.from_root or not args.reuse_benchmark_reason:
+                parser.error('continue-assessment requires --from-root and --reuse-benchmark-reason with the explicit user instruction')
+            runner.continue_assessment(args.from_root, args.reuse_benchmark_reason)
         if args.command == 'run': runner.run(args.until)
         print(json.dumps({'state': runner.manifest['state'], 'remaining': runner.manifest['remaining'], 'manifest': str(runner.path)}))
     except (GateError, ValueError) as exc:

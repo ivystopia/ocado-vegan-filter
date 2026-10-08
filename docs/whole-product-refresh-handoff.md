@@ -2,11 +2,17 @@
 
 The user authorised execution in this conversation on 8 October 2026, superseding the earlier deferral. Refresh catalogue evidence, qualify the selected pair, reassess every known product and refresh sources for every initially unknown product. Activate validated database decisions and regenerate the local userscript after all gates pass. Keep everything local on dev, at the current development version, without a tag, main advancement, installed FireMonkey update, push or publication. These are standing defaults; do not ask the same scope questions on the next refresh.
 
-## Current execution status: 8 October 2026
+## Latest user direction: continue classification without another benchmark
+
+After the quota stop, the user explicitly instructed: "we don't need to re-benchmark ... now we've re-scraped the site so it's time to re-classify everything". Reuse the completed benchmarks for the unchanged classifier/model/prompt/schema/policy, and proceed to all-known reassessment from the completed scrape. The earlier 16/50 failure remains retained historical evidence, not a passed qualification. The user subsequently accepted 6 development/10 locked name-only references and replacement of missing slots with other natural positives if benchmark design is revisited; do not run that fresh benchmark now. Manufacturer precedence and classification semantics are unchanged.
+
+Prepare a fresh assessment phase with `tools/refresh_whole_product.py --root <new-root> continue-assessment --from-root .whole-product-work/refresh-2026-10-08-v4 --reuse-benchmark-reason <explicit-user-instruction>`, then `run` on that root. This verifies unchanged classifier implementation and completed scrape provenance, preserves the canonical baseline and old manifests/reports, copies recoverable database snapshots and explicitly records fresh benchmark stages as waived_by_user. Fresh implementation checks still run. Research, the final positive audit, shared-policy validation and activation/export checks remain required; this is not permission to fabricate passed benchmarks or skip those checks.
+
+## Preserved quota-stop milestone: 8 October 2026
 
 The authorised full acquisition and guarded finalization completed in the isolated refresh root, with 58,322 known products (50,725 current and 7,597 historical), all 50,725 current details successfully fetched and historical evidence preserved. The expanded census of all 143 non-official vegan-name signals then stopped qualification at the unchanged natural quota: two blind, citation-validated Sol/high readings yielded 126 manufacturer positives, 16 name-only positives and one nonvegan, with no disputes. The minimum remains 50 name-only products (20 development plus 30 locked), so the shortfall is 34 before family/source separation. Manufacturer precedence remains intact. See [the retained milestone evidence](../audit/benchmarks/2026-10-08-whole-product/refresh-name-quota-stop/README.md).
 
-No full refreshed qualification, all-known reassessment, exhaustive manufacturer-source refresh, 600-positive audit, canonical activation or userscript regeneration has occurred. Canonical database and userscript remain unchanged. The resumable root is .whole-product-work/refresh-2026-10-08-v4; no calls remain active. Preserve the frozen evidence and gate failure. Do not repeat scraping, selectively rerun readings, relabel manufacturer cases or introduce synthetic quota replacements. Resumption past this gate needs a sufficient natural corpus under the unchanged policy or an explicitly authorised benchmark-design revision. The earlier shortage below describes the previous corpus, not this completed fresh census.
+No full refreshed qualification, all-known reassessment, exhaustive manufacturer-source refresh, 600-positive audit, canonical activation or userscript regeneration has occurred. Canonical database and userscript remain unchanged. The resumable root is .whole-product-work/refresh-2026-10-08-v4; no calls remain active. Preserve the frozen evidence and gate failure. Do not repeat scraping, selectively rerun readings, relabel manufacturer cases or introduce synthetic quota replacements. The later explicit benchmark-reuse instruction above supersedes this stop for current execution. The earlier shortage below describes the previous corpus, not this completed fresh census.
 
 ## Selected defaults and acceptance
 
@@ -26,7 +32,9 @@ Keep all four positive routes with canonical precedence tagged > manufacturer > 
 
 Correctly matched definite animal ingredients or manufacturing inputs mean nonvegan even with an Ocado vegan tag. Collect confirmed tag contradictions for a report; do not contact Ocado without instructions. Wrong-product identity and unresolved material conflicts mean blocked unknown. Precautionary may-contain warnings are not intentional animal ingredients. Keep the shopper label Unknown vegan and browser precedence recorded nonvegan → blocked unknown → validated positive IDs/applicable official tags → unknown. Runtime names and URL slugs cannot promote.
 
-## Execution
+## Original fresh-qualification workflow
+
+The fresh benchmark preparation and qualification steps below are superseded for this run by the explicit reuse direction above. They remain reference material for genuinely changed classifiers or a separately requested benchmark. Continue current execution at all-known assessment, preserving research/audit/activation checks.
 
 1. Read AGENTS.md, the working guide, classifier design and monthly runbook. Inspect the branch/tree and use SQLite read-only for inventory. Preserve a WAL-consistent backup and any unfinished sync baseline. Never use the destructive historical database builder on the live catalogue.
 2. Run current implementation checks and the frozen selected-pair safety benchmark before live sync/classification, as the monthly runbook requires. Keep the historical 48-case benchmark frozen. The current whole-product default fixture is ethical-cases-v29.json; fresh catalogue evidence belongs in a new frozen corpus with explicit provenance/crosswalks, not overwritten historical inputs or expected labels.

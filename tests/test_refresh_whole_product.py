@@ -16,6 +16,52 @@ import manufacturer_evidence as manufacturer
 
 
 class RefreshTests(unittest.TestCase):
+    def test_user_benchmark_reuse_only_waives_fresh_benchmark_stages(self):
+        runner=object.__new__(refresh.Refresh)
+        runner.manifest={'benchmark_reuse':{'authorization':'Use completed benchmarks and classify now'},'stages':{}}
+        for stage in refresh.STAGES:
+            runner.manifest['stages'][stage]={'state':'waived_by_user','authorization':'Use completed benchmarks and classify now'}
+            self.assertEqual(runner.satisfied(stage),stage in refresh.REUSABLE_BENCHMARK_STAGES)
+        runner.manifest['stages']['qualification']['authorization']='different decision'
+        self.assertFalse(runner.satisfied('qualification'))
+        with self.assertRaisesRegex(refresh.GateError,'All qualification'): runner.step_activation()
+
+    def test_assessment_continuation_preserves_failed_quota_and_does_not_repeat_models_or_scrape(self):
+        with tempfile.TemporaryDirectory() as tmp:
+            root=Path(tmp);source=root/'source.sqlite';fixture=root/'fixture.json';fixture.write_text('{}')
+            self.make_db(source)
+            original_hashes={'tools/refresh_whole_product.py':'old','tools/classify_ocado_vegan.py':'fixed'}
+            with mock.patch.object(refresh.subprocess,'check_output',return_value='dev\n'), mock.patch.object(benchmark,'candidate_hashes',return_value=original_hashes):
+                old=refresh.Refresh(root/'old',source,fixture)
+            refresh.clone(source,old.root/'original.sqlite');refresh.clone(source,old.working)
+            with sqlite3.connect(old.working) as conn:
+                conn.execute('CREATE TABLE sync_runs(id INTEGER,status TEXT)')
+                conn.execute("INSERT INTO sync_runs VALUES (7,'completed')")
+            with closing(refresh.readonly(source)) as conn: baseline=refresh.fingerprint(conn)
+            report={'fixture_sha256':classifier.context_hash({}), 'implementation_hashes':{'classify_ocado_vegan.py':classifier.context_hash((refresh.ROOT/'tools/classify_ocado_vegan.py').read_text())}}
+            for name in ('preflight-controls','preflight-pilot'): benchmark.save(old.root/name/'report.json',report)
+            benchmark.save(old.root/'checks/checks.json',{})
+            old.manifest.update(canonical_baseline=baseline,original_population={'all_known':1,'current':1},pre_sync_id=4,sync_run={'id':7,'status':'completed'})
+            old.manifest['stages']={stage:{'state':'completed','artifacts':old.artifacts(stage)} for stage in ('checks','preflight')}
+            old.manifest['stages']['scrape']={'state':'completed','artifacts':{}}
+            old.manifest['stages']['name_census']={'state':'checkpointed','error':'Natural quota unmet'};old.save()
+            unchanged=old.path.read_bytes();updated={**original_hashes,'tools/refresh_whole_product.py':'new'}
+            with mock.patch.object(refresh.subprocess,'check_output',return_value='dev\n'), mock.patch.object(benchmark,'candidate_hashes',return_value=updated), mock.patch.object(benchmark,'successful',return_value=True):
+                new=refresh.Refresh(root/'new',source,fixture)
+                with self.assertRaisesRegex(refresh.GateError,'explicit user'): new.continue_assessment(old.root,'')
+                new.continue_assessment(old.root,'Use completed benchmarks and classify now')
+                self.assertEqual(old.path.read_bytes(),unchanged)
+                self.assertEqual(new.manifest['stages']['name_census']['state'],'waived_by_user')
+                self.assertEqual(new.manifest['remaining'],['checks','assessment','research','positive_audit','activation','export'])
+                self.assertEqual((new.root/'preflight-controls/report.json').read_bytes(),(old.root/'preflight-controls/report.json').read_bytes())
+                with mock.patch.object(new,'step_checks'), mock.patch.object(new,'step_assessment'), mock.patch.object(new,'artifacts',return_value={}):
+                    for record in new.manifest['stages'].values():record['artifacts']={}
+                    with mock.patch.object(new,'bench',side_effect=AssertionError('No new benchmark')), mock.patch.object(new,'step_scrape',side_effect=AssertionError('No repeat scrape')):
+                        new.run(until='assessment')
+                with mock.patch.object(benchmark,'candidate_hashes',return_value={**updated,'tools/classify_ocado_vegan.py':'changed'}):
+                    invalid=refresh.Refresh(root/'invalid',source,fixture)
+                    with self.assertRaisesRegex(refresh.GateError,'cannot cover classifier'):invalid.continue_assessment(old.root,'Proceed')
+
     def test_historical_category_recovery_preserves_current_evidence_and_resumes(self):
         with tempfile.TemporaryDirectory() as tmp:
             root=Path(tmp);original=root/'original.sqlite';working=root/'working.sqlite'
