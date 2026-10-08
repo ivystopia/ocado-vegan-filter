@@ -1,0 +1,5 @@
+{
+  "original_fixture": "benchmarks/vegan-classifier-v2/ethical-cases-v25.json",
+  "sha256": "850a9beec86bbb3ff25580d8e1891c8dec5ebf94008ca42629ec7678ef7a42ad",
+  "retained_copy": "frozen-inputs.json.gz"
+}

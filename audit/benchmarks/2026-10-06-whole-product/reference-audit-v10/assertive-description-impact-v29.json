@@ -1,0 +1,1823 @@
+{
+  "all_known_assertive_description_signals": 201,
+  "stored_current_signals": 180,
+  "already_vegan": 168,
+  "products": [
+    {
+      "id": "11124011",
+      "name": "Marmite Original Yeast Extract Spread",
+      "vegan_status": "vegan",
+      "current_on_ocado": 1,
+      "matched_fields": [
+        "features"
+      ]
+    },
+    {
+      "id": "11125011",
+      "name": "Marmite Original Yeast Extract Spread",
+      "vegan_status": "vegan",
+      "current_on_ocado": 1,
+      "matched_fields": [
+        "features"
+      ]
+    },
+    {
+      "id": "12727011",
+      "name": "Magnum Mini Classic, Almond & White Chocolate Ice Cream Sticks 6x55ml",
+      "vegan_status": "nonvegan",
+      "current_on_ocado": 1,
+      "matched_fields": [
+        "detailed_description"
+      ]
+    },
+    {
+      "id": "13079011",
+      "name": "Marigold Health Foods Organic Swiss Vegetable Vegan Bouillon Powder",
+      "vegan_status": "vegan",
+      "current_on_ocado": 1,
+      "matched_fields": [
+        "detailed_description"
+      ]
+    },
+    {
+      "id": "14007011",
+      "name": "Kikkoman Naturally Brewed Soy Sauce",
+      "vegan_status": "vegan",
+      "current_on_ocado": 1,
+      "matched_fields": [
+        "other_information"
+      ]
+    },
+    {
+      "id": "18408011",
+      "name": "Swedish Glace Smooth Vanilla Non Dairy Vegan Ice Cream Tub",
+      "vegan_status": "vegan",
+      "current_on_ocado": 1,
+      "matched_fields": [
+        "features",
+        "detailed_description"
+      ]
+    },
+    {
+      "id": "209791011",
+      "name": "Sanex Expert Skin Health Moisturising Bubble Bath Soak",
+      "vegan_status": "vegan",
+      "current_on_ocado": 1,
+      "matched_fields": [
+        "further_description"
+      ]
+    },
+    {
+      "id": "22697011",
+      "name": "Palmolive Aquarium Vegan Liquid Handwash Soap",
+      "vegan_status": "vegan",
+      "current_on_ocado": 1,
+      "matched_fields": [
+        "further_description"
+      ]
+    },
+    {
+      "id": "24111011",
+      "name": "Swedish Glace Delightful Raspberry Non Dairy Vegan Ice Cream Tub",
+      "vegan_status": "vegan",
+      "current_on_ocado": 1,
+      "matched_fields": [
+        "features",
+        "detailed_description"
+      ]
+    },
+    {
+      "id": "245933011",
+      "name": "Attitude Little Ones Laundry Detergent Sweet Lullaby 35 Loads",
+      "vegan_status": "vegan",
+      "current_on_ocado": 1,
+      "matched_fields": [
+        "detailed_description"
+      ]
+    },
+    {
+      "id": "248767011",
+      "name": "Nature's Path Envirokidz Organic Gluten Free Chocolate Choco Chimps Cereal",
+      "vegan_status": "vegan",
+      "current_on_ocado": 1,
+      "matched_fields": [
+        "other_information"
+      ]
+    },
+    {
+      "id": "264247011",
+      "name": "Magnum Mini Classic Ice Cream Sticks",
+      "vegan_status": "nonvegan",
+      "current_on_ocado": 1,
+      "matched_fields": [
+        "detailed_description"
+      ]
+    },
+    {
+      "id": "266582011",
+      "name": "Dr. Oetker Vege-Gel Sachet",
+      "vegan_status": "vegan",
+      "current_on_ocado": 1,
+      "matched_fields": [
+        "detailed_description"
+      ]
+    },
+    {
+      "id": "279689011",
+      "name": "Aduna Moringa Organic Superfood Powder",
+      "vegan_status": "vegan",
+      "current_on_ocado": 1,
+      "matched_fields": [
+        "detailed_description"
+      ]
+    },
+    {
+      "id": "279695011",
+      "name": "Aduna Moringa Organic Superfood Powder",
+      "vegan_status": "vegan",
+      "current_on_ocado": 1,
+      "matched_fields": [
+        "detailed_description"
+      ]
+    },
+    {
+      "id": "279696011",
+      "name": "Aduna Baobab Organic Superfood Powder",
+      "vegan_status": "vegan",
+      "current_on_ocado": 1,
+      "matched_fields": [
+        "detailed_description"
+      ]
+    },
+    {
+      "id": "28370011",
+      "name": "Marigold Health Foods Less Salt Swiss Vegetable Bouillon",
+      "vegan_status": "vegan",
+      "current_on_ocado": 1,
+      "matched_fields": [
+        "detailed_description"
+      ]
+    },
+    {
+      "id": "285997011",
+      "name": "Together Health Vegan Multi Vegan Supplement",
+      "vegan_status": "vegan",
+      "current_on_ocado": 0,
+      "matched_fields": [
+        "detailed_description"
+      ]
+    },
+    {
+      "id": "311034011",
+      "name": "Angelic Free From Multi Seed Crackers",
+      "vegan_status": "unknown",
+      "current_on_ocado": 1,
+      "matched_fields": [
+        "detailed_description"
+      ]
+    },
+    {
+      "id": "357396011",
+      "name": "Magnum Double Raspberry Ice Cream Sticks",
+      "vegan_status": "nonvegan",
+      "current_on_ocado": 1,
+      "matched_fields": [
+        "detailed_description"
+      ]
+    },
+    {
+      "id": "357398011",
+      "name": "Magnum Collection Intense Dark Chocolate Ice Cream Sticks",
+      "vegan_status": "nonvegan",
+      "current_on_ocado": 1,
+      "matched_fields": [
+        "detailed_description"
+      ]
+    },
+    {
+      "id": "358306011",
+      "name": "Quorn Vegan Fishless Fingers",
+      "vegan_status": "vegan",
+      "current_on_ocado": 0,
+      "matched_fields": [
+        "detailed_description"
+      ]
+    },
+    {
+      "id": "373542011",
+      "name": "Attitude Super Leaves Shampoo Volume & Shine",
+      "vegan_status": "vegan",
+      "current_on_ocado": 1,
+      "matched_fields": [
+        "detailed_description"
+      ]
+    },
+    {
+      "id": "379219011",
+      "name": "Biona Organic Black Bean Cashew Nut Burgers",
+      "vegan_status": "vegan",
+      "current_on_ocado": 1,
+      "matched_fields": [
+        "detailed_description"
+      ]
+    },
+    {
+      "id": "379220011",
+      "name": "Biona Organic Red Lentil Sun Seed Burgers",
+      "vegan_status": "vegan",
+      "current_on_ocado": 1,
+      "matched_fields": [
+        "detailed_description"
+      ]
+    },
+    {
+      "id": "39210011",
+      "name": "Lotus Biscoff Biscuits",
+      "vegan_status": "vegan",
+      "current_on_ocado": 1,
+      "matched_fields": [
+        "detailed_description",
+        "brand_marketing"
+      ]
+    },
+    {
+      "id": "400035011",
+      "name": "Marmite Reduced Salt Yeast Extract Spread",
+      "vegan_status": "vegan",
+      "current_on_ocado": 1,
+      "matched_fields": [
+        "features"
+      ]
+    },
+    {
+      "id": "40004011",
+      "name": "Kikkoman Less Salt Soy Sauce 43% Reduced Salt",
+      "vegan_status": "vegan",
+      "current_on_ocado": 1,
+      "matched_fields": [
+        "other_information"
+      ]
+    },
+    {
+      "id": "409526011",
+      "name": "Candy Kittens Sour Watermelon",
+      "vegan_status": "vegan",
+      "current_on_ocado": 1,
+      "matched_fields": [
+        "detailed_description"
+      ]
+    },
+    {
+      "id": "409621011",
+      "name": "Quorn Chicken Vegan Deli Slices",
+      "vegan_status": "vegan",
+      "current_on_ocado": 1,
+      "matched_fields": [
+        "detailed_description"
+      ]
+    },
+    {
+      "id": "409622011",
+      "name": "Quorn Smoky Ham Vegan Deli Slices",
+      "vegan_status": "vegan",
+      "current_on_ocado": 1,
+      "matched_fields": [
+        "detailed_description"
+      ]
+    },
+    {
+      "id": "410450011",
+      "name": "Kikkoman Naturally Brewed Soy Sauce",
+      "vegan_status": "vegan",
+      "current_on_ocado": 1,
+      "matched_fields": [
+        "other_information"
+      ]
+    },
+    {
+      "id": "420970011",
+      "name": "Attitude Super Leaves Conditioner - Colour Protection",
+      "vegan_status": "vegan",
+      "current_on_ocado": 0,
+      "matched_fields": [
+        "detailed_description"
+      ]
+    },
+    {
+      "id": "430855011",
+      "name": "Thai Taste Vegetarian Fish Sauce",
+      "vegan_status": "vegan",
+      "current_on_ocado": 1,
+      "matched_fields": [
+        "detailed_description"
+      ]
+    },
+    {
+      "id": "435184011",
+      "name": "Rhythm 108 Swiss Vegan Almond & Sea Salt Bar with M'lk Chocolate",
+      "vegan_status": "vegan",
+      "current_on_ocado": 1,
+      "matched_fields": [
+        "detailed_description"
+      ]
+    },
+    {
+      "id": "435187011",
+      "name": "Rhythm 108 Swiss Vegan Creamy Coconut Bar with Dark Chocolate",
+      "vegan_status": "vegan",
+      "current_on_ocado": 1,
+      "matched_fields": [
+        "detailed_description"
+      ]
+    },
+    {
+      "id": "435188011",
+      "name": "Rhythm 108 Swiss Vegan Double Chocolate Hazelnut Biscuit Share Bag",
+      "vegan_status": "vegan",
+      "current_on_ocado": 1,
+      "matched_fields": [
+        "detailed_description"
+      ]
+    },
+    {
+      "id": "441249011",
+      "name": "Rollagranola Awesome Almond Oat Granola",
+      "vegan_status": "vegan",
+      "current_on_ocado": 1,
+      "matched_fields": [
+        "detailed_description"
+      ]
+    },
+    {
+      "id": "443325011",
+      "name": "Vita Coco Extra Coconut Water",
+      "vegan_status": "vegan",
+      "current_on_ocado": 1,
+      "matched_fields": [
+        "detailed_description"
+      ]
+    },
+    {
+      "id": "450547011",
+      "name": "Lotus Biscoff Biscuits Snack Packs",
+      "vegan_status": "vegan",
+      "current_on_ocado": 1,
+      "matched_fields": [
+        "detailed_description",
+        "brand_marketing"
+      ]
+    },
+    {
+      "id": "466861011",
+      "name": "Kikkoman Less Salt Soy Sauce 43% Reduced Salt",
+      "vegan_status": "vegan",
+      "current_on_ocado": 1,
+      "matched_fields": [
+        "other_information"
+      ]
+    },
+    {
+      "id": "479512011",
+      "name": "Vita Coco Extra Coconut Water Multipack",
+      "vegan_status": "unknown",
+      "current_on_ocado": 1,
+      "matched_fields": [
+        "detailed_description"
+      ]
+    },
+    {
+      "id": "479513011",
+      "name": "Vita Coco Extra Coconut Water",
+      "vegan_status": "vegan",
+      "current_on_ocado": 1,
+      "matched_fields": [
+        "detailed_description"
+      ]
+    },
+    {
+      "id": "479696011",
+      "name": "Vita Coco Extra Coconut Water Multipack",
+      "vegan_status": "unknown",
+      "current_on_ocado": 1,
+      "matched_fields": [
+        "detailed_description"
+      ]
+    },
+    {
+      "id": "48321011",
+      "name": "Palmolive Hygiene Plus Kitchen Handwash",
+      "vegan_status": "vegan",
+      "current_on_ocado": 1,
+      "matched_fields": [
+        "further_description"
+      ]
+    },
+    {
+      "id": "484428011",
+      "name": "Attitude Bulk 2 Go Washing Up Liquid Citrus Zest",
+      "vegan_status": "vegan",
+      "current_on_ocado": 0,
+      "matched_fields": [
+        "detailed_description"
+      ]
+    },
+    {
+      "id": "486023011",
+      "name": "Marigold Health Foods Organic Less Salt Bouillon Gluten Free",
+      "vegan_status": "vegan",
+      "current_on_ocado": 1,
+      "matched_fields": [
+        "detailed_description"
+      ]
+    },
+    {
+      "id": "498008011",
+      "name": "Pip & Nut Dark Chocolate Almond Butter Cups",
+      "vegan_status": "vegan",
+      "current_on_ocado": 1,
+      "matched_fields": [
+        "detailed_description"
+      ]
+    },
+    {
+      "id": "506245011",
+      "name": "Clairol Natural Instincts Hair Dye 6A Light Ash Brown",
+      "vegan_status": "vegan",
+      "current_on_ocado": 1,
+      "matched_fields": [
+        "further_description"
+      ]
+    },
+    {
+      "id": "506246011",
+      "name": "Clairol Natural Instincts Hair Dye 5 Medium Brown",
+      "vegan_status": "vegan",
+      "current_on_ocado": 1,
+      "matched_fields": [
+        "further_description"
+      ]
+    },
+    {
+      "id": "506251011",
+      "name": "Clairol Natural Instincts Hair Dye 6 Light Brown",
+      "vegan_status": "vegan",
+      "current_on_ocado": 1,
+      "matched_fields": [
+        "further_description"
+      ]
+    },
+    {
+      "id": "506252011",
+      "name": "Clairol Natural Instincts Semi Permanent Hair Dye 4 Dark Brown",
+      "vegan_status": "vegan",
+      "current_on_ocado": 1,
+      "matched_fields": [
+        "further_description"
+      ]
+    },
+    {
+      "id": "511881011",
+      "name": "Evolve Organic Cotton Fresh Natural Deodorant",
+      "vegan_status": "vegan",
+      "current_on_ocado": 1,
+      "matched_fields": [
+        "detailed_description"
+      ]
+    },
+    {
+      "id": "511988011",
+      "name": "Aussie 3 Minute Miracle Moist Treatment Travel Conditioner",
+      "vegan_status": "vegan",
+      "current_on_ocado": 1,
+      "matched_fields": [
+        "detailed_description"
+      ]
+    },
+    {
+      "id": "520662011",
+      "name": "The Vegetarian Butcher What the Cluck",
+      "vegan_status": "vegan",
+      "current_on_ocado": 1,
+      "matched_fields": [
+        "features",
+        "detailed_description"
+      ]
+    },
+    {
+      "id": "527888011",
+      "name": "M&S Vegan Cocoa Dusted Truffles",
+      "vegan_status": "vegan",
+      "current_on_ocado": 1,
+      "matched_fields": [
+        "detailed_description"
+      ]
+    },
+    {
+      "id": "529298011",
+      "name": "ATTITUDE Bulk to Go All Purpose Cleaner Citrus Zest",
+      "vegan_status": "vegan",
+      "current_on_ocado": 0,
+      "matched_fields": [
+        "detailed_description"
+      ]
+    },
+    {
+      "id": "529300011",
+      "name": "Attitude Bulk to Go Washing Up Liquid Citrus Zest",
+      "vegan_status": "unknown",
+      "current_on_ocado": 0,
+      "matched_fields": [
+        "detailed_description"
+      ]
+    },
+    {
+      "id": "529302011",
+      "name": "Attitude Bulk to Go Laundry Liquid Wildflowers 80 Washes",
+      "vegan_status": "vegan",
+      "current_on_ocado": 1,
+      "matched_fields": [
+        "detailed_description"
+      ]
+    },
+    {
+      "id": "530838011",
+      "name": "Rhythm 108 Swiss Vegan Coconut Crunch Biscuit Share Bag",
+      "vegan_status": "vegan",
+      "current_on_ocado": 1,
+      "matched_fields": [
+        "detailed_description"
+      ]
+    },
+    {
+      "id": "530839011",
+      "name": "Rhythm 108 Swiss Vegan Lemon, Ginger & Chia Biscuit Share Bag",
+      "vegan_status": "vegan",
+      "current_on_ocado": 1,
+      "matched_fields": [
+        "detailed_description"
+      ]
+    },
+    {
+      "id": "53270011",
+      "name": "Soreen Fruity Large Malt Loaf Cake",
+      "vegan_status": "vegan",
+      "current_on_ocado": 1,
+      "matched_fields": [
+        "detailed_description"
+      ]
+    },
+    {
+      "id": "542315011",
+      "name": "Pukka Pies Vegan Chicken and Mushroom",
+      "vegan_status": "vegan",
+      "current_on_ocado": 1,
+      "matched_fields": [
+        "features"
+      ]
+    },
+    {
+      "id": "544806011",
+      "name": "Hellmann's Vegan Garlic Mayonnaise",
+      "vegan_status": "vegan",
+      "current_on_ocado": 1,
+      "matched_fields": [
+        "features",
+        "detailed_description"
+      ]
+    },
+    {
+      "id": "544872011",
+      "name": "Daylesford Organic Raw Chocolate Bar - Dark 85%",
+      "vegan_status": "vegan",
+      "current_on_ocado": 0,
+      "matched_fields": [
+        "detailed_description"
+      ]
+    },
+    {
+      "id": "544874011",
+      "name": "Daylesford Organic Raw Chocolate Bar - Orange & Tangerine",
+      "vegan_status": "vegan",
+      "current_on_ocado": 0,
+      "matched_fields": [
+        "detailed_description"
+      ]
+    },
+    {
+      "id": "551389011",
+      "name": "Mirabeau Belle Annee Provence Rose",
+      "vegan_status": "vegan",
+      "current_on_ocado": 1,
+      "matched_fields": [
+        "detailed_description"
+      ]
+    },
+    {
+      "id": "551407011",
+      "name": "Magnum White Chocolate Ice Cream Sticks",
+      "vegan_status": "nonvegan",
+      "current_on_ocado": 1,
+      "matched_fields": [
+        "detailed_description"
+      ]
+    },
+    {
+      "id": "551408011",
+      "name": "Magnum Classic Ice Cream Sticks",
+      "vegan_status": "nonvegan",
+      "current_on_ocado": 1,
+      "matched_fields": [
+        "detailed_description"
+      ]
+    },
+    {
+      "id": "552909011",
+      "name": "UpCircle Face Moisturiser with Vitamin E",
+      "vegan_status": "vegan",
+      "current_on_ocado": 1,
+      "matched_fields": [
+        "detailed_description"
+      ]
+    },
+    {
+      "id": "555217011",
+      "name": "Birds Eye Green Cuisine Chicken-Free Dippers",
+      "vegan_status": "vegan",
+      "current_on_ocado": 1,
+      "matched_fields": [
+        "detailed_description"
+      ]
+    },
+    {
+      "id": "556061011",
+      "name": "Tivall Vegan Burger",
+      "vegan_status": "vegan",
+      "current_on_ocado": 1,
+      "matched_fields": [
+        "detailed_description"
+      ]
+    },
+    {
+      "id": "556062011",
+      "name": "Tivall Vegan Schnitzel",
+      "vegan_status": "vegan",
+      "current_on_ocado": 1,
+      "matched_fields": [
+        "detailed_description"
+      ]
+    },
+    {
+      "id": "556808011",
+      "name": "Sanex Expert Skin Health+ Atopicare Oil Repair Body Wash Shower Gel",
+      "vegan_status": "unknown",
+      "current_on_ocado": 1,
+      "matched_fields": [
+        "features"
+      ]
+    },
+    {
+      "id": "559310011",
+      "name": "Biona Organic Chick Peas",
+      "vegan_status": "vegan",
+      "current_on_ocado": 1,
+      "matched_fields": [
+        "detailed_description"
+      ]
+    },
+    {
+      "id": "561429011",
+      "name": "Palmolive Aroma Sweet Delight Vegan Mood Boosting Body Wash Shower Gel",
+      "vegan_status": "vegan",
+      "current_on_ocado": 0,
+      "matched_fields": [
+        "further_description"
+      ]
+    },
+    {
+      "id": "561489011",
+      "name": "Palmolive Aroma Midnight Bliss Vegan Mood Boosting Body Wash Shower Gel",
+      "vegan_status": "vegan",
+      "current_on_ocado": 0,
+      "matched_fields": [
+        "further_description"
+      ]
+    },
+    {
+      "id": "561490011",
+      "name": "Palmolive Aroma Love in Bloom Vegan Mood Boosting Body Wash Shower Gel",
+      "vegan_status": "vegan",
+      "current_on_ocado": 0,
+      "matched_fields": [
+        "further_description"
+      ]
+    },
+    {
+      "id": "561757011",
+      "name": "Bambino Mio Nappy Liners Biodegradable 100 roll",
+      "vegan_status": "vegan",
+      "current_on_ocado": 1,
+      "matched_fields": [
+        "features"
+      ]
+    },
+    {
+      "id": "562200011",
+      "name": "Bio-Synergy Body Perfect Gummies",
+      "vegan_status": "unknown",
+      "current_on_ocado": 1,
+      "matched_fields": [
+        "detailed_description"
+      ]
+    },
+    {
+      "id": "570269011",
+      "name": "Quorn Vegan Takeaway 2 Crunchy Fillet Burgers",
+      "vegan_status": "vegan",
+      "current_on_ocado": 1,
+      "matched_fields": [
+        "detailed_description"
+      ]
+    },
+    {
+      "id": "570340011",
+      "name": "Quorn Pepperoni Vegan Deli Slices",
+      "vegan_status": "vegan",
+      "current_on_ocado": 1,
+      "matched_fields": [
+        "detailed_description"
+      ]
+    },
+    {
+      "id": "572593011",
+      "name": "Birds Eye Green Cuisine Chicken-Free Southern-Fried Strips",
+      "vegan_status": "vegan",
+      "current_on_ocado": 1,
+      "matched_fields": [
+        "detailed_description"
+      ]
+    },
+    {
+      "id": "572828011",
+      "name": "Magnum Mini Chocolate & White Chocolate Cookie Ice Cream Sticks",
+      "vegan_status": "nonvegan",
+      "current_on_ocado": 1,
+      "matched_fields": [
+        "detailed_description"
+      ]
+    },
+    {
+      "id": "57332011",
+      "name": "NIVEA Gentle Cream Face Wash for Dry Skin",
+      "vegan_status": "vegan",
+      "current_on_ocado": 1,
+      "matched_fields": [
+        "detailed_description"
+      ]
+    },
+    {
+      "id": "574609011",
+      "name": "Schwarzkopf Brow Tint Permanent Eyebrow Colour Light Brown",
+      "vegan_status": "vegan",
+      "current_on_ocado": 1,
+      "matched_fields": [
+        "detailed_description"
+      ]
+    },
+    {
+      "id": "574610011",
+      "name": "Schwarzkopf Brow Tint Permanent Eyebrow Colour Dark Brown",
+      "vegan_status": "vegan",
+      "current_on_ocado": 1,
+      "matched_fields": [
+        "detailed_description"
+      ]
+    },
+    {
+      "id": "574611011",
+      "name": "Schwarzkopf Brow Tint Permanent Eyebrow Colour Dark Blonde",
+      "vegan_status": "vegan",
+      "current_on_ocado": 1,
+      "matched_fields": [
+        "detailed_description"
+      ]
+    },
+    {
+      "id": "574612011",
+      "name": "Schwarzkopf Brow Tint Permanent Eyebrow Colour Black",
+      "vegan_status": "vegan",
+      "current_on_ocado": 1,
+      "matched_fields": [
+        "detailed_description"
+      ]
+    },
+    {
+      "id": "579173011",
+      "name": "Australian Gold Botanical SPF 50 Tinted Face Sun Lotion Fair To Light",
+      "vegan_status": "vegan",
+      "current_on_ocado": 1,
+      "matched_fields": [
+        "detailed_description"
+      ]
+    },
+    {
+      "id": "579374011",
+      "name": "Maybelline SuperStay Vinyl Ink Long Lasting Liquid Lipstick 55 Royal",
+      "vegan_status": "vegan",
+      "current_on_ocado": 1,
+      "matched_fields": [
+        "detailed_description"
+      ]
+    },
+    {
+      "id": "579375011",
+      "name": "Maybelline SuperStay Vinyl Ink Long Lasting Liquid Lipstick 35 Cheeky",
+      "vegan_status": "vegan",
+      "current_on_ocado": 1,
+      "matched_fields": [
+        "detailed_description"
+      ]
+    },
+    {
+      "id": "585700011",
+      "name": "Palmolive Aquarium Vegan Handwash Soap Refill",
+      "vegan_status": "vegan",
+      "current_on_ocado": 1,
+      "matched_fields": [
+        "further_description"
+      ]
+    },
+    {
+      "id": "587217011",
+      "name": "Protein World Vegan Salted Caramel Slender Blend",
+      "vegan_status": "vegan",
+      "current_on_ocado": 1,
+      "matched_fields": [
+        "detailed_description"
+      ]
+    },
+    {
+      "id": "587218011",
+      "name": "Protein World Vegan Slender Strawberries & Cream Blend",
+      "vegan_status": "vegan",
+      "current_on_ocado": 1,
+      "matched_fields": [
+        "detailed_description"
+      ]
+    },
+    {
+      "id": "587219011",
+      "name": "Protein World Vegan Chocolate Slender Blend",
+      "vegan_status": "vegan",
+      "current_on_ocado": 1,
+      "matched_fields": [
+        "detailed_description"
+      ]
+    },
+    {
+      "id": "59222011",
+      "name": "Simple Kind to Hair Gentle Care Shampoo",
+      "vegan_status": "vegan",
+      "current_on_ocado": 1,
+      "matched_fields": [
+        "features"
+      ]
+    },
+    {
+      "id": "594981011",
+      "name": "Rhythm 108 Swiss Vegan Hazelnut Chocolate Praline Biscuit Share Bag",
+      "vegan_status": "vegan",
+      "current_on_ocado": 1,
+      "matched_fields": [
+        "detailed_description"
+      ]
+    },
+    {
+      "id": "595354011",
+      "name": "Crackd, The No- Egg Egg",
+      "vegan_status": "vegan",
+      "current_on_ocado": 1,
+      "matched_fields": [
+        "detailed_description"
+      ]
+    },
+    {
+      "id": "598112011",
+      "name": "Sugar Coated Leg Hair Removal Kit With Rosehip",
+      "vegan_status": "vegan",
+      "current_on_ocado": 0,
+      "matched_fields": [
+        "detailed_description"
+      ]
+    },
+    {
+      "id": "598113011",
+      "name": "Sugar Coated Facial Hair Removal Kit With Lavender Essential Oil",
+      "vegan_status": "vegan",
+      "current_on_ocado": 1,
+      "matched_fields": [
+        "detailed_description"
+      ]
+    },
+    {
+      "id": "598115011",
+      "name": "Sugar Coated Bikini Hair Removal Kit",
+      "vegan_status": "vegan",
+      "current_on_ocado": 1,
+      "matched_fields": [
+        "detailed_description"
+      ]
+    },
+    {
+      "id": "598390011",
+      "name": "Galaxy Vegan Dairy Free Salted Caramel Chocolate",
+      "vegan_status": "vegan",
+      "current_on_ocado": 1,
+      "matched_fields": [
+        "brand_marketing"
+      ]
+    },
+    {
+      "id": "598394011",
+      "name": "Galaxy Vegan Dairy Free Smooth Crumbled Cookie Chocolate",
+      "vegan_status": "vegan",
+      "current_on_ocado": 0,
+      "matched_fields": [
+        "brand_marketing"
+      ]
+    },
+    {
+      "id": "59850011",
+      "name": "Attitude Washing Up Liquid Citrus Zest",
+      "vegan_status": "vegan",
+      "current_on_ocado": 0,
+      "matched_fields": [
+        "detailed_description"
+      ]
+    },
+    {
+      "id": "601656011",
+      "name": "Galaxy Vegan Dairy Free Smooth Classic Chocolate",
+      "vegan_status": "vegan",
+      "current_on_ocado": 1,
+      "matched_fields": [
+        "brand_marketing"
+      ]
+    },
+    {
+      "id": "601957011",
+      "name": "Magnum Salted Caramel Ice Cream Sticks",
+      "vegan_status": "nonvegan",
+      "current_on_ocado": 1,
+      "matched_fields": [
+        "detailed_description"
+      ]
+    },
+    {
+      "id": "601964011",
+      "name": "Magnum Almond Ice Cream Sticks",
+      "vegan_status": "nonvegan",
+      "current_on_ocado": 1,
+      "matched_fields": [
+        "detailed_description"
+      ]
+    },
+    {
+      "id": "601965011",
+      "name": "Magnum White Chocolate Ice Cream Sticks",
+      "vegan_status": "nonvegan",
+      "current_on_ocado": 1,
+      "matched_fields": [
+        "detailed_description"
+      ]
+    },
+    {
+      "id": "601966011",
+      "name": "Magnum Mint Ice Cream Sticks",
+      "vegan_status": "nonvegan",
+      "current_on_ocado": 1,
+      "matched_fields": [
+        "detailed_description"
+      ]
+    },
+    {
+      "id": "601969011",
+      "name": "Magnum Pistachio Ice Cream Sticks",
+      "vegan_status": "nonvegan",
+      "current_on_ocado": 0,
+      "matched_fields": [
+        "detailed_description"
+      ]
+    },
+    {
+      "id": "602796011",
+      "name": "Magnum Classic Ice Cream Sticks 3x100ml",
+      "vegan_status": "nonvegan",
+      "current_on_ocado": 1,
+      "matched_fields": [
+        "detailed_description"
+      ]
+    },
+    {
+      "id": "603045011",
+      "name": "Quorn Roast Beef Vegan Deli Slices",
+      "vegan_status": "vegan",
+      "current_on_ocado": 0,
+      "matched_fields": [
+        "detailed_description"
+      ]
+    },
+    {
+      "id": "609817011",
+      "name": "Aussie Colour Conditioner",
+      "vegan_status": "vegan",
+      "current_on_ocado": 1,
+      "matched_fields": [
+        "detailed_description"
+      ]
+    },
+    {
+      "id": "614664011",
+      "name": "Monty Bojangles Vegan Truffle Selection",
+      "vegan_status": "vegan",
+      "current_on_ocado": 1,
+      "matched_fields": [
+        "other_information"
+      ]
+    },
+    {
+      "id": "622692011",
+      "name": "Freja Classic Vegan Sipping Broth",
+      "vegan_status": "vegan",
+      "current_on_ocado": 1,
+      "matched_fields": [
+        "detailed_description"
+      ]
+    },
+    {
+      "id": "627673011",
+      "name": "The Vegetarian Butcher Hentastic Vegan Chicken Fillet",
+      "vegan_status": "vegan",
+      "current_on_ocado": 1,
+      "matched_fields": [
+        "detailed_description"
+      ]
+    },
+    {
+      "id": "627674011",
+      "name": "The Vegetarian Butcher Impeckable Vegan Chicken Breast",
+      "vegan_status": "vegan",
+      "current_on_ocado": 1,
+      "matched_fields": [
+        "features"
+      ]
+    },
+    {
+      "id": "628310011",
+      "name": "Rhythm 108 Swiss Vegan Salted Caramel Filled Biscuits",
+      "vegan_status": "vegan",
+      "current_on_ocado": 1,
+      "matched_fields": [
+        "detailed_description"
+      ]
+    },
+    {
+      "id": "628797011",
+      "name": "Ben & Jerry's Sundae Non Dairy Vegan Oat of this Swirled Ice Cream Tub",
+      "vegan_status": "vegan",
+      "current_on_ocado": 0,
+      "matched_fields": [
+        "detailed_description"
+      ]
+    },
+    {
+      "id": "628799011",
+      "name": "Magnum Almond Ice Cream Sticks",
+      "vegan_status": "nonvegan",
+      "current_on_ocado": 1,
+      "matched_fields": [
+        "detailed_description"
+      ]
+    },
+    {
+      "id": "629542011",
+      "name": "Ben & Jerry's Non Dairy Cookies on Cookie Dough Vegan Ice Cream Tub",
+      "vegan_status": "vegan",
+      "current_on_ocado": 1,
+      "matched_fields": [
+        "features"
+      ]
+    },
+    {
+      "id": "630878011",
+      "name": "Candy Kittens OG Multipack Gift Box",
+      "vegan_status": "vegan",
+      "current_on_ocado": 0,
+      "matched_fields": [
+        "detailed_description"
+      ]
+    },
+    {
+      "id": "633358011",
+      "name": "Wilton London BulkBox Laundry Liquid Cedarwood",
+      "vegan_status": "vegan",
+      "current_on_ocado": 1,
+      "matched_fields": [
+        "detailed_description"
+      ]
+    },
+    {
+      "id": "633360011",
+      "name": "Wilton London Non Bio Laundry Liquid Patchouli",
+      "vegan_status": "vegan",
+      "current_on_ocado": 1,
+      "matched_fields": [
+        "detailed_description"
+      ]
+    },
+    {
+      "id": "633363011",
+      "name": "Wilton London BulkBox Laundry Liquid Jasmine",
+      "vegan_status": "vegan",
+      "current_on_ocado": 1,
+      "matched_fields": [
+        "detailed_description"
+      ]
+    },
+    {
+      "id": "633695011",
+      "name": "Palmolive Naturals Coconut Vegan Body Wash Shower Gel Pump",
+      "vegan_status": "vegan",
+      "current_on_ocado": 1,
+      "matched_fields": [
+        "detailed_description"
+      ]
+    },
+    {
+      "id": "634499011",
+      "name": "Skittles Vegan Chewy Sweets Fruit Flavoured Pouch Bag",
+      "vegan_status": "vegan",
+      "current_on_ocado": 1,
+      "matched_fields": [
+        "detailed_description"
+      ]
+    },
+    {
+      "id": "638305011",
+      "name": "Bolsius Tray of 4 Assorted Size Pillar Candles -Soft Pearl",
+      "vegan_status": "unknown",
+      "current_on_ocado": 1,
+      "matched_fields": [
+        "detailed_description"
+      ]
+    },
+    {
+      "id": "639212011",
+      "name": "This Works Perfect Legs Body Butter",
+      "vegan_status": "nonvegan",
+      "current_on_ocado": 1,
+      "matched_fields": [
+        "detailed_description"
+      ]
+    },
+    {
+      "id": "639371011",
+      "name": "Free From Italy Basil Pesto",
+      "vegan_status": "vegan",
+      "current_on_ocado": 1,
+      "matched_fields": [
+        "detailed_description"
+      ]
+    },
+    {
+      "id": "639372011",
+      "name": "Free From Italy Tomato & Basil Pasta Sauce",
+      "vegan_status": "vegan",
+      "current_on_ocado": 1,
+      "matched_fields": [
+        "detailed_description"
+      ]
+    },
+    {
+      "id": "639373011",
+      "name": "Free From Italy Sun-Dried Tomato Pesto",
+      "vegan_status": "vegan",
+      "current_on_ocado": 1,
+      "matched_fields": [
+        "detailed_description"
+      ]
+    },
+    {
+      "id": "640037011",
+      "name": "Free From Italy Tomato & Chilli Pasta Sauce",
+      "vegan_status": "vegan",
+      "current_on_ocado": 1,
+      "matched_fields": [
+        "detailed_description"
+      ]
+    },
+    {
+      "id": "640038011",
+      "name": "Free From Italy Tomato Sauce for Bolognese",
+      "vegan_status": "vegan",
+      "current_on_ocado": 1,
+      "matched_fields": [
+        "detailed_description"
+      ]
+    },
+    {
+      "id": "640039011",
+      "name": "Free From Italy Chilli & Red Pepper Pesto",
+      "vegan_status": "vegan",
+      "current_on_ocado": 1,
+      "matched_fields": [
+        "detailed_description"
+      ]
+    },
+    {
+      "id": "641292011",
+      "name": "Free From Italy Pizza Sauce",
+      "vegan_status": "vegan",
+      "current_on_ocado": 1,
+      "matched_fields": [
+        "detailed_description"
+      ]
+    },
+    {
+      "id": "642568011",
+      "name": "ORLY 4-in-1 BREATHABLE Treatment Nail Polish - She's a Wildflower",
+      "vegan_status": "vegan",
+      "current_on_ocado": 1,
+      "matched_fields": [
+        "detailed_description"
+      ]
+    },
+    {
+      "id": "643076011",
+      "name": "Realfoods Organic Puttanesca Sauce",
+      "vegan_status": "vegan",
+      "current_on_ocado": 1,
+      "matched_fields": [
+        "detailed_description"
+      ]
+    },
+    {
+      "id": "645035011",
+      "name": "UpCircle Cleansing Face Milk with Aloe Vera + Oat Powder",
+      "vegan_status": "vegan",
+      "current_on_ocado": 1,
+      "matched_fields": [
+        "detailed_description"
+      ]
+    },
+    {
+      "id": "649092011",
+      "name": "Boursin Garlic & Herbs Vegan Alternative to Cheese",
+      "vegan_status": "vegan",
+      "current_on_ocado": 1,
+      "matched_fields": [
+        "detailed_description"
+      ]
+    },
+    {
+      "id": "652779011",
+      "name": "Holland & Barrett ProVitamin A Beta Carotene 6mg Vegan Tablets",
+      "vegan_status": "vegan",
+      "current_on_ocado": 1,
+      "matched_fields": [
+        "detailed_description"
+      ]
+    },
+    {
+      "id": "653387011",
+      "name": "Holland & Barrett 5-HTP Amino Acid Griffonia Seed Extract Vegan Capsules",
+      "vegan_status": "vegan",
+      "current_on_ocado": 1,
+      "matched_fields": [
+        "detailed_description"
+      ]
+    },
+    {
+      "id": "653458011",
+      "name": "Holland & Barrett Ashwagandha 500mg",
+      "vegan_status": "vegan",
+      "current_on_ocado": 1,
+      "matched_fields": [
+        "detailed_description"
+      ]
+    },
+    {
+      "id": "654602011",
+      "name": "Magnum Vegan Classic Ice Cream Sticks",
+      "vegan_status": "vegan",
+      "current_on_ocado": 1,
+      "matched_fields": [
+        "features"
+      ]
+    },
+    {
+      "id": "654604011",
+      "name": "Magnum Collection Blueberry Cookie Vegan Ice Cream Sticks",
+      "vegan_status": "vegan",
+      "current_on_ocado": 1,
+      "matched_fields": [
+        "features"
+      ]
+    },
+    {
+      "id": "654606011",
+      "name": "Magnum Utopia Double Cherry Ice Cream Sticks",
+      "vegan_status": "nonvegan",
+      "current_on_ocado": 1,
+      "matched_fields": [
+        "detailed_description"
+      ]
+    },
+    {
+      "id": "654611011",
+      "name": "Ben & Jerry's Non Dairy Bohemian Raspberry Vegan Ice Cream Tub",
+      "vegan_status": "vegan",
+      "current_on_ocado": 0,
+      "matched_fields": [
+        "detailed_description"
+      ]
+    },
+    {
+      "id": "654697011",
+      "name": "Galaxy Dairy Free Praline Chocolate",
+      "vegan_status": "vegan",
+      "current_on_ocado": 1,
+      "matched_fields": [
+        "brand_marketing"
+      ]
+    },
+    {
+      "id": "656874011",
+      "name": "Nails. INC Nail Polish Remover Pot",
+      "vegan_status": "vegan",
+      "current_on_ocado": 1,
+      "matched_fields": [
+        "detailed_description"
+      ]
+    },
+    {
+      "id": "659624011",
+      "name": "ATTITUDE Super Leaves Shampoo Amplifying - Coconut Oil",
+      "vegan_status": "vegan",
+      "current_on_ocado": 1,
+      "matched_fields": [
+        "detailed_description"
+      ]
+    },
+    {
+      "id": "659625011",
+      "name": "ATTITUDE Super Leaves Conditioner Amplifying - Coconut Oil",
+      "vegan_status": "nonvegan",
+      "current_on_ocado": 1,
+      "matched_fields": [
+        "detailed_description"
+      ]
+    },
+    {
+      "id": "659627011",
+      "name": "ATTITUDE Super Leaves Hair Detangler - Olive Leaves",
+      "vegan_status": "vegan",
+      "current_on_ocado": 1,
+      "matched_fields": [
+        "detailed_description"
+      ]
+    },
+    {
+      "id": "662268011",
+      "name": "Holland & Barrett Max Strength Vegan Glucosamine HCI 1400mg Tablets",
+      "vegan_status": "vegan",
+      "current_on_ocado": 1,
+      "matched_fields": [
+        "detailed_description"
+      ]
+    },
+    {
+      "id": "662957011",
+      "name": "Holland & Barrett Child Vitamin D Gummies Elderberry",
+      "vegan_status": "vegan",
+      "current_on_ocado": 1,
+      "matched_fields": [
+        "detailed_description"
+      ]
+    },
+    {
+      "id": "664576011",
+      "name": "Palmolive Naturals Coconut Shower Gel Body Wash",
+      "vegan_status": "vegan",
+      "current_on_ocado": 0,
+      "matched_fields": [
+        "detailed_description"
+      ]
+    },
+    {
+      "id": "666814011",
+      "name": "Marmite Yeast Extract Squeezy",
+      "vegan_status": "vegan",
+      "current_on_ocado": 1,
+      "matched_fields": [
+        "features"
+      ]
+    },
+    {
+      "id": "667969011",
+      "name": "Maybelline SuperStay Vinyl Ink Long Lasting Liquid Lipstick 30 Unrivaled",
+      "vegan_status": "vegan",
+      "current_on_ocado": 1,
+      "matched_fields": [
+        "detailed_description"
+      ]
+    },
+    {
+      "id": "668074011",
+      "name": "Maybelline Vinyl Ink Long Lasting Liquid Lipstick, Shine Finish, 15 Peachy",
+      "vegan_status": "unknown",
+      "current_on_ocado": 1,
+      "matched_fields": [
+        "detailed_description"
+      ]
+    },
+    {
+      "id": "668475011",
+      "name": "Maybelline SuperStay Vinyl Ink Long Lasting Liquid Lipstick 135 Fearless",
+      "vegan_status": "vegan",
+      "current_on_ocado": 1,
+      "matched_fields": [
+        "detailed_description"
+      ]
+    },
+    {
+      "id": "668861011",
+      "name": "Maybelline SuperStay Vinyl Ink Long Lasting Liquid Lipstick 40 Witty",
+      "vegan_status": "vegan",
+      "current_on_ocado": 1,
+      "matched_fields": [
+        "detailed_description"
+      ]
+    },
+    {
+      "id": "668862011",
+      "name": "Maybelline SuperStay Vinyl Ink Long Lasting Liquid Lipstick 145 Rouge",
+      "vegan_status": "vegan",
+      "current_on_ocado": 1,
+      "matched_fields": [
+        "detailed_description"
+      ]
+    },
+    {
+      "id": "668863011",
+      "name": "Maybelline SuperStay Vinyl Ink Long Lasting Liquid Lipstick 20 Coy",
+      "vegan_status": "vegan",
+      "current_on_ocado": 1,
+      "matched_fields": [
+        "detailed_description"
+      ]
+    },
+    {
+      "id": "668864011",
+      "name": "Maybelline SuperStay Vinyl Ink Long Lasting Liquid Lipstick 10 Lippy",
+      "vegan_status": "vegan",
+      "current_on_ocado": 1,
+      "matched_fields": [
+        "detailed_description"
+      ]
+    },
+    {
+      "id": "668865011",
+      "name": "Maybelline SuperStay Vinyl Ink Long Lasting Liquid Lipstick 50 Wicked",
+      "vegan_status": "vegan",
+      "current_on_ocado": 1,
+      "matched_fields": [
+        "detailed_description"
+      ]
+    },
+    {
+      "id": "671362011",
+      "name": "Magnum Mini Intense Coffee Ice Cream Sticks",
+      "vegan_status": "nonvegan",
+      "current_on_ocado": 1,
+      "matched_fields": [
+        "detailed_description"
+      ]
+    },
+    {
+      "id": "673142011",
+      "name": "Magnum Mini Mint Ice Cream Sticks",
+      "vegan_status": "nonvegan",
+      "current_on_ocado": 1,
+      "matched_fields": [
+        "detailed_description"
+      ]
+    },
+    {
+      "id": "674581011",
+      "name": "Holland & Barrett ABC to Z Multivitamins & Minerals Vegan Tablets",
+      "vegan_status": "vegan",
+      "current_on_ocado": 0,
+      "matched_fields": [
+        "detailed_description"
+      ]
+    },
+    {
+      "id": "675945011",
+      "name": "Pieminister Chana Rama Pie with Chickpea, Sweet Potato & Cauliflower",
+      "vegan_status": "vegan",
+      "current_on_ocado": 1,
+      "matched_fields": [
+        "detailed_description"
+      ]
+    },
+    {
+      "id": "678061011",
+      "name": "Palmolive Hygiene Liquid Handwash Soap Refill",
+      "vegan_status": "vegan",
+      "current_on_ocado": 1,
+      "matched_fields": [
+        "further_description"
+      ]
+    },
+    {
+      "id": "679428011",
+      "name": "Hair Gain Gummies 1 Month Supply",
+      "vegan_status": "vegan",
+      "current_on_ocado": 1,
+      "matched_fields": [
+        "detailed_description"
+      ]
+    },
+    {
+      "id": "680134011",
+      "name": "Magnum Signature Peach Ice Cream Sticks",
+      "vegan_status": "nonvegan",
+      "current_on_ocado": 1,
+      "matched_fields": [
+        "detailed_description"
+      ]
+    },
+    {
+      "id": "680153011",
+      "name": "Magnum Bonbon Cherry & Milk Chocolate Ice Cream Frozen Snack",
+      "vegan_status": "nonvegan",
+      "current_on_ocado": 1,
+      "matched_fields": [
+        "detailed_description"
+      ]
+    },
+    {
+      "id": "680723011",
+      "name": "Remeo Blood Orange Sorbetto Lollies",
+      "vegan_status": "vegan",
+      "current_on_ocado": 1,
+      "matched_fields": [
+        "detailed_description"
+      ]
+    },
+    {
+      "id": "682124011",
+      "name": "Vita Coco Original Coconut Water Multipack",
+      "vegan_status": "unknown",
+      "current_on_ocado": 1,
+      "matched_fields": [
+        "detailed_description"
+      ]
+    },
+    {
+      "id": "683384011",
+      "name": "Magnum Mini Signature Pistachio Ice Cream Sticks",
+      "vegan_status": "nonvegan",
+      "current_on_ocado": 1,
+      "matched_fields": [
+        "detailed_description"
+      ]
+    },
+    {
+      "id": "688800011",
+      "name": "Kinda Co. Smoked Vegan Cheese",
+      "vegan_status": "vegan",
+      "current_on_ocado": 1,
+      "matched_fields": [
+        "detailed_description"
+      ]
+    },
+    {
+      "id": "693821011",
+      "name": "Ben's Original Plant Powered Vegan Malaysian Coconut Curry Meal",
+      "vegan_status": "vegan",
+      "current_on_ocado": 1,
+      "matched_fields": [
+        "features"
+      ]
+    },
+    {
+      "id": "71133011",
+      "name": "Marigold Health Foods Swiss Vegetable Bouillon Reduced Salt Family",
+      "vegan_status": "vegan",
+      "current_on_ocado": 1,
+      "matched_fields": [
+        "detailed_description"
+      ]
+    },
+    {
+      "id": "71138011",
+      "name": "Marigold Health Foods Organic Vegan Bouillon Powder Reduced Salt",
+      "vegan_status": "vegan",
+      "current_on_ocado": 1,
+      "matched_fields": [
+        "detailed_description"
+      ]
+    },
+    {
+      "id": "73158011",
+      "name": "Palmolive Naturals Coconut Vegan Body Wash Shower Gel",
+      "vegan_status": "vegan",
+      "current_on_ocado": 1,
+      "matched_fields": [
+        "detailed_description"
+      ]
+    },
+    {
+      "id": "81267011",
+      "name": "Palmolive Hygiene Plus Antibacterial Sensitive Liquid Handwash Aloe Vera",
+      "vegan_status": "vegan",
+      "current_on_ocado": 1,
+      "matched_fields": [
+        "further_description"
+      ]
+    },
+    {
+      "id": "489610011",
+      "name": "Palmolive Magic Softness Foam Handwash Raspberry & Blackcurrant",
+      "vegan_status": "vegan",
+      "current_on_ocado": 1,
+      "matched_fields": [
+        "further_description"
+      ]
+    },
+    {
+      "id": "568215011",
+      "name": "Bolsius Metallic Gold Shimmer Rustic Candle 190 x 68",
+      "vegan_status": "unknown",
+      "current_on_ocado": 1,
+      "matched_fields": [
+        "detailed_description"
+      ]
+    },
+    {
+      "id": "568253011",
+      "name": "Bolsius Fresh Olive Rustic Candle 80 x 68",
+      "vegan_status": "vegan",
+      "current_on_ocado": 1,
+      "matched_fields": [
+        "detailed_description"
+      ]
+    },
+    {
+      "id": "638356011",
+      "name": "Bolsius Metallic Taper Dinner Candles- Silver",
+      "vegan_status": "vegan",
+      "current_on_ocado": 1,
+      "matched_fields": [
+        "detailed_description"
+      ]
+    },
+    {
+      "id": "693555011",
+      "name": "Rhythm 108 Swiss Vegan Pistachio Biscuit Share Bag",
+      "vegan_status": "vegan",
+      "current_on_ocado": 1,
+      "matched_fields": [
+        "detailed_description"
+      ]
+    },
+    {
+      "id": "695236011",
+      "name": "Together Health Vegan Multivitamin",
+      "vegan_status": "vegan",
+      "current_on_ocado": 1,
+      "matched_fields": [
+        "detailed_description"
+      ]
+    },
+    {
+      "id": "628705011",
+      "name": "THIS Isn't Lamb Plant-Based Kebabs",
+      "vegan_status": "vegan",
+      "current_on_ocado": 1,
+      "matched_fields": [
+        "detailed_description"
+      ]
+    },
+    {
+      "id": "694726011",
+      "name": "Max Factor Masterpiece Waterproof Matte Liquid Eyeliner Black",
+      "vegan_status": "vegan",
+      "current_on_ocado": 1,
+      "matched_fields": [
+        "detailed_description"
+      ]
+    },
+    {
+      "id": "694727011",
+      "name": "Max Factor Masterpiece Waterproof Matte Liquid Eyeliner Espresso",
+      "vegan_status": "vegan",
+      "current_on_ocado": 1,
+      "matched_fields": [
+        "detailed_description"
+      ]
+    },
+    {
+      "id": "694678011",
+      "name": "Rimmel WonderFreeze Brow Lamination Gel Clear",
+      "vegan_status": "vegan",
+      "current_on_ocado": 1,
+      "matched_fields": [
+        "detailed_description"
+      ]
+    },
+    {
+      "id": "694795011",
+      "name": "Max Factor 2000 Calorie Pro Stylist Mascara, Black/Brown",
+      "vegan_status": "vegan",
+      "current_on_ocado": 1,
+      "matched_fields": [
+        "features"
+      ]
+    },
+    {
+      "id": "694792011",
+      "name": "Max Factor 2000 Calorie Pro Stylist Mascara, Black",
+      "vegan_status": "vegan",
+      "current_on_ocado": 1,
+      "matched_fields": [
+        "features"
+      ]
+    },
+    {
+      "id": "694803011",
+      "name": "Max Factor Facefinity Universal Primer",
+      "vegan_status": "vegan",
+      "current_on_ocado": 1,
+      "matched_fields": [
+        "features"
+      ]
+    },
+    {
+      "id": "694574011",
+      "name": "Rimmel Oh My Gloss! Lip Oil 005 Pink Sugar",
+      "vegan_status": "vegan",
+      "current_on_ocado": 1,
+      "matched_fields": [
+        "detailed_description"
+      ]
+    },
+    {
+      "id": "423454011",
+      "name": "Divine 70% Dark Chocolate Coins",
+      "vegan_status": "vegan",
+      "current_on_ocado": 1,
+      "matched_fields": [
+        "detailed_description"
+      ]
+    },
+    {
+      "id": "694575011",
+      "name": "Rimmel Oh My Gloss! Lip Oil 000 Clear Cloud",
+      "vegan_status": "vegan",
+      "current_on_ocado": 1,
+      "matched_fields": [
+        "detailed_description"
+      ]
+    },
+    {
+      "id": "694572011",
+      "name": "Rimmel Oh My Gloss! Lip Oil 003 Berry Pink",
+      "vegan_status": "vegan",
+      "current_on_ocado": 1,
+      "matched_fields": [
+        "detailed_description"
+      ]
+    },
+    {
+      "id": "694571011",
+      "name": "Rimmel Oh My Gloss! Lip Oil 006 So Rosy",
+      "vegan_status": "vegan",
+      "current_on_ocado": 1,
+      "matched_fields": [
+        "detailed_description"
+      ]
+    },
+    {
+      "id": "665822011",
+      "name": "Pooch & Mutt Carrot & Parsnip Dental Sticks",
+      "vegan_status": "unknown",
+      "current_on_ocado": 1,
+      "matched_fields": [
+        "detailed_description"
+      ]
+    }
+  ],
+  "note": "Read-only upper bound for proposed cited predicate grammar; no classifications or rule promotions."
+}

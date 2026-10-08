@@ -1,0 +1,61 @@
+{
+  "state": "completed",
+  "successful": true,
+  "per_repetition": [
+    {
+      "repetition": 1,
+      "cases": 31,
+      "scored_cases": 31,
+      "mismatches": [],
+      "reason_errors": [],
+      "operational_errors": [],
+      "unsafe_positives": [],
+      "missing_required_issues": [],
+      "primary_disagreements": [
+        "synthetic.independent-assertion.0",
+        "synthetic.factory-warning-boundary.1",
+        "synthetic.wine-nonfining.0"
+      ],
+      "arbitrated_cases": [
+        "synthetic.independent-assertion.0",
+        "synthetic.factory-warning-boundary.1",
+        "synthetic.wine-nonfining.0"
+      ],
+      "raw_agreed_unsafe_positives": []
+    }
+  ],
+  "all_attempt_usage": {
+    "calls": 20,
+    "failed_calls": 3,
+    "guard_rejections": 0,
+    "missing_usage_calls": 0,
+    "input_tokens": 329611,
+    "cached_input_tokens": 9984,
+    "output_tokens": 72415,
+    "reasoning_output_tokens": 26762
+  },
+  "usage_by_stage_model": {
+    "primary:gpt-6-luna:high": {
+      "calls": 14,
+      "failed_calls": 3,
+      "guard_rejections": 0,
+      "missing_usage_calls": 0,
+      "input_tokens": 232645,
+      "cached_input_tokens": 9984,
+      "output_tokens": 67348,
+      "reasoning_output_tokens": 25836
+    },
+    "arbitration:gpt-6.1-sol:medium": {
+      "calls": 6,
+      "failed_calls": 0,
+      "guard_rejections": 0,
+      "missing_usage_calls": 0,
+      "input_tokens": 96966,
+      "cached_input_tokens": 0,
+      "output_tokens": 5067,
+      "reasoning_output_tokens": 926
+    }
+  },
+  "credit_proxy": 7.5160485,
+  "release_qualified": false
+}

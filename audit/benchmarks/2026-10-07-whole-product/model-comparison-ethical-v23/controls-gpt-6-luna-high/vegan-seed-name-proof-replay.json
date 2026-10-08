@@ -1,0 +1,93 @@
+{
+  "case_id": "synthetic.planting-seeds.3",
+  "input_sha256": "415ce15765c29559110c2433b328f10cee99922779df59c492ce5ddaa0edbe0c",
+  "classifier_version": "db-vegan-codex-v48",
+  "construction": "Correct positive-basis proof from the existing affirmative whole-product name, with generic treatment uncertainty covered by that claim. No claim that this SKU is untreated or has a particular coating. No new source fact or model call. This constructed replay diagnoses the models ignoring a permitted name route; it cannot qualify either model.",
+  "assessment": {
+    "identity": {
+      "status": "established",
+      "evidence_refs": [
+        {
+          "path": "/product/name",
+          "quote": "Example Vegan Wildflower Seeds"
+        }
+      ]
+    },
+    "composition": {
+      "status": "covered_by_claim",
+      "evidence_refs": [
+        {
+          "path": "/product/name",
+          "quote": "Example Vegan Wildflower Seeds"
+        }
+      ]
+    },
+    "sourcing": {
+      "status": "covered_by_claim",
+      "evidence_refs": [
+        {
+          "path": "/product/name",
+          "quote": "Example Vegan Wildflower Seeds"
+        }
+      ]
+    },
+    "processing": {
+      "status": "covered_by_claim",
+      "evidence_refs": [
+        {
+          "path": "/product/name",
+          "quote": "Example Vegan Wildflower Seeds"
+        }
+      ]
+    },
+    "components": {
+      "status": "covered_by_claim",
+      "evidence_refs": [
+        {
+          "path": "/product/name",
+          "quote": "Example Vegan Wildflower Seeds"
+        }
+      ]
+    },
+    "positive_support": [
+      {
+        "reason": "name",
+        "evidence_refs": [
+          {
+            "path": "/product/name",
+            "quote": "Example Vegan Wildflower Seeds"
+          }
+        ]
+      }
+    ],
+    "material_issues": [
+      {
+        "code": "processing_unresolved",
+        "target": "planting seed treatments",
+        "rule_id": "planting-seed-treatment-v1",
+        "evidence_refs": [
+          {
+            "path": "/product/name",
+            "quote": "Example Vegan Wildflower Seeds"
+          },
+          {
+            "path": "/product/preparation_and_usage",
+            "quote": "Sow outdoors in prepared soil."
+          }
+        ],
+        "resolution_refs": [
+          {
+            "path": "/product/name",
+            "quote": "Example Vegan Wildflower Seeds"
+          }
+        ],
+        "blocks_claim": false
+      }
+    ],
+    "source_applicability": []
+  },
+  "outcome": {
+    "vegan_status": "vegan",
+    "vegan_reason": "name"
+  }
+}

@@ -1,0 +1,32 @@
+{
+  "case_id": "natural.561499011",
+  "input_sha256": "93ee3dbd06893dec616c20870adbc9eb9a5301a19becf5324c212abc77be8d25",
+  "reference_changed": false,
+  "expected_status": "vegan",
+  "expected_reason": "manufacturer",
+  "calls": 2,
+  "usage": {
+    "input_tokens": 27088,
+    "cached_input_tokens": 0,
+    "output_tokens": 1488,
+    "reasoning_output_tokens": 1021
+  },
+  "standard_credit_proxy": 1.7264,
+  "basis": "The supplied name, soap descriptions and ingredient list share Palmolive Hygiene antibacterial bar-soap identity and include both named botanicals. The differing marketing designations are recorded, but no incompatible variant, formulation or ingredient is established. The complete product feature assertion is unqualified Vegan. This is a contextual evidence assessment, not an externally verified alias or physical-status guarantee.",
+  "limitations": [
+    "Both blind readers use Sol and shared policy knowledge; their agreement is not independent physical ground truth.",
+    "A narrowly scoped official-manufacturer search did not establish the marketing designations as aliases.",
+    "Fresh Luna classification identifies the titles as a conflict; its conservative failure is retained."
+  ],
+  "setup_failure": {
+    "error": "KeyError: source_group_keys",
+    "model_calls": 0,
+    "fixed_by": "Added empty source_group_keys and family_key batching metadata in a new packet; frozen classifier_input is identical."
+  },
+  "omitted_call_fields": [
+    "events",
+    "invocation",
+    "quota_before"
+  ],
+  "complete_originals_retained_locally": true
+}

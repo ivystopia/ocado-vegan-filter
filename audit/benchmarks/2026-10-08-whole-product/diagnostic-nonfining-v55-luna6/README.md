@@ -1,0 +1,7 @@
+# Fresh non-fining wine diagnostic, classifier v55
+
+GPT-6-Luna/high passed all ten identical frozen diagnostic cases: suitability, canonical reason, required issues, exact citations and isolated persistence/export. This freshly validates the tagged egg-white processing override, unknowns with fining-only evidence, full-production inputs, hedged processing facts and applicable whole-product claims. Protein World retained manufacturer. Skittles triggered a raw manufacturer/name disagreement and received exactly two fresh blind Sol/medium assessments, recovering manufacturer precedence. No unsafe positive or exhausted operational failure occurred.
+
+Fourteen actual calls include three rejected citation attempts and complete usage: 227,364 input / 33,167 output tokens, with 14,592 reasoning tokens included in output. Twelve primary calls and two arbitration calls. Standard-credit proxy 3.312635 is neither a charge nor an included-plan quota estimate. Every failed attempt remains accounted for. The original v54 diagnostic and defect replay stay retained.
+
+This bounded development diagnostic cannot qualify a model or activate classifications. Retained sanitised projections preserve decisions, citations, usage and frozen inputs while omitting private invocation/quota/transport details; original attempts remain local. No canonical/default/allowlist or installed FireMonkey change occurred.

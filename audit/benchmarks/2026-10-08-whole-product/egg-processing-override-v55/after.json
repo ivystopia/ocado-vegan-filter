@@ -1,0 +1,20 @@
+{
+  "method": "Actual unchanged raw pair remerged and repeatedly gated. No model calls, inputs/labels/canonical changes.",
+  "results": [
+    {
+      "stage": "model",
+      "status": "nonvegan",
+      "tag_animal_conflict": true
+    },
+    {
+      "stage": "audit",
+      "status": "nonvegan",
+      "tag_animal_conflict": true
+    },
+    {
+      "stage": "export",
+      "status": "nonvegan",
+      "tag_animal_conflict": true
+    }
+  ]
+}

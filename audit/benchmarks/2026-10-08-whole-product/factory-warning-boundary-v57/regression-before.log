@@ -1,0 +1,14 @@
+E..
+======================================================================
+ERROR: test_factory_warning_boundary_retains_actual_animal_and_mixed_declarations (test_whole_product_policy.WholeProductPolicyTests.test_factory_warning_boundary_retains_actual_animal_and_mixed_declarations)
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "/home/ivy/repos/personal/ocado_report/tests/test_whole_product_policy.py", line 1319, in test_factory_warning_boundary_retains_actual_animal_and_mixed_declarations
+    self.assertEqual(classifier.classify_by_rules(value).vegan_status,'nonvegan')
+                     ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+AttributeError: 'NoneType' object has no attribute 'vegan_status'
+
+----------------------------------------------------------------------
+Ran 3 tests in 0.016s
+
+FAILED (errors=1)

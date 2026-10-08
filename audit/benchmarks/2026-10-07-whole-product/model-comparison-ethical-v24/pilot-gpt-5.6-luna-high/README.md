@@ -1,0 +1,7 @@
+# Classifier-v49 Luna 5.6 natural pilot: safety checkpoint
+
+Eighty-eight of 96 frozen cases are validly scored, all passing status, reason, required issues and persistence/export. Eight are explicitly unrun after a deliberate comparison STOP, not relabelled unknown. All admitted calls finished normally. One Skittles reason disagreement receives exactly two fresh blind Sol/medium arbitration readings. No final unsafe or raw agreed unsupported positive occurs in scored cases.
+
+The supervising local counterexample (outside model outputs) proves that the shared v49 claim gate can incorrectly promote may be suitable for vegans or this is probably vegan when proposed as a certain manufacturer positive. The comparison was stopped to repair that concrete safety defect before further model spending. The original checkpoint/manifest remains unchanged and cannot qualify repaired code; retain STOP and use a fresh output directory for any changed-code comparison.
+
+All 57 attempt records include 56 actual invocations and one non-invoked STOP guard. Fifteen actual attempts are rejected; reported usage is complete: 1,922,580 input, 37,632 cached input / 482,447 output, with 328,532 reasoning tokens included. The Standard-credit proxy is 25.38379, not a charge or included-plan quota measure. The complete control stage remains disqualified on three mandatory misses. No Luna 6 broad stage, expensive-primary comparison or canonical activation occurred in v24.

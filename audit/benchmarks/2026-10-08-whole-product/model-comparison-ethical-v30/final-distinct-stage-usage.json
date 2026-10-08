@@ -1,0 +1,58 @@
+{
+  "distinct_physical_stages": [
+    "audit/benchmarks/2026-10-08-whole-product/model-comparison-ethical-v30/controls-gpt-5.6-luna-high",
+    "audit/benchmarks/2026-10-08-whole-product/model-comparison-ethical-v30/controls-gpt-6-luna-high",
+    "audit/benchmarks/2026-10-08-whole-product/model-comparison-ethical-v30/diagnostic-gpt-5.6-luna-high",
+    "audit/benchmarks/2026-10-08-whole-product/model-comparison-ethical-v30/diagnostic-gpt-6-luna-high",
+    "audit/benchmarks/2026-10-08-whole-product/model-comparison-ethical-v30/pilot-gpt-5.6-luna-high",
+    "audit/benchmarks/2026-10-08-whole-product/model-comparison-ethical-v30/pilot-gpt-6-luna-high"
+  ],
+  "all_attempt_usage": {
+    "calls": 375,
+    "failed_calls": 30,
+    "guard_rejections": 0,
+    "missing_usage_calls": 0,
+    "input_tokens": 7437161,
+    "cached_input_tokens": 110080,
+    "output_tokens": 1498503,
+    "reasoning_output_tokens": 931076
+  },
+  "usage_by_stage_model": {
+    "primary:gpt-5.6-luna:high": {
+      "calls": 176,
+      "failed_calls": 19,
+      "guard_rejections": 0,
+      "missing_usage_calls": 0,
+      "input_tokens": 3609022,
+      "cached_input_tokens": 65024,
+      "output_tokens": 1061379,
+      "reasoning_output_tokens": 750567
+    },
+    "arbitration:gpt-6.1-sol:medium": {
+      "calls": 42,
+      "failed_calls": 0,
+      "guard_rejections": 0,
+      "missing_usage_calls": 0,
+      "input_tokens": 678098,
+      "cached_input_tokens": 0,
+      "output_tokens": 27096,
+      "reasoning_output_tokens": 5244
+    },
+    "primary:gpt-6-luna:high": {
+      "calls": 157,
+      "failed_calls": 11,
+      "guard_rejections": 0,
+      "missing_usage_calls": 0,
+      "input_tokens": 3150041,
+      "cached_input_tokens": 45056,
+      "output_tokens": 410028,
+      "reasoning_output_tokens": 175265
+    }
+  },
+  "credit_proxy": 103.17184850000001,
+  "actual_model_invocations": 375,
+  "actual_rejected_invocations": 30,
+  "release_qualified": false,
+  "stale_after_classifier_v62": true,
+  "permanent_stop": true
+}

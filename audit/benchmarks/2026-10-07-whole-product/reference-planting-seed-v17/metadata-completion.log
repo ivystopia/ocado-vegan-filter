@@ -1,0 +1,10 @@
+Blind annotation pass 1: 1/1
+Blind annotation pass 2: 1/1
+Traceback (most recent call last):
+  File "/home/ivy/repos/personal/ocado_report/tools/adjudicate_whole_product_corpus.py", line 221, in <module>
+    run(p.parse_args())
+    ~~~^^^^^^^^^^^^^^^^
+  File "/home/ivy/repos/personal/ocado_report/tools/adjudicate_whole_product_corpus.py", line 213, in run
+    save(directory/'annotated-candidates.json',{'schema_version':2,'policy_version':policy.POLICY_VERSION,'candidates':rows,'workload':packet['workload'],'disputed_cases':disputed})
+                                                                                                                                       ~~~~~~^^^^^^^^^^^^
+KeyError: 'workload'

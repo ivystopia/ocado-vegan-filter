@@ -1,0 +1,20 @@
+{
+  "original_order": [
+    [
+      "907000024",
+      "990980002",
+      "990970001"
+    ]
+  ],
+  "replay_order": [
+    [
+      "907000024",
+      "990970001",
+      "990980002"
+    ]
+  ],
+  "exact_product_context_set_match": true,
+  "input_words_unchanged": true,
+  "order_differs": true,
+  "cause_not_proven": true
+}

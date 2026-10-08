@@ -1,0 +1,90 @@
+{
+  "state": "checkpointed",
+  "successful": false,
+  "per_repetition": [
+    {
+      "repetition": 1,
+      "cases": 491,
+      "scored_cases": 200,
+      "mismatches": [
+        "synthetic.faq-component-scope.3"
+      ],
+      "reason_errors": [],
+      "operational_errors": [],
+      "unsafe_positives": [],
+      "missing_required_issues": [],
+      "primary_disagreements": [
+        "synthetic.planting-seeds.5",
+        "synthetic.32.4",
+        "synthetic.36.0",
+        "synthetic.ethical-components.9",
+        "synthetic.liquid-processing.4.5",
+        "synthetic.liquid-processing.1.5"
+      ],
+      "arbitrated_cases": [
+        "synthetic.planting-seeds.5",
+        "synthetic.32.4",
+        "synthetic.36.0",
+        "synthetic.ethical-components.9",
+        "synthetic.liquid-processing.4.5",
+        "synthetic.liquid-processing.1.5"
+      ],
+      "raw_agreed_unsafe_positives": [
+        {
+          "case_id": "synthetic.31.3",
+          "stage": "primary"
+        },
+        {
+          "case_id": "synthetic.32.3",
+          "stage": "primary"
+        },
+        {
+          "case_id": "synthetic.separate-claim.5",
+          "stage": "primary"
+        },
+        {
+          "case_id": "synthetic.33.3",
+          "stage": "primary"
+        },
+        {
+          "case_id": "synthetic.32.0",
+          "stage": "primary"
+        }
+      ]
+    }
+  ],
+  "all_attempt_usage": {
+    "calls": 69,
+    "failed_calls": 7,
+    "guard_rejections": 3,
+    "missing_usage_calls": 0,
+    "input_tokens": 1015346,
+    "cached_input_tokens": 8960,
+    "output_tokens": 278175,
+    "reasoning_output_tokens": 204867
+  },
+  "usage_by_stage_model": {
+    "primary:gpt-5.6-luna:high": {
+      "calls": 57,
+      "failed_calls": 7,
+      "guard_rejections": 3,
+      "missing_usage_calls": 0,
+      "input_tokens": 821780,
+      "cached_input_tokens": 8960,
+      "output_tokens": 271725,
+      "reasoning_output_tokens": 203480
+    },
+    "arbitration:gpt-6.1-sol:medium": {
+      "calls": 12,
+      "failed_calls": 0,
+      "guard_rejections": 0,
+      "missing_usage_calls": 0,
+      "input_tokens": 193566,
+      "cached_input_tokens": 0,
+      "output_tokens": 6450,
+      "reasoning_output_tokens": 1387
+    }
+  },
+  "credit_proxy": 23.51113,
+  "release_qualified": false
+}

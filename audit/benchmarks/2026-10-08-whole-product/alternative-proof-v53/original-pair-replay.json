@@ -1,0 +1,25 @@
+{
+  "checked_original_two_pass_model_assessments": 101,
+  "changes": [
+    {
+      "case_id": "synthetic.liquid-processing.1.5",
+      "before": [
+        "unknown",
+        null
+      ],
+      "after": [
+        "vegan",
+        "ingredients"
+      ],
+      "expected": {
+        "vegan_status": "vegan",
+        "vegan_reason": "ingredients",
+        "required_issue_codes": []
+      }
+    }
+  ],
+  "new_unsafe_positives": [],
+  "errors": [],
+  "raw_agreed_unsupported_proposals_retained_in_stage": 6,
+  "note": "Original accepted primary/arb pair remerged under unchanged merge logic and evaluated under v53, separately from rechecking already gated decisions. Offline replay, not fresh qualification."
+}

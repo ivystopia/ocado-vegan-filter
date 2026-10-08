@@ -1,0 +1,1494 @@
+[
+  {
+    "product_id": "401520011",
+    "name": "Karma Drinks Sugar Free Karma Cola",
+    "url": "https://www.ocado.com/products/401520011",
+    "current_on_ocado": 0,
+    "previous_status": "unknown",
+    "previous_reason": null,
+    "candidate_status": "vegan",
+    "candidate_reason": "manufacturer",
+    "input_sha256": "46fd32181f574998ecaf0772ca0df5280035d0c78823330b608adc3041286245",
+    "candidate": {
+      "product_id": "401520011",
+      "vegan_status": "vegan",
+      "vegan_reason": "manufacturer",
+      "confidence": "certain",
+      "summary": "Shared whole-product evidence policy: vegan",
+      "evidence": {
+        "rule": "whole_product_policy",
+        "vegan_status": "vegan",
+        "vegan_reason": "manufacturer",
+        "positive_block": false,
+        "policy_version": "whole-product-v2",
+        "knowledge_version": "vegan-risk-registry-v7",
+        "assessment": {
+          "identity": {
+            "status": "established",
+            "evidence_refs": [
+              {
+                "path": "/product/name",
+                "quote": "Karma Drinks Sugar Free Karma Cola"
+              }
+            ]
+          },
+          "composition": {
+            "status": "covered_by_claim",
+            "evidence_refs": [
+              {
+                "path": "/product/dietary_information",
+                "quote": "Vegan, vegetarian, gluten free, dairy free."
+              }
+            ]
+          },
+          "sourcing": {
+            "status": "covered_by_claim",
+            "evidence_refs": [
+              {
+                "path": "/product/dietary_information",
+                "quote": "Vegan, vegetarian, gluten free, dairy free."
+              }
+            ]
+          },
+          "processing": {
+            "status": "covered_by_claim",
+            "evidence_refs": [
+              {
+                "path": "/product/dietary_information",
+                "quote": "Vegan, vegetarian, gluten free, dairy free."
+              }
+            ]
+          },
+          "components": {
+            "status": "covered_by_claim",
+            "evidence_refs": [
+              {
+                "path": "/product/dietary_information",
+                "quote": "Vegan, vegetarian, gluten free, dairy free."
+              }
+            ]
+          },
+          "positive_support": [
+            {
+              "reason": "manufacturer",
+              "evidence_refs": [
+                {
+                  "path": "/product/dietary_information",
+                  "quote": "Vegan, vegetarian, gluten free, dairy free."
+                }
+              ]
+            }
+          ],
+          "material_issues": [
+            {
+              "code": "source_unresolved",
+              "target": "whole_product",
+              "rule_id": "unspecified-composition-v1",
+              "evidence_refs": [
+                {
+                  "path": "/product/ingredients",
+                  "quote": "Carbonated Water, Sweeteners (Erythritol, Steviol Glycosides), Natural Flavouring, Acidity Regulators (Malic Acid, Citric Acid)"
+                }
+              ],
+              "resolution_refs": [
+                {
+                  "path": "/product/dietary_information",
+                  "quote": "Vegan, vegetarian, gluten free, dairy free."
+                }
+              ],
+              "blocks_claim": false
+            },
+            {
+              "code": "composition_incomplete",
+              "target": "supplied components",
+              "rule_id": "supplied-components-composition-v1",
+              "evidence_refs": [
+                {
+                  "path": "/product/package_type",
+                  "quote": "Bottle"
+                },
+                {
+                  "path": "/product/other_information",
+                  "quote": "Full Product Name: Sparkling Cola Flavoured Soft Drink Storage: Best before: See bottle. Store in a cool, dry place."
+                }
+              ],
+              "resolution_refs": [
+                {
+                  "path": "/product/dietary_information",
+                  "quote": "Vegan, vegetarian, gluten free, dairy free."
+                }
+              ],
+              "blocks_claim": false
+            }
+          ],
+          "source_applicability": []
+        },
+        "tag_animal_conflict": false,
+        "matched_patterns": [],
+        "sources": [
+          {
+            "table": "products",
+            "column": "dietary_information",
+            "text": "Vegan, vegetarian, gluten free, dairy free."
+          },
+          {
+            "table": "products",
+            "column": "features",
+            "text": "Natural, Sugar Free"
+          },
+          {
+            "table": "products",
+            "column": "detailed_description",
+            "text": "What Goes Around Comes Around Drink no evil (or sugar) with this natural, sugar-free cola. It tastes just as sweet for supporting our cola grower communities in Sierra Leone."
+          },
+          {
+            "table": "products",
+            "column": "further_description",
+            "text": "By drinking Karma, you've helped build 9 new bridges connecting 7 communities"
+          },
+          {
+            "table": "products",
+            "column": "other_information",
+            "text": "Full Product Name: Sparkling Cola Flavoured Soft Drink Storage: Best before: See bottle. Store in a cool, dry place."
+          },
+          {
+            "table": "products",
+            "column": "ingredients",
+            "text": "Carbonated Water, Sweeteners (Erythritol, Steviol Glycosides), Natural Flavouring, Acidity Regulators (Malic Acid, Citric Acid)"
+          }
+        ]
+      },
+      "source": "rule",
+      "model": null,
+      "reasoning_effort": null,
+      "prompt_version": null,
+      "context_hash": "46fd32181f574998ecaf0772ca0df5280035d0c78823330b608adc3041286245",
+      "raw_response": null,
+      "parsed_response_json": null,
+      "validation_error": null,
+      "exit_status": null,
+      "model_calls": []
+    }
+  },
+  {
+    "product_id": "648950011",
+    "name": "H&B Precision Engineered Plant Protein Bar Dark Chocolate & Salt",
+    "url": "https://www.ocado.com/products/648950011",
+    "current_on_ocado": 1,
+    "previous_status": "unknown",
+    "previous_reason": null,
+    "candidate_status": "vegan",
+    "candidate_reason": "manufacturer",
+    "input_sha256": "39f3920db7934f85668264613f00b2c1cb2ca8bbf2e86f17712a2ebd6410f8d0",
+    "candidate": {
+      "product_id": "648950011",
+      "vegan_status": "vegan",
+      "vegan_reason": "manufacturer",
+      "confidence": "certain",
+      "summary": "Shared whole-product evidence policy: vegan",
+      "evidence": {
+        "rule": "whole_product_policy",
+        "vegan_status": "vegan",
+        "vegan_reason": "manufacturer",
+        "positive_block": false,
+        "policy_version": "whole-product-v2",
+        "knowledge_version": "vegan-risk-registry-v7",
+        "assessment": {
+          "identity": {
+            "status": "established",
+            "evidence_refs": [
+              {
+                "path": "/product/name",
+                "quote": "H&B Precision Engineered Plant Protein Bar Dark Chocolate & Salt"
+              }
+            ]
+          },
+          "composition": {
+            "status": "covered_by_claim",
+            "evidence_refs": [
+              {
+                "path": "/product/dietary_information",
+                "quote": "Vegan; Vegetarian"
+              }
+            ]
+          },
+          "sourcing": {
+            "status": "covered_by_claim",
+            "evidence_refs": [
+              {
+                "path": "/product/dietary_information",
+                "quote": "Vegan; Vegetarian"
+              }
+            ]
+          },
+          "processing": {
+            "status": "covered_by_claim",
+            "evidence_refs": [
+              {
+                "path": "/product/dietary_information",
+                "quote": "Vegan; Vegetarian"
+              }
+            ]
+          },
+          "components": {
+            "status": "covered_by_claim",
+            "evidence_refs": [
+              {
+                "path": "/product/dietary_information",
+                "quote": "Vegan; Vegetarian"
+              }
+            ]
+          },
+          "positive_support": [
+            {
+              "reason": "manufacturer",
+              "evidence_refs": [
+                {
+                  "path": "/product/dietary_information",
+                  "quote": "Vegan; Vegetarian"
+                }
+              ]
+            }
+          ],
+          "material_issues": [
+            {
+              "code": "processing_unresolved",
+              "target": "whole_product",
+              "rule_id": "sugar-refining-v1",
+              "evidence_refs": [
+                {
+                  "path": "/product/ingredients",
+                  "quote": "Protein Blend [Soy Protein Isolate, Hydrolysed Wheat Protein, Pea Protein Isolate], Couverture Chocolate with Sweetener [Cocoa Mass, Sweetener (Maltitol), Cocoa Butter, Emulsifier: Lecithins (Soya), Natural Vanilla Flavouring], Humectant [Glycerine], Low Sugar Caramel [Humectant (Glycerol), Maltitol Powder, Maltodextrin, Inulin, Water, Coconut Oil, Thickening Agent (Modified Starch), Caramel Colour E150a, Gelling Agent (Pectin), Natural Flavourings, Acidity Regulator (Calcium Lactate), Emulsifier (Rapeseed Lecithin), Salt, Thickening Agent (Xanthan Gum)], Soluble Tapioca Fibre, Sweetener [Maltitol Syrup, Steviol Glycosides from Stevia (E960a)], Water, Soy Protein Crisp [Soy Protein Isolate, Calcium Carbonate], Fat-Reduced Cocoa Powder, Acacia Gum, Sodium Chloride, Natural Flavouring."
+                }
+              ],
+              "resolution_refs": [
+                {
+                  "path": "/product/dietary_information",
+                  "quote": "Vegan; Vegetarian"
+                }
+              ],
+              "blocks_claim": false
+            },
+            {
+              "code": "source_unresolved",
+              "target": "glycerine",
+              "rule_id": "source-dependent-additives-v1",
+              "evidence_refs": [
+                {
+                  "path": "/product/ingredients",
+                  "quote": "Protein Blend [Soy Protein Isolate, Hydrolysed Wheat Protein, Pea Protein Isolate], Couverture Chocolate with Sweetener [Cocoa Mass, Sweetener (Maltitol), Cocoa Butter, Emulsifier: Lecithins (Soya), Natural Vanilla Flavouring], Humectant [Glycerine], Low Sugar Caramel [Humectant (Glycerol), Maltitol Powder, Maltodextrin, Inulin, Water, Coconut Oil, Thickening Agent (Modified Starch), Caramel Colour E150a, Gelling Agent (Pectin), Natural Flavourings, Acidity Regulator (Calcium Lactate), Emulsifier (Rapeseed Lecithin), Salt, Thickening Agent (Xanthan Gum)], Soluble Tapioca Fibre, Sweetener [Maltitol Syrup, Steviol Glycosides from Stevia (E960a)], Water, Soy Protein Crisp [Soy Protein Isolate, Calcium Carbonate], Fat-Reduced Cocoa Powder, Acacia Gum, Sodium Chloride, Natural Flavouring."
+                }
+              ],
+              "resolution_refs": [
+                {
+                  "path": "/product/dietary_information",
+                  "quote": "Vegan; Vegetarian"
+                }
+              ],
+              "blocks_claim": false
+            },
+            {
+              "code": "source_unresolved",
+              "target": "glycerol",
+              "rule_id": "source-dependent-additives-v1",
+              "evidence_refs": [
+                {
+                  "path": "/product/ingredients",
+                  "quote": "Protein Blend [Soy Protein Isolate, Hydrolysed Wheat Protein, Pea Protein Isolate], Couverture Chocolate with Sweetener [Cocoa Mass, Sweetener (Maltitol), Cocoa Butter, Emulsifier: Lecithins (Soya), Natural Vanilla Flavouring], Humectant [Glycerine], Low Sugar Caramel [Humectant (Glycerol), Maltitol Powder, Maltodextrin, Inulin, Water, Coconut Oil, Thickening Agent (Modified Starch), Caramel Colour E150a, Gelling Agent (Pectin), Natural Flavourings, Acidity Regulator (Calcium Lactate), Emulsifier (Rapeseed Lecithin), Salt, Thickening Agent (Xanthan Gum)], Soluble Tapioca Fibre, Sweetener [Maltitol Syrup, Steviol Glycosides from Stevia (E960a)], Water, Soy Protein Crisp [Soy Protein Isolate, Calcium Carbonate], Fat-Reduced Cocoa Powder, Acacia Gum, Sodium Chloride, Natural Flavouring."
+                }
+              ],
+              "resolution_refs": [
+                {
+                  "path": "/product/dietary_information",
+                  "quote": "Vegan; Vegetarian"
+                }
+              ],
+              "blocks_claim": false
+            },
+            {
+              "code": "source_unresolved",
+              "target": "lecithin",
+              "rule_id": "source-dependent-additives-v1",
+              "evidence_refs": [
+                {
+                  "path": "/product/ingredients",
+                  "quote": "Protein Blend [Soy Protein Isolate, Hydrolysed Wheat Protein, Pea Protein Isolate], Couverture Chocolate with Sweetener [Cocoa Mass, Sweetener (Maltitol), Cocoa Butter, Emulsifier: Lecithins (Soya), Natural Vanilla Flavouring], Humectant [Glycerine], Low Sugar Caramel [Humectant (Glycerol), Maltitol Powder, Maltodextrin, Inulin, Water, Coconut Oil, Thickening Agent (Modified Starch), Caramel Colour E150a, Gelling Agent (Pectin), Natural Flavourings, Acidity Regulator (Calcium Lactate), Emulsifier (Rapeseed Lecithin), Salt, Thickening Agent (Xanthan Gum)], Soluble Tapioca Fibre, Sweetener [Maltitol Syrup, Steviol Glycosides from Stevia (E960a)], Water, Soy Protein Crisp [Soy Protein Isolate, Calcium Carbonate], Fat-Reduced Cocoa Powder, Acacia Gum, Sodium Chloride, Natural Flavouring."
+                }
+              ],
+              "resolution_refs": [
+                {
+                  "path": "/product/dietary_information",
+                  "quote": "Vegan; Vegetarian"
+                }
+              ],
+              "blocks_claim": false
+            },
+            {
+              "code": "source_unresolved",
+              "target": "whole_product",
+              "rule_id": "unspecified-composition-v1",
+              "evidence_refs": [
+                {
+                  "path": "/product/ingredients",
+                  "quote": "Protein Blend [Soy Protein Isolate, Hydrolysed Wheat Protein, Pea Protein Isolate], Couverture Chocolate with Sweetener [Cocoa Mass, Sweetener (Maltitol), Cocoa Butter, Emulsifier: Lecithins (Soya), Natural Vanilla Flavouring], Humectant [Glycerine], Low Sugar Caramel [Humectant (Glycerol), Maltitol Powder, Maltodextrin, Inulin, Water, Coconut Oil, Thickening Agent (Modified Starch), Caramel Colour E150a, Gelling Agent (Pectin), Natural Flavourings, Acidity Regulator (Calcium Lactate), Emulsifier (Rapeseed Lecithin), Salt, Thickening Agent (Xanthan Gum)], Soluble Tapioca Fibre, Sweetener [Maltitol Syrup, Steviol Glycosides from Stevia (E960a)], Water, Soy Protein Crisp [Soy Protein Isolate, Calcium Carbonate], Fat-Reduced Cocoa Powder, Acacia Gum, Sodium Chloride, Natural Flavouring."
+                }
+              ],
+              "resolution_refs": [
+                {
+                  "path": "/product/dietary_information",
+                  "quote": "Vegan; Vegetarian"
+                }
+              ],
+              "blocks_claim": false
+            }
+          ],
+          "source_applicability": []
+        },
+        "tag_animal_conflict": false,
+        "matched_patterns": [],
+        "sources": [
+          {
+            "table": "products",
+            "column": "dietary_information",
+            "text": "Vegan; Vegetarian"
+          },
+          {
+            "table": "products",
+            "column": "detailed_description",
+            "text": "The sports science sorted Packed with 22g of protein to support the growth and maintenance of muscle mass in just a few sweet and salty bites. This bar is coated in couverture chocolate with a hint of salt and is loaded with an irresistible caramel flavour filling. It\u2019s also high in fibre and low in sugar. This Precision Engineered Protein Bar doubles up as a smart and tasty pre or post workout snack, as well as a grab and go bite that\u2019ll top up your protein intake. Protein contributes to the growth and maintenance of muscle mass and complements a healthy, balanced and varied lifestyle. This bar is Informed Sport certified to provide the highest level of assurance for athletes. What\u2019s inside? 22g of protein per serving 198 kcal per serving Low in sugar per serving How to enjoy? Take his protein bar with you when heading to the gym or for after a workout Grab and go, this sweet and salty on-the-go snack is great during commutes and breaks Enjoy with a protein shake or isolate, or indulge in a moment of bliss with a warm drink WARNING: Excessive consumption may produce laxative effects."
+          },
+          {
+            "table": "products",
+            "column": "other_information",
+            "text": "Advisory Information: Excessive consumption may produce laxative effects."
+          },
+          {
+            "table": "products",
+            "column": "ingredients",
+            "text": "Protein Blend [Soy Protein Isolate, Hydrolysed Wheat Protein, Pea Protein Isolate], Couverture Chocolate with Sweetener [Cocoa Mass, Sweetener (Maltitol), Cocoa Butter, Emulsifier: Lecithins (Soya), Natural Vanilla Flavouring], Humectant [Glycerine], Low Sugar Caramel [Humectant (Glycerol), Maltitol Powder, Maltodextrin, Inulin, Water, Coconut Oil, Thickening Agent (Modified Starch), Caramel Colour E150a, Gelling Agent (Pectin), Natural Flavourings, Acidity Regulator (Calcium Lactate), Emulsifier (Rapeseed Lecithin), Salt, Thickening Agent (Xanthan Gum)], Soluble Tapioca Fibre, Sweetener [Maltitol Syrup, Steviol Glycosides from Stevia (E960a)], Water, Soy Protein Crisp [Soy Protein Isolate, Calcium Carbonate], Fat-Reduced Cocoa Powder, Acacia Gum, Sodium Chloride, Natural Flavouring."
+          },
+          {
+            "table": "manufacturer_vegan_evidence",
+            "column": "dietaryInformation",
+            "text": "Vegan; Vegetarian"
+          }
+        ]
+      },
+      "source": "rule",
+      "model": null,
+      "reasoning_effort": null,
+      "prompt_version": null,
+      "context_hash": "39f3920db7934f85668264613f00b2c1cb2ca8bbf2e86f17712a2ebd6410f8d0",
+      "raw_response": null,
+      "parsed_response_json": null,
+      "validation_error": null,
+      "exit_status": null,
+      "model_calls": []
+    }
+  },
+  {
+    "product_id": "657123011",
+    "name": "Pulsin Keto Almond & Salted Caramel Multipack",
+    "url": "https://www.ocado.com/products/657123011",
+    "current_on_ocado": 1,
+    "previous_status": "unknown",
+    "previous_reason": null,
+    "candidate_status": "vegan",
+    "candidate_reason": "manufacturer",
+    "input_sha256": "914ecfed83ea6d21387ff291c7f04a50301bd34c9e12ae555c10b95d36ea4374",
+    "candidate": {
+      "product_id": "657123011",
+      "vegan_status": "vegan",
+      "vegan_reason": "manufacturer",
+      "confidence": "certain",
+      "summary": "Shared whole-product evidence policy: vegan",
+      "evidence": {
+        "rule": "whole_product_policy",
+        "vegan_status": "vegan",
+        "vegan_reason": "manufacturer",
+        "positive_block": false,
+        "policy_version": "whole-product-v2",
+        "knowledge_version": "vegan-risk-registry-v7",
+        "assessment": {
+          "identity": {
+            "status": "established",
+            "evidence_refs": [
+              {
+                "path": "/product/name",
+                "quote": "Pulsin Keto Almond & Salted Caramel Multipack"
+              }
+            ]
+          },
+          "composition": {
+            "status": "covered_by_claim",
+            "evidence_refs": [
+              {
+                "path": "/product/dietary_information",
+                "quote": "High Protein, Low Sugar, High Fibre. Gluten Free, Dairy Free, Vegan"
+              }
+            ]
+          },
+          "sourcing": {
+            "status": "covered_by_claim",
+            "evidence_refs": [
+              {
+                "path": "/product/dietary_information",
+                "quote": "High Protein, Low Sugar, High Fibre. Gluten Free, Dairy Free, Vegan"
+              }
+            ]
+          },
+          "processing": {
+            "status": "covered_by_claim",
+            "evidence_refs": [
+              {
+                "path": "/product/dietary_information",
+                "quote": "High Protein, Low Sugar, High Fibre. Gluten Free, Dairy Free, Vegan"
+              }
+            ]
+          },
+          "components": {
+            "status": "covered_by_claim",
+            "evidence_refs": [
+              {
+                "path": "/product/dietary_information",
+                "quote": "High Protein, Low Sugar, High Fibre. Gluten Free, Dairy Free, Vegan"
+              }
+            ]
+          },
+          "positive_support": [
+            {
+              "reason": "manufacturer",
+              "evidence_refs": [
+                {
+                  "path": "/product/dietary_information",
+                  "quote": "High Protein, Low Sugar, High Fibre. Gluten Free, Dairy Free, Vegan"
+                }
+              ]
+            }
+          ],
+          "material_issues": [
+            {
+              "code": "source_unresolved",
+              "target": "whole_product",
+              "rule_id": "unspecified-composition-v1",
+              "evidence_refs": [
+                {
+                  "path": "/product/ingredients",
+                  "quote": "Peanuts (18%), Almonds (10%), Chocolate Chips* (Cocoa Mass, Sweetener (Xylitol), Cocoa Butter, Emulsifier (Sunflower Lecithin)) (10%), Pea Protein, Soluble Tapioca Fibre, Chicory Fibre, Peanut Butter (7%), Sweetener (Xylitol), Peanut Flour (5%), Shea Butter, Faba Protein, MCT Oil (3%), Emulsifier (Sunflower Lecithin), Natural Flavourings, Sea Salt (0.3%), Antioxidants (Vitamin C, Vitamin E). *Chocolate Chips contain cocoa solids 72% minimum"
+                }
+              ],
+              "resolution_refs": [
+                {
+                  "path": "/product/dietary_information",
+                  "quote": "High Protein, Low Sugar, High Fibre. Gluten Free, Dairy Free, Vegan"
+                }
+              ],
+              "blocks_claim": false
+            }
+          ],
+          "source_applicability": []
+        },
+        "tag_animal_conflict": false,
+        "matched_patterns": [],
+        "sources": [
+          {
+            "table": "products",
+            "column": "dietary_information",
+            "text": "High Protein, Low Sugar, High Fibre. Gluten Free, Dairy Free, Vegan"
+          },
+          {
+            "table": "products",
+            "column": "detailed_description",
+            "text": "Our delicious Almond & Salted Caramel Keto Bars are now in a convenient multipack, for lighter keto snacking. Each bar still pack 7.3g plant based protein and is full of chunky almonds and no added sugar chocolate chips. It's the perfect on-the-go keto protein bar snack for those following a keto or low carb diet."
+          },
+          {
+            "table": "products",
+            "column": "preparation_and_usage",
+            "text": "Ready to eat"
+          },
+          {
+            "table": "products",
+            "column": "ingredients",
+            "text": "Peanuts (18%), Almonds (10%), Chocolate Chips* (Cocoa Mass, Sweetener (Xylitol), Cocoa Butter, Emulsifier (Sunflower Lecithin)) (10%), Pea Protein, Soluble Tapioca Fibre, Chicory Fibre, Peanut Butter (7%), Sweetener (Xylitol), Peanut Flour (5%), Shea Butter, Faba Protein, MCT Oil (3%), Emulsifier (Sunflower Lecithin), Natural Flavourings, Sea Salt (0.3%), Antioxidants (Vitamin C, Vitamin E). *Chocolate Chips contain cocoa solids 72% minimum"
+          },
+          {
+            "table": "manufacturer_vegan_evidence",
+            "column": "dietaryInformation",
+            "text": "High Protein, Low Sugar, High Fibre. Gluten Free, Dairy Free, Vegan"
+          }
+        ]
+      },
+      "source": "rule",
+      "model": null,
+      "reasoning_effort": null,
+      "prompt_version": null,
+      "context_hash": "914ecfed83ea6d21387ff291c7f04a50301bd34c9e12ae555c10b95d36ea4374",
+      "raw_response": null,
+      "parsed_response_json": null,
+      "validation_error": null,
+      "exit_status": null,
+      "model_calls": []
+    }
+  },
+  {
+    "product_id": "657124011",
+    "name": "Pulsin Keto Choc Fudge & Peanut Multipack",
+    "url": "https://www.ocado.com/products/657124011",
+    "current_on_ocado": 1,
+    "previous_status": "unknown",
+    "previous_reason": null,
+    "candidate_status": "vegan",
+    "candidate_reason": "manufacturer",
+    "input_sha256": "daea5e7fe56dcb9c8f7a691af3ec35fc0a191ca6699d55c99671763710c83670",
+    "candidate": {
+      "product_id": "657124011",
+      "vegan_status": "vegan",
+      "vegan_reason": "manufacturer",
+      "confidence": "certain",
+      "summary": "Shared whole-product evidence policy: vegan",
+      "evidence": {
+        "rule": "whole_product_policy",
+        "vegan_status": "vegan",
+        "vegan_reason": "manufacturer",
+        "positive_block": false,
+        "policy_version": "whole-product-v2",
+        "knowledge_version": "vegan-risk-registry-v7",
+        "assessment": {
+          "identity": {
+            "status": "established",
+            "evidence_refs": [
+              {
+                "path": "/product/name",
+                "quote": "Pulsin Keto Choc Fudge & Peanut Multipack"
+              }
+            ]
+          },
+          "composition": {
+            "status": "covered_by_claim",
+            "evidence_refs": [
+              {
+                "path": "/product/dietary_information",
+                "quote": "High Protein. Low Sugar. High Fibre. Gluten Free, Dairy Free, Vegan"
+              }
+            ]
+          },
+          "sourcing": {
+            "status": "covered_by_claim",
+            "evidence_refs": [
+              {
+                "path": "/product/dietary_information",
+                "quote": "High Protein. Low Sugar. High Fibre. Gluten Free, Dairy Free, Vegan"
+              }
+            ]
+          },
+          "processing": {
+            "status": "covered_by_claim",
+            "evidence_refs": [
+              {
+                "path": "/product/dietary_information",
+                "quote": "High Protein. Low Sugar. High Fibre. Gluten Free, Dairy Free, Vegan"
+              }
+            ]
+          },
+          "components": {
+            "status": "covered_by_claim",
+            "evidence_refs": [
+              {
+                "path": "/product/dietary_information",
+                "quote": "High Protein. Low Sugar. High Fibre. Gluten Free, Dairy Free, Vegan"
+              }
+            ]
+          },
+          "positive_support": [
+            {
+              "reason": "manufacturer",
+              "evidence_refs": [
+                {
+                  "path": "/product/dietary_information",
+                  "quote": "High Protein. Low Sugar. High Fibre. Gluten Free, Dairy Free, Vegan"
+                }
+              ]
+            }
+          ],
+          "material_issues": [
+            {
+              "code": "source_unresolved",
+              "target": "whole_product",
+              "rule_id": "unspecified-composition-v1",
+              "evidence_refs": [
+                {
+                  "path": "/product/ingredients",
+                  "quote": "Peanuts (27%), Chocolate Chips* (Cocoa Mass, Sweetener (Xylitol), Cocoa Butter, Emulsifier (Sunflower Lecithin)) (10%), Soluble Tapioca Fibre, Pea Protein, Chicory Fibre, Peanut Butter (7%), Sweetener (Xylitol), Shea Butter, Faba Protein, Peanut Flour (3%), MCT Oil (3%), Cacao Powder, Natural Flavouring, Emulsifier (Sunflower Lecithin), Sea Salt, Antioxidants (Vitamin C, Vitamin E). *Chocolate Chips contain cocoa solids 72% minimum"
+                }
+              ],
+              "resolution_refs": [
+                {
+                  "path": "/product/dietary_information",
+                  "quote": "High Protein. Low Sugar. High Fibre. Gluten Free, Dairy Free, Vegan"
+                }
+              ],
+              "blocks_claim": false
+            }
+          ],
+          "source_applicability": []
+        },
+        "tag_animal_conflict": false,
+        "matched_patterns": [],
+        "sources": [
+          {
+            "table": "products",
+            "column": "dietary_information",
+            "text": "High Protein. Low Sugar. High Fibre. Gluten Free, Dairy Free, Vegan"
+          },
+          {
+            "table": "products",
+            "column": "detailed_description",
+            "text": "Our delicious Choc Fudge & Peanut Keto Bars are now in a convenient multipack, for lighter keto snacking. Each bar still pack 7.6g plant based protein and is full of crunchy peanuts and no added sugar chocolate chips. It's the perfect on-the-go keto protein bar snack for those following a keto or low carb diet."
+          },
+          {
+            "table": "products",
+            "column": "ingredients",
+            "text": "Peanuts (27%), Chocolate Chips* (Cocoa Mass, Sweetener (Xylitol), Cocoa Butter, Emulsifier (Sunflower Lecithin)) (10%), Soluble Tapioca Fibre, Pea Protein, Chicory Fibre, Peanut Butter (7%), Sweetener (Xylitol), Shea Butter, Faba Protein, Peanut Flour (3%), MCT Oil (3%), Cacao Powder, Natural Flavouring, Emulsifier (Sunflower Lecithin), Sea Salt, Antioxidants (Vitamin C, Vitamin E). *Chocolate Chips contain cocoa solids 72% minimum"
+          },
+          {
+            "table": "manufacturer_vegan_evidence",
+            "column": "dietaryInformation",
+            "text": "High Protein. Low Sugar. High Fibre. Gluten Free, Dairy Free, Vegan"
+          }
+        ]
+      },
+      "source": "rule",
+      "model": null,
+      "reasoning_effort": null,
+      "prompt_version": null,
+      "context_hash": "daea5e7fe56dcb9c8f7a691af3ec35fc0a191ca6699d55c99671763710c83670",
+      "raw_response": null,
+      "parsed_response_json": null,
+      "validation_error": null,
+      "exit_status": null,
+      "model_calls": []
+    }
+  },
+  {
+    "product_id": "657125011",
+    "name": "Pulsin Keto Raspberry & Choc Chip Multipack",
+    "url": "https://www.ocado.com/products/657125011",
+    "current_on_ocado": 1,
+    "previous_status": "unknown",
+    "previous_reason": null,
+    "candidate_status": "vegan",
+    "candidate_reason": "manufacturer",
+    "input_sha256": "7a3d492437c0ccaba68223bc5576d80ae142233fab2182a77125386e2d660507",
+    "candidate": {
+      "product_id": "657125011",
+      "vegan_status": "vegan",
+      "vegan_reason": "manufacturer",
+      "confidence": "certain",
+      "summary": "Shared whole-product evidence policy: vegan",
+      "evidence": {
+        "rule": "whole_product_policy",
+        "vegan_status": "vegan",
+        "vegan_reason": "manufacturer",
+        "positive_block": false,
+        "policy_version": "whole-product-v2",
+        "knowledge_version": "vegan-risk-registry-v7",
+        "assessment": {
+          "identity": {
+            "status": "established",
+            "evidence_refs": [
+              {
+                "path": "/product/name",
+                "quote": "Pulsin Keto Raspberry & Choc Chip Multipack"
+              }
+            ]
+          },
+          "composition": {
+            "status": "covered_by_claim",
+            "evidence_refs": [
+              {
+                "path": "/product/dietary_information",
+                "quote": "High Protein, Low Sugar, High Fibre. Gluten Free, Dairy Free, Vegan"
+              }
+            ]
+          },
+          "sourcing": {
+            "status": "covered_by_claim",
+            "evidence_refs": [
+              {
+                "path": "/product/dietary_information",
+                "quote": "High Protein, Low Sugar, High Fibre. Gluten Free, Dairy Free, Vegan"
+              }
+            ]
+          },
+          "processing": {
+            "status": "covered_by_claim",
+            "evidence_refs": [
+              {
+                "path": "/product/dietary_information",
+                "quote": "High Protein, Low Sugar, High Fibre. Gluten Free, Dairy Free, Vegan"
+              }
+            ]
+          },
+          "components": {
+            "status": "covered_by_claim",
+            "evidence_refs": [
+              {
+                "path": "/product/dietary_information",
+                "quote": "High Protein, Low Sugar, High Fibre. Gluten Free, Dairy Free, Vegan"
+              }
+            ]
+          },
+          "positive_support": [
+            {
+              "reason": "manufacturer",
+              "evidence_refs": [
+                {
+                  "path": "/product/dietary_information",
+                  "quote": "High Protein, Low Sugar, High Fibre. Gluten Free, Dairy Free, Vegan"
+                }
+              ]
+            }
+          ],
+          "material_issues": [
+            {
+              "code": "source_unresolved",
+              "target": "whole_product",
+              "rule_id": "unspecified-composition-v1",
+              "evidence_refs": [
+                {
+                  "path": "/product/ingredients",
+                  "quote": "Peanuts (27%), Chocolate Chips* (Cocoa Mass, Sweetener (Xylitol), Cocoa Butter, Emulsifier (Sunflower Lecithin)) (10%), Soluble Tapioca Fibre, Pea Protein, Chicory Fibre, Peanut Butter (7%), Sweetener (Xylitol), Shea Butter, Faba Protein, Peanut Flour (4%), MCT Oil (3%), Emulsifier (Sunflower Lecithin), Freeze Dried Raspberry (1%), Natural Flavourings, Sea Salt, Antioxidants (Vitamin C, Vitamin E). *Chocolate Chips contain cocoa solids 72% minimum"
+                }
+              ],
+              "resolution_refs": [
+                {
+                  "path": "/product/dietary_information",
+                  "quote": "High Protein, Low Sugar, High Fibre. Gluten Free, Dairy Free, Vegan"
+                }
+              ],
+              "blocks_claim": false
+            }
+          ],
+          "source_applicability": []
+        },
+        "tag_animal_conflict": false,
+        "matched_patterns": [],
+        "sources": [
+          {
+            "table": "products",
+            "column": "dietary_information",
+            "text": "High Protein, Low Sugar, High Fibre. Gluten Free, Dairy Free, Vegan"
+          },
+          {
+            "table": "products",
+            "column": "detailed_description",
+            "text": "Our delicious Raspberry & Choc Chip Keto Bars are now in a convenient multipack, for lighter keto snacking. Each bar still pack 7.5g plant based protein and has bursts of freeze dried raspberry and no added sugar chocolate chips. It's the perfect on-the-go keto protein bar snack for those following a keto or low carb diet."
+          },
+          {
+            "table": "products",
+            "column": "preparation_and_usage",
+            "text": "Ready to eat"
+          },
+          {
+            "table": "products",
+            "column": "ingredients",
+            "text": "Peanuts (27%), Chocolate Chips* (Cocoa Mass, Sweetener (Xylitol), Cocoa Butter, Emulsifier (Sunflower Lecithin)) (10%), Soluble Tapioca Fibre, Pea Protein, Chicory Fibre, Peanut Butter (7%), Sweetener (Xylitol), Shea Butter, Faba Protein, Peanut Flour (4%), MCT Oil (3%), Emulsifier (Sunflower Lecithin), Freeze Dried Raspberry (1%), Natural Flavourings, Sea Salt, Antioxidants (Vitamin C, Vitamin E). *Chocolate Chips contain cocoa solids 72% minimum"
+          },
+          {
+            "table": "manufacturer_vegan_evidence",
+            "column": "dietaryInformation",
+            "text": "High Protein, Low Sugar, High Fibre. Gluten Free, Dairy Free, Vegan"
+          }
+        ]
+      },
+      "source": "rule",
+      "model": null,
+      "reasoning_effort": null,
+      "prompt_version": null,
+      "context_hash": "7a3d492437c0ccaba68223bc5576d80ae142233fab2182a77125386e2d660507",
+      "raw_response": null,
+      "parsed_response_json": null,
+      "validation_error": null,
+      "exit_status": null,
+      "model_calls": []
+    }
+  },
+  {
+    "product_id": "660991011",
+    "name": "Casalinga Crackers with Rosemary",
+    "url": "https://www.ocado.com/products/660991011",
+    "current_on_ocado": 1,
+    "previous_status": "unknown",
+    "previous_reason": null,
+    "candidate_status": "vegan",
+    "candidate_reason": "manufacturer",
+    "input_sha256": "49b3c5e29b8c30bf5f33e24aead02c6cd0764e0a6c1fe919f45ef985811fec02",
+    "candidate": {
+      "product_id": "660991011",
+      "vegan_status": "vegan",
+      "vegan_reason": "manufacturer",
+      "confidence": "certain",
+      "summary": "Shared whole-product evidence policy: vegan",
+      "evidence": {
+        "rule": "whole_product_policy",
+        "vegan_status": "vegan",
+        "vegan_reason": "manufacturer",
+        "positive_block": false,
+        "policy_version": "whole-product-v2",
+        "knowledge_version": "vegan-risk-registry-v7",
+        "assessment": {
+          "identity": {
+            "status": "established",
+            "evidence_refs": [
+              {
+                "path": "/product/name",
+                "quote": "Casalinga Crackers with Rosemary"
+              }
+            ]
+          },
+          "composition": {
+            "status": "covered_by_claim",
+            "evidence_refs": [
+              {
+                "path": "/product/dietary_information",
+                "quote": "Vegan, Vegetarian."
+              }
+            ]
+          },
+          "sourcing": {
+            "status": "covered_by_claim",
+            "evidence_refs": [
+              {
+                "path": "/product/dietary_information",
+                "quote": "Vegan, Vegetarian."
+              }
+            ]
+          },
+          "processing": {
+            "status": "covered_by_claim",
+            "evidence_refs": [
+              {
+                "path": "/product/dietary_information",
+                "quote": "Vegan, Vegetarian."
+              }
+            ]
+          },
+          "components": {
+            "status": "covered_by_claim",
+            "evidence_refs": [
+              {
+                "path": "/product/dietary_information",
+                "quote": "Vegan, Vegetarian."
+              }
+            ]
+          },
+          "positive_support": [
+            {
+              "reason": "manufacturer",
+              "evidence_refs": [
+                {
+                  "path": "/product/dietary_information",
+                  "quote": "Vegan, Vegetarian."
+                }
+              ]
+            }
+          ],
+          "material_issues": [
+            {
+              "code": "source_unresolved",
+              "target": "whole_product",
+              "rule_id": "unspecified-composition-v1",
+              "evidence_refs": [
+                {
+                  "path": "/product/ingredients",
+                  "quote": "Soft WHEAT flour, olive oil, sunflower oil, salt, yeast, rosemary (0.9%), natural rosemary flavouring"
+                }
+              ],
+              "resolution_refs": [
+                {
+                  "path": "/product/dietary_information",
+                  "quote": "Vegan, Vegetarian."
+                }
+              ],
+              "blocks_claim": false
+            },
+            {
+              "code": "composition_incomplete",
+              "target": "supplied components",
+              "rule_id": "supplied-components-composition-v1",
+              "evidence_refs": [
+                {
+                  "path": "/product/package_type",
+                  "quote": "Bag"
+                }
+              ],
+              "resolution_refs": [
+                {
+                  "path": "/product/dietary_information",
+                  "quote": "Vegan, Vegetarian."
+                }
+              ],
+              "blocks_claim": false
+            }
+          ],
+          "source_applicability": []
+        },
+        "tag_animal_conflict": false,
+        "matched_patterns": [],
+        "sources": [
+          {
+            "table": "products",
+            "column": "dietary_information",
+            "text": "Vegan, Vegetarian."
+          },
+          {
+            "table": "products",
+            "column": "detailed_description",
+            "text": "Italian-made crackers, with the sublime taste of rosemary, make these crackers wonderful to eat with Casalinga Italian olives"
+          },
+          {
+            "table": "products",
+            "column": "other_information",
+            "text": "Keep in a cool, dry place, away from sources of heat."
+          },
+          {
+            "table": "products",
+            "column": "preparation_and_usage",
+            "text": "Ready to eat. The subtle hints of rosemary make this a wonderful cracker to eat with our Italian Olives."
+          },
+          {
+            "table": "products",
+            "column": "ingredients",
+            "text": "Soft WHEAT flour, olive oil, sunflower oil, salt, yeast, rosemary (0.9%), natural rosemary flavouring"
+          },
+          {
+            "table": "manufacturer_vegan_evidence",
+            "column": "dietaryInformation",
+            "text": "Vegan, Vegetarian."
+          }
+        ]
+      },
+      "source": "rule",
+      "model": null,
+      "reasoning_effort": null,
+      "prompt_version": null,
+      "context_hash": "49b3c5e29b8c30bf5f33e24aead02c6cd0764e0a6c1fe919f45ef985811fec02",
+      "raw_response": null,
+      "parsed_response_json": null,
+      "validation_error": null,
+      "exit_status": null,
+      "model_calls": []
+    }
+  },
+  {
+    "product_id": "662062011",
+    "name": "Casalinga Artisan Grissini with Cereals",
+    "url": "https://www.ocado.com/products/662062011",
+    "current_on_ocado": 1,
+    "previous_status": "unknown",
+    "previous_reason": null,
+    "candidate_status": "vegan",
+    "candidate_reason": "manufacturer",
+    "input_sha256": "de3765f96a0b7cc511d198b2be8dfee9acacf5103e3db4fd9492b3ce52c8841f",
+    "candidate": {
+      "product_id": "662062011",
+      "vegan_status": "vegan",
+      "vegan_reason": "manufacturer",
+      "confidence": "certain",
+      "summary": "Shared whole-product evidence policy: vegan",
+      "evidence": {
+        "rule": "whole_product_policy",
+        "vegan_status": "vegan",
+        "vegan_reason": "manufacturer",
+        "positive_block": false,
+        "policy_version": "whole-product-v2",
+        "knowledge_version": "vegan-risk-registry-v7",
+        "assessment": {
+          "identity": {
+            "status": "established",
+            "evidence_refs": [
+              {
+                "path": "/product/name",
+                "quote": "Casalinga Artisan Grissini with Cereals"
+              }
+            ]
+          },
+          "composition": {
+            "status": "covered_by_claim",
+            "evidence_refs": [
+              {
+                "path": "/product/dietary_information",
+                "quote": "Vegan, Vegetarian."
+              }
+            ]
+          },
+          "sourcing": {
+            "status": "covered_by_claim",
+            "evidence_refs": [
+              {
+                "path": "/product/dietary_information",
+                "quote": "Vegan, Vegetarian."
+              }
+            ]
+          },
+          "processing": {
+            "status": "covered_by_claim",
+            "evidence_refs": [
+              {
+                "path": "/product/dietary_information",
+                "quote": "Vegan, Vegetarian."
+              }
+            ]
+          },
+          "components": {
+            "status": "covered_by_claim",
+            "evidence_refs": [
+              {
+                "path": "/product/dietary_information",
+                "quote": "Vegan, Vegetarian."
+              }
+            ]
+          },
+          "positive_support": [
+            {
+              "reason": "manufacturer",
+              "evidence_refs": [
+                {
+                  "path": "/product/dietary_information",
+                  "quote": "Vegan, Vegetarian."
+                }
+              ]
+            }
+          ],
+          "material_issues": [
+            {
+              "code": "source_unresolved",
+              "target": "whole_product",
+              "rule_id": "unspecified-composition-v1",
+              "evidence_refs": [
+                {
+                  "path": "/product/ingredients",
+                  "quote": "\"Soft Wheat Flour, Cereals & Seed Mix (10,8%) (Soft Wheat Flour, Sesame Seeds, Wholemeal Soya, Maize Flour, Linseed, Wholemeal Rye Flour, Oat Flakes, Sourdough dried by natural fermentation (Wheat), Barley Flour, Millet, Wheat Gluten, Malted Wheat Flour, Flour treatment agent: ascorbic acid), Olive Oil, Iodised Salt (Salt, Potassium iodide), Yeast, Natural Rosemary Flavouring.\""
+                }
+              ],
+              "resolution_refs": [
+                {
+                  "path": "/product/dietary_information",
+                  "quote": "Vegan, Vegetarian."
+                }
+              ],
+              "blocks_claim": false
+            },
+            {
+              "code": "composition_incomplete",
+              "target": "supplied components",
+              "rule_id": "supplied-components-composition-v1",
+              "evidence_refs": [
+                {
+                  "path": "/product/package_type",
+                  "quote": "Bag"
+                }
+              ],
+              "resolution_refs": [
+                {
+                  "path": "/product/dietary_information",
+                  "quote": "Vegan, Vegetarian."
+                }
+              ],
+              "blocks_claim": false
+            }
+          ],
+          "source_applicability": []
+        },
+        "tag_animal_conflict": false,
+        "matched_patterns": [],
+        "sources": [
+          {
+            "table": "products",
+            "column": "dietary_information",
+            "text": "Vegan, Vegetarian."
+          },
+          {
+            "table": "products",
+            "column": "detailed_description",
+            "text": "These delicious breadsticks with cereals are baked in Ferrara, Italy."
+          },
+          {
+            "table": "products",
+            "column": "other_information",
+            "text": "Keep in a cool, dry place, away from sources of heat."
+          },
+          {
+            "table": "products",
+            "column": "preparation_and_usage",
+            "text": "We love to wrap them with thin slices of prosciutto and pair with a chilled Italian Prosecco."
+          },
+          {
+            "table": "products",
+            "column": "ingredients",
+            "text": "\"Soft Wheat Flour, Cereals & Seed Mix (10,8%) (Soft Wheat Flour, Sesame Seeds, Wholemeal Soya, Maize Flour, Linseed, Wholemeal Rye Flour, Oat Flakes, Sourdough dried by natural fermentation (Wheat), Barley Flour, Millet, Wheat Gluten, Malted Wheat Flour, Flour treatment agent: ascorbic acid), Olive Oil, Iodised Salt (Salt, Potassium iodide), Yeast, Natural Rosemary Flavouring.\""
+          },
+          {
+            "table": "manufacturer_vegan_evidence",
+            "column": "dietaryInformation",
+            "text": "Vegan, Vegetarian."
+          }
+        ]
+      },
+      "source": "rule",
+      "model": null,
+      "reasoning_effort": null,
+      "prompt_version": null,
+      "context_hash": "de3765f96a0b7cc511d198b2be8dfee9acacf5103e3db4fd9492b3ce52c8841f",
+      "raw_response": null,
+      "parsed_response_json": null,
+      "validation_error": null,
+      "exit_status": null,
+      "model_calls": []
+    }
+  },
+  {
+    "product_id": "662063011",
+    "name": "Casalinga Artisan Grissini Torinesi",
+    "url": "https://www.ocado.com/products/662063011",
+    "current_on_ocado": 1,
+    "previous_status": "unknown",
+    "previous_reason": null,
+    "candidate_status": "vegan",
+    "candidate_reason": "manufacturer",
+    "input_sha256": "f56286cb088406459d374e3074bdef2b640894831598613a0c7c89ffdcf31958",
+    "candidate": {
+      "product_id": "662063011",
+      "vegan_status": "vegan",
+      "vegan_reason": "manufacturer",
+      "confidence": "certain",
+      "summary": "Shared whole-product evidence policy: vegan",
+      "evidence": {
+        "rule": "whole_product_policy",
+        "vegan_status": "vegan",
+        "vegan_reason": "manufacturer",
+        "positive_block": false,
+        "policy_version": "whole-product-v2",
+        "knowledge_version": "vegan-risk-registry-v7",
+        "assessment": {
+          "identity": {
+            "status": "established",
+            "evidence_refs": [
+              {
+                "path": "/product/name",
+                "quote": "Casalinga Artisan Grissini Torinesi"
+              }
+            ]
+          },
+          "composition": {
+            "status": "covered_by_claim",
+            "evidence_refs": [
+              {
+                "path": "/product/dietary_information",
+                "quote": "Vegan, Vegetarian."
+              }
+            ]
+          },
+          "sourcing": {
+            "status": "covered_by_claim",
+            "evidence_refs": [
+              {
+                "path": "/product/dietary_information",
+                "quote": "Vegan, Vegetarian."
+              }
+            ]
+          },
+          "processing": {
+            "status": "covered_by_claim",
+            "evidence_refs": [
+              {
+                "path": "/product/dietary_information",
+                "quote": "Vegan, Vegetarian."
+              }
+            ]
+          },
+          "components": {
+            "status": "covered_by_claim",
+            "evidence_refs": [
+              {
+                "path": "/product/dietary_information",
+                "quote": "Vegan, Vegetarian."
+              }
+            ]
+          },
+          "positive_support": [
+            {
+              "reason": "manufacturer",
+              "evidence_refs": [
+                {
+                  "path": "/product/dietary_information",
+                  "quote": "Vegan, Vegetarian."
+                }
+              ]
+            }
+          ],
+          "material_issues": [
+            {
+              "code": "source_unresolved",
+              "target": "whole_product",
+              "rule_id": "unspecified-composition-v1",
+              "evidence_refs": [
+                {
+                  "path": "/product/ingredients",
+                  "quote": "Soft Wheat Flour, Extra Virgin Olive Oil (3.5%), Olive oil, Iodised salt (Salt, Potassium Iodide), Yeast, Soft Wheat Flour, Malted Wheat Flour, Emulsifier (Mono- and Diacetyltartaric Acid Esters of Mono- and diglycerides of fatty acids), Natural Rosemary Flavouring."
+                }
+              ],
+              "resolution_refs": [
+                {
+                  "path": "/product/dietary_information",
+                  "quote": "Vegan, Vegetarian."
+                }
+              ],
+              "blocks_claim": false
+            },
+            {
+              "code": "composition_incomplete",
+              "target": "supplied components",
+              "rule_id": "supplied-components-composition-v1",
+              "evidence_refs": [
+                {
+                  "path": "/product/package_type",
+                  "quote": "Bag"
+                }
+              ],
+              "resolution_refs": [
+                {
+                  "path": "/product/dietary_information",
+                  "quote": "Vegan, Vegetarian."
+                }
+              ],
+              "blocks_claim": false
+            }
+          ],
+          "source_applicability": []
+        },
+        "tag_animal_conflict": false,
+        "matched_patterns": [],
+        "sources": [
+          {
+            "table": "products",
+            "column": "dietary_information",
+            "text": "Vegan, Vegetarian."
+          },
+          {
+            "table": "products",
+            "column": "detailed_description",
+            "text": "Artisan made breadsticks. Thin, light and beautifully crispy, these breadsticks are baked to an age-old recipe. 1 Star Great Taste Award Winner."
+          },
+          {
+            "table": "products",
+            "column": "other_information",
+            "text": "1 Star Great Taste Award Winner. Keep in a cool, dry place, away from sources of heat."
+          },
+          {
+            "table": "products",
+            "column": "preparation_and_usage",
+            "text": "Ready to eat. Delicious dipped in baked cheese or in one of our bruschetta dips."
+          },
+          {
+            "table": "products",
+            "column": "ingredients",
+            "text": "Soft Wheat Flour, Extra Virgin Olive Oil (3.5%), Olive oil, Iodised salt (Salt, Potassium Iodide), Yeast, Soft Wheat Flour, Malted Wheat Flour, Emulsifier (Mono- and Diacetyltartaric Acid Esters of Mono- and diglycerides of fatty acids), Natural Rosemary Flavouring."
+          },
+          {
+            "table": "manufacturer_vegan_evidence",
+            "column": "dietaryInformation",
+            "text": "Vegan, Vegetarian."
+          }
+        ]
+      },
+      "source": "rule",
+      "model": null,
+      "reasoning_effort": null,
+      "prompt_version": null,
+      "context_hash": "f56286cb088406459d374e3074bdef2b640894831598613a0c7c89ffdcf31958",
+      "raw_response": null,
+      "parsed_response_json": null,
+      "validation_error": null,
+      "exit_status": null,
+      "model_calls": []
+    }
+  },
+  {
+    "product_id": "682269011",
+    "name": "Jude Bladder Health Supplements",
+    "url": "https://www.ocado.com/products/682269011",
+    "current_on_ocado": 1,
+    "previous_status": "unknown",
+    "previous_reason": null,
+    "candidate_status": "vegan",
+    "candidate_reason": "manufacturer",
+    "input_sha256": "fc906626ace86c7565c43e004c724df0210fd6d1276431bf8e0110b6552b0d06",
+    "candidate": {
+      "product_id": "682269011",
+      "vegan_status": "vegan",
+      "vegan_reason": "manufacturer",
+      "confidence": "certain",
+      "summary": "Shared whole-product evidence policy: vegan",
+      "evidence": {
+        "rule": "whole_product_policy",
+        "vegan_status": "vegan",
+        "vegan_reason": "manufacturer",
+        "positive_block": false,
+        "policy_version": "whole-product-v2",
+        "knowledge_version": "vegan-risk-registry-v7",
+        "assessment": {
+          "identity": {
+            "status": "established",
+            "evidence_refs": [
+              {
+                "path": "/product/name",
+                "quote": "Jude Bladder Health Supplements"
+              }
+            ]
+          },
+          "composition": {
+            "status": "covered_by_claim",
+            "evidence_refs": [
+              {
+                "path": "/product/dietary_information",
+                "quote": "Gluten Free, Vegan, Vegetarian"
+              }
+            ]
+          },
+          "sourcing": {
+            "status": "covered_by_claim",
+            "evidence_refs": [
+              {
+                "path": "/product/dietary_information",
+                "quote": "Gluten Free, Vegan, Vegetarian"
+              }
+            ]
+          },
+          "processing": {
+            "status": "covered_by_claim",
+            "evidence_refs": [
+              {
+                "path": "/product/dietary_information",
+                "quote": "Gluten Free, Vegan, Vegetarian"
+              }
+            ]
+          },
+          "components": {
+            "status": "covered_by_claim",
+            "evidence_refs": [
+              {
+                "path": "/product/dietary_information",
+                "quote": "Gluten Free, Vegan, Vegetarian"
+              }
+            ]
+          },
+          "positive_support": [
+            {
+              "reason": "manufacturer",
+              "evidence_refs": [
+                {
+                  "path": "/product/dietary_information",
+                  "quote": "Gluten Free, Vegan, Vegetarian"
+                }
+              ]
+            }
+          ],
+          "material_issues": [
+            {
+              "code": "source_unresolved",
+              "target": "whole_product",
+              "rule_id": "unspecified-composition-v1",
+              "evidence_refs": [
+                {
+                  "path": "/product/ingredients",
+                  "quote": "Pumpkin Seed Extract (Cucurbita Pepo L), Capsule Shell (HydroxyPropylMethylCellulose, Colours: Annatto, Iron Oxide Yellow, Iron Oxide Red), Bulking Agent (Microcrystalline Cellulose), Maltodextrin, Soy Germ extract (Glycine max L.), Magnesium Oxide, Lubricant (Magnesium Stearate), Sage Leaf 10:1 Extract 4% Rosmarinic Acid, Antioxidant (Rosemary Leaf Extract 90% Carnosic Acid), Anti-Caking agent (Silicon Dioxide), Bifidobacterium lactis, Zinc Citrate Dihydrate, Vitamin B3 (Nicotinamide), Vegan Vitamin D3 (Cholecalciferol), Vitamin B6 (Pyridoxine Hydrochloride)."
+                }
+              ],
+              "resolution_refs": [
+                {
+                  "path": "/product/dietary_information",
+                  "quote": "Gluten Free, Vegan, Vegetarian"
+                }
+              ],
+              "blocks_claim": false
+            },
+            {
+              "code": "composition_incomplete",
+              "target": "supplied components",
+              "rule_id": "supplied-components-composition-v1",
+              "evidence_refs": [
+                {
+                  "path": "/product/package_type",
+                  "quote": "Cardboard Box + Plastic Tub"
+                }
+              ],
+              "resolution_refs": [
+                {
+                  "path": "/product/dietary_information",
+                  "quote": "Gluten Free, Vegan, Vegetarian"
+                }
+              ],
+              "blocks_claim": false
+            }
+          ],
+          "source_applicability": []
+        },
+        "tag_animal_conflict": false,
+        "matched_patterns": [],
+        "sources": [
+          {
+            "table": "products",
+            "column": "dietary_information",
+            "text": "Gluten Free, Vegan, Vegetarian"
+          },
+          {
+            "table": "products",
+            "column": "features",
+            "text": "\u25cf Urobiome support - clever bacteria added for better absorption and to nourish urobiome balance \u25cf Min-muscle connection - support neurotransmitter synthesis and muscle function \u25cf Rich amino acid profile - ais protein synthesis to help maintain healthy muscle tissue"
+          },
+          {
+            "table": "products",
+            "column": "detailed_description",
+            "text": "Your bladder and pelvic floor do serious work. They lift, stabilise and give you strength. Made up of hardworking muscles and resilient tissues, like any part of your body that works hard, they deserve nourishment that truly understands them. At the heart of our formula is a rare strain of Cucurbita Pepo, only found in the Austrian. These nutrient-dense seeds are a plant-based source of L-Arginine \u2014 an amino acid found in our muscles and tissues. Precisely blended with bifidobacterium lactis and soy isoflavones \u2014 specifically selected for their quality, natural origin, and independent scientific research. This clever bacteria blended with isoflavones supports your urobiome with better absorption. Together, they form a daily foundation of support, designed to nourish the systems that matter most as we age. Vegan-friendly. Gluten-free. Made in the UK. For daily strength, steady support, and a body that backs you. At Jude, we believe our pelvic health is part of women\u2019s strength \u2014 but it\u2019s long been ignored, whispered about, or shrugged off as \u201cjust part of ageing.\u201d Jude exists to change that. Jude was created to support people seeking strength, steadiness, and confidence with science-backed, stigma-free solutions rooted in care. Our approach is grounded in science, guided by deep respect for women\u2019s biology, and refined alongside experts in bladder and muscle health. From supplements to pads to supportive communities, we\u2019re building a new standard \u2014 one that puts dignity, confidence, and daily strength back into your hands."
+          },
+          {
+            "table": "products",
+            "column": "other_information",
+            "text": "Food Supplements should not be used as a substitue for a varied and balanced diet and a healthy lifestyle. Always consult a healthcare practitioner if you are experiencing any concerns with frequency of urination, have an existing medical condition or are taking any medicatoin. Not suitable for under 18s, pregnant or breastfeeding women or those trying to conceive."
+          },
+          {
+            "table": "products",
+            "column": "preparation_and_usage",
+            "text": "Take 2 tablets a day. For best results take the supplements every day. We recommend taking these supplements for a minimum of 12 weeks. Please take with a glass of water."
+          },
+          {
+            "table": "products",
+            "column": "ingredients",
+            "text": "Pumpkin Seed Extract (Cucurbita Pepo L), Capsule Shell (HydroxyPropylMethylCellulose, Colours: Annatto, Iron Oxide Yellow, Iron Oxide Red), Bulking Agent (Microcrystalline Cellulose), Maltodextrin, Soy Germ extract (Glycine max L.), Magnesium Oxide, Lubricant (Magnesium Stearate), Sage Leaf 10:1 Extract 4% Rosmarinic Acid, Antioxidant (Rosemary Leaf Extract 90% Carnosic Acid), Anti-Caking agent (Silicon Dioxide), Bifidobacterium lactis, Zinc Citrate Dihydrate, Vitamin B3 (Nicotinamide), Vegan Vitamin D3 (Cholecalciferol), Vitamin B6 (Pyridoxine Hydrochloride)."
+          },
+          {
+            "table": "manufacturer_vegan_evidence",
+            "column": "ingredients",
+            "text": "Pumpkin Seed Extract (Cucurbita Pepo L), Capsule Shell (HydroxyPropylMethylCellulose, Colours: Annatto, Iron Oxide Yellow, Iron Oxide Red), Bulking Agent (Microcrystalline Cellulose), Maltodextrin, Soy Germ extract (Glycine max L.), Magnesium Oxide, Lubricant (Magnesium Stearate), Sage Leaf 10:1 Extract 4% Rosmarinic Acid, Antioxidant (Rosemary Leaf Extract 90% Carnosic Acid), Anti-Caking agent (Silicon Dioxide), Bifidobacterium lactis, Zinc Citrate Dihydrate, Vitamin B3 (Nicotinamide), Vegan Vitamin D3 (Cholecalciferol), Vitamin B6 (Pyridoxine Hydrochloride)."
+          },
+          {
+            "table": "manufacturer_vegan_evidence",
+            "column": "dietaryInformation",
+            "text": "Gluten Free, Vegan, Vegetarian"
+          }
+        ]
+      },
+      "source": "rule",
+      "model": null,
+      "reasoning_effort": null,
+      "prompt_version": null,
+      "context_hash": "fc906626ace86c7565c43e004c724df0210fd6d1276431bf8e0110b6552b0d06",
+      "raw_response": null,
+      "parsed_response_json": null,
+      "validation_error": null,
+      "exit_status": null,
+      "model_calls": []
+    }
+  }
+]

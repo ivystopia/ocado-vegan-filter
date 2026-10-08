@@ -1,0 +1,44 @@
+{
+  "cases": 24,
+  "scored_cases": 8,
+  "operational_errors": [],
+  "missing_cases": [
+    "natural.530031011",
+    "natural.565041011",
+    "natural.587218011",
+    "natural.587219011",
+    "natural.602406011",
+    "natural.602407011",
+    "natural.622692011",
+    "natural.694248011",
+    "natural.694648011",
+    "synthetic.brand-claim.0",
+    "synthetic.brand-claim.1",
+    "synthetic.brand-claim.4",
+    "synthetic.brand-claim.5",
+    "synthetic.name-scope.0",
+    "synthetic.name-scope.1",
+    "synthetic.name-scope.2"
+  ],
+  "mismatches": [
+    "synthetic.brand-claim.2"
+  ],
+  "reason_errors": [
+    "natural.634499011"
+  ],
+  "unsafe_positives": [],
+  "primary_disagreements": [],
+  "arbitrated_cases": [],
+  "state": "checkpointed",
+  "all_attempt_usage": {
+    "calls": 9,
+    "failed_calls": 6,
+    "guard_rejections": 2,
+    "missing_usage_calls": 0,
+    "input_tokens": 119490,
+    "cached_input_tokens": 0,
+    "output_tokens": 81967,
+    "reasoning_output_tokens": 55881
+  },
+  "release_qualified": false
+}

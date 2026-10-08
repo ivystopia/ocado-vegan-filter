@@ -1,0 +1,78 @@
+{
+  "case_id": "synthetic.faq-component-scope.4",
+  "input_sha256": "6d885b3285c7d0ddb6f822daf37d8da80c1e508e44d656e4b94a6cfb95b41dc3",
+  "classifier_version": "db-vegan-codex-v48",
+  "construction": "Adds only the already-supplied exact FAQ question to each pass positive_support; original labels/inputs/raw readings remain unchanged. No new model call. A constructed proof replay diagnoses missing first-pass positive-basis evidence, not fresh qualification.",
+  "readings": [
+    {
+      "pass": 1,
+      "actual_raw_status": "vegan",
+      "actual_raw_reason": "manufacturer",
+      "actual_positive_support": [
+        {
+          "reason": "manufacturer",
+          "evidence_refs": [
+            {
+              "path": "/manufacturer_source_candidates/0/source_text",
+              "quote": "No animal-derived materials or processes are used."
+            }
+          ]
+        }
+      ],
+      "actual_gate_status": "unknown",
+      "actual_gate_reason": null,
+      "constructed_positive_support": [
+        {
+          "reason": "manufacturer",
+          "evidence_refs": [
+            {
+              "path": "/manufacturer_source_candidates/0/source_text",
+              "quote": "No animal-derived materials or processes are used."
+            },
+            {
+              "path": "/manufacturer_source_candidates/0/source_text",
+              "quote": "Is this complete product, including all its packaging, vegan?"
+            }
+          ]
+        }
+      ],
+      "constructed_gate_status": "vegan",
+      "constructed_gate_reason": "manufacturer"
+    },
+    {
+      "pass": 2,
+      "actual_raw_status": "vegan",
+      "actual_raw_reason": "manufacturer",
+      "actual_positive_support": [
+        {
+          "reason": "manufacturer",
+          "evidence_refs": [
+            {
+              "path": "/manufacturer_source_candidates/0/source_text",
+              "quote": "Is this complete product, including all its packaging, vegan?\nNo animal-derived materials or processes are used."
+            }
+          ]
+        }
+      ],
+      "actual_gate_status": "vegan",
+      "actual_gate_reason": "manufacturer",
+      "constructed_positive_support": [
+        {
+          "reason": "manufacturer",
+          "evidence_refs": [
+            {
+              "path": "/manufacturer_source_candidates/0/source_text",
+              "quote": "Is this complete product, including all its packaging, vegan?\nNo animal-derived materials or processes are used."
+            },
+            {
+              "path": "/manufacturer_source_candidates/0/source_text",
+              "quote": "Is this complete product, including all its packaging, vegan?"
+            }
+          ]
+        }
+      ],
+      "constructed_gate_status": "vegan",
+      "constructed_gate_reason": "manufacturer"
+    }
+  ]
+}

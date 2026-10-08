@@ -1,0 +1,246 @@
+{
+  "case_id": "synthetic.liquid-processing.1.5",
+  "classifier_version": "db-vegan-codex-v52",
+  "classifier_input": {
+    "product": {
+      "id": "907000012",
+      "name": "Example Cider Vinegar",
+      "ingredients": "Apples, Water",
+      "features": "All production stages including ingredient and precursor production are animal-free."
+    },
+    "flags": [],
+    "categories": [],
+    "manufacturer_vegan_evidence": []
+  },
+  "raw_readings": [
+    {
+      "product_id": "907000012",
+      "vegan_status": "vegan",
+      "vegan_reason": "manufacturer",
+      "confidence": "certain",
+      "summary": "The product information gives an affirmative product-level animal-free production assurance covering ingredients and precursors, resolving the vinegar clarification and production risk.",
+      "evidence": [
+        "/product/name: Example Cider Vinegar",
+        "/product/ingredients: Apples, Water",
+        "/product/features: All production stages including ingredient and precursor production are animal-free."
+      ],
+      "ambiguity_notes": [],
+      "assessment": {
+        "identity": {
+          "status": "established",
+          "evidence_refs": [
+            {
+              "path": "/product/name",
+              "quote": "Example Cider Vinegar"
+            }
+          ]
+        },
+        "composition": {
+          "status": "established",
+          "evidence_refs": [
+            {
+              "path": "/product/ingredients",
+              "quote": "Apples, Water"
+            }
+          ]
+        },
+        "sourcing": {
+          "status": "covered_by_claim",
+          "evidence_refs": [
+            {
+              "path": "/product/features",
+              "quote": "All production stages including ingredient and precursor production are animal-free."
+            }
+          ]
+        },
+        "processing": {
+          "status": "covered_by_claim",
+          "evidence_refs": [
+            {
+              "path": "/product/features",
+              "quote": "All production stages including ingredient and precursor production are animal-free."
+            }
+          ]
+        },
+        "components": {
+          "status": "established",
+          "evidence_refs": [
+            {
+              "path": "/product/name",
+              "quote": "Example Cider Vinegar"
+            }
+          ]
+        },
+        "positive_support": [
+          {
+            "reason": "manufacturer",
+            "evidence_refs": [
+              {
+                "path": "/product/features",
+                "quote": "All production stages including ingredient and precursor production are animal-free."
+              }
+            ]
+          },
+          {
+            "reason": "ingredients",
+            "evidence_refs": [
+              {
+                "path": "/product/ingredients",
+                "quote": "Apples, Water"
+              },
+              {
+                "path": "/product/features",
+                "quote": "All production stages including ingredient and precursor production are animal-free."
+              }
+            ]
+          }
+        ],
+        "material_issues": [
+          {
+            "code": "processing_unresolved",
+            "target": "cider vinegar clarification and precursor production",
+            "rule_id": "liquid-clarification-v1",
+            "evidence_refs": [
+              {
+                "path": "/product/name",
+                "quote": "Example Cider Vinegar"
+              }
+            ],
+            "resolution_refs": [
+              {
+                "path": "/product/features",
+                "quote": "All production stages including ingredient and precursor production are animal-free."
+              }
+            ],
+            "blocks_claim": false
+          }
+        ],
+        "source_applicability": []
+      }
+    },
+    {
+      "product_id": "907000012",
+      "vegan_status": "vegan",
+      "vegan_reason": "manufacturer",
+      "confidence": "certain",
+      "summary": "The product-information feature states that all production stages, including ingredient and precursor production, are animal-free; this resolves the cider-vinegar processing concern.",
+      "evidence": [
+        "/product/name: \"Example Cider Vinegar\"",
+        "/product/ingredients: \"Apples, Water\"",
+        "/product/features: \"All production stages including ingredient and precursor production are animal-free.\""
+      ],
+      "ambiguity_notes": [],
+      "assessment": {
+        "identity": {
+          "status": "established",
+          "evidence_refs": [
+            {
+              "path": "/product/name",
+              "quote": "Example Cider Vinegar"
+            }
+          ]
+        },
+        "composition": {
+          "status": "established",
+          "evidence_refs": [
+            {
+              "path": "/product/ingredients",
+              "quote": "Apples, Water"
+            }
+          ]
+        },
+        "sourcing": {
+          "status": "covered_by_claim",
+          "evidence_refs": [
+            {
+              "path": "/product/features",
+              "quote": "All production stages including ingredient and precursor production are animal-free."
+            }
+          ]
+        },
+        "processing": {
+          "status": "covered_by_claim",
+          "evidence_refs": [
+            {
+              "path": "/product/features",
+              "quote": "All production stages including ingredient and precursor production are animal-free."
+            }
+          ]
+        },
+        "components": {
+          "status": "established",
+          "evidence_refs": [
+            {
+              "path": "/product/name",
+              "quote": "Example Cider Vinegar"
+            }
+          ]
+        },
+        "positive_support": [
+          {
+            "reason": "manufacturer",
+            "evidence_refs": [
+              {
+                "path": "/product/features",
+                "quote": "All production stages including ingredient and precursor production are animal-free."
+              }
+            ]
+          },
+          {
+            "reason": "ingredients",
+            "evidence_refs": [
+              {
+                "path": "/product/ingredients",
+                "quote": "Apples, Water"
+              }
+            ]
+          }
+        ],
+        "material_issues": [
+          {
+            "code": "processing_unresolved",
+            "target": "Cider-vinegar clarification and precursor processing",
+            "rule_id": "liquid-clarification-v1",
+            "evidence_refs": [
+              {
+                "path": "/product/name",
+                "quote": "Example Cider Vinegar"
+              }
+            ],
+            "resolution_refs": [
+              {
+                "path": "/product/features",
+                "quote": "All production stages including ingredient and precursor production are animal-free."
+              }
+            ],
+            "blocks_claim": false
+          }
+        ],
+        "source_applicability": []
+      }
+    }
+  ],
+  "replay": [
+    {
+      "requested_reason": "manufacturer",
+      "vegan_status": "unknown",
+      "vegan_reason": null
+    },
+    {
+      "requested_reason": "ingredients",
+      "vegan_status": "vegan",
+      "vegan_reason": "ingredients"
+    },
+    {
+      "requested_reason": "manufacturer",
+      "vegan_status": "unknown",
+      "vegan_reason": null
+    },
+    {
+      "requested_reason": "ingredients",
+      "vegan_status": "vegan",
+      "vegan_reason": "ingredients"
+    }
+  ],
+  "note": "Actual unchanged model assessments, with only requested reason varied for diagnosis. Not new evidence or a qualifying model run."
+}

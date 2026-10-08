@@ -1,0 +1,52 @@
+{
+  "case_id": "synthetic.faq-component-scope.3",
+  "expected": {
+    "vegan_status": "vegan",
+    "vegan_reason": "manufacturer",
+    "required_issue_codes": []
+  },
+  "final_status": "unknown",
+  "readings": [
+    {
+      "pass": 1,
+      "raw_status": "vegan",
+      "raw_reason": "manufacturer",
+      "positive_support_refs": [
+        {
+          "path": "/manufacturer_source_candidates/0/source_text",
+          "quote": "No animal-derived materials or processes are used."
+        }
+      ],
+      "includes_question_ref": false,
+      "applicable_source": true,
+      "reference_claims": [
+        false
+      ],
+      "faq_pairs": [
+        false
+      ]
+    },
+    {
+      "pass": 2,
+      "raw_status": "vegan",
+      "raw_reason": "manufacturer",
+      "positive_support_refs": [
+        {
+          "path": "/manufacturer_source_candidates/0/source_text",
+          "quote": "Is this product vegan?\nNo animal-derived materials or processes are used."
+        }
+      ],
+      "includes_question_ref": true,
+      "applicable_source": true,
+      "reference_claims": [
+        false
+      ],
+      "faq_pairs": [
+        true
+      ]
+    }
+  ],
+  "finding": "Both raw readings propose vegan/manufacturer. The first omits the whole-product question needed to bind its non-vegan-word answer; the second supplies the question/answer and passes the scoped FAQ predicate. Agreement alone cannot repair the first incomplete proof, and the strict gate rejects the merged decision. No implementation defect established.",
+  "code_changed": false,
+  "labels_changed": false
+}

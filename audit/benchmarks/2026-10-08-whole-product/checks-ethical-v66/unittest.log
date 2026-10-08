@@ -1,0 +1,823 @@
+Benchmark cohort challenge: 24 products
+Benchmark cohort holdout: 24 products
+...Benchmark cohort challenge: 24 products
+Benchmark cohort holdout: 24 products
+...............gpt-6-luna/high pipeline run 1: 1/5
+................gpt-6-luna/high pipeline run 1: 5/5
+..gpt-6-luna/high pipeline run 1: 1/5
+gpt-6-luna/high pipeline run 1: 2/5
+gpt-6-luna/high pipeline run 1: 3/5
+gpt-6-luna/high pipeline run 1: 4/5
+gpt-6-luna/high pipeline run 1: 5/5
+.....gpt-6-luna/high rules run 1: 5/5
+..................Codex batch 1/1: products 1-1 of 1
+..Codex batch 1/1: products 1-1 of 1
+........................................................  pass 1/2, attempt 1
+  pass 2/2, attempt 1
+.  pass 1/2, attempt 1
+  pass 2/2, attempt 1
+  pass 1/2, attempt 1
+  pass 2/2, attempt 1
+.  pass 1/2, attempt 1
+  pass 2/2, attempt 1
+  pass 1/2, attempt 1
+  pass 2/2, attempt 1
+.  pass 1/2, attempt 1
+  pass 2/2, attempt 1
+  pass 1/2, attempt 1
+  pass 2/2, attempt 1
+.  pass 1/2, attempt 1
+  pass 2/2, attempt 1
+  pass 1/2, attempt 1
+.  pass 1/2, attempt 1
+  splitting failed batch of 2 into 1 and 1: split
+    pass 1/2, attempt 1
+    pass 2/2, attempt 1
+    pass 1/2, attempt 1
+    pass 2/2, attempt 1
+.  pass 1/2, attempt 1
+  pass 2/2, attempt 1
+  pass 1/2, attempt 1
+  pass 2/2, attempt 1
+/usr/lib/python3.13/json/encoder.py:261: ResourceWarning: unclosed database in <sqlite3.Connection object at 0x7f54a3dca110>
+  return _iterencode(o, 0)
+ResourceWarning: Enable tracemalloc to get the object allocation traceback
+/usr/lib/python3.13/json/encoder.py:261: ResourceWarning: unclosed database in <sqlite3.Connection object at 0x7f54a39af4c0>
+  return _iterencode(o, 0)
+ResourceWarning: Enable tracemalloc to get the object allocation traceback
+  pass 1/2, attempt 1
+  pass 2/2, attempt 1
+  pass 1/2, attempt 1
+  pass 2/2, attempt 1
+.  pass 1/2, attempt 1
+  pass 2/2, attempt 1
+  pass 1/2, attempt 1
+.  pass 1/2, attempt 1
+.Codex batch 1/1: products 1-1 of 1
+  pass 1/2, attempt 1
+  pass 2/2, attempt 1
+  pass 1/2, attempt 1
+  pass 2/2, attempt 1
+Codex batch 1/1: products 1-1 of 1
+  pass 1/2, attempt 1
+  pass 2/2, attempt 1
+  pass 1/2, attempt 1
+..  pass 1/2, attempt 1
+  pass 2/2, attempt 1
+  pass 1/2, attempt 1
+  pass 2/2, attempt 1
+..  pass 1/2, attempt 1
+  pass 2/2, attempt 1
+  pass 1/2, attempt 1
+  pass 2/2, attempt 1
+  pass 1/2, attempt 1
+  pass 2/2, attempt 1
+  pass 1/2, attempt 1
+  pass 2/2, attempt 1
+.  pass 1/2, attempt 1
+  pass 2/2, attempt 1
+  pass 1/2, attempt 1
+....F......EEEEEEEEsEEEEE.E.....userscript source test passed
+Snapshotted classifier context for 1 products
+Reusing classifier context from the unfinished sync
+Context changes new=1 changed=1 removed=0 invalidated=2
+...../home/ivy/repos/personal/ocado_report/tools/vegan_policy.py:190: ResourceWarning: unclosed database in <sqlite3.Connection object at 0x7f54a31766b0>
+  extra = set(value) - set(properties)
+ResourceWarning: Enable tracemalloc to get the object allocation traceback
+................................................/usr/lib/python3.13/json/decoder.py:361: ResourceWarning: unclosed database in <sqlite3.Connection object at 0x7f54a39af100>
+  obj, end = self.scan_once(s, idx)
+ResourceWarning: Enable tracemalloc to get the object allocation traceback
+/usr/lib/python3.13/json/decoder.py:361: ResourceWarning: unclosed database in <sqlite3.Connection object at 0x7f54a31766b0>
+  obj, end = self.scan_once(s, idx)
+ResourceWarning: Enable tracemalloc to get the object allocation traceback
+/usr/lib/python3.13/json/decoder.py:361: ResourceWarning: unclosed database in <sqlite3.Connection object at 0x7f54a31762f0>
+  obj, end = self.scan_once(s, idx)
+ResourceWarning: Enable tracemalloc to get the object allocation traceback
+/usr/lib/python3.13/json/decoder.py:361: ResourceWarning: unclosed database in <sqlite3.Connection object at 0x7f54a3176200>
+  obj, end = self.scan_once(s, idx)
+ResourceWarning: Enable tracemalloc to get the object allocation traceback
+/usr/lib/python3.13/json/decoder.py:361: ResourceWarning: unclosed database in <sqlite3.Connection object at 0x7f54a3176110>
+  obj, end = self.scan_once(s, idx)
+ResourceWarning: Enable tracemalloc to get the object allocation traceback
+...............................................................................................
+======================================================================
+ERROR: test_cloned_muted_buttons_can_be_reclassified (test_ocado_vegan_filter.UserscriptTests.test_cloned_muted_buttons_can_be_reclassified)
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "/home/ivy/repos/personal/ocado_report/.venv/lib/python3.13/site-packages/selenium/webdriver/common/utils.py", line 38, in free_port
+    free_socket = socket.socket(socket.AF_INET, socket.SOCK_STREAM)
+  File "/usr/lib/python3.13/socket.py", line 233, in __init__
+    _socket.socket.__init__(self, family, type, proto, fileno)
+    ~~~~~~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+PermissionError: [Errno 1] Operation not permitted
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "/home/ivy/repos/personal/ocado_report/.venv/lib/python3.13/site-packages/selenium/webdriver/common/utils.py", line 45, in free_port
+    free_socket = socket.socket(socket.AF_INET6, socket.SOCK_STREAM)
+  File "/usr/lib/python3.13/socket.py", line 233, in __init__
+    _socket.socket.__init__(self, family, type, proto, fileno)
+    ~~~~~~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+PermissionError: [Errno 1] Operation not permitted
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "/home/ivy/repos/personal/ocado_report/tests/test_ocado_vegan_filter.py", line 877, in test_cloned_muted_buttons_can_be_reclassified
+    driver = headless_firefox()
+  File "/home/ivy/repos/personal/ocado_report/tests/test_ocado_vegan_filter.py", line 55, in headless_firefox
+    return webdriver.Firefox(options=options)
+           ~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^
+  File "/home/ivy/repos/personal/ocado_report/.venv/lib/python3.13/site-packages/selenium/webdriver/firefox/webdriver.py", line 51, in __init__
+    self.service = service if service else Service()
+                                           ~~~~~~~^^
+  File "/home/ivy/repos/personal/ocado_report/.venv/lib/python3.13/site-packages/selenium/webdriver/firefox/service.py", line 70, in __init__
+    super().__init__(
+    ~~~~~~~~~~~~~~~~^
+        executable_path=executable_path,
+        ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+    ...<4 lines>...
+        **kwargs,
+        ^^^^^^^^^
+    )
+    ^
+  File "/home/ivy/repos/personal/ocado_report/.venv/lib/python3.13/site-packages/selenium/webdriver/common/service.py", line 73, in __init__
+    self.port = port or utils.free_port()
+                        ~~~~~~~~~~~~~~~^^
+  File "/home/ivy/repos/personal/ocado_report/.venv/lib/python3.13/site-packages/selenium/webdriver/common/utils.py", line 50, in free_port
+    raise RuntimeError("Can't find free port (Unable to bind to IPv4 or IPv6)")
+RuntimeError: Can't find free port (Unable to bind to IPv4 or IPv6)
+
+======================================================================
+ERROR: test_css_preserves_normal_image_styles_and_lazy_sources (test_ocado_vegan_filter.UserscriptTests.test_css_preserves_normal_image_styles_and_lazy_sources)
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "/home/ivy/repos/personal/ocado_report/.venv/lib/python3.13/site-packages/selenium/webdriver/common/utils.py", line 38, in free_port
+    free_socket = socket.socket(socket.AF_INET, socket.SOCK_STREAM)
+  File "/usr/lib/python3.13/socket.py", line 233, in __init__
+    _socket.socket.__init__(self, family, type, proto, fileno)
+    ~~~~~~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+PermissionError: [Errno 1] Operation not permitted
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "/home/ivy/repos/personal/ocado_report/.venv/lib/python3.13/site-packages/selenium/webdriver/common/utils.py", line 45, in free_port
+    free_socket = socket.socket(socket.AF_INET6, socket.SOCK_STREAM)
+  File "/usr/lib/python3.13/socket.py", line 233, in __init__
+    _socket.socket.__init__(self, family, type, proto, fileno)
+    ~~~~~~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+PermissionError: [Errno 1] Operation not permitted
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "/home/ivy/repos/personal/ocado_report/tests/test_ocado_vegan_filter.py", line 932, in test_css_preserves_normal_image_styles_and_lazy_sources
+    driver = headless_firefox()
+  File "/home/ivy/repos/personal/ocado_report/tests/test_ocado_vegan_filter.py", line 55, in headless_firefox
+    return webdriver.Firefox(options=options)
+           ~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^
+  File "/home/ivy/repos/personal/ocado_report/.venv/lib/python3.13/site-packages/selenium/webdriver/firefox/webdriver.py", line 51, in __init__
+    self.service = service if service else Service()
+                                           ~~~~~~~^^
+  File "/home/ivy/repos/personal/ocado_report/.venv/lib/python3.13/site-packages/selenium/webdriver/firefox/service.py", line 70, in __init__
+    super().__init__(
+    ~~~~~~~~~~~~~~~~^
+        executable_path=executable_path,
+        ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+    ...<4 lines>...
+        **kwargs,
+        ^^^^^^^^^
+    )
+    ^
+  File "/home/ivy/repos/personal/ocado_report/.venv/lib/python3.13/site-packages/selenium/webdriver/common/service.py", line 73, in __init__
+    self.port = port or utils.free_port()
+                        ~~~~~~~~~~~~~~~^^
+  File "/home/ivy/repos/personal/ocado_report/.venv/lib/python3.13/site-packages/selenium/webdriver/common/utils.py", line 50, in free_port
+    raise RuntimeError("Can't find free port (Unable to bind to IPv4 or IPv6)")
+RuntimeError: Can't find free port (Unable to bind to IPv4 or IPv6)
+
+======================================================================
+ERROR: test_fixture (test_ocado_vegan_filter.UserscriptTests.test_fixture)
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "/home/ivy/repos/personal/ocado_report/.venv/lib/python3.13/site-packages/selenium/webdriver/common/utils.py", line 38, in free_port
+    free_socket = socket.socket(socket.AF_INET, socket.SOCK_STREAM)
+  File "/usr/lib/python3.13/socket.py", line 233, in __init__
+    _socket.socket.__init__(self, family, type, proto, fileno)
+    ~~~~~~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+PermissionError: [Errno 1] Operation not permitted
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "/home/ivy/repos/personal/ocado_report/.venv/lib/python3.13/site-packages/selenium/webdriver/common/utils.py", line 45, in free_port
+    free_socket = socket.socket(socket.AF_INET6, socket.SOCK_STREAM)
+  File "/usr/lib/python3.13/socket.py", line 233, in __init__
+    _socket.socket.__init__(self, family, type, proto, fileno)
+    ~~~~~~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+PermissionError: [Errno 1] Operation not permitted
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "/home/ivy/repos/personal/ocado_report/tests/test_ocado_vegan_filter.py", line 1004, in test_fixture
+    fixture_smoke_test()
+    ~~~~~~~~~~~~~~~~~~^^
+  File "/home/ivy/repos/personal/ocado_report/tests/test_ocado_vegan_filter.py", line 248, in fixture_smoke_test
+    driver = headless_firefox()
+  File "/home/ivy/repos/personal/ocado_report/tests/test_ocado_vegan_filter.py", line 55, in headless_firefox
+    return webdriver.Firefox(options=options)
+           ~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^
+  File "/home/ivy/repos/personal/ocado_report/.venv/lib/python3.13/site-packages/selenium/webdriver/firefox/webdriver.py", line 51, in __init__
+    self.service = service if service else Service()
+                                           ~~~~~~~^^
+  File "/home/ivy/repos/personal/ocado_report/.venv/lib/python3.13/site-packages/selenium/webdriver/firefox/service.py", line 70, in __init__
+    super().__init__(
+    ~~~~~~~~~~~~~~~~^
+        executable_path=executable_path,
+        ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+    ...<4 lines>...
+        **kwargs,
+        ^^^^^^^^^
+    )
+    ^
+  File "/home/ivy/repos/personal/ocado_report/.venv/lib/python3.13/site-packages/selenium/webdriver/common/service.py", line 73, in __init__
+    self.port = port or utils.free_port()
+                        ~~~~~~~~~~~~~~~^^
+  File "/home/ivy/repos/personal/ocado_report/.venv/lib/python3.13/site-packages/selenium/webdriver/common/utils.py", line 50, in free_port
+    raise RuntimeError("Can't find free port (Unable to bind to IPv4 or IPv6)")
+RuntimeError: Can't find free port (Unable to bind to IPv4 or IPv6)
+
+======================================================================
+ERROR: test_host_updates_survive_muting_and_reclassification (test_ocado_vegan_filter.UserscriptTests.test_host_updates_survive_muting_and_reclassification)
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "/home/ivy/repos/personal/ocado_report/.venv/lib/python3.13/site-packages/selenium/webdriver/common/utils.py", line 38, in free_port
+    free_socket = socket.socket(socket.AF_INET, socket.SOCK_STREAM)
+  File "/usr/lib/python3.13/socket.py", line 233, in __init__
+    _socket.socket.__init__(self, family, type, proto, fileno)
+    ~~~~~~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+PermissionError: [Errno 1] Operation not permitted
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "/home/ivy/repos/personal/ocado_report/.venv/lib/python3.13/site-packages/selenium/webdriver/common/utils.py", line 45, in free_port
+    free_socket = socket.socket(socket.AF_INET6, socket.SOCK_STREAM)
+  File "/usr/lib/python3.13/socket.py", line 233, in __init__
+    _socket.socket.__init__(self, family, type, proto, fileno)
+    ~~~~~~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+PermissionError: [Errno 1] Operation not permitted
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "/home/ivy/repos/personal/ocado_report/tests/test_ocado_vegan_filter.py", line 960, in test_host_updates_survive_muting_and_reclassification
+    driver = headless_firefox()
+  File "/home/ivy/repos/personal/ocado_report/tests/test_ocado_vegan_filter.py", line 55, in headless_firefox
+    return webdriver.Firefox(options=options)
+           ~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^
+  File "/home/ivy/repos/personal/ocado_report/.venv/lib/python3.13/site-packages/selenium/webdriver/firefox/webdriver.py", line 51, in __init__
+    self.service = service if service else Service()
+                                           ~~~~~~~^^
+  File "/home/ivy/repos/personal/ocado_report/.venv/lib/python3.13/site-packages/selenium/webdriver/firefox/service.py", line 70, in __init__
+    super().__init__(
+    ~~~~~~~~~~~~~~~~^
+        executable_path=executable_path,
+        ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+    ...<4 lines>...
+        **kwargs,
+        ^^^^^^^^^
+    )
+    ^
+  File "/home/ivy/repos/personal/ocado_report/.venv/lib/python3.13/site-packages/selenium/webdriver/common/service.py", line 73, in __init__
+    self.port = port or utils.free_port()
+                        ~~~~~~~~~~~~~~~^^
+  File "/home/ivy/repos/personal/ocado_report/.venv/lib/python3.13/site-packages/selenium/webdriver/common/utils.py", line 50, in free_port
+    raise RuntimeError("Can't find free port (Unable to bind to IPv4 or IPv6)")
+RuntimeError: Can't find free port (Unable to bind to IPv4 or IPv6)
+
+======================================================================
+ERROR: test_image_ownership (test_ocado_vegan_filter.UserscriptTests.test_image_ownership)
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "/home/ivy/repos/personal/ocado_report/.venv/lib/python3.13/site-packages/selenium/webdriver/common/utils.py", line 38, in free_port
+    free_socket = socket.socket(socket.AF_INET, socket.SOCK_STREAM)
+  File "/usr/lib/python3.13/socket.py", line 233, in __init__
+    _socket.socket.__init__(self, family, type, proto, fileno)
+    ~~~~~~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+PermissionError: [Errno 1] Operation not permitted
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "/home/ivy/repos/personal/ocado_report/.venv/lib/python3.13/site-packages/selenium/webdriver/common/utils.py", line 45, in free_port
+    free_socket = socket.socket(socket.AF_INET6, socket.SOCK_STREAM)
+  File "/usr/lib/python3.13/socket.py", line 233, in __init__
+    _socket.socket.__init__(self, family, type, proto, fileno)
+    ~~~~~~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+PermissionError: [Errno 1] Operation not permitted
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "/home/ivy/repos/personal/ocado_report/tests/test_ocado_vegan_filter.py", line 1010, in test_image_ownership
+    image_ownership_smoke_test()
+    ~~~~~~~~~~~~~~~~~~~~~~~~~~^^
+  File "/home/ivy/repos/personal/ocado_report/tests/test_ocado_vegan_filter.py", line 551, in image_ownership_smoke_test
+    driver = headless_firefox()
+  File "/home/ivy/repos/personal/ocado_report/tests/test_ocado_vegan_filter.py", line 55, in headless_firefox
+    return webdriver.Firefox(options=options)
+           ~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^
+  File "/home/ivy/repos/personal/ocado_report/.venv/lib/python3.13/site-packages/selenium/webdriver/firefox/webdriver.py", line 51, in __init__
+    self.service = service if service else Service()
+                                           ~~~~~~~^^
+  File "/home/ivy/repos/personal/ocado_report/.venv/lib/python3.13/site-packages/selenium/webdriver/firefox/service.py", line 70, in __init__
+    super().__init__(
+    ~~~~~~~~~~~~~~~~^
+        executable_path=executable_path,
+        ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+    ...<4 lines>...
+        **kwargs,
+        ^^^^^^^^^
+    )
+    ^
+  File "/home/ivy/repos/personal/ocado_report/.venv/lib/python3.13/site-packages/selenium/webdriver/common/service.py", line 73, in __init__
+    self.port = port or utils.free_port()
+                        ~~~~~~~~~~~~~~~^^
+  File "/home/ivy/repos/personal/ocado_report/.venv/lib/python3.13/site-packages/selenium/webdriver/common/utils.py", line 50, in free_port
+    raise RuntimeError("Can't find free port (Unable to bind to IPv4 or IPv6)")
+RuntimeError: Can't find free port (Unable to bind to IPv4 or IPv6)
+
+======================================================================
+ERROR: test_image_rendering (test_ocado_vegan_filter.UserscriptTests.test_image_rendering)
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "/home/ivy/repos/personal/ocado_report/.venv/lib/python3.13/site-packages/selenium/webdriver/common/utils.py", line 38, in free_port
+    free_socket = socket.socket(socket.AF_INET, socket.SOCK_STREAM)
+  File "/usr/lib/python3.13/socket.py", line 233, in __init__
+    _socket.socket.__init__(self, family, type, proto, fileno)
+    ~~~~~~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+PermissionError: [Errno 1] Operation not permitted
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "/home/ivy/repos/personal/ocado_report/.venv/lib/python3.13/site-packages/selenium/webdriver/common/utils.py", line 45, in free_port
+    free_socket = socket.socket(socket.AF_INET6, socket.SOCK_STREAM)
+  File "/usr/lib/python3.13/socket.py", line 233, in __init__
+    _socket.socket.__init__(self, family, type, proto, fileno)
+    ~~~~~~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+PermissionError: [Errno 1] Operation not permitted
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "/home/ivy/repos/personal/ocado_report/tests/test_ocado_vegan_filter.py", line 1007, in test_image_rendering
+    image_rendering_smoke_test()
+    ~~~~~~~~~~~~~~~~~~~~~~~~~~^^
+  File "/home/ivy/repos/personal/ocado_report/tests/test_ocado_vegan_filter.py", line 595, in image_rendering_smoke_test
+    driver = headless_firefox()
+  File "/home/ivy/repos/personal/ocado_report/tests/test_ocado_vegan_filter.py", line 55, in headless_firefox
+    return webdriver.Firefox(options=options)
+           ~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^
+  File "/home/ivy/repos/personal/ocado_report/.venv/lib/python3.13/site-packages/selenium/webdriver/firefox/webdriver.py", line 51, in __init__
+    self.service = service if service else Service()
+                                           ~~~~~~~^^
+  File "/home/ivy/repos/personal/ocado_report/.venv/lib/python3.13/site-packages/selenium/webdriver/firefox/service.py", line 70, in __init__
+    super().__init__(
+    ~~~~~~~~~~~~~~~~^
+        executable_path=executable_path,
+        ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+    ...<4 lines>...
+        **kwargs,
+        ^^^^^^^^^
+    )
+    ^
+  File "/home/ivy/repos/personal/ocado_report/.venv/lib/python3.13/site-packages/selenium/webdriver/common/service.py", line 73, in __init__
+    self.port = port or utils.free_port()
+                        ~~~~~~~~~~~~~~~^^
+  File "/home/ivy/repos/personal/ocado_report/.venv/lib/python3.13/site-packages/selenium/webdriver/common/utils.py", line 50, in free_port
+    raise RuntimeError("Can't find free port (Unable to bind to IPv4 or IPv6)")
+RuntimeError: Can't find free port (Unable to bind to IPv4 or IPv6)
+
+======================================================================
+ERROR: test_incremental_updates (test_ocado_vegan_filter.UserscriptTests.test_incremental_updates)
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "/home/ivy/repos/personal/ocado_report/.venv/lib/python3.13/site-packages/selenium/webdriver/common/utils.py", line 38, in free_port
+    free_socket = socket.socket(socket.AF_INET, socket.SOCK_STREAM)
+  File "/usr/lib/python3.13/socket.py", line 233, in __init__
+    _socket.socket.__init__(self, family, type, proto, fileno)
+    ~~~~~~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+PermissionError: [Errno 1] Operation not permitted
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "/home/ivy/repos/personal/ocado_report/.venv/lib/python3.13/site-packages/selenium/webdriver/common/utils.py", line 45, in free_port
+    free_socket = socket.socket(socket.AF_INET6, socket.SOCK_STREAM)
+  File "/usr/lib/python3.13/socket.py", line 233, in __init__
+    _socket.socket.__init__(self, family, type, proto, fileno)
+    ~~~~~~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+PermissionError: [Errno 1] Operation not permitted
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "/home/ivy/repos/personal/ocado_report/tests/test_ocado_vegan_filter.py", line 1013, in test_incremental_updates
+    incremental_updates_smoke_test()
+    ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~^^
+  File "/home/ivy/repos/personal/ocado_report/tests/test_ocado_vegan_filter.py", line 510, in incremental_updates_smoke_test
+    driver = headless_firefox()
+  File "/home/ivy/repos/personal/ocado_report/tests/test_ocado_vegan_filter.py", line 55, in headless_firefox
+    return webdriver.Firefox(options=options)
+           ~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^
+  File "/home/ivy/repos/personal/ocado_report/.venv/lib/python3.13/site-packages/selenium/webdriver/firefox/webdriver.py", line 51, in __init__
+    self.service = service if service else Service()
+                                           ~~~~~~~^^
+  File "/home/ivy/repos/personal/ocado_report/.venv/lib/python3.13/site-packages/selenium/webdriver/firefox/service.py", line 70, in __init__
+    super().__init__(
+    ~~~~~~~~~~~~~~~~^
+        executable_path=executable_path,
+        ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+    ...<4 lines>...
+        **kwargs,
+        ^^^^^^^^^
+    )
+    ^
+  File "/home/ivy/repos/personal/ocado_report/.venv/lib/python3.13/site-packages/selenium/webdriver/common/service.py", line 73, in __init__
+    self.port = port or utils.free_port()
+                        ~~~~~~~~~~~~~~~^^
+  File "/home/ivy/repos/personal/ocado_report/.venv/lib/python3.13/site-packages/selenium/webdriver/common/utils.py", line 50, in free_port
+    raise RuntimeError("Can't find free port (Unable to bind to IPv4 or IPv6)")
+RuntimeError: Can't find free port (Unable to bind to IPv4 or IPv6)
+
+======================================================================
+ERROR: test_keyboard_and_changed_counter_attributes (test_ocado_vegan_filter.UserscriptTests.test_keyboard_and_changed_counter_attributes)
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "/home/ivy/repos/personal/ocado_report/.venv/lib/python3.13/site-packages/selenium/webdriver/common/utils.py", line 38, in free_port
+    free_socket = socket.socket(socket.AF_INET, socket.SOCK_STREAM)
+  File "/usr/lib/python3.13/socket.py", line 233, in __init__
+    _socket.socket.__init__(self, family, type, proto, fileno)
+    ~~~~~~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+PermissionError: [Errno 1] Operation not permitted
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "/home/ivy/repos/personal/ocado_report/.venv/lib/python3.13/site-packages/selenium/webdriver/common/utils.py", line 45, in free_port
+    free_socket = socket.socket(socket.AF_INET6, socket.SOCK_STREAM)
+  File "/usr/lib/python3.13/socket.py", line 233, in __init__
+    _socket.socket.__init__(self, family, type, proto, fileno)
+    ~~~~~~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+PermissionError: [Errno 1] Operation not permitted
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "/home/ivy/repos/personal/ocado_report/tests/test_ocado_vegan_filter.py", line 902, in test_keyboard_and_changed_counter_attributes
+    driver = headless_firefox()
+  File "/home/ivy/repos/personal/ocado_report/tests/test_ocado_vegan_filter.py", line 55, in headless_firefox
+    return webdriver.Firefox(options=options)
+           ~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^
+  File "/home/ivy/repos/personal/ocado_report/.venv/lib/python3.13/site-packages/selenium/webdriver/firefox/webdriver.py", line 51, in __init__
+    self.service = service if service else Service()
+                                           ~~~~~~~^^
+  File "/home/ivy/repos/personal/ocado_report/.venv/lib/python3.13/site-packages/selenium/webdriver/firefox/service.py", line 70, in __init__
+    super().__init__(
+    ~~~~~~~~~~~~~~~~^
+        executable_path=executable_path,
+        ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+    ...<4 lines>...
+        **kwargs,
+        ^^^^^^^^^
+    )
+    ^
+  File "/home/ivy/repos/personal/ocado_report/.venv/lib/python3.13/site-packages/selenium/webdriver/common/service.py", line 73, in __init__
+    self.port = port or utils.free_port()
+                        ~~~~~~~~~~~~~~~^^
+  File "/home/ivy/repos/personal/ocado_report/.venv/lib/python3.13/site-packages/selenium/webdriver/common/utils.py", line 50, in free_port
+    raise RuntimeError("Can't find free port (Unable to bind to IPv4 or IPv6)")
+RuntimeError: Can't find free port (Unable to bind to IPv4 or IPv6)
+
+======================================================================
+ERROR: test_malformed_hydration (test_ocado_vegan_filter.UserscriptTests.test_malformed_hydration)
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "/home/ivy/repos/personal/ocado_report/.venv/lib/python3.13/site-packages/selenium/webdriver/common/utils.py", line 38, in free_port
+    free_socket = socket.socket(socket.AF_INET, socket.SOCK_STREAM)
+  File "/usr/lib/python3.13/socket.py", line 233, in __init__
+    _socket.socket.__init__(self, family, type, proto, fileno)
+    ~~~~~~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+PermissionError: [Errno 1] Operation not permitted
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "/home/ivy/repos/personal/ocado_report/.venv/lib/python3.13/site-packages/selenium/webdriver/common/utils.py", line 45, in free_port
+    free_socket = socket.socket(socket.AF_INET6, socket.SOCK_STREAM)
+  File "/usr/lib/python3.13/socket.py", line 233, in __init__
+    _socket.socket.__init__(self, family, type, proto, fileno)
+    ~~~~~~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+PermissionError: [Errno 1] Operation not permitted
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "/home/ivy/repos/personal/ocado_report/tests/test_ocado_vegan_filter.py", line 1019, in test_malformed_hydration
+    malformed_hydration_smoke_test()
+    ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~^^
+  File "/home/ivy/repos/personal/ocado_report/tests/test_ocado_vegan_filter.py", line 453, in malformed_hydration_smoke_test
+    driver = headless_firefox()
+  File "/home/ivy/repos/personal/ocado_report/tests/test_ocado_vegan_filter.py", line 55, in headless_firefox
+    return webdriver.Firefox(options=options)
+           ~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^
+  File "/home/ivy/repos/personal/ocado_report/.venv/lib/python3.13/site-packages/selenium/webdriver/firefox/webdriver.py", line 51, in __init__
+    self.service = service if service else Service()
+                                           ~~~~~~~^^
+  File "/home/ivy/repos/personal/ocado_report/.venv/lib/python3.13/site-packages/selenium/webdriver/firefox/service.py", line 70, in __init__
+    super().__init__(
+    ~~~~~~~~~~~~~~~~^
+        executable_path=executable_path,
+        ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+    ...<4 lines>...
+        **kwargs,
+        ^^^^^^^^^
+    )
+    ^
+  File "/home/ivy/repos/personal/ocado_report/.venv/lib/python3.13/site-packages/selenium/webdriver/common/service.py", line 73, in __init__
+    self.port = port or utils.free_port()
+                        ~~~~~~~~~~~~~~~^^
+  File "/home/ivy/repos/personal/ocado_report/.venv/lib/python3.13/site-packages/selenium/webdriver/common/utils.py", line 50, in free_port
+    raise RuntimeError("Can't find free port (Unable to bind to IPv4 or IPv6)")
+RuntimeError: Can't find free port (Unable to bind to IPv4 or IPv6)
+
+======================================================================
+ERROR: test_native_button_classes_survive_while_muted (test_ocado_vegan_filter.UserscriptTests.test_native_button_classes_survive_while_muted)
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "/home/ivy/repos/personal/ocado_report/.venv/lib/python3.13/site-packages/selenium/webdriver/common/utils.py", line 38, in free_port
+    free_socket = socket.socket(socket.AF_INET, socket.SOCK_STREAM)
+  File "/usr/lib/python3.13/socket.py", line 233, in __init__
+    _socket.socket.__init__(self, family, type, proto, fileno)
+    ~~~~~~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+PermissionError: [Errno 1] Operation not permitted
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "/home/ivy/repos/personal/ocado_report/.venv/lib/python3.13/site-packages/selenium/webdriver/common/utils.py", line 45, in free_port
+    free_socket = socket.socket(socket.AF_INET6, socket.SOCK_STREAM)
+  File "/usr/lib/python3.13/socket.py", line 233, in __init__
+    _socket.socket.__init__(self, family, type, proto, fileno)
+    ~~~~~~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+PermissionError: [Errno 1] Operation not permitted
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "/home/ivy/repos/personal/ocado_report/tests/test_ocado_vegan_filter.py", line 987, in test_native_button_classes_survive_while_muted
+    driver = headless_firefox()
+  File "/home/ivy/repos/personal/ocado_report/tests/test_ocado_vegan_filter.py", line 55, in headless_firefox
+    return webdriver.Firefox(options=options)
+           ~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^
+  File "/home/ivy/repos/personal/ocado_report/.venv/lib/python3.13/site-packages/selenium/webdriver/firefox/webdriver.py", line 51, in __init__
+    self.service = service if service else Service()
+                                           ~~~~~~~^^
+  File "/home/ivy/repos/personal/ocado_report/.venv/lib/python3.13/site-packages/selenium/webdriver/firefox/service.py", line 70, in __init__
+    super().__init__(
+    ~~~~~~~~~~~~~~~~^
+        executable_path=executable_path,
+        ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+    ...<4 lines>...
+        **kwargs,
+        ^^^^^^^^^
+    )
+    ^
+  File "/home/ivy/repos/personal/ocado_report/.venv/lib/python3.13/site-packages/selenium/webdriver/common/service.py", line 73, in __init__
+    self.port = port or utils.free_port()
+                        ~~~~~~~~~~~~~~~^^
+  File "/home/ivy/repos/personal/ocado_report/.venv/lib/python3.13/site-packages/selenium/webdriver/common/utils.py", line 50, in free_port
+    raise RuntimeError("Can't find free port (Unable to bind to IPv4 or IPv6)")
+RuntimeError: Can't find free port (Unable to bind to IPv4 or IPv6)
+
+======================================================================
+ERROR: test_recorded_identity_block_overrides_live_tag (test_ocado_vegan_filter.UserscriptTests.test_recorded_identity_block_overrides_live_tag)
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "/home/ivy/repos/personal/ocado_report/.venv/lib/python3.13/site-packages/selenium/webdriver/common/utils.py", line 38, in free_port
+    free_socket = socket.socket(socket.AF_INET, socket.SOCK_STREAM)
+  File "/usr/lib/python3.13/socket.py", line 233, in __init__
+    _socket.socket.__init__(self, family, type, proto, fileno)
+    ~~~~~~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+PermissionError: [Errno 1] Operation not permitted
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "/home/ivy/repos/personal/ocado_report/.venv/lib/python3.13/site-packages/selenium/webdriver/common/utils.py", line 45, in free_port
+    free_socket = socket.socket(socket.AF_INET6, socket.SOCK_STREAM)
+  File "/usr/lib/python3.13/socket.py", line 233, in __init__
+    _socket.socket.__init__(self, family, type, proto, fileno)
+    ~~~~~~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+PermissionError: [Errno 1] Operation not permitted
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "/home/ivy/repos/personal/ocado_report/tests/test_ocado_vegan_filter.py", line 851, in test_recorded_identity_block_overrides_live_tag
+    driver = headless_firefox()
+  File "/home/ivy/repos/personal/ocado_report/tests/test_ocado_vegan_filter.py", line 55, in headless_firefox
+    return webdriver.Firefox(options=options)
+           ~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^
+  File "/home/ivy/repos/personal/ocado_report/.venv/lib/python3.13/site-packages/selenium/webdriver/firefox/webdriver.py", line 51, in __init__
+    self.service = service if service else Service()
+                                           ~~~~~~~^^
+  File "/home/ivy/repos/personal/ocado_report/.venv/lib/python3.13/site-packages/selenium/webdriver/firefox/service.py", line 70, in __init__
+    super().__init__(
+    ~~~~~~~~~~~~~~~~^
+        executable_path=executable_path,
+        ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+    ...<4 lines>...
+        **kwargs,
+        ^^^^^^^^^
+    )
+    ^
+  File "/home/ivy/repos/personal/ocado_report/.venv/lib/python3.13/site-packages/selenium/webdriver/common/service.py", line 73, in __init__
+    self.port = port or utils.free_port()
+                        ~~~~~~~~~~~~~~~^^
+  File "/home/ivy/repos/personal/ocado_report/.venv/lib/python3.13/site-packages/selenium/webdriver/common/utils.py", line 50, in free_port
+    raise RuntimeError("Can't find free port (Unable to bind to IPv4 or IPv6)")
+RuntimeError: Can't find free port (Unable to bind to IPv4 or IPv6)
+
+======================================================================
+ERROR: test_recorded_nonvegan_overrides_live_tag_and_name (test_ocado_vegan_filter.UserscriptTests.test_recorded_nonvegan_overrides_live_tag_and_name)
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "/home/ivy/repos/personal/ocado_report/.venv/lib/python3.13/site-packages/selenium/webdriver/common/utils.py", line 38, in free_port
+    free_socket = socket.socket(socket.AF_INET, socket.SOCK_STREAM)
+  File "/usr/lib/python3.13/socket.py", line 233, in __init__
+    _socket.socket.__init__(self, family, type, proto, fileno)
+    ~~~~~~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+PermissionError: [Errno 1] Operation not permitted
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "/home/ivy/repos/personal/ocado_report/.venv/lib/python3.13/site-packages/selenium/webdriver/common/utils.py", line 45, in free_port
+    free_socket = socket.socket(socket.AF_INET6, socket.SOCK_STREAM)
+  File "/usr/lib/python3.13/socket.py", line 233, in __init__
+    _socket.socket.__init__(self, family, type, proto, fileno)
+    ~~~~~~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+PermissionError: [Errno 1] Operation not permitted
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "/home/ivy/repos/personal/ocado_report/tests/test_ocado_vegan_filter.py", line 865, in test_recorded_nonvegan_overrides_live_tag_and_name
+    driver = headless_firefox()
+  File "/home/ivy/repos/personal/ocado_report/tests/test_ocado_vegan_filter.py", line 55, in headless_firefox
+    return webdriver.Firefox(options=options)
+           ~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^
+  File "/home/ivy/repos/personal/ocado_report/.venv/lib/python3.13/site-packages/selenium/webdriver/firefox/webdriver.py", line 51, in __init__
+    self.service = service if service else Service()
+                                           ~~~~~~~^^
+  File "/home/ivy/repos/personal/ocado_report/.venv/lib/python3.13/site-packages/selenium/webdriver/firefox/service.py", line 70, in __init__
+    super().__init__(
+    ~~~~~~~~~~~~~~~~^
+        executable_path=executable_path,
+        ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+    ...<4 lines>...
+        **kwargs,
+        ^^^^^^^^^
+    )
+    ^
+  File "/home/ivy/repos/personal/ocado_report/.venv/lib/python3.13/site-packages/selenium/webdriver/common/service.py", line 73, in __init__
+    self.port = port or utils.free_port()
+                        ~~~~~~~~~~~~~~~^^
+  File "/home/ivy/repos/personal/ocado_report/.venv/lib/python3.13/site-packages/selenium/webdriver/common/utils.py", line 50, in free_port
+    raise RuntimeError("Can't find free port (Unable to bind to IPv4 or IPv6)")
+RuntimeError: Can't find free port (Unable to bind to IPv4 or IPv6)
+
+======================================================================
+ERROR: test_reused_counter (test_ocado_vegan_filter.UserscriptTests.test_reused_counter)
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "/home/ivy/repos/personal/ocado_report/.venv/lib/python3.13/site-packages/selenium/webdriver/common/utils.py", line 38, in free_port
+    free_socket = socket.socket(socket.AF_INET, socket.SOCK_STREAM)
+  File "/usr/lib/python3.13/socket.py", line 233, in __init__
+    _socket.socket.__init__(self, family, type, proto, fileno)
+    ~~~~~~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+PermissionError: [Errno 1] Operation not permitted
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "/home/ivy/repos/personal/ocado_report/.venv/lib/python3.13/site-packages/selenium/webdriver/common/utils.py", line 45, in free_port
+    free_socket = socket.socket(socket.AF_INET6, socket.SOCK_STREAM)
+  File "/usr/lib/python3.13/socket.py", line 233, in __init__
+    _socket.socket.__init__(self, family, type, proto, fileno)
+    ~~~~~~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+PermissionError: [Errno 1] Operation not permitted
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "/home/ivy/repos/personal/ocado_report/tests/test_ocado_vegan_filter.py", line 1016, in test_reused_counter
+    reused_counter_smoke_test()
+    ~~~~~~~~~~~~~~~~~~~~~~~~~^^
+  File "/home/ivy/repos/personal/ocado_report/tests/test_ocado_vegan_filter.py", line 471, in reused_counter_smoke_test
+    driver = headless_firefox()
+  File "/home/ivy/repos/personal/ocado_report/tests/test_ocado_vegan_filter.py", line 55, in headless_firefox
+    return webdriver.Firefox(options=options)
+           ~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^
+  File "/home/ivy/repos/personal/ocado_report/.venv/lib/python3.13/site-packages/selenium/webdriver/firefox/webdriver.py", line 51, in __init__
+    self.service = service if service else Service()
+                                           ~~~~~~~^^
+  File "/home/ivy/repos/personal/ocado_report/.venv/lib/python3.13/site-packages/selenium/webdriver/firefox/service.py", line 70, in __init__
+    super().__init__(
+    ~~~~~~~~~~~~~~~~^
+        executable_path=executable_path,
+        ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+    ...<4 lines>...
+        **kwargs,
+        ^^^^^^^^^
+    )
+    ^
+  File "/home/ivy/repos/personal/ocado_report/.venv/lib/python3.13/site-packages/selenium/webdriver/common/service.py", line 73, in __init__
+    self.port = port or utils.free_port()
+                        ~~~~~~~~~~~~~~~^^
+  File "/home/ivy/repos/personal/ocado_report/.venv/lib/python3.13/site-packages/selenium/webdriver/common/utils.py", line 50, in free_port
+    raise RuntimeError("Can't find free port (Unable to bind to IPv4 or IPv6)")
+RuntimeError: Can't find free port (Unable to bind to IPv4 or IPv6)
+
+======================================================================
+ERROR: test_unreviewed_name_and_slug_cannot_promote (test_ocado_vegan_filter.UserscriptTests.test_unreviewed_name_and_slug_cannot_promote)
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "/home/ivy/repos/personal/ocado_report/.venv/lib/python3.13/site-packages/selenium/webdriver/common/utils.py", line 38, in free_port
+    free_socket = socket.socket(socket.AF_INET, socket.SOCK_STREAM)
+  File "/usr/lib/python3.13/socket.py", line 233, in __init__
+    _socket.socket.__init__(self, family, type, proto, fileno)
+    ~~~~~~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+PermissionError: [Errno 1] Operation not permitted
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "/home/ivy/repos/personal/ocado_report/.venv/lib/python3.13/site-packages/selenium/webdriver/common/utils.py", line 45, in free_port
+    free_socket = socket.socket(socket.AF_INET6, socket.SOCK_STREAM)
+  File "/usr/lib/python3.13/socket.py", line 233, in __init__
+    _socket.socket.__init__(self, family, type, proto, fileno)
+    ~~~~~~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+PermissionError: [Errno 1] Operation not permitted
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "/home/ivy/repos/personal/ocado_report/tests/test_ocado_vegan_filter.py", line 841, in test_unreviewed_name_and_slug_cannot_promote
+    driver = headless_firefox()
+  File "/home/ivy/repos/personal/ocado_report/tests/test_ocado_vegan_filter.py", line 55, in headless_firefox
+    return webdriver.Firefox(options=options)
+           ~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^
+  File "/home/ivy/repos/personal/ocado_report/.venv/lib/python3.13/site-packages/selenium/webdriver/firefox/webdriver.py", line 51, in __init__
+    self.service = service if service else Service()
+                                           ~~~~~~~^^
+  File "/home/ivy/repos/personal/ocado_report/.venv/lib/python3.13/site-packages/selenium/webdriver/firefox/service.py", line 70, in __init__
+    super().__init__(
+    ~~~~~~~~~~~~~~~~^
+        executable_path=executable_path,
+        ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+    ...<4 lines>...
+        **kwargs,
+        ^^^^^^^^^
+    )
+    ^
+  File "/home/ivy/repos/personal/ocado_report/.venv/lib/python3.13/site-packages/selenium/webdriver/common/service.py", line 73, in __init__
+    self.port = port or utils.free_port()
+                        ~~~~~~~~~~~~~~~^^
+  File "/home/ivy/repos/personal/ocado_report/.venv/lib/python3.13/site-packages/selenium/webdriver/common/utils.py", line 50, in free_port
+    raise RuntimeError("Can't find free port (Unable to bind to IPv4 or IPv6)")
+RuntimeError: Can't find free port (Unable to bind to IPv4 or IPv6)
+
+======================================================================
+FAIL: test_legacy_classifier_defaults_to_luna_high (test_ocado_vegan_according_to_ingredients.VeganAccordingToIngredientsTests.test_legacy_classifier_defaults_to_luna_high)
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "/home/ivy/repos/personal/ocado_report/tests/test_ocado_vegan_according_to_ingredients.py", line 89, in test_legacy_classifier_defaults_to_luna_high
+    self.assertEqual(args.model, "gpt-6-luna")
+    ~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^
+AssertionError: 'gpt-5.6-luna' != 'gpt-6-luna'
+- gpt-5.6-luna
+?     --
++ gpt-6-luna
+
+
+----------------------------------------------------------------------
+Ran 311 tests in 3.899s
+
+FAILED (failures=1, errors=14, skipped=1)

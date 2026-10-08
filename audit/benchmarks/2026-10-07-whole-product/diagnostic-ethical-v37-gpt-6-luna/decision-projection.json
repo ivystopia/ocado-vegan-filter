@@ -1,0 +1,11 @@
+{
+  "original_run_sha256": "dea3677646ac666789a9ea5fa0aebb487b1ceb05ee6134ab6a52cea85a4e2f81",
+  "retained_projection_sha256": "79078e5ce9b260d09ae06f345f143a7455642afb685cc2b4660f6353b1c89e89",
+  "omitted_model_call_fields": [
+    "events",
+    "invocation",
+    "quota_before"
+  ],
+  "original_retained_locally": true,
+  "note": "Shareable projection preserves source decisions, citations, usage, errors and scores; complete original journals/checkpoints remain local and ignored."
+}

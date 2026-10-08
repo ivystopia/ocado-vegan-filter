@@ -1,0 +1,33 @@
+{
+  "state": "failed",
+  "error": "'official_identity'",
+  "successful": false,
+  "scored_cases": 0,
+  "metrics_available": false,
+  "failure_attribution": "fixture_metadata",
+  "all_attempt_usage": {
+    "calls": 16,
+    "failed_calls": 7,
+    "guard_rejections": 0,
+    "missing_usage_calls": 0,
+    "input_tokens": 252991,
+    "cached_input_tokens": 19968,
+    "output_tokens": 59967,
+    "reasoning_output_tokens": 23105
+  },
+  "usage_by_stage_model": {
+    "primary:gpt-6-luna:high": {
+      "calls": 16,
+      "failed_calls": 7,
+      "guard_rejections": 0,
+      "missing_usage_calls": 0,
+      "input_tokens": 252991,
+      "cached_input_tokens": 19968,
+      "output_tokens": 59967,
+      "reasoning_output_tokens": 23105
+    }
+  },
+  "credit_proxy": 1.337137,
+  "release_qualified": false,
+  "note": "The database roundtrip failed before any case was persisted/scored. Raw attempted assessments and retries remain retained; this harness failure cannot disqualify a model or justify expensive-primary escalation."
+}

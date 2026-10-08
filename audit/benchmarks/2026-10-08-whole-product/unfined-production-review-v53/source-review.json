@@ -1,0 +1,23 @@
+{
+  "review_state": "source-backed-reference-challenge; running candidate and original score unchanged",
+  "retrieved_date": "2026-10-08",
+  "verified_sources": [
+    {
+      "url": "https://www.oiv.int/standards/international-oenological-codex/part-i-monographs/monographs/lysozyme",
+      "fact": "OIV identifies its oenological lysozyme as hen egg-white extract, used against bacteria in musts and wines."
+    },
+    {
+      "url": "https://www.oiv.int/standards/international-code-of-oenological-practices/part-ii-oenological-treatments-and-practices/musts/lysozyme-treatment",
+      "fact": "OIV admits lysozyme as a processing aid added to must to control bacteria during alcoholic fermentation."
+    },
+    {
+      "url": "https://www.oiv.int/standards/international-code-of-oenological-practices/part-ii-oenological-treatments-and-practices/wines/fining",
+      "fact": "OIV defines fining separately as clarification through precipitation/sedimentation or coagulation."
+    }
+  ],
+  "inference": "Absence of fining alone does not establish absence of animal-derived inputs at other production stages. The supplied grapes list and unfined assertion do not answer the documented non-fining mechanism. This is an evidence-sufficiency concern, not proof a specific wine is nonvegan or a UK legal opinion.",
+  "case_id": "synthetic.process-certainty.10",
+  "original_expectation_retained": true,
+  "model_agreement_is_not_reference_method": true,
+  "canonical_changes": 0
+}

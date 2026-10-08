@@ -1,0 +1,17 @@
+{
+  "all_retained_repetitions": [
+    {
+      "repetition": 1,
+      "original_run_sha256": "a17367b00b66a6f7ca12ce7e9902e199b1c1a23566398e13babb617dfa18a3e5",
+      "retained_projection_sha256": "c90cb90d842a70366872755dfdb5c46d20a3e66b7edc2d7656a2b2f53dae5513",
+      "retained_copy": "cited-decisions-run-1.json.gz",
+      "omitted_model_call_fields": [
+        "events",
+        "invocation",
+        "quota_before"
+      ],
+      "original_retained_locally": true
+    }
+  ],
+  "raw_input_and_model_evidence_not_rewritten": true
+}

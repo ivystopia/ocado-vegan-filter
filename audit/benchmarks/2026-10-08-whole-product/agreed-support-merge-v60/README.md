@@ -1,0 +1,9 @@
+# Preserve both agreeing readings’ positive evidence
+
+The actual retained v29 FAQ.3 pair had two vegan/manufacturer answers with different precise citations. The v59 merger retained only the first reading’s positive_support, so changing the same actual pair’s order changed the final result. pre-edit-actual-pair-and-impact.json retains the original source, raw readings, order contrast and read-only impact before editing. No expectation/source was changed.
+
+V60 deduplicates exact positive references by reason in canonical order across both agreeing assessments. Existing unions of issues/unresolved dimensions and the requirement for source applicability in both readings remain. Agreement is still status/reason agreement; arbitration triggers and independence are unchanged. Regressions reject missing question evidence, mismatched source scope, unresolved processing/identity, another question’s answer and actual animal content.
+
+actual-pairs-after-v61.json replays 64 actual agreeing pairs from the stopped stage against the merger plus the later full-answer safety repair; only FAQ.3 changes, becoming vegan/manufacturer in both orders through repeated gates. The other 136 saved decisions were not remerged. No fresh model call was performed by this replay and it cannot qualify the candidate. The merger does not run in deterministic rules, so deterministic promotion impact is zero; no canonical product used these recent candidate versions in the read-only snapshot. Legacy unstructured audits cannot predict future semantic migration impact.
+
+The following v61 repair separately retains three constructed answer-scope safety contrasts under ../faq-answer-scope-v61/. All pre-edit artifacts and stopped model attempts remain unchanged. No defaults, catalogue decisions, embedded IDs or installed userscript were activated.

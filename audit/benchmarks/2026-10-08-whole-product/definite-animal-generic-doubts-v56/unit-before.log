@@ -1,0 +1,17 @@
+.......................................F......................................................................................
+======================================================================
+FAIL: test_definite_animal_proof_is_not_vetoed_by_other_generic_unknowns (test_whole_product_policy.WholeProductPolicyTests.test_definite_animal_proof_is_not_vetoed_by_other_generic_unknowns) (text='This wine is processed with egg white during must preparation.', identity='established', conflict=False)
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "/home/ivy/repos/personal/ocado_report/tests/test_whole_product_policy.py", line 250, in test_definite_animal_proof_is_not_vetoed_by_other_generic_unknowns
+    self.assertEqual(outcome['vegan_status'], expected, stage)
+    ~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+AssertionError: 'unknown' != 'nonvegan'
+- unknown
++ nonvegan
+ : model
+
+----------------------------------------------------------------------
+Ran 126 tests in 0.488s
+
+FAILED (failures=1)

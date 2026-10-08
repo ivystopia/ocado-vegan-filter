@@ -1,0 +1,21 @@
+{
+  "fixture": "benchmarks/vegan-classifier-v2/ethical-cases-v27.json",
+  "isolated_roundtrips": [
+    {
+      "split": "synthetic",
+      "frozen_cases": 485,
+      "isolated_roundtrip_rows": 485
+    },
+    {
+      "split": "development",
+      "frozen_cases": 413,
+      "isolated_roundtrip_rows": 413
+    },
+    {
+      "split": "workload",
+      "frozen_cases": 200,
+      "isolated_roundtrip_rows": 200
+    }
+  ],
+  "source_database_modified": false
+}

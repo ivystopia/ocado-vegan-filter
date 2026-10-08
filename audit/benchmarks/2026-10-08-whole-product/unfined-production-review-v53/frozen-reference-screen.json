@@ -1,0 +1,101 @@
+{
+  "method": "Protected locked evidence excluded. Original contexts and expectations unchanged. Mechanism screen, not automatic reference correction.",
+  "cases": [
+    {
+      "case_id": "synthetic.process-certainty.2",
+      "expected": {
+        "vegan_status": "vegan",
+        "vegan_reason": "ingredients",
+        "required_issue_codes": []
+      },
+      "product": {
+        "id": "993600002",
+        "name": "Example Wine",
+        "brand": "Example Producer",
+        "ingredients": "Grapes",
+        "official_vegan": 0,
+        "features": "This wine uses animal-free fining agents."
+      },
+      "adjudication": {
+        "state": "accepted",
+        "reference_type": "explicit-policy-contract",
+        "policy_knowledge_refs": [
+          "wine-fining-v1"
+        ],
+        "rationale": "A supplied definite process fact can resolve its relevant registry mechanism for the ingredient/composition route. Uncertain or negated process facts do not. Full retained sentence/capture controls cropped evidence; unrelated allergen or usage wording is not a process qualification. Constructed contract, not an independent natural observation."
+      }
+    },
+    {
+      "case_id": "synthetic.process-certainty.8",
+      "expected": {
+        "vegan_status": "vegan",
+        "vegan_reason": "ingredients",
+        "required_issue_codes": []
+      },
+      "product": {
+        "id": "993600008",
+        "name": "Example Wine",
+        "brand": "Example Producer",
+        "ingredients": "Grapes",
+        "official_vegan": 0,
+        "features": "This wine uses animal-free fining agents. May contain milk."
+      },
+      "adjudication": {
+        "state": "accepted",
+        "reference_type": "explicit-policy-contract",
+        "policy_knowledge_refs": [
+          "wine-fining-v1"
+        ],
+        "rationale": "A supplied definite process fact can resolve its relevant registry mechanism for the ingredient/composition route. Uncertain or negated process facts do not. Full retained sentence/capture controls cropped evidence; unrelated allergen or usage wording is not a process qualification. Constructed contract, not an independent natural observation."
+      }
+    },
+    {
+      "case_id": "synthetic.process-certainty.9",
+      "expected": {
+        "vegan_status": "vegan",
+        "vegan_reason": "ingredients",
+        "required_issue_codes": []
+      },
+      "product": {
+        "id": "993600009",
+        "name": "Example Wine",
+        "brand": "Example Producer",
+        "ingredients": "Grapes",
+        "official_vegan": 0,
+        "features": "This wine uses animal-free fining agents and can be enjoyed with dinner."
+      },
+      "adjudication": {
+        "state": "accepted",
+        "reference_type": "explicit-policy-contract",
+        "policy_knowledge_refs": [
+          "wine-fining-v1"
+        ],
+        "rationale": "A supplied definite process fact can resolve its relevant registry mechanism for the ingredient/composition route. Uncertain or negated process facts do not. Full retained sentence/capture controls cropped evidence; unrelated allergen or usage wording is not a process qualification. Constructed contract, not an independent natural observation."
+      }
+    },
+    {
+      "case_id": "synthetic.process-certainty.10",
+      "expected": {
+        "vegan_status": "vegan",
+        "vegan_reason": "ingredients",
+        "required_issue_codes": []
+      },
+      "product": {
+        "id": "993600010",
+        "name": "Example Wine",
+        "brand": "Example Producer",
+        "ingredients": "Grapes",
+        "official_vegan": 0,
+        "features": "This wine is unfined."
+      },
+      "adjudication": {
+        "state": "accepted",
+        "reference_type": "explicit-policy-contract",
+        "policy_knowledge_refs": [
+          "wine-fining-v1"
+        ],
+        "rationale": "A supplied definite process fact can resolve its relevant registry mechanism for the ingredient/composition route. Uncertain or negated process facts do not. Full retained sentence/capture controls cropped evidence; unrelated allergen or usage wording is not a process qualification. Constructed contract, not an independent natural observation."
+      }
+    }
+  ]
+}

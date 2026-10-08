@@ -1,0 +1,40 @@
+{
+  "cases": 413,
+  "scored_cases": 56,
+  "mismatches": [],
+  "reason_errors": [
+    "natural.561499011"
+  ],
+  "operational_errors": [],
+  "unsafe_positives": [],
+  "missing_required_issues": [],
+  "primary_disagreements": [],
+  "arbitrated_cases": [],
+  "raw_agreed_unsafe_positives": [],
+  "state": "disqualified",
+  "successful": false,
+  "all_attempt_usage": {
+    "calls": 16,
+    "failed_calls": 1,
+    "guard_rejections": 0,
+    "missing_usage_calls": 1,
+    "input_tokens": 520976,
+    "cached_input_tokens": 18432,
+    "output_tokens": 80512,
+    "reasoning_output_tokens": 2402
+  },
+  "usage_by_stage_model": {
+    "primary:gpt-6.1-sol:medium": {
+      "calls": 16,
+      "failed_calls": 1,
+      "guard_rejections": 0,
+      "missing_usage_calls": 1,
+      "input_tokens": 520976,
+      "cached_input_tokens": 18432,
+      "output_tokens": 80512,
+      "reasoning_output_tokens": 2402
+    }
+  },
+  "credit_proxy": 45.30128,
+  "release_qualified": false
+}

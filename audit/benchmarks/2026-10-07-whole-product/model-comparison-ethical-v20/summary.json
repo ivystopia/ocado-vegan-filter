@@ -1,0 +1,202 @@
+{
+  "state": "primary_failure_review_required",
+  "classifier_version": "db-vegan-codex-v42",
+  "fixture": "ethical-cases-v18.json",
+  "stages": {
+    "controls-gpt-5.6-luna-high": {
+      "cases": 423,
+      "scored_cases": 420,
+      "mismatches": [
+        "synthetic.liquid-processing.0.5",
+        "synthetic.pouch-component-scope.2",
+        "synthetic.faq-affirmative-answer.1"
+      ],
+      "reason_errors": [],
+      "operational_errors": [
+        "synthetic.faq-affirmative-answer.0",
+        "synthetic.faq-affirmative-answer.3",
+        "synthetic.faq-component-scope.4"
+      ],
+      "unsafe_positives": [],
+      "all_attempt_usage": {
+        "calls": 137,
+        "failed_calls": 21,
+        "guard_rejections": 0,
+        "missing_usage_calls": 0,
+        "input_tokens": 1998256,
+        "cached_input_tokens": 32000,
+        "output_tokens": 502392,
+        "reasoning_output_tokens": 374270
+      },
+      "usage_by_stage_model": {
+        "primary:gpt-5.6-luna:high": {
+          "calls": 123,
+          "failed_calls": 21,
+          "guard_rejections": 0,
+          "missing_usage_calls": 0,
+          "input_tokens": 1781086,
+          "cached_input_tokens": 32000,
+          "output_tokens": 491316,
+          "reasoning_output_tokens": 372395
+        },
+        "arbitration:gpt-6.1-sol:medium": {
+          "calls": 14,
+          "failed_calls": 0,
+          "guard_rejections": 0,
+          "missing_usage_calls": 0,
+          "input_tokens": 217170,
+          "cached_input_tokens": 0,
+          "output_tokens": 11076,
+          "reasoning_output_tokens": 1875
+        }
+      },
+      "credit_proxy": 37.12841,
+      "successful": false
+    },
+    "pilot-gpt-5.6-luna-high": {
+      "cases": 96,
+      "scored_cases": 96,
+      "mismatches": [],
+      "reason_errors": [],
+      "operational_errors": [],
+      "unsafe_positives": [],
+      "all_attempt_usage": {
+        "calls": 57,
+        "failed_calls": 14,
+        "guard_rejections": 0,
+        "missing_usage_calls": 0,
+        "input_tokens": 1833298,
+        "cached_input_tokens": 42496,
+        "output_tokens": 416477,
+        "reasoning_output_tokens": 287326
+      },
+      "usage_by_stage_model": {
+        "primary:gpt-5.6-luna:high": {
+          "calls": 53,
+          "failed_calls": 14,
+          "guard_rejections": 0,
+          "missing_usage_calls": 0,
+          "input_tokens": 1769268,
+          "cached_input_tokens": 42496,
+          "output_tokens": 411374,
+          "reasoning_output_tokens": 286812
+        },
+        "arbitration:gpt-6.1-sol:medium": {
+          "calls": 4,
+          "failed_calls": 0,
+          "guard_rejections": 0,
+          "missing_usage_calls": 0,
+          "input_tokens": 64030,
+          "cached_input_tokens": 0,
+          "output_tokens": 5103,
+          "reasoning_output_tokens": 514
+        }
+      },
+      "credit_proxy": 25.473577999999996,
+      "successful": true
+    },
+    "controls-gpt-6-luna-high": {
+      "cases": 423,
+      "scored_cases": 423,
+      "mismatches": [
+        "synthetic.pouch-component-scope.2",
+        "synthetic.faq-affirmative-answer.1"
+      ],
+      "reason_errors": [],
+      "operational_errors": [],
+      "unsafe_positives": [],
+      "all_attempt_usage": {
+        "calls": 126,
+        "failed_calls": 13,
+        "guard_rejections": 0,
+        "missing_usage_calls": 0,
+        "input_tokens": 1884724,
+        "cached_input_tokens": 29952,
+        "output_tokens": 229053,
+        "reasoning_output_tokens": 111684
+      },
+      "usage_by_stage_model": {
+        "primary:gpt-6-luna:high": {
+          "calls": 120,
+          "failed_calls": 13,
+          "guard_rejections": 0,
+          "missing_usage_calls": 0,
+          "input_tokens": 1791528,
+          "cached_input_tokens": 29952,
+          "output_tokens": 223499,
+          "reasoning_output_tokens": 110673
+        },
+        "arbitration:gpt-6.1-sol:medium": {
+          "calls": 6,
+          "failed_calls": 0,
+          "guard_rejections": 0,
+          "missing_usage_calls": 0,
+          "input_tokens": 93196,
+          "cached_input_tokens": 0,
+          "output_tokens": 5554,
+          "reasoning_output_tokens": 1011
+        }
+      },
+      "credit_proxy": 13.2534655,
+      "successful": false
+    },
+    "pilot-gpt-6-luna-high": {
+      "cases": 96,
+      "scored_cases": 96,
+      "mismatches": [],
+      "reason_errors": [],
+      "operational_errors": [],
+      "unsafe_positives": [],
+      "all_attempt_usage": {
+        "calls": 45,
+        "failed_calls": 8,
+        "guard_rejections": 0,
+        "missing_usage_calls": 0,
+        "input_tokens": 1483196,
+        "cached_input_tokens": 19968,
+        "output_tokens": 151063,
+        "reasoning_output_tokens": 54448
+      },
+      "usage_by_stage_model": {
+        "primary:gpt-6-luna:high": {
+          "calls": 41,
+          "failed_calls": 8,
+          "guard_rejections": 0,
+          "missing_usage_calls": 0,
+          "input_tokens": 1419164,
+          "cached_input_tokens": 19968,
+          "output_tokens": 145629,
+          "reasoning_output_tokens": 53937
+        },
+        "arbitration:gpt-6.1-sol:medium": {
+          "calls": 4,
+          "failed_calls": 0,
+          "guard_rejections": 0,
+          "missing_usage_calls": 0,
+          "input_tokens": 64032,
+          "cached_input_tokens": 0,
+          "output_tokens": 5434,
+          "reasoning_output_tokens": 511
+        }
+      },
+      "credit_proxy": 9.8834445,
+      "successful": true
+    }
+  },
+  "unique_all_attempt_usage": {
+    "calls": 365,
+    "failed_calls": 56,
+    "guard_rejections": 0,
+    "missing_usage_calls": 0,
+    "input_tokens": 7199474,
+    "cached_input_tokens": 124416,
+    "output_tokens": 1298985,
+    "reasoning_output_tokens": 827728
+  },
+  "standard_credit_proxy_total": 85.738898,
+  "matched_luna6_proxy_reduction_percent": 63.04125357808126,
+  "no_expensive_primary_started": true,
+  "no_defaults_or_canonical_data_changed": true,
+  "release_qualified": false,
+  "next_step": "Run unchanged failing controls individually; attribute shared conservative failures before any primary-model escalation."
+}

@@ -1,0 +1,78 @@
+{
+  "cases": 425,
+  "scored_cases": 425,
+  "mismatches": [
+    "synthetic.independent-assertion.0",
+    "synthetic.ethical-components.9",
+    "synthetic.faq-component-scope.3",
+    "synthetic.faq-affirmative-answer.3"
+  ],
+  "reason_errors": [],
+  "operational_errors": [],
+  "unsafe_positives": [],
+  "missing_required_issues": [],
+  "primary_disagreements": [
+    "synthetic.33.3",
+    "synthetic.retained-claim-scope.4",
+    "synthetic.name-scope.3"
+  ],
+  "arbitrated_cases": [
+    "synthetic.33.3",
+    "synthetic.retained-claim-scope.4",
+    "synthetic.name-scope.3"
+  ],
+  "raw_agreed_unsafe_positives": [
+    {
+      "case_id": "synthetic.32.3",
+      "stage": "primary"
+    },
+    {
+      "case_id": "synthetic.31.3",
+      "stage": "primary"
+    },
+    {
+      "case_id": "synthetic.separate-claim.5",
+      "stage": "primary"
+    },
+    {
+      "case_id": "synthetic.brand-claim.1",
+      "stage": "primary"
+    }
+  ],
+  "state": "completed",
+  "successful": false,
+  "all_attempt_usage": {
+    "calls": 113,
+    "failed_calls": 7,
+    "guard_rejections": 0,
+    "missing_usage_calls": 0,
+    "input_tokens": 1716313,
+    "cached_input_tokens": 9984,
+    "output_tokens": 215868,
+    "reasoning_output_tokens": 101528
+  },
+  "usage_by_stage_model": {
+    "primary:gpt-6-luna:high": {
+      "calls": 107,
+      "failed_calls": 7,
+      "guard_rejections": 0,
+      "missing_usage_calls": 0,
+      "input_tokens": 1622453,
+      "cached_input_tokens": 9984,
+      "output_tokens": 212476,
+      "reasoning_output_tokens": 100670
+    },
+    "arbitration:gpt-6.1-sol:medium": {
+      "calls": 6,
+      "failed_calls": 0,
+      "guard_rejections": 0,
+      "missing_usage_calls": 0,
+      "input_tokens": 93860,
+      "cached_input_tokens": 0,
+      "output_tokens": 3392,
+      "reasoning_output_tokens": 858
+    }
+  },
+  "credit_proxy": 12.2306185,
+  "release_qualified": false
+}

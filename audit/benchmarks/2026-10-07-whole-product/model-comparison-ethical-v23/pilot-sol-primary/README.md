@@ -1,0 +1,5 @@
+# Fixed classifier-v48 conditional Sol 6.1/medium natural pilot
+
+All 96 frozen natural products pass suitability status, canonical reason, required issues and persistence/export checks. There are no raw status/reason disagreements, arbitration calls, final unsafe positives, raw agreed unsupported positives or exhausted operational failures. One rejected source-quotation attempt is included in actual usage.
+
+All 25 primary calls have complete usage: 994,906 input and 182,782 output tokens; 6,379 reasoning tokens are included in output. The Standard-credit proxy is 95.4408, approximately 3.8 times matching Luna 5.6 pilot and 13.1 times Luna 6. Matching controls/pilot total 220.5475, approximately 3.7 times Luna 5.6 and 13.3 times Luna 6. These are workload rate proxies, not charges or included-plan quota measurements. See summary.json, manifest.json, input-packet-binding.json and cited-decisions.json.gz. The full 413-case development check follows with the approved stop-on-disqualification rule; passing the pilot alone does not qualify a model, alter defaults or activate canonical classifications.

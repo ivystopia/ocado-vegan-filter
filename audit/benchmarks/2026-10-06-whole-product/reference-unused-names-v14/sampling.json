@@ -1,0 +1,26 @@
+{
+  "inventory": {
+    "all_known_name_signals_without_official_tag": 160,
+    "unused_name_signals": 9,
+    "stored_current_unused_signals": 9,
+    "note": "Names are sampling signals only, never labels. Rows have not been independently annotated or screened for original locked families/sources. No classification/model call/holdout inspection. Used IDs include all retained natural fixture versions.",
+    "candidate_ids": [
+      "530031011",
+      "577144011",
+      "617146011",
+      "640516011",
+      "640517011",
+      "640527011",
+      "649092011",
+      "685041011",
+      "688976011"
+    ]
+  },
+  "protected_screening": {
+    "unused_signals": 9,
+    "accepted_for_blind_reading": 2,
+    "rejected": {
+      "locked_family": 7
+    }
+  }
+}

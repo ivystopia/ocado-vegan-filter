@@ -1,0 +1,3 @@
+# Evidence-boundary prompt diagnostic
+
+Three unchanged controls on v43 receive two raw primary disagreements and two fresh blind arbitration passes. Both arbitration readings agree vegan/manufacturer for the FAQ controls, but the final strict gate rejects the merged source applicability. Actual-response inspection identifies covered_by_claim in source-variant assessment: the old schema allowed this status, whereas the gate refused it. The retained schema-v44 replay demonstrates old acceptance/new protocol rejection. Four calls and all usage remain retained; no score or expectation is rewritten. This diagnostic does not qualify a model.

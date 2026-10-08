@@ -1,0 +1,5 @@
+# Fixed classifier-v48 Luna 5.6 natural pilot
+
+All 96 frozen natural pilot products are accounted for: 95 valid decisions pass suitability status, canonical reason, required issues and persistence/export; bedding 665753011 exhausts citation retries and remains an operational failure. Skittles 634499011 triggers exactly two fresh blind Sol/medium arbitration readings. No final unsafe positive or raw agreed unsupported positive occurs. This failed pilot and the failed controls disqualify the candidate. A separate planned one-case blind model diagnostic cannot erase the original failure.
+
+All 55 calls include 16 rejected attempts and complete usage: 1,818,852 input, 17,920 cached input and 472,698 output tokens, with 316,475 reasoning tokens already included in output. Primary has 53 calls and arbitration two. The Standard-credit proxy is 25.18919; matching controls/pilot total 59.006575. These are neither charges nor included-plan quota measurements. See summary.json, manifest.json and cited-decisions.json.gz. No source input, expectation, policy, default, canonical database or embedded allowlist changed.

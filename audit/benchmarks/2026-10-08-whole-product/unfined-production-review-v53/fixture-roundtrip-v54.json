@@ -1,0 +1,14 @@
+{
+  "synthetic": {
+    "cases": 479,
+    "roundtrip": "passed"
+  },
+  "development": {
+    "cases": 413,
+    "roundtrip": "passed"
+  },
+  "workload": {
+    "cases": 200,
+    "roundtrip": "passed"
+  }
+}

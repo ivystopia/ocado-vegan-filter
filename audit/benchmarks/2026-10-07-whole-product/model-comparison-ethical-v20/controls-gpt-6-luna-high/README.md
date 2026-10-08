@@ -1,0 +1,3 @@
+# Luna 6/high controls
+
+All 423 selected synthetic controls receive valid scored decisions. Two conservative whole-product FAQ misses prevent qualification; no final unsafe positive or operational failure occurs. Six raw agreed unsupported positive proposals are rejected by the shared gate. Four product disagreements are recorded across six fresh blind arbitration batch calls. All 126 calls, including 13 rejected attempts, are retained in summary.json. Both missed FAQ cases shared the same model batch; this is an observation, not causal proof. Single-product diagnostics are planned after the natural pilot. No model defaults or canonical classifications change.

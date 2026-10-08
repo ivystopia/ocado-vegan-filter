@@ -1,0 +1,89 @@
+{
+  "cases": 475,
+  "scored_cases": 320,
+  "mismatches": [
+    "synthetic.liquid-processing.1.5"
+  ],
+  "reason_errors": [],
+  "operational_errors": [],
+  "unsafe_positives": [],
+  "missing_required_issues": [],
+  "primary_disagreements": [
+    "synthetic.liquid-processing.3.5",
+    "synthetic.brand-claim.1",
+    "synthetic.independent-assertion.0",
+    "synthetic.liquid-processing.2.5",
+    "synthetic.claim-certainty.7",
+    "synthetic.liquid-processing.0.5"
+  ],
+  "arbitrated_cases": [
+    "synthetic.liquid-processing.3.5",
+    "synthetic.brand-claim.1",
+    "synthetic.independent-assertion.0",
+    "synthetic.liquid-processing.2.5",
+    "synthetic.claim-certainty.7",
+    "synthetic.liquid-processing.0.5"
+  ],
+  "raw_agreed_unsafe_positives": [
+    {
+      "case_id": "synthetic.32.3",
+      "stage": "primary"
+    },
+    {
+      "case_id": "synthetic.32.4",
+      "stage": "primary"
+    },
+    {
+      "case_id": "synthetic.separate-claim.5",
+      "stage": "primary"
+    },
+    {
+      "case_id": "synthetic.31.3",
+      "stage": "primary"
+    },
+    {
+      "case_id": "synthetic.32.0",
+      "stage": "primary"
+    },
+    {
+      "case_id": "synthetic.mixed-feature-attributes.2",
+      "stage": "primary"
+    }
+  ],
+  "state": "checkpointed",
+  "successful": false,
+  "all_attempt_usage": {
+    "calls": 94,
+    "failed_calls": 5,
+    "guard_rejections": 3,
+    "missing_usage_calls": 0,
+    "input_tokens": 1375944,
+    "cached_input_tokens": 8960,
+    "output_tokens": 362657,
+    "reasoning_output_tokens": 267890
+  },
+  "usage_by_stage_model": {
+    "primary:gpt-5.6-luna:high": {
+      "calls": 82,
+      "failed_calls": 5,
+      "guard_rejections": 3,
+      "missing_usage_calls": 0,
+      "input_tokens": 1184714,
+      "cached_input_tokens": 8960,
+      "output_tokens": 355789,
+      "reasoning_output_tokens": 266744
+    },
+    "arbitration:gpt-6.1-sol:medium": {
+      "calls": 12,
+      "failed_calls": 0,
+      "guard_rejections": 0,
+      "missing_usage_calls": 0,
+      "input_tokens": 191230,
+      "cached_input_tokens": 0,
+      "output_tokens": 6868,
+      "reasoning_output_tokens": 1146
+    }
+  },
+  "credit_proxy": 27.83542,
+  "release_qualified": false
+}

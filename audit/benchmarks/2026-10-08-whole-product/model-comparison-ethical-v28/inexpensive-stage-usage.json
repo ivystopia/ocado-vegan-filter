@@ -1,0 +1,16 @@
+{
+  "completed_stage_count": 4,
+  "all_attempt_usage": {
+    "calls": 383,
+    "failed_calls": 47,
+    "guard_rejections": 0,
+    "missing_usage_calls": 0,
+    "input_tokens": 7652882,
+    "cached_input_tokens": 176640,
+    "output_tokens": 1574898,
+    "reasoning_output_tokens": 1006853
+  },
+  "credit_proxy": 90.44663,
+  "included_quota_or_money": false,
+  "scope": "Four distinct inexpensive control/pilot stages only; later conditional stages must be added separately."
+}

@@ -1,0 +1,826 @@
+{
+  "classifier_version": "db-vegan-codex-v61",
+  "policy_module_sha256": "9476555bc30bed07e423b65c1270792cd4e8767d267a22dc7acd799e3af1d3a4",
+  "reference_type": "Constructed safety contrasts of the actual v29 FAQ merger defect, not actual model outputs or natural observations.",
+  "expected_contract": "These qualified/negative answers cannot support a positive manufacturer decision from this supplied assessment.",
+  "cases": [
+    {
+      "context": {
+        "product": {
+          "id": "1",
+          "name": "Example Wine",
+          "ingredients": "Grapes",
+          "brand": "Example Winery",
+          "package_type": "Bottle"
+        },
+        "flags": [],
+        "categories": [],
+        "manufacturer_vegan_evidence": [],
+        "manufacturer_source_candidates": [
+          {
+            "source_id": "test-faq",
+            "source_url": "https://example.test/faq",
+            "source_text": "We produce Example Wine.\nIs this product vegan?\nNo animal-derived materials or processes are used. This assurance covers food only; packaging is not assessed.",
+            "source_sha256": "4a96589fe00b2d86052e0402bedffd9cb047c9d3e0ccb51ef0b24b41b7ed0702",
+            "association_status": "catalogue_match",
+            "market_scope": "UK",
+            "official_identity": "Example Winery",
+            "retrieved_at": "2026-10-07T00:00:00+00:00"
+          }
+        ]
+      },
+      "constructed_readings": [
+        {
+          "product_id": "1",
+          "vegan_status": "vegan",
+          "vegan_reason": "manufacturer",
+          "confidence": "certain",
+          "assessment": {
+            "identity": {
+              "status": "established",
+              "evidence_refs": [
+                {
+                  "path": "/product/name",
+                  "quote": "Example Wine"
+                }
+              ]
+            },
+            "composition": {
+              "status": "established",
+              "evidence_refs": [
+                {
+                  "path": "/product/ingredients",
+                  "quote": "Grapes"
+                }
+              ]
+            },
+            "sourcing": {
+              "status": "not_applicable",
+              "evidence_refs": []
+            },
+            "processing": {
+              "status": "not_applicable",
+              "evidence_refs": []
+            },
+            "components": {
+              "status": "established",
+              "evidence_refs": [
+                {
+                  "path": "/product/name",
+                  "quote": "Example Wine"
+                }
+              ]
+            },
+            "positive_support": [
+              {
+                "reason": "manufacturer",
+                "evidence_refs": [
+                  {
+                    "path": "/manufacturer_source_candidates/0/source_text",
+                    "quote": "Is this product vegan?"
+                  }
+                ]
+              }
+            ],
+            "material_issues": [],
+            "source_applicability": [
+              {
+                "source_path": "/manufacturer_source_candidates/0",
+                "scope": "product",
+                "product": {
+                  "status": "established",
+                  "evidence_refs": [
+                    {
+                      "path": "/product/name",
+                      "quote": "Example Wine"
+                    },
+                    {
+                      "path": "/manufacturer_source_candidates/0/source_text",
+                      "quote": "We produce Example Wine. Is this product vegan? No animal-derived materials or processes are used. This assurance covers food only; packaging is not assessed."
+                    }
+                  ]
+                },
+                "variant": {
+                  "status": "not_applicable",
+                  "evidence_refs": [
+                    {
+                      "path": "/manufacturer_source_candidates/0/source_text",
+                      "quote": "We produce Example Wine. Is this product vegan? No animal-derived materials or processes are used. This assurance covers food only; packaging is not assessed."
+                    }
+                  ]
+                },
+                "market": {
+                  "status": "not_applicable",
+                  "evidence_refs": [
+                    {
+                      "path": "/manufacturer_source_candidates/0/source_text",
+                      "quote": "We produce Example Wine. Is this product vegan? No animal-derived materials or processes are used. This assurance covers food only; packaging is not assessed."
+                    }
+                  ]
+                },
+                "period": {
+                  "status": "not_applicable",
+                  "evidence_refs": [
+                    {
+                      "path": "/manufacturer_source_candidates/0/source_text",
+                      "quote": "We produce Example Wine. Is this product vegan? No animal-derived materials or processes are used. This assurance covers food only; packaging is not assessed."
+                    }
+                  ]
+                }
+              }
+            ]
+          }
+        },
+        {
+          "product_id": "1",
+          "vegan_status": "vegan",
+          "vegan_reason": "manufacturer",
+          "confidence": "certain",
+          "assessment": {
+            "identity": {
+              "status": "established",
+              "evidence_refs": [
+                {
+                  "path": "/product/name",
+                  "quote": "Example Wine"
+                }
+              ]
+            },
+            "composition": {
+              "status": "established",
+              "evidence_refs": [
+                {
+                  "path": "/product/ingredients",
+                  "quote": "Grapes"
+                }
+              ]
+            },
+            "sourcing": {
+              "status": "not_applicable",
+              "evidence_refs": []
+            },
+            "processing": {
+              "status": "not_applicable",
+              "evidence_refs": []
+            },
+            "components": {
+              "status": "established",
+              "evidence_refs": [
+                {
+                  "path": "/product/name",
+                  "quote": "Example Wine"
+                }
+              ]
+            },
+            "positive_support": [
+              {
+                "reason": "manufacturer",
+                "evidence_refs": [
+                  {
+                    "path": "/manufacturer_source_candidates/0/source_text",
+                    "quote": "No animal-derived materials or processes are used."
+                  }
+                ]
+              }
+            ],
+            "material_issues": [],
+            "source_applicability": [
+              {
+                "source_path": "/manufacturer_source_candidates/0",
+                "scope": "product",
+                "product": {
+                  "status": "established",
+                  "evidence_refs": [
+                    {
+                      "path": "/product/name",
+                      "quote": "Example Wine"
+                    },
+                    {
+                      "path": "/manufacturer_source_candidates/0/source_text",
+                      "quote": "We produce Example Wine. Is this product vegan? No animal-derived materials or processes are used. This assurance covers food only; packaging is not assessed."
+                    }
+                  ]
+                },
+                "variant": {
+                  "status": "not_applicable",
+                  "evidence_refs": [
+                    {
+                      "path": "/manufacturer_source_candidates/0/source_text",
+                      "quote": "We produce Example Wine. Is this product vegan? No animal-derived materials or processes are used. This assurance covers food only; packaging is not assessed."
+                    }
+                  ]
+                },
+                "market": {
+                  "status": "not_applicable",
+                  "evidence_refs": [
+                    {
+                      "path": "/manufacturer_source_candidates/0/source_text",
+                      "quote": "We produce Example Wine. Is this product vegan? No animal-derived materials or processes are used. This assurance covers food only; packaging is not assessed."
+                    }
+                  ]
+                },
+                "period": {
+                  "status": "not_applicable",
+                  "evidence_refs": [
+                    {
+                      "path": "/manufacturer_source_candidates/0/source_text",
+                      "quote": "We produce Example Wine. Is this product vegan? No animal-derived materials or processes are used. This assurance covers food only; packaging is not assessed."
+                    }
+                  ]
+                }
+              }
+            ]
+          }
+        }
+      ],
+      "result_both_orders": [
+        [
+          {
+            "gate": "model",
+            "status": "unknown",
+            "reason": null,
+            "positive_block": false
+          },
+          {
+            "gate": "audit",
+            "status": "unknown",
+            "reason": null,
+            "positive_block": false
+          },
+          {
+            "gate": "export",
+            "status": "unknown",
+            "reason": null,
+            "positive_block": false
+          }
+        ],
+        [
+          {
+            "gate": "model",
+            "status": "unknown",
+            "reason": null,
+            "positive_block": false
+          },
+          {
+            "gate": "audit",
+            "status": "unknown",
+            "reason": null,
+            "positive_block": false
+          },
+          {
+            "gate": "export",
+            "status": "unknown",
+            "reason": null,
+            "positive_block": false
+          }
+        ]
+      ]
+    },
+    {
+      "context": {
+        "product": {
+          "id": "1",
+          "name": "Example Wine",
+          "ingredients": "Grapes",
+          "brand": "Example Winery",
+          "package_type": "Bottle"
+        },
+        "flags": [],
+        "categories": [],
+        "manufacturer_vegan_evidence": [],
+        "manufacturer_source_candidates": [
+          {
+            "source_id": "test-faq",
+            "source_url": "https://example.test/faq",
+            "source_text": "We produce Example Wine.\nIs this product vegan?\nNo. Animal-derived fining agents are used.",
+            "source_sha256": "3d0d0c5b97ae606ae4a2b8e253887753a8d8446b4bc2ceff8be0c4f1d1a65335",
+            "association_status": "catalogue_match",
+            "market_scope": "UK",
+            "official_identity": "Example Winery",
+            "retrieved_at": "2026-10-07T00:00:00+00:00"
+          }
+        ]
+      },
+      "constructed_readings": [
+        {
+          "product_id": "1",
+          "vegan_status": "vegan",
+          "vegan_reason": "manufacturer",
+          "confidence": "certain",
+          "assessment": {
+            "identity": {
+              "status": "established",
+              "evidence_refs": [
+                {
+                  "path": "/product/name",
+                  "quote": "Example Wine"
+                }
+              ]
+            },
+            "composition": {
+              "status": "established",
+              "evidence_refs": [
+                {
+                  "path": "/product/ingredients",
+                  "quote": "Grapes"
+                }
+              ]
+            },
+            "sourcing": {
+              "status": "not_applicable",
+              "evidence_refs": []
+            },
+            "processing": {
+              "status": "not_applicable",
+              "evidence_refs": []
+            },
+            "components": {
+              "status": "established",
+              "evidence_refs": [
+                {
+                  "path": "/product/name",
+                  "quote": "Example Wine"
+                }
+              ]
+            },
+            "positive_support": [
+              {
+                "reason": "manufacturer",
+                "evidence_refs": [
+                  {
+                    "path": "/manufacturer_source_candidates/0/source_text",
+                    "quote": "Is this product vegan?"
+                  }
+                ]
+              }
+            ],
+            "material_issues": [],
+            "source_applicability": [
+              {
+                "source_path": "/manufacturer_source_candidates/0",
+                "scope": "product",
+                "product": {
+                  "status": "established",
+                  "evidence_refs": [
+                    {
+                      "path": "/product/name",
+                      "quote": "Example Wine"
+                    },
+                    {
+                      "path": "/manufacturer_source_candidates/0/source_text",
+                      "quote": "We produce Example Wine. Is this product vegan? No. Animal-derived fining agents are used."
+                    }
+                  ]
+                },
+                "variant": {
+                  "status": "not_applicable",
+                  "evidence_refs": [
+                    {
+                      "path": "/manufacturer_source_candidates/0/source_text",
+                      "quote": "We produce Example Wine. Is this product vegan? No. Animal-derived fining agents are used."
+                    }
+                  ]
+                },
+                "market": {
+                  "status": "not_applicable",
+                  "evidence_refs": [
+                    {
+                      "path": "/manufacturer_source_candidates/0/source_text",
+                      "quote": "We produce Example Wine. Is this product vegan? No. Animal-derived fining agents are used."
+                    }
+                  ]
+                },
+                "period": {
+                  "status": "not_applicable",
+                  "evidence_refs": [
+                    {
+                      "path": "/manufacturer_source_candidates/0/source_text",
+                      "quote": "We produce Example Wine. Is this product vegan? No. Animal-derived fining agents are used."
+                    }
+                  ]
+                }
+              }
+            ]
+          }
+        },
+        {
+          "product_id": "1",
+          "vegan_status": "vegan",
+          "vegan_reason": "manufacturer",
+          "confidence": "certain",
+          "assessment": {
+            "identity": {
+              "status": "established",
+              "evidence_refs": [
+                {
+                  "path": "/product/name",
+                  "quote": "Example Wine"
+                }
+              ]
+            },
+            "composition": {
+              "status": "established",
+              "evidence_refs": [
+                {
+                  "path": "/product/ingredients",
+                  "quote": "Grapes"
+                }
+              ]
+            },
+            "sourcing": {
+              "status": "not_applicable",
+              "evidence_refs": []
+            },
+            "processing": {
+              "status": "not_applicable",
+              "evidence_refs": []
+            },
+            "components": {
+              "status": "established",
+              "evidence_refs": [
+                {
+                  "path": "/product/name",
+                  "quote": "Example Wine"
+                }
+              ]
+            },
+            "positive_support": [
+              {
+                "reason": "manufacturer",
+                "evidence_refs": [
+                  {
+                    "path": "/manufacturer_source_candidates/0/source_text",
+                    "quote": "No. Animal-derived fining agents are used."
+                  }
+                ]
+              }
+            ],
+            "material_issues": [],
+            "source_applicability": [
+              {
+                "source_path": "/manufacturer_source_candidates/0",
+                "scope": "product",
+                "product": {
+                  "status": "established",
+                  "evidence_refs": [
+                    {
+                      "path": "/product/name",
+                      "quote": "Example Wine"
+                    },
+                    {
+                      "path": "/manufacturer_source_candidates/0/source_text",
+                      "quote": "We produce Example Wine. Is this product vegan? No. Animal-derived fining agents are used."
+                    }
+                  ]
+                },
+                "variant": {
+                  "status": "not_applicable",
+                  "evidence_refs": [
+                    {
+                      "path": "/manufacturer_source_candidates/0/source_text",
+                      "quote": "We produce Example Wine. Is this product vegan? No. Animal-derived fining agents are used."
+                    }
+                  ]
+                },
+                "market": {
+                  "status": "not_applicable",
+                  "evidence_refs": [
+                    {
+                      "path": "/manufacturer_source_candidates/0/source_text",
+                      "quote": "We produce Example Wine. Is this product vegan? No. Animal-derived fining agents are used."
+                    }
+                  ]
+                },
+                "period": {
+                  "status": "not_applicable",
+                  "evidence_refs": [
+                    {
+                      "path": "/manufacturer_source_candidates/0/source_text",
+                      "quote": "We produce Example Wine. Is this product vegan? No. Animal-derived fining agents are used."
+                    }
+                  ]
+                }
+              }
+            ]
+          }
+        }
+      ],
+      "result_both_orders": [
+        [
+          {
+            "gate": "model",
+            "status": "unknown",
+            "reason": null,
+            "positive_block": false
+          },
+          {
+            "gate": "audit",
+            "status": "unknown",
+            "reason": null,
+            "positive_block": false
+          },
+          {
+            "gate": "export",
+            "status": "unknown",
+            "reason": null,
+            "positive_block": false
+          }
+        ],
+        [
+          {
+            "gate": "model",
+            "status": "unknown",
+            "reason": null,
+            "positive_block": false
+          },
+          {
+            "gate": "audit",
+            "status": "unknown",
+            "reason": null,
+            "positive_block": false
+          },
+          {
+            "gate": "export",
+            "status": "unknown",
+            "reason": null,
+            "positive_block": false
+          }
+        ]
+      ]
+    },
+    {
+      "context": {
+        "product": {
+          "id": "1",
+          "name": "Example Wine",
+          "ingredients": "Grapes",
+          "brand": "Example Winery",
+          "package_type": "Bottle"
+        },
+        "flags": [],
+        "categories": [],
+        "manufacturer_vegan_evidence": [],
+        "manufacturer_source_candidates": [
+          {
+            "source_id": "test-faq",
+            "source_url": "https://example.test/faq",
+            "source_text": "We produce Example Wine.\nIs this product vegan?\nNo animal-derived materials or processes are used. Except animal-derived fining aids.",
+            "source_sha256": "4c440e87aa766223ae27c47d564112367349cc9056fc89114f0940af2bbd5484",
+            "association_status": "catalogue_match",
+            "market_scope": "UK",
+            "official_identity": "Example Winery",
+            "retrieved_at": "2026-10-07T00:00:00+00:00"
+          }
+        ]
+      },
+      "constructed_readings": [
+        {
+          "product_id": "1",
+          "vegan_status": "vegan",
+          "vegan_reason": "manufacturer",
+          "confidence": "certain",
+          "assessment": {
+            "identity": {
+              "status": "established",
+              "evidence_refs": [
+                {
+                  "path": "/product/name",
+                  "quote": "Example Wine"
+                }
+              ]
+            },
+            "composition": {
+              "status": "established",
+              "evidence_refs": [
+                {
+                  "path": "/product/ingredients",
+                  "quote": "Grapes"
+                }
+              ]
+            },
+            "sourcing": {
+              "status": "not_applicable",
+              "evidence_refs": []
+            },
+            "processing": {
+              "status": "not_applicable",
+              "evidence_refs": []
+            },
+            "components": {
+              "status": "established",
+              "evidence_refs": [
+                {
+                  "path": "/product/name",
+                  "quote": "Example Wine"
+                }
+              ]
+            },
+            "positive_support": [
+              {
+                "reason": "manufacturer",
+                "evidence_refs": [
+                  {
+                    "path": "/manufacturer_source_candidates/0/source_text",
+                    "quote": "Is this product vegan?"
+                  }
+                ]
+              }
+            ],
+            "material_issues": [],
+            "source_applicability": [
+              {
+                "source_path": "/manufacturer_source_candidates/0",
+                "scope": "product",
+                "product": {
+                  "status": "established",
+                  "evidence_refs": [
+                    {
+                      "path": "/product/name",
+                      "quote": "Example Wine"
+                    },
+                    {
+                      "path": "/manufacturer_source_candidates/0/source_text",
+                      "quote": "We produce Example Wine. Is this product vegan? No animal-derived materials or processes are used. Except animal-derived fining aids."
+                    }
+                  ]
+                },
+                "variant": {
+                  "status": "not_applicable",
+                  "evidence_refs": [
+                    {
+                      "path": "/manufacturer_source_candidates/0/source_text",
+                      "quote": "We produce Example Wine. Is this product vegan? No animal-derived materials or processes are used. Except animal-derived fining aids."
+                    }
+                  ]
+                },
+                "market": {
+                  "status": "not_applicable",
+                  "evidence_refs": [
+                    {
+                      "path": "/manufacturer_source_candidates/0/source_text",
+                      "quote": "We produce Example Wine. Is this product vegan? No animal-derived materials or processes are used. Except animal-derived fining aids."
+                    }
+                  ]
+                },
+                "period": {
+                  "status": "not_applicable",
+                  "evidence_refs": [
+                    {
+                      "path": "/manufacturer_source_candidates/0/source_text",
+                      "quote": "We produce Example Wine. Is this product vegan? No animal-derived materials or processes are used. Except animal-derived fining aids."
+                    }
+                  ]
+                }
+              }
+            ]
+          }
+        },
+        {
+          "product_id": "1",
+          "vegan_status": "vegan",
+          "vegan_reason": "manufacturer",
+          "confidence": "certain",
+          "assessment": {
+            "identity": {
+              "status": "established",
+              "evidence_refs": [
+                {
+                  "path": "/product/name",
+                  "quote": "Example Wine"
+                }
+              ]
+            },
+            "composition": {
+              "status": "established",
+              "evidence_refs": [
+                {
+                  "path": "/product/ingredients",
+                  "quote": "Grapes"
+                }
+              ]
+            },
+            "sourcing": {
+              "status": "not_applicable",
+              "evidence_refs": []
+            },
+            "processing": {
+              "status": "not_applicable",
+              "evidence_refs": []
+            },
+            "components": {
+              "status": "established",
+              "evidence_refs": [
+                {
+                  "path": "/product/name",
+                  "quote": "Example Wine"
+                }
+              ]
+            },
+            "positive_support": [
+              {
+                "reason": "manufacturer",
+                "evidence_refs": [
+                  {
+                    "path": "/manufacturer_source_candidates/0/source_text",
+                    "quote": "No animal-derived materials or processes are used."
+                  }
+                ]
+              }
+            ],
+            "material_issues": [],
+            "source_applicability": [
+              {
+                "source_path": "/manufacturer_source_candidates/0",
+                "scope": "product",
+                "product": {
+                  "status": "established",
+                  "evidence_refs": [
+                    {
+                      "path": "/product/name",
+                      "quote": "Example Wine"
+                    },
+                    {
+                      "path": "/manufacturer_source_candidates/0/source_text",
+                      "quote": "We produce Example Wine. Is this product vegan? No animal-derived materials or processes are used. Except animal-derived fining aids."
+                    }
+                  ]
+                },
+                "variant": {
+                  "status": "not_applicable",
+                  "evidence_refs": [
+                    {
+                      "path": "/manufacturer_source_candidates/0/source_text",
+                      "quote": "We produce Example Wine. Is this product vegan? No animal-derived materials or processes are used. Except animal-derived fining aids."
+                    }
+                  ]
+                },
+                "market": {
+                  "status": "not_applicable",
+                  "evidence_refs": [
+                    {
+                      "path": "/manufacturer_source_candidates/0/source_text",
+                      "quote": "We produce Example Wine. Is this product vegan? No animal-derived materials or processes are used. Except animal-derived fining aids."
+                    }
+                  ]
+                },
+                "period": {
+                  "status": "not_applicable",
+                  "evidence_refs": [
+                    {
+                      "path": "/manufacturer_source_candidates/0/source_text",
+                      "quote": "We produce Example Wine. Is this product vegan? No animal-derived materials or processes are used. Except animal-derived fining aids."
+                    }
+                  ]
+                }
+              }
+            ]
+          }
+        }
+      ],
+      "result_both_orders": [
+        [
+          {
+            "gate": "model",
+            "status": "unknown",
+            "reason": null,
+            "positive_block": false
+          },
+          {
+            "gate": "audit",
+            "status": "unknown",
+            "reason": null,
+            "positive_block": false
+          },
+          {
+            "gate": "export",
+            "status": "unknown",
+            "reason": null,
+            "positive_block": false
+          }
+        ],
+        [
+          {
+            "gate": "model",
+            "status": "unknown",
+            "reason": null,
+            "positive_block": false
+          },
+          {
+            "gate": "audit",
+            "status": "unknown",
+            "reason": null,
+            "positive_block": false
+          },
+          {
+            "gate": "export",
+            "status": "unknown",
+            "reason": null,
+            "positive_block": false
+          }
+        ]
+      ]
+    }
+  ],
+  "canonical_database_written": false,
+  "model_calls_performed": 0
+}

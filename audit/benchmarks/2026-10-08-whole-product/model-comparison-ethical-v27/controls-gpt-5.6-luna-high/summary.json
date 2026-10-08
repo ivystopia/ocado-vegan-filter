@@ -1,0 +1,102 @@
+{
+  "cases": 479,
+  "scored_cases": 463,
+  "mismatches": [
+    "synthetic.faq-component-scope.4",
+    "synthetic.wine-nonfining.3"
+  ],
+  "reason_errors": [],
+  "operational_errors": [],
+  "unsafe_positives": [],
+  "missing_required_issues": [],
+  "primary_disagreements": [
+    "synthetic.36.0",
+    "synthetic.32.3",
+    "synthetic.liquid-processing.1.3",
+    "synthetic.33.3",
+    "synthetic.40.3",
+    "synthetic.liquid-processing.4.5",
+    "synthetic.catalogue-market.2",
+    "synthetic.liquid-processing.0.5",
+    "synthetic.separate-claim.5",
+    "synthetic.mixed-feature-attributes.3"
+  ],
+  "arbitrated_cases": [
+    "synthetic.36.0",
+    "synthetic.32.3",
+    "synthetic.liquid-processing.1.3",
+    "synthetic.33.3",
+    "synthetic.40.3",
+    "synthetic.liquid-processing.4.5",
+    "synthetic.catalogue-market.2",
+    "synthetic.liquid-processing.0.5",
+    "synthetic.separate-claim.5",
+    "synthetic.mixed-feature-attributes.3"
+  ],
+  "raw_agreed_unsafe_positives": [
+    {
+      "case_id": "synthetic.32.3",
+      "stage": "arbitration"
+    },
+    {
+      "case_id": "synthetic.31.3",
+      "stage": "primary"
+    },
+    {
+      "case_id": "synthetic.32.4",
+      "stage": "primary"
+    },
+    {
+      "case_id": "synthetic.32.0",
+      "stage": "primary"
+    },
+    {
+      "case_id": "synthetic.33.0",
+      "stage": "primary"
+    },
+    {
+      "case_id": "synthetic.name-scope.3",
+      "stage": "primary"
+    },
+    {
+      "case_id": "synthetic.33.4",
+      "stage": "primary"
+    }
+  ],
+  "state": "checkpointed",
+  "successful": false,
+  "all_attempt_usage": {
+    "calls": 152,
+    "failed_calls": 12,
+    "guard_rejections": 2,
+    "missing_usage_calls": 0,
+    "input_tokens": 2429907,
+    "cached_input_tokens": 55040,
+    "output_tokens": 614937,
+    "reasoning_output_tokens": 444556
+  },
+  "usage_by_stage_model": {
+    "primary:gpt-5.6-luna:high": {
+      "calls": 132,
+      "failed_calls": 12,
+      "guard_rejections": 2,
+      "missing_usage_calls": 0,
+      "input_tokens": 2106785,
+      "cached_input_tokens": 55040,
+      "output_tokens": 602331,
+      "reasoning_output_tokens": 442269
+    },
+    "arbitration:gpt-6.1-sol:medium": {
+      "calls": 20,
+      "failed_calls": 0,
+      "guard_rejections": 0,
+      "missing_usage_calls": 0,
+      "input_tokens": 323122,
+      "cached_input_tokens": 0,
+      "output_tokens": 12606,
+      "reasoning_output_tokens": 2287
+    }
+  },
+  "credit_proxy": 47.663775,
+  "release_qualified": false
+}

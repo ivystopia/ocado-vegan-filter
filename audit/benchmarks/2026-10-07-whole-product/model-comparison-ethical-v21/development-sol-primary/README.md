@@ -1,0 +1,5 @@
+# Stopped Sol complete-development diagnostic
+
+The predeclared stop-on-disqualification gate fires on Palmolive 561499011 manufacturer precedence. Both raw primary readings agree vegan/manufacturer, but the v45 gate reduces that to vegan/name because the complete mixed feature list is outside its dietary-list grammar. All 56 scored statuses and required issues match; one reason fails, with no unsafe positive or exhausted operational failure. Active batches finish before stopping; 357 of 413 cases are explicitly unrun. No arbitration comparison or selected-pair stage starts, and the root state is no_eligible_primary.
+
+Sixteen actual calls include one rejected transport attempt with unavailable token usage. The 45.30128 Standard-credit proxy covers reported usage only; it is incomplete and is neither a charge nor included-plan quota. All original failures, decisions and usage remain retained. The narrow v46 repair and exact response replays live separately under feature-attribute-impact-v46; they do not erase or qualify this stopped v45 stage.

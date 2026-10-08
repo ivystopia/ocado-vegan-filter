@@ -1,0 +1,7 @@
+# Luna 5.6/high controls on v46
+
+All 431 planned cases are accounted for: 430 valid scored decisions and one operational failure after two invalid evidence-pointer attempts. Three process-assurance positives become conservative unknowns because the model labels an animal-free production statement as manufacturer confirmation, contrary to the explicit ingredients-route policy. Constructed supplied-evidence proofs for those three cases pass the unchanged gate; these are diagnostics, not fresh model successes. No final unsafe positives, canonical-reason errors on accepted positives or missing required issues occur. Seven raw agreed unsafe proposals are blocked. The candidate fails mandatory controls.
+
+Six primary disagreements receive fresh blind arbitration; two disagreements share a batch, resulting in ten arbitration calls. Exactly two fresh arbitration readings apply to each product. All 118 calls include eight rejected attempts, with complete reported usage: 1,743,892 input / 453,262 output, including 334,615 reasoning already in output. Primary uses 108 calls and arbitration ten. The 30.89519 Standard-credit proxy is not an actual charge or included-plan quota.
+
+Inputs, original expected labels, actual readings, validated references, scores, protocol errors and token usage are retained. Sanitized projections omit transport events, invocation and quota snapshots; originals remain local and ignored. No default, canonical label or installed script change occurs.

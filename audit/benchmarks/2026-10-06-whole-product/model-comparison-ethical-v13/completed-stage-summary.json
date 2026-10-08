@@ -1,0 +1,265 @@
+{
+  "state": "primary_failure_review_required",
+  "qualified_pair": null,
+  "defaults_changed": false,
+  "activation_performed": false,
+  "stages": {
+    "gpt-5.6-luna/high": {
+      "controls": {
+        "state": "completed",
+        "selected": 374,
+        "scored": 374,
+        "unrun": 0,
+        "scored_positive_recall": {
+          "eligible": 161,
+          "recovered": 161
+        },
+        "mismatches": [],
+        "reason_errors": [],
+        "unsafe_positives": [],
+        "operational_errors": [],
+        "missing_required_issues": [],
+        "raw_agreed_unsafe_positives": [
+          {
+            "case_id": "synthetic.31.3",
+            "stage": "primary"
+          },
+          {
+            "case_id": "synthetic.32.3",
+            "stage": "primary"
+          },
+          {
+            "case_id": "synthetic.33.3",
+            "stage": "primary"
+          },
+          {
+            "case_id": "synthetic.32.0",
+            "stage": "arbitration"
+          },
+          {
+            "case_id": "synthetic.33.0",
+            "stage": "primary"
+          },
+          {
+            "case_id": "synthetic.name-scope.3",
+            "stage": "primary"
+          }
+        ],
+        "primary_disagreements": [
+          "synthetic.liquid-processing.0.3",
+          "synthetic.36.0",
+          "synthetic.36.4",
+          "synthetic.32.0",
+          "synthetic.liquid-processing.2.3",
+          "synthetic.32.4",
+          "synthetic.33.4"
+        ],
+        "arbitrated_cases": [
+          "synthetic.liquid-processing.0.3",
+          "synthetic.36.0",
+          "synthetic.36.4",
+          "synthetic.32.0",
+          "synthetic.liquid-processing.2.3",
+          "synthetic.32.4",
+          "synthetic.33.4"
+        ],
+        "usage": {
+          "calls": 92,
+          "failed_calls": 1,
+          "guard_rejections": 0,
+          "missing_usage_calls": 1,
+          "input_tokens": 1251816,
+          "cached_input_tokens": 53760,
+          "output_tokens": 169546,
+          "reasoning_output_tokens": 116149
+        },
+        "report": "controls-gpt-5.6-luna-high/report.json"
+      },
+      "pilot": {
+        "state": "completed",
+        "selected": 96,
+        "scored": 96,
+        "unrun": 0,
+        "scored_positive_recall": {
+          "eligible": 24,
+          "recovered": 24
+        },
+        "mismatches": [],
+        "reason_errors": [],
+        "unsafe_positives": [],
+        "operational_errors": [],
+        "missing_required_issues": [],
+        "raw_agreed_unsafe_positives": [],
+        "primary_disagreements": [],
+        "arbitrated_cases": [],
+        "usage": {
+          "calls": 70,
+          "failed_calls": 24,
+          "guard_rejections": 3,
+          "missing_usage_calls": 0,
+          "input_tokens": 2111763,
+          "cached_input_tokens": 6912,
+          "output_tokens": 519324,
+          "reasoning_output_tokens": 356812
+        },
+        "report": "pilot-gpt-5.6-luna-high/report.json"
+      },
+      "development": {
+        "state": "disqualified",
+        "selected": 378,
+        "scored": 40,
+        "unrun": 338,
+        "scored_positive_recall": {
+          "eligible": 19,
+          "recovered": 18
+        },
+        "mismatches": [
+          "natural.482451011"
+        ],
+        "reason_errors": [
+          "natural.587218011",
+          "natural.587219011"
+        ],
+        "unsafe_positives": [],
+        "operational_errors": [],
+        "missing_required_issues": [],
+        "raw_agreed_unsafe_positives": [],
+        "primary_disagreements": [
+          "natural.482451011"
+        ],
+        "arbitrated_cases": [
+          "natural.482451011"
+        ],
+        "usage": {
+          "calls": 35,
+          "failed_calls": 10,
+          "guard_rejections": 0,
+          "missing_usage_calls": 0,
+          "input_tokens": 941141,
+          "cached_input_tokens": 8960,
+          "output_tokens": 217285,
+          "reasoning_output_tokens": 155099
+        },
+        "report": "development-gpt-5.6-luna-high/report.json"
+      }
+    },
+    "gpt-6-luna/high": {
+      "controls": {
+        "state": "completed",
+        "selected": 374,
+        "scored": 374,
+        "unrun": 0,
+        "scored_positive_recall": {
+          "eligible": 161,
+          "recovered": 161
+        },
+        "mismatches": [],
+        "reason_errors": [],
+        "unsafe_positives": [],
+        "operational_errors": [],
+        "missing_required_issues": [],
+        "raw_agreed_unsafe_positives": [
+          {
+            "case_id": "synthetic.31.3",
+            "stage": "primary"
+          },
+          {
+            "case_id": "synthetic.32.3",
+            "stage": "primary"
+          },
+          {
+            "case_id": "synthetic.32.0",
+            "stage": "arbitration"
+          }
+        ],
+        "primary_disagreements": [
+          "synthetic.33.3",
+          "synthetic.32.0",
+          "synthetic.name-scope.3"
+        ],
+        "arbitrated_cases": [
+          "synthetic.33.3",
+          "synthetic.32.0",
+          "synthetic.name-scope.3"
+        ],
+        "usage": {
+          "calls": 84,
+          "failed_calls": 0,
+          "guard_rejections": 0,
+          "missing_usage_calls": 0,
+          "input_tokens": 1205202,
+          "cached_input_tokens": 9984,
+          "output_tokens": 93981,
+          "reasoning_output_tokens": 43931
+        },
+        "report": "controls-gpt-6-luna-high/report.json"
+      },
+      "pilot": {
+        "state": "completed",
+        "selected": 96,
+        "scored": 96,
+        "unrun": 0,
+        "scored_positive_recall": {
+          "eligible": 24,
+          "recovered": 23
+        },
+        "mismatches": [
+          "natural.502815011"
+        ],
+        "reason_errors": [],
+        "unsafe_positives": [],
+        "operational_errors": [],
+        "missing_required_issues": [],
+        "raw_agreed_unsafe_positives": [],
+        "primary_disagreements": [
+          "natural.502815011"
+        ],
+        "arbitrated_cases": [
+          "natural.502815011"
+        ],
+        "usage": {
+          "calls": 29,
+          "failed_calls": 2,
+          "guard_rejections": 0,
+          "missing_usage_calls": 0,
+          "input_tokens": 1069151,
+          "cached_input_tokens": 6912,
+          "output_tokens": 106808,
+          "reasoning_output_tokens": 36020
+        },
+        "report": "pilot-gpt-6-luna-high/report.json"
+      },
+      "model_only_diagnostic": {
+        "state": "completed",
+        "selected": 1,
+        "scored": 1,
+        "unrun": 0,
+        "scored_positive_recall": {
+          "eligible": 1,
+          "recovered": 0
+        },
+        "mismatches": [
+          "natural.502815011"
+        ],
+        "reason_errors": [],
+        "unsafe_positives": [],
+        "operational_errors": [],
+        "missing_required_issues": [],
+        "raw_agreed_unsafe_positives": [],
+        "primary_disagreements": [],
+        "arbitrated_cases": [],
+        "usage": {
+          "calls": 2,
+          "failed_calls": 0,
+          "guard_rejections": 0,
+          "missing_usage_calls": 0,
+          "input_tokens": 30016,
+          "cached_input_tokens": 0,
+          "output_tokens": 1678,
+          "reasoning_output_tokens": 848
+        },
+        "report": "diagnostic-gpt-6-luna-high/report.json"
+      }
+    }
+  }
+}

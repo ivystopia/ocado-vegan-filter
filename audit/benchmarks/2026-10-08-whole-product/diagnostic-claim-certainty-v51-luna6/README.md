@@ -1,0 +1,5 @@
+# Classifier-v51 bounded Luna 6/high diagnostic
+
+All 24 unchanged frozen inputs pass suitability status, canonical reason, required issue reporting and actual isolated persistence/export checks. Sixteen uncertainty cases remain unknown; eight supported positives retain their permitted reasons, including seven manufacturer controls and one name control. One raw disagreement (synthetic.claim-certainty.12) receives exactly two fresh blind Sol 6.1/medium readings. No final unsafe positive or raw agreed unsupported positive occurs.
+
+All nine actual calls include one rejected attempt and complete usage: 147,544 input, 9,984 cached input and 32,456 output tokens; 10,625 reasoning tokens are included in output. Seven primary calls use 115,648 input / 31,362 output; two arbitration calls use 31,896 input / 1,094 output. The Standard-credit proxy is 2.526981, neither a charge nor included-plan quota measurement. Exact inputs, code bindings, cited decisions and projections are retained. This bounded diagnostic does not qualify a model or authorise default/canonical changes.

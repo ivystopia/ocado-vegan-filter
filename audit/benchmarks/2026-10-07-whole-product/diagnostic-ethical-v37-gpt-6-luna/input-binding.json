@@ -1,0 +1,29 @@
+{
+  "frozen_input_packet": "diagnostic-ethical-v37-inputs.json.gz",
+  "file_sha256": "a65c121f7724fbb99a5529e23ef2f1a60f563619cd6008692c394d23cdee00fe",
+  "case_ids": [
+    "natural.587218011",
+    "natural.622363011",
+    "natural.634499011",
+    "natural.659989011",
+    "natural.665753011",
+    "synthetic.coordinated-claim.0",
+    "synthetic.coordinated-claim.1",
+    "synthetic.coordinated-claim.2",
+    "synthetic.coordinated-claim.3",
+    "synthetic.coordinated-claim.4",
+    "synthetic.coordinated-claim.5",
+    "synthetic.packaging-fragment.wine",
+    "synthetic.retained-claim-scope.0",
+    "synthetic.retained-claim-scope.1",
+    "synthetic.retained-claim-scope.2",
+    "synthetic.retained-claim-scope.3",
+    "synthetic.retained-claim-scope.4",
+    "synthetic.retained-claim-scope.5",
+    "natural.629541011",
+    "synthetic.independent-assertion.0",
+    "synthetic.independent-assertion.1",
+    "synthetic.independent-assertion.2"
+  ],
+  "note": "Exact frozen diagnostic fixture; expectations/adjudications excluded from every model prompt."
+}

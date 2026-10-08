@@ -1,0 +1,50 @@
+{
+  "all_known_matched": 2,
+  "stored_current_matched": 2,
+  "products": [
+    {
+      "id": "647568011",
+      "name": "Rubies in the Rubble Squeezy Garlic Vegan Mayonnaise",
+      "current_on_ocado": 1,
+      "stored_status": "vegan",
+      "stored_reason": "tagged",
+      "old_rules": null,
+      "qualified_animal_declarations": [
+        {
+          "path": "/product/detailed_description",
+          "quote": "Our creamy garlic mayo is made with citrus fibre, a plant-based alternative to eggs that is usually thrown away. Tastes great? Good. Fights food waste too? Gooder. Perfect for pizza crusts!"
+        }
+      ],
+      "matched_fields": {
+        "detailed_description": "Our creamy garlic mayo is made with citrus fibre, a plant-based alternative to eggs that is usually thrown away. Tastes great? Good. Fights food waste too? Gooder. Perfect for pizza crusts!"
+      },
+      "new_rules": {
+        "status": "vegan",
+        "reason": "tagged"
+      },
+      "new_qualified_animal_declarations": []
+    },
+    {
+      "id": "649914011",
+      "name": "Rubies in the Rubble Squeezy Classic Vegan Mayonnaise",
+      "current_on_ocado": 1,
+      "stored_status": "vegan",
+      "stored_reason": "manufacturer",
+      "old_rules": null,
+      "qualified_animal_declarations": [
+        {
+          "path": "/product/detailed_description",
+          "quote": "Our creamy mayo is made with citrus fibre, a plant-based alternative to eggs that is usually thrown away. Tastes great? Good. Fights food waste too? Gooder."
+        }
+      ],
+      "matched_fields": {
+        "detailed_description": "Our creamy mayo is made with citrus fibre, a plant-based alternative to eggs that is usually thrown away. Tastes great? Good. Fights food waste too? Gooder."
+      },
+      "new_rules": {
+        "status": "vegan",
+        "reason": "manufacturer"
+      },
+      "new_qualified_animal_declarations": []
+    }
+  ]
+}

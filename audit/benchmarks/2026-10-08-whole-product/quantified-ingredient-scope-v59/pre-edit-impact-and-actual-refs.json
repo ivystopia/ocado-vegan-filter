@@ -1,0 +1,125 @@
+{
+  "inspection": "Consistent SQLite read-only lexical impact upper bound before source changes; no model or canonical/schema write. Candidate phrase does not establish a positive classification.",
+  "all_known": 54418,
+  "stored_current": 49951,
+  "matching_products": 5,
+  "matching_current_products": 4,
+  "products": [
+    {
+      "product_id": "518548011",
+      "name": "Johnnie Walker Blue Label Ghost & Rare Glenury Royal Limited Edition",
+      "stored_current": 0,
+      "historical_status": "unknown",
+      "historical_reason": null,
+      "fields": [
+        {
+          "path": "/product/detailed_description",
+          "quote": "This limited edition has been carefully crafted by Master Blender Jim Beveridge and his small team of passionate blenders using eight handpicked whiskies from the four corners of Scotland. These include three irreplaceable \"ghost whiskies\" and five incredibly rare malt expressions from the Johnnie Walker Blue Label reserves - all of which are at least 20 years old. At the heart of this blend lies the highly sought-after whisky from the famed Island distillery of Port Ellen, which closed its doors in 1983. The 2nd release - in what is fast becoming one of the most desirable and collectable releases in the Johnnie Walker Blue Label Range. \"Ghost & Rare Port Ellen\" is a combination of some of the rarest whiskies on the planet. Central to this whisky is stock from the iconic and legendary Port Ellen distillery, which gives this whisky a smoky, maritime character along with whiskies from the long lost Grain Distilleries Carsebridge and Caledonian, that add richness and sweetness. Five other rare whiskies are then combined to create this incredibly layered and complex whisky. This is an exceptional blend that marries rich malty notes, tropical fruits and the smoky complexity of Port Ellen on the finish. Each bottle is individually numbered with a custom design showing a map of Scotland and the location of each of the distilleries that make up the whisky. Its an outstanding luxury whisky blend that will appeal both to the connoisseur who wants to try some of the finest whiskies produced and would also take pride of place in any personal collection. Please drink responsibly: The UK Chief Medical Officers recommend adults do not regularly drink more than 14 units per week"
+        }
+      ]
+    },
+    {
+      "product_id": "547140011",
+      "name": "Rombouts Decaffeinated Compostable One Cup Filter Coffee",
+      "stored_current": 1,
+      "historical_status": "vegan",
+      "historical_reason": "ingredients",
+      "fields": [
+        {
+          "path": "/product/detailed_description",
+          "quote": "The first home compostable one cup filter! Pure ground coffee Natural filter paper Natural sugar cane fibres A great cup of coffee for you and the environment! We make our one cup filters from bagasse, the natural sugar cane fibres left after extracting the sugar. The fibres are collected, processed, and used to make the filters. Once used, the filters can be home composted or disposed of with your food waste. Enjoy quality coffee at home, in the office, and away! A blend of some of the finest coffees from around the world, carefully decaffeinated to preserve their unique flavours. A fully balanced coffee with a medium body and a rich aroma, perfect for any time of the day or night! Flavour Notes Caramel Aroma -3/5 Hazelnuts Intensity - 3/5 Dried Fruits After Taste - 3/5"
+        }
+      ]
+    },
+    {
+      "product_id": "587217011",
+      "name": "Protein World Vegan Salted Caramel Slender Blend",
+      "stored_current": 1,
+      "historical_status": "vegan",
+      "historical_reason": "name",
+      "fields": [
+        {
+          "path": "/product/detailed_description",
+          "quote": "We believe if you look after your body on the inside, the outside will look after itself. That’s why we’ve created a Vegan version of our best-selling weight loss shake - The Slender Blend™️ that tastes amazing! This amazing tasting vegan protein shake is curated from a unique combination of some of the world’s finest vegan protein sources you can lose weight and build muscle whilst consuming 26 different vitamins and minerals every day. High in protein with at least 24g of protein per recommended serving and less than 210 calories per serving, this is the perfect vegan weight loss shake for a meal-replacement that can also be used post-workout or as a delicious low-calorie snack. Boosted with pre & probiotics, vitamin C and essential B vitamins, the Vegan Blend additionally contributes to the upkeep of your immune system and keeps your hair, skin and nails looking radiant! This vegan protein shake is packed with a unique blend of pea, hemp and quinoa protein, green tea extract, guarana extract & natural flavours for a smooth, indulgent taste. It will fast become your favourite vegan weight loss shake with a choice of four delicious flavours! We’ve prioritised your dietary requirements so that you don’t have to. Let’s just say you can have your (vegan) cake and eat it too! 1 month = 45 servings, 1.8kg pouch ½ month = 30 servings, 2 x 600g pouches"
+        }
+      ]
+    },
+    {
+      "product_id": "587218011",
+      "name": "Protein World Vegan Slender Strawberries & Cream Blend",
+      "stored_current": 1,
+      "historical_status": "vegan",
+      "historical_reason": "name",
+      "fields": [
+        {
+          "path": "/product/detailed_description",
+          "quote": "We believe if you look after your body on the inside, the outside will look after itself. That’s why we’ve created a Vegan version of our best-selling weight loss shake - The Slender Blend™️ that tastes amazing! This amazing tasting vegan protein shake is curated from a unique combination of some of the world’s finest vegan protein sources you can lose weight and build muscle whilst consuming 26 different vitamins and minerals every day. High in protein with at least 24g of protein per recommended serving and less than 210 calories per serving, this is the perfect vegan weight loss shake for a meal-replacement that can also be used post-workout or as a delicious low-calorie snack. Boosted with pre & probiotics, vitamin C and essential B vitamins, the Vegan Blend additionally contributes to the upkeep of your immune system and keeps your hair, skin and nails looking radiant! This vegan protein shake is packed with a unique blend of pea, hemp and quinoa protein, green tea extract, guarana extract & natural flavours for a smooth, indulgent taste. It will fast become your favourite vegan weight loss shake with a choice of four delicious flavours! We’ve prioritised your dietary requirements so that you don’t have to. Let’s just say you can have your (vegan) cake and eat it too! 1 month = 45 servings, 1.8kg pouch ½ month = 30 servings, 2 x 600g pouches"
+        }
+      ]
+    },
+    {
+      "product_id": "587219011",
+      "name": "Protein World Vegan Chocolate Slender Blend",
+      "stored_current": 1,
+      "historical_status": "vegan",
+      "historical_reason": "name",
+      "fields": [
+        {
+          "path": "/product/detailed_description",
+          "quote": "We believe if you look after your body on the inside, the outside will look after itself. That’s why we’ve created a Vegan version of our best-selling weight loss shake - The Slender Blend™️ that tastes amazing! This amazing tasting vegan protein shake is curated from a unique combination of some of the world’s finest vegan protein sources you can lose weight and build muscle whilst consuming 26 different vitamins and minerals every day. High in protein with at least 24g of protein per recommended serving and less than 210 calories per serving, this is the perfect vegan weight loss shake for a meal-replacement that can also be used post-workout or as a delicious low-calorie snack. Boosted with pre & probiotics, vitamin C and essential B vitamins, the Vegan Blend additionally contributes to the upkeep of your immune system and keeps your hair, skin and nails looking radiant! This vegan protein shake is packed with a unique blend of pea, hemp and quinoa protein, green tea extract, guarana extract & natural flavours for a smooth, indulgent taste. It will fast become your favourite vegan weight loss shake with a choice of four delicious flavours! We’ve prioritised your dietary requirements so that you don’t have to. Let’s just say you can have your (vegan) cake and eat it too! 1 month = 45 servings, 1.8kg pouch ½ month = 30 servings, 2 x 600g pouches"
+        }
+      ]
+    }
+  ],
+  "proposed_neutralised_qualifier": "\\b((?:combination|blend|mixture) of )some of\\b",
+  "classifier_version": "db-vegan-codex-v58",
+  "actual_case_review": {
+    "case_id": "natural.587218011",
+    "run_sha256": "897fc040ef356135fb34b4a7ebaaaf53ebe263bc42d3ee30919dad035fed90f9",
+    "expected": {
+      "vegan_status": "vegan",
+      "vegan_reason": "manufacturer",
+      "required_issue_codes": []
+    },
+    "readings": [
+      {
+        "raw_status_reason": [
+          "vegan",
+          "manufacturer"
+        ],
+        "actual_refs": [
+          {
+            "path": "/product/detailed_description",
+            "quote": "This amazing tasting vegan protein shake is curated from a unique combination"
+          }
+        ],
+        "before_reference_acceptance": [
+          false
+        ],
+        "proposed_reference_acceptance": [
+          true
+        ]
+      },
+      {
+        "raw_status_reason": [
+          "vegan",
+          "manufacturer"
+        ],
+        "actual_refs": [
+          {
+            "path": "/product/detailed_description",
+            "quote": "This amazing tasting vegan protein shake"
+          }
+        ],
+        "before_reference_acceptance": [
+          false
+        ],
+        "proposed_reference_acceptance": [
+          true
+        ]
+      }
+    ],
+    "source_words_labels_and_raw_assessments_unchanged": true,
+    "is_fresh_validation": false
+  }
+}

@@ -1,0 +1,50 @@
+FFFFF
+======================================================================
+FAIL: test_hyphenated_food_scope_remains_a_component_only_assurance (test_whole_product_policy.WholeProductPolicyTests.test_hyphenated_food_scope_remains_a_component_only_assurance) (qualifier='food-only')
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "/home/ivy/repos/personal/ocado_report/tests/test_whole_product_policy.py", line 53, in test_hyphenated_food_scope_remains_a_component_only_assurance
+    self.assertTrue(policy.component_only_claim(restriction))
+    ~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+AssertionError: False is not true
+
+======================================================================
+FAIL: test_hyphenated_food_scope_remains_a_component_only_assurance (test_whole_product_policy.WholeProductPolicyTests.test_hyphenated_food_scope_remains_a_component_only_assurance) (qualifier='food‐only')
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "/home/ivy/repos/personal/ocado_report/tests/test_whole_product_policy.py", line 53, in test_hyphenated_food_scope_remains_a_component_only_assurance
+    self.assertTrue(policy.component_only_claim(restriction))
+    ~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+AssertionError: False is not true
+
+======================================================================
+FAIL: test_hyphenated_food_scope_remains_a_component_only_assurance (test_whole_product_policy.WholeProductPolicyTests.test_hyphenated_food_scope_remains_a_component_only_assurance) (qualifier='food‑only')
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "/home/ivy/repos/personal/ocado_report/tests/test_whole_product_policy.py", line 53, in test_hyphenated_food_scope_remains_a_component_only_assurance
+    self.assertTrue(policy.component_only_claim(restriction))
+    ~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+AssertionError: False is not true
+
+======================================================================
+FAIL: test_hyphenated_food_scope_remains_a_component_only_assurance (test_whole_product_policy.WholeProductPolicyTests.test_hyphenated_food_scope_remains_a_component_only_assurance) (qualifier='contents-only')
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "/home/ivy/repos/personal/ocado_report/tests/test_whole_product_policy.py", line 53, in test_hyphenated_food_scope_remains_a_component_only_assurance
+    self.assertTrue(policy.component_only_claim(restriction))
+    ~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+AssertionError: False is not true
+
+======================================================================
+FAIL: test_hyphenated_food_scope_remains_a_component_only_assurance (test_whole_product_policy.WholeProductPolicyTests.test_hyphenated_food_scope_remains_a_component_only_assurance) (qualifier='drink-only')
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "/home/ivy/repos/personal/ocado_report/tests/test_whole_product_policy.py", line 53, in test_hyphenated_food_scope_remains_a_component_only_assurance
+    self.assertTrue(policy.component_only_claim(restriction))
+    ~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+AssertionError: False is not true
+
+----------------------------------------------------------------------
+Ran 1 test in 0.002s
+
+FAILED (failures=5)

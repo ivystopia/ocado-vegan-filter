@@ -1,0 +1,545 @@
+{
+  "schema_version": 2,
+  "policy_version": "whole-product-v2",
+  "cases": [
+    {
+      "case_id": "natural.684600011",
+      "case_kind": "natural",
+      "sampling_stratum": "unknown",
+      "current_on_ocado": 1,
+      "classifier_input": {
+        "product": {
+          "id": "684600011",
+          "name": "M&S Kids Striped Pyjama Set, 7-8 Y, Multi",
+          "brand": "M&S",
+          "url": "https://www.ocado.com/products/684600011/details",
+          "official_vegan": 0,
+          "detailed_description": "Refresh their nightwear collection with this 2-pack of cotton-rich pyjamas. The tops and matching bottoms are cut in a comfy regular fit, with added stretch for flexible movement. Each pair of trousers features a striped pattern and an elasticated waist.",
+          "preparation_and_usage": "Machine washable even at 30\u00ba Tumble dry Keep away from fire 97% cotton, 3% elastane Ribbing - 98% cotton, 2% elastane",
+          "specification": "- Added Stretch - Regular fit - Long sleeve - Pyjama sets",
+          "pack_size": "2 per pack"
+        },
+        "flags": [],
+        "categories": [
+          "clothing-accessories/kids-clothing-accessories-3-14-years/kids-nightwear",
+          "clothing-accessories/women-s-clothing-accesssories/women-s-nightwear",
+          "m-s/m-s-clothing/m-s-kidswear/m-s-kids"
+        ],
+        "manufacturer_vegan_evidence": [],
+        "manufacturer_source_candidates": [
+          {
+            "source_id": "41206a59c1ca08c5f6a8e4299ab6412e90f5db12af9e2107e056b12b17bbe7c3",
+            "source_url": "https://corporate.marksandspencer.com/sites/marksandspencer/files/marks-spencer/c-and-h-animal-fibre/m-and-s-clothing-and-home-animal-welfare-policy.pdf",
+            "source_text": " (https://corporate.marksandspencer.com/sites/marksandspencer/files/marks-spencer/c-and-h-animal-fibre/m-and-s-clothing-and-home-animal-welfare-policy.pdf)\n\ue200cite\ue202turn194view0\ue201 [wordlim: 200] Crawled: today; Content type: application/pdf; Number of pages: 5; Source: open({\"ref_id\":\"https://corporate.marksandspencer.com/sites/marksandspencer/files/marks-spencer/c-and-h-animal-fibre/m-and-s-clothing-and-home-animal-welfare-policy.pdf\",\"lineno\":null}); Total lines: 110\nL0@P0: Latest Version Date June 2020 Doc Ref M&S Animal Welfare Policy\nL1@P0: Version Number 2.0 Page 1 of 7\nL2@P0: Public Copy\nL3@P0: \nL4@P0-1: ANIMAL WELFARE POLICYLatest Version Date June 2020 Doc Ref Animal Welfare Policy\nL5@P1: Version Number 2.0 Page 2 of 5\nL6@P1: Public Copy\nL7@P1: BACKGROUND\nL8@P1: Marks and Spencer are committed to using responsibly sourced raw materials including the\nL9@P1: use of products derived from animals. This policy forms part of our commitment to uphold\nL10@P1: the M&S animal welfare principles for all animal derived products we source.\nL11@P1: SCOPE\nL12@P1: This policy covers products sold in all Clothing, Home and Beauty areas that contain any\nL13@P1: animal derived raw materials. The scope includes all main fabrics/textiles, trims,\nL14@P1: componentry packaging, chemicals, pigments and dyestuffs.\nL15@P1: This policy is intended to complement the additional specific sourcing policies for\nL16@P1: Cashmere, Wool, Leather and Feather and Down.\nL17@P1: RATONALE AND OBJECTIVES\nL18@P1: \u2022 To ensure Marks & Spencer meets its long-standing commitment to improve animal\nL19@P1: welfare in its supply chains and ensure all animal derived materials are sourced from\nL20@P1: farms with good animal welfare practices. Marks & Spencer are committed to\nL21@P1: improving animal welfare across our global supply chains and we are working to\nL22@P1: source all animal-derived materials from farms with good animal welfare practices\nL23@P1: \u2022 To lay out a set of uniform principles and guidelines around the sourcing of animal\nL24@P1: derived raw materials\nL25@P1: \u2022 To also ensure that appropriate due diligence is undertaken with regards to the\nL26@P1: sourcing of products in relation to animal welfare\nL27@P1: M&S MANDATORY PRINCIPLES FOR SOURCING\nL28@P1: Marks and Spencer are committed to protecting any endangered or vulnerable species and\nL29@P1: to the prevention of cruelty. Through our supply chains we seek to promote, encourage and\nL30@P1: foster higher animal welfare standards using codes, recommendations and audited supply\nL31@P1: chains. We will continuously review our supply chains and where there are practices that\nL32@P1: are of concern, we will take a considered course of action.\nL33@P1: No animal will be slaughtered specifically for the manufacture or sourcing of M&S products.\nL34@P1: PROHIBITED SOURCES\nL35@P1: The following materials do not comply with our business principles for animal welfare and\nL36@P1: therefore must not be used in any of our non-food products:\nL37@P1: \u2022 Any material from any endangered species, defined as those which appear on the\nL38@P1-2: Convention on International Trade in Endangered Species (CITES) (see www.cites.org/ Latest Version Date June 2020 Doc Ref Animal Welfare Policy\nL39@P2: Version Number 2.0 Page 3 of 5\nL40@P2: Public Copy\nL41@P2: for list of species) or the IUCN red list as Critically Endangered,\nL42@P2: Endangered or Vulnerable (www.redlist.org/).\nL43@P2: \u2022 No animal must be slaughtered specifically to produce any non- food M&S products.\nL44@P2: \u2022 Fur: this includes farmed fur (e.g. fox, sable, mink, chinchilla, rabbit)\nL45@P2: \u2022 Angora Rabbit fibre\nL46@P2: \u2022 Alpaca fibre\nL47@P2: \u2022 Astrakhan (Karakul) or any other leather/skin products which are the product of\nL48@P2: unnatural abortions\nL49@P2: \u2022 Any material obtained from live skinning (e.g. reptiles) or live boiling\nL50@P2: \u2022 Any cow hides sourced from India\nL51@P2: \u2022 Any animal derived bone or horn\nL52@P2: \u2022 Any down or feathers from exotic birds, including but not limited to ostrich\nL53@P2: \u2022 Any coral\nL54@P2: RESTRICTED SOURCES\nL55@P2: The following materials are currently accepted provided minimum requirements are met:\nL56@P2: \u2022 Leather must be sourced in compliance with our Responsible Leather Sourcing Policy\nL57@P2: \u2022 Animal Fibres (e.g. wool, cashmere) must be sourced in compliance with our Responsible\nL58@P2: Wool Sourcing Policy and our Cashmere Code of Practice for animal welfare respectively.\nL59@P2: All wool must be sourced from sheep that have not been mulesed\nL60@P2: \u2022 Mohair must only be sourced through routes fully certified to the Textile Exchange\nL61@P2: Responsible Mohair Standard (RMS)\nL62@P2: \u2022 Feather and Down must not be obtained from the live plucking of birds or from birds used\nL63@P2: in the production of Foie Gras. All Feather and Down must be sourced in compliance to\nL64@P2: our Responsible Feather and Down Sourcing Policy\nL65@P2: \u2022 All other animal derived materials must be sourced in accordance with this policy and\nL66@P2: relevant details must be provided on an Animal derived material declaration form\nL67@P2: \u2022 Any shell from vulnerable or endangered species must not be used (as defined by\nL68@P2: CITES/IUCN red list)\nL69@P2-3: \u2022 Only pearls form cultivated sources are allowed Latest Version Date June 2020 Doc Ref Animal Welfare Policy\nL70@P3: Version Number 2.0 Page 4 of 5\nL71@P3: Public Copy\nL72@P3: THE FIVE FREEDOMS OF ANIMAL WELFARE\nL73@P3: In developing minimum standards for sourcing any animal product Marks & Spencer\nL74@P3: consider the internationally recognised \u201cFive Freedoms\u201d as a framework and for guidance. It\nL75@P3: is important that the sourcing of any animal derived materials for M&S are underpinned by\nL76@P3: these principles:\nL77@P3: 1. Freedom from Hunger and Thirst \u2013 by ready access to fresh water and a diet to\nL78@P3: maintain full health and vigour\nL79@P3: 2. Freedom from Discomfort \u2013 by providing an appropriate environment including\nL80@P3: shelter and a comfortable resting area\nL81@P3: 3. Freedom from Pain, Injury and Disease \u2013 by prevention or rapid diagnosis and\nL82@P3: treatment\nL83@P3: 4. Freedom to Express Normal Behaviour \u2013 by providing sufficient space, proper\nL84@P3: facilities and company of the animal\u2019s own kind\nL85@P3: 5. Freedom from Fear and Distress \u2013 by ensuring conditions and treatment which\nL86@P3: avoid mental suffering\nL87@P3: ANIMAL TESTING\nL88@P3: Marks and Spencer will not conduct or commission any tests on animals. All M&S own brand\nL89@P3: cosmetic and household products and ingredients must be approved by the BUAV under\nL90@P3: the Humane Cosmetics Standard, The Leaping Bunny Standard. This standard has been in\nL91@P3: place since January 2006\nL92@P3: PET ACCESSORIES\nL93@P3: Any pet accessories are subject to all mandatory principles for sourcing. In addition, the\nL94@P3: product itself must not compromise the welfare of the animal for which it is intended to be\nL95@P3: used, using the Five Freedoms as a reference.\nL96@P3: PRODUCT PROMOTION\nL97@P3: Marks and Spencer will review all animal imagery used in the promotion of its products to\nL98@P3: ensure that it does not endorse animal exploitation, cruelty or irresponsible use or\nL99@P3: ownership.\nL100@P3: DEFINITIONS\nL101@P3: Animals: The Vegan Society understands the word animal to refer to the entire animal\nL102@P3-4: kingdom, that is all vertebrates and multi-cellular invertebrates. The word may be used either Latest Version Date June 2020 Doc Ref Animal Welfare Policy\nL103@P4: Version Number 2.0 Page 5 of 5\nL104@P4: Public Copy\nL105@P4: as a noun or an adjective and to refer to a species, or an individual animal,\nL106@P4: depending on context.\nL107@P4: Animal derived materials: Materials including ingredients that have an animal (see above\nL108@P4: definition), origin, regardless of whether they have been harvested form live or dead\nL109@P4: animals.\n\n",
+            "source_sha256": "8e4c38df7635a6943776f14e232378d39cd7230283efb80144cf09faaab2ac21",
+            "retrieved_at": "2026-09-13T17:33:50.593083+00:00",
+            "official_identity": "Public policy published on the M&S corporate website.",
+            "market_scope": "M&S Clothing, Home and Beauty sourcing policy; June 2020 document, not a new universal vegan commitment.",
+            "association_status": "catalogue_match"
+          },
+          {
+            "source_id": "41f35da8b9a55a2be4fb0ecad7cf67c23f3b3607aa1a6de7f1030a37797df8bf",
+            "source_url": "https://www.marksandspencer.com/pure-cotton-striped-pyjama-set/p/clp61215271",
+            "source_text": "URL: https://www.marksandspencer.com/pure-cotton-striped-pyjama-set/p/clp61215271\nHTTP status: 200\n\nPure Cotton Striped Pyjama Set by M&S\nUpdate your browser for a better shopping experience!\nGet faster load times, stronger security and access to all features.\nSkip to content\nJust arrived: autumn\u2019s most-wanted styles\nEasy kids\u2019 autumn outfits for less\nDon\u2019t miss: up to 30% off Brands at M&S\nHelp\nSearch product, code or brand\nClear\nSign in\n0\nSearch product, code or brand\nClear\nWomen\nBrands\nClothing\nBest Sellers\nEveryday Basics\nCardigans\nCashmere\nCoats & Jackets\nDresses\nJeans\nJumpers\nKnitwear\nShirts and Blouses\nSkirts\nSportswear\nHoliday Shop\nTops\nTrousers\nT-Shirts\nWorkwear\nDresses\nAll Dresses\nMaxi Dresses\nMidi Dresses\nMini Dresses\nJeans\nAll Jeans\nBarrel Leg Jeans\nStraight Leg Jeans\nWide Leg Jeans\nLingerie & Nightwear\nBras\nKnickers\nNightwear\nLoungewear\nShoes\nAll Shoes\nBallet Flats\nBoots\nHeels\nTrainers\nAccessories & Bags\nAll Accessories\nHandbags & Bags\nJewellery\nBody Fit & Maternity\nCurve\nMaternity\nPetite\nTall\nJust Arrived\nAutumn Style\nOur September Top Picks\nModern Heritage: Checks\nUp to 30% off Women's Brands\nJeans & a Nice Top\nEditorial\nLingerie\nBrands\nBras\nAll Bras\nBalcony Bras\nBra Accessories\nCotton Bras\nDemi Cup Bras\nFirst Bras\nF-K Bras\nFull Cup Bras\nMaternity and Nursing Bras\nMultipack Bras\nNon-Wired Bras\nPost-Surgery Bras\nPadded Bras\nSports Bras\nStrapless Bras\nKnickers\nAll Knickers\nBrazilian Knickers\nCotton Knickers\nFull Brief Knickers\nHigh-Leg Knickers\nMultipack Knickers\nNo-VPL Knickers\nPeriod Knickers\nThongs\nShapewear\nAll Shapewear\nAnti-Chafing Shorts\nBodies\nShaping Knickers\nSlips\nNightwear & Loungewear\nAll Nightwear\nCotton Pyjamas\nDressing Gowns\nLoungewear\nNightdresses\nPyjamas\nPyjama Sets\nSlippers\nSocks & Tights\nSocks\nTights\nThermals & Vests\nThermals\nVests & Camis\nJust Arrived\nSexy Lingerie\nOur Top Picks\n20% Off Rosie\nLingerie Sets\nBook your Bra Fit\nEditorial\nMen\nBrands\nClothing\nCashmere\nCasual Shirts\nChinos\nCoats & Jackets\nHoliday Shop\nHoodies\nJeans\nJoggers\nKnitwear\nPolo Shirts\nShirts\nShorts\nSportswear\nSweatshirts\nTops\nTrousers\nT-Shirts\nSuits & Formalwear\nAll Suits\nBlazers\nFormal Shirts\nOffice Wear\nSmart Trousers\nTies\nTuxedos\nBook Your Suit Fit\nUnderwear\nAll Underwear\nBriefs\nBoxers\nSocks\nTrunks\nVests\nNightwear\nAll Nightwear\nDressing Gowns\nPyjamas\nShoes\nAll Shoes\nBoots\nLoafers\nSmart Shoes\nTrainers\nAccessories\nAll Accessories\nBags\nBelts\nHats\nJust Arrived\nAutumn Wardrobe Staples\nAutograph\nSmart Casual\nWhat to Wear to the Office\nWaterproof Jackets\nEditorial\nKids\nBrands\nGirls (2yrs-16yrs)\nAccessories\nCoats and Jackets\nDresses\nFootwear\nHoliday Shop\nJeans\nJoggers\nJumpers and Cardigans\nLeggings\nNightwear\nOutfits and Sets\nSkirts\nSocks and Tights\nSwimwear\nTops\nUnderwear and Vests\nBoys (2yrs-16yrs)\nAccessories\nCoats and Jackets\nFootwear\nHoliday Shop\nJumpers and Sweatshirts\nJeans\nJoggers\nShorts\nNightwear\nOutfits and Sets\nShirts\nSocks\nSwimwear\nTrousers\nTops\nUnderwear and Vests\nBaby\nBaby Boy\nBaby Girl\nBaby Grows\nBaby Outfits\nBaby Toys\nNewborn Clothing\nExplore our Baby Club\nSchool Uniform\nBoys' Uniform\nGirls' Uniform\nEveryday Essentials\nNightwear\nUnderwear\nSocks\nJust Arrived Girls'\nJust Arrived Boys'\nJust Arrived Baby\nEveryday Essentials\nRainy Day Essentials\nTrending: Everyday Adventure\nEditorial\nBeauty\nBrands\nSkincare\nAll Skincare\nCleansers\nEye Cream\nFace Masks\nMoisturisers\nSerum\nSun Cream\nMakeup\nAll Makeup\nBeauty Accessories\nBlushers\nFoundation\nLipstick\nMascara\nNail Care\nBath & Body\nAll Bath & Body\nHand Cream\nHand Wash\nShower Gel\nTravel Size Toiletries\nWellbeing\nFragrance\nWomen\u2019s Perfume\nMen\u2019s Eau de Parfum\nHaircare\nAll Haircare\nConditioner\nHair-Styling Accessories\nShampoo\nBeauty Gifts\nAll Beauty Gifts\nBath & Body Gifts\nPerfume Gifts\nSkincare Gifts\nMake-Up Gifts\nMen's Grooming\nAll Men's Grooming\nMen's Aftershave\nMen's Gifts\nMoisturisers\nK-Beauty\nAll Korean Skincare\nBeauty of Joseon\nMedicube\nSkincare\nHaircare\nFragrance\nK-Beauty\nJust Arrived\nBeauty Offers\nShop by Brand\nHome\nBrands\nBedding\nAll Bedding\nBed Sheets\nDuvets\nDuvet Covers & Sets\nMattress Protectors\nPillows\nPillowcases\nCooking & Dining\nDinner Sets\nPlates\nGlassware\nKitchenware\nMugs\nPots & Pans\nTableware\nHome Furnishings\nCushions\nCushion Covers\nCurtains\nRugs\nThrows\nBathroom\nAll Bathroom\nBath Mats\nTowels\nLighting\nAll Lighting\nCeiling Lights\nFloor Lamps\nTable Lamps\nHome Accessories\nArtificial Flowers & Plants\nHome Fragrance\nVases\nPlant Pots\nFurniture\nSofas\nBedroom Furniture\nDining Room Furniture\nGarden Furniture\nLiving Room Furniture\nNursery Furniture\nChristmas shop\nChristmas Decorations\nChristmas Trees\n20% off selected Home\nJust Arrived\nBedding\nHome Furnishings\nTowels\nTableware\nEditorial\nFlowers\nBrands\nFlowers\nAll Flowers\nAutumn Flowers\nBritish Flowers\nCelebrity Collections\nFlowers under \u00a335\nJust Arrived\nLetterbox Flowers\nRose Bouquets\nSunflowers\nPlants\nAll Plants\nBritish Plants\nIndoor Plants\nOrchids\nShop by Delivery\nNext Day Delivery Flowers\nNext Day Delivery Plants\nSunday Delivery Flowers\nFlowers by Occasion\nAnniversary Flowers\nBirthday Flowers\nCongratulations Flowers\nEngagement Flowers\nNew Baby Flowers\nNew Home Flowers\nThank You Flowers\nSympathy Flowers\nPlants by Occasion\nBirthday Plants\nSympathy Plants\nHousewarming Plants\nThank you Plants\nAnniversary Plants\nGift Sets\nFlower Gift Sets\nPlant Gift Sets\nFlowers by Colour\nPink Flowers\nPurple Flowers\nRed Flowers\nWhite Flowers\nYellow Flowers\nJust Arrived Flowers\nFlowers Through The Letterbox\nNew: Autumn Flowers\nThe Perfect Gift: 100 Roses\nFlowers With A Little Extra\nNext Day Delivery Flowers\nEditorial\nGifts\nBrands\nFood & Drink Gifts\nAll Food and Drink Gifts\nAfternoon Tea Hampers\nAlcohol Gifts\nBrownies\nFruit Baskets\nHampers\nLetterbox Gifts\nGifts by Price\nFree Delivery Gifts\nGifts Under \u00a320\nGifts Under \u00a330\nGifts Under \u00a350\nLuxury Gifts\nGifts by Recipient\nGifts For Her\nGifts For Him\nGifts For Kids\nBaby Gifts\nGifts by Occasion\nAnniversary Gifts\nBirthday Gifts\nChristmas\nCongratulations Gifts\nHousewarming Gifts\nWedding Gifts\nAll Gift Cards\nGift Cards\nE-Gift Cards\nCorporate Gifts\nFloral Gifts\nFlowers\nPlants\nGifts for the Family\nGifts for Mum\nGifts for Dad\nGifts for Brother\nGifts for Sister\nGifts for Grandmas\nGifts for Grandads\nChristmas\nThe Perfect Gift: 100 Roses\nGifts for Her\nFlowers Through The Letterbox\nFood & Drink Gifts\nGift Cards\nEditorial\nChristmas\nChristmas Trees & Decorations\nAll Christmas Decorations\nChristmas Baubles\nChristmas Trees\nChristmas Homeware\nAll Christmas Homeware\nChristmas Fragrance\nChristmas Tableware\nGifts By Price\nGifts under \u00a320\nGifts under \u00a330\nGifts under \u00a350\nLuxury Gifts\nFood & Drink Gifts\nAll Food & Drink Gifts\nAlcohol Gifts\nFruit Baskets\nLetterboxes\nGift Ideas\nBeauty Gifts\nE-Gift Cards\nGift Cards\nSecret Santa\nStocking Fillers\nGifts By Recipient\nGifts For Baby\nGifts for Her\nGifts for Him\nGifts for Kids\nChristmas Trees\nChristmas Baubles\nKelly Hoppen Christmas Joy Candle\nChristmas Decorations\nChristmas Pyjamas\nSports\nBrands\nWomen's Sportswear\nAll Women's Sportswear\nAthleisure\nSports Coats and Jackets\nHoodies and Sweatshirts\nJoggers\nSports Bras\nSports Leggings\nSports Tops\nWomen's Sports Trainers\nRunning Trainers\nWalking and Hiking Trainers\nWomen's Shop by Activity\nGym\nRunning\nSwimming\nWalking and Hiking\nMen's Sportswear\nAll Men's Sportswear\nAthleisure\nHoodies and Sweatshirts\nJoggers\nSports Shorts\nSports Tops\nSports Trousers\nMen's Sports Trainers\nRunning Trainers\nWalking and Hiking Trainers\nMen's Shop by Activity\nGym\nRunning\nWalking and Hiking\n20% off Sportswear\nJust Arrived Women's Sports\nJust Arrived Men's Sports\nMen's Goodmove\nWomen's Goodmove\nEditorial\nBrands\nBrands\nFashion Brands\nCalvin Klein\nChelsea Peers\nDune\nGANT\nHush\nLevi's\nMonsoon\nNever Fully Dressed\nPour Moi\nRo&Zo\nSkechers\nSouth Beach\nSteve Madden\nTommy Hilfiger\nWhistles\nWhite Stuff\nHome Brands\nBarker and Stonehouse\nEast End Prints\nGallery Direct\nPiglet in Bed\nRoyalcraft\nBeauty Brands\nBeauty of Joseon\nBenefit\nClinique\nColor Wow\nEst\u00e9e Lauder\nHair by Sam McKnight\nMedicube\nM&S Brands\nAutograph\nGoodmove\nJaeger\nPer Una\nSports Brands\nadidas\nBrooks\nSweaty Betty\nTop Brand Offers\nUp to 30% off Women's Brands\nUp to 30% off Beauty Brands\nUp to 30% off Men's Brands\nUp to 30% off Women's Brands\nUp to 30% off Men's Brands\nNEW: River Island for Menswear\nJust Arrived\nShop by Brand\nFood\nBrands\nFood Online\nCakes\nBirthday Cakes\nChocolate Cupcakes\nFruity Cupcakes\nVanilla Cupcakes\nParty Food\nSandwich & Sushi Platters\nFood & Drink Gifts\nAlcohol Gifts\nBrownies\nHampers\nLetterbox Gifts\nFood In Store\nDrinks\nFood Cupboard\nFrozen Food\nFruit & Vegetables\nHome of Health\nHome of Dine In\nMeat\nNew In Foodhall\nRemarksable Value\nPoultry\nReady to Cook\nPicky Bits\nFood Inspiration\nBest in Season\nBudget\nCooking Tips\nFoodhall Picks\nHealth\nM&S Caf\u00e9\nFamily Inspiration\nInteractive Food Map\nSnap Your Lunch to Win\nM&S Recipes\nBudget Recipes\nDinner Recipes\nFamily Friendly Recipes\nHealthy Recipes\nFood Inspiration\nFood in Store\nFood & Drink Gifts\nCue The Birthday Cake\nSandwich & Sushi Platters\nM&S Recipes\nOffers\nPrice Drop\nAll Price Drop\nWomen's Price Drop\nMen's Price Drop\nShop Women's Offers\nUp to 30% off Women's Brands\nUp to 30% off Beauty\n20% off selected Monsoon\n20% off selected Sosandar\n20% off Rosie\n20% off Sportswear\nShop Men's Offers\nAll Men's Offers\nUp to 30% off Men's Brands\n20% off Sportswear\nSartorial Shirts Offers\n3 for \u00a322 on selected T-Shirts\n30% off selected Swimwear Brands\nShop Kids' Offers\n10% off Baby Grows - Join Baby Club\n20% off selected Skechers\nMamas & Papas Offers\nUp to 30% off Women's Brands\n20% off selected Home\nUp to 30% off Men's Brands\n20% off Sportswear\nAll Clearance\nAll Price Drop\nClearance\nWomen's Clearance\nAll Women's Clearance\nJackets & Coats\nDresses\nJumpers & Cardigans\nTops\nTrousers\nMen's Clearance\nAll Men's Clearance\nJackets & Coats\nJumpers\nShirts\nTops\nTrousers\nLingerie Clearance\nAll Lingerie Clearance\nBras\nKnickers\nPrice Drop\nAll Price Drop\nWomen's Price Drop\nMen's Price Drop\nAll Clearance\nWomen's Clearance\nMen's Clearance\nLingerie Clearance\nBrands Clearance\nMoney\nCredit Card\nM&S Rewards Credit Card\nClub Rewards\nM&S Credit Card Transfer Plus\nM&S Credit Card Purchase Plus\nOur Credit Cards\nDigital Rewards\nMobile App\nInsurance\nTravel Insurance\nPet Insurance\nHome Insurance\nCar Insurance\nSparks Pay\nSign In\nTravel Money\nBuy Travel Money\nBuy Euros\nBuy US Dollars\nSell Travel Money\nExchange Rates\nAdditional Services\nSaving & Investing\nPersonal Loans\nFinancial Support\nInternet Banking\nCredit Card\nClub Rewards\nTravel Money\nInsurance\nFind store\nSparks\nHelp\nContact Us\nRegister\nPure Cotton Striped Pyjama Set\nYou are here:\nHome\nMen\nMen's Nightwear\nMen's Pyjamas\nModel: 6ft1\"/185cm - Wearing Medium\nModel: 6ft1\"/185cm - Wearing Medium\nModel: 6ft1\"/185cm - Wearing Medium\nModel: 6ft1\"/185cm - Wearing Medium\nModel: 6ft1\"/185cm - Wearing Medium\nModel: 6ft1\"/185cm - Wearing Medium\nProduct code:\nT070600\nAbout this style\nUpdate your sleepwear selection with this breathable pure cotton pyjama set. Easy regular fit. The long-sleeved top has a neat pocket and a ribbed crew neck for easy on-off. The striped bottoms feature a drawstring waist to keep them securely in place. \n \n M&S Collection: easy-to-wear wardrobe staples that combine classic and contemporary styles.\nDetails & care\nStyle\n\u2022\nRegular fit\n\u2022\nDrawstring fastening\nSafety Warning\nKeep away from fire\nComposition\n100% cotton (exclusive of trimmings), Neck ribbing - 97% cotton, 3% elastane\nCare\nWash at 40\u00b0C delicate\nDo not bleach\nTumble dry medium temperature\nIron at medium temperature\nDo not dry clean\nDetails & care\nDelivery, collection & returns\nDelivery\nStandard\nUK Standard Delivery is available for \u00a33.99 or free on orders over \u00a375 (excluding furniture).\nNominated Day\nUK Next Day Delivery and UK Nominated Day Delivery (excluding Northern Ireland) are available for \u00a35.99 (excluding furniture)\nCollection\nCollect from store\nStore collection is free on all fashion, home and beauty orders.\nReturns\nUK returns\nFree\nExclusions apply\nFull delivery and collection information\nOur returns policy\nDelivery, collection & returns\nM&S\nPure Cotton Striped Pyjama Set\n\u00a330\nColour\nColour\nBlue Mix\nSize\nSize\nS\nM\nL\nXL\n2XL\n3XL\nSize guide\nQuantity\n1\n2\n3\n4\n5\n6\n7\n8\n9\n10\n11\n12\n13\n14\n15\n16\n17\n18\n19\n20\nAdd to bag\nFind in store\nFree standard delivery over \u00a375, otherwise from \u00a33.99\nFree delivery when you spend over \u00a375*\nNext-day Click & Collect\nFree returns for online orders\nRegister to receive exclusive offers tailored to you, plus rewards and promotions before anyone else. Just select \u2018YES\u2019 on the next page and never miss a thing.\nEnter your email address\nSign me up\nHere to Help\nHelp & contact us\nFind a store\nAccessibility in our stores\nProduct recalls\nDelivery & Returns\nWhere's my order?\nDelivery & collection\nGuest order tracking\nGuest order return\nReturns & refunds\nShopping with Us\nSparks\nSparks FAQs\nGift card balance\nSize guides\nSustainability\nMore from M&S\nOcado\nCorporate site\nM&S Corporate Gifts\nM&S Money\nM&S Opticians\nCareers\nHere to Help\nHelp & contact us\nFind a store\nAccessibility in our stores\nProduct recalls\nDelivery & Returns\nWhere's my order?\nDelivery & collection\nGuest order tracking\nGuest order return\nReturns & refunds\nShopping with Us\nSparks\nSparks FAQs\nGift card balance\nSize guides\nSustainability\nMore from M&S\nOcado\nCorporate site\nM&S Corporate Gifts\nM&S Money\nM&S Opticians\nCareers\nUnited Kingdom\n(\n\u00a3\n)\n\u00a9 2026 Marks and Spencer plc (UK)\nTerms & Conditions\nPrivacy\nCookies\nManage cookies\nAccessibility\nModern Slavery Act",
+            "source_sha256": "394edbf46b60c116e28591d2403e67b2e1cf39c03744ae1230e6ed658d0fe072",
+            "retrieved_at": "2026-09-13T17:01:49.549007+00:00",
+            "official_identity": "Marks & Spencer own UK marksandspencer.com publication for its own-brand catalogue.",
+            "market_scope": "UK: marksandspencer.com default UK storefront, English GB page, UK product catalogue.",
+            "association_status": "catalogue_match"
+          }
+        ]
+      },
+      "input_sha256": "ce3e01a8cd0aadea7ba6e952d2d2978e6fd79f118b97dc05fca05b2b4baf8ed0",
+      "adjudication": {
+        "state": "accepted",
+        "reference_type": "frozen-evidence-sufficiency",
+        "policy_version": "whole-product-v2",
+        "method": "two fresh automated evidence readings with validated citations; no human review",
+        "readings": [
+          {
+            "annotation": {
+              "case_id": "natural.684600011",
+              "expected_status": "unknown",
+              "expected_reason": null,
+              "required_issue_codes": [
+                "composition_incomplete",
+                "identity_conflict"
+              ],
+              "input_refs": [
+                {
+                  "path": "/product/preparation_and_usage",
+                  "quote": "97% cotton, 3% elastane Ribbing - 98% cotton, 2% elastane"
+                },
+                {
+                  "path": "/product/detailed_description",
+                  "quote": "this 2-pack of cotton-rich pyjamas"
+                },
+                {
+                  "path": "/manufacturer_source_candidates/1/source_text",
+                  "quote": "Home\nMen\nMen's Nightwear\nMen's Pyjamas"
+                },
+                {
+                  "path": "/manufacturer_source_candidates/1/source_text",
+                  "quote": "100% cotton (exclusive of trimmings), Neck ribbing - 97% cotton, 3% elastane"
+                }
+              ],
+              "rationale": "A: Main-fabric and ribbing percentages do not establish complete manufactured garment composition. The candidate source concerns men's pyjamas with different fibre percentages. B: That source is inapplicable to the children's two-pack, and the welfare policy supplies no vegan assurance or product-specific animal evidence.",
+              "external_status": "unknown",
+              "source_id": "41f35da8b9a55a2be4fb0ecad7cf67c23f3b3607aa1a6de7f1030a37797df8bf",
+              "external_quote": "Home\nMen\nMen's Nightwear\nMen's Pyjamas",
+              "scope_match": "UK capture dated 2026-09-13 concerns men's pure-cotton pyjamas in adult sizes with a drawstring waist, not the requested children's 7\u20138-year cotton-rich two-pack. The fabric declarations also differ.",
+              "component_assessment": {
+                "status": "insufficient",
+                "evidence_refs": [
+                  {
+                    "path": "/product/preparation_and_usage",
+                    "quote": "97% cotton, 3% elastane Ribbing - 98% cotton, 2% elastane"
+                  },
+                  {
+                    "path": "/product/detailed_description",
+                    "quote": "Each pair of trousers features a striped pattern and an elasticated waist."
+                  }
+                ]
+              }
+            },
+            "input_sha256": "ce3e01a8cd0aadea7ba6e952d2d2978e6fd79f118b97dc05fca05b2b4baf8ed0",
+            "call_id": "71caee5e-f5a0-4042-9386-05b562958404",
+            "model": "gpt-6.1-sol",
+            "effort": "high",
+            "prompt_version": "blind-evidence-adjudication-v7"
+          },
+          {
+            "annotation": {
+              "case_id": "natural.684600011",
+              "expected_status": "unknown",
+              "expected_reason": null,
+              "required_issue_codes": [
+                "composition_incomplete",
+                "identity_conflict"
+              ],
+              "input_refs": [
+                {
+                  "path": "/product/name",
+                  "quote": "M&S Kids Striped Pyjama Set, 7-8 Y, Multi"
+                },
+                {
+                  "path": "/product/preparation_and_usage",
+                  "quote": "97% cotton, 3% elastane Ribbing - 98% cotton, 2% elastane"
+                },
+                {
+                  "path": "/manufacturer_source_candidates/1/source_text",
+                  "quote": "Men's Pyjamas"
+                },
+                {
+                  "path": "/manufacturer_source_candidates/1/source_text",
+                  "quote": "100% cotton (exclusive of trimmings), Neck ribbing - 97% cotton, 3% elastane"
+                }
+              ],
+              "rationale": "A: Fabric and ribbing percentages do not establish complete manufactured-garment composition, and no applicable whole-product vegan claim is supplied. The candidate is men's pyjamas with a different composition, not the children's two-pack. B: The retained sources provide no applicable primary proof for the target; the welfare policy does not imply either vegan or nonvegan status.",
+              "external_status": "unknown",
+              "source_id": "41f35da8b9a55a2be4fb0ecad7cf67c23f3b3607aa1a6de7f1030a37797df8bf",
+              "external_quote": "100% cotton (exclusive of trimmings), Neck ribbing - 97% cotton, 3% elastane",
+              "scope_match": "UK capture retained on 2026-09-13 is a men's pure-cotton set in adult sizes, with different fabric and ribbing percentages. It does not match the children's 7\u20138-year two-pack.",
+              "component_assessment": {
+                "status": "insufficient",
+                "evidence_refs": [
+                  {
+                    "path": "/product/preparation_and_usage",
+                    "quote": "97% cotton, 3% elastane Ribbing - 98% cotton, 2% elastane"
+                  },
+                  {
+                    "path": "/product/detailed_description",
+                    "quote": "Each pair of trousers features a striped pattern and an elasticated waist."
+                  }
+                ]
+              }
+            },
+            "input_sha256": "ce3e01a8cd0aadea7ba6e952d2d2978e6fd79f118b97dc05fca05b2b4baf8ed0",
+            "call_id": "68abf0b2-59a5-4464-ac77-4084476b5927",
+            "model": "gpt-6.1-sol",
+            "effort": "high",
+            "prompt_version": "blind-evidence-adjudication-v7"
+          }
+        ]
+      },
+      "expected": {
+        "vegan_status": "unknown",
+        "vegan_reason": null,
+        "required_issue_codes": [
+          "composition_incomplete",
+          "identity_conflict"
+        ]
+      },
+      "split": "diagnostic",
+      "leakage_group": "family.m s",
+      "source_metadata": [
+        {
+          "id": "41206a59c1ca08c5f6a8e4299ab6412e90f5db12af9e2107e056b12b17bbe7c3",
+          "url": "https://corporate.marksandspencer.com/sites/marksandspencer/files/marks-spencer/c-and-h-animal-fibre/m-and-s-clothing-and-home-animal-welfare-policy.pdf",
+          "title": "M&S Clothing, Home and Beauty Animal Welfare Policy",
+          "retrieved_at": "2026-09-13T17:33:50.593083+00:00",
+          "official_identity": "Public policy published on the M&S corporate website.",
+          "market_scope": "M&S Clothing, Home and Beauty sourcing policy; June 2020 document, not a new universal vegan commitment.",
+          "content_sha256": "8e4c38df7635a6943776f14e232378d39cd7230283efb80144cf09faaab2ac21"
+        },
+        {
+          "id": "41f35da8b9a55a2be4fb0ecad7cf67c23f3b3607aa1a6de7f1030a37797df8bf",
+          "url": "https://www.marksandspencer.com/pure-cotton-striped-pyjama-set/p/clp61215271",
+          "title": "Pure Cotton Striped Pyjama Set by M&S",
+          "retrieved_at": "2026-09-13T17:01:49.549007+00:00",
+          "official_identity": "Marks & Spencer own UK marksandspencer.com publication for its own-brand catalogue.",
+          "market_scope": "UK: marksandspencer.com default UK storefront, English GB page, UK product catalogue.",
+          "content_sha256": "394edbf46b60c116e28591d2403e67b2e1cf39c03744ae1230e6ed658d0fe072"
+        }
+      ],
+      "mandatory_control": false
+    },
+    {
+      "case_id": "natural.687282011",
+      "case_kind": "natural",
+      "sampling_stratum": "unknown",
+      "current_on_ocado": 1,
+      "classifier_input": {
+        "product": {
+          "id": "687282011",
+          "name": "M&S Womens Pure Cotton Heavyweight V-Neck Top, Size 14, Black",
+          "brand": "M&S",
+          "url": "https://www.ocado.com/products/687282011/details",
+          "official_vegan": 0,
+          "detailed_description": "Update your collection of go-to tops with this pure cotton style. It's cut in a comfy, relaxed fit, with a boxy shape and dropped shoulders for a laid-back look. A flattering v-neckline completes the design. M&S Collection: easy-to-wear wardrobe staples that combine classic and contemporary styles.",
+          "preparation_and_usage": "Machine washable even at 30\u00ba Tumble dry 100% cotton Ribbing - 95% cotton, 5% elastane",
+          "specification": "- Relaxed fit - V neck - Short sleeve - T shirts"
+        },
+        "flags": [],
+        "categories": [
+          "clothing-accessories/women-s-clothing-accesssories/women-s-t-shirts-vests",
+          "events-inspiration/home-clothing-sale/clothing"
+        ],
+        "manufacturer_vegan_evidence": [],
+        "manufacturer_source_candidates": [
+          {
+            "source_id": "41206a59c1ca08c5f6a8e4299ab6412e90f5db12af9e2107e056b12b17bbe7c3",
+            "source_url": "https://corporate.marksandspencer.com/sites/marksandspencer/files/marks-spencer/c-and-h-animal-fibre/m-and-s-clothing-and-home-animal-welfare-policy.pdf",
+            "source_text": " (https://corporate.marksandspencer.com/sites/marksandspencer/files/marks-spencer/c-and-h-animal-fibre/m-and-s-clothing-and-home-animal-welfare-policy.pdf)\n\ue200cite\ue202turn194view0\ue201 [wordlim: 200] Crawled: today; Content type: application/pdf; Number of pages: 5; Source: open({\"ref_id\":\"https://corporate.marksandspencer.com/sites/marksandspencer/files/marks-spencer/c-and-h-animal-fibre/m-and-s-clothing-and-home-animal-welfare-policy.pdf\",\"lineno\":null}); Total lines: 110\nL0@P0: Latest Version Date June 2020 Doc Ref M&S Animal Welfare Policy\nL1@P0: Version Number 2.0 Page 1 of 7\nL2@P0: Public Copy\nL3@P0: \nL4@P0-1: ANIMAL WELFARE POLICYLatest Version Date June 2020 Doc Ref Animal Welfare Policy\nL5@P1: Version Number 2.0 Page 2 of 5\nL6@P1: Public Copy\nL7@P1: BACKGROUND\nL8@P1: Marks and Spencer are committed to using responsibly sourced raw materials including the\nL9@P1: use of products derived from animals. This policy forms part of our commitment to uphold\nL10@P1: the M&S animal welfare principles for all animal derived products we source.\nL11@P1: SCOPE\nL12@P1: This policy covers products sold in all Clothing, Home and Beauty areas that contain any\nL13@P1: animal derived raw materials. The scope includes all main fabrics/textiles, trims,\nL14@P1: componentry packaging, chemicals, pigments and dyestuffs.\nL15@P1: This policy is intended to complement the additional specific sourcing policies for\nL16@P1: Cashmere, Wool, Leather and Feather and Down.\nL17@P1: RATONALE AND OBJECTIVES\nL18@P1: \u2022 To ensure Marks & Spencer meets its long-standing commitment to improve animal\nL19@P1: welfare in its supply chains and ensure all animal derived materials are sourced from\nL20@P1: farms with good animal welfare practices. Marks & Spencer are committed to\nL21@P1: improving animal welfare across our global supply chains and we are working to\nL22@P1: source all animal-derived materials from farms with good animal welfare practices\nL23@P1: \u2022 To lay out a set of uniform principles and guidelines around the sourcing of animal\nL24@P1: derived raw materials\nL25@P1: \u2022 To also ensure that appropriate due diligence is undertaken with regards to the\nL26@P1: sourcing of products in relation to animal welfare\nL27@P1: M&S MANDATORY PRINCIPLES FOR SOURCING\nL28@P1: Marks and Spencer are committed to protecting any endangered or vulnerable species and\nL29@P1: to the prevention of cruelty. Through our supply chains we seek to promote, encourage and\nL30@P1: foster higher animal welfare standards using codes, recommendations and audited supply\nL31@P1: chains. We will continuously review our supply chains and where there are practices that\nL32@P1: are of concern, we will take a considered course of action.\nL33@P1: No animal will be slaughtered specifically for the manufacture or sourcing of M&S products.\nL34@P1: PROHIBITED SOURCES\nL35@P1: The following materials do not comply with our business principles for animal welfare and\nL36@P1: therefore must not be used in any of our non-food products:\nL37@P1: \u2022 Any material from any endangered species, defined as those which appear on the\nL38@P1-2: Convention on International Trade in Endangered Species (CITES) (see www.cites.org/ Latest Version Date June 2020 Doc Ref Animal Welfare Policy\nL39@P2: Version Number 2.0 Page 3 of 5\nL40@P2: Public Copy\nL41@P2: for list of species) or the IUCN red list as Critically Endangered,\nL42@P2: Endangered or Vulnerable (www.redlist.org/).\nL43@P2: \u2022 No animal must be slaughtered specifically to produce any non- food M&S products.\nL44@P2: \u2022 Fur: this includes farmed fur (e.g. fox, sable, mink, chinchilla, rabbit)\nL45@P2: \u2022 Angora Rabbit fibre\nL46@P2: \u2022 Alpaca fibre\nL47@P2: \u2022 Astrakhan (Karakul) or any other leather/skin products which are the product of\nL48@P2: unnatural abortions\nL49@P2: \u2022 Any material obtained from live skinning (e.g. reptiles) or live boiling\nL50@P2: \u2022 Any cow hides sourced from India\nL51@P2: \u2022 Any animal derived bone or horn\nL52@P2: \u2022 Any down or feathers from exotic birds, including but not limited to ostrich\nL53@P2: \u2022 Any coral\nL54@P2: RESTRICTED SOURCES\nL55@P2: The following materials are currently accepted provided minimum requirements are met:\nL56@P2: \u2022 Leather must be sourced in compliance with our Responsible Leather Sourcing Policy\nL57@P2: \u2022 Animal Fibres (e.g. wool, cashmere) must be sourced in compliance with our Responsible\nL58@P2: Wool Sourcing Policy and our Cashmere Code of Practice for animal welfare respectively.\nL59@P2: All wool must be sourced from sheep that have not been mulesed\nL60@P2: \u2022 Mohair must only be sourced through routes fully certified to the Textile Exchange\nL61@P2: Responsible Mohair Standard (RMS)\nL62@P2: \u2022 Feather and Down must not be obtained from the live plucking of birds or from birds used\nL63@P2: in the production of Foie Gras. All Feather and Down must be sourced in compliance to\nL64@P2: our Responsible Feather and Down Sourcing Policy\nL65@P2: \u2022 All other animal derived materials must be sourced in accordance with this policy and\nL66@P2: relevant details must be provided on an Animal derived material declaration form\nL67@P2: \u2022 Any shell from vulnerable or endangered species must not be used (as defined by\nL68@P2: CITES/IUCN red list)\nL69@P2-3: \u2022 Only pearls form cultivated sources are allowed Latest Version Date June 2020 Doc Ref Animal Welfare Policy\nL70@P3: Version Number 2.0 Page 4 of 5\nL71@P3: Public Copy\nL72@P3: THE FIVE FREEDOMS OF ANIMAL WELFARE\nL73@P3: In developing minimum standards for sourcing any animal product Marks & Spencer\nL74@P3: consider the internationally recognised \u201cFive Freedoms\u201d as a framework and for guidance. It\nL75@P3: is important that the sourcing of any animal derived materials for M&S are underpinned by\nL76@P3: these principles:\nL77@P3: 1. Freedom from Hunger and Thirst \u2013 by ready access to fresh water and a diet to\nL78@P3: maintain full health and vigour\nL79@P3: 2. Freedom from Discomfort \u2013 by providing an appropriate environment including\nL80@P3: shelter and a comfortable resting area\nL81@P3: 3. Freedom from Pain, Injury and Disease \u2013 by prevention or rapid diagnosis and\nL82@P3: treatment\nL83@P3: 4. Freedom to Express Normal Behaviour \u2013 by providing sufficient space, proper\nL84@P3: facilities and company of the animal\u2019s own kind\nL85@P3: 5. Freedom from Fear and Distress \u2013 by ensuring conditions and treatment which\nL86@P3: avoid mental suffering\nL87@P3: ANIMAL TESTING\nL88@P3: Marks and Spencer will not conduct or commission any tests on animals. All M&S own brand\nL89@P3: cosmetic and household products and ingredients must be approved by the BUAV under\nL90@P3: the Humane Cosmetics Standard, The Leaping Bunny Standard. This standard has been in\nL91@P3: place since January 2006\nL92@P3: PET ACCESSORIES\nL93@P3: Any pet accessories are subject to all mandatory principles for sourcing. In addition, the\nL94@P3: product itself must not compromise the welfare of the animal for which it is intended to be\nL95@P3: used, using the Five Freedoms as a reference.\nL96@P3: PRODUCT PROMOTION\nL97@P3: Marks and Spencer will review all animal imagery used in the promotion of its products to\nL98@P3: ensure that it does not endorse animal exploitation, cruelty or irresponsible use or\nL99@P3: ownership.\nL100@P3: DEFINITIONS\nL101@P3: Animals: The Vegan Society understands the word animal to refer to the entire animal\nL102@P3-4: kingdom, that is all vertebrates and multi-cellular invertebrates. The word may be used either Latest Version Date June 2020 Doc Ref Animal Welfare Policy\nL103@P4: Version Number 2.0 Page 5 of 5\nL104@P4: Public Copy\nL105@P4: as a noun or an adjective and to refer to a species, or an individual animal,\nL106@P4: depending on context.\nL107@P4: Animal derived materials: Materials including ingredients that have an animal (see above\nL108@P4: definition), origin, regardless of whether they have been harvested form live or dead\nL109@P4: animals.\n\n",
+            "source_sha256": "8e4c38df7635a6943776f14e232378d39cd7230283efb80144cf09faaab2ac21",
+            "retrieved_at": "2026-09-13T17:33:50.593083+00:00",
+            "official_identity": "Public policy published on the M&S corporate website.",
+            "market_scope": "M&S Clothing, Home and Beauty sourcing policy; June 2020 document, not a new universal vegan commitment.",
+            "association_status": "catalogue_match"
+          },
+          {
+            "source_id": "b019c0ca9ba888e4401ed57752a7da96c6fa260d416b9ddf1e478a7546abe712",
+            "source_url": "https://www.marksandspencer.com/printed-v-neck-fitted-top/p/clp61278668",
+            "source_text": "URL: https://www.marksandspencer.com/printed-v-neck-fitted-top/p/clp61278668\nHTTP status: 200\n\nPrinted V Neck Fitted Top by M&S\nUpdate your browser for a better shopping experience!\nGet faster load times, stronger security and access to all features.\nSkip to content\nJust arrived: autumn\u2019s most-wanted styles\nEasy kids\u2019 autumn outfits for less\nDon\u2019t miss: up to 30% off Brands at M&S\nHelp\nSearch product, code or brand\nClear\nSign in\n0\nSearch product, code or brand\nClear\nWomen\nBrands\nClothing\nBest Sellers\nEveryday Basics\nCardigans\nCashmere\nCoats & Jackets\nDresses\nJeans\nJumpers\nKnitwear\nShirts and Blouses\nSkirts\nSportswear\nHoliday Shop\nTops\nTrousers\nT-Shirts\nWorkwear\nDresses\nAll Dresses\nMaxi Dresses\nMidi Dresses\nMini Dresses\nJeans\nAll Jeans\nBarrel Leg Jeans\nStraight Leg Jeans\nWide Leg Jeans\nLingerie & Nightwear\nBras\nKnickers\nNightwear\nLoungewear\nShoes\nAll Shoes\nBallet Flats\nBoots\nHeels\nTrainers\nAccessories & Bags\nAll Accessories\nHandbags & Bags\nJewellery\nBody Fit & Maternity\nCurve\nMaternity\nPetite\nTall\nJust Arrived\nAutumn Style\nOur September Top Picks\nModern Heritage: Checks\nUp to 30% off Women's Brands\nJeans & a Nice Top\nEditorial\nLingerie\nBrands\nBras\nAll Bras\nBalcony Bras\nBra Accessories\nCotton Bras\nDemi Cup Bras\nFirst Bras\nF-K Bras\nFull Cup Bras\nMaternity and Nursing Bras\nMultipack Bras\nNon-Wired Bras\nPost-Surgery Bras\nPadded Bras\nSports Bras\nStrapless Bras\nKnickers\nAll Knickers\nBrazilian Knickers\nCotton Knickers\nFull Brief Knickers\nHigh-Leg Knickers\nMultipack Knickers\nNo-VPL Knickers\nPeriod Knickers\nThongs\nShapewear\nAll Shapewear\nAnti-Chafing Shorts\nBodies\nShaping Knickers\nSlips\nNightwear & Loungewear\nAll Nightwear\nCotton Pyjamas\nDressing Gowns\nLoungewear\nNightdresses\nPyjamas\nPyjama Sets\nSlippers\nSocks & Tights\nSocks\nTights\nThermals & Vests\nThermals\nVests & Camis\nJust Arrived\nSexy Lingerie\nOur Top Picks\n20% Off Rosie\nLingerie Sets\nBook your Bra Fit\nEditorial\nMen\nBrands\nClothing\nCashmere\nCasual Shirts\nChinos\nCoats & Jackets\nHoliday Shop\nHoodies\nJeans\nJoggers\nKnitwear\nPolo Shirts\nShirts\nShorts\nSportswear\nSweatshirts\nTops\nTrousers\nT-Shirts\nSuits & Formalwear\nAll Suits\nBlazers\nFormal Shirts\nOffice Wear\nSmart Trousers\nTies\nTuxedos\nBook Your Suit Fit\nUnderwear\nAll Underwear\nBriefs\nBoxers\nSocks\nTrunks\nVests\nNightwear\nAll Nightwear\nDressing Gowns\nPyjamas\nShoes\nAll Shoes\nBoots\nLoafers\nSmart Shoes\nTrainers\nAccessories\nAll Accessories\nBags\nBelts\nHats\nJust Arrived\nAutumn Wardrobe Staples\nAutograph\nSmart Casual\nWhat to Wear to the Office\nWaterproof Jackets\nEditorial\nKids\nBrands\nGirls (2yrs-16yrs)\nAccessories\nCoats and Jackets\nDresses\nFootwear\nHoliday Shop\nJeans\nJoggers\nJumpers and Cardigans\nLeggings\nNightwear\nOutfits and Sets\nSkirts\nSocks and Tights\nSwimwear\nTops\nUnderwear and Vests\nBoys (2yrs-16yrs)\nAccessories\nCoats and Jackets\nFootwear\nHoliday Shop\nJumpers and Sweatshirts\nJeans\nJoggers\nShorts\nNightwear\nOutfits and Sets\nShirts\nSocks\nSwimwear\nTrousers\nTops\nUnderwear and Vests\nBaby\nBaby Boy\nBaby Girl\nBaby Grows\nBaby Outfits\nBaby Toys\nNewborn Clothing\nExplore our Baby Club\nSchool Uniform\nBoys' Uniform\nGirls' Uniform\nEveryday Essentials\nNightwear\nUnderwear\nSocks\nJust Arrived Girls'\nJust Arrived Boys'\nJust Arrived Baby\nEveryday Essentials\nRainy Day Essentials\nTrending: Everyday Adventure\nEditorial\nBeauty\nBrands\nSkincare\nAll Skincare\nCleansers\nEye Cream\nFace Masks\nMoisturisers\nSerum\nSun Cream\nMakeup\nAll Makeup\nBeauty Accessories\nBlushers\nFoundation\nLipstick\nMascara\nNail Care\nBath & Body\nAll Bath & Body\nHand Cream\nHand Wash\nShower Gel\nTravel Size Toiletries\nWellbeing\nFragrance\nWomen\u2019s Perfume\nMen\u2019s Eau de Parfum\nHaircare\nAll Haircare\nConditioner\nHair-Styling Accessories\nShampoo\nBeauty Gifts\nAll Beauty Gifts\nBath & Body Gifts\nPerfume Gifts\nSkincare Gifts\nMake-Up Gifts\nMen's Grooming\nAll Men's Grooming\nMen's Aftershave\nMen's Gifts\nMoisturisers\nK-Beauty\nAll Korean Skincare\nBeauty of Joseon\nMedicube\nSkincare\nHaircare\nFragrance\nK-Beauty\nJust Arrived\nBeauty Offers\nShop by Brand\nHome\nBrands\nBedding\nAll Bedding\nBed Sheets\nDuvets\nDuvet Covers & Sets\nMattress Protectors\nPillows\nPillowcases\nCooking & Dining\nDinner Sets\nPlates\nGlassware\nKitchenware\nMugs\nPots & Pans\nTableware\nHome Furnishings\nCushions\nCushion Covers\nCurtains\nRugs\nThrows\nBathroom\nAll Bathroom\nBath Mats\nTowels\nLighting\nAll Lighting\nCeiling Lights\nFloor Lamps\nTable Lamps\nHome Accessories\nArtificial Flowers & Plants\nHome Fragrance\nVases\nPlant Pots\nFurniture\nSofas\nBedroom Furniture\nDining Room Furniture\nGarden Furniture\nLiving Room Furniture\nNursery Furniture\nChristmas shop\nChristmas Decorations\nChristmas Trees\n20% off selected Home\nJust Arrived\nBedding\nHome Furnishings\nTowels\nTableware\nEditorial\nFlowers\nBrands\nFlowers\nAll Flowers\nAutumn Flowers\nBritish Flowers\nCelebrity Collections\nFlowers under \u00a335\nJust Arrived\nLetterbox Flowers\nRose Bouquets\nSunflowers\nPlants\nAll Plants\nBritish Plants\nIndoor Plants\nOrchids\nShop by Delivery\nNext Day Delivery Flowers\nNext Day Delivery Plants\nSunday Delivery Flowers\nFlowers by Occasion\nAnniversary Flowers\nBirthday Flowers\nCongratulations Flowers\nEngagement Flowers\nNew Baby Flowers\nNew Home Flowers\nThank You Flowers\nSympathy Flowers\nPlants by Occasion\nBirthday Plants\nSympathy Plants\nHousewarming Plants\nThank you Plants\nAnniversary Plants\nGift Sets\nFlower Gift Sets\nPlant Gift Sets\nFlowers by Colour\nPink Flowers\nPurple Flowers\nRed Flowers\nWhite Flowers\nYellow Flowers\nJust Arrived Flowers\nFlowers Through The Letterbox\nNew: Autumn Flowers\nThe Perfect Gift: 100 Roses\nFlowers With A Little Extra\nNext Day Delivery Flowers\nEditorial\nGifts\nBrands\nFood & Drink Gifts\nAll Food and Drink Gifts\nAfternoon Tea Hampers\nAlcohol Gifts\nBrownies\nFruit Baskets\nHampers\nLetterbox Gifts\nGifts by Price\nFree Delivery Gifts\nGifts Under \u00a320\nGifts Under \u00a330\nGifts Under \u00a350\nLuxury Gifts\nGifts by Recipient\nGifts For Her\nGifts For Him\nGifts For Kids\nBaby Gifts\nGifts by Occasion\nAnniversary Gifts\nBirthday Gifts\nChristmas\nCongratulations Gifts\nHousewarming Gifts\nWedding Gifts\nAll Gift Cards\nGift Cards\nE-Gift Cards\nCorporate Gifts\nFloral Gifts\nFlowers\nPlants\nGifts for the Family\nGifts for Mum\nGifts for Dad\nGifts for Brother\nGifts for Sister\nGifts for Grandmas\nGifts for Grandads\nChristmas\nThe Perfect Gift: 100 Roses\nGifts for Her\nFlowers Through The Letterbox\nFood & Drink Gifts\nGift Cards\nEditorial\nChristmas\nChristmas Trees & Decorations\nAll Christmas Decorations\nChristmas Baubles\nChristmas Trees\nChristmas Homeware\nAll Christmas Homeware\nChristmas Fragrance\nChristmas Tableware\nGifts By Price\nGifts under \u00a320\nGifts under \u00a330\nGifts under \u00a350\nLuxury Gifts\nFood & Drink Gifts\nAll Food & Drink Gifts\nAlcohol Gifts\nFruit Baskets\nLetterboxes\nGift Ideas\nBeauty Gifts\nE-Gift Cards\nGift Cards\nSecret Santa\nStocking Fillers\nGifts By Recipient\nGifts For Baby\nGifts for Her\nGifts for Him\nGifts for Kids\nChristmas Trees\nChristmas Baubles\nKelly Hoppen Christmas Joy Candle\nChristmas Decorations\nChristmas Pyjamas\nSports\nBrands\nWomen's Sportswear\nAll Women's Sportswear\nAthleisure\nSports Coats and Jackets\nHoodies and Sweatshirts\nJoggers\nSports Bras\nSports Leggings\nSports Tops\nWomen's Sports Trainers\nRunning Trainers\nWalking and Hiking Trainers\nWomen's Shop by Activity\nGym\nRunning\nSwimming\nWalking and Hiking\nMen's Sportswear\nAll Men's Sportswear\nAthleisure\nHoodies and Sweatshirts\nJoggers\nSports Shorts\nSports Tops\nSports Trousers\nMen's Sports Trainers\nRunning Trainers\nWalking and Hiking Trainers\nMen's Shop by Activity\nGym\nRunning\nWalking and Hiking\n20% off Sportswear\nJust Arrived Women's Sports\nJust Arrived Men's Sports\nMen's Goodmove\nWomen's Goodmove\nEditorial\nBrands\nBrands\nFashion Brands\nCalvin Klein\nChelsea Peers\nDune\nGANT\nHush\nLevi's\nMonsoon\nNever Fully Dressed\nPour Moi\nRo&Zo\nSkechers\nSouth Beach\nSteve Madden\nTommy Hilfiger\nWhistles\nWhite Stuff\nHome Brands\nBarker and Stonehouse\nEast End Prints\nGallery Direct\nPiglet in Bed\nRoyalcraft\nBeauty Brands\nBeauty of Joseon\nBenefit\nClinique\nColor Wow\nEst\u00e9e Lauder\nHair by Sam McKnight\nMedicube\nM&S Brands\nAutograph\nGoodmove\nJaeger\nPer Una\nSports Brands\nadidas\nBrooks\nSweaty Betty\nTop Brand Offers\nUp to 30% off Women's Brands\nUp to 30% off Beauty Brands\nUp to 30% off Men's Brands\nUp to 30% off Women's Brands\nUp to 30% off Men's Brands\nNEW: River Island for Menswear\nJust Arrived\nShop by Brand\nFood\nBrands\nFood Online\nCakes\nBirthday Cakes\nChocolate Cupcakes\nFruity Cupcakes\nVanilla Cupcakes\nParty Food\nSandwich & Sushi Platters\nFood & Drink Gifts\nAlcohol Gifts\nBrownies\nHampers\nLetterbox Gifts\nFood In Store\nDrinks\nFood Cupboard\nFrozen Food\nFruit & Vegetables\nHome of Health\nHome of Dine In\nMeat\nNew In Foodhall\nRemarksable Value\nPoultry\nReady to Cook\nPicky Bits\nFood Inspiration\nBest in Season\nBudget\nCooking Tips\nFoodhall Picks\nHealth\nM&S Caf\u00e9\nFamily Inspiration\nInteractive Food Map\nSnap Your Lunch to Win\nM&S Recipes\nBudget Recipes\nDinner Recipes\nFamily Friendly Recipes\nHealthy Recipes\nFood Inspiration\nFood in Store\nFood & Drink Gifts\nCue The Birthday Cake\nSandwich & Sushi Platters\nM&S Recipes\nOffers\nPrice Drop\nAll Price Drop\nWomen's Price Drop\nMen's Price Drop\nShop Women's Offers\nUp to 30% off Women's Brands\nUp to 30% off Beauty\n20% off selected Monsoon\n20% off selected Sosandar\n20% off Rosie\n20% off Sportswear\nShop Men's Offers\nAll Men's Offers\nUp to 30% off Men's Brands\n20% off Sportswear\nSartorial Shirts Offers\n3 for \u00a322 on selected T-Shirts\n30% off selected Swimwear Brands\nShop Kids' Offers\n10% off Baby Grows - Join Baby Club\n20% off selected Skechers\nMamas & Papas Offers\nUp to 30% off Women's Brands\n20% off selected Home\nUp to 30% off Men's Brands\n20% off Sportswear\nAll Clearance\nAll Price Drop\nClearance\nWomen's Clearance\nAll Women's Clearance\nJackets & Coats\nDresses\nJumpers & Cardigans\nTops\nTrousers\nMen's Clearance\nAll Men's Clearance\nJackets & Coats\nJumpers\nShirts\nTops\nTrousers\nLingerie Clearance\nAll Lingerie Clearance\nBras\nKnickers\nPrice Drop\nAll Price Drop\nWomen's Price Drop\nMen's Price Drop\nAll Clearance\nWomen's Clearance\nMen's Clearance\nLingerie Clearance\nBrands Clearance\nMoney\nCredit Card\nM&S Rewards Credit Card\nClub Rewards\nM&S Credit Card Transfer Plus\nM&S Credit Card Purchase Plus\nOur Credit Cards\nDigital Rewards\nMobile App\nInsurance\nTravel Insurance\nPet Insurance\nHome Insurance\nCar Insurance\nSparks Pay\nSign In\nTravel Money\nBuy Travel Money\nBuy Euros\nBuy US Dollars\nSell Travel Money\nExchange Rates\nAdditional Services\nSaving & Investing\nPersonal Loans\nFinancial Support\nInternet Banking\nCredit Card\nClub Rewards\nTravel Money\nInsurance\nFind store\nSparks\nHelp\nContact Us\nRegister\nPrinted V Neck Fitted Top\nYou are here:\nHome\nWomen\nTops\nModel: 5ft7\"/171cm - Wearing 8\nModel: 5ft7\"/171cm - Wearing 8\nModel: 5ft7\"/171cm - Wearing 8\nModel: 5ft7\"/171cm - Wearing 8\nModel: 5ft7\"/171cm - Wearing 8\nModel: 5ft7\"/171cm - Wearing 8\nProduct code:\nT434002T\nAbout this style\nThis printed top from M&S is cut with a fitted silhouette and a flattering V neckline for an easy, elegant look. The long sleeves make it suitable for cooler days, while the tea style design keeps it feminine and versatile. It pairs easily with tailored trousers or a skirt for both work and weekend wear. M&S Collection: easy-to-wear wardrobe staples that combine classic and contemporary styles.\nDetails & care\nItem details\n\u2022\nNeck to hem length for a size 12: 60cm\nFit and style\n\u2022\nFitted\nComposition\n100% polyester\nCare\nWash at 40\u00b0C delicate\nDo not bleach\nDo not tumble dry\nIron at low temperature\nDo not dry clean\nDetails & care\nDelivery, collection & returns\nDelivery\nStandard\nUK Standard Delivery is available for \u00a33.99 or free on orders over \u00a375 (excluding furniture).\nNominated Day\nUK Next Day Delivery and UK Nominated Day Delivery (excluding Northern Ireland) are available for \u00a35.99 (excluding furniture)\nCollection\nCollect from store\nStore collection is free on all fashion, home and beauty orders.\nReturns\nUK returns\nFree\nExclusions apply\nFull delivery and collection information\nOur returns policy\nDelivery, collection & returns\nM&S\nJust Arrived\nPrinted V Neck Fitted Top\n\u00a336\nColour\nColour\nBrown Mix\nSize\nBand Size\n6\n8\n10\n12\n14\n16\n18\n20\n22\n24\nSize guide\nQuantity\n1\n2\n3\n4\n5\n6\n7\n8\n9\n10\n11\n12\n13\n14\n15\n16\n17\n18\n19\n20\nAdd to bag\nFind in store\nFree standard delivery over \u00a375, otherwise from \u00a33.99\nDiscover more in\nTops\nLong Sleeve Tops\nFitted Tops\nBrown Tops\nV-Neck Blouses\nV-Neck Tops\nFree delivery when you spend over \u00a375*\nNext-day Click & Collect\nFree returns for online orders\nRegister to receive exclusive offers tailored to you, plus rewards and promotions before anyone else. Just select \u2018YES\u2019 on the next page and never miss a thing.\nEnter your email address\nSign me up\nHere to Help\nHelp & contact us\nFind a store\nAccessibility in our stores\nProduct recalls\nDelivery & Returns\nWhere's my order?\nDelivery & collection\nGuest order tracking\nGuest order return\nReturns & refunds\nShopping with Us\nSparks\nSparks FAQs\nGift card balance\nSize guides\nSustainability\nMore from M&S\nOcado\nCorporate site\nM&S Corporate Gifts\nM&S Money\nM&S Opticians\nCareers\nHere to Help\nHelp & contact us\nFind a store\nAccessibility in our stores\nProduct recalls\nDelivery & Returns\nWhere's my order?\nDelivery & collection\nGuest order tracking\nGuest order return\nReturns & refunds\nShopping with Us\nSparks\nSparks FAQs\nGift card balance\nSize guides\nSustainability\nMore from M&S\nOcado\nCorporate site\nM&S Corporate Gifts\nM&S Money\nM&S Opticians\nCareers\nUnited Kingdom\n(\n\u00a3\n)\n\u00a9 2026 Marks and Spencer plc (UK)\nTerms & Conditions\nPrivacy\nCookies\nManage cookies\nAccessibility\nModern Slavery Act",
+            "source_sha256": "f248b1572e86eeddd83ffb312d63445eb0f12268e90e80a0f43f4ab60fcfbd70",
+            "retrieved_at": "2026-09-13T17:04:23.681137+00:00",
+            "official_identity": "Marks & Spencer own UK marksandspencer.com publication for its own-brand catalogue.",
+            "market_scope": "UK: marksandspencer.com default UK storefront, English GB page, UK product catalogue.",
+            "association_status": "catalogue_match"
+          }
+        ]
+      },
+      "input_sha256": "77cffe7158f425530bb9535fdffd537da2705a3c7825362ffec8908e154c288c",
+      "adjudication": {
+        "state": "accepted",
+        "reference_type": "frozen-evidence-sufficiency",
+        "policy_version": "whole-product-v2",
+        "method": "two fresh automated evidence readings with validated citations; no human review",
+        "readings": [
+          {
+            "annotation": {
+              "case_id": "natural.687282011",
+              "expected_status": "unknown",
+              "expected_reason": null,
+              "required_issue_codes": [
+                "composition_incomplete",
+                "identity_conflict"
+              ],
+              "input_refs": [
+                {
+                  "path": "/product/name",
+                  "quote": "M&S Womens Pure Cotton Heavyweight V-Neck Top, Size 14, Black"
+                },
+                {
+                  "path": "/product/preparation_and_usage",
+                  "quote": "100% cotton Ribbing - 95% cotton, 5% elastane"
+                },
+                {
+                  "path": "/manufacturer_source_candidates/1/source_text",
+                  "quote": "100% polyester"
+                },
+                {
+                  "path": "/manufacturer_source_candidates/0/source_text",
+                  "quote": "use of products derived from animals."
+                }
+              ],
+              "rationale": "Fibre percentages do not establish complete manufactured-article composition. The candidate page describes a different polyester fitted top. The animal-welfare policy permits animal materials and provides no product-specific vegan assurance or definite animal evidence.",
+              "external_status": "unknown",
+              "source_id": "b019c0ca9ba888e4401ed57752a7da96c6fa260d416b9ddf1e478a7546abe712",
+              "external_quote": "Printed V Neck Fitted Top",
+              "scope_match": "Retained UK page captured September 2026 concerns a brown printed, long-sleeved polyester fitted top, not the black relaxed cotton short-sleeved top. No applicable complete-product proof.",
+              "component_assessment": {
+                "status": "insufficient",
+                "evidence_refs": [
+                  {
+                    "path": "/product/preparation_and_usage",
+                    "quote": "100% cotton Ribbing - 95% cotton, 5% elastane"
+                  }
+                ]
+              }
+            },
+            "input_sha256": "77cffe7158f425530bb9535fdffd537da2705a3c7825362ffec8908e154c288c",
+            "call_id": "44192186-00bb-4573-9b2b-2ff14f4b0954",
+            "model": "gpt-6.1-sol",
+            "effort": "high",
+            "prompt_version": "blind-evidence-adjudication-v7"
+          },
+          {
+            "annotation": {
+              "case_id": "natural.687282011",
+              "expected_status": "unknown",
+              "expected_reason": null,
+              "required_issue_codes": [
+                "composition_incomplete",
+                "identity_conflict"
+              ],
+              "input_refs": [
+                {
+                  "path": "/product/name",
+                  "quote": "M&S Womens Pure Cotton Heavyweight V-Neck Top, Size 14, Black"
+                },
+                {
+                  "path": "/product/preparation_and_usage",
+                  "quote": "100% cotton Ribbing - 95% cotton, 5% elastane"
+                },
+                {
+                  "path": "/manufacturer_source_candidates/1/source_text",
+                  "quote": "Printed V Neck Fitted Top"
+                },
+                {
+                  "path": "/manufacturer_source_candidates/0/source_text",
+                  "quote": "The following materials are currently accepted provided minimum requirements are met:"
+                }
+              ],
+              "rationale": "Fibre percentages do not establish complete manufactured-garment composition. The candidate page describes a different polyester fitted top; the animal-welfare policy permits animal materials and supplies no vegan assurance. Neither A nor B establishes definite animal content or complete-product vegan suitability.",
+              "external_status": "unknown",
+              "source_id": "b019c0ca9ba888e4401ed57752a7da96c6fa260d416b9ddf1e478a7546abe712",
+              "external_quote": "100% polyester",
+              "scope_match": "The UK page retained on 2026-09-13 describes a printed, fitted, long-sleeved Brown Mix polyester top, not the Black relaxed heavyweight cotton top. The June 2020 general welfare policy cannot establish this product's vegan status.",
+              "component_assessment": {
+                "status": "insufficient",
+                "evidence_refs": [
+                  {
+                    "path": "/product/preparation_and_usage",
+                    "quote": "100% cotton Ribbing - 95% cotton, 5% elastane"
+                  }
+                ]
+              }
+            },
+            "input_sha256": "77cffe7158f425530bb9535fdffd537da2705a3c7825362ffec8908e154c288c",
+            "call_id": "5f58a7b5-c2bd-4ed0-b567-45f92bbab295",
+            "model": "gpt-6.1-sol",
+            "effort": "high",
+            "prompt_version": "blind-evidence-adjudication-v7"
+          }
+        ]
+      },
+      "expected": {
+        "vegan_status": "unknown",
+        "vegan_reason": null,
+        "required_issue_codes": [
+          "composition_incomplete",
+          "identity_conflict"
+        ]
+      },
+      "split": "diagnostic",
+      "leakage_group": "family.m s",
+      "source_metadata": [
+        {
+          "id": "41206a59c1ca08c5f6a8e4299ab6412e90f5db12af9e2107e056b12b17bbe7c3",
+          "url": "https://corporate.marksandspencer.com/sites/marksandspencer/files/marks-spencer/c-and-h-animal-fibre/m-and-s-clothing-and-home-animal-welfare-policy.pdf",
+          "title": "M&S Clothing, Home and Beauty Animal Welfare Policy",
+          "retrieved_at": "2026-09-13T17:33:50.593083+00:00",
+          "official_identity": "Public policy published on the M&S corporate website.",
+          "market_scope": "M&S Clothing, Home and Beauty sourcing policy; June 2020 document, not a new universal vegan commitment.",
+          "content_sha256": "8e4c38df7635a6943776f14e232378d39cd7230283efb80144cf09faaab2ac21"
+        },
+        {
+          "id": "b019c0ca9ba888e4401ed57752a7da96c6fa260d416b9ddf1e478a7546abe712",
+          "url": "https://www.marksandspencer.com/printed-v-neck-fitted-top/p/clp61278668",
+          "title": "Printed V Neck Fitted Top by M&S",
+          "retrieved_at": "2026-09-13T17:04:23.681137+00:00",
+          "official_identity": "Marks & Spencer own UK marksandspencer.com publication for its own-brand catalogue.",
+          "market_scope": "UK: marksandspencer.com default UK storefront, English GB page, UK product catalogue.",
+          "content_sha256": "f248b1572e86eeddd83ffb312d63445eb0f12268e90e80a0f43f4ab60fcfbd70"
+        }
+      ],
+      "mandatory_control": false
+    }
+  ],
+  "selection": {
+    "targets": {
+      "development": {
+        "tagged": 20,
+        "manufacturer": 20,
+        "name": 20,
+        "ingredients": 20,
+        "unknown": 120,
+        "nonvegan": 40
+      },
+      "locked": {
+        "tagged": 30,
+        "manufacturer": 30,
+        "name": 30,
+        "ingredients": 30,
+        "unknown": 180,
+        "nonvegan": 60
+      }
+    },
+    "development_shortfalls": {
+      "name": 13
+    },
+    "locked_shortfalls": {
+      "tagged": 30,
+      "manufacturer": 30,
+      "name": 30,
+      "ingredients": 30,
+      "unknown": 180,
+      "nonvegan": 60
+    },
+    "target_complete": false,
+    "pilot_case_ids": [
+      "natural.509074011",
+      "natural.515989011",
+      "natural.528131011",
+      "natural.529409011",
+      "natural.554160011",
+      "natural.554161011",
+      "natural.605260011",
+      "natural.609444011",
+      "natural.632478011",
+      "natural.646409011",
+      "natural.647258011",
+      "natural.663711011",
+      "natural.484034011",
+      "natural.565041011",
+      "natural.602406011",
+      "natural.602407011",
+      "natural.634499011",
+      "natural.694648011",
+      "natural.508936011",
+      "natural.518700011",
+      "natural.620106011",
+      "natural.502815011",
+      "natural.517969011",
+      "natural.517981011",
+      "natural.510718011",
+      "natural.518915011",
+      "natural.528649011",
+      "natural.549839011",
+      "natural.551762011",
+      "natural.557814011",
+      "natural.573592011",
+      "natural.577736011",
+      "natural.578862011",
+      "natural.608303011",
+      "natural.612145011",
+      "natural.614437011",
+      "natural.635402011",
+      "natural.636454011",
+      "natural.650241011",
+      "natural.651228011",
+      "natural.656809011",
+      "natural.656864011",
+      "natural.657080011",
+      "natural.657190011",
+      "natural.661164011",
+      "natural.662698011",
+      "natural.663918011",
+      "natural.665753011",
+      "natural.671620011",
+      "natural.676881011",
+      "natural.677973011",
+      "natural.680362011",
+      "natural.681866011",
+      "natural.682584011",
+      "natural.682897011",
+      "natural.683100011",
+      "natural.683360011",
+      "natural.684600011",
+      "natural.684861011",
+      "natural.686746011",
+      "natural.686758011",
+      "natural.686846011",
+      "natural.686850011",
+      "natural.686922011",
+      "natural.687170011",
+      "natural.687282011",
+      "natural.687623011",
+      "natural.690369011",
+      "natural.690390011",
+      "natural.690894011",
+      "natural.691043011",
+      "natural.691543011",
+      "natural.502443011",
+      "natural.505516011",
+      "natural.506091011",
+      "natural.509652011",
+      "natural.512534011",
+      "natural.515430011",
+      "natural.515860011",
+      "natural.518821011",
+      "natural.524003011",
+      "natural.558449011",
+      "natural.569165011",
+      "natural.573831011",
+      "natural.587562011",
+      "natural.587583011",
+      "natural.606781011",
+      "natural.615849011",
+      "natural.619834011",
+      "natural.637695011",
+      "natural.642823011",
+      "natural.650323011",
+      "natural.652622011",
+      "natural.672028011",
+      "natural.679003011",
+      "natural.684175011"
+    ],
+    "counts": {
+      "development": 413,
+      "synthetic": 374,
+      "workload": 200
+    },
+    "disputed_cases": [
+      "natural.509775011"
+    ],
+    "annotation_hash": "6159013667c5aadc395ac52b1a1dd8f2426f2fed57c7a49b2291289539adb6c3",
+    "parent_fixture_hash": "b5873197333330056a1033d543e3f85e9fcc53a113a5d8b8b0ede9beac6ddf53",
+    "note": "Development diagnostic only. Annotation v11 consistently assesses affirmative producer self-descriptions; one existing reason changes with cited crosswalk, all prior inputs and original 96 pilot IDs remain unchanged. Seven frozen holdout-excluded references added; ingredients target met, name-only target still short. No model/default/activation choice.",
+    "extension_note": "v4 explicitly audits two development references and appends nine planting-treatment contracts; original contexts, other labels, pilot IDs and workload remain unchanged. No locked set was read.",
+    "parent_annotation_hash": "ec0f167c2731701ea3087168bc0fc29ea546e4a82a60cfd94023733ced78549b",
+    "reference_audit_hash": "f8fb68e576e315cd58dd5eb531af165c3e1d9cd374f698eabe20b43d7c323d7a",
+    "pilot_route_counts": {
+      "tagged": 6,
+      "manufacturer": 7,
+      "name": 5,
+      "ingredients": 6,
+      "unknown": 48,
+      "nonvegan": 24
+    }
+  },
+  "catalogue_provenance": {
+    "retailer": "Ocado",
+    "market": "UK"
+  },
+  "diagnostic_selection": {
+    "source_fixture_sha256": "83f9793c5de07501aba6866c9310355c70ebde1fd1c0ed1bceef20a98eb51d36",
+    "failed_report_sha256": "67efad1287fa080c5fbb991061c4ce11ec3138c6b67e992cd274db8de4562c2e",
+    "case_ids": [
+      "natural.684600011",
+      "natural.687282011"
+    ],
+    "qualification_evaluation": false
+  }
+}

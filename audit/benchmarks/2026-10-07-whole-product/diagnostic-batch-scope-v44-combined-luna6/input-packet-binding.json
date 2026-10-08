@@ -1,0 +1,5 @@
+{
+  "original_fixture": ".whole-product-work/diagnostic-batch-scope-v42-combined-fixture.json",
+  "sha256": "e320e565e2a03c4a2b7f5831312ef4867c0f2b02914f3618102e1a6ce0680f45",
+  "retained_copy": "frozen-inputs.json.gz"
+}

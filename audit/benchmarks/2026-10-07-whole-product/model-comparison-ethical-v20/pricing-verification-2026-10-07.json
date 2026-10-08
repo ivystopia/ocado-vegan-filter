@@ -1,0 +1,29 @@
+{
+  "verified_on": "2026-10-07",
+  "source_url": "https://learn.chatgpt.com/docs/pricing#token-rates",
+  "basis": "Standard credits per million input/cached-input/output tokens",
+  "rates": {
+    "gpt-5.6-luna": [
+      5,
+      0.5,
+      30
+    ],
+    "gpt-6-luna": [
+      2.5,
+      0.25,
+      12.5
+    ],
+    "gpt-6.1-sol": [
+      50,
+      2.5,
+      250
+    ],
+    "gpt-6-astra": [
+      250,
+      25,
+      1250
+    ]
+  },
+  "matches_runner_rate_card": true,
+  "note": "A comparison proxy, not included subscription usage or an actual charge. No paid/API usage is authorized."
+}

@@ -1,0 +1,30 @@
+{
+  "cases": 18,
+  "scored_cases": 17,
+  "operational_errors": [
+    "natural.587219011"
+  ],
+  "missing_cases": [],
+  "mismatches": [
+    "natural.622692011",
+    "natural.634499011"
+  ],
+  "reason_errors": [],
+  "unsafe_positives": [],
+  "primary_disagreements": [
+    "natural.622692011",
+    "natural.634499011"
+  ],
+  "state": "completed",
+  "all_attempt_usage": {
+    "calls": 22,
+    "failed_calls": 8,
+    "guard_rejections": 0,
+    "missing_usage_calls": 0,
+    "input_tokens": 369284,
+    "cached_input_tokens": 9984,
+    "output_tokens": 74014,
+    "reasoning_output_tokens": 30466
+  },
+  "release_qualified": false
+}

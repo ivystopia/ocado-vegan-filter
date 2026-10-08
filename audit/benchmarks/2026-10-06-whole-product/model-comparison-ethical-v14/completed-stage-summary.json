@@ -1,0 +1,292 @@
+{
+  "controls-gpt-5.6-luna-high": {
+    "cases": 374,
+    "scored_cases": 374,
+    "operational_errors": [],
+    "missing_cases": [],
+    "exact_matches": 374,
+    "mismatches": [],
+    "unsafe_positives": [],
+    "unsupported_promotions": [],
+    "contradicted_positives": [],
+    "unsupported_promotion_rate": 0.0,
+    "contradicted_positive_rate": 0.0,
+    "unsafe_positive_rate": 0.0,
+    "false_nonvegan_decisions": [],
+    "reportable_negative_errors": [],
+    "nonvegan_recall": 1.0,
+    "raw_pass_unsafe_positives": [
+      {
+        "case_id": "synthetic.31.3",
+        "stage": "primary",
+        "passes": [
+          1,
+          2
+        ]
+      },
+      {
+        "case_id": "synthetic.32.3",
+        "stage": "primary",
+        "passes": [
+          1,
+          2
+        ]
+      },
+      {
+        "case_id": "synthetic.33.3",
+        "stage": "primary",
+        "passes": [
+          1,
+          2
+        ]
+      },
+      {
+        "case_id": "synthetic.32.0",
+        "stage": "primary",
+        "passes": [
+          2
+        ]
+      },
+      {
+        "case_id": "synthetic.33.0",
+        "stage": "primary",
+        "passes": [
+          1,
+          2
+        ]
+      },
+      {
+        "case_id": "synthetic.32.4",
+        "stage": "primary",
+        "passes": [
+          1
+        ]
+      },
+      {
+        "case_id": "synthetic.33.4",
+        "stage": "primary",
+        "passes": [
+          1
+        ]
+      },
+      {
+        "case_id": "synthetic.name-scope.3",
+        "stage": "primary",
+        "passes": [
+          1
+        ]
+      }
+    ],
+    "raw_agreed_unsafe_positives": [
+      {
+        "case_id": "synthetic.31.3",
+        "stage": "primary"
+      },
+      {
+        "case_id": "synthetic.32.3",
+        "stage": "primary"
+      },
+      {
+        "case_id": "synthetic.33.3",
+        "stage": "primary"
+      },
+      {
+        "case_id": "synthetic.33.0",
+        "stage": "primary"
+      }
+    ],
+    "mandatory_control_failures": [],
+    "reason_errors": [],
+    "missing_required_issues": [],
+    "issue_rubric_version": "grounded-unknown-blocker-v2",
+    "vegan_recall": 1.0,
+    "per_route_recall": {
+      "tagged": {
+        "eligible": 48,
+        "recovered": 48,
+        "recall": 1.0
+      },
+      "manufacturer": {
+        "eligible": 45,
+        "recovered": 45,
+        "recall": 1.0
+      },
+      "name": {
+        "eligible": 40,
+        "recovered": 40,
+        "recall": 1.0
+      },
+      "ingredients": {
+        "eligible": 28,
+        "recovered": 28,
+        "recall": 1.0
+      }
+    },
+    "outcomes": {
+      "unknown": 125,
+      "vegan": 161,
+      "nonvegan": 88
+    },
+    "primary_disagreements": [
+      "synthetic.liquid-processing.3.5",
+      "synthetic.32.0",
+      "synthetic.32.4",
+      "synthetic.liquid-processing.1.5",
+      "synthetic.33.4",
+      "synthetic.name-scope.3"
+    ],
+    "arbitrated_cases": [
+      "synthetic.liquid-processing.3.5",
+      "synthetic.32.0",
+      "synthetic.32.4",
+      "synthetic.liquid-processing.1.5",
+      "synthetic.33.4",
+      "synthetic.name-scope.3"
+    ],
+    "usage": {
+      "calls": 90,
+      "failed_calls": 0,
+      "guard_rejections": 0,
+      "missing_usage_calls": 0,
+      "input_tokens": 1278734,
+      "cached_input_tokens": 15872,
+      "output_tokens": 183025,
+      "reasoning_output_tokens": 130338
+    },
+    "usage_by_stage_model": {
+      "primary:gpt-5.6-luna:high": {
+        "calls": 78,
+        "failed_calls": 0,
+        "guard_rejections": 0,
+        "missing_usage_calls": 0,
+        "input_tokens": 1096632,
+        "cached_input_tokens": 15872,
+        "output_tokens": 175419,
+        "reasoning_output_tokens": 128302
+      },
+      "arbitration:gpt-6.1-sol:medium": {
+        "calls": 12,
+        "failed_calls": 0,
+        "guard_rejections": 0,
+        "missing_usage_calls": 0,
+        "input_tokens": 182102,
+        "cached_input_tokens": 0,
+        "output_tokens": 7606,
+        "reasoning_output_tokens": 2036
+      }
+    },
+    "call_latency_seconds": {
+      "median": 20.485950000000003,
+      "p95": 61.6671
+    },
+    "stage_state": "completed"
+  },
+  "pilot-gpt-5.6-luna-high": {
+    "cases": 96,
+    "scored_cases": 88,
+    "operational_errors": [],
+    "missing_cases": [
+      "natural.502443011",
+      "natural.506091011",
+      "natural.517981011",
+      "natural.549839011",
+      "natural.577736011",
+      "natural.605260011",
+      "natural.682897011",
+      "natural.686850011"
+    ],
+    "exact_matches": 88,
+    "mismatches": [],
+    "unsafe_positives": [],
+    "unsupported_promotions": [],
+    "contradicted_positives": [],
+    "unsupported_promotion_rate": 0.0,
+    "contradicted_positive_rate": 0.0,
+    "unsafe_positive_rate": 0.0,
+    "false_nonvegan_decisions": [],
+    "reportable_negative_errors": [],
+    "nonvegan_recall": 0.9166666666666666,
+    "raw_pass_unsafe_positives": [],
+    "raw_agreed_unsafe_positives": [],
+    "mandatory_control_failures": [
+      "natural.634499011",
+      "natural.605260011"
+    ],
+    "reason_errors": [
+      "natural.634499011"
+    ],
+    "missing_required_issues": [],
+    "issue_rubric_version": "grounded-unknown-blocker-v2",
+    "vegan_recall": 0.9166666666666666,
+    "per_route_recall": {
+      "name": {
+        "eligible": 6,
+        "recovered": 6,
+        "recall": 1.0
+      },
+      "ingredients": {
+        "eligible": 6,
+        "recovered": 5,
+        "recall": 0.8333333333333334
+      },
+      "tagged": {
+        "eligible": 6,
+        "recovered": 6,
+        "recall": 1.0
+      },
+      "manufacturer": {
+        "eligible": 6,
+        "recovered": 5,
+        "recall": 0.8333333333333334
+      }
+    },
+    "outcomes": {
+      "vegan": 22,
+      "nonvegan": 22,
+      "unknown": 44
+    },
+    "primary_disagreements": [
+      "natural.634499011"
+    ],
+    "arbitrated_cases": [
+      "natural.634499011"
+    ],
+    "usage": {
+      "calls": 51,
+      "failed_calls": 13,
+      "guard_rejections": 1,
+      "missing_usage_calls": 0,
+      "input_tokens": 1567624,
+      "cached_input_tokens": 8960,
+      "output_tokens": 370551,
+      "reasoning_output_tokens": 252853
+    },
+    "usage_by_stage_model": {
+      "primary:gpt-5.6-luna:high": {
+        "calls": 43,
+        "failed_calls": 10,
+        "guard_rejections": 0,
+        "missing_usage_calls": 0,
+        "input_tokens": 1372215,
+        "cached_input_tokens": 8960,
+        "output_tokens": 317076,
+        "reasoning_output_tokens": 218776
+      },
+      "arbitration:gpt-6.1-sol:medium": {
+        "calls": 2,
+        "failed_calls": 0,
+        "guard_rejections": 0,
+        "missing_usage_calls": 0,
+        "input_tokens": 31582,
+        "cached_input_tokens": 0,
+        "output_tokens": 2980,
+        "reasoning_output_tokens": 506
+      }
+    },
+    "call_latency_seconds": {
+      "median": 68.6601,
+      "p95": 175.5919
+    },
+    "stage_state": "checkpointed"
+  }
+}

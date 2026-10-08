@@ -1,0 +1,23 @@
+{
+  "distinct_stage_names": [
+    "controls-gpt-5.6-luna-high",
+    "pilot-gpt-5.6-luna-high",
+    "controls-gpt-6-luna-high",
+    "pilot-gpt-6-luna-high",
+    "controls-sol-primary",
+    "pilot-sol-primary"
+  ],
+  "all_attempt_usage": {
+    "calls": 519,
+    "failed_calls": 47,
+    "guard_rejections": 0,
+    "missing_usage_calls": 0,
+    "input_tokens": 10439270,
+    "cached_input_tokens": 259200,
+    "output_tokens": 1949368,
+    "reasoning_output_tokens": 1029581
+  },
+  "credit_proxy": 319.46193,
+  "money_or_included_quota": false,
+  "scope": "Six completed matched control/pilot stages only; later development/arbitration/paired-repetition usage is separate."
+}

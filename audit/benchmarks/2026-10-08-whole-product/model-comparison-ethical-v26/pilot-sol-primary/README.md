@@ -1,0 +1,5 @@
+# Conditional Sol primary natural pilot
+
+GPT-6.1-Sol/medium passed all 96 frozen natural pilot cases under classifier v53 / registry v7 / fixture v25: suitability, canonical reason, required issues and isolated persistence/export. No raw disagreements, arbitration, operational failures or rejected attempts occurred. All 24 calls retain complete usage: 949,020 input and 172,634 output tokens, including 6,558 reasoning tokens. The Standard-credit proxy is 90.6095, neither a charge nor an included-plan quota estimate.
+
+The matching controlled stage failed an old unfined-wine expectation; consequently the comparison ended no_eligible_primary and did not expand development. The later independent OIV source review challenges four original synthetic wine expectations; old inputs, labels and actual results remain retained. This pilot is stale after classifier v54/v55 and cannot qualify the new policy. Sanitised decision projections, frozen inputs and bindings are retained alongside summary.json. Original complete attempts remain locally retained. No model default or canonical label changed.

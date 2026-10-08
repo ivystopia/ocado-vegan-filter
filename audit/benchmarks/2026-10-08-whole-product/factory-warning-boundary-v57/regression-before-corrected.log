@@ -1,0 +1,37 @@
+...FF
+======================================================================
+FAIL: test_plant_allergen_declaration_does_not_absorb_factory_handling_warning (test_whole_product_policy.WholeProductPolicyTests.test_plant_allergen_declaration_does_not_absorb_factory_handling_warning) (warning='May Contain Eggs, May Contain Milk, May Contain Nuts, Contains Soya Produced in a factory that handles Milk, Nuts and Eggs.')
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "/home/ivy/repos/personal/ocado_report/tests/test_whole_product_policy.py", line 1299, in test_plant_allergen_declaration_does_not_absorb_factory_handling_warning
+    self.assertEqual((result['vegan_status'],result['vegan_reason']),('vegan','manufacturer'),stage)
+    ~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+AssertionError: Tuples differ: ('unknown', None) != ('vegan', 'manufacturer')
+
+First differing element 0:
+'unknown'
+'vegan'
+
+- ('unknown', None)
++ ('vegan', 'manufacturer') : model
+
+======================================================================
+FAIL: test_plant_allergen_declaration_does_not_absorb_factory_handling_warning (test_whole_product_policy.WholeProductPolicyTests.test_plant_allergen_declaration_does_not_absorb_factory_handling_warning) (warning='Contains Soya Produced in a factory that handles Milk.')
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "/home/ivy/repos/personal/ocado_report/tests/test_whole_product_policy.py", line 1299, in test_plant_allergen_declaration_does_not_absorb_factory_handling_warning
+    self.assertEqual((result['vegan_status'],result['vegan_reason']),('vegan','manufacturer'),stage)
+    ~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+AssertionError: Tuples differ: ('unknown', None) != ('vegan', 'manufacturer')
+
+First differing element 0:
+'unknown'
+'vegan'
+
+- ('unknown', None)
++ ('vegan', 'manufacturer') : model
+
+----------------------------------------------------------------------
+Ran 4 tests in 0.022s
+
+FAILED (failures=2)

@@ -1,0 +1,21 @@
+{
+  "state": "checkpointed",
+  "failure_attribution": "shared_affirmative_faq_scope_bypass",
+  "release_qualified": false,
+  "defaults_changed": false,
+  "completed_stages": [],
+  "partially_scored_controls": 343,
+  "unrun_controls": 72,
+  "all_attempt_usage": {
+    "calls": 98,
+    "failed_calls": 6,
+    "guard_rejections": 1,
+    "missing_usage_calls": 0,
+    "input_tokens": 1405194,
+    "cached_input_tokens": 17920,
+    "output_tokens": 295635,
+    "reasoning_output_tokens": 215836
+  },
+  "credit_proxy": 22.40766,
+  "next_step": "Fresh comparison after v40 validation; no compatible production-stage reuse or expensive-primary escalation."
+}

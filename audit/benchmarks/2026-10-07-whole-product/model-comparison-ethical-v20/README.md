@@ -1,0 +1,7 @@
+# Whole-product comparison v20
+
+Fixed classifier v42, fixture v18 and preflight v41. Both cheap candidates pass all 96 natural pilot cases. Luna 5.6/high fails controls with three conservative misses and three citation failures; Luna 6/high has two conservative FAQ misses and no operational failure. Neither has a final unsafe positive. These failures prevent qualification; no expanded development, expensive-primary, arbitration comparison or locked evaluation was started. The runner stops at primary_failure_review_required.
+
+All 365 actual calls, including 56 rejected attempts, remain accounted for. The matched all-attempt Standard-credit proxy is 63.0% lower for Luna 6 across controls and pilot; it is 64.3% lower on controls and 61.2% lower on the natural pilot. These figures use the official Standard rate card reverified on 7 October, not included-plan quota rates or charges. They do not qualify the cheaper model.
+
+Both missed FAQ positives occur in the same three-product batch with bottle/pouch variants. The earlier small current-source pouch diagnostic passes. An unchanged single-product diagnostic checks this observation; batch dependence is a hypothesis until tested. Source evidence and expectations remain fixed. Each stage retains a compact summary, compressed cited decisions and input binding. Shareable decision projections omit account/transport metadata; complete originals remain local and ignored. No defaults, canonical labels, embedded IDs or installed script changed. No checkpoint commit was made.

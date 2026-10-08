@@ -1,0 +1,3 @@
+# Source applicability protocol
+
+Two actual arbitration readings from the v43 diagnostic used covered_by_claim for variant applicability. The earlier shared dimension enum allowed this, while the unchanged applicability gate refused it. Schema 5 reserves claim coverage for product composition/process/component risks and rejects it for source identity/scope dimensions. Exact actual-response replay verifies old acceptance and new rejection. A discoverable regression covers all four binding dimensions while preserving legitimate composition/process claim coverage. No source gate was loosened, no expected label changed and this replay makes no model call.

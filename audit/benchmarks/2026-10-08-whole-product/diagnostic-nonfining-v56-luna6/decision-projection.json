@@ -1,0 +1,10 @@
+{
+  "original_run_sha256": "3fdc17bfb8ce4022a8e060d1eb84a77c4a6ab0d15af845ce18573944fcfeb47e",
+  "retained_projection_sha256": "71580a37769b3699704b56e37e95c9d637cb38f55e09b923424a57d35652b421",
+  "omitted_model_call_fields": [
+    "events",
+    "invocation",
+    "quota_before"
+  ],
+  "original_retained_locally": true
+}

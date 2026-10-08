@@ -1,0 +1,30 @@
+{
+  "verified_on": "2026-10-08",
+  "source_url": "https://learn.chatgpt.com/docs/pricing#token-rates",
+  "retrieval": "Official OpenAI Docs search then actual page fetch; relevant token-rates section read",
+  "units": "Standard credits per million tokens; not GBP, charges or included subscription usage",
+  "rates": {
+    "gpt-5.6-luna": {
+      "input": 5,
+      "cached_input": 0.5,
+      "output": 30
+    },
+    "gpt-6-luna": {
+      "input": 2.5,
+      "cached_input": 0.25,
+      "output": 12.5
+    },
+    "gpt-6.1-sol": {
+      "input": 50,
+      "cached_input": 2.5,
+      "output": 250
+    },
+    "gpt-6-astra": {
+      "input": 250,
+      "cached_input": 25,
+      "output": 1250
+    }
+  },
+  "matches_existing_comparison_rate_snapshot": true,
+  "running_candidate_or_price_constants_changed": false
+}

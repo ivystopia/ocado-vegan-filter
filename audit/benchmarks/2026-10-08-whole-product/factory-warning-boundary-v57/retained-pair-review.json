@@ -1,0 +1,69 @@
+{
+  "classifier_version": "db-vegan-codex-v57",
+  "replayed_stages": [
+    {
+      "stage": "controls-gpt-5.6-luna-high",
+      "saved_cases": 479,
+      "actual_agreeing_pairs_replayed": 150,
+      "other_cases_not_remerged": 329
+    },
+    {
+      "stage": "controls-gpt-6-luna-high",
+      "saved_cases": 479,
+      "actual_agreeing_pairs_replayed": 150,
+      "other_cases_not_remerged": 329
+    },
+    {
+      "stage": "controls-sol-primary",
+      "saved_cases": 479,
+      "actual_agreeing_pairs_replayed": 151,
+      "other_cases_not_remerged": 328
+    },
+    {
+      "stage": "development-sol-primary",
+      "saved_cases": 152,
+      "actual_agreeing_pairs_replayed": 88,
+      "other_cases_not_remerged": 64
+    },
+    {
+      "stage": "pilot-gpt-5.6-luna-high",
+      "saved_cases": 96,
+      "actual_agreeing_pairs_replayed": 60,
+      "other_cases_not_remerged": 36
+    },
+    {
+      "stage": "pilot-gpt-6-luna-high",
+      "saved_cases": 96,
+      "actual_agreeing_pairs_replayed": 60,
+      "other_cases_not_remerged": 36
+    },
+    {
+      "stage": "pilot-sol-primary",
+      "saved_cases": 96,
+      "actual_agreeing_pairs_replayed": 60,
+      "other_cases_not_remerged": 36
+    }
+  ],
+  "changes": [
+    {
+      "stage": "development-sol-primary",
+      "case_id": "natural.626755011",
+      "before": [
+        "unknown",
+        null
+      ],
+      "after": [
+        "vegan",
+        "manufacturer"
+      ],
+      "expected": {
+        "vegan_status": "vegan",
+        "vegan_reason": "manufacturer",
+        "required_issue_codes": []
+      }
+    }
+  ],
+  "new_positive_changes": 1,
+  "is_fresh_model_validation": false,
+  "original_frozen_words_labels_and_raw_model_outputs_unchanged": true
+}

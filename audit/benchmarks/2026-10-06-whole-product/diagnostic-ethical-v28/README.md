@@ -1,0 +1,5 @@
+# Repaired claim diagnostic (not qualification)
+
+Both models received the same four frozen contexts blindly using classifier v28 and primary prompt v22. Luna 6 passed all four final status/reason checks, with one real primary reason disagreement routed to exactly two fresh blind Sol/medium calls. No call failed. Luna 5.6 retained one manufacturer-reason error and one operational quote failure: 11 recorded attempts, six failed quote validations, no missing token usage. It does not pass this diagnostic. No final unsafe positive was scored; an operational failure is unfinished assessment, not a completed unknown.
+
+A separate source-cited reference audit then exposed Freja's reason correction. V29 extends citation validation for a short assertion excerpt supported by a predicate in the same retained sentence. The v28 calls are retained as v28 evidence, not relabelled as a new qualifying run. The new fixed comparison starts with fresh controls/pilots. No canonical writes, default changes, release or paid fallback occurred.

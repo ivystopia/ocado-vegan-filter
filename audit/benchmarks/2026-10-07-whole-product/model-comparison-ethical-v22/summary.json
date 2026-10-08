@@ -1,0 +1,61 @@
+{
+  "state": "checkpointed_for_shared_catalogue_context_gap",
+  "classifier_version": "db-vegan-codex-v46",
+  "stages": [
+    {
+      "stage": "controls-gpt-5.6-luna-high",
+      "summary_sha256": "5b9e62fd5cb8b0cc6a6c835fe91d57c5478cc9302fde70db68b9cceac3c83db9",
+      "cases": 431,
+      "scored_cases": 430,
+      "state": "completed",
+      "mismatches": [
+        "synthetic.liquid-processing.3.5",
+        "synthetic.liquid-processing.2.5",
+        "synthetic.liquid-processing.4.5"
+      ],
+      "operational_errors": [
+        "synthetic.source-variant-restriction.format"
+      ],
+      "credit_proxy": 30.89519
+    },
+    {
+      "stage": "pilot-gpt-5.6-luna-high",
+      "summary_sha256": "5a663ce3670379bf4a2b9ba80dbb71a1c8541bf4465edf5a1a7a9bda5d8ba7aa",
+      "cases": 96,
+      "scored_cases": 96,
+      "state": "completed",
+      "mismatches": [],
+      "operational_errors": [],
+      "credit_proxy": 24.43132
+    },
+    {
+      "stage": "controls-gpt-6-luna-high",
+      "summary_sha256": "1d86d09e4d85b33b55f36d0c8afce8dcd8dc529f099b1ac96df731988e925d70",
+      "cases": 431,
+      "scored_cases": 200,
+      "state": "checkpointed",
+      "mismatches": [
+        "synthetic.pouch-component-scope.2"
+      ],
+      "operational_errors": [],
+      "credit_proxy": 7.617516
+    }
+  ],
+  "all_attempt_usage": {
+    "calls": 233,
+    "failed_calls": 28,
+    "guard_rejections": 2,
+    "missing_usage_calls": 0,
+    "input_tokens": 4411398,
+    "cached_input_tokens": 54784,
+    "output_tokens": 1015491,
+    "reasoning_output_tokens": 697853
+  },
+  "unique_attempt_ids": 233,
+  "standard_credit_proxy": 62.944026,
+  "is_not_charge_or_included_quota": true,
+  "release_qualified": false,
+  "defaults_changed": false,
+  "canonical_database_changed": false,
+  "note": "Two stop-file guard rejections invoked no model. Luna 6 controls are incomplete; its pilot, expanded development and arbitration selection have not run. No expensive-primary escalation is justified by this context gap."
+}

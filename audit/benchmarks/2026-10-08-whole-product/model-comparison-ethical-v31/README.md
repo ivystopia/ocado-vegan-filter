@@ -1,0 +1,5 @@
+# Completed v31 cheap-primary comparison
+
+User-excluded Luna5.6 is not called. Luna6 completes all497 controls with one conservative FAQ citation miss and passes all96 natural pilot cases, including manufacturer precedence. No final unsafe positive, operational failure, missing required issue or confirmed-reporting error occurs. The control gate remains failed. The bounded actual-pair review validates the existing citation contract; no source, label or implementation change follows.
+
+All physical-stage usage is retained exactly once: 218 actual calls,23 rejected attempts, complete usage. Combined Standard-credit proxy34.3056735. Model decisions and agreement are not independent ground truth. primary-failure-review.json binds current code/fixture/failed control plus passing pilot and source citations, enabling only the approved conditional included-plan Sol/medium comparison. No expensive primary, canonical migration, model-default change or release activation occurred in v31. The next comparison may reuse these exact completed stages without new Luna6 calls or erasing its failure.

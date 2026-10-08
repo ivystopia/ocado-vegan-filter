@@ -1,0 +1,95 @@
+{
+  "cases": 425,
+  "scored_cases": 425,
+  "mismatches": [
+    "synthetic.faq-component-scope.3"
+  ],
+  "reason_errors": [],
+  "operational_errors": [],
+  "unsafe_positives": [],
+  "missing_required_issues": [],
+  "primary_disagreements": [
+    "synthetic.liquid-processing.2.5",
+    "synthetic.32.4",
+    "synthetic.liquid-processing.3.5"
+  ],
+  "arbitrated_cases": [
+    "synthetic.liquid-processing.2.5",
+    "synthetic.32.4",
+    "synthetic.liquid-processing.3.5"
+  ],
+  "raw_agreed_unsafe_positives": [
+    {
+      "case_id": "synthetic.32.3",
+      "stage": "primary"
+    },
+    {
+      "case_id": "synthetic.31.3",
+      "stage": "primary"
+    },
+    {
+      "case_id": "synthetic.33.3",
+      "stage": "primary"
+    },
+    {
+      "case_id": "synthetic.separate-claim.5",
+      "stage": "primary"
+    },
+    {
+      "case_id": "synthetic.brand-claim.1",
+      "stage": "primary"
+    },
+    {
+      "case_id": "synthetic.32.0",
+      "stage": "primary"
+    },
+    {
+      "case_id": "synthetic.33.0",
+      "stage": "primary"
+    },
+    {
+      "case_id": "synthetic.33.4",
+      "stage": "primary"
+    },
+    {
+      "case_id": "synthetic.name-scope.3",
+      "stage": "primary"
+    }
+  ],
+  "state": "completed",
+  "successful": false,
+  "all_attempt_usage": {
+    "calls": 114,
+    "failed_calls": 8,
+    "guard_rejections": 0,
+    "missing_usage_calls": 2,
+    "input_tokens": 1651246,
+    "cached_input_tokens": 17920,
+    "output_tokens": 426734,
+    "reasoning_output_tokens": 317203
+  },
+  "usage_by_stage_model": {
+    "primary:gpt-5.6-luna:high": {
+      "calls": 108,
+      "failed_calls": 8,
+      "guard_rejections": 0,
+      "missing_usage_calls": 2,
+      "input_tokens": 1557336,
+      "cached_input_tokens": 17920,
+      "output_tokens": 423677,
+      "reasoning_output_tokens": 316632
+    },
+    "arbitration:gpt-6.1-sol:medium": {
+      "calls": 6,
+      "failed_calls": 0,
+      "guard_rejections": 0,
+      "missing_usage_calls": 0,
+      "input_tokens": 93910,
+      "cached_input_tokens": 0,
+      "output_tokens": 3057,
+      "reasoning_output_tokens": 571
+    }
+  },
+  "credit_proxy": 25.8761,
+  "release_qualified": false
+}

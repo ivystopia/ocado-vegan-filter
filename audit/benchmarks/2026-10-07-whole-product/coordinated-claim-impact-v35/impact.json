@@ -1,0 +1,158 @@
+{
+  "purpose": "Read-only screen of full product-information fields newly recognised by a bounded coordinated dietary-attribute grammar. This is an interpretation-impact bound, not promotions; semantic applicability and all existing gates remain required.",
+  "all_known_count": 15,
+  "stored_current_count": 15,
+  "previously_vegan_count": 15,
+  "products": [
+    {
+      "id": "248937011",
+      "name": "Chia Charge Chia Seeds",
+      "current_on_ocado": 1,
+      "prior_status": "vegan",
+      "prior_reason": "tagged",
+      "fields": [
+        "features"
+      ]
+    },
+    {
+      "id": "279920011",
+      "name": "Green People SPF 15 Sun Cream With Tan Accelerator",
+      "current_on_ocado": 1,
+      "prior_status": "vegan",
+      "prior_reason": "tagged",
+      "fields": [
+        "dietary_information"
+      ]
+    },
+    {
+      "id": "546502011",
+      "name": "Aluna Coconut Coffee Rum Liqueur",
+      "current_on_ocado": 1,
+      "prior_status": "vegan",
+      "prior_reason": "tagged",
+      "fields": [
+        "dietary_information"
+      ]
+    },
+    {
+      "id": "568157011",
+      "name": "Drop Bear Beer Co. New World Lager 0.5%",
+      "current_on_ocado": 1,
+      "prior_status": "vegan",
+      "prior_reason": "tagged",
+      "fields": [
+        "detailed_description"
+      ]
+    },
+    {
+      "id": "568159011",
+      "name": "Drop Bear Beer Co. Bonfire Stout 0.5% ABV",
+      "current_on_ocado": 1,
+      "prior_status": "vegan",
+      "prior_reason": "tagged",
+      "fields": [
+        "detailed_description"
+      ]
+    },
+    {
+      "id": "568160011",
+      "name": "Drop Bear Beer Co. Tropical IPA 0.5% ABV",
+      "current_on_ocado": 1,
+      "prior_status": "vegan",
+      "prior_reason": "tagged",
+      "fields": [
+        "detailed_description"
+      ]
+    },
+    {
+      "id": "568161011",
+      "name": "Drop Bear Beer Co. Yuzu Pale Ale 0.5% ABV",
+      "current_on_ocado": 1,
+      "prior_status": "vegan",
+      "prior_reason": "tagged",
+      "fields": [
+        "detailed_description"
+      ]
+    },
+    {
+      "id": "633425011",
+      "name": "The Real Olive Co Sun dried Cherry Tomatoes",
+      "current_on_ocado": 1,
+      "prior_status": "vegan",
+      "prior_reason": "tagged",
+      "fields": [
+        "dietary_information"
+      ]
+    },
+    {
+      "id": "642854011",
+      "name": "Pimentae Spicy Tequila Margarita Cocktail",
+      "current_on_ocado": 1,
+      "prior_status": "vegan",
+      "prior_reason": "manufacturer",
+      "fields": [
+        "features"
+      ]
+    },
+    {
+      "id": "650312011",
+      "name": "Wholecreations Gluten Free Little Trees",
+      "current_on_ocado": 1,
+      "prior_status": "vegan",
+      "prior_reason": "tagged",
+      "fields": [
+        "detailed_description"
+      ]
+    },
+    {
+      "id": "650635011",
+      "name": "Three Spirit Nightcap Functional Non-Alcoholic Spirit Alternative",
+      "current_on_ocado": 1,
+      "prior_status": "vegan",
+      "prior_reason": "manufacturer",
+      "fields": [
+        "detailed_description"
+      ]
+    },
+    {
+      "id": "650636011",
+      "name": "Three Spirit Livener Functional Non-Alcoholic Spirit Alternative",
+      "current_on_ocado": 1,
+      "prior_status": "vegan",
+      "prior_reason": "manufacturer",
+      "fields": [
+        "detailed_description"
+      ]
+    },
+    {
+      "id": "650637011",
+      "name": "Three Spirit Social Functional Non-Alcoholic Spirit Alternative",
+      "current_on_ocado": 1,
+      "prior_status": "vegan",
+      "prior_reason": "manufacturer",
+      "fields": [
+        "detailed_description"
+      ]
+    },
+    {
+      "id": "654596011",
+      "name": "Wholecreations Gluten Free Stonebaked Pizza Bases x 2",
+      "current_on_ocado": 1,
+      "prior_status": "vegan",
+      "prior_reason": "manufacturer",
+      "fields": [
+        "detailed_description"
+      ]
+    },
+    {
+      "id": "659989011",
+      "name": "The Vegan Patty Lady Gluten Free Vegan Jamaican Curry Patties cocktail size",
+      "current_on_ocado": 1,
+      "prior_status": "vegan",
+      "prior_reason": "name",
+      "fields": [
+        "dietary_information"
+      ]
+    }
+  ]
+}

@@ -1,0 +1,738 @@
+{
+  "classifier_version": "db-vegan-codex-v45",
+  "schema_version": 5,
+  "type": "offline constructed proof replay of actual failed readings",
+  "not_new_model_results": true,
+  "no_input_or_label_changes": true,
+  "records": [
+    {
+      "model": "gpt-5.6-luna",
+      "case_id": "synthetic.faq-component-scope.3",
+      "actual_pass": 1,
+      "actual_gate_status": "unknown",
+      "constructed_repair": "faq",
+      "repaired_gate_status": "vegan",
+      "repaired_gate_reason": "manufacturer",
+      "expected": {
+        "vegan_status": "vegan",
+        "vegan_reason": "manufacturer",
+        "required_issue_codes": []
+      },
+      "input_sha256": "f240562453aaba71ce9dea32c5454387752e20fead4589dd5f0714dfbfec61f3",
+      "assessment": {
+        "identity": {
+          "status": "established",
+          "evidence_refs": [
+            {
+              "path": "/product/name",
+              "quote": "Example Wine"
+            },
+            {
+              "path": "/manufacturer_source_candidates/0/source_text",
+              "quote": "We produce Example Wine."
+            }
+          ]
+        },
+        "composition": {
+          "status": "covered_by_claim",
+          "evidence_refs": [
+            {
+              "path": "/manufacturer_source_candidates/0/source_text",
+              "quote": "No animal-derived materials or processes are used."
+            }
+          ]
+        },
+        "sourcing": {
+          "status": "covered_by_claim",
+          "evidence_refs": [
+            {
+              "path": "/manufacturer_source_candidates/0/source_text",
+              "quote": "No animal-derived materials or processes are used."
+            }
+          ]
+        },
+        "processing": {
+          "status": "covered_by_claim",
+          "evidence_refs": [
+            {
+              "path": "/manufacturer_source_candidates/0/source_text",
+              "quote": "No animal-derived materials or processes are used."
+            }
+          ]
+        },
+        "components": {
+          "status": "covered_by_claim",
+          "evidence_refs": [
+            {
+              "path": "/product/package_type",
+              "quote": "Bottle"
+            },
+            {
+              "path": "/manufacturer_source_candidates/0/source_text",
+              "quote": "No animal-derived materials or processes are used."
+            }
+          ]
+        },
+        "positive_support": [
+          {
+            "reason": "manufacturer",
+            "evidence_refs": [
+              {
+                "path": "/manufacturer_source_candidates/0/source_text",
+                "quote": "No animal-derived materials or processes are used."
+              },
+              {
+                "path": "/manufacturer_source_candidates/0/source_text",
+                "quote": "Is this product vegan?"
+              }
+            ]
+          }
+        ],
+        "material_issues": [
+          {
+            "code": "processing_unresolved",
+            "target": "wine clarification and fining",
+            "rule_id": "wine-fining-v1",
+            "evidence_refs": [
+              {
+                "path": "/product/name",
+                "quote": "Example Wine"
+              },
+              {
+                "path": "/manufacturer_source_candidates/0/source_text",
+                "quote": "No animal-derived materials or processes are used."
+              }
+            ],
+            "resolution_refs": [
+              {
+                "path": "/manufacturer_source_candidates/0/source_text",
+                "quote": "No animal-derived materials or processes are used."
+              }
+            ],
+            "blocks_claim": false
+          },
+          {
+            "code": "composition_incomplete",
+            "target": "bottle packaging",
+            "rule_id": "supplied-components-composition-v1",
+            "evidence_refs": [
+              {
+                "path": "/product/package_type",
+                "quote": "Bottle"
+              }
+            ],
+            "resolution_refs": [
+              {
+                "path": "/manufacturer_source_candidates/0/source_text",
+                "quote": "No animal-derived materials or processes are used."
+              }
+            ],
+            "blocks_claim": false
+          }
+        ],
+        "source_applicability": [
+          {
+            "source_path": "/manufacturer_source_candidates/0",
+            "scope": "product",
+            "product": {
+              "status": "established",
+              "evidence_refs": [
+                {
+                  "path": "/product/name",
+                  "quote": "Example Wine"
+                },
+                {
+                  "path": "/manufacturer_source_candidates/0/source_text",
+                  "quote": "We produce Example Wine."
+                }
+              ]
+            },
+            "variant": {
+              "status": "established",
+              "evidence_refs": [
+                {
+                  "path": "/product/name",
+                  "quote": "Example Wine"
+                },
+                {
+                  "path": "/manufacturer_source_candidates/0/source_text",
+                  "quote": "We produce Example Wine."
+                }
+              ]
+            },
+            "market": {
+              "status": "established",
+              "evidence_refs": [
+                {
+                  "path": "/manufacturer_source_candidates/0/market_scope",
+                  "quote": "UK"
+                }
+              ]
+            },
+            "period": {
+              "status": "established",
+              "evidence_refs": [
+                {
+                  "path": "/manufacturer_source_candidates/0/retrieved_at",
+                  "quote": "2026-10-07T00:00:00+00:00"
+                }
+              ]
+            }
+          }
+        ]
+      }
+    },
+    {
+      "model": "gpt-6-luna",
+      "case_id": "synthetic.faq-component-scope.3",
+      "actual_pass": 1,
+      "actual_gate_status": "unknown",
+      "constructed_repair": "faq",
+      "repaired_gate_status": "vegan",
+      "repaired_gate_reason": "manufacturer",
+      "expected": {
+        "vegan_status": "vegan",
+        "vegan_reason": "manufacturer",
+        "required_issue_codes": []
+      },
+      "input_sha256": "f240562453aaba71ce9dea32c5454387752e20fead4589dd5f0714dfbfec61f3",
+      "assessment": {
+        "identity": {
+          "status": "established",
+          "evidence_refs": [
+            {
+              "path": "/product/name",
+              "quote": "Example Wine"
+            },
+            {
+              "path": "/manufacturer_source_candidates/0/source_text",
+              "quote": "We produce Example Wine."
+            }
+          ]
+        },
+        "composition": {
+          "status": "covered_by_claim",
+          "evidence_refs": [
+            {
+              "path": "/manufacturer_source_candidates/0/source_text",
+              "quote": "No animal-derived materials or processes are used."
+            }
+          ]
+        },
+        "sourcing": {
+          "status": "covered_by_claim",
+          "evidence_refs": [
+            {
+              "path": "/manufacturer_source_candidates/0/source_text",
+              "quote": "No animal-derived materials or processes are used."
+            }
+          ]
+        },
+        "processing": {
+          "status": "covered_by_claim",
+          "evidence_refs": [
+            {
+              "path": "/manufacturer_source_candidates/0/source_text",
+              "quote": "No animal-derived materials or processes are used."
+            }
+          ]
+        },
+        "components": {
+          "status": "covered_by_claim",
+          "evidence_refs": [
+            {
+              "path": "/manufacturer_source_candidates/0/source_text",
+              "quote": "No animal-derived materials or processes are used."
+            }
+          ]
+        },
+        "positive_support": [
+          {
+            "reason": "manufacturer",
+            "evidence_refs": [
+              {
+                "path": "/manufacturer_source_candidates/0/source_text",
+                "quote": "No animal-derived materials or processes are used."
+              },
+              {
+                "path": "/manufacturer_source_candidates/0/source_text",
+                "quote": "Is this product vegan?"
+              }
+            ]
+          }
+        ],
+        "material_issues": [
+          {
+            "code": "processing_unresolved",
+            "target": "wine production and fining",
+            "rule_id": "wine-fining-v1",
+            "evidence_refs": [
+              {
+                "path": "/product/name",
+                "quote": "Example Wine"
+              },
+              {
+                "path": "/product/ingredients",
+                "quote": "Grapes"
+              }
+            ],
+            "resolution_refs": [
+              {
+                "path": "/manufacturer_source_candidates/0/source_text",
+                "quote": "No animal-derived materials or processes are used."
+              }
+            ],
+            "blocks_claim": false
+          }
+        ],
+        "source_applicability": [
+          {
+            "source_path": "/manufacturer_source_candidates/0",
+            "scope": "product",
+            "product": {
+              "status": "established",
+              "evidence_refs": [
+                {
+                  "path": "/product/name",
+                  "quote": "Example Wine"
+                },
+                {
+                  "path": "/manufacturer_source_candidates/0/source_text",
+                  "quote": "We produce Example Wine."
+                }
+              ]
+            },
+            "variant": {
+              "status": "established",
+              "evidence_refs": [
+                {
+                  "path": "/product/name",
+                  "quote": "Example Wine"
+                },
+                {
+                  "path": "/manufacturer_source_candidates/0/source_text",
+                  "quote": "Is this product vegan?"
+                }
+              ]
+            },
+            "market": {
+              "status": "established",
+              "evidence_refs": [
+                {
+                  "path": "/manufacturer_source_candidates/0/market_scope",
+                  "quote": "UK"
+                }
+              ]
+            },
+            "period": {
+              "status": "established",
+              "evidence_refs": [
+                {
+                  "path": "/manufacturer_source_candidates/0/retrieved_at",
+                  "quote": "2026-10-07T00:00:00+00:00"
+                },
+                {
+                  "path": "/manufacturer_source_candidates/0/source_text",
+                  "quote": "We produce Example Wine."
+                }
+              ]
+            }
+          }
+        ]
+      }
+    },
+    {
+      "model": "gpt-6-luna",
+      "case_id": "synthetic.ethical-components.9",
+      "actual_pass": 1,
+      "actual_gate_status": "unknown",
+      "constructed_repair": "components",
+      "repaired_gate_status": "vegan",
+      "repaired_gate_reason": "ingredients",
+      "expected": {
+        "vegan_status": "vegan",
+        "vegan_reason": "ingredients",
+        "required_issue_codes": []
+      },
+      "input_sha256": "8641b966f7c0ba8ca0871e065df232ec9eb4da99dd2c75f04b397056d9129b02",
+      "assessment": {
+        "identity": {
+          "status": "established",
+          "evidence_refs": [
+            {
+              "path": "/product/name",
+              "quote": "Example Coffee Pods"
+            }
+          ]
+        },
+        "composition": {
+          "status": "established",
+          "evidence_refs": [
+            {
+              "path": "/product/ingredients",
+              "quote": "Coffee"
+            },
+            {
+              "path": "/product/features",
+              "quote": "Complete component composition: aluminium pod and lid, plant-derived adhesive."
+            }
+          ]
+        },
+        "sourcing": {
+          "status": "established",
+          "evidence_refs": [
+            {
+              "path": "/product/ingredients",
+              "quote": "Coffee"
+            },
+            {
+              "path": "/product/features",
+              "quote": "plant-derived adhesive"
+            }
+          ]
+        },
+        "processing": {
+          "status": "established",
+          "evidence_refs": [
+            {
+              "path": "/product/features",
+              "quote": "All components manufactured without animal inputs."
+            }
+          ]
+        },
+        "components": {
+          "status": "established",
+          "evidence_refs": [
+            {
+              "path": "/product/features",
+              "quote": "Complete component composition: aluminium pod and lid, plant-derived adhesive. All components manufactured without animal inputs."
+            }
+          ]
+        },
+        "positive_support": [
+          {
+            "reason": "ingredients",
+            "evidence_refs": [
+              {
+                "path": "/product/ingredients",
+                "quote": "Coffee"
+              },
+              {
+                "path": "/product/features",
+                "quote": "Complete component composition: aluminium pod and lid, plant-derived adhesive. All components manufactured without animal inputs."
+              }
+            ]
+          }
+        ],
+        "material_issues": [
+          {
+            "code": "composition_incomplete",
+            "target": "supplied components",
+            "rule_id": "supplied-components-composition-v1",
+            "evidence_refs": [
+              {
+                "path": "/product/name",
+                "quote": "Example Coffee Pods"
+              },
+              {
+                "path": "/product/features",
+                "quote": "Complete component composition: aluminium pod and lid, plant-derived adhesive. All components manufactured without animal inputs."
+              }
+            ],
+            "resolution_refs": [
+              {
+                "path": "/product/features",
+                "quote": "Complete component composition: aluminium pod and lid, plant-derived adhesive. All components manufactured without animal inputs."
+              }
+            ],
+            "blocks_claim": false
+          }
+        ],
+        "source_applicability": []
+      }
+    },
+    {
+      "model": "gpt-6-luna",
+      "case_id": "synthetic.independent-assertion.0",
+      "actual_pass": 1,
+      "actual_gate_status": "unknown",
+      "constructed_repair": "flavour",
+      "repaired_gate_status": "vegan",
+      "repaired_gate_reason": "manufacturer",
+      "expected": {
+        "vegan_status": "vegan",
+        "vegan_reason": "manufacturer",
+        "required_issue_codes": []
+      },
+      "input_sha256": "ca40d215564623df622fc6d7731fab3b09d87cdf10eb6595f93da5ae042e0e4b",
+      "assessment": {
+        "identity": {
+          "status": "established",
+          "evidence_refs": [
+            {
+              "path": "/product/name",
+              "quote": "Example Ice Cream"
+            },
+            {
+              "path": "/product/ingredients",
+              "quote": "Oats, Sugar"
+            }
+          ]
+        },
+        "composition": {
+          "status": "covered_by_claim",
+          "evidence_refs": [
+            {
+              "path": "/product/detailed_description",
+              "quote": "this flavour is 100% vegan certified"
+            },
+            {
+              "path": "/product/ingredients",
+              "quote": "Oats, Sugar"
+            }
+          ]
+        },
+        "sourcing": {
+          "status": "covered_by_claim",
+          "evidence_refs": [
+            {
+              "path": "/product/detailed_description",
+              "quote": "this flavour is 100% vegan certified"
+            }
+          ]
+        },
+        "processing": {
+          "status": "covered_by_claim",
+          "evidence_refs": [
+            {
+              "path": "/product/detailed_description",
+              "quote": "this flavour is 100% vegan certified"
+            }
+          ]
+        },
+        "components": {
+          "status": "covered_by_claim",
+          "evidence_refs": [
+            {
+              "path": "/product/detailed_description",
+              "quote": "this flavour is 100% vegan certified"
+            }
+          ]
+        },
+        "positive_support": [
+          {
+            "reason": "manufacturer",
+            "evidence_refs": [
+              {
+                "path": "/product/detailed_description",
+                "quote": "this flavour is 100% vegan certified"
+              }
+            ]
+          }
+        ],
+        "material_issues": [
+          {
+            "code": "processing_unresolved",
+            "target": "Sugar refining in the edible product",
+            "rule_id": "sugar-refining-v1",
+            "evidence_refs": [
+              {
+                "path": "/product/name",
+                "quote": "Example Ice Cream"
+              },
+              {
+                "path": "/product/ingredients",
+                "quote": "Oats, Sugar"
+              }
+            ],
+            "resolution_refs": [
+              {
+                "path": "/product/detailed_description",
+                "quote": "this flavour is 100% vegan certified"
+              }
+            ],
+            "blocks_claim": false
+          },
+          {
+            "code": "composition_incomplete",
+            "target": "Supplied tub packaging",
+            "rule_id": "supplied-components-composition-v1",
+            "evidence_refs": [
+              {
+                "path": "/product/name",
+                "quote": "Example Ice Cream"
+              },
+              {
+                "path": "/product/package_type",
+                "quote": "Tub"
+              }
+            ],
+            "resolution_refs": [
+              {
+                "path": "/product/detailed_description",
+                "quote": "this flavour is 100% vegan certified"
+              }
+            ],
+            "blocks_claim": false
+          }
+        ],
+        "source_applicability": []
+      }
+    },
+    {
+      "model": "gpt-6-luna",
+      "case_id": "synthetic.faq-affirmative-answer.3",
+      "actual_pass": 2,
+      "actual_gate_status": "unknown",
+      "constructed_repair": "market",
+      "repaired_gate_status": "vegan",
+      "repaired_gate_reason": "manufacturer",
+      "expected": {
+        "vegan_status": "vegan",
+        "vegan_reason": "manufacturer",
+        "required_issue_codes": []
+      },
+      "input_sha256": "1f8b27c2533cef412ca8257d4efe92582189229ca8bc46ac58f46538914fad0c",
+      "assessment": {
+        "identity": {
+          "status": "established",
+          "evidence_refs": [
+            {
+              "path": "/product/name",
+              "quote": "Example Wine"
+            },
+            {
+              "path": "/manufacturer_source_candidates/0/source_text",
+              "quote": "We produce Example Wine."
+            }
+          ]
+        },
+        "composition": {
+          "status": "covered_by_claim",
+          "evidence_refs": [
+            {
+              "path": "/manufacturer_source_candidates/0/source_text",
+              "quote": "Is this product vegan?\nVegan"
+            }
+          ]
+        },
+        "sourcing": {
+          "status": "covered_by_claim",
+          "evidence_refs": [
+            {
+              "path": "/manufacturer_source_candidates/0/source_text",
+              "quote": "Is this product vegan?\nVegan"
+            }
+          ]
+        },
+        "processing": {
+          "status": "covered_by_claim",
+          "evidence_refs": [
+            {
+              "path": "/manufacturer_source_candidates/0/source_text",
+              "quote": "Is this product vegan?\nVegan"
+            }
+          ]
+        },
+        "components": {
+          "status": "covered_by_claim",
+          "evidence_refs": [
+            {
+              "path": "/manufacturer_source_candidates/0/source_text",
+              "quote": "Is this product vegan?\nVegan"
+            }
+          ]
+        },
+        "positive_support": [
+          {
+            "reason": "manufacturer",
+            "evidence_refs": [
+              {
+                "path": "/manufacturer_source_candidates/0/source_text",
+                "quote": "Is this product vegan?\nVegan"
+              }
+            ]
+          }
+        ],
+        "material_issues": [
+          {
+            "code": "processing_unresolved",
+            "target": "wine fining and processing",
+            "rule_id": "wine-fining-v1",
+            "evidence_refs": [
+              {
+                "path": "/product/name",
+                "quote": "Example Wine"
+              },
+              {
+                "path": "/product/ingredients",
+                "quote": "Grapes"
+              }
+            ],
+            "resolution_refs": [
+              {
+                "path": "/manufacturer_source_candidates/0/source_text",
+                "quote": "Is this product vegan?\nVegan"
+              }
+            ],
+            "blocks_claim": false
+          }
+        ],
+        "source_applicability": [
+          {
+            "source_path": "/manufacturer_source_candidates/0",
+            "scope": "product",
+            "product": {
+              "status": "established",
+              "evidence_refs": [
+                {
+                  "path": "/product/name",
+                  "quote": "Example Wine"
+                },
+                {
+                  "path": "/manufacturer_source_candidates/0/source_text",
+                  "quote": "We produce Example Wine."
+                }
+              ]
+            },
+            "variant": {
+              "status": "established",
+              "evidence_refs": [
+                {
+                  "path": "/product/name",
+                  "quote": "Example Wine"
+                },
+                {
+                  "path": "/manufacturer_source_candidates/0/source_text",
+                  "quote": "Is this product vegan?\nVegan"
+                }
+              ]
+            },
+            "market": {
+              "status": "established",
+              "evidence_refs": [
+                {
+                  "path": "/manufacturer_source_candidates/0/market_scope",
+                  "quote": "UK"
+                },
+                {
+                  "path": "/product/name",
+                  "quote": "Example Wine"
+                }
+              ]
+            },
+            "period": {
+              "status": "established",
+              "evidence_refs": [
+                {
+                  "path": "/manufacturer_source_candidates/0/retrieved_at",
+                  "quote": "2026-10-07T00:00:00+00:00"
+                }
+              ]
+            }
+          }
+        ]
+      }
+    }
+  ]
+}

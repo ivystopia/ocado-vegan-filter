@@ -1,0 +1,115 @@
+{
+  "state": "primary_failure_review_required",
+  "unique_stage_usage": {
+    "calls": 318,
+    "failed_calls": 41,
+    "guard_rejections": 0,
+    "missing_usage_calls": 0,
+    "input_tokens": 7283737,
+    "cached_input_tokens": 117632,
+    "output_tokens": 1140590,
+    "reasoning_output_tokens": 693743
+  },
+  "credit_proxy": 77.4406955,
+  "stages": [
+    {
+      "candidate": "gpt-5.6-luna/high",
+      "stage": "controls",
+      "state": "completed",
+      "usage": {
+        "calls": 80,
+        "failed_calls": 0,
+        "guard_rejections": 0,
+        "missing_usage_calls": 0,
+        "input_tokens": 1160590,
+        "cached_input_tokens": 0,
+        "output_tokens": 231865,
+        "reasoning_output_tokens": 169035
+      },
+      "credit_proxy": 20.94798
+    },
+    {
+      "candidate": "gpt-5.6-luna/high",
+      "stage": "pilot",
+      "state": "completed",
+      "usage": {
+        "calls": 67,
+        "failed_calls": 22,
+        "guard_rejections": 0,
+        "missing_usage_calls": 0,
+        "input_tokens": 2096760,
+        "cached_input_tokens": 26880,
+        "output_tokens": 496886,
+        "reasoning_output_tokens": 348782
+      },
+      "credit_proxy": 27.361340000000002
+    },
+    {
+      "candidate": "gpt-5.6-luna/high",
+      "stage": "model_only_diagnostic",
+      "state": "completed",
+      "usage": {
+        "calls": 3,
+        "failed_calls": 1,
+        "guard_rejections": 0,
+        "missing_usage_calls": 0,
+        "input_tokens": 71663,
+        "cached_input_tokens": 0,
+        "output_tokens": 25422,
+        "reasoning_output_tokens": 20211
+      },
+      "credit_proxy": 1.120975
+    },
+    {
+      "candidate": "gpt-6-luna/high",
+      "stage": "controls",
+      "state": "completed",
+      "usage": {
+        "calls": 82,
+        "failed_calls": 2,
+        "guard_rejections": 0,
+        "missing_usage_calls": 0,
+        "input_tokens": 1221185,
+        "cached_input_tokens": 29952,
+        "output_tokens": 118465,
+        "reasoning_output_tokens": 54026
+      },
+      "credit_proxy": 11.3582055
+    },
+    {
+      "candidate": "gpt-6-luna/high",
+      "stage": "pilot",
+      "state": "completed",
+      "usage": {
+        "calls": 37,
+        "failed_calls": 6,
+        "guard_rejections": 0,
+        "missing_usage_calls": 0,
+        "input_tokens": 1270661,
+        "cached_input_tokens": 0,
+        "output_tokens": 123587,
+        "reasoning_output_tokens": 45291
+      },
+      "credit_proxy": 6.9809225
+    },
+    {
+      "candidate": "gpt-6-luna/high",
+      "stage": "development",
+      "state": "disqualified",
+      "usage": {
+        "calls": 49,
+        "failed_calls": 10,
+        "guard_rejections": 0,
+        "missing_usage_calls": 0,
+        "input_tokens": 1462878,
+        "cached_input_tokens": 60800,
+        "output_tokens": 144365,
+        "reasoning_output_tokens": 56398
+      },
+      "credit_proxy": 9.6712725
+    }
+  ],
+  "release_qualified": false,
+  "expensive_primary_started": false,
+  "shared_defect_requires_fresh_comparison": true
+}

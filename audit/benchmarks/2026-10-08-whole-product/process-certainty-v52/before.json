@@ -1,0 +1,460 @@
+{
+  "kind": "constructed-local-replay-not-model-output",
+  "classifier_version": "db-vegan-codex-v51",
+  "policy_sha256": "fde68fc3e6f9cac0aa6bf0e6ac6da31333ccddfbe66106918ac107e4abfda017",
+  "cases": [
+    {
+      "classifier_input": {
+        "product": {
+          "id": "1",
+          "name": "Example Wine",
+          "ingredients": "Grapes",
+          "features": "This wine may use animal-free fining agents."
+        },
+        "flags": [],
+        "categories": [],
+        "manufacturer_vegan_evidence": []
+      },
+      "assessment": {
+        "identity": {
+          "status": "established",
+          "evidence_refs": [
+            {
+              "path": "/product/name",
+              "quote": "Example Wine"
+            }
+          ]
+        },
+        "composition": {
+          "status": "established",
+          "evidence_refs": [
+            {
+              "path": "/product/ingredients",
+              "quote": "Grapes"
+            }
+          ]
+        },
+        "sourcing": {
+          "status": "not_applicable",
+          "evidence_refs": []
+        },
+        "processing": {
+          "status": "not_applicable",
+          "evidence_refs": []
+        },
+        "components": {
+          "status": "established",
+          "evidence_refs": [
+            {
+              "path": "/product/name",
+              "quote": "Example Wine"
+            }
+          ]
+        },
+        "positive_support": [
+          {
+            "reason": "ingredients",
+            "evidence_refs": [
+              {
+                "path": "/product/ingredients",
+                "quote": "Grapes"
+              }
+            ]
+          }
+        ],
+        "material_issues": [
+          {
+            "code": "processing_unresolved",
+            "target": "whole_product",
+            "rule_id": "wine-fining-v1",
+            "evidence_refs": [
+              {
+                "path": "/product/name",
+                "quote": "Example Wine"
+              }
+            ],
+            "resolution_refs": [
+              {
+                "path": "/product/features",
+                "quote": "This wine may use animal-free fining agents."
+              }
+            ],
+            "blocks_claim": false
+          }
+        ],
+        "source_applicability": []
+      },
+      "outcome": {
+        "vegan_status": "vegan",
+        "vegan_reason": "ingredients",
+        "positive_block": false,
+        "policy_version": "whole-product-v2",
+        "knowledge_version": "vegan-risk-registry-v7",
+        "assessment": {
+          "identity": {
+            "status": "established",
+            "evidence_refs": [
+              {
+                "path": "/product/name",
+                "quote": "Example Wine"
+              }
+            ]
+          },
+          "composition": {
+            "status": "established",
+            "evidence_refs": [
+              {
+                "path": "/product/ingredients",
+                "quote": "Grapes"
+              }
+            ]
+          },
+          "sourcing": {
+            "status": "not_applicable",
+            "evidence_refs": []
+          },
+          "processing": {
+            "status": "not_applicable",
+            "evidence_refs": []
+          },
+          "components": {
+            "status": "established",
+            "evidence_refs": [
+              {
+                "path": "/product/name",
+                "quote": "Example Wine"
+              }
+            ]
+          },
+          "positive_support": [
+            {
+              "reason": "ingredients",
+              "evidence_refs": [
+                {
+                  "path": "/product/ingredients",
+                  "quote": "Grapes"
+                }
+              ]
+            }
+          ],
+          "material_issues": [
+            {
+              "code": "processing_unresolved",
+              "target": "whole_product",
+              "rule_id": "wine-fining-v1",
+              "evidence_refs": [
+                {
+                  "path": "/product/name",
+                  "quote": "Example Wine"
+                }
+              ],
+              "resolution_refs": [
+                {
+                  "path": "/product/features",
+                  "quote": "This wine may use animal-free fining agents."
+                }
+              ],
+              "blocks_claim": false
+            }
+          ],
+          "source_applicability": []
+        },
+        "tag_animal_conflict": false
+      }
+    },
+    {
+      "classifier_input": {
+        "product": {
+          "id": "1",
+          "name": "Example Sugar",
+          "ingredients": "Sugar",
+          "features": "This sugar might be refined without bone char."
+        },
+        "flags": [],
+        "categories": [],
+        "manufacturer_vegan_evidence": []
+      },
+      "assessment": {
+        "identity": {
+          "status": "established",
+          "evidence_refs": [
+            {
+              "path": "/product/name",
+              "quote": "Example Sugar"
+            }
+          ]
+        },
+        "composition": {
+          "status": "established",
+          "evidence_refs": [
+            {
+              "path": "/product/ingredients",
+              "quote": "Sugar"
+            }
+          ]
+        },
+        "sourcing": {
+          "status": "not_applicable",
+          "evidence_refs": []
+        },
+        "processing": {
+          "status": "not_applicable",
+          "evidence_refs": []
+        },
+        "components": {
+          "status": "established",
+          "evidence_refs": [
+            {
+              "path": "/product/name",
+              "quote": "Example Sugar"
+            }
+          ]
+        },
+        "positive_support": [
+          {
+            "reason": "ingredients",
+            "evidence_refs": [
+              {
+                "path": "/product/ingredients",
+                "quote": "Sugar"
+              }
+            ]
+          }
+        ],
+        "material_issues": [
+          {
+            "code": "processing_unresolved",
+            "target": "whole_product",
+            "rule_id": "sugar-refining-v1",
+            "evidence_refs": [
+              {
+                "path": "/product/ingredients",
+                "quote": "Sugar"
+              }
+            ],
+            "resolution_refs": [
+              {
+                "path": "/product/features",
+                "quote": "This sugar might be refined without bone char."
+              }
+            ],
+            "blocks_claim": false
+          }
+        ],
+        "source_applicability": []
+      },
+      "outcome": {
+        "vegan_status": "vegan",
+        "vegan_reason": "ingredients",
+        "positive_block": false,
+        "policy_version": "whole-product-v2",
+        "knowledge_version": "vegan-risk-registry-v7",
+        "assessment": {
+          "identity": {
+            "status": "established",
+            "evidence_refs": [
+              {
+                "path": "/product/name",
+                "quote": "Example Sugar"
+              }
+            ]
+          },
+          "composition": {
+            "status": "established",
+            "evidence_refs": [
+              {
+                "path": "/product/ingredients",
+                "quote": "Sugar"
+              }
+            ]
+          },
+          "sourcing": {
+            "status": "not_applicable",
+            "evidence_refs": []
+          },
+          "processing": {
+            "status": "not_applicable",
+            "evidence_refs": []
+          },
+          "components": {
+            "status": "established",
+            "evidence_refs": [
+              {
+                "path": "/product/name",
+                "quote": "Example Sugar"
+              }
+            ]
+          },
+          "positive_support": [
+            {
+              "reason": "ingredients",
+              "evidence_refs": [
+                {
+                  "path": "/product/ingredients",
+                  "quote": "Sugar"
+                }
+              ]
+            }
+          ],
+          "material_issues": [
+            {
+              "code": "processing_unresolved",
+              "target": "whole_product",
+              "rule_id": "sugar-refining-v1",
+              "evidence_refs": [
+                {
+                  "path": "/product/ingredients",
+                  "quote": "Sugar"
+                }
+              ],
+              "resolution_refs": [
+                {
+                  "path": "/product/features",
+                  "quote": "This sugar might be refined without bone char."
+                }
+              ],
+              "blocks_claim": false
+            }
+          ],
+          "source_applicability": []
+        },
+        "tag_animal_conflict": false
+      }
+    },
+    {
+      "classifier_input": {
+        "product": {
+          "id": "1",
+          "name": "Example Dessert",
+          "ingredients": "Water, E471",
+          "features": "E471 may be derived from vegetable oils."
+        },
+        "flags": [],
+        "categories": [],
+        "manufacturer_vegan_evidence": []
+      },
+      "assessment": {
+        "identity": {
+          "status": "established",
+          "evidence_refs": [
+            {
+              "path": "/product/name",
+              "quote": "Example Dessert"
+            }
+          ]
+        },
+        "composition": {
+          "status": "established",
+          "evidence_refs": [
+            {
+              "path": "/product/ingredients",
+              "quote": "Water, E471"
+            }
+          ]
+        },
+        "sourcing": {
+          "status": "not_applicable",
+          "evidence_refs": []
+        },
+        "processing": {
+          "status": "not_applicable",
+          "evidence_refs": []
+        },
+        "components": {
+          "status": "established",
+          "evidence_refs": [
+            {
+              "path": "/product/name",
+              "quote": "Example Dessert"
+            }
+          ]
+        },
+        "positive_support": [
+          {
+            "reason": "ingredients",
+            "evidence_refs": [
+              {
+                "path": "/product/ingredients",
+                "quote": "Water, E471"
+              }
+            ]
+          }
+        ],
+        "material_issues": [],
+        "source_applicability": []
+      },
+      "outcome": {
+        "vegan_status": "unknown",
+        "vegan_reason": null,
+        "positive_block": false,
+        "policy_version": "whole-product-v2",
+        "knowledge_version": "vegan-risk-registry-v7",
+        "assessment": {
+          "identity": {
+            "status": "established",
+            "evidence_refs": [
+              {
+                "path": "/product/name",
+                "quote": "Example Dessert"
+              }
+            ]
+          },
+          "composition": {
+            "status": "established",
+            "evidence_refs": [
+              {
+                "path": "/product/ingredients",
+                "quote": "Water, E471"
+              }
+            ]
+          },
+          "sourcing": {
+            "status": "not_applicable",
+            "evidence_refs": []
+          },
+          "processing": {
+            "status": "not_applicable",
+            "evidence_refs": []
+          },
+          "components": {
+            "status": "established",
+            "evidence_refs": [
+              {
+                "path": "/product/name",
+                "quote": "Example Dessert"
+              }
+            ]
+          },
+          "positive_support": [
+            {
+              "reason": "ingredients",
+              "evidence_refs": [
+                {
+                  "path": "/product/ingredients",
+                  "quote": "Water, E471"
+                }
+              ]
+            }
+          ],
+          "material_issues": [
+            {
+              "code": "source_unresolved",
+              "target": "e471",
+              "rule_id": "source-dependent-additives-v1",
+              "evidence_refs": [
+                {
+                  "path": "/product/ingredients",
+                  "quote": "Water, E471"
+                }
+              ],
+              "resolution_refs": [],
+              "blocks_claim": false
+            }
+          ],
+          "source_applicability": []
+        },
+        "tag_animal_conflict": false
+      }
+    }
+  ]
+}

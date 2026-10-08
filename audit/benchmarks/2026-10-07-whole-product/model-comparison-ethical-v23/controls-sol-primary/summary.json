@@ -1,0 +1,65 @@
+{
+  "cases": 435,
+  "scored_cases": 435,
+  "mismatches": [],
+  "reason_errors": [],
+  "operational_errors": [],
+  "unsafe_positives": [],
+  "missing_required_issues": [],
+  "primary_disagreements": [
+    "synthetic.faq-component-scope.2"
+  ],
+  "arbitrated_cases": [
+    "synthetic.faq-component-scope.2"
+  ],
+  "raw_agreed_unsafe_positives": [
+    {
+      "case_id": "synthetic.32.3",
+      "stage": "primary"
+    },
+    {
+      "case_id": "synthetic.31.3",
+      "stage": "primary"
+    },
+    {
+      "case_id": "synthetic.32.4",
+      "stage": "primary"
+    }
+  ],
+  "state": "completed",
+  "successful": true,
+  "all_attempt_usage": {
+    "calls": 104,
+    "failed_calls": 0,
+    "guard_rejections": 0,
+    "missing_usage_calls": 0,
+    "input_tokens": 1676694,
+    "cached_input_tokens": 0,
+    "output_tokens": 165088,
+    "reasoning_output_tokens": 15748
+  },
+  "usage_by_stage_model": {
+    "primary:gpt-6.1-sol:medium": {
+      "calls": 102,
+      "failed_calls": 0,
+      "guard_rejections": 0,
+      "missing_usage_calls": 0,
+      "input_tokens": 1644356,
+      "cached_input_tokens": 0,
+      "output_tokens": 162666,
+      "reasoning_output_tokens": 15221
+    },
+    "arbitration:gpt-6.1-sol:medium": {
+      "calls": 2,
+      "failed_calls": 0,
+      "guard_rejections": 0,
+      "missing_usage_calls": 0,
+      "input_tokens": 32338,
+      "cached_input_tokens": 0,
+      "output_tokens": 2422,
+      "reasoning_output_tokens": 527
+    }
+  },
+  "credit_proxy": 125.10669999999999,
+  "release_qualified": false
+}

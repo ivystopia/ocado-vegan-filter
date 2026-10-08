@@ -1,0 +1,63 @@
+{
+  "cases": 386,
+  "scored_cases": 386,
+  "mismatches": [],
+  "reason_errors": [],
+  "operational_errors": [],
+  "unsafe_positives": [],
+  "missing_required_issues": [],
+  "primary_disagreements": [
+    "synthetic.36.4",
+    "synthetic.32.0"
+  ],
+  "arbitrated_cases": [
+    "synthetic.36.4",
+    "synthetic.32.0"
+  ],
+  "raw_agreed_unsafe_positives": [
+    {
+      "case_id": "synthetic.31.3",
+      "stage": "primary"
+    },
+    {
+      "case_id": "synthetic.32.3",
+      "stage": "primary"
+    }
+  ],
+  "state": "completed",
+  "successful": true,
+  "all_attempt_usage": {
+    "calls": 92,
+    "failed_calls": 0,
+    "guard_rejections": 0,
+    "missing_usage_calls": 0,
+    "input_tokens": 1412640,
+    "cached_input_tokens": 0,
+    "output_tokens": 84609,
+    "reasoning_output_tokens": 13908
+  },
+  "usage_by_stage_model": {
+    "primary:gpt-6.1-sol:medium": {
+      "calls": 88,
+      "failed_calls": 0,
+      "guard_rejections": 0,
+      "missing_usage_calls": 0,
+      "input_tokens": 1351416,
+      "cached_input_tokens": 0,
+      "output_tokens": 82249,
+      "reasoning_output_tokens": 13086
+    },
+    "arbitration:gpt-6.1-sol:medium": {
+      "calls": 4,
+      "failed_calls": 0,
+      "guard_rejections": 0,
+      "missing_usage_calls": 0,
+      "input_tokens": 61224,
+      "cached_input_tokens": 0,
+      "output_tokens": 2360,
+      "reasoning_output_tokens": 822
+    }
+  },
+  "credit_proxy": 91.78425,
+  "release_qualified": false
+}

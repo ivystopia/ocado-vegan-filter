@@ -1,0 +1,124 @@
+Benchmark cohort challenge: 24 products
+Benchmark cohort holdout: 24 products
+...Benchmark cohort challenge: 24 products
+Benchmark cohort holdout: 24 products
+............gpt-6-luna/high pipeline run 1: 1/5
+............gpt-6-luna/high pipeline run 1: 5/5
+..gpt-6-luna/high pipeline run 1: 1/5
+gpt-6-luna/high pipeline run 1: 2/5
+gpt-6-luna/high pipeline run 1: 3/5
+gpt-6-luna/high pipeline run 1: 4/5
+gpt-6-luna/high pipeline run 1: 5/5
+...gpt-6-luna/high rules run 1: 5/5
+..................Codex batch 1/1: products 1-1 of 1
+..Codex batch 1/1: products 1-1 of 1
+...........................E............................  pass 1/2, attempt 1
+  pass 2/2, attempt 1
+.  pass 1/2, attempt 1
+  pass 2/2, attempt 1
+  pass 1/2, attempt 1
+  pass 2/2, attempt 1
+.  pass 1/2, attempt 1
+  pass 2/2, attempt 1
+  pass 1/2, attempt 1
+  pass 2/2, attempt 1
+.  pass 1/2, attempt 1
+  pass 2/2, attempt 1
+  pass 1/2, attempt 1
+  pass 2/2, attempt 1
+.  pass 1/2, attempt 1
+  pass 2/2, attempt 1
+  pass 1/2, attempt 1
+.  pass 1/2, attempt 1
+  splitting failed batch of 2 into 1 and 1: split
+    pass 1/2, attempt 1
+    pass 2/2, attempt 1
+    pass 1/2, attempt 1
+    pass 2/2, attempt 1
+.  pass 1/2, attempt 1
+  pass 2/2, attempt 1
+  pass 1/2, attempt 1
+  pass 2/2, attempt 1
+/usr/lib/python3.13/unittest/mock.py:2247: ResourceWarning: unclosed database in <sqlite3.Connection object at 0x7f9964f5f970>
+  def __init__(self, name, parent):
+ResourceWarning: Enable tracemalloc to get the object allocation traceback
+/usr/lib/python3.13/unittest/mock.py:2247: ResourceWarning: unclosed database in <sqlite3.Connection object at 0x7f9964fcb970>
+  def __init__(self, name, parent):
+ResourceWarning: Enable tracemalloc to get the object allocation traceback
+  pass 1/2, attempt 1
+  pass 2/2, attempt 1
+  pass 1/2, attempt 1
+  pass 2/2, attempt 1
+.  pass 1/2, attempt 1
+  pass 2/2, attempt 1
+  pass 1/2, attempt 1
+.  pass 1/2, attempt 1
+.Codex batch 1/1: products 1-1 of 1
+  pass 1/2, attempt 1
+  pass 2/2, attempt 1
+  pass 1/2, attempt 1
+  pass 2/2, attempt 1
+Codex batch 1/1: products 1-1 of 1
+  pass 1/2, attempt 1
+  pass 2/2, attempt 1
+  pass 1/2, attempt 1
+..  pass 1/2, attempt 1
+  pass 2/2, attempt 1
+  pass 1/2, attempt 1
+  pass 2/2, attempt 1
+..  pass 1/2, attempt 1
+  pass 2/2, attempt 1
+  pass 1/2, attempt 1
+  pass 2/2, attempt 1
+  pass 1/2, attempt 1
+  pass 2/2, attempt 1
+  pass 1/2, attempt 1
+  pass 2/2, attempt 1
+.  pass 1/2, attempt 1
+  pass 2/2, attempt 1
+  pass 1/2, attempt 1
+...................s............fixture smoke test passed
+image ownership smoke test passed
+image rendering smoke test passed
+incremental updates smoke test passed
+malformed hydration smoke test passed
+reused counter smoke test passed
+userscript source test passed
+Snapshotted classifier context for 1 products
+Reusing classifier context from the unfinished sync
+Context changes new=1 changed=1 removed=0 invalidated=2
+............../usr/lib/python3.13/unittest/mock.py:2247: ResourceWarning: unclosed database in <sqlite3.Connection object at 0x7f995f9d9120>
+  def __init__(self, name, parent):
+ResourceWarning: Enable tracemalloc to get the object allocation traceback
+/usr/lib/python3.13/unittest/mock.py:2247: ResourceWarning: unclosed database in <sqlite3.Connection object at 0x7f995f9d9030>
+  def __init__(self, name, parent):
+ResourceWarning: Enable tracemalloc to get the object allocation traceback
+/usr/lib/python3.13/unittest/mock.py:2247: ResourceWarning: unclosed database in <sqlite3.Connection object at 0x7f995f9d8d60>
+  def __init__(self, name, parent):
+ResourceWarning: Enable tracemalloc to get the object allocation traceback
+/usr/lib/python3.13/unittest/mock.py:2247: ResourceWarning: unclosed database in <sqlite3.Connection object at 0x7f995f9d8f40>
+  def __init__(self, name, parent):
+ResourceWarning: Enable tracemalloc to get the object allocation traceback
+/usr/lib/python3.13/unittest/mock.py:2247: ResourceWarning: unclosed database in <sqlite3.Connection object at 0x7f995f9d8e50>
+  def __init__(self, name, parent):
+ResourceWarning: Enable tracemalloc to get the object allocation traceback
+/usr/lib/python3.13/unittest/mock.py:2247: ResourceWarning: unclosed database in <sqlite3.Connection object at 0x7f995f9d8a90>
+  def __init__(self, name, parent):
+ResourceWarning: Enable tracemalloc to get the object allocation traceback
+/usr/lib/python3.13/unittest/mock.py:2247: ResourceWarning: unclosed database in <sqlite3.Connection object at 0x7f995f9d8310>
+  def __init__(self, name, parent):
+ResourceWarning: Enable tracemalloc to get the object allocation traceback
+............................................................................................
+======================================================================
+ERROR: test_standalone_vegan_feature_classifies_as_manufacturer (test_classify_ocado_vegan.ClassifyOcadoVeganTests.test_standalone_vegan_feature_classifies_as_manufacturer)
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "/home/ivy/repos/personal/ocado_report/tests/test_classify_ocado_vegan.py", line 221, in test_standalone_vegan_feature_classifies_as_manufacturer
+    self.assertEqual(result.vegan_status, "vegan")
+                     ^^^^^^^^^^^^^^^^^^^
+AttributeError: 'NoneType' object has no attribute 'vegan_status'
+
+----------------------------------------------------------------------
+Ran 260 tests in 37.972s
+
+FAILED (errors=1, skipped=1)

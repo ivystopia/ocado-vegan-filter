@@ -1,0 +1,22 @@
+{
+  "cause": "implementation_context_omission",
+  "case_id": "synthetic.pouch-component-scope.2",
+  "prior_input_changed": false,
+  "prior_expected_changed": false,
+  "prior_reference_assumption": "The Ocado target catalogue is UK; sale-market provenance was implicit in the application rather than explicit in model input.",
+  "actual_model_observation": "Both v46 Luna 6 readings cite UK source scope but withhold suitability because target market is not supplied. Source country of origin cannot supply target sale market.",
+  "repair": "Supply explicit UK Ocado catalogue provenance in both model stages and blind annotation, preserving independent source applicability and every old product record/expected label.",
+  "supersedes_market_specific_attribution": [
+    "../model-comparison-ethical-v21/primary-failure-review.json",
+    "../model-comparison-ethical-v21/failed-control-valid-proof-replays.json"
+  ],
+  "supersession_note": "The earlier pure-model attribution of market withholding was incomplete. Adding missing application context resolves a shared provenance ambiguity; older readings and reviews remain unchanged. Other model/protocol findings are not reversed.",
+  "new_context_version": {
+    "classifier": "db-vegan-codex-v47",
+    "primary": "ocado-vegan-whole-product-json-v28",
+    "arbitration": "ocado-vegan-whole-product-arbitration-v19",
+    "annotation": "blind-evidence-adjudication-v14"
+  },
+  "not_new_product_assurance": true,
+  "no_rule_shortcut_or_canonical_promotion": true
+}

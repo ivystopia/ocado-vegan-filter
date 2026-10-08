@@ -1,0 +1,85 @@
+{
+  "case_id": "synthetic.faq-component-scope.3",
+  "expected": {
+    "vegan_status": "vegan",
+    "vegan_reason": "manufacturer",
+    "required_issue_codes": []
+  },
+  "classifier_version": "db-vegan-codex-v62",
+  "input_sha256": "f240562453aaba71ce9dea32c5454387752e20fead4589dd5f0714dfbfec61f3",
+  "run_checkpoint_sha256": "9ba694ddc53f4ff2e18ed838a85420d56ece4cc5ff623019fe63e1cd6d990b5f",
+  "actual_positive_support": [
+    [
+      {
+        "reason": "manufacturer",
+        "evidence_refs": [
+          {
+            "path": "/manufacturer_source_candidates/0/source_text",
+            "quote": "No animal-derived materials or processes are used."
+          },
+          {
+            "path": "/manufacturer_source_candidates/0/source_text",
+            "quote": "We produce Example Wine."
+          }
+        ]
+      }
+    ],
+    [
+      {
+        "reason": "manufacturer",
+        "evidence_refs": [
+          {
+            "path": "/manufacturer_source_candidates/0/source_text",
+            "quote": "We produce Example Wine."
+          },
+          {
+            "path": "/manufacturer_source_candidates/0/source_text",
+            "quote": "No animal-derived materials or processes are used."
+          }
+        ]
+      }
+    ]
+  ],
+  "actual_pair_replay": [
+    {
+      "stage": "model",
+      "status": "unknown",
+      "reason": null
+    },
+    {
+      "stage": "audit",
+      "status": "unknown",
+      "reason": null
+    },
+    {
+      "stage": "export",
+      "status": "unknown",
+      "reason": null
+    }
+  ],
+  "constructed_added_exact_retained_question_ref": {
+    "path": "/manufacturer_source_candidates/0/source_text",
+    "quote": "Is this product vegan?"
+  },
+  "constructed_added_question_replay": [
+    {
+      "stage": "model",
+      "status": "vegan",
+      "reason": "manufacturer"
+    },
+    {
+      "stage": "audit",
+      "status": "vegan",
+      "reason": "manufacturer"
+    },
+    {
+      "stage": "export",
+      "status": "vegan",
+      "reason": "manufacturer"
+    }
+  ],
+  "constructed_readings_are_not_model_output": true,
+  "source_words_labels_prompts_and_original_readings_unchanged": true,
+  "existing_contract": "test_positive_evidence_merge_cannot_erase_doubt_or_invent_a_question (missing_question subcase)",
+  "attribution": "Both readings omit the vegan FAQ question from their positive citations. The final gate intentionally requires cited question-plus-answer scope, so the exact actual pair remains unknown. Adding that existing exact question as a labelled constructed contrast restores manufacturer through every gate. This is a model citation/interpretation miss, not the previously repaired lost-second-reading merger bug. No production/source/reference change is warranted."
+}

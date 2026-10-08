@@ -1,0 +1,16 @@
+{
+  "classifier_version": "db-vegan-codex-v62",
+  "same_before_input_and_readings": true,
+  "after_both_orders": [
+    [
+      "unknown",
+      null
+    ],
+    [
+      "unknown",
+      null
+    ]
+  ],
+  "model_calls_performed": 0,
+  "canonical_database_written": false
+}

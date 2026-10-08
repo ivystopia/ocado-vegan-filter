@@ -1,0 +1,337 @@
+{
+  "case_id": "synthetic.wine-nonfining.3",
+  "case": {
+    "case_id": "synthetic.wine-nonfining.3",
+    "case_kind": "synthetic",
+    "split": "synthetic",
+    "leakage_group": "synthetic-wine-nonfining-production",
+    "classifier_input": {
+      "product": {
+        "name": "Example Wine",
+        "brand": "Example Producer",
+        "ingredients": "Grapes",
+        "official_vegan": 1,
+        "id": "993700003",
+        "features": "This wine is processed with egg white during must preparation."
+      },
+      "flags": [],
+      "categories": [],
+      "manufacturer_vegan_evidence": []
+    },
+    "input_sha256": "6db1b7ea0b914d5318793756b0af2861e3d3280fc014669f0cc06e906b13ad4a",
+    "expected": {
+      "vegan_status": "nonvegan",
+      "vegan_reason": null,
+      "required_issue_codes": [
+        "animal_processing",
+        "tag_animal_conflict"
+      ]
+    },
+    "adjudication": {
+      "state": "accepted",
+      "reference_type": "synthetic-source-backed-mechanism",
+      "policy_version": "whole-product-v2",
+      "knowledge_version": "vegan-risk-registry-v8",
+      "rationale": "Contrast complete animal-free production inputs, uncertain facts, applicable whole-product confirmation and explicit animal-processing/tag contradiction. These are constructed policy contracts, not independent catalogue observations.",
+      "mechanism_source_urls": [
+        "https://www.oiv.int/standards/international-code-of-oenological-practices/part-ii-oenological-treatments-and-practices/musts/lysozyme-treatment",
+        "https://www.oiv.int/standards/international-oenological-codex/part-i-monographs/monographs/lysozyme",
+        "https://www.oiv.int/standards/international-code-of-oenological-practices/part-ii-oenological-treatments-and-practices/wines/fining"
+      ],
+      "method": "Primary-source-backed synthetic policy contract, independently reviewed against OIV mechanisms; not model voting."
+    }
+  },
+  "original_run_sha256": "220af0618f619871b0f6ee3ce537933f33fab067e801beb8c8079a6157d4d9c8",
+  "raw_passes": [
+    {
+      "product_id": "993700003",
+      "vegan_status": "nonvegan",
+      "vegan_reason": null,
+      "confidence": "certain",
+      "summary": "Nonvegan: the product information explicitly states that egg white is used during wine processing, overriding the official vegan flag.",
+      "evidence": [
+        "/product/name: Example Wine",
+        "/product/features: This wine is processed with egg white during must preparation.",
+        "/product/official_vegan: 1"
+      ],
+      "ambiguity_notes": [],
+      "assessment": {
+        "identity": {
+          "status": "established",
+          "evidence_refs": [
+            {
+              "path": "/product/name",
+              "quote": "Example Wine"
+            },
+            {
+              "path": "/product/id",
+              "quote": "993700003"
+            }
+          ]
+        },
+        "composition": {
+          "status": "established",
+          "evidence_refs": [
+            {
+              "path": "/product/ingredients",
+              "quote": "Grapes"
+            }
+          ]
+        },
+        "sourcing": {
+          "status": "insufficient",
+          "evidence_refs": [
+            {
+              "path": "/product/ingredients",
+              "quote": "Grapes"
+            }
+          ]
+        },
+        "processing": {
+          "status": "conflicted",
+          "evidence_refs": [
+            {
+              "path": "/product/features",
+              "quote": "This wine is processed with egg white during must preparation."
+            }
+          ]
+        },
+        "components": {
+          "status": "established",
+          "evidence_refs": [
+            {
+              "path": "/product/name",
+              "quote": "Example Wine"
+            }
+          ]
+        },
+        "positive_support": [
+          {
+            "reason": "tagged",
+            "evidence_refs": [
+              {
+                "path": "/product/official_vegan",
+                "quote": "1"
+              }
+            ]
+          }
+        ],
+        "material_issues": [
+          {
+            "code": "animal_processing",
+            "target": "wine processing",
+            "rule_id": "wine-other-processing-v1",
+            "evidence_refs": [
+              {
+                "path": "/product/name",
+                "quote": "Example Wine"
+              },
+              {
+                "path": "/product/features",
+                "quote": "This wine is processed with egg white during must preparation."
+              }
+            ],
+            "resolution_refs": [],
+            "blocks_claim": true
+          },
+          {
+            "code": "processing_unresolved",
+            "target": "wine fining",
+            "rule_id": "wine-fining-v1",
+            "evidence_refs": [
+              {
+                "path": "/product/name",
+                "quote": "Example Wine"
+              }
+            ],
+            "resolution_refs": [],
+            "blocks_claim": true
+          },
+          {
+            "code": "tag_animal_conflict",
+            "target": "official vegan flag",
+            "rule_id": "animal-overrides-positive-v1",
+            "evidence_refs": [
+              {
+                "path": "/product/official_vegan",
+                "quote": "1"
+              },
+              {
+                "path": "/product/features",
+                "quote": "This wine is processed with egg white during must preparation."
+              }
+            ],
+            "resolution_refs": [
+              {
+                "path": "/product/features",
+                "quote": "This wine is processed with egg white during must preparation."
+              }
+            ],
+            "blocks_claim": true
+          }
+        ],
+        "source_applicability": []
+      }
+    },
+    {
+      "product_id": "993700003",
+      "vegan_status": "nonvegan",
+      "vegan_reason": null,
+      "confidence": "certain",
+      "summary": "Explicit egg-white processing makes this wine nonvegan despite the official vegan flag.",
+      "evidence": [
+        "/product/name: Example Wine",
+        "/product/features: This wine is processed with egg white during must preparation.",
+        "/product/official_vegan: 1"
+      ],
+      "ambiguity_notes": [],
+      "assessment": {
+        "identity": {
+          "status": "established",
+          "evidence_refs": [
+            {
+              "path": "/product/name",
+              "quote": "Example Wine"
+            }
+          ]
+        },
+        "composition": {
+          "status": "established",
+          "evidence_refs": [
+            {
+              "path": "/product/ingredients",
+              "quote": "Grapes"
+            }
+          ]
+        },
+        "sourcing": {
+          "status": "not_applicable",
+          "evidence_refs": [
+            {
+              "path": "/product/ingredients",
+              "quote": "Grapes"
+            }
+          ]
+        },
+        "processing": {
+          "status": "established",
+          "evidence_refs": [
+            {
+              "path": "/product/features",
+              "quote": "This wine is processed with egg white during must preparation."
+            }
+          ]
+        },
+        "components": {
+          "status": "established",
+          "evidence_refs": [
+            {
+              "path": "/product/name",
+              "quote": "Example Wine"
+            }
+          ]
+        },
+        "positive_support": [
+          {
+            "reason": "tagged",
+            "evidence_refs": [
+              {
+                "path": "/product/official_vegan",
+                "quote": "1"
+              }
+            ]
+          }
+        ],
+        "material_issues": [
+          {
+            "code": "animal_processing",
+            "target": "must preparation",
+            "rule_id": "wine-other-processing-v1",
+            "evidence_refs": [
+              {
+                "path": "/product/features",
+                "quote": "This wine is processed with egg white during must preparation."
+              }
+            ],
+            "resolution_refs": [],
+            "blocks_claim": true
+          },
+          {
+            "code": "tag_animal_conflict",
+            "target": "official vegan flag versus egg-white processing",
+            "rule_id": "tag-animal-conflict-v1",
+            "evidence_refs": [
+              {
+                "path": "/product/official_vegan",
+                "quote": "1"
+              },
+              {
+                "path": "/product/features",
+                "quote": "This wine is processed with egg white during must preparation."
+              }
+            ],
+            "resolution_refs": [],
+            "blocks_claim": true
+          },
+          {
+            "code": "processing_unresolved",
+            "target": "wine fining and other production inputs",
+            "rule_id": "wine-fining-v1",
+            "evidence_refs": [
+              {
+                "path": "/product/name",
+                "quote": "Example Wine"
+              }
+            ],
+            "resolution_refs": [],
+            "blocks_claim": true
+          }
+        ],
+        "source_applicability": []
+      }
+    }
+  ],
+  "actual_pair_replay": [
+    {
+      "stage": "model",
+      "status": "unknown",
+      "positive_block": true,
+      "tag_animal_conflict": true
+    },
+    {
+      "stage": "audit",
+      "status": "unknown",
+      "positive_block": true,
+      "tag_animal_conflict": true
+    },
+    {
+      "stage": "export",
+      "status": "unknown",
+      "positive_block": true,
+      "tag_animal_conflict": true
+    }
+  ],
+  "constructed_flag_only_contrast": [
+    {
+      "stage": "model",
+      "status": "nonvegan",
+      "positive_block": false,
+      "tag_animal_conflict": true
+    },
+    {
+      "stage": "audit",
+      "status": "nonvegan",
+      "positive_block": false,
+      "tag_animal_conflict": true
+    },
+    {
+      "stage": "export",
+      "status": "nonvegan",
+      "positive_block": false,
+      "tag_animal_conflict": true
+    }
+  ],
+  "contrast_changes_source_facts": false,
+  "contrast_is_new_model_output": false,
+  "classifier_version": "db-vegan-codex-v55"
+}

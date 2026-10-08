@@ -1,0 +1,5 @@
+# Classifier-v57 factory-warning diagnostic
+
+All 17 suitability statuses, reasons and required issues match the frozen references, with no operational failure or disagreement. Two unresolved tagged mixed-allergen cases still contain model-proposed tag/animal accusations, causing reportable_negative_errors and correctly failing the overall diagnostic. Both raw pairs are nonvegan, but the gate retains unknown because definite applicability is not established. This actual failure leads to the separate v58 report-validation fix; no source words or reference label is changed.
+
+10 actual invocations include two rejected quotation attempts; all usage is retained: 161,730 input /30,636 output, including 13,760 reasoning tokens. Standard-credit proxy 0.787275 is comparative only, not a charge or included-plan allowance rate. Raw outputs, sanitised cited projection, full frozen 17-case input and exact bindings remain retained. This version is historical after v58 and cannot qualify or be reused.

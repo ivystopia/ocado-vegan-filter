@@ -1,0 +1,110 @@
+{
+  "state": "completed",
+  "successful": true,
+  "per_repetition": [
+    {
+      "repetition": 1,
+      "cases": 491,
+      "scored_cases": 491,
+      "mismatches": [],
+      "reason_errors": [],
+      "operational_errors": [],
+      "unsafe_positives": [],
+      "missing_required_issues": [],
+      "primary_disagreements": [
+        "synthetic.planting-seeds.5",
+        "synthetic.liquid-processing.2.5",
+        "synthetic.wine-nonfining.0",
+        "synthetic.33.3",
+        "synthetic.liquid-processing.4.5",
+        "synthetic.claim-certainty.13",
+        "synthetic.quantified-ingredient-claim.0",
+        "synthetic.brand-claim.1",
+        "synthetic.liquid-processing.3.3",
+        "synthetic.name-scope.3",
+        "synthetic.brand-claim.0"
+      ],
+      "arbitrated_cases": [
+        "synthetic.planting-seeds.5",
+        "synthetic.liquid-processing.2.5",
+        "synthetic.wine-nonfining.0",
+        "synthetic.33.3",
+        "synthetic.liquid-processing.4.5",
+        "synthetic.claim-certainty.13",
+        "synthetic.quantified-ingredient-claim.0",
+        "synthetic.brand-claim.1",
+        "synthetic.liquid-processing.3.3",
+        "synthetic.name-scope.3",
+        "synthetic.brand-claim.0"
+      ],
+      "raw_agreed_unsafe_positives": [
+        {
+          "case_id": "synthetic.32.3",
+          "stage": "primary"
+        },
+        {
+          "case_id": "synthetic.31.3",
+          "stage": "primary"
+        },
+        {
+          "case_id": "synthetic.32.4",
+          "stage": "primary"
+        },
+        {
+          "case_id": "synthetic.separate-claim.5",
+          "stage": "primary"
+        },
+        {
+          "case_id": "synthetic.32.0",
+          "stage": "primary"
+        },
+        {
+          "case_id": "synthetic.mixed-feature-attributes.2",
+          "stage": "primary"
+        },
+        {
+          "case_id": "synthetic.33.0",
+          "stage": "primary"
+        },
+        {
+          "case_id": "synthetic.33.4",
+          "stage": "primary"
+        }
+      ]
+    }
+  ],
+  "all_attempt_usage": {
+    "calls": 152,
+    "failed_calls": 9,
+    "guard_rejections": 0,
+    "missing_usage_calls": 0,
+    "input_tokens": 2334082,
+    "cached_input_tokens": 49920,
+    "output_tokens": 635860,
+    "reasoning_output_tokens": 458677
+  },
+  "usage_by_stage_model": {
+    "primary:gpt-5.6-luna:high": {
+      "calls": 130,
+      "failed_calls": 9,
+      "guard_rejections": 0,
+      "missing_usage_calls": 0,
+      "input_tokens": 1979022,
+      "cached_input_tokens": 49920,
+      "output_tokens": 622797,
+      "reasoning_output_tokens": 456167
+    },
+    "arbitration:gpt-6.1-sol:medium": {
+      "calls": 22,
+      "failed_calls": 0,
+      "guard_rejections": 0,
+      "missing_usage_calls": 0,
+      "input_tokens": 355060,
+      "cached_input_tokens": 0,
+      "output_tokens": 13063,
+      "reasoning_output_tokens": 2510
+    }
+  },
+  "credit_proxy": 49.37313,
+  "release_qualified": false
+}

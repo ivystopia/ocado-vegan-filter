@@ -1,0 +1,124 @@
+{
+  "case_id": "synthetic.faq-affirmative-answer.3",
+  "expected": {
+    "vegan_status": "vegan",
+    "vegan_reason": "manufacturer",
+    "required_issue_codes": []
+  },
+  "input_sha256": "1f8b27c2533cef412ca8257d4efe92582189229ca8bc46ac58f46538914fad0c",
+  "readings": [
+    {
+      "pass": 1,
+      "source_applicable": true,
+      "gate_status": "vegan",
+      "source_applicability": [
+        {
+          "source_path": "/manufacturer_source_candidates/0",
+          "scope": "product",
+          "product": {
+            "status": "established",
+            "evidence_refs": [
+              {
+                "path": "/product/name",
+                "quote": "Example Wine"
+              },
+              {
+                "path": "/manufacturer_source_candidates/0/official_identity",
+                "quote": "Example Winery"
+              }
+            ]
+          },
+          "variant": {
+            "status": "not_applicable",
+            "evidence_refs": [
+              {
+                "path": "/manufacturer_source_candidates/0/source_text",
+                "quote": "We produce Example Wine."
+              }
+            ]
+          },
+          "market": {
+            "status": "established",
+            "evidence_refs": [
+              {
+                "path": "/manufacturer_source_candidates/0/market_scope",
+                "quote": "UK"
+              }
+            ]
+          },
+          "period": {
+            "status": "not_applicable",
+            "evidence_refs": [
+              {
+                "path": "/manufacturer_source_candidates/0/source_text",
+                "quote": "Is this product vegan?"
+              }
+            ]
+          }
+        }
+      ]
+    },
+    {
+      "pass": 2,
+      "source_applicable": false,
+      "gate_status": "unknown",
+      "source_applicability": [
+        {
+          "source_path": "/manufacturer_source_candidates/0",
+          "scope": "product",
+          "product": {
+            "status": "established",
+            "evidence_refs": [
+              {
+                "path": "/product/name",
+                "quote": "Example Wine"
+              },
+              {
+                "path": "/manufacturer_source_candidates/0/source_text",
+                "quote": "We produce Example Wine."
+              }
+            ]
+          },
+          "variant": {
+            "status": "established",
+            "evidence_refs": [
+              {
+                "path": "/product/name",
+                "quote": "Example Wine"
+              },
+              {
+                "path": "/manufacturer_source_candidates/0/source_text",
+                "quote": "Is this product vegan?\nVegan"
+              }
+            ]
+          },
+          "market": {
+            "status": "insufficient",
+            "evidence_refs": [
+              {
+                "path": "/manufacturer_source_candidates/0/market_scope",
+                "quote": "UK"
+              },
+              {
+                "path": "/product/name",
+                "quote": "Example Wine"
+              }
+            ]
+          },
+          "period": {
+            "status": "established",
+            "evidence_refs": [
+              {
+                "path": "/manufacturer_source_candidates/0/retrieved_at",
+                "quote": "2026-10-07T00:00:00+00:00"
+              }
+            ]
+          }
+        }
+      ]
+    }
+  ],
+  "code_changed": false,
+  "labels_changed": false,
+  "finding": "The first reading establishes applicable source binding and individually passes vegan/manufacturer. The second marks market insufficient despite explicit UK market metadata, so its source applicability fails and the merged proof remains unknown. The observed failure is the second reading\u2019s unresolved applicability; publisher identity in the first is not rejected by the gate. No shared implementation/reference defect established."
+}

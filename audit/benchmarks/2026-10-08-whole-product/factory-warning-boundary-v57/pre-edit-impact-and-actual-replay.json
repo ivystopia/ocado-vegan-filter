@@ -1,0 +1,581 @@
+{
+  "classifier_version": "db-vegan-codex-v56",
+  "native_case_id": "natural.626755011",
+  "actual_source_field": "May Contain Eggs, May Contain Milk, May Contain Nuts, Contains Soya Produced in a factory that handles Milk, Nuts and Eggs.",
+  "actual_raw_pass_status_reason": [
+    [
+      "vegan",
+      "manufacturer"
+    ],
+    [
+      "vegan",
+      "manufacturer"
+    ]
+  ],
+  "original_run_sha256": "3d0234d2a9c8643160b6907018fb312b3c96312145f87882a61699b2d4f54f06",
+  "before_actual_pair": [
+    {
+      "stage": "model",
+      "status": "unknown",
+      "reason": null,
+      "positive_block": true
+    },
+    {
+      "stage": "audit",
+      "status": "unknown",
+      "reason": null,
+      "positive_block": true
+    },
+    {
+      "stage": "export",
+      "status": "unknown",
+      "reason": null,
+      "positive_block": true
+    }
+  ],
+  "proposed_boundary_actual_pair": [
+    {
+      "stage": "model",
+      "status": "vegan",
+      "reason": "manufacturer",
+      "positive_block": false
+    },
+    {
+      "stage": "audit",
+      "status": "vegan",
+      "reason": "manufacturer",
+      "positive_block": false
+    },
+    {
+      "stage": "export",
+      "status": "vegan",
+      "reason": "manufacturer",
+      "positive_block": false
+    }
+  ],
+  "proposal_is_fresh_model_validation": false,
+  "proposed_boundary": "\\b(?:made|produced|packed)\\s+in\\s+(?:(?:a|the|same)\\s+)?(?:factory|facility|site)\\s+(?:that|which)\\s+(?:also\\s+)?handles?\\b",
+  "source_words_labels_and_raw_assessments_changed": false,
+  "read_only_impact": {
+    "all_known": 54418,
+    "stored_current": 49951,
+    "warning_boundary_screened": 849,
+    "affected_all_known": 25,
+    "affected_stored_current": 25,
+    "rule_positive_promotions": 17,
+    "products": [
+      {
+        "product_id": "360763011",
+        "name": "Soffles Pitta Chips Rosemary & Thyme Share Bag",
+        "url": "https://www.ocado.com/products/360763011",
+        "stored_current": 1,
+        "historical_status": "vegan",
+        "before_rule": null,
+        "proposed_rule": [
+          "vegan",
+          "tagged"
+        ],
+        "before_qualified_refs": [
+          {
+            "path": "/product/allergens",
+            "quote": "May Contain Milk, Contains Wheat Produced in a factory that handles Milk ingredients."
+          }
+        ],
+        "proposed_qualified_refs": [],
+        "before_direct_refs": [],
+        "proposed_direct_refs": []
+      },
+      {
+        "product_id": "552787011",
+        "name": "Good & Honest Popped Chips Sea Salt",
+        "url": "https://www.ocado.com/products/552787011",
+        "stored_current": 1,
+        "historical_status": "vegan",
+        "before_rule": null,
+        "proposed_rule": [
+          "vegan",
+          "tagged"
+        ],
+        "before_qualified_refs": [
+          {
+            "path": "/product/allergens",
+            "quote": "May Contain Milk, Contains Soya Made in a factory that handles Milk."
+          }
+        ],
+        "proposed_qualified_refs": [],
+        "before_direct_refs": [],
+        "proposed_direct_refs": []
+      },
+      {
+        "product_id": "552789011",
+        "name": "Good & Honest Popped Chips Sweet & Salty",
+        "url": "https://www.ocado.com/products/552789011",
+        "stored_current": 1,
+        "historical_status": "vegan",
+        "before_rule": null,
+        "proposed_rule": [
+          "vegan",
+          "tagged"
+        ],
+        "before_qualified_refs": [
+          {
+            "path": "/product/allergens",
+            "quote": "May Contain Milk, Contains Soya Made in a factory that handles Milk."
+          }
+        ],
+        "proposed_qualified_refs": [],
+        "before_direct_refs": [],
+        "proposed_direct_refs": []
+      },
+      {
+        "product_id": "579516011",
+        "name": "Griddle Bakery Original Wholegrain Toaster Waffles",
+        "url": "https://www.ocado.com/products/579516011",
+        "stored_current": 1,
+        "historical_status": "vegan",
+        "before_rule": null,
+        "proposed_rule": [
+          "vegan",
+          "tagged"
+        ],
+        "before_qualified_refs": [
+          {
+            "path": "/product/allergens",
+            "quote": "May Contain Eggs, May Contain Milk, May Contain Oats, May Contain Rye, Contains Soya, Contains Wheat Made in a facility that handles Milk, Egg, Rye, and Oats."
+          }
+        ],
+        "proposed_qualified_refs": [],
+        "before_direct_refs": [],
+        "proposed_direct_refs": []
+      },
+      {
+        "product_id": "579517011",
+        "name": "Griddle Bakery Blueberry Wholegrain Toaster Waffles",
+        "url": "https://www.ocado.com/products/579517011",
+        "stored_current": 1,
+        "historical_status": "vegan",
+        "before_rule": null,
+        "proposed_rule": [
+          "vegan",
+          "tagged"
+        ],
+        "before_qualified_refs": [
+          {
+            "path": "/product/allergens",
+            "quote": "May Contain Eggs, May Contain Milk, May Contain Oats, May Contain Rye, Contains Soya, Contains Wheat Made in a facility that handles Milk, Egg, Rye and Oats."
+          }
+        ],
+        "proposed_qualified_refs": [],
+        "before_direct_refs": [],
+        "proposed_direct_refs": []
+      },
+      {
+        "product_id": "579519011",
+        "name": "Griddle Choc-Chip Toaster Waffles",
+        "url": "https://www.ocado.com/products/579519011",
+        "stored_current": 1,
+        "historical_status": "vegan",
+        "before_rule": null,
+        "proposed_rule": [
+          "vegan",
+          "tagged"
+        ],
+        "before_qualified_refs": [
+          {
+            "path": "/product/allergens",
+            "quote": "May Contain Eggs, May Contain Milk, May Contain Oats, May Contain Rye, Contains Soya, Contains Wheat Made in a facility that handles Milk, Egg, Rye and Oats."
+          }
+        ],
+        "proposed_qualified_refs": [],
+        "before_direct_refs": [],
+        "proposed_direct_refs": []
+      },
+      {
+        "product_id": "614762011",
+        "name": "Bio&Me Fruit and Nut Muesli",
+        "url": "https://www.ocado.com/products/614762011",
+        "stored_current": 1,
+        "historical_status": "vegan",
+        "before_rule": null,
+        "proposed_rule": [
+          "vegan",
+          "tagged"
+        ],
+        "before_qualified_refs": [
+          {
+            "path": "/product/allergens",
+            "quote": "Contains Barley, Contains Cashew Nuts, May Contain Milk, Contains Nuts, Contains Oats, May Contain Peanuts, May Contain Sesame, May Contain Soya, May Contain Sulphur Dioxide/Sulphites, Contains Wheat Produced in a facility that handles Milk, Peanuts, Sesame Seeds, Sulphur Dioxide, Soya and other Tree Nuts."
+          }
+        ],
+        "proposed_qualified_refs": [],
+        "before_direct_refs": [],
+        "proposed_direct_refs": []
+      },
+      {
+        "product_id": "626755011",
+        "name": "La Vie Plant-based Smoked Ham, Vegan",
+        "url": "https://www.ocado.com/products/626755011",
+        "stored_current": 1,
+        "historical_status": "vegan",
+        "before_rule": null,
+        "proposed_rule": [
+          "vegan",
+          "manufacturer"
+        ],
+        "before_qualified_refs": [
+          {
+            "path": "/product/allergens",
+            "quote": "May Contain Eggs, May Contain Milk, May Contain Nuts, Contains Soya Produced in a factory that handles Milk, Nuts and Eggs."
+          }
+        ],
+        "proposed_qualified_refs": [],
+        "before_direct_refs": [],
+        "proposed_direct_refs": []
+      },
+      {
+        "product_id": "627222011",
+        "name": "Mrs Elswood Classic Kimchi",
+        "url": "https://www.ocado.com/products/627222011",
+        "stored_current": 1,
+        "historical_status": "vegan",
+        "before_rule": null,
+        "proposed_rule": [
+          "unknown",
+          null
+        ],
+        "before_qualified_refs": [
+          {
+            "path": "/product/allergens",
+            "quote": "May Contain Fish, May Contain Mustard, Contains Soya, Contains Wheat Produced in a facility that handles Fish and Mustard."
+          }
+        ],
+        "proposed_qualified_refs": [],
+        "before_direct_refs": [],
+        "proposed_direct_refs": []
+      },
+      {
+        "product_id": "628351011",
+        "name": "Surreal High Protein Low Sugar Frosted Cereal",
+        "url": "https://www.ocado.com/products/628351011",
+        "stored_current": 1,
+        "historical_status": "vegan",
+        "before_rule": null,
+        "proposed_rule": [
+          "vegan",
+          "tagged"
+        ],
+        "before_qualified_refs": [
+          {
+            "path": "/product/allergens",
+            "quote": "Free From Cereals Containing Gluten, May Contain Milk, May Contain Nuts, May Contain Peanuts, Contains Soya Produced in a facility which handles Milk, Nuts and Peanuts. Not suitable for customers with a Milk, Nut or Peanut allergy."
+          }
+        ],
+        "proposed_qualified_refs": [],
+        "before_direct_refs": [],
+        "proposed_direct_refs": []
+      },
+      {
+        "product_id": "628353011",
+        "name": "Surreal Gluten Free High Protein Low Sugar Cinnamon Cereal",
+        "url": "https://www.ocado.com/products/628353011",
+        "stored_current": 1,
+        "historical_status": "vegan",
+        "before_rule": null,
+        "proposed_rule": [
+          "vegan",
+          "tagged"
+        ],
+        "before_qualified_refs": [
+          {
+            "path": "/product/allergens",
+            "quote": "Free From Cereals Containing Gluten, May Contain Milk, May Contain Nuts, May Contain Peanuts, Contains Soya Produced in a facility which handles Milk, Nuts and Peanuts. Not suitable for customers with a Milk, Nut or Peanut allergy."
+          }
+        ],
+        "proposed_qualified_refs": [],
+        "before_direct_refs": [],
+        "proposed_direct_refs": []
+      },
+      {
+        "product_id": "628354011",
+        "name": "Surreal Gluten Free High Protein Low Sugar Chocolate Cereall",
+        "url": "https://www.ocado.com/products/628354011",
+        "stored_current": 1,
+        "historical_status": "vegan",
+        "before_rule": null,
+        "proposed_rule": [
+          "vegan",
+          "tagged"
+        ],
+        "before_qualified_refs": [
+          {
+            "path": "/product/allergens",
+            "quote": "May Contain Milk, May Contain Nuts, May Contain Peanuts, Contains Soya Produced in a facility which handles Milk, Nuts and Peanuts. Not suitable for customers with a Milk, Nut or Peanut Allergy."
+          }
+        ],
+        "proposed_qualified_refs": [],
+        "before_direct_refs": [],
+        "proposed_direct_refs": []
+      },
+      {
+        "product_id": "63236011",
+        "name": "Seabrook Crinkle Cut Canadian Ham Crisps",
+        "url": "https://www.ocado.com/products/63236011",
+        "stored_current": 1,
+        "historical_status": "nonvegan",
+        "before_rule": [
+          "nonvegan",
+          null
+        ],
+        "proposed_rule": [
+          "nonvegan",
+          null
+        ],
+        "before_qualified_refs": [
+          {
+            "path": "/product/allergens",
+            "quote": "Contains Yeast Produced in a factory that handles milk"
+          }
+        ],
+        "proposed_qualified_refs": [],
+        "before_direct_refs": [],
+        "proposed_direct_refs": []
+      },
+      {
+        "product_id": "654637011",
+        "name": "La Vie Plant-based Honey Roast Wafer Thin Ham, Vegan",
+        "url": "https://www.ocado.com/products/654637011",
+        "stored_current": 1,
+        "historical_status": "vegan",
+        "before_rule": null,
+        "proposed_rule": [
+          "vegan",
+          "manufacturer"
+        ],
+        "before_qualified_refs": [
+          {
+            "path": "/product/allergens",
+            "quote": "May Contain Eggs, May Contain Milk, May Contain Nuts, Contains Soya Produced in a factory that handles Milk, Nuts and Eggs."
+          }
+        ],
+        "proposed_qualified_refs": [],
+        "before_direct_refs": [],
+        "proposed_direct_refs": []
+      },
+      {
+        "product_id": "655364011",
+        "name": "Bio&Me Super Nutty Muesli",
+        "url": "https://www.ocado.com/products/655364011",
+        "stored_current": 1,
+        "historical_status": "vegan",
+        "before_rule": null,
+        "proposed_rule": null,
+        "before_qualified_refs": [
+          {
+            "path": "/product/allergens",
+            "quote": "Contains Almonds, Contains Barley, Contains Brazil Nuts, Contains Cashew Nuts, May Contain Milk, Contains Nuts, Contains Oats, May Contain Peanuts, May Contain Sesame, May Contain Soya, May Contain Sulphur Dioxide/Sulphites, Contains Wheat Produced in a facility that handles Milk, Peanuts, Sesame Seeds, Sulphur Dioxide, Soya and other Tree Nuts."
+          }
+        ],
+        "proposed_qualified_refs": [],
+        "before_direct_refs": [],
+        "proposed_direct_refs": []
+      },
+      {
+        "product_id": "661538011",
+        "name": "Surreal High Protein Low Sugar Cookies & Cream Cereal",
+        "url": "https://www.ocado.com/products/661538011",
+        "stored_current": 1,
+        "historical_status": "vegan",
+        "before_rule": null,
+        "proposed_rule": [
+          "vegan",
+          "tagged"
+        ],
+        "before_qualified_refs": [
+          {
+            "path": "/product/allergens",
+            "quote": "May Contain Milk, Contains Soya Produced in a facility that handles Milk. Not suitable for customers with a Milk allergy."
+          }
+        ],
+        "proposed_qualified_refs": [],
+        "before_direct_refs": [],
+        "proposed_direct_refs": []
+      },
+      {
+        "product_id": "678367011",
+        "name": "Surreal High Protein Low Sugar Chocolate Pops",
+        "url": "https://www.ocado.com/products/678367011",
+        "stored_current": 1,
+        "historical_status": "vegan",
+        "before_rule": null,
+        "proposed_rule": [
+          "vegan",
+          "manufacturer"
+        ],
+        "before_qualified_refs": [
+          {
+            "path": "/product/allergens",
+            "quote": "Free From Cereals Containing Gluten, May Contain Milk, Contains Soya Produced in a Facility That Handles Milk. Not Suitable for Customers With a Milk Allergy."
+          }
+        ],
+        "proposed_qualified_refs": [],
+        "before_direct_refs": [],
+        "proposed_direct_refs": []
+      },
+      {
+        "product_id": "678368011",
+        "name": "Surreal High Protein Low Sugar Chocolate Hazelnut Granola",
+        "url": "https://www.ocado.com/products/678368011",
+        "stored_current": 1,
+        "historical_status": "vegan",
+        "before_rule": null,
+        "proposed_rule": null,
+        "before_qualified_refs": [
+          {
+            "path": "/product/allergens",
+            "quote": "Contains Almonds, Contains Barley, May Contain Brazil Nuts, May Contain Cashew Nuts, Contains Hazelnuts, May Contain Macadamia Nut / Queensland Nut, May Contain Milk, Contains Nuts, Contains Oats, May Contain Peanuts, May Contain Pecan Nuts, May Contain Pistachio Nuts, Contains Soya, May Contain Walnuts, Contains Wheat Produced in a facility that handles Milk and other Nuts. Not suitable for customers with a Milk and Nut allergy."
+          }
+        ],
+        "proposed_qualified_refs": [],
+        "before_direct_refs": [],
+        "proposed_direct_refs": []
+      },
+      {
+        "product_id": "679163011",
+        "name": "La Vie Vegan Salami Classic",
+        "url": "https://www.ocado.com/products/679163011",
+        "stored_current": 1,
+        "historical_status": "vegan",
+        "before_rule": null,
+        "proposed_rule": [
+          "vegan",
+          "manufacturer"
+        ],
+        "before_qualified_refs": [
+          {
+            "path": "/product/allergens",
+            "quote": "May Contain Eggs, May Contain Milk, May Contain Mustard, May Contain Soya, Contains Wheat Produced in a factory that handles Eggs, Soy, Mustard and Milk."
+          }
+        ],
+        "proposed_qualified_refs": [],
+        "before_direct_refs": [],
+        "proposed_direct_refs": []
+      },
+      {
+        "product_id": "679164011",
+        "name": "La Vie Vegan Salami Spicy",
+        "url": "https://www.ocado.com/products/679164011",
+        "stored_current": 1,
+        "historical_status": "vegan",
+        "before_rule": null,
+        "proposed_rule": [
+          "vegan",
+          "manufacturer"
+        ],
+        "before_qualified_refs": [
+          {
+            "path": "/product/allergens",
+            "quote": "May Contain Eggs, May Contain Milk, May Contain Mustard, May Contain Soya, Contains Wheat Produced in a factory that handles Eggs, Soy, Mustard and Milk."
+          }
+        ],
+        "proposed_qualified_refs": [],
+        "before_direct_refs": [],
+        "proposed_direct_refs": []
+      },
+      {
+        "product_id": "679730011",
+        "name": "Griddle Bakery Apple & Cinnamon Wholegrain Waffles",
+        "url": "https://www.ocado.com/products/679730011",
+        "stored_current": 1,
+        "historical_status": "unknown",
+        "before_rule": null,
+        "proposed_rule": null,
+        "before_qualified_refs": [
+          {
+            "path": "/product/allergens",
+            "quote": "May Contain Eggs, May Contain Milk, May Contain Oats, May Contain Rye, Contains Soya, Contains Wheat Made in a facility that handles Milk, Egg, Rye and Oats."
+          }
+        ],
+        "proposed_qualified_refs": [],
+        "before_direct_refs": [],
+        "proposed_direct_refs": []
+      },
+      {
+        "product_id": "71136011",
+        "name": "Marigold Health Foods Liquid Aminos",
+        "url": "https://www.ocado.com/products/71136011",
+        "stored_current": 1,
+        "historical_status": "vegan",
+        "before_rule": null,
+        "proposed_rule": [
+          "vegan",
+          "tagged"
+        ],
+        "before_qualified_refs": [
+          {
+            "path": "/product/allergens",
+            "quote": "May Contain Celery, Free From Cereals Containing Gluten, May Contain Eggs, May Contain Milk, May Contain Mustard, Contains Soya Made in a factory that handles Milk, Egg, Celery and Mustard."
+          }
+        ],
+        "proposed_qualified_refs": [],
+        "before_direct_refs": [],
+        "proposed_direct_refs": []
+      },
+      {
+        "product_id": "697303011",
+        "name": "Surreal High Protein Low Sugar Chocolate Banana Granola",
+        "url": "https://www.ocado.com/products/697303011",
+        "stored_current": 1,
+        "historical_status": "vegan",
+        "before_rule": null,
+        "proposed_rule": null,
+        "before_qualified_refs": [
+          {
+            "path": "/product/allergens",
+            "quote": "Contains Barley, May Contain Milk, May Contain Nuts, Contains Oats, Contains Soya, Contains Wheat Produced in a facility that handles Milk and Nuts. Not suitable for customers with a Milk or Nut allergy."
+          }
+        ],
+        "proposed_qualified_refs": [],
+        "before_direct_refs": [],
+        "proposed_direct_refs": []
+      },
+      {
+        "product_id": "697310011",
+        "name": "Surreal High Protein Low Sugar Peanut Butter Granola",
+        "url": "https://www.ocado.com/products/697310011",
+        "stored_current": 1,
+        "historical_status": "vegan",
+        "before_rule": null,
+        "proposed_rule": null,
+        "before_qualified_refs": [
+          {
+            "path": "/product/allergens",
+            "quote": "Contains Barley, May Contain Milk, May Contain Nuts, Contains Oats, Contains Peanuts, Contains Soya, Contains Wheat Produced in a facility that handles Milk and Nuts. Not suitable for customers with a Milk or Nut allergy."
+          }
+        ],
+        "proposed_qualified_refs": [],
+        "before_direct_refs": [],
+        "proposed_direct_refs": []
+      },
+      {
+        "product_id": "697304011",
+        "name": "Surreal High Protein Low Sugar Mixed Berry Granola",
+        "url": "https://www.ocado.com/products/697304011",
+        "stored_current": 1,
+        "historical_status": "vegan",
+        "before_rule": null,
+        "proposed_rule": null,
+        "before_qualified_refs": [
+          {
+            "path": "/product/allergens",
+            "quote": "Contains Barley, May Contain Milk, May Contain Nuts, Contains Oats, Contains Soya, Contains Wheat Produced in a facility that handles Milk and Nuts. Not suitable for customers with a Milk or Nut allergy."
+          }
+        ],
+        "proposed_qualified_refs": [],
+        "before_direct_refs": [],
+        "proposed_direct_refs": []
+      }
+    ],
+    "consistent_read_snapshot": true,
+    "canonical_db_schema_or_classifications_modified": false
+  }
+}

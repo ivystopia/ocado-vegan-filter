@@ -1,0 +1,5 @@
+# Luna 6/high natural pilot on classifier v56
+
+All 96 frozen natural development-pilot cases produced valid decisions matching status, canonical reason, required issues and repeated persistence/export gates. No final unsafe positives, raw agreed unsupported positives, operational failures, missing cases or disagreements occurred. No arbitration was triggered. This passing pilot cannot qualify the model because the separate control stage retains one operational quotation failure; no expanded development or locked qualification has run.
+
+All 30 actual invocations, including 3 rejected attempts, are retained: 1,140,820 input tokens, 0 cached input tokens and 127,845 output tokens. The 46,979 reasoning tokens are already included in output. The 4.4501125 Standard-service credit proxy is not a charge or included-plan allowance estimate. Exact reports, sanitised cited decisions and frozen input/hash bindings are retained. Source words, references, schemas, prompts and code remained fixed. No canonical data, default or allowlist was changed.

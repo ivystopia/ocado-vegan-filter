@@ -1,0 +1,76 @@
+{
+  "classifier_version": "db-vegan-codex-v61",
+  "source_modules_sha256": {
+    "classify_ocado_vegan.py": "59cd0058b537e5e3ae98a9d1c99c0452e65a7ae684f584d173160eb0c654ad2b",
+    "vegan_policy.py": "9476555bc30bed07e423b65c1270792cd4e8767d267a22dc7acd799e3af1d3a4"
+  },
+  "original_run_sha256": "75c68f6f2715f2afa1a868284e4fcc30e6165507a02621fce6fe7fe27f7ecdca",
+  "actual_agreeing_pairs_replayed": 64,
+  "other_saved_decisions_not_remerged": 136,
+  "changes": [
+    {
+      "case_id": "synthetic.faq-component-scope.3",
+      "original_saved_result": {
+        "status": "unknown",
+        "reason": null,
+        "positive_block": false
+      },
+      "current_offline_replay": {
+        "gate": "export",
+        "status": "vegan",
+        "reason": "manufacturer",
+        "positive_block": false
+      },
+      "expected": {
+        "vegan_status": "vegan",
+        "vegan_reason": "manufacturer",
+        "required_issue_codes": []
+      }
+    }
+  ],
+  "actual_faq_pair_both_orders": [
+    [
+      {
+        "gate": "model",
+        "status": "vegan",
+        "reason": "manufacturer",
+        "positive_block": false
+      },
+      {
+        "gate": "audit",
+        "status": "vegan",
+        "reason": "manufacturer",
+        "positive_block": false
+      },
+      {
+        "gate": "export",
+        "status": "vegan",
+        "reason": "manufacturer",
+        "positive_block": false
+      }
+    ],
+    [
+      {
+        "gate": "model",
+        "status": "vegan",
+        "reason": "manufacturer",
+        "positive_block": false
+      },
+      {
+        "gate": "audit",
+        "status": "vegan",
+        "reason": "manufacturer",
+        "positive_block": false
+      },
+      {
+        "gate": "export",
+        "status": "vegan",
+        "reason": "manufacturer",
+        "positive_block": false
+      }
+    ]
+  ],
+  "model_calls_performed": 0,
+  "canonical_database_written": false,
+  "offline_replay_cannot_qualify_candidate": true
+}

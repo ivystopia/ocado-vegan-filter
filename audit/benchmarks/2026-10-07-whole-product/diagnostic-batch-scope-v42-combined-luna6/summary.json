@@ -1,0 +1,41 @@
+{
+  "cases": 3,
+  "scored_cases": 3,
+  "mismatches": [
+    "synthetic.faq-affirmative-answer.1",
+    "synthetic.pouch-component-scope.2"
+  ],
+  "reason_errors": [],
+  "operational_errors": [],
+  "unsafe_positives": [],
+  "missing_required_issues": [],
+  "primary_disagreements": [],
+  "arbitrated_cases": [],
+  "raw_agreed_unsafe_positives": [],
+  "state": "completed",
+  "successful": false,
+  "all_attempt_usage": {
+    "calls": 2,
+    "failed_calls": 0,
+    "guard_rejections": 0,
+    "missing_usage_calls": 0,
+    "input_tokens": 30624,
+    "cached_input_tokens": 0,
+    "output_tokens": 6678,
+    "reasoning_output_tokens": 3179
+  },
+  "usage_by_stage_model": {
+    "primary:gpt-6-luna:high": {
+      "calls": 2,
+      "failed_calls": 0,
+      "guard_rejections": 0,
+      "missing_usage_calls": 0,
+      "input_tokens": 30624,
+      "cached_input_tokens": 0,
+      "output_tokens": 6678,
+      "reasoning_output_tokens": 3179
+    }
+  },
+  "credit_proxy": 0.160035,
+  "release_qualified": false
+}

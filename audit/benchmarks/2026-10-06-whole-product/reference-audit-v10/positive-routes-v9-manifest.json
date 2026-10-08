@@ -1,0 +1,23 @@
+{
+  "configuration": {
+    "packet_hash": "5e931a0f98b86d064d7e8de883141be46aa186b977b78e05e5b9f670bbab6829",
+    "model": "gpt-6.1-sol",
+    "effort": "high",
+    "prompt_version": "blind-evidence-adjudication-v9",
+    "policy_version": "whole-product-v2",
+    "schema_sha256": "39a9a9c15d43aeffb16aa609c945abe60f87799f84d63d2ea4b7cdbec9849868",
+    "knowledge_version": "vegan-risk-registry-v7",
+    "knowledge_sha256": "7e67b7a770566cf6be28f9da1d3f9089fb33be75222f1b42fbd06e80807b5e91",
+    "validator_sha256": "736f3cca4399c63d28b51a22c442dcdfc2bec4fff30589bbe504a5bef581c402"
+  },
+  "usage": {
+    "calls": 6,
+    "failed_calls": 0,
+    "guard_rejections": 0,
+    "missing_usage_calls": 0,
+    "input_tokens": 103352,
+    "cached_input_tokens": 9088,
+    "output_tokens": 13321,
+    "reasoning_output_tokens": 4107
+  }
+}

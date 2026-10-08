@@ -1,0 +1,92 @@
+{
+  "case_id": "synthetic.independent-assertion.0",
+  "expected": {
+    "vegan_status": "vegan",
+    "vegan_reason": "manufacturer",
+    "required_issue_codes": []
+  },
+  "input_sha256": "ca40d215564623df622fc6d7731fab3b09d87cdf10eb6595f93da5ae042e0e4b",
+  "retained_original_run_sha256": "b84927efbc5b2078ba5cce1e135f23cd435ee981fd52b68aced30b5ee9db3d92",
+  "actual_primary_readings": [
+    {
+      "status": "unknown",
+      "reason": null,
+      "components": {
+        "status": "unresolved",
+        "evidence_refs": [
+          {
+            "path": "/product/package_type",
+            "quote": "Tub"
+          },
+          {
+            "path": "/product/detailed_description",
+            "quote": "this flavour is 100% vegan certified"
+          }
+        ]
+      },
+      "summary": "The product information says this flavour is 100% vegan certified, supporting the edible product, but the supplied tub’s composition is not established."
+    },
+    {
+      "status": "vegan",
+      "reason": "manufacturer",
+      "components": {
+        "status": "covered_by_claim",
+        "evidence_refs": [
+          {
+            "path": "/product/package_type",
+            "quote": "Tub"
+          },
+          {
+            "path": "/product/detailed_description",
+            "quote": "this flavour is 100% vegan certified"
+          }
+        ]
+      },
+      "summary": "Product information describes this flavour as 100% vegan certified. That whole-product assurance supports the complete product, including the supplied tub."
+    }
+  ],
+  "actual_arbitration_readings": [
+    {
+      "status": "vegan",
+      "reason": "manufacturer",
+      "components": {
+        "status": "covered_by_claim",
+        "evidence_refs": [
+          {
+            "path": "/product/package_type",
+            "quote": "Tub"
+          },
+          {
+            "path": "/product/detailed_description",
+            "quote": "this flavour is 100% vegan certified and indulgent."
+          }
+        ]
+      },
+      "summary": "The product description affirmatively certifies this flavour as vegan. This applicable product-level assurance covers sugar processing and the supplied tub."
+    },
+    {
+      "status": "unknown",
+      "reason": null,
+      "components": {
+        "status": "insufficient",
+        "evidence_refs": [
+          {
+            "path": "/product/package_type",
+            "quote": "Tub"
+          }
+        ]
+      },
+      "summary": "The vegan certification statement covers the flavour. Complete-product suitability remains unresolved because the supplied tub is not covered by a whole-product assurance or complete component evidence."
+    }
+  ],
+  "final_status": "unknown",
+  "native_manufacturer_ref": {
+    "path": "/product/detailed_description",
+    "quote": "Made with our oat-based recipe, this flavour is 100% vegan certified and indulgent."
+  },
+  "native_ref_accepted_by_current_gate": true,
+  "attribution": "Both primary and fresh blind arbitration pairs disagree about the complete-product scope of the separate flavour certification. The contract correctly retains unknown. The accepted synthetic policy reference permits this separate assertion; the gate accepts its exact citation when supported. No shared merger or source defect is demonstrated.",
+  "labels_sources_prompts_and_original_outputs_unchanged": true,
+  "review_used_classifier_version": "db-vegan-codex-v62",
+  "not_new_model_output": true
+}

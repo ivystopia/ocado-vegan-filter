@@ -1,0 +1,8236 @@
+{
+  "baseline_classifier_version": "db-vegan-codex-v31",
+  "candidate_classifier_version": "db-vegan-codex-v32",
+  "baseline_candidate_upper_bound": 884,
+  "all_known_newly_deferred": 884,
+  "stored_current_newly_deferred": 842,
+  "previously_vegan_newly_deferred": 781,
+  "excluded_conclusive_scope_cases": 0,
+  "safety_argument": "No new conclusive positive route. Only stored claim candidates are deferred to two independent assessments and the shared source-aware policy gate. Definite animal, identity blocks and clearly component/other-product statements preserve their existing decisions.",
+  "products": [
+    {
+      "id": "12173011",
+      "current_on_ocado": 1,
+      "vegan_status": "vegan",
+      "vegan_reason": "manufacturer",
+      "candidate_fields": [
+        "features",
+        "detailed_description"
+      ]
+    },
+    {
+      "id": "13866011",
+      "current_on_ocado": 1,
+      "vegan_status": "vegan",
+      "vegan_reason": "manufacturer",
+      "candidate_fields": [
+        "further_description"
+      ]
+    },
+    {
+      "id": "14094011",
+      "current_on_ocado": 1,
+      "vegan_status": "vegan",
+      "vegan_reason": "manufacturer",
+      "candidate_fields": [
+        "features",
+        "detailed_description"
+      ]
+    },
+    {
+      "id": "16347011",
+      "current_on_ocado": 1,
+      "vegan_status": "vegan",
+      "vegan_reason": "manufacturer",
+      "candidate_fields": [
+        "detailed_description"
+      ]
+    },
+    {
+      "id": "16360011",
+      "current_on_ocado": 1,
+      "vegan_status": "unknown",
+      "vegan_reason": null,
+      "candidate_fields": [
+        "features",
+        "detailed_description"
+      ]
+    },
+    {
+      "id": "17978011",
+      "current_on_ocado": 1,
+      "vegan_status": "vegan",
+      "vegan_reason": "manufacturer",
+      "candidate_fields": [
+        "features",
+        "detailed_description"
+      ]
+    },
+    {
+      "id": "18292011",
+      "current_on_ocado": 1,
+      "vegan_status": "vegan",
+      "vegan_reason": "manufacturer",
+      "candidate_fields": [
+        "features",
+        "detailed_description"
+      ]
+    },
+    {
+      "id": "18624011",
+      "current_on_ocado": 1,
+      "vegan_status": "vegan",
+      "vegan_reason": "manufacturer",
+      "candidate_fields": [
+        "features",
+        "detailed_description"
+      ]
+    },
+    {
+      "id": "19739011",
+      "current_on_ocado": 1,
+      "vegan_status": "vegan",
+      "vegan_reason": "manufacturer",
+      "candidate_fields": [
+        "features",
+        "detailed_description"
+      ]
+    },
+    {
+      "id": "201890011",
+      "current_on_ocado": 1,
+      "vegan_status": "vegan",
+      "vegan_reason": "manufacturer",
+      "candidate_fields": [
+        "features"
+      ]
+    },
+    {
+      "id": "202048011",
+      "current_on_ocado": 1,
+      "vegan_status": "vegan",
+      "vegan_reason": "manufacturer",
+      "candidate_fields": [
+        "brand_marketing"
+      ]
+    },
+    {
+      "id": "202133011",
+      "current_on_ocado": 1,
+      "vegan_status": "vegan",
+      "vegan_reason": "manufacturer",
+      "candidate_fields": [
+        "features",
+        "detailed_description"
+      ]
+    },
+    {
+      "id": "202139011",
+      "current_on_ocado": 1,
+      "vegan_status": "vegan",
+      "vegan_reason": "manufacturer",
+      "candidate_fields": [
+        "features",
+        "detailed_description"
+      ]
+    },
+    {
+      "id": "208058011",
+      "current_on_ocado": 1,
+      "vegan_status": "vegan",
+      "vegan_reason": "manufacturer",
+      "candidate_fields": [
+        "features"
+      ]
+    },
+    {
+      "id": "208489011",
+      "current_on_ocado": 1,
+      "vegan_status": "unknown",
+      "vegan_reason": null,
+      "candidate_fields": [
+        "detailed_description"
+      ]
+    },
+    {
+      "id": "209085011",
+      "current_on_ocado": 1,
+      "vegan_status": "nonvegan",
+      "vegan_reason": null,
+      "candidate_fields": [
+        "brand_marketing"
+      ]
+    },
+    {
+      "id": "230025011",
+      "current_on_ocado": 1,
+      "vegan_status": "vegan",
+      "vegan_reason": "manufacturer",
+      "candidate_fields": [
+        "features"
+      ]
+    },
+    {
+      "id": "232154011",
+      "current_on_ocado": 1,
+      "vegan_status": "vegan",
+      "vegan_reason": "manufacturer",
+      "candidate_fields": [
+        "brand_marketing"
+      ]
+    },
+    {
+      "id": "232158011",
+      "current_on_ocado": 1,
+      "vegan_status": "vegan",
+      "vegan_reason": "manufacturer",
+      "candidate_fields": [
+        "features",
+        "detailed_description",
+        "brand_marketing"
+      ]
+    },
+    {
+      "id": "23276011",
+      "current_on_ocado": 1,
+      "vegan_status": "vegan",
+      "vegan_reason": "manufacturer",
+      "candidate_fields": [
+        "features",
+        "detailed_description"
+      ]
+    },
+    {
+      "id": "234218011",
+      "current_on_ocado": 1,
+      "vegan_status": "vegan",
+      "vegan_reason": "manufacturer",
+      "candidate_fields": [
+        "other_information"
+      ]
+    },
+    {
+      "id": "24872011",
+      "current_on_ocado": 1,
+      "vegan_status": "vegan",
+      "vegan_reason": "manufacturer",
+      "candidate_fields": [
+        "features",
+        "detailed_description"
+      ]
+    },
+    {
+      "id": "24913011",
+      "current_on_ocado": 1,
+      "vegan_status": "vegan",
+      "vegan_reason": "manufacturer",
+      "candidate_fields": [
+        "features",
+        "detailed_description"
+      ]
+    },
+    {
+      "id": "24960011",
+      "current_on_ocado": 1,
+      "vegan_status": "vegan",
+      "vegan_reason": "manufacturer",
+      "candidate_fields": [
+        "detailed_description"
+      ]
+    },
+    {
+      "id": "269570011",
+      "current_on_ocado": 1,
+      "vegan_status": "vegan",
+      "vegan_reason": "manufacturer",
+      "candidate_fields": [
+        "brand_marketing"
+      ]
+    },
+    {
+      "id": "269576011",
+      "current_on_ocado": 1,
+      "vegan_status": "vegan",
+      "vegan_reason": "manufacturer",
+      "candidate_fields": [
+        "brand_marketing"
+      ]
+    },
+    {
+      "id": "269580011",
+      "current_on_ocado": 1,
+      "vegan_status": "vegan",
+      "vegan_reason": "ingredients",
+      "candidate_fields": [
+        "brand_marketing"
+      ]
+    },
+    {
+      "id": "269581011",
+      "current_on_ocado": 1,
+      "vegan_status": "vegan",
+      "vegan_reason": "ingredients",
+      "candidate_fields": [
+        "brand_marketing"
+      ]
+    },
+    {
+      "id": "269802011",
+      "current_on_ocado": 1,
+      "vegan_status": "vegan",
+      "vegan_reason": "manufacturer",
+      "candidate_fields": [
+        "features",
+        "detailed_description"
+      ]
+    },
+    {
+      "id": "269885011",
+      "current_on_ocado": 1,
+      "vegan_status": "vegan",
+      "vegan_reason": "ingredients",
+      "candidate_fields": [
+        "brand_marketing"
+      ]
+    },
+    {
+      "id": "269888011",
+      "current_on_ocado": 1,
+      "vegan_status": "vegan",
+      "vegan_reason": "ingredients",
+      "candidate_fields": [
+        "brand_marketing"
+      ]
+    },
+    {
+      "id": "269957011",
+      "current_on_ocado": 1,
+      "vegan_status": "vegan",
+      "vegan_reason": "ingredients",
+      "candidate_fields": [
+        "brand_marketing"
+      ]
+    },
+    {
+      "id": "269959011",
+      "current_on_ocado": 1,
+      "vegan_status": "vegan",
+      "vegan_reason": "ingredients",
+      "candidate_fields": [
+        "brand_marketing"
+      ]
+    },
+    {
+      "id": "269964011",
+      "current_on_ocado": 1,
+      "vegan_status": "vegan",
+      "vegan_reason": "manufacturer",
+      "candidate_fields": [
+        "brand_marketing"
+      ]
+    },
+    {
+      "id": "269966011",
+      "current_on_ocado": 1,
+      "vegan_status": "vegan",
+      "vegan_reason": "ingredients",
+      "candidate_fields": [
+        "brand_marketing"
+      ]
+    },
+    {
+      "id": "269967011",
+      "current_on_ocado": 1,
+      "vegan_status": "vegan",
+      "vegan_reason": "ingredients",
+      "candidate_fields": [
+        "brand_marketing"
+      ]
+    },
+    {
+      "id": "269972011",
+      "current_on_ocado": 1,
+      "vegan_status": "vegan",
+      "vegan_reason": "manufacturer",
+      "candidate_fields": [
+        "brand_marketing"
+      ]
+    },
+    {
+      "id": "269978011",
+      "current_on_ocado": 1,
+      "vegan_status": "vegan",
+      "vegan_reason": "manufacturer",
+      "candidate_fields": [
+        "brand_marketing"
+      ]
+    },
+    {
+      "id": "269981011",
+      "current_on_ocado": 1,
+      "vegan_status": "vegan",
+      "vegan_reason": "manufacturer",
+      "candidate_fields": [
+        "brand_marketing"
+      ]
+    },
+    {
+      "id": "269982011",
+      "current_on_ocado": 1,
+      "vegan_status": "vegan",
+      "vegan_reason": "ingredients",
+      "candidate_fields": [
+        "brand_marketing"
+      ]
+    },
+    {
+      "id": "270081011",
+      "current_on_ocado": 1,
+      "vegan_status": "vegan",
+      "vegan_reason": "manufacturer",
+      "candidate_fields": [
+        "brand_marketing"
+      ]
+    },
+    {
+      "id": "270084011",
+      "current_on_ocado": 0,
+      "vegan_status": "vegan",
+      "vegan_reason": "manufacturer",
+      "candidate_fields": [
+        "brand_marketing"
+      ]
+    },
+    {
+      "id": "270091011",
+      "current_on_ocado": 0,
+      "vegan_status": "vegan",
+      "vegan_reason": "manufacturer",
+      "candidate_fields": [
+        "brand_marketing"
+      ]
+    },
+    {
+      "id": "279696011",
+      "current_on_ocado": 1,
+      "vegan_status": "vegan",
+      "vegan_reason": "manufacturer",
+      "candidate_fields": [
+        "dietary_information",
+        "detailed_description"
+      ]
+    },
+    {
+      "id": "279919011",
+      "current_on_ocado": 1,
+      "vegan_status": "vegan",
+      "vegan_reason": "manufacturer",
+      "candidate_fields": [
+        "detailed_description"
+      ]
+    },
+    {
+      "id": "284586011",
+      "current_on_ocado": 1,
+      "vegan_status": "vegan",
+      "vegan_reason": "manufacturer",
+      "candidate_fields": [
+        "detailed_description"
+      ]
+    },
+    {
+      "id": "286621011",
+      "current_on_ocado": 1,
+      "vegan_status": "vegan",
+      "vegan_reason": "manufacturer",
+      "candidate_fields": [
+        "features",
+        "detailed_description"
+      ]
+    },
+    {
+      "id": "286622011",
+      "current_on_ocado": 1,
+      "vegan_status": "vegan",
+      "vegan_reason": "manufacturer",
+      "candidate_fields": [
+        "detailed_description"
+      ]
+    },
+    {
+      "id": "289266011",
+      "current_on_ocado": 1,
+      "vegan_status": "vegan",
+      "vegan_reason": "manufacturer",
+      "candidate_fields": [
+        "other_information"
+      ]
+    },
+    {
+      "id": "289267011",
+      "current_on_ocado": 1,
+      "vegan_status": "vegan",
+      "vegan_reason": "manufacturer",
+      "candidate_fields": [
+        "other_information"
+      ]
+    },
+    {
+      "id": "289281011",
+      "current_on_ocado": 1,
+      "vegan_status": "vegan",
+      "vegan_reason": "manufacturer",
+      "candidate_fields": [
+        "other_information"
+      ]
+    },
+    {
+      "id": "289286011",
+      "current_on_ocado": 1,
+      "vegan_status": "vegan",
+      "vegan_reason": "manufacturer",
+      "candidate_fields": [
+        "other_information"
+      ]
+    },
+    {
+      "id": "289287011",
+      "current_on_ocado": 1,
+      "vegan_status": "vegan",
+      "vegan_reason": "manufacturer",
+      "candidate_fields": [
+        "other_information"
+      ]
+    },
+    {
+      "id": "293491011",
+      "current_on_ocado": 1,
+      "vegan_status": "vegan",
+      "vegan_reason": "manufacturer",
+      "candidate_fields": [
+        "features",
+        "detailed_description"
+      ]
+    },
+    {
+      "id": "296038011",
+      "current_on_ocado": 1,
+      "vegan_status": "vegan",
+      "vegan_reason": "manufacturer",
+      "candidate_fields": [
+        "features"
+      ]
+    },
+    {
+      "id": "302056011",
+      "current_on_ocado": 1,
+      "vegan_status": "vegan",
+      "vegan_reason": "tagged",
+      "candidate_fields": [
+        "detailed_description"
+      ]
+    },
+    {
+      "id": "30856011",
+      "current_on_ocado": 1,
+      "vegan_status": "vegan",
+      "vegan_reason": "manufacturer",
+      "candidate_fields": [
+        "detailed_description"
+      ]
+    },
+    {
+      "id": "318705011",
+      "current_on_ocado": 1,
+      "vegan_status": "vegan",
+      "vegan_reason": "manufacturer",
+      "candidate_fields": [
+        "detailed_description"
+      ]
+    },
+    {
+      "id": "319237011",
+      "current_on_ocado": 1,
+      "vegan_status": "nonvegan",
+      "vegan_reason": null,
+      "candidate_fields": [
+        "features"
+      ]
+    },
+    {
+      "id": "321088011",
+      "current_on_ocado": 1,
+      "vegan_status": "vegan",
+      "vegan_reason": "manufacturer",
+      "candidate_fields": [
+        "detailed_description"
+      ]
+    },
+    {
+      "id": "321089011",
+      "current_on_ocado": 1,
+      "vegan_status": "vegan",
+      "vegan_reason": "manufacturer",
+      "candidate_fields": [
+        "detailed_description"
+      ]
+    },
+    {
+      "id": "324888011",
+      "current_on_ocado": 1,
+      "vegan_status": "vegan",
+      "vegan_reason": "manufacturer",
+      "candidate_fields": [
+        "detailed_description"
+      ]
+    },
+    {
+      "id": "324974011",
+      "current_on_ocado": 1,
+      "vegan_status": "vegan",
+      "vegan_reason": "manufacturer",
+      "candidate_fields": [
+        "features",
+        "detailed_description",
+        "brand_marketing"
+      ]
+    },
+    {
+      "id": "326792011",
+      "current_on_ocado": 1,
+      "vegan_status": "vegan",
+      "vegan_reason": "manufacturer",
+      "candidate_fields": [
+        "features",
+        "detailed_description"
+      ]
+    },
+    {
+      "id": "333672011",
+      "current_on_ocado": 1,
+      "vegan_status": "vegan",
+      "vegan_reason": "manufacturer",
+      "candidate_fields": [
+        "detailed_description"
+      ]
+    },
+    {
+      "id": "336598011",
+      "current_on_ocado": 1,
+      "vegan_status": "unknown",
+      "vegan_reason": null,
+      "candidate_fields": [
+        "brand_marketing"
+      ]
+    },
+    {
+      "id": "345329011",
+      "current_on_ocado": 1,
+      "vegan_status": "vegan",
+      "vegan_reason": "manufacturer",
+      "candidate_fields": [
+        "features"
+      ]
+    },
+    {
+      "id": "363687011",
+      "current_on_ocado": 1,
+      "vegan_status": "vegan",
+      "vegan_reason": "manufacturer",
+      "candidate_fields": [
+        "features"
+      ]
+    },
+    {
+      "id": "36717011",
+      "current_on_ocado": 1,
+      "vegan_status": "vegan",
+      "vegan_reason": "manufacturer",
+      "candidate_fields": [
+        "detailed_description"
+      ]
+    },
+    {
+      "id": "36719011",
+      "current_on_ocado": 1,
+      "vegan_status": "vegan",
+      "vegan_reason": "manufacturer",
+      "candidate_fields": [
+        "detailed_description"
+      ]
+    },
+    {
+      "id": "37512011",
+      "current_on_ocado": 1,
+      "vegan_status": "vegan",
+      "vegan_reason": "ingredients",
+      "candidate_fields": [
+        "brand_marketing"
+      ]
+    },
+    {
+      "id": "376263011",
+      "current_on_ocado": 1,
+      "vegan_status": "vegan",
+      "vegan_reason": "manufacturer",
+      "candidate_fields": [
+        "detailed_description"
+      ]
+    },
+    {
+      "id": "382147011",
+      "current_on_ocado": 1,
+      "vegan_status": "vegan",
+      "vegan_reason": "manufacturer",
+      "candidate_fields": [
+        "detailed_description",
+        "brand_marketing"
+      ]
+    },
+    {
+      "id": "396497011",
+      "current_on_ocado": 1,
+      "vegan_status": "vegan",
+      "vegan_reason": "manufacturer",
+      "candidate_fields": [
+        "brand_marketing"
+      ]
+    },
+    {
+      "id": "399098011",
+      "current_on_ocado": 1,
+      "vegan_status": "vegan",
+      "vegan_reason": "manufacturer",
+      "candidate_fields": [
+        "detailed_description"
+      ]
+    },
+    {
+      "id": "399978011",
+      "current_on_ocado": 1,
+      "vegan_status": "vegan",
+      "vegan_reason": "manufacturer",
+      "candidate_fields": [
+        "brand_marketing"
+      ]
+    },
+    {
+      "id": "399981011",
+      "current_on_ocado": 1,
+      "vegan_status": "vegan",
+      "vegan_reason": "manufacturer",
+      "candidate_fields": [
+        "brand_marketing"
+      ]
+    },
+    {
+      "id": "399982011",
+      "current_on_ocado": 1,
+      "vegan_status": "vegan",
+      "vegan_reason": "manufacturer",
+      "candidate_fields": [
+        "brand_marketing"
+      ]
+    },
+    {
+      "id": "399983011",
+      "current_on_ocado": 1,
+      "vegan_status": "vegan",
+      "vegan_reason": "manufacturer",
+      "candidate_fields": [
+        "brand_marketing"
+      ]
+    },
+    {
+      "id": "403478011",
+      "current_on_ocado": 1,
+      "vegan_status": "vegan",
+      "vegan_reason": "manufacturer",
+      "candidate_fields": [
+        "detailed_description"
+      ]
+    },
+    {
+      "id": "404921011",
+      "current_on_ocado": 1,
+      "vegan_status": "vegan",
+      "vegan_reason": "manufacturer",
+      "candidate_fields": [
+        "detailed_description"
+      ]
+    },
+    {
+      "id": "412576011",
+      "current_on_ocado": 1,
+      "vegan_status": "vegan",
+      "vegan_reason": "manufacturer",
+      "candidate_fields": [
+        "features",
+        "detailed_description"
+      ]
+    },
+    {
+      "id": "416358011",
+      "current_on_ocado": 1,
+      "vegan_status": "vegan",
+      "vegan_reason": "manufacturer",
+      "candidate_fields": [
+        "detailed_description"
+      ]
+    },
+    {
+      "id": "416359011",
+      "current_on_ocado": 1,
+      "vegan_status": "vegan",
+      "vegan_reason": "manufacturer",
+      "candidate_fields": [
+        "detailed_description"
+      ]
+    },
+    {
+      "id": "418771011",
+      "current_on_ocado": 1,
+      "vegan_status": "vegan",
+      "vegan_reason": "manufacturer",
+      "candidate_fields": [
+        "dietary_information"
+      ]
+    },
+    {
+      "id": "423322011",
+      "current_on_ocado": 1,
+      "vegan_status": "nonvegan",
+      "vegan_reason": null,
+      "candidate_fields": [
+        "brand_marketing"
+      ]
+    },
+    {
+      "id": "423329011",
+      "current_on_ocado": 1,
+      "vegan_status": "vegan",
+      "vegan_reason": "manufacturer",
+      "candidate_fields": [
+        "brand_marketing"
+      ]
+    },
+    {
+      "id": "43592011",
+      "current_on_ocado": 1,
+      "vegan_status": "vegan",
+      "vegan_reason": "manufacturer",
+      "candidate_fields": [
+        "features"
+      ]
+    },
+    {
+      "id": "436664011",
+      "current_on_ocado": 1,
+      "vegan_status": "vegan",
+      "vegan_reason": "ingredients",
+      "candidate_fields": [
+        "brand_marketing"
+      ]
+    },
+    {
+      "id": "436774011",
+      "current_on_ocado": 1,
+      "vegan_status": "unknown",
+      "vegan_reason": null,
+      "candidate_fields": [
+        "detailed_description"
+      ]
+    },
+    {
+      "id": "43954011",
+      "current_on_ocado": 1,
+      "vegan_status": "vegan",
+      "vegan_reason": "manufacturer",
+      "candidate_fields": [
+        "detailed_description"
+      ]
+    },
+    {
+      "id": "441224011",
+      "current_on_ocado": 1,
+      "vegan_status": "vegan",
+      "vegan_reason": "manufacturer",
+      "candidate_fields": [
+        "other_information"
+      ]
+    },
+    {
+      "id": "445368011",
+      "current_on_ocado": 1,
+      "vegan_status": "vegan",
+      "vegan_reason": "manufacturer",
+      "candidate_fields": [
+        "detailed_description",
+        "brand_marketing"
+      ]
+    },
+    {
+      "id": "44785011",
+      "current_on_ocado": 1,
+      "vegan_status": "vegan",
+      "vegan_reason": "manufacturer",
+      "candidate_fields": [
+        "detailed_description"
+      ]
+    },
+    {
+      "id": "448926011",
+      "current_on_ocado": 1,
+      "vegan_status": "vegan",
+      "vegan_reason": "ingredients",
+      "candidate_fields": [
+        "brand_marketing"
+      ]
+    },
+    {
+      "id": "448927011",
+      "current_on_ocado": 1,
+      "vegan_status": "vegan",
+      "vegan_reason": "manufacturer",
+      "candidate_fields": [
+        "brand_marketing"
+      ]
+    },
+    {
+      "id": "452849011",
+      "current_on_ocado": 1,
+      "vegan_status": "unknown",
+      "vegan_reason": null,
+      "candidate_fields": [
+        "brand_marketing"
+      ]
+    },
+    {
+      "id": "454973011",
+      "current_on_ocado": 1,
+      "vegan_status": "vegan",
+      "vegan_reason": "manufacturer",
+      "candidate_fields": [
+        "features"
+      ]
+    },
+    {
+      "id": "457250011",
+      "current_on_ocado": 1,
+      "vegan_status": "vegan",
+      "vegan_reason": "manufacturer",
+      "candidate_fields": [
+        "detailed_description"
+      ]
+    },
+    {
+      "id": "457735011",
+      "current_on_ocado": 1,
+      "vegan_status": "vegan",
+      "vegan_reason": "manufacturer",
+      "candidate_fields": [
+        "dietary_information"
+      ]
+    },
+    {
+      "id": "467061011",
+      "current_on_ocado": 1,
+      "vegan_status": "vegan",
+      "vegan_reason": "manufacturer",
+      "candidate_fields": [
+        "detailed_description"
+      ]
+    },
+    {
+      "id": "468351011",
+      "current_on_ocado": 1,
+      "vegan_status": "vegan",
+      "vegan_reason": "ingredients",
+      "candidate_fields": [
+        "brand_marketing"
+      ]
+    },
+    {
+      "id": "468352011",
+      "current_on_ocado": 1,
+      "vegan_status": "vegan",
+      "vegan_reason": "manufacturer",
+      "candidate_fields": [
+        "brand_marketing"
+      ]
+    },
+    {
+      "id": "468354011",
+      "current_on_ocado": 1,
+      "vegan_status": "vegan",
+      "vegan_reason": "manufacturer",
+      "candidate_fields": [
+        "brand_marketing"
+      ]
+    },
+    {
+      "id": "470642011",
+      "current_on_ocado": 1,
+      "vegan_status": "vegan",
+      "vegan_reason": "manufacturer",
+      "candidate_fields": [
+        "brand_marketing"
+      ]
+    },
+    {
+      "id": "470643011",
+      "current_on_ocado": 1,
+      "vegan_status": "vegan",
+      "vegan_reason": "manufacturer",
+      "candidate_fields": [
+        "brand_marketing"
+      ]
+    },
+    {
+      "id": "479283011",
+      "current_on_ocado": 1,
+      "vegan_status": "vegan",
+      "vegan_reason": "manufacturer",
+      "candidate_fields": [
+        "brand_marketing"
+      ]
+    },
+    {
+      "id": "480500011",
+      "current_on_ocado": 1,
+      "vegan_status": "vegan",
+      "vegan_reason": "manufacturer",
+      "candidate_fields": [
+        "brand_marketing"
+      ]
+    },
+    {
+      "id": "480503011",
+      "current_on_ocado": 1,
+      "vegan_status": "vegan",
+      "vegan_reason": "manufacturer",
+      "candidate_fields": [
+        "brand_marketing"
+      ]
+    },
+    {
+      "id": "483621011",
+      "current_on_ocado": 1,
+      "vegan_status": "unknown",
+      "vegan_reason": null,
+      "candidate_fields": [
+        "detailed_description"
+      ]
+    },
+    {
+      "id": "484405011",
+      "current_on_ocado": 1,
+      "vegan_status": "vegan",
+      "vegan_reason": "manufacturer",
+      "candidate_fields": [
+        "detailed_description"
+      ]
+    },
+    {
+      "id": "484410011",
+      "current_on_ocado": 1,
+      "vegan_status": "vegan",
+      "vegan_reason": "manufacturer",
+      "candidate_fields": [
+        "detailed_description"
+      ]
+    },
+    {
+      "id": "484411011",
+      "current_on_ocado": 1,
+      "vegan_status": "vegan",
+      "vegan_reason": "manufacturer",
+      "candidate_fields": [
+        "detailed_description"
+      ]
+    },
+    {
+      "id": "485981011",
+      "current_on_ocado": 1,
+      "vegan_status": "vegan",
+      "vegan_reason": "manufacturer",
+      "candidate_fields": [
+        "features",
+        "detailed_description"
+      ]
+    },
+    {
+      "id": "486399011",
+      "current_on_ocado": 1,
+      "vegan_status": "vegan",
+      "vegan_reason": "manufacturer",
+      "candidate_fields": [
+        "features"
+      ]
+    },
+    {
+      "id": "487457011",
+      "current_on_ocado": 1,
+      "vegan_status": "vegan",
+      "vegan_reason": "manufacturer",
+      "candidate_fields": [
+        "features"
+      ]
+    },
+    {
+      "id": "487470011",
+      "current_on_ocado": 1,
+      "vegan_status": "vegan",
+      "vegan_reason": "manufacturer",
+      "candidate_fields": [
+        "features"
+      ]
+    },
+    {
+      "id": "487682011",
+      "current_on_ocado": 1,
+      "vegan_status": "vegan",
+      "vegan_reason": "manufacturer",
+      "candidate_fields": [
+        "detailed_description"
+      ]
+    },
+    {
+      "id": "48906011",
+      "current_on_ocado": 1,
+      "vegan_status": "vegan",
+      "vegan_reason": "ingredients",
+      "candidate_fields": [
+        "detailed_description"
+      ]
+    },
+    {
+      "id": "496208011",
+      "current_on_ocado": 1,
+      "vegan_status": "vegan",
+      "vegan_reason": "ingredients",
+      "candidate_fields": [
+        "brand_marketing"
+      ]
+    },
+    {
+      "id": "500364011",
+      "current_on_ocado": 1,
+      "vegan_status": "vegan",
+      "vegan_reason": "manufacturer",
+      "candidate_fields": [
+        "brand_marketing"
+      ]
+    },
+    {
+      "id": "500365011",
+      "current_on_ocado": 1,
+      "vegan_status": "vegan",
+      "vegan_reason": "manufacturer",
+      "candidate_fields": [
+        "brand_marketing"
+      ]
+    },
+    {
+      "id": "500462011",
+      "current_on_ocado": 1,
+      "vegan_status": "unknown",
+      "vegan_reason": null,
+      "candidate_fields": [
+        "detailed_description"
+      ]
+    },
+    {
+      "id": "500472011",
+      "current_on_ocado": 0,
+      "vegan_status": "nonvegan",
+      "vegan_reason": null,
+      "candidate_fields": [
+        "detailed_description"
+      ]
+    },
+    {
+      "id": "50445011",
+      "current_on_ocado": 1,
+      "vegan_status": "vegan",
+      "vegan_reason": "manufacturer",
+      "candidate_fields": [
+        "features"
+      ]
+    },
+    {
+      "id": "505971011",
+      "current_on_ocado": 1,
+      "vegan_status": "vegan",
+      "vegan_reason": "manufacturer",
+      "candidate_fields": [
+        "features",
+        "detailed_description"
+      ]
+    },
+    {
+      "id": "506336011",
+      "current_on_ocado": 1,
+      "vegan_status": "vegan",
+      "vegan_reason": "ingredients",
+      "candidate_fields": [
+        "detailed_description"
+      ]
+    },
+    {
+      "id": "508621011",
+      "current_on_ocado": 1,
+      "vegan_status": "vegan",
+      "vegan_reason": "manufacturer",
+      "candidate_fields": [
+        "features"
+      ]
+    },
+    {
+      "id": "510259011",
+      "current_on_ocado": 1,
+      "vegan_status": "vegan",
+      "vegan_reason": "manufacturer",
+      "candidate_fields": [
+        "features"
+      ]
+    },
+    {
+      "id": "510396011",
+      "current_on_ocado": 1,
+      "vegan_status": "vegan",
+      "vegan_reason": "manufacturer",
+      "candidate_fields": [
+        "detailed_description",
+        "brand_marketing"
+      ]
+    },
+    {
+      "id": "510747011",
+      "current_on_ocado": 1,
+      "vegan_status": "vegan",
+      "vegan_reason": "ingredients",
+      "candidate_fields": [
+        "features"
+      ]
+    },
+    {
+      "id": "511988011",
+      "current_on_ocado": 1,
+      "vegan_status": "vegan",
+      "vegan_reason": "manufacturer",
+      "candidate_fields": [
+        "features",
+        "detailed_description"
+      ]
+    },
+    {
+      "id": "512917011",
+      "current_on_ocado": 0,
+      "vegan_status": "vegan",
+      "vegan_reason": "manufacturer",
+      "candidate_fields": [
+        "detailed_description"
+      ]
+    },
+    {
+      "id": "513852011",
+      "current_on_ocado": 1,
+      "vegan_status": "vegan",
+      "vegan_reason": "manufacturer",
+      "candidate_fields": [
+        "brand_marketing"
+      ]
+    },
+    {
+      "id": "513853011",
+      "current_on_ocado": 1,
+      "vegan_status": "vegan",
+      "vegan_reason": "manufacturer",
+      "candidate_fields": [
+        "brand_marketing"
+      ]
+    },
+    {
+      "id": "513854011",
+      "current_on_ocado": 1,
+      "vegan_status": "vegan",
+      "vegan_reason": "manufacturer",
+      "candidate_fields": [
+        "brand_marketing"
+      ]
+    },
+    {
+      "id": "513861011",
+      "current_on_ocado": 1,
+      "vegan_status": "vegan",
+      "vegan_reason": "manufacturer",
+      "candidate_fields": [
+        "brand_marketing"
+      ]
+    },
+    {
+      "id": "513864011",
+      "current_on_ocado": 1,
+      "vegan_status": "vegan",
+      "vegan_reason": "manufacturer",
+      "candidate_fields": [
+        "brand_marketing"
+      ]
+    },
+    {
+      "id": "514356011",
+      "current_on_ocado": 1,
+      "vegan_status": "vegan",
+      "vegan_reason": "manufacturer",
+      "candidate_fields": [
+        "features",
+        "detailed_description"
+      ]
+    },
+    {
+      "id": "514746011",
+      "current_on_ocado": 1,
+      "vegan_status": "vegan",
+      "vegan_reason": "manufacturer",
+      "candidate_fields": [
+        "features"
+      ]
+    },
+    {
+      "id": "517746011",
+      "current_on_ocado": 1,
+      "vegan_status": "vegan",
+      "vegan_reason": "manufacturer",
+      "candidate_fields": [
+        "detailed_description"
+      ]
+    },
+    {
+      "id": "518788011",
+      "current_on_ocado": 1,
+      "vegan_status": "unknown",
+      "vegan_reason": null,
+      "candidate_fields": [
+        "detailed_description"
+      ]
+    },
+    {
+      "id": "518789011",
+      "current_on_ocado": 1,
+      "vegan_status": "unknown",
+      "vegan_reason": null,
+      "candidate_fields": [
+        "detailed_description"
+      ]
+    },
+    {
+      "id": "518793011",
+      "current_on_ocado": 1,
+      "vegan_status": "vegan",
+      "vegan_reason": "manufacturer",
+      "candidate_fields": [
+        "detailed_description"
+      ]
+    },
+    {
+      "id": "521836011",
+      "current_on_ocado": 1,
+      "vegan_status": "unknown",
+      "vegan_reason": null,
+      "candidate_fields": [
+        "features",
+        "detailed_description"
+      ]
+    },
+    {
+      "id": "522596011",
+      "current_on_ocado": 1,
+      "vegan_status": "vegan",
+      "vegan_reason": "manufacturer",
+      "candidate_fields": [
+        "detailed_description"
+      ]
+    },
+    {
+      "id": "524591011",
+      "current_on_ocado": 1,
+      "vegan_status": "unknown",
+      "vegan_reason": null,
+      "candidate_fields": [
+        "detailed_description"
+      ]
+    },
+    {
+      "id": "529298011",
+      "current_on_ocado": 0,
+      "vegan_status": "vegan",
+      "vegan_reason": "manufacturer",
+      "candidate_fields": [
+        "detailed_description"
+      ]
+    },
+    {
+      "id": "529300011",
+      "current_on_ocado": 0,
+      "vegan_status": "unknown",
+      "vegan_reason": null,
+      "candidate_fields": [
+        "detailed_description"
+      ]
+    },
+    {
+      "id": "529301011",
+      "current_on_ocado": 1,
+      "vegan_status": "vegan",
+      "vegan_reason": "manufacturer",
+      "candidate_fields": [
+        "detailed_description"
+      ]
+    },
+    {
+      "id": "529302011",
+      "current_on_ocado": 1,
+      "vegan_status": "vegan",
+      "vegan_reason": "manufacturer",
+      "candidate_fields": [
+        "detailed_description"
+      ]
+    },
+    {
+      "id": "529871011",
+      "current_on_ocado": 0,
+      "vegan_status": "nonvegan",
+      "vegan_reason": null,
+      "candidate_fields": [
+        "detailed_description"
+      ]
+    },
+    {
+      "id": "531364011",
+      "current_on_ocado": 0,
+      "vegan_status": "nonvegan",
+      "vegan_reason": null,
+      "candidate_fields": [
+        "detailed_description"
+      ]
+    },
+    {
+      "id": "534318011",
+      "current_on_ocado": 1,
+      "vegan_status": "vegan",
+      "vegan_reason": "manufacturer",
+      "candidate_fields": [
+        "detailed_description"
+      ]
+    },
+    {
+      "id": "537115011",
+      "current_on_ocado": 1,
+      "vegan_status": "vegan",
+      "vegan_reason": "manufacturer",
+      "candidate_fields": [
+        "features",
+        "brand_marketing"
+      ]
+    },
+    {
+      "id": "539348011",
+      "current_on_ocado": 1,
+      "vegan_status": "vegan",
+      "vegan_reason": "manufacturer",
+      "candidate_fields": [
+        "detailed_description"
+      ]
+    },
+    {
+      "id": "540737011",
+      "current_on_ocado": 1,
+      "vegan_status": "vegan",
+      "vegan_reason": "manufacturer",
+      "candidate_fields": [
+        "features"
+      ]
+    },
+    {
+      "id": "541709011",
+      "current_on_ocado": 1,
+      "vegan_status": "vegan",
+      "vegan_reason": "manufacturer",
+      "candidate_fields": [
+        "features"
+      ]
+    },
+    {
+      "id": "543202011",
+      "current_on_ocado": 1,
+      "vegan_status": "vegan",
+      "vegan_reason": "manufacturer",
+      "candidate_fields": [
+        "dietary_information"
+      ]
+    },
+    {
+      "id": "543681011",
+      "current_on_ocado": 0,
+      "vegan_status": "vegan",
+      "vegan_reason": "manufacturer",
+      "candidate_fields": [
+        "detailed_description"
+      ]
+    },
+    {
+      "id": "544201011",
+      "current_on_ocado": 1,
+      "vegan_status": "vegan",
+      "vegan_reason": "manufacturer",
+      "candidate_fields": [
+        "other_information"
+      ]
+    },
+    {
+      "id": "545978011",
+      "current_on_ocado": 1,
+      "vegan_status": "vegan",
+      "vegan_reason": "manufacturer",
+      "candidate_fields": [
+        "features"
+      ]
+    },
+    {
+      "id": "545979011",
+      "current_on_ocado": 1,
+      "vegan_status": "vegan",
+      "vegan_reason": "ingredients",
+      "candidate_fields": [
+        "detailed_description"
+      ]
+    },
+    {
+      "id": "545980011",
+      "current_on_ocado": 1,
+      "vegan_status": "vegan",
+      "vegan_reason": "manufacturer",
+      "candidate_fields": [
+        "features"
+      ]
+    },
+    {
+      "id": "545981011",
+      "current_on_ocado": 1,
+      "vegan_status": "vegan",
+      "vegan_reason": "manufacturer",
+      "candidate_fields": [
+        "features"
+      ]
+    },
+    {
+      "id": "545983011",
+      "current_on_ocado": 1,
+      "vegan_status": "vegan",
+      "vegan_reason": "manufacturer",
+      "candidate_fields": [
+        "features"
+      ]
+    },
+    {
+      "id": "545985011",
+      "current_on_ocado": 1,
+      "vegan_status": "vegan",
+      "vegan_reason": "manufacturer",
+      "candidate_fields": [
+        "features"
+      ]
+    },
+    {
+      "id": "546983011",
+      "current_on_ocado": 1,
+      "vegan_status": "vegan",
+      "vegan_reason": "manufacturer",
+      "candidate_fields": [
+        "detailed_description"
+      ]
+    },
+    {
+      "id": "547830011",
+      "current_on_ocado": 1,
+      "vegan_status": "vegan",
+      "vegan_reason": "manufacturer",
+      "candidate_fields": [
+        "other_information"
+      ]
+    },
+    {
+      "id": "548616011",
+      "current_on_ocado": 1,
+      "vegan_status": "vegan",
+      "vegan_reason": "manufacturer",
+      "candidate_fields": [
+        "features",
+        "detailed_description"
+      ]
+    },
+    {
+      "id": "552240011",
+      "current_on_ocado": 1,
+      "vegan_status": "vegan",
+      "vegan_reason": "manufacturer",
+      "candidate_fields": [
+        "detailed_description"
+      ]
+    },
+    {
+      "id": "554068011",
+      "current_on_ocado": 1,
+      "vegan_status": "vegan",
+      "vegan_reason": "manufacturer",
+      "candidate_fields": [
+        "features",
+        "detailed_description"
+      ]
+    },
+    {
+      "id": "554144011",
+      "current_on_ocado": 1,
+      "vegan_status": "vegan",
+      "vegan_reason": "manufacturer",
+      "candidate_fields": [
+        "detailed_description"
+      ]
+    },
+    {
+      "id": "55906011",
+      "current_on_ocado": 1,
+      "vegan_status": "vegan",
+      "vegan_reason": "manufacturer",
+      "candidate_fields": [
+        "detailed_description"
+      ]
+    },
+    {
+      "id": "560218011",
+      "current_on_ocado": 1,
+      "vegan_status": "vegan",
+      "vegan_reason": "manufacturer",
+      "candidate_fields": [
+        "brand_marketing"
+      ]
+    },
+    {
+      "id": "560219011",
+      "current_on_ocado": 1,
+      "vegan_status": "vegan",
+      "vegan_reason": "manufacturer",
+      "candidate_fields": [
+        "brand_marketing"
+      ]
+    },
+    {
+      "id": "561074011",
+      "current_on_ocado": 1,
+      "vegan_status": "vegan",
+      "vegan_reason": "manufacturer",
+      "candidate_fields": [
+        "other_information"
+      ]
+    },
+    {
+      "id": "561076011",
+      "current_on_ocado": 1,
+      "vegan_status": "vegan",
+      "vegan_reason": "manufacturer",
+      "candidate_fields": [
+        "other_information"
+      ]
+    },
+    {
+      "id": "561081011",
+      "current_on_ocado": 1,
+      "vegan_status": "vegan",
+      "vegan_reason": "manufacturer",
+      "candidate_fields": [
+        "other_information"
+      ]
+    },
+    {
+      "id": "561082011",
+      "current_on_ocado": 1,
+      "vegan_status": "vegan",
+      "vegan_reason": "manufacturer",
+      "candidate_fields": [
+        "other_information"
+      ]
+    },
+    {
+      "id": "561083011",
+      "current_on_ocado": 1,
+      "vegan_status": "vegan",
+      "vegan_reason": "manufacturer",
+      "candidate_fields": [
+        "other_information"
+      ]
+    },
+    {
+      "id": "561097011",
+      "current_on_ocado": 1,
+      "vegan_status": "vegan",
+      "vegan_reason": "manufacturer",
+      "candidate_fields": [
+        "other_information"
+      ]
+    },
+    {
+      "id": "561101011",
+      "current_on_ocado": 1,
+      "vegan_status": "vegan",
+      "vegan_reason": "manufacturer",
+      "candidate_fields": [
+        "other_information"
+      ]
+    },
+    {
+      "id": "561109011",
+      "current_on_ocado": 1,
+      "vegan_status": "vegan",
+      "vegan_reason": "manufacturer",
+      "candidate_fields": [
+        "other_information"
+      ]
+    },
+    {
+      "id": "561828011",
+      "current_on_ocado": 1,
+      "vegan_status": "vegan",
+      "vegan_reason": "manufacturer",
+      "candidate_fields": [
+        "features"
+      ]
+    },
+    {
+      "id": "562504011",
+      "current_on_ocado": 1,
+      "vegan_status": "vegan",
+      "vegan_reason": "manufacturer",
+      "candidate_fields": [
+        "detailed_description"
+      ]
+    },
+    {
+      "id": "562505011",
+      "current_on_ocado": 1,
+      "vegan_status": "vegan",
+      "vegan_reason": "manufacturer",
+      "candidate_fields": [
+        "detailed_description"
+      ]
+    },
+    {
+      "id": "563098011",
+      "current_on_ocado": 1,
+      "vegan_status": "vegan",
+      "vegan_reason": "manufacturer",
+      "candidate_fields": [
+        "features"
+      ]
+    },
+    {
+      "id": "563103011",
+      "current_on_ocado": 1,
+      "vegan_status": "unknown",
+      "vegan_reason": null,
+      "candidate_fields": [
+        "other_information"
+      ]
+    },
+    {
+      "id": "563159011",
+      "current_on_ocado": 1,
+      "vegan_status": "vegan",
+      "vegan_reason": "manufacturer",
+      "candidate_fields": [
+        "detailed_description"
+      ]
+    },
+    {
+      "id": "563198011",
+      "current_on_ocado": 1,
+      "vegan_status": "vegan",
+      "vegan_reason": "manufacturer",
+      "candidate_fields": [
+        "detailed_description"
+      ]
+    },
+    {
+      "id": "563810011",
+      "current_on_ocado": 1,
+      "vegan_status": "unknown",
+      "vegan_reason": null,
+      "candidate_fields": [
+        "brand_marketing"
+      ]
+    },
+    {
+      "id": "571184011",
+      "current_on_ocado": 1,
+      "vegan_status": "unknown",
+      "vegan_reason": null,
+      "candidate_fields": [
+        "detailed_description"
+      ]
+    },
+    {
+      "id": "571187011",
+      "current_on_ocado": 1,
+      "vegan_status": "nonvegan",
+      "vegan_reason": null,
+      "candidate_fields": [
+        "detailed_description"
+      ]
+    },
+    {
+      "id": "572225011",
+      "current_on_ocado": 1,
+      "vegan_status": "vegan",
+      "vegan_reason": "manufacturer",
+      "candidate_fields": [
+        "detailed_description"
+      ]
+    },
+    {
+      "id": "57331011",
+      "current_on_ocado": 1,
+      "vegan_status": "vegan",
+      "vegan_reason": "manufacturer",
+      "candidate_fields": [
+        "features",
+        "detailed_description"
+      ]
+    },
+    {
+      "id": "57332011",
+      "current_on_ocado": 1,
+      "vegan_status": "vegan",
+      "vegan_reason": "manufacturer",
+      "candidate_fields": [
+        "features",
+        "detailed_description"
+      ]
+    },
+    {
+      "id": "574051011",
+      "current_on_ocado": 1,
+      "vegan_status": "vegan",
+      "vegan_reason": "manufacturer",
+      "candidate_fields": [
+        "features"
+      ]
+    },
+    {
+      "id": "574060011",
+      "current_on_ocado": 1,
+      "vegan_status": "vegan",
+      "vegan_reason": "tagged",
+      "candidate_fields": [
+        "detailed_description"
+      ]
+    },
+    {
+      "id": "574071011",
+      "current_on_ocado": 1,
+      "vegan_status": "nonvegan",
+      "vegan_reason": null,
+      "candidate_fields": [
+        "detailed_description"
+      ]
+    },
+    {
+      "id": "574072011",
+      "current_on_ocado": 1,
+      "vegan_status": "nonvegan",
+      "vegan_reason": null,
+      "candidate_fields": [
+        "detailed_description"
+      ]
+    },
+    {
+      "id": "574075011",
+      "current_on_ocado": 1,
+      "vegan_status": "vegan",
+      "vegan_reason": "manufacturer",
+      "candidate_fields": [
+        "detailed_description"
+      ]
+    },
+    {
+      "id": "574076011",
+      "current_on_ocado": 1,
+      "vegan_status": "nonvegan",
+      "vegan_reason": null,
+      "candidate_fields": [
+        "detailed_description"
+      ]
+    },
+    {
+      "id": "574089011",
+      "current_on_ocado": 1,
+      "vegan_status": "vegan",
+      "vegan_reason": "manufacturer",
+      "candidate_fields": [
+        "detailed_description"
+      ]
+    },
+    {
+      "id": "574091011",
+      "current_on_ocado": 1,
+      "vegan_status": "vegan",
+      "vegan_reason": "manufacturer",
+      "candidate_fields": [
+        "detailed_description"
+      ]
+    },
+    {
+      "id": "574128011",
+      "current_on_ocado": 1,
+      "vegan_status": "vegan",
+      "vegan_reason": "manufacturer",
+      "candidate_fields": [
+        "detailed_description"
+      ]
+    },
+    {
+      "id": "574357011",
+      "current_on_ocado": 1,
+      "vegan_status": "vegan",
+      "vegan_reason": "manufacturer",
+      "candidate_fields": [
+        "detailed_description",
+        "other_information"
+      ]
+    },
+    {
+      "id": "574358011",
+      "current_on_ocado": 1,
+      "vegan_status": "vegan",
+      "vegan_reason": "manufacturer",
+      "candidate_fields": [
+        "detailed_description",
+        "other_information"
+      ]
+    },
+    {
+      "id": "577424011",
+      "current_on_ocado": 1,
+      "vegan_status": "vegan",
+      "vegan_reason": "manufacturer",
+      "candidate_fields": [
+        "other_information"
+      ]
+    },
+    {
+      "id": "577437011",
+      "current_on_ocado": 1,
+      "vegan_status": "vegan",
+      "vegan_reason": "manufacturer",
+      "candidate_fields": [
+        "other_information"
+      ]
+    },
+    {
+      "id": "577440011",
+      "current_on_ocado": 1,
+      "vegan_status": "vegan",
+      "vegan_reason": "manufacturer",
+      "candidate_fields": [
+        "other_information"
+      ]
+    },
+    {
+      "id": "577444011",
+      "current_on_ocado": 1,
+      "vegan_status": "vegan",
+      "vegan_reason": "manufacturer",
+      "candidate_fields": [
+        "other_information"
+      ]
+    },
+    {
+      "id": "577445011",
+      "current_on_ocado": 1,
+      "vegan_status": "vegan",
+      "vegan_reason": "manufacturer",
+      "candidate_fields": [
+        "other_information"
+      ]
+    },
+    {
+      "id": "578426011",
+      "current_on_ocado": 1,
+      "vegan_status": "vegan",
+      "vegan_reason": "manufacturer",
+      "candidate_fields": [
+        "detailed_description"
+      ]
+    },
+    {
+      "id": "578427011",
+      "current_on_ocado": 1,
+      "vegan_status": "vegan",
+      "vegan_reason": "manufacturer",
+      "candidate_fields": [
+        "detailed_description"
+      ]
+    },
+    {
+      "id": "579174011",
+      "current_on_ocado": 1,
+      "vegan_status": "vegan",
+      "vegan_reason": "manufacturer",
+      "candidate_fields": [
+        "detailed_description"
+      ]
+    },
+    {
+      "id": "579175011",
+      "current_on_ocado": 1,
+      "vegan_status": "vegan",
+      "vegan_reason": "manufacturer",
+      "candidate_fields": [
+        "detailed_description"
+      ]
+    },
+    {
+      "id": "579176011",
+      "current_on_ocado": 1,
+      "vegan_status": "vegan",
+      "vegan_reason": "manufacturer",
+      "candidate_fields": [
+        "detailed_description"
+      ]
+    },
+    {
+      "id": "579254011",
+      "current_on_ocado": 1,
+      "vegan_status": "vegan",
+      "vegan_reason": "manufacturer",
+      "candidate_fields": [
+        "detailed_description"
+      ]
+    },
+    {
+      "id": "579374011",
+      "current_on_ocado": 1,
+      "vegan_status": "vegan",
+      "vegan_reason": "manufacturer",
+      "candidate_fields": [
+        "detailed_description"
+      ]
+    },
+    {
+      "id": "579375011",
+      "current_on_ocado": 1,
+      "vegan_status": "vegan",
+      "vegan_reason": "manufacturer",
+      "candidate_fields": [
+        "detailed_description"
+      ]
+    },
+    {
+      "id": "579783011",
+      "current_on_ocado": 1,
+      "vegan_status": "vegan",
+      "vegan_reason": "manufacturer",
+      "candidate_fields": [
+        "features"
+      ]
+    },
+    {
+      "id": "580859011",
+      "current_on_ocado": 1,
+      "vegan_status": "vegan",
+      "vegan_reason": "manufacturer",
+      "candidate_fields": [
+        "features"
+      ]
+    },
+    {
+      "id": "580860011",
+      "current_on_ocado": 1,
+      "vegan_status": "vegan",
+      "vegan_reason": "manufacturer",
+      "candidate_fields": [
+        "features"
+      ]
+    },
+    {
+      "id": "582012011",
+      "current_on_ocado": 1,
+      "vegan_status": "vegan",
+      "vegan_reason": "manufacturer",
+      "candidate_fields": [
+        "dietary_information",
+        "features"
+      ]
+    },
+    {
+      "id": "584925011",
+      "current_on_ocado": 1,
+      "vegan_status": "vegan",
+      "vegan_reason": "manufacturer",
+      "candidate_fields": [
+        "features",
+        "detailed_description"
+      ]
+    },
+    {
+      "id": "584926011",
+      "current_on_ocado": 1,
+      "vegan_status": "vegan",
+      "vegan_reason": "manufacturer",
+      "candidate_fields": [
+        "detailed_description"
+      ]
+    },
+    {
+      "id": "585929011",
+      "current_on_ocado": 1,
+      "vegan_status": "unknown",
+      "vegan_reason": null,
+      "candidate_fields": [
+        "detailed_description"
+      ]
+    },
+    {
+      "id": "586110011",
+      "current_on_ocado": 1,
+      "vegan_status": "vegan",
+      "vegan_reason": "ingredients",
+      "candidate_fields": [
+        "further_description"
+      ]
+    },
+    {
+      "id": "586113011",
+      "current_on_ocado": 1,
+      "vegan_status": "vegan",
+      "vegan_reason": "ingredients",
+      "candidate_fields": [
+        "further_description"
+      ]
+    },
+    {
+      "id": "58709011",
+      "current_on_ocado": 1,
+      "vegan_status": "vegan",
+      "vegan_reason": "manufacturer",
+      "candidate_fields": [
+        "detailed_description"
+      ]
+    },
+    {
+      "id": "588088011",
+      "current_on_ocado": 1,
+      "vegan_status": "vegan",
+      "vegan_reason": "manufacturer",
+      "candidate_fields": [
+        "detailed_description"
+      ]
+    },
+    {
+      "id": "588645011",
+      "current_on_ocado": 1,
+      "vegan_status": "vegan",
+      "vegan_reason": "manufacturer",
+      "candidate_fields": [
+        "other_information"
+      ]
+    },
+    {
+      "id": "588646011",
+      "current_on_ocado": 1,
+      "vegan_status": "vegan",
+      "vegan_reason": "manufacturer",
+      "candidate_fields": [
+        "other_information"
+      ]
+    },
+    {
+      "id": "588647011",
+      "current_on_ocado": 1,
+      "vegan_status": "vegan",
+      "vegan_reason": "manufacturer",
+      "candidate_fields": [
+        "other_information"
+      ]
+    },
+    {
+      "id": "588648011",
+      "current_on_ocado": 1,
+      "vegan_status": "vegan",
+      "vegan_reason": "manufacturer",
+      "candidate_fields": [
+        "other_information"
+      ]
+    },
+    {
+      "id": "588649011",
+      "current_on_ocado": 1,
+      "vegan_status": "vegan",
+      "vegan_reason": "manufacturer",
+      "candidate_fields": [
+        "other_information"
+      ]
+    },
+    {
+      "id": "589795011",
+      "current_on_ocado": 1,
+      "vegan_status": "unknown",
+      "vegan_reason": null,
+      "candidate_fields": [
+        "detailed_description"
+      ]
+    },
+    {
+      "id": "59222011",
+      "current_on_ocado": 1,
+      "vegan_status": "vegan",
+      "vegan_reason": "manufacturer",
+      "candidate_fields": [
+        "features",
+        "detailed_description"
+      ]
+    },
+    {
+      "id": "593963011",
+      "current_on_ocado": 0,
+      "vegan_status": "vegan",
+      "vegan_reason": "manufacturer",
+      "candidate_fields": [
+        "dietary_information",
+        "detailed_description"
+      ]
+    },
+    {
+      "id": "593972011",
+      "current_on_ocado": 1,
+      "vegan_status": "vegan",
+      "vegan_reason": "manufacturer",
+      "candidate_fields": [
+        "dietary_information",
+        "detailed_description"
+      ]
+    },
+    {
+      "id": "593981011",
+      "current_on_ocado": 1,
+      "vegan_status": "vegan",
+      "vegan_reason": "manufacturer",
+      "candidate_fields": [
+        "dietary_information"
+      ]
+    },
+    {
+      "id": "593983011",
+      "current_on_ocado": 1,
+      "vegan_status": "vegan",
+      "vegan_reason": "manufacturer",
+      "candidate_fields": [
+        "dietary_information"
+      ]
+    },
+    {
+      "id": "593984011",
+      "current_on_ocado": 1,
+      "vegan_status": "vegan",
+      "vegan_reason": "manufacturer",
+      "candidate_fields": [
+        "dietary_information"
+      ]
+    },
+    {
+      "id": "593985011",
+      "current_on_ocado": 1,
+      "vegan_status": "vegan",
+      "vegan_reason": "manufacturer",
+      "candidate_fields": [
+        "dietary_information"
+      ]
+    },
+    {
+      "id": "593986011",
+      "current_on_ocado": 1,
+      "vegan_status": "vegan",
+      "vegan_reason": "manufacturer",
+      "candidate_fields": [
+        "dietary_information"
+      ]
+    },
+    {
+      "id": "593987011",
+      "current_on_ocado": 1,
+      "vegan_status": "vegan",
+      "vegan_reason": "manufacturer",
+      "candidate_fields": [
+        "dietary_information"
+      ]
+    },
+    {
+      "id": "594010011",
+      "current_on_ocado": 1,
+      "vegan_status": "vegan",
+      "vegan_reason": "manufacturer",
+      "candidate_fields": [
+        "brand_marketing"
+      ]
+    },
+    {
+      "id": "594586011",
+      "current_on_ocado": 1,
+      "vegan_status": "vegan",
+      "vegan_reason": "manufacturer",
+      "candidate_fields": [
+        "features",
+        "detailed_description"
+      ]
+    },
+    {
+      "id": "594591011",
+      "current_on_ocado": 1,
+      "vegan_status": "vegan",
+      "vegan_reason": "manufacturer",
+      "candidate_fields": [
+        "features",
+        "detailed_description"
+      ]
+    },
+    {
+      "id": "595176011",
+      "current_on_ocado": 1,
+      "vegan_status": "vegan",
+      "vegan_reason": "manufacturer",
+      "candidate_fields": [
+        "dietary_information"
+      ]
+    },
+    {
+      "id": "595179011",
+      "current_on_ocado": 1,
+      "vegan_status": "vegan",
+      "vegan_reason": "manufacturer",
+      "candidate_fields": [
+        "dietary_information"
+      ]
+    },
+    {
+      "id": "595180011",
+      "current_on_ocado": 1,
+      "vegan_status": "vegan",
+      "vegan_reason": "manufacturer",
+      "candidate_fields": [
+        "dietary_information"
+      ]
+    },
+    {
+      "id": "595311011",
+      "current_on_ocado": 0,
+      "vegan_status": "vegan",
+      "vegan_reason": "manufacturer",
+      "candidate_fields": [
+        "detailed_description"
+      ]
+    },
+    {
+      "id": "595943011",
+      "current_on_ocado": 0,
+      "vegan_status": "vegan",
+      "vegan_reason": "manufacturer",
+      "candidate_fields": [
+        "detailed_description"
+      ]
+    },
+    {
+      "id": "598112011",
+      "current_on_ocado": 0,
+      "vegan_status": "vegan",
+      "vegan_reason": "manufacturer",
+      "candidate_fields": [
+        "detailed_description"
+      ]
+    },
+    {
+      "id": "598113011",
+      "current_on_ocado": 1,
+      "vegan_status": "vegan",
+      "vegan_reason": "manufacturer",
+      "candidate_fields": [
+        "detailed_description"
+      ]
+    },
+    {
+      "id": "598115011",
+      "current_on_ocado": 1,
+      "vegan_status": "vegan",
+      "vegan_reason": "manufacturer",
+      "candidate_fields": [
+        "detailed_description"
+      ]
+    },
+    {
+      "id": "598171011",
+      "current_on_ocado": 1,
+      "vegan_status": "vegan",
+      "vegan_reason": "manufacturer",
+      "candidate_fields": [
+        "features",
+        "detailed_description"
+      ]
+    },
+    {
+      "id": "598172011",
+      "current_on_ocado": 1,
+      "vegan_status": "vegan",
+      "vegan_reason": "manufacturer",
+      "candidate_fields": [
+        "features",
+        "detailed_description"
+      ]
+    },
+    {
+      "id": "59904011",
+      "current_on_ocado": 1,
+      "vegan_status": "vegan",
+      "vegan_reason": "manufacturer",
+      "candidate_fields": [
+        "features"
+      ]
+    },
+    {
+      "id": "59905011",
+      "current_on_ocado": 1,
+      "vegan_status": "vegan",
+      "vegan_reason": "manufacturer",
+      "candidate_fields": [
+        "features"
+      ]
+    },
+    {
+      "id": "599870011",
+      "current_on_ocado": 1,
+      "vegan_status": "vegan",
+      "vegan_reason": "manufacturer",
+      "candidate_fields": [
+        "detailed_description"
+      ]
+    },
+    {
+      "id": "600147011",
+      "current_on_ocado": 1,
+      "vegan_status": "vegan",
+      "vegan_reason": "manufacturer",
+      "candidate_fields": [
+        "detailed_description"
+      ]
+    },
+    {
+      "id": "600152011",
+      "current_on_ocado": 1,
+      "vegan_status": "vegan",
+      "vegan_reason": "manufacturer",
+      "candidate_fields": [
+        "detailed_description"
+      ]
+    },
+    {
+      "id": "600155011",
+      "current_on_ocado": 1,
+      "vegan_status": "vegan",
+      "vegan_reason": "manufacturer",
+      "candidate_fields": [
+        "detailed_description"
+      ]
+    },
+    {
+      "id": "600156011",
+      "current_on_ocado": 1,
+      "vegan_status": "vegan",
+      "vegan_reason": "manufacturer",
+      "candidate_fields": [
+        "detailed_description"
+      ]
+    },
+    {
+      "id": "600945011",
+      "current_on_ocado": 1,
+      "vegan_status": "vegan",
+      "vegan_reason": "manufacturer",
+      "candidate_fields": [
+        "detailed_description"
+      ]
+    },
+    {
+      "id": "600946011",
+      "current_on_ocado": 1,
+      "vegan_status": "vegan",
+      "vegan_reason": "manufacturer",
+      "candidate_fields": [
+        "detailed_description"
+      ]
+    },
+    {
+      "id": "600947011",
+      "current_on_ocado": 1,
+      "vegan_status": "vegan",
+      "vegan_reason": "manufacturer",
+      "candidate_fields": [
+        "detailed_description"
+      ]
+    },
+    {
+      "id": "600948011",
+      "current_on_ocado": 1,
+      "vegan_status": "vegan",
+      "vegan_reason": "manufacturer",
+      "candidate_fields": [
+        "features",
+        "detailed_description"
+      ]
+    },
+    {
+      "id": "603258011",
+      "current_on_ocado": 1,
+      "vegan_status": "vegan",
+      "vegan_reason": "manufacturer",
+      "candidate_fields": [
+        "other_information"
+      ]
+    },
+    {
+      "id": "603260011",
+      "current_on_ocado": 1,
+      "vegan_status": "vegan",
+      "vegan_reason": "manufacturer",
+      "candidate_fields": [
+        "other_information"
+      ]
+    },
+    {
+      "id": "603866011",
+      "current_on_ocado": 0,
+      "vegan_status": "unknown",
+      "vegan_reason": null,
+      "candidate_fields": [
+        "detailed_description"
+      ]
+    },
+    {
+      "id": "604242011",
+      "current_on_ocado": 1,
+      "vegan_status": "vegan",
+      "vegan_reason": "manufacturer",
+      "candidate_fields": [
+        "other_information"
+      ]
+    },
+    {
+      "id": "605178011",
+      "current_on_ocado": 1,
+      "vegan_status": "vegan",
+      "vegan_reason": "manufacturer",
+      "candidate_fields": [
+        "detailed_description"
+      ]
+    },
+    {
+      "id": "607113011",
+      "current_on_ocado": 1,
+      "vegan_status": "vegan",
+      "vegan_reason": "manufacturer",
+      "candidate_fields": [
+        "detailed_description"
+      ]
+    },
+    {
+      "id": "607114011",
+      "current_on_ocado": 1,
+      "vegan_status": "vegan",
+      "vegan_reason": "manufacturer",
+      "candidate_fields": [
+        "detailed_description"
+      ]
+    },
+    {
+      "id": "607115011",
+      "current_on_ocado": 1,
+      "vegan_status": "vegan",
+      "vegan_reason": "manufacturer",
+      "candidate_fields": [
+        "detailed_description"
+      ]
+    },
+    {
+      "id": "607123011",
+      "current_on_ocado": 1,
+      "vegan_status": "vegan",
+      "vegan_reason": "manufacturer",
+      "candidate_fields": [
+        "detailed_description"
+      ]
+    },
+    {
+      "id": "607124011",
+      "current_on_ocado": 1,
+      "vegan_status": "vegan",
+      "vegan_reason": "manufacturer",
+      "candidate_fields": [
+        "detailed_description"
+      ]
+    },
+    {
+      "id": "609817011",
+      "current_on_ocado": 1,
+      "vegan_status": "vegan",
+      "vegan_reason": "manufacturer",
+      "candidate_fields": [
+        "features",
+        "detailed_description"
+      ]
+    },
+    {
+      "id": "609830011",
+      "current_on_ocado": 1,
+      "vegan_status": "vegan",
+      "vegan_reason": "manufacturer",
+      "candidate_fields": [
+        "features",
+        "detailed_description"
+      ]
+    },
+    {
+      "id": "609834011",
+      "current_on_ocado": 1,
+      "vegan_status": "vegan",
+      "vegan_reason": "manufacturer",
+      "candidate_fields": [
+        "features",
+        "detailed_description"
+      ]
+    },
+    {
+      "id": "609840011",
+      "current_on_ocado": 1,
+      "vegan_status": "vegan",
+      "vegan_reason": "manufacturer",
+      "candidate_fields": [
+        "features"
+      ]
+    },
+    {
+      "id": "609842011",
+      "current_on_ocado": 1,
+      "vegan_status": "vegan",
+      "vegan_reason": "manufacturer",
+      "candidate_fields": [
+        "features"
+      ]
+    },
+    {
+      "id": "610513011",
+      "current_on_ocado": 1,
+      "vegan_status": "vegan",
+      "vegan_reason": "manufacturer",
+      "candidate_fields": [
+        "detailed_description"
+      ]
+    },
+    {
+      "id": "61953011",
+      "current_on_ocado": 1,
+      "vegan_status": "vegan",
+      "vegan_reason": "manufacturer",
+      "candidate_fields": [
+        "detailed_description",
+        "brand_marketing"
+      ]
+    },
+    {
+      "id": "61954011",
+      "current_on_ocado": 1,
+      "vegan_status": "vegan",
+      "vegan_reason": "manufacturer",
+      "candidate_fields": [
+        "features",
+        "detailed_description",
+        "brand_marketing"
+      ]
+    },
+    {
+      "id": "620913011",
+      "current_on_ocado": 1,
+      "vegan_status": "vegan",
+      "vegan_reason": "ingredients",
+      "candidate_fields": [
+        "detailed_description"
+      ]
+    },
+    {
+      "id": "621329011",
+      "current_on_ocado": 1,
+      "vegan_status": "vegan",
+      "vegan_reason": "manufacturer",
+      "candidate_fields": [
+        "other_information"
+      ]
+    },
+    {
+      "id": "622038011",
+      "current_on_ocado": 1,
+      "vegan_status": "vegan",
+      "vegan_reason": "manufacturer",
+      "candidate_fields": [
+        "detailed_description"
+      ]
+    },
+    {
+      "id": "627566011",
+      "current_on_ocado": 1,
+      "vegan_status": "nonvegan",
+      "vegan_reason": null,
+      "candidate_fields": [
+        "detailed_description"
+      ]
+    },
+    {
+      "id": "627567011",
+      "current_on_ocado": 1,
+      "vegan_status": "vegan",
+      "vegan_reason": "manufacturer",
+      "candidate_fields": [
+        "detailed_description"
+      ]
+    },
+    {
+      "id": "627568011",
+      "current_on_ocado": 1,
+      "vegan_status": "vegan",
+      "vegan_reason": "manufacturer",
+      "candidate_fields": [
+        "detailed_description"
+      ]
+    },
+    {
+      "id": "628054011",
+      "current_on_ocado": 1,
+      "vegan_status": "vegan",
+      "vegan_reason": "manufacturer",
+      "candidate_fields": [
+        "other_information"
+      ]
+    },
+    {
+      "id": "628055011",
+      "current_on_ocado": 1,
+      "vegan_status": "nonvegan",
+      "vegan_reason": null,
+      "candidate_fields": [
+        "other_information"
+      ]
+    },
+    {
+      "id": "628219011",
+      "current_on_ocado": 1,
+      "vegan_status": "vegan",
+      "vegan_reason": "manufacturer",
+      "candidate_fields": [
+        "features",
+        "detailed_description"
+      ]
+    },
+    {
+      "id": "628220011",
+      "current_on_ocado": 1,
+      "vegan_status": "vegan",
+      "vegan_reason": "tagged",
+      "candidate_fields": [
+        "detailed_description"
+      ]
+    },
+    {
+      "id": "628222011",
+      "current_on_ocado": 1,
+      "vegan_status": "unknown",
+      "vegan_reason": null,
+      "candidate_fields": [
+        "features",
+        "detailed_description"
+      ]
+    },
+    {
+      "id": "628224011",
+      "current_on_ocado": 1,
+      "vegan_status": "vegan",
+      "vegan_reason": "manufacturer",
+      "candidate_fields": [
+        "features",
+        "detailed_description"
+      ]
+    },
+    {
+      "id": "628225011",
+      "current_on_ocado": 1,
+      "vegan_status": "vegan",
+      "vegan_reason": "manufacturer",
+      "candidate_fields": [
+        "features",
+        "detailed_description"
+      ]
+    },
+    {
+      "id": "628226011",
+      "current_on_ocado": 1,
+      "vegan_status": "vegan",
+      "vegan_reason": "manufacturer",
+      "candidate_fields": [
+        "features",
+        "detailed_description"
+      ]
+    },
+    {
+      "id": "628227011",
+      "current_on_ocado": 1,
+      "vegan_status": "vegan",
+      "vegan_reason": "manufacturer",
+      "candidate_fields": [
+        "detailed_description"
+      ]
+    },
+    {
+      "id": "628228011",
+      "current_on_ocado": 1,
+      "vegan_status": "vegan",
+      "vegan_reason": "manufacturer",
+      "candidate_fields": [
+        "features",
+        "detailed_description"
+      ]
+    },
+    {
+      "id": "628229011",
+      "current_on_ocado": 1,
+      "vegan_status": "vegan",
+      "vegan_reason": "manufacturer",
+      "candidate_fields": [
+        "features",
+        "detailed_description"
+      ]
+    },
+    {
+      "id": "628230011",
+      "current_on_ocado": 1,
+      "vegan_status": "vegan",
+      "vegan_reason": "manufacturer",
+      "candidate_fields": [
+        "features",
+        "detailed_description"
+      ]
+    },
+    {
+      "id": "628231011",
+      "current_on_ocado": 1,
+      "vegan_status": "vegan",
+      "vegan_reason": "manufacturer",
+      "candidate_fields": [
+        "features",
+        "detailed_description"
+      ]
+    },
+    {
+      "id": "628232011",
+      "current_on_ocado": 1,
+      "vegan_status": "vegan",
+      "vegan_reason": "manufacturer",
+      "candidate_fields": [
+        "detailed_description"
+      ]
+    },
+    {
+      "id": "628284011",
+      "current_on_ocado": 1,
+      "vegan_status": "vegan",
+      "vegan_reason": "manufacturer",
+      "candidate_fields": [
+        "features",
+        "brand_marketing"
+      ]
+    },
+    {
+      "id": "628285011",
+      "current_on_ocado": 1,
+      "vegan_status": "vegan",
+      "vegan_reason": "manufacturer",
+      "candidate_fields": [
+        "detailed_description",
+        "brand_marketing"
+      ]
+    },
+    {
+      "id": "628392011",
+      "current_on_ocado": 1,
+      "vegan_status": "unknown",
+      "vegan_reason": null,
+      "candidate_fields": [
+        "features",
+        "detailed_description"
+      ]
+    },
+    {
+      "id": "629236011",
+      "current_on_ocado": 1,
+      "vegan_status": "vegan",
+      "vegan_reason": "manufacturer",
+      "candidate_fields": [
+        "detailed_description"
+      ]
+    },
+    {
+      "id": "629686011",
+      "current_on_ocado": 1,
+      "vegan_status": "vegan",
+      "vegan_reason": "manufacturer",
+      "candidate_fields": [
+        "detailed_description"
+      ]
+    },
+    {
+      "id": "629691011",
+      "current_on_ocado": 1,
+      "vegan_status": "vegan",
+      "vegan_reason": "manufacturer",
+      "candidate_fields": [
+        "detailed_description"
+      ]
+    },
+    {
+      "id": "630182011",
+      "current_on_ocado": 0,
+      "vegan_status": "vegan",
+      "vegan_reason": "manufacturer",
+      "candidate_fields": [
+        "detailed_description"
+      ]
+    },
+    {
+      "id": "630364011",
+      "current_on_ocado": 0,
+      "vegan_status": "vegan",
+      "vegan_reason": "manufacturer",
+      "candidate_fields": [
+        "detailed_description"
+      ]
+    },
+    {
+      "id": "631756011",
+      "current_on_ocado": 1,
+      "vegan_status": "vegan",
+      "vegan_reason": "manufacturer",
+      "candidate_fields": [
+        "other_information"
+      ]
+    },
+    {
+      "id": "632748011",
+      "current_on_ocado": 0,
+      "vegan_status": "unknown",
+      "vegan_reason": null,
+      "candidate_fields": [
+        "detailed_description"
+      ]
+    },
+    {
+      "id": "633043011",
+      "current_on_ocado": 1,
+      "vegan_status": "vegan",
+      "vegan_reason": "manufacturer",
+      "candidate_fields": [
+        "detailed_description"
+      ]
+    },
+    {
+      "id": "633054011",
+      "current_on_ocado": 1,
+      "vegan_status": "vegan",
+      "vegan_reason": "manufacturer",
+      "candidate_fields": [
+        "detailed_description"
+      ]
+    },
+    {
+      "id": "633055011",
+      "current_on_ocado": 1,
+      "vegan_status": "vegan",
+      "vegan_reason": "manufacturer",
+      "candidate_fields": [
+        "detailed_description"
+      ]
+    },
+    {
+      "id": "633059011",
+      "current_on_ocado": 1,
+      "vegan_status": "vegan",
+      "vegan_reason": "manufacturer",
+      "candidate_fields": [
+        "detailed_description"
+      ]
+    },
+    {
+      "id": "633061011",
+      "current_on_ocado": 1,
+      "vegan_status": "vegan",
+      "vegan_reason": "manufacturer",
+      "candidate_fields": [
+        "detailed_description"
+      ]
+    },
+    {
+      "id": "635225011",
+      "current_on_ocado": 1,
+      "vegan_status": "vegan",
+      "vegan_reason": "ingredients",
+      "candidate_fields": [
+        "detailed_description"
+      ]
+    },
+    {
+      "id": "635226011",
+      "current_on_ocado": 1,
+      "vegan_status": "vegan",
+      "vegan_reason": "ingredients",
+      "candidate_fields": [
+        "detailed_description"
+      ]
+    },
+    {
+      "id": "635378011",
+      "current_on_ocado": 1,
+      "vegan_status": "unknown",
+      "vegan_reason": null,
+      "candidate_fields": [
+        "detailed_description"
+      ]
+    },
+    {
+      "id": "635381011",
+      "current_on_ocado": 1,
+      "vegan_status": "nonvegan",
+      "vegan_reason": null,
+      "candidate_fields": [
+        "detailed_description"
+      ]
+    },
+    {
+      "id": "635383011",
+      "current_on_ocado": 1,
+      "vegan_status": "nonvegan",
+      "vegan_reason": null,
+      "candidate_fields": [
+        "features"
+      ]
+    },
+    {
+      "id": "635762011",
+      "current_on_ocado": 1,
+      "vegan_status": "vegan",
+      "vegan_reason": "ingredients",
+      "candidate_fields": [
+        "detailed_description"
+      ]
+    },
+    {
+      "id": "635763011",
+      "current_on_ocado": 1,
+      "vegan_status": "unknown",
+      "vegan_reason": null,
+      "candidate_fields": [
+        "detailed_description"
+      ]
+    },
+    {
+      "id": "636147011",
+      "current_on_ocado": 1,
+      "vegan_status": "vegan",
+      "vegan_reason": "manufacturer",
+      "candidate_fields": [
+        "brand_marketing"
+      ]
+    },
+    {
+      "id": "636148011",
+      "current_on_ocado": 1,
+      "vegan_status": "vegan",
+      "vegan_reason": "manufacturer",
+      "candidate_fields": [
+        "brand_marketing"
+      ]
+    },
+    {
+      "id": "636661011",
+      "current_on_ocado": 1,
+      "vegan_status": "vegan",
+      "vegan_reason": "manufacturer",
+      "candidate_fields": [
+        "dietary_information",
+        "other_information"
+      ]
+    },
+    {
+      "id": "638057011",
+      "current_on_ocado": 1,
+      "vegan_status": "vegan",
+      "vegan_reason": "manufacturer",
+      "candidate_fields": [
+        "detailed_description"
+      ]
+    },
+    {
+      "id": "638060011",
+      "current_on_ocado": 1,
+      "vegan_status": "vegan",
+      "vegan_reason": "manufacturer",
+      "candidate_fields": [
+        "detailed_description"
+      ]
+    },
+    {
+      "id": "638093011",
+      "current_on_ocado": 1,
+      "vegan_status": "unknown",
+      "vegan_reason": null,
+      "candidate_fields": [
+        "detailed_description"
+      ]
+    },
+    {
+      "id": "638241011",
+      "current_on_ocado": 1,
+      "vegan_status": "nonvegan",
+      "vegan_reason": null,
+      "candidate_fields": [
+        "detailed_description"
+      ]
+    },
+    {
+      "id": "638242011",
+      "current_on_ocado": 1,
+      "vegan_status": "nonvegan",
+      "vegan_reason": null,
+      "candidate_fields": [
+        "detailed_description"
+      ]
+    },
+    {
+      "id": "638244011",
+      "current_on_ocado": 1,
+      "vegan_status": "nonvegan",
+      "vegan_reason": null,
+      "candidate_fields": [
+        "detailed_description"
+      ]
+    },
+    {
+      "id": "638245011",
+      "current_on_ocado": 1,
+      "vegan_status": "nonvegan",
+      "vegan_reason": null,
+      "candidate_fields": [
+        "detailed_description"
+      ]
+    },
+    {
+      "id": "638247011",
+      "current_on_ocado": 1,
+      "vegan_status": "nonvegan",
+      "vegan_reason": null,
+      "candidate_fields": [
+        "detailed_description"
+      ]
+    },
+    {
+      "id": "638305011",
+      "current_on_ocado": 1,
+      "vegan_status": "unknown",
+      "vegan_reason": null,
+      "candidate_fields": [
+        "detailed_description"
+      ]
+    },
+    {
+      "id": "638329011",
+      "current_on_ocado": 1,
+      "vegan_status": "unknown",
+      "vegan_reason": null,
+      "candidate_fields": [
+        "detailed_description"
+      ]
+    },
+    {
+      "id": "638352011",
+      "current_on_ocado": 1,
+      "vegan_status": "vegan",
+      "vegan_reason": "ingredients",
+      "candidate_fields": [
+        "detailed_description"
+      ]
+    },
+    {
+      "id": "638461011",
+      "current_on_ocado": 1,
+      "vegan_status": "vegan",
+      "vegan_reason": "manufacturer",
+      "candidate_fields": [
+        "features"
+      ]
+    },
+    {
+      "id": "638464011",
+      "current_on_ocado": 1,
+      "vegan_status": "vegan",
+      "vegan_reason": "manufacturer",
+      "candidate_fields": [
+        "features"
+      ]
+    },
+    {
+      "id": "638467011",
+      "current_on_ocado": 1,
+      "vegan_status": "vegan",
+      "vegan_reason": "manufacturer",
+      "candidate_fields": [
+        "features"
+      ]
+    },
+    {
+      "id": "638492011",
+      "current_on_ocado": 1,
+      "vegan_status": "vegan",
+      "vegan_reason": "manufacturer",
+      "candidate_fields": [
+        "features"
+      ]
+    },
+    {
+      "id": "638929011",
+      "current_on_ocado": 1,
+      "vegan_status": "vegan",
+      "vegan_reason": "manufacturer",
+      "candidate_fields": [
+        "features"
+      ]
+    },
+    {
+      "id": "639072011",
+      "current_on_ocado": 1,
+      "vegan_status": "vegan",
+      "vegan_reason": "manufacturer",
+      "candidate_fields": [
+        "features",
+        "detailed_description"
+      ]
+    },
+    {
+      "id": "639212011",
+      "current_on_ocado": 1,
+      "vegan_status": "nonvegan",
+      "vegan_reason": null,
+      "candidate_fields": [
+        "detailed_description"
+      ]
+    },
+    {
+      "id": "639236011",
+      "current_on_ocado": 1,
+      "vegan_status": "vegan",
+      "vegan_reason": "manufacturer",
+      "candidate_fields": [
+        "features"
+      ]
+    },
+    {
+      "id": "639237011",
+      "current_on_ocado": 1,
+      "vegan_status": "vegan",
+      "vegan_reason": "manufacturer",
+      "candidate_fields": [
+        "features"
+      ]
+    },
+    {
+      "id": "639238011",
+      "current_on_ocado": 1,
+      "vegan_status": "vegan",
+      "vegan_reason": "manufacturer",
+      "candidate_fields": [
+        "features"
+      ]
+    },
+    {
+      "id": "639239011",
+      "current_on_ocado": 0,
+      "vegan_status": "vegan",
+      "vegan_reason": "manufacturer",
+      "candidate_fields": [
+        "features"
+      ]
+    },
+    {
+      "id": "639240011",
+      "current_on_ocado": 1,
+      "vegan_status": "vegan",
+      "vegan_reason": "manufacturer",
+      "candidate_fields": [
+        "features",
+        "detailed_description"
+      ]
+    },
+    {
+      "id": "639241011",
+      "current_on_ocado": 1,
+      "vegan_status": "vegan",
+      "vegan_reason": "manufacturer",
+      "candidate_fields": [
+        "features"
+      ]
+    },
+    {
+      "id": "639242011",
+      "current_on_ocado": 1,
+      "vegan_status": "vegan",
+      "vegan_reason": "manufacturer",
+      "candidate_fields": [
+        "features"
+      ]
+    },
+    {
+      "id": "639243011",
+      "current_on_ocado": 1,
+      "vegan_status": "vegan",
+      "vegan_reason": "manufacturer",
+      "candidate_fields": [
+        "features"
+      ]
+    },
+    {
+      "id": "639245011",
+      "current_on_ocado": 1,
+      "vegan_status": "vegan",
+      "vegan_reason": "manufacturer",
+      "candidate_fields": [
+        "features"
+      ]
+    },
+    {
+      "id": "63926011",
+      "current_on_ocado": 1,
+      "vegan_status": "vegan",
+      "vegan_reason": "manufacturer",
+      "candidate_fields": [
+        "detailed_description",
+        "other_information"
+      ]
+    },
+    {
+      "id": "639285011",
+      "current_on_ocado": 1,
+      "vegan_status": "vegan",
+      "vegan_reason": "manufacturer",
+      "candidate_fields": [
+        "dietary_information",
+        "detailed_description"
+      ]
+    },
+    {
+      "id": "639652011",
+      "current_on_ocado": 1,
+      "vegan_status": "vegan",
+      "vegan_reason": "manufacturer",
+      "candidate_fields": [
+        "detailed_description"
+      ]
+    },
+    {
+      "id": "639667011",
+      "current_on_ocado": 0,
+      "vegan_status": "vegan",
+      "vegan_reason": "manufacturer",
+      "candidate_fields": [
+        "detailed_description"
+      ]
+    },
+    {
+      "id": "639670011",
+      "current_on_ocado": 1,
+      "vegan_status": "nonvegan",
+      "vegan_reason": null,
+      "candidate_fields": [
+        "detailed_description"
+      ]
+    },
+    {
+      "id": "639803011",
+      "current_on_ocado": 1,
+      "vegan_status": "vegan",
+      "vegan_reason": "manufacturer",
+      "candidate_fields": [
+        "dietary_information"
+      ]
+    },
+    {
+      "id": "640528011",
+      "current_on_ocado": 1,
+      "vegan_status": "vegan",
+      "vegan_reason": "manufacturer",
+      "candidate_fields": [
+        "features"
+      ]
+    },
+    {
+      "id": "641877011",
+      "current_on_ocado": 1,
+      "vegan_status": "unknown",
+      "vegan_reason": null,
+      "candidate_fields": [
+        "detailed_description"
+      ]
+    },
+    {
+      "id": "641879011",
+      "current_on_ocado": 1,
+      "vegan_status": "unknown",
+      "vegan_reason": null,
+      "candidate_fields": [
+        "detailed_description"
+      ]
+    },
+    {
+      "id": "641880011",
+      "current_on_ocado": 1,
+      "vegan_status": "unknown",
+      "vegan_reason": null,
+      "candidate_fields": [
+        "detailed_description"
+      ]
+    },
+    {
+      "id": "641918011",
+      "current_on_ocado": 1,
+      "vegan_status": "unknown",
+      "vegan_reason": null,
+      "candidate_fields": [
+        "detailed_description"
+      ]
+    },
+    {
+      "id": "641919011",
+      "current_on_ocado": 1,
+      "vegan_status": "unknown",
+      "vegan_reason": null,
+      "candidate_fields": [
+        "detailed_description"
+      ]
+    },
+    {
+      "id": "641920011",
+      "current_on_ocado": 1,
+      "vegan_status": "unknown",
+      "vegan_reason": null,
+      "candidate_fields": [
+        "detailed_description"
+      ]
+    },
+    {
+      "id": "641956011",
+      "current_on_ocado": 1,
+      "vegan_status": "vegan",
+      "vegan_reason": "manufacturer",
+      "candidate_fields": [
+        "detailed_description"
+      ]
+    },
+    {
+      "id": "642177011",
+      "current_on_ocado": 0,
+      "vegan_status": "vegan",
+      "vegan_reason": "manufacturer",
+      "candidate_fields": [
+        "detailed_description"
+      ]
+    },
+    {
+      "id": "64235011",
+      "current_on_ocado": 1,
+      "vegan_status": "vegan",
+      "vegan_reason": "ingredients",
+      "candidate_fields": [
+        "detailed_description"
+      ]
+    },
+    {
+      "id": "642568011",
+      "current_on_ocado": 1,
+      "vegan_status": "vegan",
+      "vegan_reason": "manufacturer",
+      "candidate_fields": [
+        "detailed_description"
+      ]
+    },
+    {
+      "id": "644505011",
+      "current_on_ocado": 1,
+      "vegan_status": "vegan",
+      "vegan_reason": "manufacturer",
+      "candidate_fields": [
+        "other_information"
+      ]
+    },
+    {
+      "id": "644579011",
+      "current_on_ocado": 1,
+      "vegan_status": "vegan",
+      "vegan_reason": "manufacturer",
+      "candidate_fields": [
+        "other_information"
+      ]
+    },
+    {
+      "id": "644583011",
+      "current_on_ocado": 1,
+      "vegan_status": "vegan",
+      "vegan_reason": "manufacturer",
+      "candidate_fields": [
+        "other_information"
+      ]
+    },
+    {
+      "id": "644585011",
+      "current_on_ocado": 1,
+      "vegan_status": "nonvegan",
+      "vegan_reason": null,
+      "candidate_fields": [
+        "other_information"
+      ]
+    },
+    {
+      "id": "644587011",
+      "current_on_ocado": 1,
+      "vegan_status": "nonvegan",
+      "vegan_reason": null,
+      "candidate_fields": [
+        "other_information"
+      ]
+    },
+    {
+      "id": "646624011",
+      "current_on_ocado": 1,
+      "vegan_status": "unknown",
+      "vegan_reason": null,
+      "candidate_fields": [
+        "detailed_description"
+      ]
+    },
+    {
+      "id": "646852011",
+      "current_on_ocado": 1,
+      "vegan_status": "vegan",
+      "vegan_reason": "manufacturer",
+      "candidate_fields": [
+        "features"
+      ]
+    },
+    {
+      "id": "647158011",
+      "current_on_ocado": 1,
+      "vegan_status": "unknown",
+      "vegan_reason": null,
+      "candidate_fields": [
+        "detailed_description"
+      ]
+    },
+    {
+      "id": "647244011",
+      "current_on_ocado": 0,
+      "vegan_status": "vegan",
+      "vegan_reason": "manufacturer",
+      "candidate_fields": [
+        "features"
+      ]
+    },
+    {
+      "id": "647427011",
+      "current_on_ocado": 1,
+      "vegan_status": "vegan",
+      "vegan_reason": "ingredients",
+      "candidate_fields": [
+        "brand_marketing"
+      ]
+    },
+    {
+      "id": "648710011",
+      "current_on_ocado": 1,
+      "vegan_status": "vegan",
+      "vegan_reason": "manufacturer",
+      "candidate_fields": [
+        "brand_marketing"
+      ]
+    },
+    {
+      "id": "648847011",
+      "current_on_ocado": 1,
+      "vegan_status": "vegan",
+      "vegan_reason": "manufacturer",
+      "candidate_fields": [
+        "dietary_information"
+      ]
+    },
+    {
+      "id": "649667011",
+      "current_on_ocado": 1,
+      "vegan_status": "vegan",
+      "vegan_reason": "manufacturer",
+      "candidate_fields": [
+        "dietary_information"
+      ]
+    },
+    {
+      "id": "650102011",
+      "current_on_ocado": 1,
+      "vegan_status": "vegan",
+      "vegan_reason": "manufacturer",
+      "candidate_fields": [
+        "brand_marketing"
+      ]
+    },
+    {
+      "id": "650103011",
+      "current_on_ocado": 1,
+      "vegan_status": "vegan",
+      "vegan_reason": "manufacturer",
+      "candidate_fields": [
+        "brand_marketing"
+      ]
+    },
+    {
+      "id": "650104011",
+      "current_on_ocado": 1,
+      "vegan_status": "vegan",
+      "vegan_reason": "manufacturer",
+      "candidate_fields": [
+        "brand_marketing"
+      ]
+    },
+    {
+      "id": "650105011",
+      "current_on_ocado": 1,
+      "vegan_status": "vegan",
+      "vegan_reason": "manufacturer",
+      "candidate_fields": [
+        "brand_marketing"
+      ]
+    },
+    {
+      "id": "650106011",
+      "current_on_ocado": 0,
+      "vegan_status": "vegan",
+      "vegan_reason": "manufacturer",
+      "candidate_fields": [
+        "brand_marketing"
+      ]
+    },
+    {
+      "id": "65027011",
+      "current_on_ocado": 1,
+      "vegan_status": "vegan",
+      "vegan_reason": "manufacturer",
+      "candidate_fields": [
+        "detailed_description"
+      ]
+    },
+    {
+      "id": "65036011",
+      "current_on_ocado": 1,
+      "vegan_status": "vegan",
+      "vegan_reason": "manufacturer",
+      "candidate_fields": [
+        "detailed_description"
+      ]
+    },
+    {
+      "id": "650984011",
+      "current_on_ocado": 1,
+      "vegan_status": "vegan",
+      "vegan_reason": "manufacturer",
+      "candidate_fields": [
+        "detailed_description"
+      ]
+    },
+    {
+      "id": "652140011",
+      "current_on_ocado": 0,
+      "vegan_status": "vegan",
+      "vegan_reason": "manufacturer",
+      "candidate_fields": [
+        "detailed_description"
+      ]
+    },
+    {
+      "id": "652709011",
+      "current_on_ocado": 1,
+      "vegan_status": "vegan",
+      "vegan_reason": "ingredients",
+      "candidate_fields": [
+        "detailed_description"
+      ]
+    },
+    {
+      "id": "652710011",
+      "current_on_ocado": 1,
+      "vegan_status": "vegan",
+      "vegan_reason": "ingredients",
+      "candidate_fields": [
+        "detailed_description"
+      ]
+    },
+    {
+      "id": "652712011",
+      "current_on_ocado": 1,
+      "vegan_status": "vegan",
+      "vegan_reason": "manufacturer",
+      "candidate_fields": [
+        "detailed_description"
+      ]
+    },
+    {
+      "id": "652718011",
+      "current_on_ocado": 1,
+      "vegan_status": "vegan",
+      "vegan_reason": "ingredients",
+      "candidate_fields": [
+        "detailed_description"
+      ]
+    },
+    {
+      "id": "653305011",
+      "current_on_ocado": 1,
+      "vegan_status": "vegan",
+      "vegan_reason": "manufacturer",
+      "candidate_fields": [
+        "brand_marketing"
+      ]
+    },
+    {
+      "id": "653306011",
+      "current_on_ocado": 1,
+      "vegan_status": "vegan",
+      "vegan_reason": "manufacturer",
+      "candidate_fields": [
+        "brand_marketing"
+      ]
+    },
+    {
+      "id": "653307011",
+      "current_on_ocado": 1,
+      "vegan_status": "vegan",
+      "vegan_reason": "manufacturer",
+      "candidate_fields": [
+        "brand_marketing"
+      ]
+    },
+    {
+      "id": "65345011",
+      "current_on_ocado": 1,
+      "vegan_status": "vegan",
+      "vegan_reason": "ingredients",
+      "candidate_fields": [
+        "detailed_description"
+      ]
+    },
+    {
+      "id": "65350011",
+      "current_on_ocado": 1,
+      "vegan_status": "vegan",
+      "vegan_reason": "ingredients",
+      "candidate_fields": [
+        "detailed_description"
+      ]
+    },
+    {
+      "id": "653920011",
+      "current_on_ocado": 1,
+      "vegan_status": "vegan",
+      "vegan_reason": "manufacturer",
+      "candidate_fields": [
+        "detailed_description"
+      ]
+    },
+    {
+      "id": "653921011",
+      "current_on_ocado": 1,
+      "vegan_status": "vegan",
+      "vegan_reason": "manufacturer",
+      "candidate_fields": [
+        "detailed_description"
+      ]
+    },
+    {
+      "id": "653923011",
+      "current_on_ocado": 0,
+      "vegan_status": "vegan",
+      "vegan_reason": "manufacturer",
+      "candidate_fields": [
+        "detailed_description"
+      ]
+    },
+    {
+      "id": "653925011",
+      "current_on_ocado": 1,
+      "vegan_status": "vegan",
+      "vegan_reason": "manufacturer",
+      "candidate_fields": [
+        "detailed_description"
+      ]
+    },
+    {
+      "id": "653963011",
+      "current_on_ocado": 1,
+      "vegan_status": "vegan",
+      "vegan_reason": "manufacturer",
+      "candidate_fields": [
+        "features"
+      ]
+    },
+    {
+      "id": "654091011",
+      "current_on_ocado": 0,
+      "vegan_status": "unknown",
+      "vegan_reason": null,
+      "candidate_fields": [
+        "detailed_description"
+      ]
+    },
+    {
+      "id": "654098011",
+      "current_on_ocado": 1,
+      "vegan_status": "unknown",
+      "vegan_reason": null,
+      "candidate_fields": [
+        "features",
+        "detailed_description"
+      ]
+    },
+    {
+      "id": "654106011",
+      "current_on_ocado": 1,
+      "vegan_status": "nonvegan",
+      "vegan_reason": null,
+      "candidate_fields": [
+        "detailed_description"
+      ]
+    },
+    {
+      "id": "654107011",
+      "current_on_ocado": 1,
+      "vegan_status": "vegan",
+      "vegan_reason": "manufacturer",
+      "candidate_fields": [
+        "detailed_description"
+      ]
+    },
+    {
+      "id": "654122011",
+      "current_on_ocado": 1,
+      "vegan_status": "vegan",
+      "vegan_reason": "manufacturer",
+      "candidate_fields": [
+        "dietary_information"
+      ]
+    },
+    {
+      "id": "654123011",
+      "current_on_ocado": 1,
+      "vegan_status": "vegan",
+      "vegan_reason": "manufacturer",
+      "candidate_fields": [
+        "dietary_information"
+      ]
+    },
+    {
+      "id": "654213011",
+      "current_on_ocado": 1,
+      "vegan_status": "nonvegan",
+      "vegan_reason": null,
+      "candidate_fields": [
+        "detailed_description"
+      ]
+    },
+    {
+      "id": "654322011",
+      "current_on_ocado": 1,
+      "vegan_status": "vegan",
+      "vegan_reason": "manufacturer",
+      "candidate_fields": [
+        "features"
+      ]
+    },
+    {
+      "id": "654386011",
+      "current_on_ocado": 1,
+      "vegan_status": "vegan",
+      "vegan_reason": "manufacturer",
+      "candidate_fields": [
+        "detailed_description"
+      ]
+    },
+    {
+      "id": "654387011",
+      "current_on_ocado": 1,
+      "vegan_status": "vegan",
+      "vegan_reason": "manufacturer",
+      "candidate_fields": [
+        "detailed_description"
+      ]
+    },
+    {
+      "id": "654569011",
+      "current_on_ocado": 1,
+      "vegan_status": "vegan",
+      "vegan_reason": "manufacturer",
+      "candidate_fields": [
+        "detailed_description",
+        "other_information"
+      ]
+    },
+    {
+      "id": "654571011",
+      "current_on_ocado": 1,
+      "vegan_status": "vegan",
+      "vegan_reason": "manufacturer",
+      "candidate_fields": [
+        "detailed_description"
+      ]
+    },
+    {
+      "id": "654573011",
+      "current_on_ocado": 1,
+      "vegan_status": "vegan",
+      "vegan_reason": "manufacturer",
+      "candidate_fields": [
+        "other_information"
+      ]
+    },
+    {
+      "id": "654574011",
+      "current_on_ocado": 1,
+      "vegan_status": "vegan",
+      "vegan_reason": "manufacturer",
+      "candidate_fields": [
+        "other_information"
+      ]
+    },
+    {
+      "id": "654583011",
+      "current_on_ocado": 1,
+      "vegan_status": "vegan",
+      "vegan_reason": "manufacturer",
+      "candidate_fields": [
+        "detailed_description",
+        "other_information"
+      ]
+    },
+    {
+      "id": "654596011",
+      "current_on_ocado": 1,
+      "vegan_status": "vegan",
+      "vegan_reason": "manufacturer",
+      "candidate_fields": [
+        "dietary_information",
+        "detailed_description"
+      ]
+    },
+    {
+      "id": "654821011",
+      "current_on_ocado": 1,
+      "vegan_status": "vegan",
+      "vegan_reason": "manufacturer",
+      "candidate_fields": [
+        "detailed_description"
+      ]
+    },
+    {
+      "id": "654825011",
+      "current_on_ocado": 1,
+      "vegan_status": "vegan",
+      "vegan_reason": "manufacturer",
+      "candidate_fields": [
+        "dietary_information"
+      ]
+    },
+    {
+      "id": "654903011",
+      "current_on_ocado": 1,
+      "vegan_status": "vegan",
+      "vegan_reason": "manufacturer",
+      "candidate_fields": [
+        "dietary_information",
+        "detailed_description",
+        "other_information"
+      ]
+    },
+    {
+      "id": "654908011",
+      "current_on_ocado": 1,
+      "vegan_status": "vegan",
+      "vegan_reason": "manufacturer",
+      "candidate_fields": [
+        "dietary_information",
+        "detailed_description",
+        "other_information"
+      ]
+    },
+    {
+      "id": "654910011",
+      "current_on_ocado": 1,
+      "vegan_status": "vegan",
+      "vegan_reason": "manufacturer",
+      "candidate_fields": [
+        "dietary_information",
+        "detailed_description",
+        "other_information"
+      ]
+    },
+    {
+      "id": "654985011",
+      "current_on_ocado": 1,
+      "vegan_status": "vegan",
+      "vegan_reason": "manufacturer",
+      "candidate_fields": [
+        "dietary_information",
+        "detailed_description",
+        "other_information"
+      ]
+    },
+    {
+      "id": "655944011",
+      "current_on_ocado": 1,
+      "vegan_status": "vegan",
+      "vegan_reason": "manufacturer",
+      "candidate_fields": [
+        "detailed_description"
+      ]
+    },
+    {
+      "id": "656293011",
+      "current_on_ocado": 1,
+      "vegan_status": "vegan",
+      "vegan_reason": "manufacturer",
+      "candidate_fields": [
+        "detailed_description",
+        "other_information"
+      ]
+    },
+    {
+      "id": "656295011",
+      "current_on_ocado": 1,
+      "vegan_status": "vegan",
+      "vegan_reason": "manufacturer",
+      "candidate_fields": [
+        "detailed_description",
+        "other_information"
+      ]
+    },
+    {
+      "id": "656296011",
+      "current_on_ocado": 1,
+      "vegan_status": "vegan",
+      "vegan_reason": "manufacturer",
+      "candidate_fields": [
+        "detailed_description",
+        "other_information"
+      ]
+    },
+    {
+      "id": "656874011",
+      "current_on_ocado": 1,
+      "vegan_status": "vegan",
+      "vegan_reason": "manufacturer",
+      "candidate_fields": [
+        "detailed_description"
+      ]
+    },
+    {
+      "id": "656993011",
+      "current_on_ocado": 1,
+      "vegan_status": "vegan",
+      "vegan_reason": "manufacturer",
+      "candidate_fields": [
+        "dietary_information",
+        "features"
+      ]
+    },
+    {
+      "id": "657270011",
+      "current_on_ocado": 1,
+      "vegan_status": "vegan",
+      "vegan_reason": "manufacturer",
+      "candidate_fields": [
+        "detailed_description"
+      ]
+    },
+    {
+      "id": "657825011",
+      "current_on_ocado": 1,
+      "vegan_status": "vegan",
+      "vegan_reason": "manufacturer",
+      "candidate_fields": [
+        "features",
+        "brand_marketing"
+      ]
+    },
+    {
+      "id": "658689011",
+      "current_on_ocado": 1,
+      "vegan_status": "nonvegan",
+      "vegan_reason": null,
+      "candidate_fields": [
+        "detailed_description"
+      ]
+    },
+    {
+      "id": "658691011",
+      "current_on_ocado": 1,
+      "vegan_status": "vegan",
+      "vegan_reason": "manufacturer",
+      "candidate_fields": [
+        "features",
+        "detailed_description"
+      ]
+    },
+    {
+      "id": "658694011",
+      "current_on_ocado": 1,
+      "vegan_status": "vegan",
+      "vegan_reason": "manufacturer",
+      "candidate_fields": [
+        "features",
+        "detailed_description"
+      ]
+    },
+    {
+      "id": "658734011",
+      "current_on_ocado": 1,
+      "vegan_status": "vegan",
+      "vegan_reason": "manufacturer",
+      "candidate_fields": [
+        "detailed_description"
+      ]
+    },
+    {
+      "id": "658813011",
+      "current_on_ocado": 1,
+      "vegan_status": "vegan",
+      "vegan_reason": "manufacturer",
+      "candidate_fields": [
+        "features"
+      ]
+    },
+    {
+      "id": "658867011",
+      "current_on_ocado": 1,
+      "vegan_status": "vegan",
+      "vegan_reason": "manufacturer",
+      "candidate_fields": [
+        "features",
+        "detailed_description"
+      ]
+    },
+    {
+      "id": "659095011",
+      "current_on_ocado": 1,
+      "vegan_status": "vegan",
+      "vegan_reason": "manufacturer",
+      "candidate_fields": [
+        "detailed_description"
+      ]
+    },
+    {
+      "id": "659624011",
+      "current_on_ocado": 1,
+      "vegan_status": "vegan",
+      "vegan_reason": "manufacturer",
+      "candidate_fields": [
+        "detailed_description"
+      ]
+    },
+    {
+      "id": "659625011",
+      "current_on_ocado": 1,
+      "vegan_status": "nonvegan",
+      "vegan_reason": null,
+      "candidate_fields": [
+        "detailed_description"
+      ]
+    },
+    {
+      "id": "659627011",
+      "current_on_ocado": 1,
+      "vegan_status": "vegan",
+      "vegan_reason": "manufacturer",
+      "candidate_fields": [
+        "detailed_description"
+      ]
+    },
+    {
+      "id": "659629011",
+      "current_on_ocado": 1,
+      "vegan_status": "unknown",
+      "vegan_reason": null,
+      "candidate_fields": [
+        "detailed_description"
+      ]
+    },
+    {
+      "id": "659635011",
+      "current_on_ocado": 1,
+      "vegan_status": "vegan",
+      "vegan_reason": "manufacturer",
+      "candidate_fields": [
+        "features",
+        "detailed_description"
+      ]
+    },
+    {
+      "id": "659636011",
+      "current_on_ocado": 1,
+      "vegan_status": "vegan",
+      "vegan_reason": "manufacturer",
+      "candidate_fields": [
+        "features",
+        "detailed_description"
+      ]
+    },
+    {
+      "id": "659637011",
+      "current_on_ocado": 1,
+      "vegan_status": "vegan",
+      "vegan_reason": "manufacturer",
+      "candidate_fields": [
+        "detailed_description"
+      ]
+    },
+    {
+      "id": "659638011",
+      "current_on_ocado": 1,
+      "vegan_status": "vegan",
+      "vegan_reason": "manufacturer",
+      "candidate_fields": [
+        "features",
+        "detailed_description"
+      ]
+    },
+    {
+      "id": "65972011",
+      "current_on_ocado": 1,
+      "vegan_status": "vegan",
+      "vegan_reason": "manufacturer",
+      "candidate_fields": [
+        "brand_marketing"
+      ]
+    },
+    {
+      "id": "65976011",
+      "current_on_ocado": 1,
+      "vegan_status": "vegan",
+      "vegan_reason": "ingredients",
+      "candidate_fields": [
+        "brand_marketing"
+      ]
+    },
+    {
+      "id": "659763011",
+      "current_on_ocado": 1,
+      "vegan_status": "unknown",
+      "vegan_reason": null,
+      "candidate_fields": [
+        "detailed_description"
+      ]
+    },
+    {
+      "id": "65978011",
+      "current_on_ocado": 1,
+      "vegan_status": "vegan",
+      "vegan_reason": "manufacturer",
+      "candidate_fields": [
+        "brand_marketing"
+      ]
+    },
+    {
+      "id": "659781011",
+      "current_on_ocado": 0,
+      "vegan_status": "vegan",
+      "vegan_reason": "tagged",
+      "candidate_fields": [
+        "dietary_information"
+      ]
+    },
+    {
+      "id": "659788011",
+      "current_on_ocado": 0,
+      "vegan_status": "vegan",
+      "vegan_reason": "manufacturer",
+      "candidate_fields": [
+        "dietary_information",
+        "other_information"
+      ]
+    },
+    {
+      "id": "659792011",
+      "current_on_ocado": 0,
+      "vegan_status": "vegan",
+      "vegan_reason": "manufacturer",
+      "candidate_fields": [
+        "dietary_information",
+        "other_information"
+      ]
+    },
+    {
+      "id": "660145011",
+      "current_on_ocado": 1,
+      "vegan_status": "vegan",
+      "vegan_reason": "manufacturer",
+      "candidate_fields": [
+        "dietary_information"
+      ]
+    },
+    {
+      "id": "660147011",
+      "current_on_ocado": 1,
+      "vegan_status": "vegan",
+      "vegan_reason": "manufacturer",
+      "candidate_fields": [
+        "dietary_information"
+      ]
+    },
+    {
+      "id": "660417011",
+      "current_on_ocado": 1,
+      "vegan_status": "vegan",
+      "vegan_reason": "manufacturer",
+      "candidate_fields": [
+        "features"
+      ]
+    },
+    {
+      "id": "660786011",
+      "current_on_ocado": 1,
+      "vegan_status": "vegan",
+      "vegan_reason": "manufacturer",
+      "candidate_fields": [
+        "detailed_description"
+      ]
+    },
+    {
+      "id": "660790011",
+      "current_on_ocado": 1,
+      "vegan_status": "vegan",
+      "vegan_reason": "manufacturer",
+      "candidate_fields": [
+        "detailed_description"
+      ]
+    },
+    {
+      "id": "660792011",
+      "current_on_ocado": 1,
+      "vegan_status": "unknown",
+      "vegan_reason": null,
+      "candidate_fields": [
+        "detailed_description"
+      ]
+    },
+    {
+      "id": "661378011",
+      "current_on_ocado": 1,
+      "vegan_status": "vegan",
+      "vegan_reason": "ingredients",
+      "candidate_fields": [
+        "detailed_description"
+      ]
+    },
+    {
+      "id": "661564011",
+      "current_on_ocado": 1,
+      "vegan_status": "vegan",
+      "vegan_reason": "manufacturer",
+      "candidate_fields": [
+        "detailed_description"
+      ]
+    },
+    {
+      "id": "662734011",
+      "current_on_ocado": 1,
+      "vegan_status": "vegan",
+      "vegan_reason": "manufacturer",
+      "candidate_fields": [
+        "detailed_description"
+      ]
+    },
+    {
+      "id": "663783011",
+      "current_on_ocado": 1,
+      "vegan_status": "vegan",
+      "vegan_reason": "manufacturer",
+      "candidate_fields": [
+        "detailed_description"
+      ]
+    },
+    {
+      "id": "663811011",
+      "current_on_ocado": 1,
+      "vegan_status": "vegan",
+      "vegan_reason": "manufacturer",
+      "candidate_fields": [
+        "features",
+        "detailed_description"
+      ]
+    },
+    {
+      "id": "663812011",
+      "current_on_ocado": 1,
+      "vegan_status": "unknown",
+      "vegan_reason": null,
+      "candidate_fields": [
+        "features",
+        "detailed_description"
+      ]
+    },
+    {
+      "id": "663814011",
+      "current_on_ocado": 1,
+      "vegan_status": "vegan",
+      "vegan_reason": "manufacturer",
+      "candidate_fields": [
+        "features",
+        "detailed_description"
+      ]
+    },
+    {
+      "id": "663815011",
+      "current_on_ocado": 1,
+      "vegan_status": "vegan",
+      "vegan_reason": "manufacturer",
+      "candidate_fields": [
+        "features"
+      ]
+    },
+    {
+      "id": "663816011",
+      "current_on_ocado": 1,
+      "vegan_status": "vegan",
+      "vegan_reason": "manufacturer",
+      "candidate_fields": [
+        "features",
+        "detailed_description"
+      ]
+    },
+    {
+      "id": "663817011",
+      "current_on_ocado": 1,
+      "vegan_status": "vegan",
+      "vegan_reason": "manufacturer",
+      "candidate_fields": [
+        "features",
+        "detailed_description"
+      ]
+    },
+    {
+      "id": "663818011",
+      "current_on_ocado": 1,
+      "vegan_status": "vegan",
+      "vegan_reason": "manufacturer",
+      "candidate_fields": [
+        "features",
+        "detailed_description"
+      ]
+    },
+    {
+      "id": "663819011",
+      "current_on_ocado": 1,
+      "vegan_status": "vegan",
+      "vegan_reason": "manufacturer",
+      "candidate_fields": [
+        "features"
+      ]
+    },
+    {
+      "id": "663820011",
+      "current_on_ocado": 1,
+      "vegan_status": "vegan",
+      "vegan_reason": "manufacturer",
+      "candidate_fields": [
+        "features",
+        "detailed_description"
+      ]
+    },
+    {
+      "id": "663824011",
+      "current_on_ocado": 1,
+      "vegan_status": "vegan",
+      "vegan_reason": "manufacturer",
+      "candidate_fields": [
+        "features",
+        "detailed_description"
+      ]
+    },
+    {
+      "id": "663826011",
+      "current_on_ocado": 1,
+      "vegan_status": "vegan",
+      "vegan_reason": "manufacturer",
+      "candidate_fields": [
+        "features",
+        "detailed_description"
+      ]
+    },
+    {
+      "id": "663827011",
+      "current_on_ocado": 1,
+      "vegan_status": "vegan",
+      "vegan_reason": "manufacturer",
+      "candidate_fields": [
+        "features",
+        "detailed_description"
+      ]
+    },
+    {
+      "id": "663897011",
+      "current_on_ocado": 1,
+      "vegan_status": "vegan",
+      "vegan_reason": "manufacturer",
+      "candidate_fields": [
+        "detailed_description"
+      ]
+    },
+    {
+      "id": "664509011",
+      "current_on_ocado": 1,
+      "vegan_status": "vegan",
+      "vegan_reason": "manufacturer",
+      "candidate_fields": [
+        "features",
+        "detailed_description"
+      ]
+    },
+    {
+      "id": "664510011",
+      "current_on_ocado": 1,
+      "vegan_status": "vegan",
+      "vegan_reason": "manufacturer",
+      "candidate_fields": [
+        "features",
+        "detailed_description"
+      ]
+    },
+    {
+      "id": "664511011",
+      "current_on_ocado": 1,
+      "vegan_status": "vegan",
+      "vegan_reason": "manufacturer",
+      "candidate_fields": [
+        "features",
+        "detailed_description"
+      ]
+    },
+    {
+      "id": "664512011",
+      "current_on_ocado": 1,
+      "vegan_status": "vegan",
+      "vegan_reason": "manufacturer",
+      "candidate_fields": [
+        "detailed_description"
+      ]
+    },
+    {
+      "id": "664513011",
+      "current_on_ocado": 1,
+      "vegan_status": "vegan",
+      "vegan_reason": "manufacturer",
+      "candidate_fields": [
+        "features",
+        "detailed_description"
+      ]
+    },
+    {
+      "id": "664515011",
+      "current_on_ocado": 1,
+      "vegan_status": "vegan",
+      "vegan_reason": "manufacturer",
+      "candidate_fields": [
+        "features",
+        "detailed_description"
+      ]
+    },
+    {
+      "id": "664516011",
+      "current_on_ocado": 1,
+      "vegan_status": "vegan",
+      "vegan_reason": "manufacturer",
+      "candidate_fields": [
+        "features",
+        "detailed_description"
+      ]
+    },
+    {
+      "id": "664517011",
+      "current_on_ocado": 1,
+      "vegan_status": "vegan",
+      "vegan_reason": "manufacturer",
+      "candidate_fields": [
+        "features",
+        "detailed_description"
+      ]
+    },
+    {
+      "id": "665109011",
+      "current_on_ocado": 1,
+      "vegan_status": "vegan",
+      "vegan_reason": "manufacturer",
+      "candidate_fields": [
+        "other_information"
+      ]
+    },
+    {
+      "id": "665110011",
+      "current_on_ocado": 1,
+      "vegan_status": "vegan",
+      "vegan_reason": "manufacturer",
+      "candidate_fields": [
+        "other_information"
+      ]
+    },
+    {
+      "id": "665112011",
+      "current_on_ocado": 1,
+      "vegan_status": "vegan",
+      "vegan_reason": "manufacturer",
+      "candidate_fields": [
+        "other_information"
+      ]
+    },
+    {
+      "id": "665113011",
+      "current_on_ocado": 1,
+      "vegan_status": "vegan",
+      "vegan_reason": "manufacturer",
+      "candidate_fields": [
+        "other_information"
+      ]
+    },
+    {
+      "id": "665444011",
+      "current_on_ocado": 1,
+      "vegan_status": "vegan",
+      "vegan_reason": "ingredients",
+      "candidate_fields": [
+        "detailed_description"
+      ]
+    },
+    {
+      "id": "665445011",
+      "current_on_ocado": 1,
+      "vegan_status": "vegan",
+      "vegan_reason": "ingredients",
+      "candidate_fields": [
+        "detailed_description"
+      ]
+    },
+    {
+      "id": "665446011",
+      "current_on_ocado": 1,
+      "vegan_status": "vegan",
+      "vegan_reason": "ingredients",
+      "candidate_fields": [
+        "detailed_description"
+      ]
+    },
+    {
+      "id": "665662011",
+      "current_on_ocado": 1,
+      "vegan_status": "vegan",
+      "vegan_reason": "ingredients",
+      "candidate_fields": [
+        "brand_marketing"
+      ]
+    },
+    {
+      "id": "666446011",
+      "current_on_ocado": 1,
+      "vegan_status": "vegan",
+      "vegan_reason": "manufacturer",
+      "candidate_fields": [
+        "other_information"
+      ]
+    },
+    {
+      "id": "666447011",
+      "current_on_ocado": 1,
+      "vegan_status": "vegan",
+      "vegan_reason": "manufacturer",
+      "candidate_fields": [
+        "other_information"
+      ]
+    },
+    {
+      "id": "666448011",
+      "current_on_ocado": 1,
+      "vegan_status": "vegan",
+      "vegan_reason": "manufacturer",
+      "candidate_fields": [
+        "other_information"
+      ]
+    },
+    {
+      "id": "666449011",
+      "current_on_ocado": 0,
+      "vegan_status": "vegan",
+      "vegan_reason": "tagged",
+      "candidate_fields": [
+        "detailed_description",
+        "other_information"
+      ]
+    },
+    {
+      "id": "666593011",
+      "current_on_ocado": 1,
+      "vegan_status": "vegan",
+      "vegan_reason": "manufacturer",
+      "candidate_fields": [
+        "dietary_information"
+      ]
+    },
+    {
+      "id": "666594011",
+      "current_on_ocado": 1,
+      "vegan_status": "vegan",
+      "vegan_reason": "manufacturer",
+      "candidate_fields": [
+        "detailed_description"
+      ]
+    },
+    {
+      "id": "667143011",
+      "current_on_ocado": 1,
+      "vegan_status": "vegan",
+      "vegan_reason": "manufacturer",
+      "candidate_fields": [
+        "detailed_description"
+      ]
+    },
+    {
+      "id": "667715011",
+      "current_on_ocado": 1,
+      "vegan_status": "unknown",
+      "vegan_reason": null,
+      "candidate_fields": [
+        "other_information"
+      ]
+    },
+    {
+      "id": "667719011",
+      "current_on_ocado": 1,
+      "vegan_status": "unknown",
+      "vegan_reason": null,
+      "candidate_fields": [
+        "other_information"
+      ]
+    },
+    {
+      "id": "667850011",
+      "current_on_ocado": 1,
+      "vegan_status": "vegan",
+      "vegan_reason": "manufacturer",
+      "candidate_fields": [
+        "features",
+        "detailed_description"
+      ]
+    },
+    {
+      "id": "667969011",
+      "current_on_ocado": 1,
+      "vegan_status": "vegan",
+      "vegan_reason": "manufacturer",
+      "candidate_fields": [
+        "detailed_description"
+      ]
+    },
+    {
+      "id": "667977011",
+      "current_on_ocado": 1,
+      "vegan_status": "vegan",
+      "vegan_reason": "manufacturer",
+      "candidate_fields": [
+        "features",
+        "detailed_description"
+      ]
+    },
+    {
+      "id": "668475011",
+      "current_on_ocado": 1,
+      "vegan_status": "vegan",
+      "vegan_reason": "manufacturer",
+      "candidate_fields": [
+        "detailed_description"
+      ]
+    },
+    {
+      "id": "668476011",
+      "current_on_ocado": 1,
+      "vegan_status": "vegan",
+      "vegan_reason": "manufacturer",
+      "candidate_fields": [
+        "detailed_description"
+      ]
+    },
+    {
+      "id": "668477011",
+      "current_on_ocado": 1,
+      "vegan_status": "vegan",
+      "vegan_reason": "manufacturer",
+      "candidate_fields": [
+        "features",
+        "detailed_description",
+        "brand_marketing"
+      ]
+    },
+    {
+      "id": "668861011",
+      "current_on_ocado": 1,
+      "vegan_status": "vegan",
+      "vegan_reason": "manufacturer",
+      "candidate_fields": [
+        "detailed_description"
+      ]
+    },
+    {
+      "id": "668862011",
+      "current_on_ocado": 1,
+      "vegan_status": "vegan",
+      "vegan_reason": "manufacturer",
+      "candidate_fields": [
+        "detailed_description"
+      ]
+    },
+    {
+      "id": "668863011",
+      "current_on_ocado": 1,
+      "vegan_status": "vegan",
+      "vegan_reason": "manufacturer",
+      "candidate_fields": [
+        "detailed_description"
+      ]
+    },
+    {
+      "id": "668864011",
+      "current_on_ocado": 1,
+      "vegan_status": "vegan",
+      "vegan_reason": "manufacturer",
+      "candidate_fields": [
+        "detailed_description"
+      ]
+    },
+    {
+      "id": "668865011",
+      "current_on_ocado": 1,
+      "vegan_status": "vegan",
+      "vegan_reason": "manufacturer",
+      "candidate_fields": [
+        "detailed_description"
+      ]
+    },
+    {
+      "id": "668877011",
+      "current_on_ocado": 1,
+      "vegan_status": "vegan",
+      "vegan_reason": "manufacturer",
+      "candidate_fields": [
+        "features",
+        "detailed_description"
+      ]
+    },
+    {
+      "id": "668878011",
+      "current_on_ocado": 1,
+      "vegan_status": "vegan",
+      "vegan_reason": "manufacturer",
+      "candidate_fields": [
+        "features",
+        "detailed_description"
+      ]
+    },
+    {
+      "id": "668879011",
+      "current_on_ocado": 1,
+      "vegan_status": "vegan",
+      "vegan_reason": "manufacturer",
+      "candidate_fields": [
+        "features",
+        "detailed_description"
+      ]
+    },
+    {
+      "id": "668948011",
+      "current_on_ocado": 1,
+      "vegan_status": "vegan",
+      "vegan_reason": "manufacturer",
+      "candidate_fields": [
+        "features",
+        "detailed_description"
+      ]
+    },
+    {
+      "id": "669387011",
+      "current_on_ocado": 1,
+      "vegan_status": "vegan",
+      "vegan_reason": "manufacturer",
+      "candidate_fields": [
+        "detailed_description"
+      ]
+    },
+    {
+      "id": "669836011",
+      "current_on_ocado": 1,
+      "vegan_status": "vegan",
+      "vegan_reason": "manufacturer",
+      "candidate_fields": [
+        "features",
+        "detailed_description"
+      ]
+    },
+    {
+      "id": "669838011",
+      "current_on_ocado": 1,
+      "vegan_status": "vegan",
+      "vegan_reason": "manufacturer",
+      "candidate_fields": [
+        "detailed_description"
+      ]
+    },
+    {
+      "id": "669918011",
+      "current_on_ocado": 1,
+      "vegan_status": "vegan",
+      "vegan_reason": "manufacturer",
+      "candidate_fields": [
+        "features"
+      ]
+    },
+    {
+      "id": "669919011",
+      "current_on_ocado": 1,
+      "vegan_status": "vegan",
+      "vegan_reason": "manufacturer",
+      "candidate_fields": [
+        "features",
+        "detailed_description"
+      ]
+    },
+    {
+      "id": "669922011",
+      "current_on_ocado": 1,
+      "vegan_status": "vegan",
+      "vegan_reason": "manufacturer",
+      "candidate_fields": [
+        "features"
+      ]
+    },
+    {
+      "id": "669928011",
+      "current_on_ocado": 1,
+      "vegan_status": "vegan",
+      "vegan_reason": "manufacturer",
+      "candidate_fields": [
+        "features"
+      ]
+    },
+    {
+      "id": "669940011",
+      "current_on_ocado": 1,
+      "vegan_status": "unknown",
+      "vegan_reason": null,
+      "candidate_fields": [
+        "features"
+      ]
+    },
+    {
+      "id": "670610011",
+      "current_on_ocado": 1,
+      "vegan_status": "vegan",
+      "vegan_reason": "manufacturer",
+      "candidate_fields": [
+        "features"
+      ]
+    },
+    {
+      "id": "671078011",
+      "current_on_ocado": 1,
+      "vegan_status": "vegan",
+      "vegan_reason": "manufacturer",
+      "candidate_fields": [
+        "features"
+      ]
+    },
+    {
+      "id": "671079011",
+      "current_on_ocado": 1,
+      "vegan_status": "vegan",
+      "vegan_reason": "manufacturer",
+      "candidate_fields": [
+        "features"
+      ]
+    },
+    {
+      "id": "671259011",
+      "current_on_ocado": 0,
+      "vegan_status": "vegan",
+      "vegan_reason": "manufacturer",
+      "candidate_fields": [
+        "brand_marketing"
+      ]
+    },
+    {
+      "id": "671260011",
+      "current_on_ocado": 1,
+      "vegan_status": "vegan",
+      "vegan_reason": "manufacturer",
+      "candidate_fields": [
+        "brand_marketing"
+      ]
+    },
+    {
+      "id": "672219011",
+      "current_on_ocado": 1,
+      "vegan_status": "vegan",
+      "vegan_reason": "ingredients",
+      "candidate_fields": [
+        "detailed_description"
+      ]
+    },
+    {
+      "id": "672275011",
+      "current_on_ocado": 1,
+      "vegan_status": "vegan",
+      "vegan_reason": "manufacturer",
+      "candidate_fields": [
+        "detailed_description"
+      ]
+    },
+    {
+      "id": "673549011",
+      "current_on_ocado": 0,
+      "vegan_status": "unknown",
+      "vegan_reason": null,
+      "candidate_fields": [
+        "detailed_description"
+      ]
+    },
+    {
+      "id": "673609011",
+      "current_on_ocado": 1,
+      "vegan_status": "nonvegan",
+      "vegan_reason": null,
+      "candidate_fields": [
+        "detailed_description"
+      ]
+    },
+    {
+      "id": "673752011",
+      "current_on_ocado": 1,
+      "vegan_status": "vegan",
+      "vegan_reason": "manufacturer",
+      "candidate_fields": [
+        "detailed_description"
+      ]
+    },
+    {
+      "id": "673766011",
+      "current_on_ocado": 1,
+      "vegan_status": "vegan",
+      "vegan_reason": "manufacturer",
+      "candidate_fields": [
+        "detailed_description"
+      ]
+    },
+    {
+      "id": "674491011",
+      "current_on_ocado": 1,
+      "vegan_status": "vegan",
+      "vegan_reason": "manufacturer",
+      "candidate_fields": [
+        "dietary_information",
+        "detailed_description"
+      ]
+    },
+    {
+      "id": "674492011",
+      "current_on_ocado": 1,
+      "vegan_status": "vegan",
+      "vegan_reason": "manufacturer",
+      "candidate_fields": [
+        "dietary_information"
+      ]
+    },
+    {
+      "id": "674503011",
+      "current_on_ocado": 1,
+      "vegan_status": "unknown",
+      "vegan_reason": null,
+      "candidate_fields": [
+        "detailed_description"
+      ]
+    },
+    {
+      "id": "674504011",
+      "current_on_ocado": 1,
+      "vegan_status": "unknown",
+      "vegan_reason": null,
+      "candidate_fields": [
+        "detailed_description"
+      ]
+    },
+    {
+      "id": "674505011",
+      "current_on_ocado": 1,
+      "vegan_status": "unknown",
+      "vegan_reason": null,
+      "candidate_fields": [
+        "detailed_description"
+      ]
+    },
+    {
+      "id": "675566011",
+      "current_on_ocado": 1,
+      "vegan_status": "vegan",
+      "vegan_reason": "manufacturer",
+      "candidate_fields": [
+        "detailed_description"
+      ]
+    },
+    {
+      "id": "675567011",
+      "current_on_ocado": 1,
+      "vegan_status": "vegan",
+      "vegan_reason": "manufacturer",
+      "candidate_fields": [
+        "detailed_description"
+      ]
+    },
+    {
+      "id": "675570011",
+      "current_on_ocado": 1,
+      "vegan_status": "vegan",
+      "vegan_reason": "manufacturer",
+      "candidate_fields": [
+        "detailed_description"
+      ]
+    },
+    {
+      "id": "675713011",
+      "current_on_ocado": 1,
+      "vegan_status": "vegan",
+      "vegan_reason": "manufacturer",
+      "candidate_fields": [
+        "dietary_information",
+        "other_information"
+      ]
+    },
+    {
+      "id": "675714011",
+      "current_on_ocado": 1,
+      "vegan_status": "vegan",
+      "vegan_reason": "manufacturer",
+      "candidate_fields": [
+        "dietary_information",
+        "other_information"
+      ]
+    },
+    {
+      "id": "675715011",
+      "current_on_ocado": 1,
+      "vegan_status": "vegan",
+      "vegan_reason": "manufacturer",
+      "candidate_fields": [
+        "dietary_information",
+        "other_information"
+      ]
+    },
+    {
+      "id": "675716011",
+      "current_on_ocado": 1,
+      "vegan_status": "vegan",
+      "vegan_reason": "manufacturer",
+      "candidate_fields": [
+        "dietary_information",
+        "other_information"
+      ]
+    },
+    {
+      "id": "675956011",
+      "current_on_ocado": 1,
+      "vegan_status": "vegan",
+      "vegan_reason": "manufacturer",
+      "candidate_fields": [
+        "other_information"
+      ]
+    },
+    {
+      "id": "675958011",
+      "current_on_ocado": 1,
+      "vegan_status": "vegan",
+      "vegan_reason": "manufacturer",
+      "candidate_fields": [
+        "other_information"
+      ]
+    },
+    {
+      "id": "675959011",
+      "current_on_ocado": 1,
+      "vegan_status": "vegan",
+      "vegan_reason": "manufacturer",
+      "candidate_fields": [
+        "other_information"
+      ]
+    },
+    {
+      "id": "675960011",
+      "current_on_ocado": 1,
+      "vegan_status": "vegan",
+      "vegan_reason": "manufacturer",
+      "candidate_fields": [
+        "other_information"
+      ]
+    },
+    {
+      "id": "675961011",
+      "current_on_ocado": 1,
+      "vegan_status": "vegan",
+      "vegan_reason": "manufacturer",
+      "candidate_fields": [
+        "other_information"
+      ]
+    },
+    {
+      "id": "675962011",
+      "current_on_ocado": 1,
+      "vegan_status": "vegan",
+      "vegan_reason": "manufacturer",
+      "candidate_fields": [
+        "other_information"
+      ]
+    },
+    {
+      "id": "675964011",
+      "current_on_ocado": 1,
+      "vegan_status": "vegan",
+      "vegan_reason": "manufacturer",
+      "candidate_fields": [
+        "other_information"
+      ]
+    },
+    {
+      "id": "676025011",
+      "current_on_ocado": 1,
+      "vegan_status": "vegan",
+      "vegan_reason": "manufacturer",
+      "candidate_fields": [
+        "features",
+        "further_description"
+      ]
+    },
+    {
+      "id": "677365011",
+      "current_on_ocado": 1,
+      "vegan_status": "vegan",
+      "vegan_reason": "manufacturer",
+      "candidate_fields": [
+        "detailed_description"
+      ]
+    },
+    {
+      "id": "679212011",
+      "current_on_ocado": 1,
+      "vegan_status": "vegan",
+      "vegan_reason": "manufacturer",
+      "candidate_fields": [
+        "dietary_information"
+      ]
+    },
+    {
+      "id": "679917011",
+      "current_on_ocado": 1,
+      "vegan_status": "vegan",
+      "vegan_reason": "manufacturer",
+      "candidate_fields": [
+        "detailed_description"
+      ]
+    },
+    {
+      "id": "679919011",
+      "current_on_ocado": 1,
+      "vegan_status": "vegan",
+      "vegan_reason": "manufacturer",
+      "candidate_fields": [
+        "detailed_description"
+      ]
+    },
+    {
+      "id": "679956011",
+      "current_on_ocado": 1,
+      "vegan_status": "unknown",
+      "vegan_reason": null,
+      "candidate_fields": [
+        "detailed_description"
+      ]
+    },
+    {
+      "id": "680853011",
+      "current_on_ocado": 1,
+      "vegan_status": "vegan",
+      "vegan_reason": "manufacturer",
+      "candidate_fields": [
+        "dietary_information"
+      ]
+    },
+    {
+      "id": "681263011",
+      "current_on_ocado": 1,
+      "vegan_status": "vegan",
+      "vegan_reason": "manufacturer",
+      "candidate_fields": [
+        "detailed_description"
+      ]
+    },
+    {
+      "id": "681922011",
+      "current_on_ocado": 1,
+      "vegan_status": "vegan",
+      "vegan_reason": "manufacturer",
+      "candidate_fields": [
+        "features"
+      ]
+    },
+    {
+      "id": "681985011",
+      "current_on_ocado": 1,
+      "vegan_status": "vegan",
+      "vegan_reason": "manufacturer",
+      "candidate_fields": [
+        "features"
+      ]
+    },
+    {
+      "id": "681988011",
+      "current_on_ocado": 1,
+      "vegan_status": "vegan",
+      "vegan_reason": "manufacturer",
+      "candidate_fields": [
+        "features"
+      ]
+    },
+    {
+      "id": "681992011",
+      "current_on_ocado": 1,
+      "vegan_status": "vegan",
+      "vegan_reason": "manufacturer",
+      "candidate_fields": [
+        "features"
+      ]
+    },
+    {
+      "id": "682095011",
+      "current_on_ocado": 1,
+      "vegan_status": "vegan",
+      "vegan_reason": "manufacturer",
+      "candidate_fields": [
+        "detailed_description"
+      ]
+    },
+    {
+      "id": "682096011",
+      "current_on_ocado": 1,
+      "vegan_status": "vegan",
+      "vegan_reason": "manufacturer",
+      "candidate_fields": [
+        "features"
+      ]
+    },
+    {
+      "id": "683208011",
+      "current_on_ocado": 1,
+      "vegan_status": "vegan",
+      "vegan_reason": "manufacturer",
+      "candidate_fields": [
+        "brand_marketing"
+      ]
+    },
+    {
+      "id": "683974011",
+      "current_on_ocado": 1,
+      "vegan_status": "vegan",
+      "vegan_reason": "manufacturer",
+      "candidate_fields": [
+        "detailed_description",
+        "brand_marketing"
+      ]
+    },
+    {
+      "id": "683975011",
+      "current_on_ocado": 0,
+      "vegan_status": "vegan",
+      "vegan_reason": "manufacturer",
+      "candidate_fields": [
+        "features",
+        "detailed_description",
+        "brand_marketing"
+      ]
+    },
+    {
+      "id": "683976011",
+      "current_on_ocado": 1,
+      "vegan_status": "vegan",
+      "vegan_reason": "manufacturer",
+      "candidate_fields": [
+        "detailed_description",
+        "brand_marketing"
+      ]
+    },
+    {
+      "id": "683977011",
+      "current_on_ocado": 1,
+      "vegan_status": "vegan",
+      "vegan_reason": "manufacturer",
+      "candidate_fields": [
+        "detailed_description",
+        "brand_marketing"
+      ]
+    },
+    {
+      "id": "683978011",
+      "current_on_ocado": 1,
+      "vegan_status": "vegan",
+      "vegan_reason": "manufacturer",
+      "candidate_fields": [
+        "features",
+        "brand_marketing"
+      ]
+    },
+    {
+      "id": "683979011",
+      "current_on_ocado": 1,
+      "vegan_status": "nonvegan",
+      "vegan_reason": null,
+      "candidate_fields": [
+        "features",
+        "detailed_description",
+        "brand_marketing"
+      ]
+    },
+    {
+      "id": "685011011",
+      "current_on_ocado": 1,
+      "vegan_status": "vegan",
+      "vegan_reason": "manufacturer",
+      "candidate_fields": [
+        "detailed_description"
+      ]
+    },
+    {
+      "id": "685017011",
+      "current_on_ocado": 1,
+      "vegan_status": "vegan",
+      "vegan_reason": "manufacturer",
+      "candidate_fields": [
+        "features"
+      ]
+    },
+    {
+      "id": "685018011",
+      "current_on_ocado": 1,
+      "vegan_status": "vegan",
+      "vegan_reason": "manufacturer",
+      "candidate_fields": [
+        "features"
+      ]
+    },
+    {
+      "id": "685224011",
+      "current_on_ocado": 1,
+      "vegan_status": "vegan",
+      "vegan_reason": "manufacturer",
+      "candidate_fields": [
+        "detailed_description"
+      ]
+    },
+    {
+      "id": "685225011",
+      "current_on_ocado": 1,
+      "vegan_status": "vegan",
+      "vegan_reason": "manufacturer",
+      "candidate_fields": [
+        "detailed_description"
+      ]
+    },
+    {
+      "id": "685560011",
+      "current_on_ocado": 1,
+      "vegan_status": "unknown",
+      "vegan_reason": null,
+      "candidate_fields": [
+        "detailed_description"
+      ]
+    },
+    {
+      "id": "685662011",
+      "current_on_ocado": 1,
+      "vegan_status": "unknown",
+      "vegan_reason": null,
+      "candidate_fields": [
+        "detailed_description"
+      ]
+    },
+    {
+      "id": "685778011",
+      "current_on_ocado": 1,
+      "vegan_status": "vegan",
+      "vegan_reason": "manufacturer",
+      "candidate_fields": [
+        "detailed_description"
+      ]
+    },
+    {
+      "id": "685782011",
+      "current_on_ocado": 1,
+      "vegan_status": "unknown",
+      "vegan_reason": null,
+      "candidate_fields": [
+        "features",
+        "detailed_description"
+      ]
+    },
+    {
+      "id": "685810011",
+      "current_on_ocado": 1,
+      "vegan_status": "vegan",
+      "vegan_reason": "manufacturer",
+      "candidate_fields": [
+        "features",
+        "detailed_description"
+      ]
+    },
+    {
+      "id": "685811011",
+      "current_on_ocado": 1,
+      "vegan_status": "vegan",
+      "vegan_reason": "manufacturer",
+      "candidate_fields": [
+        "features",
+        "detailed_description"
+      ]
+    },
+    {
+      "id": "686446011",
+      "current_on_ocado": 1,
+      "vegan_status": "vegan",
+      "vegan_reason": "manufacturer",
+      "candidate_fields": [
+        "detailed_description"
+      ]
+    },
+    {
+      "id": "68764011",
+      "current_on_ocado": 0,
+      "vegan_status": "vegan",
+      "vegan_reason": "manufacturer",
+      "candidate_fields": [
+        "detailed_description"
+      ]
+    },
+    {
+      "id": "688652011",
+      "current_on_ocado": 1,
+      "vegan_status": "vegan",
+      "vegan_reason": "manufacturer",
+      "candidate_fields": [
+        "features",
+        "detailed_description"
+      ]
+    },
+    {
+      "id": "688714011",
+      "current_on_ocado": 1,
+      "vegan_status": "unknown",
+      "vegan_reason": null,
+      "candidate_fields": [
+        "features"
+      ]
+    },
+    {
+      "id": "688717011",
+      "current_on_ocado": 1,
+      "vegan_status": "unknown",
+      "vegan_reason": null,
+      "candidate_fields": [
+        "features"
+      ]
+    },
+    {
+      "id": "690131011",
+      "current_on_ocado": 1,
+      "vegan_status": "vegan",
+      "vegan_reason": "ingredients",
+      "candidate_fields": [
+        "detailed_description"
+      ]
+    },
+    {
+      "id": "72059011",
+      "current_on_ocado": 1,
+      "vegan_status": "vegan",
+      "vegan_reason": "manufacturer",
+      "candidate_fields": [
+        "features",
+        "detailed_description"
+      ]
+    },
+    {
+      "id": "73087011",
+      "current_on_ocado": 1,
+      "vegan_status": "vegan",
+      "vegan_reason": "ingredients",
+      "candidate_fields": [
+        "brand_marketing"
+      ]
+    },
+    {
+      "id": "73088011",
+      "current_on_ocado": 1,
+      "vegan_status": "vegan",
+      "vegan_reason": "ingredients",
+      "candidate_fields": [
+        "brand_marketing"
+      ]
+    },
+    {
+      "id": "73089011",
+      "current_on_ocado": 1,
+      "vegan_status": "vegan",
+      "vegan_reason": "manufacturer",
+      "candidate_fields": [
+        "brand_marketing"
+      ]
+    },
+    {
+      "id": "73090011",
+      "current_on_ocado": 1,
+      "vegan_status": "vegan",
+      "vegan_reason": "manufacturer",
+      "candidate_fields": [
+        "brand_marketing"
+      ]
+    },
+    {
+      "id": "73091011",
+      "current_on_ocado": 1,
+      "vegan_status": "vegan",
+      "vegan_reason": "manufacturer",
+      "candidate_fields": [
+        "brand_marketing"
+      ]
+    },
+    {
+      "id": "73094011",
+      "current_on_ocado": 1,
+      "vegan_status": "vegan",
+      "vegan_reason": "ingredients",
+      "candidate_fields": [
+        "brand_marketing"
+      ]
+    },
+    {
+      "id": "73095011",
+      "current_on_ocado": 1,
+      "vegan_status": "vegan",
+      "vegan_reason": "manufacturer",
+      "candidate_fields": [
+        "brand_marketing"
+      ]
+    },
+    {
+      "id": "73098011",
+      "current_on_ocado": 1,
+      "vegan_status": "vegan",
+      "vegan_reason": "manufacturer",
+      "candidate_fields": [
+        "brand_marketing"
+      ]
+    },
+    {
+      "id": "73100011",
+      "current_on_ocado": 1,
+      "vegan_status": "vegan",
+      "vegan_reason": "ingredients",
+      "candidate_fields": [
+        "brand_marketing"
+      ]
+    },
+    {
+      "id": "73103011",
+      "current_on_ocado": 1,
+      "vegan_status": "vegan",
+      "vegan_reason": "ingredients",
+      "candidate_fields": [
+        "brand_marketing"
+      ]
+    },
+    {
+      "id": "73104011",
+      "current_on_ocado": 1,
+      "vegan_status": "vegan",
+      "vegan_reason": "ingredients",
+      "candidate_fields": [
+        "brand_marketing"
+      ]
+    },
+    {
+      "id": "83100011",
+      "current_on_ocado": 1,
+      "vegan_status": "vegan",
+      "vegan_reason": "manufacturer",
+      "candidate_fields": [
+        "brand_marketing"
+      ]
+    },
+    {
+      "id": "85973011",
+      "current_on_ocado": 1,
+      "vegan_status": "nonvegan",
+      "vegan_reason": null,
+      "candidate_fields": [
+        "features",
+        "detailed_description",
+        "brand_marketing"
+      ]
+    },
+    {
+      "id": "489610011",
+      "current_on_ocado": 1,
+      "vegan_status": "vegan",
+      "vegan_reason": "manufacturer",
+      "candidate_fields": [
+        "further_description"
+      ]
+    },
+    {
+      "id": "589794011",
+      "current_on_ocado": 1,
+      "vegan_status": "unknown",
+      "vegan_reason": null,
+      "candidate_fields": [
+        "detailed_description"
+      ]
+    },
+    {
+      "id": "638356011",
+      "current_on_ocado": 1,
+      "vegan_status": "vegan",
+      "vegan_reason": "ingredients",
+      "candidate_fields": [
+        "detailed_description"
+      ]
+    },
+    {
+      "id": "695362011",
+      "current_on_ocado": 1,
+      "vegan_status": "vegan",
+      "vegan_reason": "manufacturer",
+      "candidate_fields": [
+        "features"
+      ]
+    },
+    {
+      "id": "695367011",
+      "current_on_ocado": 1,
+      "vegan_status": "vegan",
+      "vegan_reason": "manufacturer",
+      "candidate_fields": [
+        "features",
+        "detailed_description"
+      ]
+    },
+    {
+      "id": "683032011",
+      "current_on_ocado": 1,
+      "vegan_status": "vegan",
+      "vegan_reason": "manufacturer",
+      "candidate_fields": [
+        "features"
+      ]
+    },
+    {
+      "id": "695365011",
+      "current_on_ocado": 1,
+      "vegan_status": "vegan",
+      "vegan_reason": "manufacturer",
+      "candidate_fields": [
+        "features",
+        "detailed_description"
+      ]
+    },
+    {
+      "id": "695357011",
+      "current_on_ocado": 1,
+      "vegan_status": "vegan",
+      "vegan_reason": "manufacturer",
+      "candidate_fields": [
+        "features"
+      ]
+    },
+    {
+      "id": "695185011",
+      "current_on_ocado": 1,
+      "vegan_status": "vegan",
+      "vegan_reason": "manufacturer",
+      "candidate_fields": [
+        "features"
+      ]
+    },
+    {
+      "id": "695361011",
+      "current_on_ocado": 1,
+      "vegan_status": "vegan",
+      "vegan_reason": "manufacturer",
+      "candidate_fields": [
+        "features"
+      ]
+    },
+    {
+      "id": "689938011",
+      "current_on_ocado": 1,
+      "vegan_status": "vegan",
+      "vegan_reason": "manufacturer",
+      "candidate_fields": [
+        "features",
+        "detailed_description"
+      ]
+    },
+    {
+      "id": "695364011",
+      "current_on_ocado": 1,
+      "vegan_status": "vegan",
+      "vegan_reason": "manufacturer",
+      "candidate_fields": [
+        "features",
+        "detailed_description"
+      ]
+    },
+    {
+      "id": "695363011",
+      "current_on_ocado": 1,
+      "vegan_status": "vegan",
+      "vegan_reason": "manufacturer",
+      "candidate_fields": [
+        "features"
+      ]
+    },
+    {
+      "id": "693952011",
+      "current_on_ocado": 1,
+      "vegan_status": "vegan",
+      "vegan_reason": "manufacturer",
+      "candidate_fields": [
+        "features",
+        "detailed_description"
+      ]
+    },
+    {
+      "id": "595325011",
+      "current_on_ocado": 0,
+      "vegan_status": "vegan",
+      "vegan_reason": "manufacturer",
+      "candidate_fields": [
+        "detailed_description"
+      ]
+    },
+    {
+      "id": "595310011",
+      "current_on_ocado": 0,
+      "vegan_status": "vegan",
+      "vegan_reason": "manufacturer",
+      "candidate_fields": [
+        "detailed_description"
+      ]
+    },
+    {
+      "id": "690057011",
+      "current_on_ocado": 1,
+      "vegan_status": "vegan",
+      "vegan_reason": "manufacturer",
+      "candidate_fields": [
+        "detailed_description"
+      ]
+    },
+    {
+      "id": "675492011",
+      "current_on_ocado": 1,
+      "vegan_status": "vegan",
+      "vegan_reason": "manufacturer",
+      "candidate_fields": [
+        "detailed_description"
+      ]
+    },
+    {
+      "id": "689836011",
+      "current_on_ocado": 1,
+      "vegan_status": "vegan",
+      "vegan_reason": "manufacturer",
+      "candidate_fields": [
+        "detailed_description"
+      ]
+    },
+    {
+      "id": "695103011",
+      "current_on_ocado": 1,
+      "vegan_status": "vegan",
+      "vegan_reason": "manufacturer",
+      "candidate_fields": [
+        "detailed_description"
+      ]
+    },
+    {
+      "id": "695195011",
+      "current_on_ocado": 1,
+      "vegan_status": "vegan",
+      "vegan_reason": "manufacturer",
+      "candidate_fields": [
+        "detailed_description"
+      ]
+    },
+    {
+      "id": "696118011",
+      "current_on_ocado": 1,
+      "vegan_status": "vegan",
+      "vegan_reason": "manufacturer",
+      "candidate_fields": [
+        "detailed_description"
+      ]
+    },
+    {
+      "id": "694688011",
+      "current_on_ocado": 1,
+      "vegan_status": "vegan",
+      "vegan_reason": "manufacturer",
+      "candidate_fields": [
+        "detailed_description"
+      ]
+    },
+    {
+      "id": "694690011",
+      "current_on_ocado": 1,
+      "vegan_status": "vegan",
+      "vegan_reason": "manufacturer",
+      "candidate_fields": [
+        "detailed_description"
+      ]
+    },
+    {
+      "id": "695237011",
+      "current_on_ocado": 1,
+      "vegan_status": "vegan",
+      "vegan_reason": "manufacturer",
+      "candidate_fields": [
+        "detailed_description"
+      ]
+    },
+    {
+      "id": "696220011",
+      "current_on_ocado": 1,
+      "vegan_status": "vegan",
+      "vegan_reason": "manufacturer",
+      "candidate_fields": [
+        "detailed_description"
+      ]
+    },
+    {
+      "id": "695356011",
+      "current_on_ocado": 1,
+      "vegan_status": "vegan",
+      "vegan_reason": "manufacturer",
+      "candidate_fields": [
+        "features"
+      ]
+    },
+    {
+      "id": "683704011",
+      "current_on_ocado": 1,
+      "vegan_status": "vegan",
+      "vegan_reason": "manufacturer",
+      "candidate_fields": [
+        "features"
+      ]
+    },
+    {
+      "id": "571180011",
+      "current_on_ocado": 1,
+      "vegan_status": "nonvegan",
+      "vegan_reason": null,
+      "candidate_fields": [
+        "detailed_description"
+      ]
+    },
+    {
+      "id": "595309011",
+      "current_on_ocado": 1,
+      "vegan_status": "vegan",
+      "vegan_reason": "manufacturer",
+      "candidate_fields": [
+        "detailed_description"
+      ]
+    },
+    {
+      "id": "693861011",
+      "current_on_ocado": 1,
+      "vegan_status": "unknown",
+      "vegan_reason": null,
+      "candidate_fields": [
+        "features",
+        "detailed_description"
+      ]
+    },
+    {
+      "id": "695469011",
+      "current_on_ocado": 1,
+      "vegan_status": "vegan",
+      "vegan_reason": "manufacturer",
+      "candidate_fields": [
+        "detailed_description"
+      ]
+    },
+    {
+      "id": "695486011",
+      "current_on_ocado": 1,
+      "vegan_status": "vegan",
+      "vegan_reason": "manufacturer",
+      "candidate_fields": [
+        "detailed_description"
+      ]
+    },
+    {
+      "id": "686443011",
+      "current_on_ocado": 1,
+      "vegan_status": "vegan",
+      "vegan_reason": "manufacturer",
+      "candidate_fields": [
+        "features"
+      ]
+    },
+    {
+      "id": "694766011",
+      "current_on_ocado": 1,
+      "vegan_status": "vegan",
+      "vegan_reason": "manufacturer",
+      "candidate_fields": [
+        "features",
+        "detailed_description"
+      ]
+    },
+    {
+      "id": "694767011",
+      "current_on_ocado": 1,
+      "vegan_status": "vegan",
+      "vegan_reason": "manufacturer",
+      "candidate_fields": [
+        "features",
+        "detailed_description"
+      ]
+    },
+    {
+      "id": "694768011",
+      "current_on_ocado": 1,
+      "vegan_status": "vegan",
+      "vegan_reason": "manufacturer",
+      "candidate_fields": [
+        "features",
+        "detailed_description"
+      ]
+    },
+    {
+      "id": "694769011",
+      "current_on_ocado": 1,
+      "vegan_status": "vegan",
+      "vegan_reason": "manufacturer",
+      "candidate_fields": [
+        "features",
+        "detailed_description"
+      ]
+    },
+    {
+      "id": "694803011",
+      "current_on_ocado": 1,
+      "vegan_status": "vegan",
+      "vegan_reason": "manufacturer",
+      "candidate_fields": [
+        "features",
+        "detailed_description"
+      ]
+    },
+    {
+      "id": "694663011",
+      "current_on_ocado": 1,
+      "vegan_status": "vegan",
+      "vegan_reason": "manufacturer",
+      "candidate_fields": [
+        "features",
+        "detailed_description"
+      ]
+    },
+    {
+      "id": "694570011",
+      "current_on_ocado": 1,
+      "vegan_status": "vegan",
+      "vegan_reason": "manufacturer",
+      "candidate_fields": [
+        "detailed_description"
+      ]
+    },
+    {
+      "id": "696642011",
+      "current_on_ocado": 1,
+      "vegan_status": "vegan",
+      "vegan_reason": "manufacturer",
+      "candidate_fields": [
+        "detailed_description"
+      ]
+    },
+    {
+      "id": "688968011",
+      "current_on_ocado": 1,
+      "vegan_status": "vegan",
+      "vegan_reason": "manufacturer",
+      "candidate_fields": [
+        "detailed_description"
+      ]
+    },
+    {
+      "id": "690133011",
+      "current_on_ocado": 1,
+      "vegan_status": "vegan",
+      "vegan_reason": "manufacturer",
+      "candidate_fields": [
+        "dietary_information"
+      ]
+    },
+    {
+      "id": "690134011",
+      "current_on_ocado": 1,
+      "vegan_status": "vegan",
+      "vegan_reason": "manufacturer",
+      "candidate_fields": [
+        "dietary_information"
+      ]
+    },
+    {
+      "id": "697779011",
+      "current_on_ocado": 1,
+      "vegan_status": "vegan",
+      "vegan_reason": "manufacturer",
+      "candidate_fields": [
+        "brand_marketing"
+      ]
+    },
+    {
+      "id": "698139011",
+      "current_on_ocado": 1,
+      "vegan_status": "vegan",
+      "vegan_reason": "ingredients",
+      "candidate_fields": [
+        "detailed_description"
+      ]
+    },
+    {
+      "id": "690132011",
+      "current_on_ocado": 1,
+      "vegan_status": "vegan",
+      "vegan_reason": "manufacturer",
+      "candidate_fields": [
+        "dietary_information"
+      ]
+    },
+    {
+      "id": "694557011",
+      "current_on_ocado": 1,
+      "vegan_status": "vegan",
+      "vegan_reason": "manufacturer",
+      "candidate_fields": [
+        "features",
+        "detailed_description"
+      ]
+    },
+    {
+      "id": "694573011",
+      "current_on_ocado": 1,
+      "vegan_status": "vegan",
+      "vegan_reason": "manufacturer",
+      "candidate_fields": [
+        "detailed_description"
+      ]
+    },
+    {
+      "id": "700721011",
+      "current_on_ocado": 1,
+      "vegan_status": "vegan",
+      "vegan_reason": "manufacturer",
+      "candidate_fields": [
+        "detailed_description"
+      ]
+    },
+    {
+      "id": "665822011",
+      "current_on_ocado": 1,
+      "vegan_status": "unknown",
+      "vegan_reason": null,
+      "candidate_fields": [
+        "detailed_description"
+      ]
+    },
+    {
+      "id": "685753011",
+      "current_on_ocado": 1,
+      "vegan_status": "vegan",
+      "vegan_reason": "manufacturer",
+      "candidate_fields": [
+        "detailed_description",
+        "other_information"
+      ]
+    },
+    {
+      "id": "207437011",
+      "current_on_ocado": 1,
+      "vegan_status": "vegan",
+      "vegan_reason": "manufacturer",
+      "candidate_fields": [
+        "detailed_description"
+      ],
+      "typed_claim_candidate": true
+    },
+    {
+      "id": "226777011",
+      "current_on_ocado": 1,
+      "vegan_status": "vegan",
+      "vegan_reason": "manufacturer",
+      "candidate_fields": [
+        "detailed_description"
+      ],
+      "typed_claim_candidate": true
+    },
+    {
+      "id": "226778011",
+      "current_on_ocado": 1,
+      "vegan_status": "vegan",
+      "vegan_reason": "manufacturer",
+      "candidate_fields": [
+        "detailed_description"
+      ],
+      "typed_claim_candidate": true
+    },
+    {
+      "id": "226930011",
+      "current_on_ocado": 1,
+      "vegan_status": "vegan",
+      "vegan_reason": "manufacturer",
+      "candidate_fields": [
+        "detailed_description"
+      ],
+      "typed_claim_candidate": true
+    },
+    {
+      "id": "227255011",
+      "current_on_ocado": 1,
+      "vegan_status": "vegan",
+      "vegan_reason": "ingredients",
+      "candidate_fields": [],
+      "typed_claim_candidate": true
+    },
+    {
+      "id": "269586011",
+      "current_on_ocado": 0,
+      "vegan_status": "vegan",
+      "vegan_reason": "manufacturer",
+      "candidate_fields": [
+        "detailed_description"
+      ],
+      "typed_claim_candidate": true
+    },
+    {
+      "id": "269587011",
+      "current_on_ocado": 1,
+      "vegan_status": "vegan",
+      "vegan_reason": "manufacturer",
+      "candidate_fields": [
+        "detailed_description"
+      ],
+      "typed_claim_candidate": true
+    },
+    {
+      "id": "269588011",
+      "current_on_ocado": 1,
+      "vegan_status": "vegan",
+      "vegan_reason": "manufacturer",
+      "candidate_fields": [
+        "detailed_description"
+      ],
+      "typed_claim_candidate": true
+    },
+    {
+      "id": "269589011",
+      "current_on_ocado": 1,
+      "vegan_status": "vegan",
+      "vegan_reason": "manufacturer",
+      "candidate_fields": [
+        "detailed_description"
+      ],
+      "typed_claim_candidate": true
+    },
+    {
+      "id": "269590011",
+      "current_on_ocado": 1,
+      "vegan_status": "vegan",
+      "vegan_reason": "manufacturer",
+      "candidate_fields": [
+        "detailed_description"
+      ],
+      "typed_claim_candidate": true
+    },
+    {
+      "id": "269591011",
+      "current_on_ocado": 1,
+      "vegan_status": "vegan",
+      "vegan_reason": "manufacturer",
+      "candidate_fields": [
+        "detailed_description"
+      ],
+      "typed_claim_candidate": true
+    },
+    {
+      "id": "269592011",
+      "current_on_ocado": 1,
+      "vegan_status": "vegan",
+      "vegan_reason": "manufacturer",
+      "candidate_fields": [
+        "detailed_description"
+      ],
+      "typed_claim_candidate": true
+    },
+    {
+      "id": "269593011",
+      "current_on_ocado": 1,
+      "vegan_status": "vegan",
+      "vegan_reason": "manufacturer",
+      "candidate_fields": [
+        "detailed_description"
+      ],
+      "typed_claim_candidate": true
+    },
+    {
+      "id": "270089011",
+      "current_on_ocado": 0,
+      "vegan_status": "vegan",
+      "vegan_reason": "manufacturer",
+      "candidate_fields": [
+        "detailed_description"
+      ],
+      "typed_claim_candidate": true
+    },
+    {
+      "id": "271929011",
+      "current_on_ocado": 1,
+      "vegan_status": "vegan",
+      "vegan_reason": "manufacturer",
+      "candidate_fields": [
+        "dietary_information",
+        "features"
+      ],
+      "typed_claim_candidate": true
+    },
+    {
+      "id": "271930011",
+      "current_on_ocado": 1,
+      "vegan_status": "vegan",
+      "vegan_reason": "manufacturer",
+      "candidate_fields": [
+        "dietary_information",
+        "features"
+      ],
+      "typed_claim_candidate": true
+    },
+    {
+      "id": "284402011",
+      "current_on_ocado": 1,
+      "vegan_status": "unknown",
+      "vegan_reason": null,
+      "candidate_fields": [
+        "detailed_description"
+      ],
+      "typed_claim_candidate": true
+    },
+    {
+      "id": "301661011",
+      "current_on_ocado": 1,
+      "vegan_status": "vegan",
+      "vegan_reason": "manufacturer",
+      "candidate_fields": [
+        "detailed_description"
+      ],
+      "typed_claim_candidate": true
+    },
+    {
+      "id": "301663011",
+      "current_on_ocado": 1,
+      "vegan_status": "vegan",
+      "vegan_reason": "manufacturer",
+      "candidate_fields": [
+        "detailed_description"
+      ],
+      "typed_claim_candidate": true
+    },
+    {
+      "id": "302653011",
+      "current_on_ocado": 1,
+      "vegan_status": "vegan",
+      "vegan_reason": "manufacturer",
+      "candidate_fields": [
+        "dietary_information",
+        "features"
+      ],
+      "typed_claim_candidate": true
+    },
+    {
+      "id": "302655011",
+      "current_on_ocado": 1,
+      "vegan_status": "vegan",
+      "vegan_reason": "manufacturer",
+      "candidate_fields": [
+        "dietary_information",
+        "features"
+      ],
+      "typed_claim_candidate": true
+    },
+    {
+      "id": "31335011",
+      "current_on_ocado": 1,
+      "vegan_status": "vegan",
+      "vegan_reason": "manufacturer",
+      "candidate_fields": [
+        "features"
+      ],
+      "typed_claim_candidate": true
+    },
+    {
+      "id": "35437011",
+      "current_on_ocado": 1,
+      "vegan_status": "vegan",
+      "vegan_reason": "manufacturer",
+      "candidate_fields": [
+        "features"
+      ],
+      "typed_claim_candidate": true
+    },
+    {
+      "id": "363260011",
+      "current_on_ocado": 1,
+      "vegan_status": "vegan",
+      "vegan_reason": "manufacturer",
+      "candidate_fields": [
+        "detailed_description"
+      ],
+      "typed_claim_candidate": true
+    },
+    {
+      "id": "363261011",
+      "current_on_ocado": 1,
+      "vegan_status": "vegan",
+      "vegan_reason": "manufacturer",
+      "candidate_fields": [
+        "detailed_description"
+      ],
+      "typed_claim_candidate": true
+    },
+    {
+      "id": "363262011",
+      "current_on_ocado": 1,
+      "vegan_status": "vegan",
+      "vegan_reason": "manufacturer",
+      "candidate_fields": [
+        "detailed_description"
+      ],
+      "typed_claim_candidate": true
+    },
+    {
+      "id": "363263011",
+      "current_on_ocado": 1,
+      "vegan_status": "vegan",
+      "vegan_reason": "manufacturer",
+      "candidate_fields": [
+        "detailed_description"
+      ],
+      "typed_claim_candidate": true
+    },
+    {
+      "id": "363264011",
+      "current_on_ocado": 1,
+      "vegan_status": "vegan",
+      "vegan_reason": "manufacturer",
+      "candidate_fields": [
+        "detailed_description"
+      ],
+      "typed_claim_candidate": true
+    },
+    {
+      "id": "363265011",
+      "current_on_ocado": 1,
+      "vegan_status": "vegan",
+      "vegan_reason": "manufacturer",
+      "candidate_fields": [
+        "detailed_description"
+      ],
+      "typed_claim_candidate": true
+    },
+    {
+      "id": "363266011",
+      "current_on_ocado": 1,
+      "vegan_status": "vegan",
+      "vegan_reason": "manufacturer",
+      "candidate_fields": [
+        "detailed_description"
+      ],
+      "typed_claim_candidate": true
+    },
+    {
+      "id": "363267011",
+      "current_on_ocado": 1,
+      "vegan_status": "vegan",
+      "vegan_reason": "manufacturer",
+      "candidate_fields": [
+        "detailed_description"
+      ],
+      "typed_claim_candidate": true
+    },
+    {
+      "id": "372136011",
+      "current_on_ocado": 1,
+      "vegan_status": "vegan",
+      "vegan_reason": "manufacturer",
+      "candidate_fields": [
+        "features"
+      ],
+      "typed_claim_candidate": true
+    },
+    {
+      "id": "430024011",
+      "current_on_ocado": 1,
+      "vegan_status": "vegan",
+      "vegan_reason": "manufacturer",
+      "candidate_fields": [
+        "detailed_description"
+      ],
+      "typed_claim_candidate": true
+    },
+    {
+      "id": "431902011",
+      "current_on_ocado": 1,
+      "vegan_status": "vegan",
+      "vegan_reason": "manufacturer",
+      "candidate_fields": [
+        "detailed_description"
+      ],
+      "typed_claim_candidate": true
+    },
+    {
+      "id": "444924011",
+      "current_on_ocado": 1,
+      "vegan_status": "vegan",
+      "vegan_reason": "manufacturer",
+      "candidate_fields": [
+        "detailed_description"
+      ],
+      "typed_claim_candidate": true
+    },
+    {
+      "id": "44847011",
+      "current_on_ocado": 1,
+      "vegan_status": "vegan",
+      "vegan_reason": "manufacturer",
+      "candidate_fields": [
+        "detailed_description"
+      ],
+      "typed_claim_candidate": true
+    },
+    {
+      "id": "44855011",
+      "current_on_ocado": 1,
+      "vegan_status": "vegan",
+      "vegan_reason": "ingredients",
+      "candidate_fields": [],
+      "typed_claim_candidate": true
+    },
+    {
+      "id": "448842011",
+      "current_on_ocado": 1,
+      "vegan_status": "vegan",
+      "vegan_reason": "manufacturer",
+      "candidate_fields": [
+        "dietary_information",
+        "features"
+      ],
+      "typed_claim_candidate": true
+    },
+    {
+      "id": "458990011",
+      "current_on_ocado": 1,
+      "vegan_status": "vegan",
+      "vegan_reason": "ingredients",
+      "candidate_fields": [],
+      "typed_claim_candidate": true
+    },
+    {
+      "id": "468505011",
+      "current_on_ocado": 1,
+      "vegan_status": "vegan",
+      "vegan_reason": "manufacturer",
+      "candidate_fields": [
+        "other_information"
+      ],
+      "typed_claim_candidate": true
+    },
+    {
+      "id": "475598011",
+      "current_on_ocado": 1,
+      "vegan_status": "vegan",
+      "vegan_reason": "manufacturer",
+      "candidate_fields": [
+        "brand_marketing"
+      ],
+      "typed_claim_candidate": true
+    },
+    {
+      "id": "476707011",
+      "current_on_ocado": 1,
+      "vegan_status": "vegan",
+      "vegan_reason": "manufacturer",
+      "candidate_fields": [
+        "features",
+        "detailed_description"
+      ],
+      "typed_claim_candidate": true
+    },
+    {
+      "id": "476709011",
+      "current_on_ocado": 1,
+      "vegan_status": "vegan",
+      "vegan_reason": "manufacturer",
+      "candidate_fields": [
+        "detailed_description"
+      ],
+      "typed_claim_candidate": true
+    },
+    {
+      "id": "50224011",
+      "current_on_ocado": 0,
+      "vegan_status": "vegan",
+      "vegan_reason": "manufacturer",
+      "candidate_fields": [
+        "dietary_information"
+      ],
+      "typed_claim_candidate": true
+    },
+    {
+      "id": "50227011",
+      "current_on_ocado": 0,
+      "vegan_status": "vegan",
+      "vegan_reason": "manufacturer",
+      "candidate_fields": [
+        "dietary_information"
+      ],
+      "typed_claim_candidate": true
+    },
+    {
+      "id": "505999011",
+      "current_on_ocado": 1,
+      "vegan_status": "vegan",
+      "vegan_reason": "manufacturer",
+      "candidate_fields": [
+        "features"
+      ],
+      "typed_claim_candidate": true
+    },
+    {
+      "id": "510714011",
+      "current_on_ocado": 1,
+      "vegan_status": "vegan",
+      "vegan_reason": "manufacturer",
+      "candidate_fields": [
+        "detailed_description"
+      ],
+      "typed_claim_candidate": true
+    },
+    {
+      "id": "519817011",
+      "current_on_ocado": 1,
+      "vegan_status": "vegan",
+      "vegan_reason": "manufacturer",
+      "candidate_fields": [
+        "detailed_description",
+        "other_information"
+      ],
+      "typed_claim_candidate": true
+    },
+    {
+      "id": "520270011",
+      "current_on_ocado": 1,
+      "vegan_status": "vegan",
+      "vegan_reason": "manufacturer",
+      "candidate_fields": [
+        "detailed_description"
+      ],
+      "typed_claim_candidate": true
+    },
+    {
+      "id": "520981011",
+      "current_on_ocado": 1,
+      "vegan_status": "vegan",
+      "vegan_reason": "manufacturer",
+      "candidate_fields": [
+        "features"
+      ],
+      "typed_claim_candidate": true
+    },
+    {
+      "id": "520982011",
+      "current_on_ocado": 1,
+      "vegan_status": "vegan",
+      "vegan_reason": "manufacturer",
+      "candidate_fields": [
+        "features"
+      ],
+      "typed_claim_candidate": true
+    },
+    {
+      "id": "541322011",
+      "current_on_ocado": 1,
+      "vegan_status": "vegan",
+      "vegan_reason": "ingredients",
+      "candidate_fields": [
+        "detailed_description"
+      ],
+      "typed_claim_candidate": true
+    },
+    {
+      "id": "541323011",
+      "current_on_ocado": 1,
+      "vegan_status": "vegan",
+      "vegan_reason": "ingredients",
+      "candidate_fields": [
+        "detailed_description"
+      ],
+      "typed_claim_candidate": true
+    },
+    {
+      "id": "541324011",
+      "current_on_ocado": 1,
+      "vegan_status": "vegan",
+      "vegan_reason": "manufacturer",
+      "candidate_fields": [
+        "detailed_description"
+      ],
+      "typed_claim_candidate": true
+    },
+    {
+      "id": "541325011",
+      "current_on_ocado": 1,
+      "vegan_status": "vegan",
+      "vegan_reason": "manufacturer",
+      "candidate_fields": [
+        "detailed_description"
+      ],
+      "typed_claim_candidate": true
+    },
+    {
+      "id": "541326011",
+      "current_on_ocado": 1,
+      "vegan_status": "vegan",
+      "vegan_reason": "manufacturer",
+      "candidate_fields": [
+        "detailed_description"
+      ],
+      "typed_claim_candidate": true
+    },
+    {
+      "id": "541327011",
+      "current_on_ocado": 1,
+      "vegan_status": "vegan",
+      "vegan_reason": "ingredients",
+      "candidate_fields": [
+        "detailed_description"
+      ],
+      "typed_claim_candidate": true
+    },
+    {
+      "id": "549886011",
+      "current_on_ocado": 1,
+      "vegan_status": "vegan",
+      "vegan_reason": "manufacturer",
+      "candidate_fields": [
+        "detailed_description"
+      ],
+      "typed_claim_candidate": true
+    },
+    {
+      "id": "551422011",
+      "current_on_ocado": 1,
+      "vegan_status": "vegan",
+      "vegan_reason": "manufacturer",
+      "candidate_fields": [
+        "detailed_description"
+      ],
+      "typed_claim_candidate": true
+    },
+    {
+      "id": "558790011",
+      "current_on_ocado": 1,
+      "vegan_status": "nonvegan",
+      "vegan_reason": null,
+      "candidate_fields": [
+        "detailed_description"
+      ],
+      "typed_claim_candidate": true
+    },
+    {
+      "id": "560548011",
+      "current_on_ocado": 1,
+      "vegan_status": "vegan",
+      "vegan_reason": "manufacturer",
+      "candidate_fields": [
+        "features"
+      ],
+      "typed_claim_candidate": true
+    },
+    {
+      "id": "563210011",
+      "current_on_ocado": 1,
+      "vegan_status": "vegan",
+      "vegan_reason": "manufacturer",
+      "candidate_fields": [
+        "detailed_description",
+        "brand_marketing"
+      ],
+      "typed_claim_candidate": true
+    },
+    {
+      "id": "572211011",
+      "current_on_ocado": 1,
+      "vegan_status": "vegan",
+      "vegan_reason": "manufacturer",
+      "candidate_fields": [
+        "detailed_description"
+      ],
+      "typed_claim_candidate": true
+    },
+    {
+      "id": "572212011",
+      "current_on_ocado": 1,
+      "vegan_status": "vegan",
+      "vegan_reason": "manufacturer",
+      "candidate_fields": [
+        "detailed_description"
+      ],
+      "typed_claim_candidate": true
+    },
+    {
+      "id": "575253011",
+      "current_on_ocado": 1,
+      "vegan_status": "vegan",
+      "vegan_reason": "manufacturer",
+      "candidate_fields": [
+        "detailed_description"
+      ],
+      "typed_claim_candidate": true
+    },
+    {
+      "id": "580384011",
+      "current_on_ocado": 1,
+      "vegan_status": "vegan",
+      "vegan_reason": "manufacturer",
+      "candidate_fields": [
+        "dietary_information"
+      ],
+      "typed_claim_candidate": true
+    },
+    {
+      "id": "580405011",
+      "current_on_ocado": 1,
+      "vegan_status": "vegan",
+      "vegan_reason": "manufacturer",
+      "candidate_fields": [
+        "dietary_information"
+      ],
+      "typed_claim_candidate": true
+    },
+    {
+      "id": "580406011",
+      "current_on_ocado": 1,
+      "vegan_status": "vegan",
+      "vegan_reason": "manufacturer",
+      "candidate_fields": [
+        "dietary_information"
+      ],
+      "typed_claim_candidate": true
+    },
+    {
+      "id": "582106011",
+      "current_on_ocado": 1,
+      "vegan_status": "vegan",
+      "vegan_reason": "ingredients",
+      "candidate_fields": [],
+      "typed_claim_candidate": true
+    },
+    {
+      "id": "583409011",
+      "current_on_ocado": 1,
+      "vegan_status": "vegan",
+      "vegan_reason": "manufacturer",
+      "candidate_fields": [],
+      "typed_claim_candidate": true
+    },
+    {
+      "id": "583677011",
+      "current_on_ocado": 1,
+      "vegan_status": "vegan",
+      "vegan_reason": "manufacturer",
+      "candidate_fields": [],
+      "typed_claim_candidate": true
+    },
+    {
+      "id": "588127011",
+      "current_on_ocado": 1,
+      "vegan_status": "vegan",
+      "vegan_reason": "manufacturer",
+      "candidate_fields": [
+        "detailed_description"
+      ],
+      "typed_claim_candidate": true
+    },
+    {
+      "id": "597964011",
+      "current_on_ocado": 1,
+      "vegan_status": "vegan",
+      "vegan_reason": "manufacturer",
+      "candidate_fields": [
+        "dietary_information"
+      ],
+      "typed_claim_candidate": true
+    },
+    {
+      "id": "597965011",
+      "current_on_ocado": 1,
+      "vegan_status": "vegan",
+      "vegan_reason": "manufacturer",
+      "candidate_fields": [
+        "dietary_information",
+        "detailed_description"
+      ],
+      "typed_claim_candidate": true
+    },
+    {
+      "id": "598259011",
+      "current_on_ocado": 1,
+      "vegan_status": "vegan",
+      "vegan_reason": "ingredients",
+      "candidate_fields": [
+        "detailed_description"
+      ],
+      "typed_claim_candidate": true
+    },
+    {
+      "id": "598261011",
+      "current_on_ocado": 1,
+      "vegan_status": "vegan",
+      "vegan_reason": "ingredients",
+      "candidate_fields": [
+        "detailed_description"
+      ],
+      "typed_claim_candidate": true
+    },
+    {
+      "id": "599656011",
+      "current_on_ocado": 1,
+      "vegan_status": "vegan",
+      "vegan_reason": "manufacturer",
+      "candidate_fields": [],
+      "typed_claim_candidate": true
+    },
+    {
+      "id": "599658011",
+      "current_on_ocado": 1,
+      "vegan_status": "vegan",
+      "vegan_reason": "manufacturer",
+      "candidate_fields": [],
+      "typed_claim_candidate": true
+    },
+    {
+      "id": "599661011",
+      "current_on_ocado": 1,
+      "vegan_status": "vegan",
+      "vegan_reason": "manufacturer",
+      "candidate_fields": [],
+      "typed_claim_candidate": true
+    },
+    {
+      "id": "599663011",
+      "current_on_ocado": 1,
+      "vegan_status": "vegan",
+      "vegan_reason": "manufacturer",
+      "candidate_fields": [],
+      "typed_claim_candidate": true
+    },
+    {
+      "id": "599671011",
+      "current_on_ocado": 1,
+      "vegan_status": "vegan",
+      "vegan_reason": "manufacturer",
+      "candidate_fields": [],
+      "typed_claim_candidate": true
+    },
+    {
+      "id": "599672011",
+      "current_on_ocado": 1,
+      "vegan_status": "vegan",
+      "vegan_reason": "manufacturer",
+      "candidate_fields": [],
+      "typed_claim_candidate": true
+    },
+    {
+      "id": "604904011",
+      "current_on_ocado": 1,
+      "vegan_status": "vegan",
+      "vegan_reason": "manufacturer",
+      "candidate_fields": [
+        "detailed_description"
+      ],
+      "typed_claim_candidate": true
+    },
+    {
+      "id": "604909011",
+      "current_on_ocado": 1,
+      "vegan_status": "vegan",
+      "vegan_reason": "manufacturer",
+      "candidate_fields": [
+        "detailed_description"
+      ],
+      "typed_claim_candidate": true
+    },
+    {
+      "id": "604911011",
+      "current_on_ocado": 1,
+      "vegan_status": "vegan",
+      "vegan_reason": "manufacturer",
+      "candidate_fields": [
+        "detailed_description"
+      ],
+      "typed_claim_candidate": true
+    },
+    {
+      "id": "606559011",
+      "current_on_ocado": 1,
+      "vegan_status": "vegan",
+      "vegan_reason": "manufacturer",
+      "candidate_fields": [
+        "detailed_description"
+      ],
+      "typed_claim_candidate": true
+    },
+    {
+      "id": "606733011",
+      "current_on_ocado": 1,
+      "vegan_status": "vegan",
+      "vegan_reason": "manufacturer",
+      "candidate_fields": [
+        "dietary_information"
+      ],
+      "typed_claim_candidate": true
+    },
+    {
+      "id": "610509011",
+      "current_on_ocado": 1,
+      "vegan_status": "vegan",
+      "vegan_reason": "manufacturer",
+      "candidate_fields": [
+        "detailed_description"
+      ],
+      "typed_claim_candidate": true
+    },
+    {
+      "id": "610511011",
+      "current_on_ocado": 1,
+      "vegan_status": "vegan",
+      "vegan_reason": "manufacturer",
+      "candidate_fields": [
+        "detailed_description"
+      ],
+      "typed_claim_candidate": true
+    },
+    {
+      "id": "610650011",
+      "current_on_ocado": 1,
+      "vegan_status": "vegan",
+      "vegan_reason": "manufacturer",
+      "candidate_fields": [],
+      "typed_claim_candidate": true
+    },
+    {
+      "id": "610651011",
+      "current_on_ocado": 1,
+      "vegan_status": "vegan",
+      "vegan_reason": "manufacturer",
+      "candidate_fields": [],
+      "typed_claim_candidate": true
+    },
+    {
+      "id": "610652011",
+      "current_on_ocado": 1,
+      "vegan_status": "vegan",
+      "vegan_reason": "manufacturer",
+      "candidate_fields": [],
+      "typed_claim_candidate": true
+    },
+    {
+      "id": "610653011",
+      "current_on_ocado": 1,
+      "vegan_status": "vegan",
+      "vegan_reason": "manufacturer",
+      "candidate_fields": [],
+      "typed_claim_candidate": true
+    },
+    {
+      "id": "610654011",
+      "current_on_ocado": 0,
+      "vegan_status": "vegan",
+      "vegan_reason": "manufacturer",
+      "candidate_fields": [],
+      "typed_claim_candidate": true
+    },
+    {
+      "id": "610656011",
+      "current_on_ocado": 1,
+      "vegan_status": "vegan",
+      "vegan_reason": "manufacturer",
+      "candidate_fields": [],
+      "typed_claim_candidate": true
+    },
+    {
+      "id": "610657011",
+      "current_on_ocado": 1,
+      "vegan_status": "vegan",
+      "vegan_reason": "manufacturer",
+      "candidate_fields": [],
+      "typed_claim_candidate": true
+    },
+    {
+      "id": "610658011",
+      "current_on_ocado": 1,
+      "vegan_status": "vegan",
+      "vegan_reason": "manufacturer",
+      "candidate_fields": [],
+      "typed_claim_candidate": true
+    },
+    {
+      "id": "610659011",
+      "current_on_ocado": 1,
+      "vegan_status": "vegan",
+      "vegan_reason": "manufacturer",
+      "candidate_fields": [],
+      "typed_claim_candidate": true
+    },
+    {
+      "id": "610660011",
+      "current_on_ocado": 1,
+      "vegan_status": "vegan",
+      "vegan_reason": "manufacturer",
+      "candidate_fields": [],
+      "typed_claim_candidate": true
+    },
+    {
+      "id": "610841011",
+      "current_on_ocado": 1,
+      "vegan_status": "vegan",
+      "vegan_reason": "manufacturer",
+      "candidate_fields": [
+        "dietary_information"
+      ],
+      "typed_claim_candidate": true
+    },
+    {
+      "id": "610842011",
+      "current_on_ocado": 1,
+      "vegan_status": "vegan",
+      "vegan_reason": "manufacturer",
+      "candidate_fields": [
+        "dietary_information"
+      ],
+      "typed_claim_candidate": true
+    },
+    {
+      "id": "611264011",
+      "current_on_ocado": 1,
+      "vegan_status": "vegan",
+      "vegan_reason": "manufacturer",
+      "candidate_fields": [],
+      "typed_claim_candidate": true
+    },
+    {
+      "id": "612854011",
+      "current_on_ocado": 1,
+      "vegan_status": "vegan",
+      "vegan_reason": "manufacturer",
+      "candidate_fields": [
+        "dietary_information"
+      ],
+      "typed_claim_candidate": true
+    },
+    {
+      "id": "615988011",
+      "current_on_ocado": 1,
+      "vegan_status": "unknown",
+      "vegan_reason": null,
+      "candidate_fields": [
+        "detailed_description"
+      ],
+      "typed_claim_candidate": true
+    },
+    {
+      "id": "615992011",
+      "current_on_ocado": 1,
+      "vegan_status": "unknown",
+      "vegan_reason": null,
+      "candidate_fields": [
+        "detailed_description"
+      ],
+      "typed_claim_candidate": true
+    },
+    {
+      "id": "617049011",
+      "current_on_ocado": 1,
+      "vegan_status": "vegan",
+      "vegan_reason": "manufacturer",
+      "candidate_fields": [],
+      "typed_claim_candidate": true
+    },
+    {
+      "id": "617062011",
+      "current_on_ocado": 1,
+      "vegan_status": "vegan",
+      "vegan_reason": "ingredients",
+      "candidate_fields": [],
+      "typed_claim_candidate": true
+    },
+    {
+      "id": "617154011",
+      "current_on_ocado": 1,
+      "vegan_status": "vegan",
+      "vegan_reason": "manufacturer",
+      "candidate_fields": [
+        "dietary_information",
+        "detailed_description"
+      ],
+      "typed_claim_candidate": true
+    },
+    {
+      "id": "618662011",
+      "current_on_ocado": 1,
+      "vegan_status": "vegan",
+      "vegan_reason": "manufacturer",
+      "candidate_fields": [],
+      "typed_claim_candidate": true
+    },
+    {
+      "id": "620006011",
+      "current_on_ocado": 1,
+      "vegan_status": "vegan",
+      "vegan_reason": "manufacturer",
+      "candidate_fields": [
+        "detailed_description"
+      ],
+      "typed_claim_candidate": true
+    },
+    {
+      "id": "629145011",
+      "current_on_ocado": 1,
+      "vegan_status": "unknown",
+      "vegan_reason": null,
+      "candidate_fields": [],
+      "typed_claim_candidate": true
+    },
+    {
+      "id": "629146011",
+      "current_on_ocado": 1,
+      "vegan_status": "vegan",
+      "vegan_reason": "manufacturer",
+      "candidate_fields": [],
+      "typed_claim_candidate": true
+    },
+    {
+      "id": "629882011",
+      "current_on_ocado": 1,
+      "vegan_status": "vegan",
+      "vegan_reason": "manufacturer",
+      "candidate_fields": [
+        "features"
+      ],
+      "typed_claim_candidate": true
+    },
+    {
+      "id": "629885011",
+      "current_on_ocado": 1,
+      "vegan_status": "vegan",
+      "vegan_reason": "manufacturer",
+      "candidate_fields": [
+        "features"
+      ],
+      "typed_claim_candidate": true
+    },
+    {
+      "id": "630149011",
+      "current_on_ocado": 1,
+      "vegan_status": "vegan",
+      "vegan_reason": "ingredients",
+      "candidate_fields": [],
+      "typed_claim_candidate": true
+    },
+    {
+      "id": "631820011",
+      "current_on_ocado": 1,
+      "vegan_status": "vegan",
+      "vegan_reason": "manufacturer",
+      "candidate_fields": [
+        "dietary_information"
+      ],
+      "typed_claim_candidate": true
+    },
+    {
+      "id": "631821011",
+      "current_on_ocado": 1,
+      "vegan_status": "vegan",
+      "vegan_reason": "manufacturer",
+      "candidate_fields": [
+        "dietary_information"
+      ],
+      "typed_claim_candidate": true
+    },
+    {
+      "id": "632747011",
+      "current_on_ocado": 1,
+      "vegan_status": "vegan",
+      "vegan_reason": "manufacturer",
+      "candidate_fields": [
+        "dietary_information"
+      ],
+      "typed_claim_candidate": true
+    },
+    {
+      "id": "632835011",
+      "current_on_ocado": 1,
+      "vegan_status": "vegan",
+      "vegan_reason": "manufacturer",
+      "candidate_fields": [],
+      "typed_claim_candidate": true
+    },
+    {
+      "id": "632836011",
+      "current_on_ocado": 1,
+      "vegan_status": "vegan",
+      "vegan_reason": "manufacturer",
+      "candidate_fields": [],
+      "typed_claim_candidate": true
+    },
+    {
+      "id": "632837011",
+      "current_on_ocado": 0,
+      "vegan_status": "vegan",
+      "vegan_reason": "manufacturer",
+      "candidate_fields": [],
+      "typed_claim_candidate": true
+    },
+    {
+      "id": "632854011",
+      "current_on_ocado": 1,
+      "vegan_status": "vegan",
+      "vegan_reason": "manufacturer",
+      "candidate_fields": [
+        "dietary_information"
+      ],
+      "typed_claim_candidate": true
+    },
+    {
+      "id": "632947011",
+      "current_on_ocado": 1,
+      "vegan_status": "vegan",
+      "vegan_reason": "manufacturer",
+      "candidate_fields": [
+        "dietary_information"
+      ],
+      "typed_claim_candidate": true
+    },
+    {
+      "id": "633886011",
+      "current_on_ocado": 1,
+      "vegan_status": "unknown",
+      "vegan_reason": null,
+      "candidate_fields": [],
+      "typed_claim_candidate": true
+    },
+    {
+      "id": "634154011",
+      "current_on_ocado": 1,
+      "vegan_status": "vegan",
+      "vegan_reason": "manufacturer",
+      "candidate_fields": [],
+      "typed_claim_candidate": true
+    },
+    {
+      "id": "635330011",
+      "current_on_ocado": 1,
+      "vegan_status": "vegan",
+      "vegan_reason": "manufacturer",
+      "candidate_fields": [
+        "dietary_information"
+      ],
+      "typed_claim_candidate": true
+    },
+    {
+      "id": "635340011",
+      "current_on_ocado": 1,
+      "vegan_status": "vegan",
+      "vegan_reason": "manufacturer",
+      "candidate_fields": [
+        "dietary_information"
+      ],
+      "typed_claim_candidate": true
+    },
+    {
+      "id": "635341011",
+      "current_on_ocado": 1,
+      "vegan_status": "vegan",
+      "vegan_reason": "manufacturer",
+      "candidate_fields": [
+        "dietary_information"
+      ],
+      "typed_claim_candidate": true
+    },
+    {
+      "id": "636258011",
+      "current_on_ocado": 1,
+      "vegan_status": "vegan",
+      "vegan_reason": "manufacturer",
+      "candidate_fields": [
+        "brand_marketing"
+      ],
+      "typed_claim_candidate": true
+    },
+    {
+      "id": "636483011",
+      "current_on_ocado": 1,
+      "vegan_status": "vegan",
+      "vegan_reason": "manufacturer",
+      "candidate_fields": [
+        "features"
+      ],
+      "typed_claim_candidate": true
+    },
+    {
+      "id": "636484011",
+      "current_on_ocado": 1,
+      "vegan_status": "vegan",
+      "vegan_reason": "manufacturer",
+      "candidate_fields": [
+        "features"
+      ],
+      "typed_claim_candidate": true
+    },
+    {
+      "id": "636485011",
+      "current_on_ocado": 1,
+      "vegan_status": "vegan",
+      "vegan_reason": "manufacturer",
+      "candidate_fields": [
+        "features"
+      ],
+      "typed_claim_candidate": true
+    },
+    {
+      "id": "639732011",
+      "current_on_ocado": 1,
+      "vegan_status": "vegan",
+      "vegan_reason": "manufacturer",
+      "candidate_fields": [
+        "detailed_description"
+      ],
+      "typed_claim_candidate": true
+    },
+    {
+      "id": "639735011",
+      "current_on_ocado": 1,
+      "vegan_status": "vegan",
+      "vegan_reason": "manufacturer",
+      "candidate_fields": [
+        "detailed_description"
+      ],
+      "typed_claim_candidate": true
+    },
+    {
+      "id": "642052011",
+      "current_on_ocado": 1,
+      "vegan_status": "vegan",
+      "vegan_reason": "manufacturer",
+      "candidate_fields": [
+        "dietary_information"
+      ],
+      "typed_claim_candidate": true
+    },
+    {
+      "id": "642915011",
+      "current_on_ocado": 1,
+      "vegan_status": "vegan",
+      "vegan_reason": "manufacturer",
+      "candidate_fields": [
+        "detailed_description"
+      ],
+      "typed_claim_candidate": true
+    },
+    {
+      "id": "642917011",
+      "current_on_ocado": 1,
+      "vegan_status": "vegan",
+      "vegan_reason": "manufacturer",
+      "candidate_fields": [
+        "detailed_description"
+      ],
+      "typed_claim_candidate": true
+    },
+    {
+      "id": "642921011",
+      "current_on_ocado": 1,
+      "vegan_status": "vegan",
+      "vegan_reason": "manufacturer",
+      "candidate_fields": [
+        "detailed_description"
+      ],
+      "typed_claim_candidate": true
+    },
+    {
+      "id": "643039011",
+      "current_on_ocado": 1,
+      "vegan_status": "vegan",
+      "vegan_reason": "manufacturer",
+      "candidate_fields": [
+        "detailed_description"
+      ],
+      "typed_claim_candidate": true
+    },
+    {
+      "id": "643507011",
+      "current_on_ocado": 1,
+      "vegan_status": "vegan",
+      "vegan_reason": "manufacturer",
+      "candidate_fields": [
+        "detailed_description"
+      ],
+      "typed_claim_candidate": true
+    },
+    {
+      "id": "643509011",
+      "current_on_ocado": 1,
+      "vegan_status": "vegan",
+      "vegan_reason": "manufacturer",
+      "candidate_fields": [
+        "detailed_description"
+      ],
+      "typed_claim_candidate": true
+    },
+    {
+      "id": "644858011",
+      "current_on_ocado": 1,
+      "vegan_status": "vegan",
+      "vegan_reason": "manufacturer",
+      "candidate_fields": [
+        "dietary_information"
+      ],
+      "typed_claim_candidate": true
+    },
+    {
+      "id": "647616011",
+      "current_on_ocado": 1,
+      "vegan_status": "vegan",
+      "vegan_reason": "manufacturer",
+      "candidate_fields": [
+        "dietary_information"
+      ],
+      "typed_claim_candidate": true
+    },
+    {
+      "id": "647818011",
+      "current_on_ocado": 1,
+      "vegan_status": "vegan",
+      "vegan_reason": "manufacturer",
+      "candidate_fields": [
+        "dietary_information"
+      ],
+      "typed_claim_candidate": true
+    },
+    {
+      "id": "649721011",
+      "current_on_ocado": 1,
+      "vegan_status": "vegan",
+      "vegan_reason": "manufacturer",
+      "candidate_fields": [],
+      "typed_claim_candidate": true
+    },
+    {
+      "id": "649724011",
+      "current_on_ocado": 1,
+      "vegan_status": "vegan",
+      "vegan_reason": "manufacturer",
+      "candidate_fields": [],
+      "typed_claim_candidate": true
+    },
+    {
+      "id": "650705011",
+      "current_on_ocado": 1,
+      "vegan_status": "unknown",
+      "vegan_reason": null,
+      "candidate_fields": [
+        "detailed_description"
+      ],
+      "typed_claim_candidate": true
+    },
+    {
+      "id": "653880011",
+      "current_on_ocado": 1,
+      "vegan_status": "vegan",
+      "vegan_reason": "manufacturer",
+      "candidate_fields": [
+        "dietary_information"
+      ],
+      "typed_claim_candidate": true
+    },
+    {
+      "id": "655042011",
+      "current_on_ocado": 1,
+      "vegan_status": "vegan",
+      "vegan_reason": "manufacturer",
+      "candidate_fields": [],
+      "typed_claim_candidate": true
+    },
+    {
+      "id": "658537011",
+      "current_on_ocado": 1,
+      "vegan_status": "unknown",
+      "vegan_reason": null,
+      "candidate_fields": [],
+      "typed_claim_candidate": true
+    },
+    {
+      "id": "660694011",
+      "current_on_ocado": 1,
+      "vegan_status": "vegan",
+      "vegan_reason": "ingredients",
+      "candidate_fields": [],
+      "typed_claim_candidate": true
+    },
+    {
+      "id": "660695011",
+      "current_on_ocado": 1,
+      "vegan_status": "vegan",
+      "vegan_reason": "ingredients",
+      "candidate_fields": [],
+      "typed_claim_candidate": true
+    },
+    {
+      "id": "660696011",
+      "current_on_ocado": 1,
+      "vegan_status": "vegan",
+      "vegan_reason": "ingredients",
+      "candidate_fields": [],
+      "typed_claim_candidate": true
+    },
+    {
+      "id": "660719011",
+      "current_on_ocado": 1,
+      "vegan_status": "unknown",
+      "vegan_reason": null,
+      "candidate_fields": [
+        "dietary_information"
+      ],
+      "typed_claim_candidate": true
+    },
+    {
+      "id": "661159011",
+      "current_on_ocado": 1,
+      "vegan_status": "vegan",
+      "vegan_reason": "manufacturer",
+      "candidate_fields": [
+        "detailed_description"
+      ],
+      "typed_claim_candidate": true
+    },
+    {
+      "id": "661172011",
+      "current_on_ocado": 1,
+      "vegan_status": "vegan",
+      "vegan_reason": "manufacturer",
+      "candidate_fields": [
+        "detailed_description"
+      ],
+      "typed_claim_candidate": true
+    },
+    {
+      "id": "661790011",
+      "current_on_ocado": 1,
+      "vegan_status": "vegan",
+      "vegan_reason": "manufacturer",
+      "candidate_fields": [
+        "dietary_information",
+        "features"
+      ],
+      "typed_claim_candidate": true
+    },
+    {
+      "id": "662334011",
+      "current_on_ocado": 1,
+      "vegan_status": "vegan",
+      "vegan_reason": "manufacturer",
+      "candidate_fields": [
+        "further_description"
+      ],
+      "typed_claim_candidate": true
+    },
+    {
+      "id": "662337011",
+      "current_on_ocado": 1,
+      "vegan_status": "vegan",
+      "vegan_reason": "manufacturer",
+      "candidate_fields": [
+        "further_description"
+      ],
+      "typed_claim_candidate": true
+    },
+    {
+      "id": "662409011",
+      "current_on_ocado": 1,
+      "vegan_status": "vegan",
+      "vegan_reason": "manufacturer",
+      "candidate_fields": [
+        "detailed_description"
+      ],
+      "typed_claim_candidate": true
+    },
+    {
+      "id": "662579011",
+      "current_on_ocado": 1,
+      "vegan_status": "vegan",
+      "vegan_reason": "manufacturer",
+      "candidate_fields": [
+        "dietary_information"
+      ],
+      "typed_claim_candidate": true
+    },
+    {
+      "id": "665660011",
+      "current_on_ocado": 1,
+      "vegan_status": "vegan",
+      "vegan_reason": "ingredients",
+      "candidate_fields": [
+        "detailed_description"
+      ],
+      "typed_claim_candidate": true
+    },
+    {
+      "id": "66579011",
+      "current_on_ocado": 1,
+      "vegan_status": "vegan",
+      "vegan_reason": "manufacturer",
+      "candidate_fields": [
+        "detailed_description"
+      ],
+      "typed_claim_candidate": true
+    },
+    {
+      "id": "665815011",
+      "current_on_ocado": 1,
+      "vegan_status": "vegan",
+      "vegan_reason": "manufacturer",
+      "candidate_fields": [
+        "dietary_information"
+      ],
+      "typed_claim_candidate": true
+    },
+    {
+      "id": "667084011",
+      "current_on_ocado": 1,
+      "vegan_status": "vegan",
+      "vegan_reason": "manufacturer",
+      "candidate_fields": [],
+      "typed_claim_candidate": true
+    },
+    {
+      "id": "667086011",
+      "current_on_ocado": 1,
+      "vegan_status": "vegan",
+      "vegan_reason": "manufacturer",
+      "candidate_fields": [],
+      "typed_claim_candidate": true
+    },
+    {
+      "id": "667088011",
+      "current_on_ocado": 1,
+      "vegan_status": "vegan",
+      "vegan_reason": "manufacturer",
+      "candidate_fields": [],
+      "typed_claim_candidate": true
+    },
+    {
+      "id": "668055011",
+      "current_on_ocado": 1,
+      "vegan_status": "vegan",
+      "vegan_reason": "manufacturer",
+      "candidate_fields": [],
+      "typed_claim_candidate": true
+    },
+    {
+      "id": "668056011",
+      "current_on_ocado": 1,
+      "vegan_status": "vegan",
+      "vegan_reason": "manufacturer",
+      "candidate_fields": [],
+      "typed_claim_candidate": true
+    },
+    {
+      "id": "668057011",
+      "current_on_ocado": 1,
+      "vegan_status": "vegan",
+      "vegan_reason": "manufacturer",
+      "candidate_fields": [],
+      "typed_claim_candidate": true
+    },
+    {
+      "id": "668161011",
+      "current_on_ocado": 1,
+      "vegan_status": "vegan",
+      "vegan_reason": "manufacturer",
+      "candidate_fields": [
+        "detailed_description"
+      ],
+      "typed_claim_candidate": true
+    },
+    {
+      "id": "668184011",
+      "current_on_ocado": 0,
+      "vegan_status": "vegan",
+      "vegan_reason": "manufacturer",
+      "candidate_fields": [
+        "detailed_description"
+      ],
+      "typed_claim_candidate": true
+    },
+    {
+      "id": "668213011",
+      "current_on_ocado": 1,
+      "vegan_status": "vegan",
+      "vegan_reason": "manufacturer",
+      "candidate_fields": [
+        "detailed_description"
+      ],
+      "typed_claim_candidate": true
+    },
+    {
+      "id": "671295011",
+      "current_on_ocado": 1,
+      "vegan_status": "vegan",
+      "vegan_reason": "manufacturer",
+      "candidate_fields": [
+        "dietary_information",
+        "features"
+      ],
+      "typed_claim_candidate": true
+    },
+    {
+      "id": "671984011",
+      "current_on_ocado": 1,
+      "vegan_status": "vegan",
+      "vegan_reason": "manufacturer",
+      "candidate_fields": [
+        "other_information"
+      ],
+      "typed_claim_candidate": true
+    },
+    {
+      "id": "671988011",
+      "current_on_ocado": 1,
+      "vegan_status": "vegan",
+      "vegan_reason": "manufacturer",
+      "candidate_fields": [
+        "other_information"
+      ],
+      "typed_claim_candidate": true
+    },
+    {
+      "id": "671989011",
+      "current_on_ocado": 1,
+      "vegan_status": "vegan",
+      "vegan_reason": "manufacturer",
+      "candidate_fields": [
+        "other_information"
+      ],
+      "typed_claim_candidate": true
+    },
+    {
+      "id": "672201011",
+      "current_on_ocado": 1,
+      "vegan_status": "vegan",
+      "vegan_reason": "manufacturer",
+      "candidate_fields": [
+        "dietary_information"
+      ],
+      "typed_claim_candidate": true
+    },
+    {
+      "id": "675568011",
+      "current_on_ocado": 1,
+      "vegan_status": "vegan",
+      "vegan_reason": "manufacturer",
+      "candidate_fields": [],
+      "typed_claim_candidate": true
+    },
+    {
+      "id": "678704011",
+      "current_on_ocado": 1,
+      "vegan_status": "vegan",
+      "vegan_reason": "manufacturer",
+      "candidate_fields": [],
+      "typed_claim_candidate": true
+    },
+    {
+      "id": "680925011",
+      "current_on_ocado": 1,
+      "vegan_status": "vegan",
+      "vegan_reason": "manufacturer",
+      "candidate_fields": [
+        "dietary_information"
+      ],
+      "typed_claim_candidate": true
+    },
+    {
+      "id": "680926011",
+      "current_on_ocado": 1,
+      "vegan_status": "vegan",
+      "vegan_reason": "manufacturer",
+      "candidate_fields": [
+        "dietary_information"
+      ],
+      "typed_claim_candidate": true
+    },
+    {
+      "id": "680927011",
+      "current_on_ocado": 1,
+      "vegan_status": "vegan",
+      "vegan_reason": "manufacturer",
+      "candidate_fields": [
+        "dietary_information"
+      ],
+      "typed_claim_candidate": true
+    },
+    {
+      "id": "683461011",
+      "current_on_ocado": 1,
+      "vegan_status": "unknown",
+      "vegan_reason": null,
+      "candidate_fields": [],
+      "typed_claim_candidate": true
+    },
+    {
+      "id": "684232011",
+      "current_on_ocado": 1,
+      "vegan_status": "vegan",
+      "vegan_reason": "ingredients",
+      "candidate_fields": [],
+      "typed_claim_candidate": true
+    },
+    {
+      "id": "684233011",
+      "current_on_ocado": 1,
+      "vegan_status": "unknown",
+      "vegan_reason": null,
+      "candidate_fields": [],
+      "typed_claim_candidate": true
+    },
+    {
+      "id": "684235011",
+      "current_on_ocado": 1,
+      "vegan_status": "unknown",
+      "vegan_reason": null,
+      "candidate_fields": [],
+      "typed_claim_candidate": true
+    },
+    {
+      "id": "686559011",
+      "current_on_ocado": 1,
+      "vegan_status": "vegan",
+      "vegan_reason": "manufacturer",
+      "candidate_fields": [],
+      "typed_claim_candidate": true
+    },
+    {
+      "id": "688034011",
+      "current_on_ocado": 1,
+      "vegan_status": "vegan",
+      "vegan_reason": "manufacturer",
+      "candidate_fields": [
+        "dietary_information"
+      ],
+      "typed_claim_candidate": true
+    },
+    {
+      "id": "688035011",
+      "current_on_ocado": 1,
+      "vegan_status": "vegan",
+      "vegan_reason": "manufacturer",
+      "candidate_fields": [
+        "dietary_information"
+      ],
+      "typed_claim_candidate": true
+    },
+    {
+      "id": "688903011",
+      "current_on_ocado": 1,
+      "vegan_status": "vegan",
+      "vegan_reason": "manufacturer",
+      "candidate_fields": [],
+      "typed_claim_candidate": true
+    },
+    {
+      "id": "689513011",
+      "current_on_ocado": 1,
+      "vegan_status": "vegan",
+      "vegan_reason": "manufacturer",
+      "candidate_fields": [
+        "dietary_information"
+      ],
+      "typed_claim_candidate": true
+    },
+    {
+      "id": "689520011",
+      "current_on_ocado": 1,
+      "vegan_status": "vegan",
+      "vegan_reason": "manufacturer",
+      "candidate_fields": [
+        "dietary_information"
+      ],
+      "typed_claim_candidate": true
+    },
+    {
+      "id": "689522011",
+      "current_on_ocado": 1,
+      "vegan_status": "vegan",
+      "vegan_reason": "manufacturer",
+      "candidate_fields": [
+        "dietary_information"
+      ],
+      "typed_claim_candidate": true
+    },
+    {
+      "id": "691494011",
+      "current_on_ocado": 1,
+      "vegan_status": "vegan",
+      "vegan_reason": "manufacturer",
+      "candidate_fields": [],
+      "typed_claim_candidate": true
+    },
+    {
+      "id": "694971011",
+      "current_on_ocado": 1,
+      "vegan_status": "vegan",
+      "vegan_reason": "manufacturer",
+      "candidate_fields": [
+        "dietary_information"
+      ],
+      "typed_claim_candidate": true
+    },
+    {
+      "id": "694972011",
+      "current_on_ocado": 1,
+      "vegan_status": "vegan",
+      "vegan_reason": "manufacturer",
+      "candidate_fields": [
+        "dietary_information"
+      ],
+      "typed_claim_candidate": true
+    },
+    {
+      "id": "694973011",
+      "current_on_ocado": 1,
+      "vegan_status": "vegan",
+      "vegan_reason": "manufacturer",
+      "candidate_fields": [
+        "dietary_information"
+      ],
+      "typed_claim_candidate": true
+    },
+    {
+      "id": "694974011",
+      "current_on_ocado": 1,
+      "vegan_status": "vegan",
+      "vegan_reason": "manufacturer",
+      "candidate_fields": [
+        "dietary_information"
+      ],
+      "typed_claim_candidate": true
+    },
+    {
+      "id": "695790011",
+      "current_on_ocado": 1,
+      "vegan_status": "vegan",
+      "vegan_reason": "manufacturer",
+      "candidate_fields": [
+        "dietary_information"
+      ],
+      "typed_claim_candidate": true
+    },
+    {
+      "id": "697359011",
+      "current_on_ocado": 1,
+      "vegan_status": "unknown",
+      "vegan_reason": null,
+      "candidate_fields": [],
+      "typed_claim_candidate": true
+    },
+    {
+      "id": "697360011",
+      "current_on_ocado": 1,
+      "vegan_status": "unknown",
+      "vegan_reason": null,
+      "candidate_fields": [],
+      "typed_claim_candidate": true
+    },
+    {
+      "id": "700491011",
+      "current_on_ocado": 1,
+      "vegan_status": "vegan",
+      "vegan_reason": "manufacturer",
+      "candidate_fields": [
+        "detailed_description"
+      ],
+      "typed_claim_candidate": true
+    },
+    {
+      "id": "700492011",
+      "current_on_ocado": 1,
+      "vegan_status": "vegan",
+      "vegan_reason": "manufacturer",
+      "candidate_fields": [
+        "detailed_description"
+      ],
+      "typed_claim_candidate": true
+    },
+    {
+      "id": "700494011",
+      "current_on_ocado": 1,
+      "vegan_status": "vegan",
+      "vegan_reason": "manufacturer",
+      "candidate_fields": [
+        "detailed_description"
+      ],
+      "typed_claim_candidate": true
+    },
+    {
+      "id": "700704011",
+      "current_on_ocado": 1,
+      "vegan_status": "vegan",
+      "vegan_reason": "manufacturer",
+      "candidate_fields": [
+        "detailed_description"
+      ],
+      "typed_claim_candidate": true
+    },
+    {
+      "id": "700705011",
+      "current_on_ocado": 1,
+      "vegan_status": "vegan",
+      "vegan_reason": "manufacturer",
+      "candidate_fields": [
+        "detailed_description"
+      ],
+      "typed_claim_candidate": true
+    },
+    {
+      "id": "700706011",
+      "current_on_ocado": 1,
+      "vegan_status": "vegan",
+      "vegan_reason": "manufacturer",
+      "candidate_fields": [
+        "detailed_description"
+      ],
+      "typed_claim_candidate": true
+    },
+    {
+      "id": "74325011",
+      "current_on_ocado": 1,
+      "vegan_status": "vegan",
+      "vegan_reason": "manufacturer",
+      "candidate_fields": [
+        "detailed_description"
+      ],
+      "typed_claim_candidate": true
+    },
+    {
+      "id": "87441011",
+      "current_on_ocado": 1,
+      "vegan_status": "unknown",
+      "vegan_reason": null,
+      "candidate_fields": [
+        "detailed_description"
+      ],
+      "typed_claim_candidate": true
+    },
+    {
+      "id": "90551011",
+      "current_on_ocado": 1,
+      "vegan_status": "unknown",
+      "vegan_reason": null,
+      "candidate_fields": [
+        "detailed_description"
+      ],
+      "typed_claim_candidate": true
+    },
+    {
+      "id": "99303011",
+      "current_on_ocado": 1,
+      "vegan_status": "vegan",
+      "vegan_reason": "manufacturer",
+      "candidate_fields": [
+        "dietary_information",
+        "detailed_description"
+      ],
+      "typed_claim_candidate": true
+    }
+  ],
+  "excluded_products": []
+}
