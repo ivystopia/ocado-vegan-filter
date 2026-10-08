@@ -22,6 +22,68 @@ import update_userscript_allowlists as allowlists
 
 
 class SyncOcadoDatabaseTests(unittest.TestCase):
+    def test_sync_upgrades_old_provenance_columns_without_deleting_decisions(self):
+        with tempfile.TemporaryDirectory() as tmp, closing(self.create_db(Path(tmp)/'old.sqlite')) as conn:
+            conn.execute("INSERT INTO products(id,name,ingredients,current_on_ocado,vegan_status,vegan_reason) VALUES ('1','Beans','Beans',1,'vegan','ingredients')")
+            conn.execute('ALTER TABLE products DROP COLUMN vegan_policy_version')
+            sync.ensure_sync_schema(conn)
+            self.assertEqual(tuple(conn.execute('SELECT vegan_status,vegan_reason FROM products').fetchone()),('vegan','ingredients'))
+            sync.snapshot_classifier_contexts(conn)
+            run=sync.start_sync_run(conn)
+            conn.execute("UPDATE products SET ingredients='Milk' WHERE id='1'")
+            sync.finalize_context_changes(conn,run)
+            self.assertIsNone(conn.execute('SELECT vegan_status FROM products').fetchone()[0])
+
+    def acquired_failed_run(self,conn):
+        conn.execute("INSERT INTO products(id,name,ingredients,current_on_ocado,vegan_status,vegan_reason) VALUES ('1','Beans','Beans',1,'vegan','ingredients')")
+        run=sync.start_sync_run(conn);sync.snapshot_classifier_contexts(conn)
+        index='<sitemapindex><sitemap><loc>https://www.ocado.com/sitemaps/sitemap-categories-part1.xml</loc></sitemap><sitemap><loc>https://www.ocado.com/sitemaps/sitemap-products-part1.xml</loc></sitemap></sitemapindex>'
+        sync.retain_discovery_source(conn,run,sync.SITEMAP_INDEX_URL,index,'sitemap-index')
+        for kind,url in [('categories','https://www.ocado.com/categories/food/1'),('products','https://www.ocado.com/products/1')]:
+            sync.retain_discovery_source(conn,run,'https://www.ocado.com/sitemaps/sitemap-'+kind+'-part1.xml','<urlset><url><loc>'+url+'</loc></url></urlset>',kind)
+        sync.record_category_fetch(conn,run,{'slugPath':'food','categoryId':'1','status':200},1)
+        for source in ('category','sitemap'):sync.record_discovery(conn,run,'1',source)
+        data={'product':{'retailerProductId':'1','name':'Beans','iconAttributes':[]},'bopData':{'fields':[{'title':'ingredients','content':'Beans, Milk'}]}}
+        sync.apply_product_detail(conn,run,'1',data,200)
+        sync.log_detail_fetch(conn,run,'1',1,{'status':200})
+        for field,value in [('category_count',1),('category_pages_succeeded',1),('detail_fetch_succeeded',1)]:sync.record_run_count(conn,run,field,value)
+        sync.finish_sync_run(conn,run,'failed','OperationalError: no such column: vegan_policy_version')
+        conn.commit();return run
+
+    def test_complete_acquisition_can_finish_offline_without_rewriting_failed_run(self):
+        with tempfile.TemporaryDirectory() as tmp:
+            path=Path(tmp)/'db.sqlite'
+            with closing(self.create_db(path)) as conn:source=self.acquired_failed_run(conn)
+            args=sync.build_parser().parse_args(['--db',str(path),'--finish-run-id',str(source)])
+            with mock.patch.object(sync,'http_get_text',side_effect=AssertionError('must use retained evidence')),mock.patch.object(sync,'browser_session',side_effect=AssertionError('must not browse')):
+                self.assertEqual(sync.resume_finalization(args),0)
+            with closing(sqlite3.connect(path)) as conn:
+                rows=conn.execute('SELECT id,status,resumed_from_run_id,detail_fetch_attempted FROM sync_runs ORDER BY id').fetchall()
+                self.assertEqual(rows,[(source,'failed',None,0),(source+1,'completed',source,0)])
+                self.assertIsNone(conn.execute('SELECT vegan_status FROM products').fetchone()[0])
+                self.assertIsNone(conn.execute("SELECT 1 FROM sqlite_master WHERE name='sync_context_baseline'").fetchone())
+                self.assertIn('Beans, Milk',conn.execute('SELECT after_context_json FROM sync_product_context_changes WHERE run_id=?',(source+1,)).fetchone()[0])
+
+    def test_finalization_rejects_missing_capture_pagination_and_raw_detail(self):
+        for damaged in ('capture','pagination','detail'):
+            with self.subTest(damaged=damaged),tempfile.TemporaryDirectory() as tmp,closing(self.create_db(Path(tmp)/'db.sqlite')) as conn:
+                source=self.acquired_failed_run(conn)
+                if damaged=='capture':conn.execute("DELETE FROM sync_discovery_sources WHERE source_kind='products'")
+                elif damaged=='pagination':conn.execute("UPDATE sync_category_page_fetches SET next_page_token='missing'")
+                else:conn.execute('DELETE FROM product_detail_raw_latest')
+                with self.assertRaises(ValueError):sync.validate_finalization_source(conn,source)
+
+    def test_interrupted_finalization_preserves_source_and_rejects_running_writer(self):
+        with tempfile.TemporaryDirectory() as tmp,closing(self.create_db(Path(tmp)/'db.sqlite')) as conn:
+            source=self.acquired_failed_run(conn)
+            retry=sync.start_sync_run(conn)
+            conn.execute('UPDATE sync_runs SET resumed_from_run_id=? WHERE id=?',(source,retry))
+            with self.assertRaisesRegex(ValueError,'latest acquisition'):sync.validate_finalization_source(conn,source)
+            sync.finish_sync_run(conn,retry,'failed','Interrupted finalization')
+            self.assertEqual(sync.validate_finalization_source(conn,source)['id'],source)
+            sync.start_sync_run(conn)
+            with self.assertRaisesRegex(ValueError,'latest acquisition'):sync.validate_finalization_source(conn,source)
+
     def test_sitemap_discovery_reads_all_parts_deduplicates_and_retains_sources(self):
         index = '<sitemapindex xmlns="http://www.sitemaps.org/schemas/sitemap/0.9"><sitemap><loc>https://www.ocado.com/sitemaps/sitemap-products-part2.xml</loc></sitemap><sitemap><loc>https://www.ocado.com/sitemaps/sitemap-products-part1.xml</loc></sitemap><sitemap><loc>https://www.ocado.com/sitemaps/sitemap-products-part2.xml</loc></sitemap><sitemap><loc>https://elsewhere.test/sitemap-products-part3.xml</loc></sitemap></sitemapindex>'
         def page(ids):

@@ -42,7 +42,7 @@ from build_ocado_database import (
     table_to_plain_text,
     unit_price_to_parts,
 )
-from classify_ocado_vegan import context_hash, load_product_context, product_context_for_llm
+from classify_ocado_vegan import CLASSIFICATION_PRODUCT_COLUMNS, context_hash, load_product_context, product_context_for_llm
 
 
 FIREFOX_HELPER_SCRIPTS = os.environ.get("BROWSE_WITH_FIREFOX_SCRIPTS", "")
@@ -104,6 +104,8 @@ def ensure_sync_schema(conn: sqlite3.Connection) -> None:
         raise RuntimeError(f"products table is missing expected columns: {', '.join(missing_product_columns)}")
 
     for column_name, column_type in SYNC_PRODUCT_COLUMNS.items():
+        ensure_column(conn, "products", column_name, column_type)
+    for column_name, column_type in CLASSIFICATION_PRODUCT_COLUMNS.items():
         ensure_column(conn, "products", column_name, column_type)
 
     conn.executescript(
@@ -220,6 +222,7 @@ def ensure_sync_schema(conn: sqlite3.Connection) -> None:
           ON products(last_detail_fetch_status);
         """
     )
+    ensure_column(conn, 'sync_runs', 'resumed_from_run_id', 'INTEGER')
     for column_name in ("products_new", "products_changed", "products_removed", "classifications_invalidated"):
         ensure_column(conn, "sync_runs", column_name, "INTEGER DEFAULT 0")
 
@@ -321,6 +324,10 @@ def retain_discovery_source(conn, run_id, url, text, kind):
 
 def load_leaf_categories(timeout: int, category_limit: int = 0, source_recorder=None) -> list[tuple[str, str]]:
     urls = sitemap_urls('categories', timeout, source_recorder)
+    return leaf_categories_from_urls(urls, category_limit)
+
+
+def leaf_categories_from_urls(urls, category_limit=0):
     unique_paths: dict[str, str] = {}
     for url in urls:
         if not url.startswith('https://www.ocado.com/categories/'):
@@ -1199,9 +1206,88 @@ def run_sync(args: argparse.Namespace) -> int:
         conn.close()
 
 
+def validate_finalization_source(conn, run_id, *, require_latest=True):
+    """Prove complete acquisition from retained sources, not counters alone."""
+    source = conn.execute('SELECT * FROM sync_runs WHERE id=?', (run_id,)).fetchone()
+    if not source or source['status'] != 'failed' or source['category_pages_failed'] or source['detail_fetch_failed']:
+        raise ValueError('Finalization recovery requires a failed run without acquisition failures')
+    latest=conn.execute('SELECT * FROM sync_runs ORDER BY id DESC LIMIT 1').fetchone()
+    if require_latest and latest['id'] != run_id and not (
+            'resumed_from_run_id' in latest.keys() and latest['resumed_from_run_id']==run_id and latest['status']=='failed'):
+        raise ValueError('Finalization source is not the latest acquisition or failed finalization')
+    if not conn.execute("SELECT 1 FROM sqlite_master WHERE name='sync_context_baseline'").fetchone():
+        raise ValueError('Interrupted sync baseline is missing')
+    captures = {}
+    for row in conn.execute('SELECT * FROM sync_discovery_sources WHERE run_id=? ORDER BY retrieved_at_epoch,rowid', (run_id,)):
+        if hashlib.sha256(row['source_text'].encode()).hexdigest() != row['content_sha256']:
+            raise ValueError('Retained sitemap hash mismatch')
+        captures[row['url']] = row['source_text']
+    if SITEMAP_INDEX_URL not in captures: raise ValueError('Missing sitemap index capture')
+    index = ET.fromstring(captures[SITEMAP_INDEX_URL]); groups = {}
+    for kind in ('categories','products'):
+        pattern = re.compile(r'https://www\.ocado\.com/sitemaps/sitemap-'+kind+r'-part\d+\.xml')
+        parts = {node.text.strip() for node in index.iter() if node.tag.rsplit('}',1)[-1]=='loc' and node.text and pattern.fullmatch(node.text.strip())}
+        if not parts or not parts <= captures.keys(): raise ValueError('Missing advertised '+kind+' sitemap capture')
+        groups[kind] = [node.text.strip() for part in parts for node in ET.fromstring(captures[part]).iter()
+                        if node.tag.rsplit('}',1)[-1]=='loc' and node.text]
+    pages = {(row['slug_path'],row['category_id'],row['page_token'] or ''):row['next_page_token'] for row in conn.execute(
+        'SELECT * FROM sync_category_page_fetches WHERE run_id=? AND status=200 AND error IS NULL ORDER BY id', (run_id,))}
+    for slug, category in leaf_categories_from_urls(groups['categories']):
+        token=''; seen=set()
+        while True:
+            key=(slug,category,token)
+            if key in seen or key not in pages: raise ValueError('Incomplete category pagination')
+            seen.add(key);token=pages[key]
+            if not token: break
+    sitemap_ids={product_id_from_url(url) for url in groups['products']}-{None}
+    retained={row[0] for row in conn.execute("SELECT product_id FROM sync_product_discoveries WHERE run_id=? AND source='sitemap'",(run_id,))}
+    if not sitemap_ids or sitemap_ids != retained: raise ValueError('Incomplete sitemap discovery')
+    selected={row[0] for row in conn.execute('SELECT DISTINCT product_id FROM sync_product_discoveries WHERE run_id=?',(run_id,))}
+    current={row[0] for row in conn.execute('SELECT id FROM products WHERE current_on_ocado=1')}
+    if selected != current: raise ValueError('Current selection changed or discovery is incomplete')
+    bad=conn.execute('''SELECT count(*) FROM products p LEFT JOIN product_detail_raw_latest r ON r.product_id=p.id
+        WHERE p.current_on_ocado=1 AND (p.last_detail_fetch_run_id IS NOT ? OR p.last_detail_fetch_status IS NOT 200
+        OR r.run_id IS NOT ? OR NOT EXISTS (SELECT 1 FROM product_detail_fetches f WHERE f.run_id=?
+        AND f.product_id=p.id AND f.status=200 AND f.error IS NULL))''',(run_id,run_id,run_id)).fetchone()[0]
+    if bad or source['detail_fetch_succeeded'] != len(current): raise ValueError('Incomplete current-product detail evidence')
+    for row in conn.execute('SELECT * FROM product_detail_raw_latest WHERE run_id=?',(run_id,)):
+        if hashlib.sha256(zlib.decompress(row['response_json_zlib'])).hexdigest() != row['response_sha256']:
+            raise ValueError('Retained raw detail hash mismatch')
+    return source
+
+
+def resume_finalization(args):
+    """New audited run; preserve the failed acquisition record and make no HTTP calls."""
+    path=Path(args.db); backup=create_rolling_backup(path)
+    print(f'Backed up database to {backup}',flush=True)
+    with closing(sqlite3.connect(path)) as conn:
+        conn.row_factory=sqlite3.Row
+        with conn: ensure_sync_schema(conn)
+        conn.execute('BEGIN IMMEDIATE')
+        source=validate_finalization_source(conn,args.finish_run_id)
+        run_id=start_sync_run(conn)
+        conn.execute('UPDATE sync_runs SET resumed_from_run_id=? WHERE id=?',(args.finish_run_id,run_id))
+        conn.commit()
+        print(f'Finalization-only run {run_id}, acquisition run {args.finish_run_id}; no new HTTP fetches',flush=True)
+        try:
+            with conn:
+                conn.execute('BEGIN IMMEDIATE')
+                if conn.execute('SELECT max(id) FROM sync_runs').fetchone()[0] != run_id:
+                    raise ValueError('Concurrent sync appeared during finalization recovery')
+                finalize_product_flags(conn,args.finish_run_id)
+                finalize_context_changes(conn,run_id)
+                finish_sync_run(conn,run_id,'completed')
+            print(f'Completed sync finalization run {run_id}',flush=True)
+            return 0
+        except BaseException as exc:
+            with conn: finish_sync_run(conn,run_id,'failed',f'{type(exc).__name__}: {exc}')
+            raise
+
+
 def build_parser() -> argparse.ArgumentParser:
     parser = argparse.ArgumentParser(description=__doc__)
     parser.add_argument("--db", default=str(REPO_ROOT / "ocado_products.sqlite"))
+    parser.add_argument('--finish-run-id',type=int,help='Complete a fully acquired failed sync from retained evidence, without HTTP calls.')
     parser.add_argument("--timeout", type=int, default=60)
     parser.add_argument("--retries", type=int, default=3)
     parser.add_argument("--category-limit", type=int, default=0)
@@ -1222,6 +1308,7 @@ def build_parser() -> argparse.ArgumentParser:
 
 def main(argv: list[str] | None = None) -> int:
     args = build_parser().parse_args(argv)
+    if args.finish_run_id is not None: return resume_finalization(args)
     return run_sync(args)
 
 

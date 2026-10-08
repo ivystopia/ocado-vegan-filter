@@ -17,6 +17,7 @@ import classify_ocado_vegan as classifier
 import manufacturer_evidence as manufacturer
 import research_ocado_manufacturers as research
 import shadow_vegan_policy as shadow
+import sync_ocado_database as sync
 import update_userscript_allowlists as exporter
 import validate_whole_product_candidate as checks
 import vegan_policy as policy
@@ -293,7 +294,17 @@ class Refresh:
         if 'pre_sync_id' not in self.manifest:
             self.manifest['pre_sync_id'] = latest['id']; self.save()
         if latest['id'] <= self.manifest['pre_sync_id'] or latest['status'] != 'completed':
-            self.command('scrape', [ROOT/'tools/sync_ocado_database.py', '--db', self.working],
+            arguments = [ROOT/'tools/sync_ocado_database.py', '--db', self.working]
+            if latest['status'] == 'failed':
+                source_run_id = latest.get('resumed_from_run_id') or latest['id']
+                with closing(readonly(self.working)) as conn:
+                    try:
+                        sync.validate_finalization_source(conn, source_run_id)
+                    except (ValueError, sqlite3.Error):
+                        pass  # Incomplete acquisition needs a full sync, preserving its baseline.
+                    else:
+                        arguments += ['--finish-run-id', source_run_id]
+            self.command('scrape', arguments,
                          python=Path.home()/'.venvs/codex-firefox/bin/python')
         with closing(readonly(self.working)) as conn:
             latest = dict(conn.execute('SELECT * FROM sync_runs ORDER BY id DESC LIMIT 1').fetchone())
@@ -302,6 +313,9 @@ class Refresh:
             old = self.manifest['original_population']['current']; current = conn.execute('SELECT count(*) FROM products WHERE current_on_ocado=1').fetchone()[0]
             if old and not .8 <= current/old <= 1.2: raise GateError('Catalogue size changed by more than 20%; investigate before reassessment')
             self.manifest['sync_run'] = latest; self.save()
+            if latest.get('resumed_from_run_id'):
+                self.manifest['sync_acquisition_run'] = dict(conn.execute('SELECT * FROM sync_runs WHERE id=?',
+                    (latest['resumed_from_run_id'],)).fetchone()); self.save()
 
     def step_corpus(self):
         with closing(classifier.connect(self.working)) as conn:
