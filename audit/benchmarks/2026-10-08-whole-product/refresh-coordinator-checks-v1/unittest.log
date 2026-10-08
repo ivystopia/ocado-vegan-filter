@@ -1,0 +1,134 @@
+Benchmark cohort challenge: 24 products
+Benchmark cohort holdout: 24 products
+...Benchmark cohort challenge: 24 products
+Benchmark cohort holdout: 24 products
+...............gpt-6-luna/high pipeline run 1: 1/5
+................gpt-6-luna/high pipeline run 1: 5/5
+..gpt-6-luna/high pipeline run 1: 1/5
+gpt-6-luna/high pipeline run 1: 2/5
+gpt-6-luna/high pipeline run 1: 3/5
+gpt-6-luna/high pipeline run 1: 4/5
+gpt-6-luna/high pipeline run 1: 5/5
+.....gpt-6-luna/high rules run 1: 5/5
+..................Codex batch 1/1: products 1-1 of 1
+..Codex batch 1/1: products 1-1 of 1
+........................................................  pass 1/2, attempt 1
+  pass 2/2, attempt 1
+.  pass 1/2, attempt 1
+  pass 2/2, attempt 1
+  pass 1/2, attempt 1
+  pass 2/2, attempt 1
+.  pass 1/2, attempt 1
+  pass 2/2, attempt 1
+  pass 1/2, attempt 1
+  pass 2/2, attempt 1
+.  pass 1/2, attempt 1
+  pass 2/2, attempt 1
+  pass 1/2, attempt 1
+  pass 2/2, attempt 1
+.  pass 1/2, attempt 1
+  pass 2/2, attempt 1
+  pass 1/2, attempt 1
+.  pass 1/2, attempt 1
+  splitting failed batch of 2 into 1 and 1: split
+    pass 1/2, attempt 1
+    pass 2/2, attempt 1
+    pass 1/2, attempt 1
+    pass 2/2, attempt 1
+.  pass 1/2, attempt 1
+  pass 2/2, attempt 1
+  pass 1/2, attempt 1
+  pass 2/2, attempt 1
+  pass 1/2, attempt 1
+/usr/lib/python3.13/unittest/mock.py:799: ResourceWarning: unclosed database in <sqlite3.Connection object at 0x7f3883f66200>
+  def __setattr__(self, name, value):
+ResourceWarning: Enable tracemalloc to get the object allocation traceback
+/usr/lib/python3.13/unittest/mock.py:799: ResourceWarning: unclosed database in <sqlite3.Connection object at 0x7f3883b074c0>
+  def __setattr__(self, name, value):
+ResourceWarning: Enable tracemalloc to get the object allocation traceback
+  pass 2/2, attempt 1
+  pass 1/2, attempt 1
+  pass 2/2, attempt 1
+.  pass 1/2, attempt 1
+  pass 2/2, attempt 1
+  pass 1/2, attempt 1
+.  pass 1/2, attempt 1
+.Codex batch 1/1: products 1-1 of 1
+  pass 1/2, attempt 1
+  pass 2/2, attempt 1
+  pass 1/2, attempt 1
+  pass 2/2, attempt 1
+Codex batch 1/1: products 1-1 of 1
+  pass 1/2, attempt 1
+  pass 2/2, attempt 1
+  pass 1/2, attempt 1
+..  pass 1/2, attempt 1
+  pass 2/2, attempt 1
+  pass 1/2, attempt 1
+  pass 2/2, attempt 1
+..  pass 1/2, attempt 1
+  pass 2/2, attempt 1
+  pass 1/2, attempt 1
+  pass 2/2, attempt 1
+  pass 1/2, attempt 1
+  pass 2/2, attempt 1
+  pass 1/2, attempt 1
+  pass 2/2, attempt 1
+.  pass 1/2, attempt 1
+  pass 2/2, attempt 1
+  pass 1/2, attempt 1
+...........Error sending stats to Plausible: error sending request for url (https://plausible.io/api/event)
+........s....................fixture smoke test passed
+image ownership smoke test passed
+image rendering smoke test passed
+incremental updates smoke test passed
+malformed hydration smoke test passed
+reused counter smoke test passed
+userscript source test passed
+Snapshotted classifier context for 1 products
+Reusing classifier context from the unfinished sync
+Context changes new=1 changed=1 removed=0 invalidated=2
+......./home/ivy/repos/personal/ocado_report/tools/classify_ocado_vegan.py:808: ResourceWarning: unclosed database in <sqlite3.Connection object at 0x7f388326b6a0>
+  product = conn.execute("SELECT * FROM products WHERE id = ?", (product_id,)).fetchone()
+ResourceWarning: Enable tracemalloc to get the object allocation traceback
+/home/ivy/repos/personal/ocado_report/tools/classify_ocado_vegan.py:808: ResourceWarning: unclosed database in <sqlite3.Connection object at 0x7f388326ba60>
+  product = conn.execute("SELECT * FROM products WHERE id = ?", (product_id,)).fetchone()
+ResourceWarning: Enable tracemalloc to get the object allocation traceback
+/home/ivy/repos/personal/ocado_report/tools/classify_ocado_vegan.py:808: ResourceWarning: unclosed database in <sqlite3.Connection object at 0x7f388326b790>
+  product = conn.execute("SELECT * FROM products WHERE id = ?", (product_id,)).fetchone()
+ResourceWarning: Enable tracemalloc to get the object allocation traceback
+/home/ivy/repos/personal/ocado_report/tools/classify_ocado_vegan.py:808: ResourceWarning: unclosed database in <sqlite3.Connection object at 0x7f388326b880>
+  product = conn.execute("SELECT * FROM products WHERE id = ?", (product_id,)).fetchone()
+ResourceWarning: Enable tracemalloc to get the object allocation traceback
+/home/ivy/repos/personal/ocado_report/tools/classify_ocado_vegan.py:808: ResourceWarning: unclosed database in <sqlite3.Connection object at 0x7f388326b970>
+  product = conn.execute("SELECT * FROM products WHERE id = ?", (product_id,)).fetchone()
+ResourceWarning: Enable tracemalloc to get the object allocation traceback
+/home/ivy/repos/personal/ocado_report/tools/classify_ocado_vegan.py:808: ResourceWarning: unclosed database in <sqlite3.Connection object at 0x7f388326ac50>
+  product = conn.execute("SELECT * FROM products WHERE id = ?", (product_id,)).fetchone()
+ResourceWarning: Enable tracemalloc to get the object allocation traceback
+/home/ivy/repos/personal/ocado_report/tools/classify_ocado_vegan.py:808: ResourceWarning: unclosed database in <sqlite3.Connection object at 0x7f388326a200>
+  product = conn.execute("SELECT * FROM products WHERE id = ?", (product_id,)).fetchone()
+ResourceWarning: Enable tracemalloc to get the object allocation traceback
+/home/ivy/repos/personal/ocado_report/tools/classify_ocado_vegan.py:808: ResourceWarning: unclosed database in <sqlite3.Connection object at 0x7f3883269c60>
+  product = conn.execute("SELECT * FROM products WHERE id = ?", (product_id,)).fetchone()
+ResourceWarning: Enable tracemalloc to get the object allocation traceback
+/home/ivy/repos/personal/ocado_report/tools/classify_ocado_vegan.py:808: ResourceWarning: unclosed database in <sqlite3.Connection object at 0x7f388326a2f0>
+  product = conn.execute("SELECT * FROM products WHERE id = ?", (product_id,)).fetchone()
+ResourceWarning: Enable tracemalloc to get the object allocation traceback
+/home/ivy/repos/personal/ocado_report/tools/classify_ocado_vegan.py:808: ResourceWarning: unclosed database in <sqlite3.Connection object at 0x7f388326a110>
+  product = conn.execute("SELECT * FROM products WHERE id = ?", (product_id,)).fetchone()
+ResourceWarning: Enable tracemalloc to get the object allocation traceback
+....................................................................................................../usr/lib/python3.13/json/decoder.py:361: ResourceWarning: unclosed database in <sqlite3.Connection object at 0x7f3883dbbf10>
+  obj, end = self.scan_once(s, idx)
+ResourceWarning: Enable tracemalloc to get the object allocation traceback
+/usr/lib/python3.13/json/decoder.py:361: ResourceWarning: unclosed database in <sqlite3.Connection object at 0x7f3883b064d0>
+  obj, end = self.scan_once(s, idx)
+ResourceWarning: Enable tracemalloc to get the object allocation traceback
+/usr/lib/python3.13/json/decoder.py:361: ResourceWarning: unclosed database in <sqlite3.Connection object at 0x7f3883d21a80>
+  obj, end = self.scan_once(s, idx)
+ResourceWarning: Enable tracemalloc to get the object allocation traceback
+.......................................
+----------------------------------------------------------------------
+Ran 319 tests in 38.560s
+
+OK (skipped=1)
