@@ -27,7 +27,7 @@ python3 -m unittest discover -s tests
 node --check ocado-vegan-filter.user.js
 ```
 
-A development result is not permission to classify the catalogue. Evaluate locked cases three times with the frozen selected candidate; do not ask the already settled model-choice question again. Never use paid/API fallback on included-plan exhaustion. Keep completed checkpoints and resume the identical command after allowance reset.
+Reuse retained, applicable verification for the unchanged classifier. A scrape alone does not require new model qualification; genuine classifier changes require the design's affected validation. Do not ask the already settled model-choice question again. Never use paid/API fallback on included-plan exhaustion. Keep completed checkpoints and resume the same scoped work when included allowance becomes available.
 
 ## 2. Refresh The SQLite Catalogue
 
@@ -92,7 +92,7 @@ Stop if the selected run is not `completed`, reports errors, or the change count
 
 ## 3. Classify New And Changed Products
 
-After fresh qualification and shadow validation, run deterministic rules first and Luna 6/high only for remaining unresolved products. The code defaults already select this primary and Sol 6.1/medium arbitration; keep model and effort as separate arguments. Do not use Luna 5.6.
+After applicable verification, run deterministic rules first and Luna 6/high only for remaining unresolved products. The code defaults already select this primary and Sol 6.1/medium arbitration; keep model and effort as separate arguments. Do not use Luna 5.6. For a full-policy migration, use the isolated coordinator above rather than this routine changed-product command.
 
 ```bash
 python3 tools/classify_ocado_vegan.py --db "$DB_PATH" classify-all \
@@ -101,12 +101,12 @@ python3 tools/classify_ocado_vegan.py --db "$DB_PATH" classify-all \
   --model gpt-6-luna \
   --reasoning-effort high \
   --passes 2 \
-  --retries 2 \
-  --batch-size 10 \
-  --workers 8
+  --retries 1 \
+  --batch-size 8 \
+  --workers 3
 ```
 
-The command is resumable: successfully classified products are no longer selected if the command must be rerun. Primary status/reason disagreements trigger two fresh GPT-6.1-Sol/medium passes on the stored evidence. Only an agreed, policy-supported result is accepted; unresolved disagreements stay `unknown`, and exhausted arbitration failures are recorded as errors. Agreed primary unknowns are not escalated. Eight workers completed the 8,242-product August 2026 queue without a final error; lower the worker count and rerun only if the service starts returning persistent rate or execution errors.
+The command is resumable: successfully classified products are no longer selected if the command must be rerun. Primary status/reason disagreements trigger two fresh GPT-6.1-Sol/medium passes on the stored evidence. Only an agreed, policy-supported result is accepted; unresolved disagreements stay `unknown`, and exhausted arbitration failures are recorded as errors. Agreed primary unknowns are not escalated. The bounded worker, batch and retry settings match the current full-refresh coordinator; preserve the running configuration when resuming.
 
 ## 4. Validate The Database
 
@@ -173,12 +173,27 @@ WHERE r.sync_run_id = ${SYNC_RUN_ID}
   AND json_extract(a.evidence_json, '$.arbitration') IS NOT NULL
 GROUP BY arbitration_outcome;
 
-SELECT COUNT(*) AS validation_error_products
+SELECT COUNT(*) AS historical_validation_error_audits
 FROM product_vegan_classification_audit AS a
 JOIN vegan_classification_runs AS r ON r.id = a.run_id
 WHERE r.sync_run_id = ${SYNC_RUN_ID}
   AND r.mode = 'codex'
   AND a.validation_error IS NOT NULL;
+
+SELECT COUNT(*) AS unfinished_products_with_validation_errors
+FROM products AS p
+WHERE p.vegan_status IS NULL
+  AND EXISTS (
+    SELECT 1 FROM product_vegan_classification_audit AS a
+    JOIN vegan_classification_runs AS r ON r.id = a.run_id
+    WHERE a.product_id = p.id
+      AND r.sync_run_id = ${SYNC_RUN_ID}
+      AND a.validation_error IS NOT NULL
+  );
+
+SELECT COUNT(*) AS unclassified_all_known_products
+FROM products
+WHERE vegan_status IS NULL;
 
 SELECT COALESCE(c.previous_vegan_status, 'unclassified') AS previous_status,
        COALESCE(c.previous_vegan_reason, '') AS previous_reason,
@@ -197,11 +212,12 @@ SQL
 
 Required gates:
 
-- Both classification runs are `completed` with zero errors.
+- The remaining queue completes successfully with current, valid product-level audit linkage. Preserve and explicitly account for earlier failed/interrupted runs rather than requiring their historical error counts to disappear.
 - `unclassified_changed_products` is zero.
 - `unclassified_current_products` is zero.
 - Every `official_tag_conflicts` row is accounted for by current-policy audit evidence: a correctly matched definite animal finding is `nonvegan`, and an unresolved identity/material conflict is blocked `unknown`. Do not require these valid exceptions to be vegan/tagged merely to make the count zero.
-- `validation_error_products` is zero.
+- `unfinished_products_with_validation_errors` is zero. Historical failed audit attempts remain visible and are not themselves current product decisions.
+- For a fundamental policy migration, `unclassified_all_known_products` is zero, including historical products.
 - Every raw primary disagreement is accounted for with exactly two fresh blind arbitration passes; unresolved disagreement remains unknown. Valid agreed arbitration decisions retain their policy-supported status.
 - Counts distinguish all known products from current Ocado products.
 - Review large status movements using retained product-level source evidence, transitions and the automated positive audit; independent human annotation is not a prerequisite.
@@ -275,8 +291,8 @@ Do not regenerate or publish the userscript if any of the following occurs:
 
 - a critical validation mismatch, false-vegan result, missing product or unresolved model error;
 - failed or incomplete Ocado sync;
-- classification run error;
+- an unresolved classification execution or validation error;
 - unresolved `NULL` status for any current or sync-changed product;
-- official vegan tag conflict;
+- an unaccounted official vegan tag conflict, invalid animal-content decision or missing conflict block;
 - unexplained large classification-count movement;
 - syntax, unit-test, or Firefox regression.
