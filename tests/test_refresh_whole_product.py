@@ -1,5 +1,6 @@
 """Policy migration scope, immutable checkpoints and atomic promotion contracts."""
 from contextlib import closing
+import hashlib
 import json
 from pathlib import Path
 import sqlite3
@@ -16,6 +17,74 @@ import manufacturer_evidence as manufacturer
 
 
 class RefreshTests(unittest.TestCase):
+    def test_empty_native_recovery_plan_has_no_write_or_fingerprint(self):
+        with closing(sqlite3.connect(':memory:')) as conn:
+            plan={'changes':[],'unmatched_projection':[]}
+            with mock.patch.object(refresh,'fingerprint',side_effect=AssertionError('Unneeded history scan')), \
+                 mock.patch.object(refresh.text_recovery,'apply') as apply:
+                result=refresh.apply_text_plan_if_needed(conn,plan)
+                apply.assert_not_called()
+            self.assertEqual(result['state'],'validated-unchanged')
+            self.assertEqual(result['changed_products'],0)
+            self.assertFalse(conn.in_transaction)
+            self.assertEqual(conn.total_changes,0)
+            with self.assertRaisesRegex(refresh.GateError,'cannot be matched'):
+                refresh.apply_text_plan_if_needed(conn,{'changes':[],'unmatched_projection':['bad']})
+
+    def test_nonempty_native_recovery_retains_concurrent_change_guard(self):
+        with closing(sqlite3.connect(':memory:')) as conn:
+            conn.execute('CREATE TABLE products(id TEXT PRIMARY KEY,name TEXT)');conn.commit()
+            plan={'changes':[{'product_id':'1'}],'unmatched_projection':[]}
+            with mock.patch.object(refresh,'fingerprint',side_effect=['before','changed']) as fingerprint:
+                with self.assertRaisesRegex(ValueError,'Database changed'):
+                    refresh.apply_text_plan_if_needed(conn,plan)
+                self.assertEqual(fingerprint.call_count,2)
+            conn.rollback()
+            self.assertEqual(conn.execute('SELECT count(*) FROM products').fetchone()[0],0)
+
+    def test_audit_repair_requires_failed_audit_and_preserves_frozen_research(self):
+        with tempfile.TemporaryDirectory() as tmp:
+            root=Path(tmp);manufacturer=root/'manufacturer';manufacturer.mkdir()
+            snapshot=manufacturer/'snapshot.json';snapshot.write_text('{}')
+            bundle={'outcomes':{},'sources':{},'shared_associations':{},'products':{},'brands':0,'errors':[]}
+            origin={'root':str(manufacturer.resolve()),'snapshot_sha256':hashlib.sha256(snapshot.read_bytes()).hexdigest(),
+                    'bundle_hash':refresh.classifier.context_hash({k:bundle[k] for k in ('outcomes','sources','shared_associations')})}
+            old={'immutable_manufacturer_root':str(manufacturer),'stages':{
+                'assessment':{'state':'completed','artifacts':{'manufacturer/snapshot.json':origin['snapshot_sha256']}},
+                'research':{'state':'completed'},'positive_audit':{'state':'checkpointed'}}}
+            (root/'positive-score.json').write_text('{"state":"failed"}')
+            with mock.patch.object(refresh.research,'read_bundle',return_value=bundle),mock.patch.object(refresh.research,'gathering_complete',return_value=True):
+                self.assertEqual(refresh.validate_research_protocol_origin(root,old,{'research_continuation':origin},audit_repair=True),origin)
+                with self.assertRaises(refresh.GateError):refresh.validate_research_protocol_origin(root,old,{'research_continuation':origin})
+                (root/'positive-score.json').write_text('{"state":"passed"}')
+                with self.assertRaisesRegex(refresh.GateError,'failed positive audit'):
+                    refresh.validate_research_protocol_origin(root,old,{'research_continuation':origin},audit_repair=True)
+                (root/'positive-score.json').write_text('{"state":"failed"}')
+                old['stages']['activation']={'state':'completed'}
+                with self.assertRaisesRegex(refresh.GateError,'consumed positive audit'):
+                    refresh.validate_research_protocol_origin(root,old,{'research_continuation':origin},audit_repair=True)
+
+    def test_policy_repair_refuses_running_origin_and_failed_proof(self):
+        with tempfile.TemporaryDirectory() as tmp:
+            root = Path(tmp); previous = root/'old'; previous.mkdir()
+            evidence = root/'repair.json'; evidence.write_text('{}')
+            runner = object.__new__(refresh.Refresh)
+            runner.root = root/'new'; runner.candidate = runner.root/'candidate.sqlite'
+            runner.manifest = {'stages':{}, 'configuration':{}}
+            (previous/'manifest.json').write_text(json.dumps({'state':'running','stages':{}}))
+            with self.assertRaisesRegex(refresh.GateError, 'writers must drain'):
+                runner.fork_policy_repair(previous, evidence)
+            old = {'state':'checkpointed','stages':{'scrape':{'state':'completed'}}, 'configuration':{}}
+            (previous/'manifest.json').write_text(json.dumps(old))
+            with self.assertRaisesRegex(refresh.GateError, 'failed or bound'):
+                runner.fork_policy_repair(previous, evidence)
+
+    def test_repair_snapshots_are_read_only_even_if_scrape_is_called_directly(self):
+        runner = object.__new__(refresh.Refresh)
+        runner.manifest = {'immutable_snapshots':{'original':'retained-original','refreshed':'retained-scrape'}}
+        with self.assertRaisesRegex(refresh.GateError, 'cannot be modified'):
+            runner.step_scrape()
+
     def test_assessment_has_no_category_admission_stage_and_safety_gates_cannot_be_waived(self):
         self.assertEqual(refresh.STAGES, ('checks','preflight','scrape','assessment','research','positive_audit','activation','export'))
         runner=object.__new__(refresh.Refresh)
@@ -204,6 +273,41 @@ class RefreshTests(unittest.TestCase):
                 self.assertEqual(refresh.fingerprint(conn),baseline)
                 self.assertIsNone(conn.execute("SELECT 1 FROM sqlite_master WHERE name='aaa_new'").fetchone())
 
+    def test_wal_activation_uses_rollback_journal_and_restores_wal(self):
+        with tempfile.TemporaryDirectory() as tmp:
+            root=Path(tmp);source=root/'source.sqlite';candidate=root/'candidate.sqlite'
+            self.make_db(source)
+            with closing(sqlite3.connect(source)) as conn, conn:conn.execute('PRAGMA journal_mode=WAL')
+            refresh.clone(source,candidate)
+            with closing(refresh.readonly(source)) as conn:baseline=refresh.fingerprint(conn)
+            with closing(sqlite3.connect(candidate)) as conn, conn:conn.execute("UPDATE products SET name='New'")
+            original_fingerprint=refresh.fingerprint;modes=[]
+            def inspect(conn):
+                modes.append(conn.execute('PRAGMA main.journal_mode').fetchone()[0])
+                return original_fingerprint(conn)
+            with mock.patch.object(refresh,'validate_candidate'),mock.patch.object(refresh,'fingerprint',side_effect=inspect):
+                refresh.activate(source,candidate,baseline,root/'backup.sqlite')
+            self.assertEqual(modes,['delete'])
+            with closing(sqlite3.connect(source)) as conn, conn:
+                self.assertEqual(conn.execute('PRAGMA journal_mode').fetchone()[0],'wal')
+                self.assertEqual(conn.execute('SELECT name FROM products').fetchone()[0],'New')
+            with closing(refresh.readonly(root/'backup.sqlite')) as conn:self.assertEqual(original_fingerprint(conn),baseline)
+
+    def test_failed_wal_activation_rolls_back_and_restores_wal(self):
+        with tempfile.TemporaryDirectory() as tmp:
+            root=Path(tmp);source=root/'source.sqlite';candidate=root/'candidate.sqlite'
+            self.make_db(source)
+            with closing(sqlite3.connect(source)) as conn, conn:conn.execute('PRAGMA journal_mode=WAL')
+            refresh.clone(source,candidate)
+            with closing(refresh.readonly(source)) as conn:baseline=refresh.fingerprint(conn)
+            with closing(sqlite3.connect(candidate)) as conn, conn:conn.execute('ALTER TABLE products RENAME COLUMN name TO incompatible')
+            with mock.patch.object(refresh,'validate_candidate'):
+                with self.assertRaisesRegex(refresh.GateError,'Unmatched columns'):
+                    refresh.activate(source,candidate,baseline,root/'backup.sqlite')
+            with closing(sqlite3.connect(source)) as conn, conn:
+                self.assertEqual(conn.execute('PRAGMA journal_mode').fetchone()[0],'wal')
+                self.assertEqual(refresh.fingerprint(conn),baseline)
+
     def test_activation_is_not_available_before_all_prerequisites(self):
         runner=object.__new__(refresh.Refresh);runner.manifest={'stages':{}}
         with self.assertRaisesRegex(refresh.GateError,'All validation'):
@@ -250,3 +354,146 @@ class RefreshTests(unittest.TestCase):
             bundle['outcomes']['1']['research_complete']=False
             with self.assertRaisesRegex(refresh.GateError,'Incomplete manufacturer'):
                 refresh.retain_refresh_sources(db,bundle,root)
+
+    def test_new_exact_contrary_shared_capture_invalidates_existing_positive_outside_unknown_cohort(self):
+        with tempfile.TemporaryDirectory() as tmp:
+            root=Path(tmp);db=root/'candidate.sqlite'
+            inputs=[{'classifier_input':classifier.product_context_for_llm({'product':{'id':pid,'name':'Example Bottled Wine'},
+                    'flags':[],'categories':[],'manufacturer_vegan_evidence':[]})} for pid in ('1','2')]
+            with closing(benchmark.fixture_database(inputs)) as fixture,closing(sqlite3.connect(db)) as target:
+                fixture.commit();fixture.backup(target)
+            with closing(classifier.connect(db)) as conn:
+                conn.execute("UPDATE products SET vegan_status=CASE WHEN id='1' THEN 'unknown' ELSE 'vegan' END")
+                conn.execute("UPDATE products SET vegan_reason='manufacturer' WHERE id='2'");conn.commit()
+                contexts={pid:classifier.load_product_context(conn,pid) for pid in ('1','2')}
+            text='Example Bottled Wine labels contain casein glue.'
+            source={'id':'raw','url':'https://example.test/new-faq','title':'Wine FAQ','retrieved_at':'2026-10-10',
+                    'official_identity':'Example producer','market_scope':'UK bottles','source_text':text,
+                    'content_sha256':refresh.hashlib.sha256(text.encode()).hexdigest()}
+            identity=classifier.context_hash(manufacturer.catalogue_identity_payload(refresh.research.catalogue_payload(contexts['1'])))
+            association={'product_id':'2','source_ids':['raw'],'positive_claim_approved':False,
+                'catalogue_context_hash':classifier.context_hash(classifier.product_context_for_llm(contexts['2'])),
+                'scope_match':'Exact native bottled wine, not another brand or can','notes':'New contrary capture requires normal assessment'}
+            bundle={'products':{'1':{'context_hash':identity,'current_on_ocado':0}},'sources':{'raw':source},'brands':1,'errors':[],
+                    'outcomes':{'1':{'outcome':'no_confirmation','research_complete':True,'source_ids':['raw'],'quote':text}},
+                    'shared_associations':{'2':association}}
+            result=refresh.retain_refresh_sources(db,bundle,root)
+            self.assertEqual(result['changed_evidence'],2)
+            with closing(classifier.connect(db)) as conn:
+                self.assertEqual(conn.execute('SELECT count(*) FROM products WHERE vegan_status IS NULL').fetchone()[0],2)
+                candidates=classifier.product_context_for_llm(classifier.load_product_context(conn,'2'))['manufacturer_source_candidates']
+                self.assertEqual(candidates[0]['source_text'],text)
+            self.assertTrue(refresh.retain_refresh_sources(db,bundle,root)['resumed'])
+
+    def test_changed_shared_context_rolls_back_source_and_association_import(self):
+        with tempfile.TemporaryDirectory() as tmp:
+            root=Path(tmp);db=root/'candidate.sqlite'
+            context=classifier.product_context_for_llm({'product':{'id':'1','name':'Example Wine'},'flags':[],
+                'categories':[],'manufacturer_vegan_evidence':[]})
+            with closing(benchmark.fixture_database([{'classifier_input':context}])) as fixture,closing(sqlite3.connect(db)) as target:
+                fixture.commit();fixture.backup(target)
+            with closing(classifier.connect(db)) as conn:
+                conn.execute("UPDATE products SET vegan_status='vegan'");conn.commit()
+            source={'id':'raw','url':'https://example.test/faq','title':'FAQ','retrieved_at':'2026-10-10',
+                'official_identity':'Producer','market_scope':'UK','source_text':'Contains casein.',
+                'content_sha256':refresh.hashlib.sha256(b'Contains casein.').hexdigest()}
+            bundle={'products':{},'sources':{'raw':source},'brands':0,'errors':[], 'outcomes':{},
+                'shared_associations':{'1':{'product_id':'1','source_ids':['raw'],'catalogue_context_hash':'wrong',
+                    'positive_claim_approved':False,'scope_match':'Native bottle','notes':'Unapproved contrary source'}}}
+            with self.assertRaisesRegex(refresh.GateError,'changed for shared'):refresh.retain_refresh_sources(db,bundle,root)
+            with closing(classifier.connect(db)) as conn:
+                self.assertEqual(conn.execute('SELECT vegan_status FROM products').fetchone()[0],'vegan')
+                self.assertEqual(conn.execute('SELECT count(*) FROM manufacturer_website_sources').fetchone()[0],0)
+                self.assertEqual(conn.execute('SELECT count(*) FROM manufacturer_research_runs').fetchone()[0],0)
+
+    def test_audit_only_checked_page_cannot_invalidate_previously_associated_positive(self):
+        with tempfile.TemporaryDirectory() as tmp:
+            root=Path(tmp);db=root/'candidate.sqlite'
+            inputs=[{'classifier_input':classifier.product_context_for_llm({'product':{'id':pid,'name':'Example Wine'},
+                    'flags':[],'categories':[],'manufacturer_vegan_evidence':[]})} for pid in ('1','2')]
+            with closing(benchmark.fixture_database(inputs)) as fixture,closing(sqlite3.connect(db)) as target:
+                fixture.commit();fixture.backup(target)
+            with closing(classifier.connect(db)) as conn:
+                manufacturer.ensure_schema(conn)
+                conn.execute("UPDATE products SET vegan_status=CASE WHEN id='1' THEN 'unknown' ELSE 'vegan' END")
+                conn.execute("INSERT INTO manufacturer_website_sources VALUES ('old','https://example.test/faq','FAQ','2026-10-09','Producer','UK','old-hash','Old claim')")
+                conn.execute("INSERT INTO manufacturer_website_evidence(run_id,product_id,source_id,catalogue_binding_hash,statement,scope_match,accepted_at) VALUES(1,'2','old','old-binding','Old claim','Exact product','2026-10-09')")
+                conn.commit();context=classifier.load_product_context(conn,'1')
+                identity=classifier.context_hash(manufacturer.catalogue_identity_payload(refresh.research.catalogue_payload(context)))
+            text='Contact us for more information.'
+            source={'id':'checked','url':'https://example.test/faq','title':'FAQ','retrieved_at':'2026-10-10',
+                    'official_identity':'Producer','market_scope':'UK','source_text':text,
+                    'content_sha256':refresh.hashlib.sha256(text.encode()).hexdigest()}
+            bundle={'products':{'1':{'context_hash':identity,'current_on_ocado':0}},'sources':{'checked':source},'brands':1,'errors':[],
+                'outcomes':{'1':{'outcome':'no_confirmation','research_complete':True,'source_ids':[],
+                    'checked_source_ids':['checked'],'notes':'No applicable claim in the brief check'}},
+                'bounded_research_policy_sha256':'fixed','research_root':str(root),
+                'bounded_research_policy':{'mode':refresh.research.cursory.MODE,'authorization':'Approved brief checks','positive_validation_unchanged':True}}
+            result=refresh.retain_refresh_sources(db,bundle,root)
+            self.assertEqual(result['changed_evidence'],0)
+            with closing(classifier.connect(db)) as conn:
+                self.assertEqual(conn.execute("SELECT vegan_status FROM products WHERE id='2'").fetchone()[0],'vegan')
+                self.assertEqual(conn.execute('SELECT count(*) FROM manufacturer_research_products WHERE product_id=\'2\'').fetchone()[0],0)
+                self.assertEqual(classifier.product_context_for_llm(classifier.load_product_context(conn,'1')).get('manufacturer_source_candidates',[]),[])
+    def test_research_protocol_repair_binds_frozen_cohort_and_captures(self):
+        with tempfile.TemporaryDirectory() as tmp:
+            previous=Path(tmp);origin=previous/'manufacturer';origin.mkdir();snapshot=origin/'snapshot.json';snapshot.write_text('{"frozen": ["historical", "current"]}')
+            digest=refresh.hashlib.sha256(snapshot.read_bytes()).hexdigest()
+            old={'stages':{'assessment':{'state':'completed','artifacts':{'manufacturer/snapshot.json':digest}},'research':{'state':'checkpointed'}}}
+            bundle={'outcomes':{'historical':{'outcome':'source_collected'}},'sources':{'s':{'source_text':'Full immutable source'}},'shared_associations':{}}
+            key=classifier.context_hash(bundle);proof={'research_continuation':{'root':str(origin.resolve()),'snapshot_sha256':digest,'bundle_hash':key}}
+            with mock.patch.object(refresh.research,'read_bundle',return_value=bundle),mock.patch.object(refresh.research,'bundle_status',return_value={}),mock.patch.object(refresh.research,'gathering_complete',return_value=True):
+                self.assertEqual(refresh.validate_research_protocol_origin(previous,old,proof),proof['research_continuation'])
+                bundle['sources']['s']['source_text']='Withdrawn or replaced'
+                with self.assertRaisesRegex(refresh.GateError,'exact frozen'):refresh.validate_research_protocol_origin(previous,old,proof)
+                snapshot.write_text('{"frozen": ["different"]}')
+                with self.assertRaisesRegex(refresh.GateError,'cohort changed'):refresh.validate_research_protocol_origin(previous,old,proof)
+    def test_metadata_continuation_rejects_prompt_or_policy_changes(self):
+        with tempfile.TemporaryDirectory() as tmp:
+            sources = {}; hashes = {}
+            for module in ('classify_ocado_vegan.py', 'replay_whole_product_policy.py', 'refresh_whole_product.py'):
+                path = Path(tmp)/module
+                path.write_bytes((refresh.ROOT/'tools'/module).read_bytes())
+                sources[module] = str(path)
+                hashes['tools/'+module] = refresh.hashlib.sha256(path.read_bytes()).hexdigest()
+            self.assertEqual(refresh.validate_metadata_continuation(hashes, hashes, sources), [])
+            with self.assertRaisesRegex(refresh.GateError, 'policy, sources'):
+                refresh.validate_metadata_continuation(hashes, {**hashes, 'tools/vegan_policy.py':'changed'}, sources)
+            path = Path(sources['classify_ocado_vegan.py'])
+            text = path.read_text()
+            self.assertIn('Do not browse, search, read files or use tools.', text)
+            path.write_text(text.replace('Do not browse, search, read files or use tools.', 'A different model instruction.'))
+            previous = {**hashes, 'tools/classify_ocado_vegan.py':refresh.hashlib.sha256(path.read_bytes()).hexdigest()}
+            with self.assertRaisesRegex(refresh.GateError, 'rules, prompts'):
+                refresh.validate_metadata_continuation(previous, hashes, sources)
+
+    def test_transport_repair_during_assessment_preserves_inherited_frozen_research(self):
+        with tempfile.TemporaryDirectory() as tmp:
+            previous = Path(tmp); origin = previous / 'manufacturer'; origin.mkdir()
+            snapshot = origin / 'snapshot.json'; snapshot.write_text('original unknown cohort')
+            bundle = {'outcomes': {}, 'sources': {}, 'shared_associations': {}}
+            expected = {'root': str(origin.resolve()), 'snapshot_sha256': refresh.hashlib.sha256(snapshot.read_bytes()).hexdigest(),
+                        'bundle_hash': classifier.context_hash(bundle)}
+            old = {'immutable_manufacturer_root': str(origin), 'research_protocol_origin': expected,
+                   'stages': {'assessment': {'state': 'checkpointed'}}}
+            proof = {'research_continuation': expected}
+            with mock.patch.object(refresh.research, 'read_bundle', return_value=bundle), \
+                 mock.patch.object(refresh.research, 'bundle_status', return_value={}), \
+                 mock.patch.object(refresh.research, 'gathering_complete', return_value=True):
+                self.assertEqual(refresh.validate_research_protocol_origin(previous, old, proof), expected)
+                old['research_protocol_origin'] = {**expected, 'bundle_hash': 'changed'}
+                with self.assertRaisesRegex(refresh.GateError, 'Inherited frozen'):
+                    refresh.validate_research_protocol_origin(previous, old, proof)
+                old['research_protocol_origin'] = expected
+                old['stages']['positive_audit'] = {'state': 'checkpointed'}
+                with self.assertRaisesRegex(refresh.GateError, 'consumed positive audit'):
+                    refresh.validate_research_protocol_origin(previous, old, proof)
+
+    def test_research_protocol_repair_cannot_reuse_consumed_positive_audit(self):
+        old={'stages':{'assessment':{'state':'completed'},'research':{'state':'checkpointed'},'positive_audit':{'state':'checkpointed'}}}
+        with self.assertRaisesRegex(refresh.GateError,'consumed positive audit'):refresh.validate_research_protocol_origin(Path('/tmp/unused'),old,{})
+    def test_research_protocol_artifacts_use_original_cohort_snapshot(self):
+        with tempfile.TemporaryDirectory() as tmp:
+            root=Path(tmp);origin=root/'old-manufacturer';origin.mkdir();(origin/'snapshot.json').write_text('original initially unknown IDs')
+            runner=object.__new__(refresh.Refresh);runner.root=root/'new';runner.manufacturer=origin
+            self.assertEqual(runner.artifacts('assessment'),{'manufacturer/snapshot.json':refresh.hashlib.sha256((origin/'snapshot.json').read_bytes()).hexdigest()})

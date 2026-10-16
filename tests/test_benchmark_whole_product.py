@@ -22,6 +22,11 @@ from types import SimpleNamespace
 
 
 class WholeProductBenchmarkTests(unittest.TestCase):
+    def setUp(self):
+        guard = mock.patch.object(codex_evidence, 'run', side_effect=AssertionError('Unit tests must explicitly mock model calls'))
+        guard.start()
+        self.addCleanup(guard.stop)
+
     def test_different_catalogue_provenance_fails_before_classification(self):
         with tempfile.TemporaryDirectory() as directory:
             path=Path(directory)/'fixture.json'
@@ -167,6 +172,59 @@ class WholeProductBenchmarkTests(unittest.TestCase):
         annotations['candidates']=[{**reading,'expected':{'vegan_status':'vegan','vegan_reason':'ingredients'},
             'adjudication':{'state':'accepted','policy_version':policy.POLICY_VERSION}}]
         with self.assertRaisesRegex(ValueError,'two distinct'):positive_audit.score(packet,predictions,annotations)
+
+    def test_partial_audit_can_only_fail_after_two_bound_blind_readings(self):
+        context={'product':{'id':'1','name':'Example Wine'}}
+        case={'case_id':'a','classifier_input':context,'input_sha256':classifier.context_hash(context)}
+        packet={'policy_version':policy.POLICY_VERSION,'candidates':[case],'sampling':{'size':600}}
+        predictions={'packet_sha256':classifier.context_hash(packet),'predictions':{'a':{'vegan_status':'vegan'}}}
+        annotation={'case_id':'a','expected_status':'unknown','expected_reason':None,
+            'required_issue_codes':['processing_unresolved'],
+            'input_refs':[{'path':'/product/name','quote':'Example Wine'}],
+            'rationale':'Applicable fining is unresolved.','external_status':'unknown','source_id':None,
+            'external_quote':'','scope_match':'No sources.',
+            'component_assessment':{'status':'insufficient','evidence_refs':[{'path':'/product/name','quote':'Example Wine'}]}}
+        readings=[{'call_id':str(n),'input_sha256':case['input_sha256'],'annotation':copy.deepcopy(annotation)} for n in (1,2)]
+        result=positive_audit.score_early_failure(packet,predictions,readings)
+        self.assertEqual((result['state'],result['completed_cases']),('failed',1))
+        self.assertIsNone(result['zero_error_binomial_upper_95'])
+        duplicated=copy.deepcopy(readings);duplicated[1]['call_id']='1'
+        with self.assertRaisesRegex(ValueError,'two distinct'):positive_audit.score_early_failure(packet,predictions,duplicated)
+        changed=copy.deepcopy(readings);changed[1]['input_sha256']='changed'
+        with self.assertRaisesRegex(ValueError,'different evidence'):positive_audit.score_early_failure(packet,predictions,changed)
+        positives=copy.deepcopy(readings)
+        for reading in positives:reading['annotation'].update(expected_status='vegan',expected_reason='name',input_refs=[{'path':'/product/name','quote':'Example Wine'}])
+        with mock.patch.object(adjudication,'validate_basis'):
+            with self.assertRaisesRegex(ValueError,'unsupported positive'):positive_audit.score_early_failure(packet,predictions,positives)
+            disputed=copy.deepcopy(readings);disputed[1]=positives[1]
+            result=positive_audit.score_early_failure(packet,predictions,disputed)
+            self.assertEqual(result['mode'],'early-stop-after-reference-dispute')
+            self.assertEqual(result['reference_counts'],{'disputed':1})
+            self.assertIsNone(result['zero_error_binomial_upper_95'])
+            self.assertEqual(result['state'],'failed')
+
+    def test_partial_reason_failure_keeps_positive_references_and_cannot_pass(self):
+        context={'product':{'id':'1','name':'Carrots','dietary_information':'Suitable for Vegans'}}
+        case={'case_id':'a','classifier_input':context,'input_sha256':classifier.context_hash(context)}
+        packet={'policy_version':policy.POLICY_VERSION,'candidates':[case],'sampling':{'size':600}}
+        predictions={'packet_sha256':classifier.context_hash(packet),'predictions':{
+            'a':{'vegan_status':'vegan','vegan_reason':'ingredients'}}}
+        ref={'path':'/product/dietary_information','quote':'Suitable for Vegans'}
+        annotation={'case_id':'a','expected_status':'vegan','expected_reason':'manufacturer',
+            'required_issue_codes':[],'input_refs':[ref],'rationale':'Applicable producer assertion.',
+            'external_status':'unknown','source_id':None,'external_quote':'','scope_match':'No sources.',
+            'component_assessment':{'status':'covered_by_claim','evidence_refs':[ref]}}
+        readings=[{'call_id':str(n),'input_sha256':case['input_sha256'],
+                   'annotation':copy.deepcopy(annotation)} for n in (1,2)]
+        result=positive_audit.score_early_failure(packet,predictions,readings)
+        self.assertEqual(result['mode'],'early-stop-after-confirmed-reason-defect')
+        self.assertEqual(result['state'],'failed')
+        self.assertEqual(result['reference_counts'],{'vegan':1})
+        self.assertEqual(result['issues'][0]['finding'],'unsupported_reason')
+        self.assertIsNone(result['zero_error_binomial_upper_95'])
+        predictions['predictions']['a']['vegan_reason']='manufacturer'
+        with self.assertRaisesRegex(ValueError,'unsupported positive'):
+            positive_audit.score_early_failure(packet,predictions,readings)
 
     def test_refresh_packet_excludes_old_labels_and_adjudications(self):
         case={'case_id':'a','case_kind':'natural','sampling_stratum':'ordinary','current_on_ocado':1,
@@ -393,8 +451,8 @@ class WholeProductBenchmarkTests(unittest.TestCase):
         self.assertIn('shared_source_texts',prompt)
 
     def fixture(self,path):
-        # Conclusive rule contracts only; name candidates require models.
-        ids={'synthetic.00.0','synthetic.00.1','synthetic.00.2','synthetic.00.4','synthetic.18.0'}
+        # Conclusive facts only; positive claims require semantic model calls.
+        ids={'synthetic.00.0','synthetic.00.4','synthetic.14.0','synthetic.18.0','synthetic.18.1'}
         cases=[case for case in assemble.synthetic_cases() if case['case_id'] in ids]
         path.write_text(json.dumps({'schema_version':2,'policy_version':policy.POLICY_VERSION,'cases':cases}))
         return cases
