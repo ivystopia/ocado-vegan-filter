@@ -1,0 +1,148 @@
+{
+  "schema_version": 2,
+  "policy_version": "whole-product-v2",
+  "candidates": [
+    {
+      "case_id": "flavour-repair.679700011",
+      "case_kind": "natural",
+      "sampling_stratum": "census-of-affected-products",
+      "current_on_ocado": 0,
+      "classifier_input": {
+        "product": {
+          "id": "679700011",
+          "name": "Squeaky Bean Hot Smoked Sweet Chili Salmon Flakes",
+          "brand": "Squeaky Bean",
+          "url": "https://www.ocado.com/products/679700011/details",
+          "official_vegan": 0,
+          "ingredients": "Water, Textured Wheat Protein (30%) (Wheat Protein, Wheat Flour), Rapeseed Oil, Sweet Chilli Salmon Flavour Seasoning (7%) (Sugar, Natural Flavouring, Garlic Powder, Smoked Dextrose, Maize Starch, Dried Garlic, Chilli, Dried Red Bell Pepper, Spirit Vinegar Powder, Acidity Regulator: Citric Acid, Cayenne Pepper, Colour: Paprika Extract), Natural Flavouring, Salt, Radish Concentrate, Acidity Regulator: Citric Acid, Carrot Concentrate",
+          "allergens": "Contains Wheat",
+          "dietary_information": "Suitable for Vegans",
+          "features": "Ready to Eat, Source of Omega 3, High Protein, Low Saturated Fat, Suitable for Vegans",
+          "other_information": "Full Product Name: Ready to Eat Plant Based Salmon Style Flakes Made with Wheat Protein Marinated in a Sweet Chilli Salmon Flavour Seasoning. Storage: Keep refrigerated below 5\u00b0C. Once opened, keep refrigerated and use within 2 days. Do not exceed use by date. For use by date see front of pack. Not suitable for home freezing. Additional Information: Packaged in a Protective Atmosphere.",
+          "country_of_origin": "United Kingdom",
+          "pack_size": "120g",
+          "package_type": "Tray",
+          "manufacturer": "Produced for: Squeaky Bean\u00ae, Granville House, 9 Wells Place, RH1 3AS, UK.",
+          "return_to_address": "Squeaky Bean\u00ae, Granville House, 9 Wells Place, RH1 3AS, UK."
+        },
+        "flags": [
+          "vegetarian"
+        ],
+        "categories": [
+          "fresh-chilled-food/fish-seafood/ready-to-eat/fish"
+        ],
+        "manufacturer_vegan_evidence": [
+          {
+            "field_title": "features",
+            "content": "Ready to Eat, Source of Omega 3, High Protein, Low Saturated Fat, Suitable for Vegans"
+          },
+          {
+            "field_title": "dietaryInformation",
+            "content": "Suitable for Vegans"
+          }
+        ]
+      },
+      "input_sha256": "6a2444e86aed698e9fa3a05838398039db388b422776ad20b3abb00c80eb0e23",
+      "family_key": "Squeaky Bean",
+      "source_group_keys": [],
+      "external_sources": [],
+      "adjudication": {
+        "state": "accepted",
+        "reference_type": "frozen-evidence-sufficiency",
+        "policy_version": "whole-product-v2",
+        "method": "two fresh automated evidence readings with validated citations; no human review",
+        "readings": [
+          {
+            "annotation": {
+              "case_id": "flavour-repair.679700011",
+              "expected_status": "vegan",
+              "expected_reason": "manufacturer",
+              "required_issue_codes": [],
+              "input_refs": [
+                {
+                  "path": "/manufacturer_vegan_evidence/0/content",
+                  "quote": "Ready to Eat, Source of Omega 3, High Protein, Low Saturated Fat, Suitable for Vegans"
+                },
+                {
+                  "path": "/product/other_information",
+                  "quote": "Ready to Eat Plant Based Salmon Style Flakes Made with Wheat Protein Marinated in a Sweet Chilli Salmon Flavour Seasoning."
+                }
+              ],
+              "rationale": "Explicit whole-product vegan confirmation in native product information covers generic flavouring, sugar-processing and component uncertainties. The salmon-style designation does not establish animal content, and no material contrary evidence is supplied.",
+              "external_status": "unknown",
+              "source_id": null,
+              "external_quote": "",
+              "scope_match": "No external primary sources supplied.",
+              "component_assessment": {
+                "status": "covered_by_claim",
+                "evidence_refs": [
+                  {
+                    "path": "/product/package_type",
+                    "quote": "Tray"
+                  },
+                  {
+                    "path": "/manufacturer_vegan_evidence/0/content",
+                    "quote": "Suitable for Vegans"
+                  }
+                ]
+              }
+            },
+            "input_sha256": "6a2444e86aed698e9fa3a05838398039db388b422776ad20b3abb00c80eb0e23",
+            "call_id": "f4365d2b-1129-4eca-9d1a-6ea9f48f0f13",
+            "model": "gpt-6.1-sol",
+            "effort": "high",
+            "prompt_version": "blind-evidence-adjudication-v26"
+          },
+          {
+            "annotation": {
+              "case_id": "flavour-repair.679700011",
+              "expected_status": "vegan",
+              "expected_reason": "manufacturer",
+              "required_issue_codes": [],
+              "input_refs": [
+                {
+                  "path": "/manufacturer_vegan_evidence/0/content",
+                  "quote": "Ready to Eat, Source of Omega 3, High Protein, Low Saturated Fat, Suitable for Vegans"
+                },
+                {
+                  "path": "/product/other_information",
+                  "quote": "Ready to Eat Plant Based Salmon Style Flakes Made with Wheat Protein Marinated in a Sweet Chilli Salmon Flavour Seasoning."
+                }
+              ],
+              "rationale": "Native product information explicitly confirms vegan suitability for this product. The salmon wording describes plant-based salmon-style flakes and flavouring; no definite animal ingredient or material contrary evidence is supplied. The whole-product assurance covers generic tray and manufacturing uncertainty.",
+              "external_status": "unknown",
+              "source_id": null,
+              "external_quote": "",
+              "scope_match": "No external primary source supplied for independent verification.",
+              "component_assessment": {
+                "status": "covered_by_claim",
+                "evidence_refs": [
+                  {
+                    "path": "/product/package_type",
+                    "quote": "Tray"
+                  },
+                  {
+                    "path": "/manufacturer_vegan_evidence/0/content",
+                    "quote": "Ready to Eat, Source of Omega 3, High Protein, Low Saturated Fat, Suitable for Vegans"
+                  }
+                ]
+              }
+            },
+            "input_sha256": "6a2444e86aed698e9fa3a05838398039db388b422776ad20b3abb00c80eb0e23",
+            "call_id": "63890caf-0007-494c-9830-7e8e7cf377e8",
+            "model": "gpt-6.1-sol",
+            "effort": "high",
+            "prompt_version": "blind-evidence-adjudication-v26"
+          }
+        ]
+      },
+      "expected": {
+        "vegan_status": "vegan",
+        "vegan_reason": "manufacturer",
+        "required_issue_codes": []
+      }
+    }
+  ],
+  "workload": [],
+  "disputed_cases": []
+}

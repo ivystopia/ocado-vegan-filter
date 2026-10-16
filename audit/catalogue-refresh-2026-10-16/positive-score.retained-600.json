@@ -1,0 +1,57 @@
+{
+  "policy_version": "whole-product-v2",
+  "state": "passed",
+  "packet_sha256": "2d35e74f337524e18225b73231c19166179b35dcb1b2148af26593e7d9e160c0",
+  "sampling": {
+    "seed": 9394689130020336957,
+    "size": 600,
+    "population_all_known": 12399,
+    "population_current": 11275,
+    "population_sha256": "402c72659bd4dbe360d075f021248c975972bfb628bdfd81c63c17d980a80424",
+    "design": "uniform without replacement from all known candidate positive labels"
+  },
+  "reference_counts": {
+    "vegan": 600
+  },
+  "issues": [],
+  "zero_error_binomial_upper_95": 0.004980443380361299,
+  "note": "Automated source-backed evidence-sufficiency audit; shared model/reference errors remain possible. The conditional binomial calculation is not an unconditional physical guarantee and does not account for those errors. No activation is authorised. Original suitability observations retained after explicitly authorised attribution-only correction; not a fresh unseen reason benchmark.",
+  "mode": "retained-suitability-audit-with-separately-validated-attribution",
+  "attribution_repair": {
+    "state": "passed",
+    "mode": "retained-suitability-audit-with-separately-validated-attribution",
+    "proof_path": "/home/ivy/repos/personal/ocado_report/.whole-product-work/attribution-repair-2026-10-16/continuation-proof.json",
+    "proof_sha256": "d513e72f68ba9d02d62261c608539a11df6bbdf22d52c7f41cc796aa5ff98fe9",
+    "authorization": "Retain the audit; validate the reason-only correction",
+    "changes": [
+      {
+        "product_id": "402370011",
+        "previous_audit_id": 2444762,
+        "audit_id": 2501275,
+        "before": "name",
+        "after": "manufacturer"
+      }
+    ],
+    "unchanged_product_signature": "2d44d691990a51369315966cfbf49a4f56f7ece910aeb18e41b83b9fbb7dc6e5",
+    "suitability_changes": 0,
+    "evidence_changes": 0,
+    "browser_membership_changes": 0,
+    "original_failed_score_sha256": "8446a3126ac1e9ad1696c368e6b12ec182539afc460494480839e7aa49eadfde",
+    "retained_artifacts": {
+      "positive-audit.json": "64808b435c90c6170ca6bfffc0b3f2a7a16650e4c37059975a5f7bff39013fb5",
+      "positive-audit.predictions.json": "522256126d739b57403bdcf1c5fa3ecf89a6e531fb47b37caf8f3c4a36d997b6",
+      "positive-readings/annotated-candidates.json": "3ccba945da8c90eb9d9768745d43190422d5a5befb9c3a8c515241350c103cc3",
+      "positive-score.json": "8446a3126ac1e9ad1696c368e6b12ec182539afc460494480839e7aa49eadfde"
+    },
+    "code_changes": [
+      "tests/test_attribution_repair.py",
+      "tests/test_slash_dietary_attributes.py",
+      "tools/classify_ocado_vegan.py",
+      "tools/refresh_whole_product.py",
+      "tools/repair_vegan_attribution.py",
+      "tools/vegan_policy.py"
+    ],
+    "run_id": 307,
+    "note": "600 original blind suitability references retained by explicit user instruction; attribution was repaired separately. This is not a fresh unseen test of reason accuracy."
+  }
+}

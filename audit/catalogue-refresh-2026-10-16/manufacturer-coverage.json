@@ -1,0 +1,25 @@
+{
+  "total_products": 31624,
+  "current_products": 26329,
+  "brands": 3047,
+  "outcomes": {
+    "no_confirmation": 27267,
+    "source_collected": 3572,
+    "blocked": 785
+  },
+  "sources": 1672,
+  "complete_products": 27267,
+  "mode": "cursory-official-sources-v1",
+  "closed_access_blocked_products": 785,
+  "collected_source_products": 3572,
+  "accounted_products": 31624,
+  "pending_products": 0,
+  "can_continue": true,
+  "bounded_research_policy_sha256": "8539caae97cb5ef721561cf543ce0adb305b95cc704376d3b56c00a54e6e89b6",
+  "errors_count": 0,
+  "classification_review_required_ids_count": 3572,
+  "pending_product_ids_count": 0,
+  "closed_access_blocked_ids_count": 785,
+  "full_accounting_path": "/home/ivy/repos/personal/ocado_report/.whole-product-work/assessment-2026-10-16-v67/manufacturer-coverage.json",
+  "full_accounting_sha256": "3c627f3e40081f077db388efbc6331e4432433974e8673383af52986db118ba3"
+}

@@ -10,7 +10,7 @@ https://greasyfork.org/en/scripts/576838-ocado-vegan-filter
 
 Ocado already has a vegan icon and filter, but some vegan products are missing from that metadata or do not show the vegan icon in product grids.
 
-This script adds a client-side correction layer. It embeds over 19,000 vegan product IDs from an offline Ocado catalogue audit, including over 14,000 products beyond the officially tagged vegan set seen in the audit.
+This script adds a client-side correction layer. The development catalogue has 12,400 supported vegan products among 58,322 known products, including historical listings. Of 50,725 currently listed products, 11,275 are vegan. Embedded IDs cover all four evidence routes; applicable live official tags can also establish suitability, subject to recorded safety exclusions.
 
 Products identified as vegan keep Ocado's normal styling and yellow `Add` button.
 
@@ -36,7 +36,7 @@ The offline classifier assesses the complete sold product, including relevant pr
 
 While shopping, recorded nonvegan and blocked-unknown IDs take precedence over embedded positives and applicable live official tags. Names and URL slugs cannot promote a product at runtime. The script remains self-contained.
 
-`Not vegan` means affirmative non-vegan evidence. `Unknown vegan` means the available evidence cannot establish suitability safely. The whole-product catalogue migration is being assessed on `dev`; existing embedded catalogue data is refreshed only after its validation gates pass.
+`Not vegan` means affirmative non-vegan evidence. `Unknown vegan` means the available evidence cannot establish suitability safely. The whole-product catalogue migration is complete on `dev` for local testing. The [completed catalogue report](audit/catalogue-refresh-2026-10-16/README.md) records its decisions, research accounting and audit; this is not a published release.
 
 ## Data And Privacy
 
@@ -50,7 +50,7 @@ The large local SQLite database and raw scrape streams are intentionally not tra
 - `tools/sync_ocado_database.py`: full discovery and detail refresh into SQLite.
 - `tools/classify_ocado_vegan.py`, `tools/vegan_policy.py`, `tools/codex_evidence.py`: whole-product policy, deterministic decisions and two-pass Luna 6/high classification with disagreement-only Sol 6.1/medium arbitration.
 - `tools/refresh_whole_product.py`: resumable all-known migration, source research, positive audit, transactional activation and export.
-- `tools/research_ocado_manufacturers.py`: exhaustive source research, complete captures, applicability and outcome accounting.
+- `tools/research_ocado_manufacturers.py`: bounded manufacturer checks, complete retained captures, applicability and individual outcome accounting.
 - `tools/benchmark_whole_product.py`, `benchmarks/`: current frozen policy and browser fixtures.
 - `tools/update_userscript_allowlists.py`: validated export with retained ID placement.
 - `tools/build_ocado_database.py`: shared parsing/schema helpers and an isolated reconstruction command; never rebuild the live database with it.

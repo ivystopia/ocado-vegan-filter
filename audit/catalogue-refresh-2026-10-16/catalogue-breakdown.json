@@ -1,0 +1,48 @@
+{
+  "status_reason_counts": [
+    {
+      "vegan_status": "nonvegan",
+      "vegan_reason": null,
+      "all_known": 14379,
+      "current": 13201,
+      "promotion_blocked": 0
+    },
+    {
+      "vegan_status": "unknown",
+      "vegan_reason": null,
+      "all_known": 31543,
+      "current": 26249,
+      "promotion_blocked": 5379
+    },
+    {
+      "vegan_status": "vegan",
+      "vegan_reason": "ingredients",
+      "all_known": 167,
+      "current": 149,
+      "promotion_blocked": 0
+    },
+    {
+      "vegan_status": "vegan",
+      "vegan_reason": "manufacturer",
+      "all_known": 6026,
+      "current": 5278,
+      "promotion_blocked": 0
+    },
+    {
+      "vegan_status": "vegan",
+      "vegan_reason": "name",
+      "all_known": 22,
+      "current": 19,
+      "promotion_blocked": 0
+    },
+    {
+      "vegan_status": "vegan",
+      "vegan_reason": "tagged",
+      "all_known": 6185,
+      "current": 5829,
+      "promotion_blocked": 0
+    }
+  ],
+  "tagged_unknown_without_promotion_block": 0,
+  "classification_writes": 0
+}

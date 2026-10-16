@@ -1,0 +1,23 @@
+{
+  "rows": [
+    {
+      "source": "codex",
+      "model": "gpt-6-luna",
+      "reasoning_effort": "high",
+      "products": 33630
+    },
+    {
+      "source": "codex_arbitration",
+      "model": "gpt-6.1-sol",
+      "reasoning_effort": "medium",
+      "products": 947
+    },
+    {
+      "source": "rule",
+      "model": null,
+      "reasoning_effort": null,
+      "products": 23745
+    }
+  ],
+  "unclassified": 0
+}

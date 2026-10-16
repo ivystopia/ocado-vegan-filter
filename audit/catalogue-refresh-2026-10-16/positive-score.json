@@ -1,0 +1,39 @@
+{
+  "state": "passed",
+  "policy_version": "whole-product-v2",
+  "mode": "uniform-original-positive-sample-plus-complete-added-positive-census",
+  "authorization": "Retain the 600 and audit every added positive",
+  "reference_counts": {
+    "vegan": 601
+  },
+  "issues": [],
+  "sampling": {
+    "design": "600 uniformly sampled original positives, retained unchanged, plus every added positive audited (census); not a uniform sample of 601",
+    "size": 601,
+    "uniform_sample_size": 600,
+    "uniform_sampling": {
+      "seed": 9394689130020336957,
+      "size": 600,
+      "population_all_known": 12399,
+      "population_current": 11275,
+      "population_sha256": "402c72659bd4dbe360d075f021248c975972bfb628bdfd81c63c17d980a80424",
+      "design": "uniform without replacement from all known candidate positive labels"
+    },
+    "added_positive_census_size": 1,
+    "added_positive_ids": [
+      "679700011"
+    ],
+    "population_all_known": 12400,
+    "population_current": 11275,
+    "population_sha256": "3c5ed0a51d2629e2b63d17046ce888d779cd0462c50099a727bc79d9e9f468dd"
+  },
+  "packet_sha256": "2d35e74f337524e18225b73231c19166179b35dcb1b2148af26593e7d9e160c0",
+  "retained_600_score_sha256": "bd68940a471188ed5eef672addf9f120f35803e49f3fc5e2a36010b9d850af21",
+  "original_failed_score_sha256": "8446a3126ac1e9ad1696c368e6b12ec182539afc460494480839e7aa49eadfde",
+  "added_positive_packet_sha256": "184692f4ea2f32f23c1f05f33e85ec99d276d162abd55b656cc14400e0d36e55",
+  "added_positive_annotations_sha256": "fd2e81bc46993db45631f66f6b3e0ab4f1999c87697249e4d5c0bfbbd21c7063",
+  "conditional_original_stratum_binomial_upper_95": 0.004980443380361299,
+  "stratified_policy_error_upper_95": 0.004980041731701593,
+  "zero_error_binomial_upper_95": null,
+  "note": "User-approved mixed sampling design. The original 600 product evidence, positive labels and references are unchanged; every newly positive product has two new blind source-cited readings. The overall conditional bound weights the original-stratum bound by its population share and treats the completely audited new stratum as zero reference errors. This is not the binomial interval for 601 independent random products. Shared model/reference errors and undisclosed facts are not covered; no unconditional physical guarantee is claimed."
+}

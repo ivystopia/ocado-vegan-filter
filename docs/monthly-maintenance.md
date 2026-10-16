@@ -4,7 +4,7 @@ This runbook refreshes the SQLite source of truth, validates classifications and
 
 The live scrape itself does not use an LLM. The selected primary, GPT-6-Luna/high, is used only after the scrape, for products that remain unresolved after deterministic rules. Two fresh Sol 6.1/medium passes arbitrate only raw primary status/reason disagreements. GPT-5.6-Luna is excluded. Conservative unknowns count against the 98% positive-recall target; safety and evidence contracts remain strict. New classifier changes require appropriate validation; canonical activation retains its policy, research, audit and export gates.
 
-The whole-product classifier is implemented on `dev`; canonical migration remains gated by policy, research, audit and export checks. Reuse completed benchmarks for the unchanged classifier after catalogue refresh. Genuine model/policy/prompt/schema/rule changes require appropriate validation.
+The whole-product catalogue migration is complete on `dev` for local testing; see [the completed report](../audit/catalogue-refresh-2026-10-16/README.md). Future activation remains gated by policy, research, audit and export checks. Reuse completed benchmarks for the unchanged classifier after catalogue refresh. Genuine model/policy/prompt/schema/rule changes require appropriate validation.
 
 ## Full-policy migration on dev
 

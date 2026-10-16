@@ -1,0 +1,3646 @@
+[
+  {
+    "id": "13051011",
+    "name": "ProActiv Light Alternative to Spreadable Butter",
+    "current_on_ocado": 1,
+    "official_vegan": 1,
+    "vegan_status": "nonvegan",
+    "vegan_reason": null,
+    "vegan_policy_version": "whole-product-v2",
+    "vegan_evidence_hash": "8169c9459d453873b17d5b89ab945ee4b9865ae517af0e66b4a6ed9a36732e1a",
+    "vegan_positive_block": 0,
+    "vegan_audit_id": 2455509,
+    "run_id": 292,
+    "classifier_version": "db-vegan-codex-v125",
+    "summary": "Shared whole-product evidence policy: nonvegan",
+    "product_id": "13051011",
+    "url": "https://www.ocado.com/products/13051011",
+    "previous": {
+      "id": "13051011",
+      "vegan_status": "vegan",
+      "vegan_reason": "tagged",
+      "current_on_ocado": 1,
+      "vegan_audit_id": null
+    },
+    "accepted_assessment": {
+      "components": {
+        "evidence_refs": [
+          {
+            "path": "/product/name",
+            "quote": "ProActiv Light Alternative to Spreadable Butter"
+          }
+        ],
+        "status": "insufficient"
+      },
+      "composition": {
+        "evidence_refs": [
+          {
+            "path": "/product/ingredients",
+            "quote": "Water, Vegetable Oils (Rapeseed, Sunflower, Linseed), Plant Sterol Esters 9% (Equivalent to 5.4% Plant Sterols), Coconut Fat, Salt (0.8%), Emulsifier: Lecithin, Natural Flavourings, Vitamin A and D"
+          }
+        ],
+        "status": "insufficient"
+      },
+      "identity": {
+        "evidence_refs": [
+          {
+            "path": "/product/name",
+            "quote": "ProActiv Light Alternative to Spreadable Butter"
+          }
+        ],
+        "status": "established"
+      },
+      "material_issues": [
+        {
+          "blocks_claim": false,
+          "code": "source_unresolved",
+          "evidence_refs": [
+            {
+              "path": "/product/ingredients",
+              "quote": "Water, Vegetable Oils (Rapeseed, Sunflower, Linseed), Plant Sterol Esters 9% (Equivalent to 5.4% Plant Sterols), Coconut Fat, Salt (0.8%), Emulsifier: Lecithin, Natural Flavourings, Vitamin A and D"
+            }
+          ],
+          "resolution_refs": [],
+          "rule_id": "source-dependent-additives-v1",
+          "target": "lecithin"
+        },
+        {
+          "blocks_claim": false,
+          "code": "source_unresolved",
+          "evidence_refs": [
+            {
+              "path": "/product/ingredients",
+              "quote": "Water, Vegetable Oils (Rapeseed, Sunflower, Linseed), Plant Sterol Esters 9% (Equivalent to 5.4% Plant Sterols), Coconut Fat, Salt (0.8%), Emulsifier: Lecithin, Natural Flavourings, Vitamin A and D"
+            }
+          ],
+          "resolution_refs": [],
+          "rule_id": "unspecified-composition-v1",
+          "target": "whole_product"
+        },
+        {
+          "blocks_claim": false,
+          "code": "composition_incomplete",
+          "evidence_refs": [
+            {
+              "path": "/product/package_type",
+              "quote": "Tub"
+            },
+            {
+              "path": "/product/other_information",
+              "quote": "Full Product Name: 35% vegetable fat spread with added plant sterols Storage: Keep refrigerated. Not suitable for freezing. Best before: See lid Safety Warning: Consuming more than 3g plant sterols per day is not recommended. High cholesterol is one of the risk factors for coronary heart disease. You may need to improve more than one risk factor to reduce your overall risk. Not intended for people who do not need to control their blood cholesterol level. Consult your doctor if you are on cholesterol lowering medication. Not suitable for pregnant or breast-feeding women and children under 5 years. Additional Information: ProActiv is a registered trademark."
+            }
+          ],
+          "resolution_refs": [],
+          "rule_id": "supplied-components-composition-v1",
+          "target": "supplied components"
+        },
+        {
+          "blocks_claim": true,
+          "code": "animal_ingredient",
+          "evidence_refs": [
+            {
+              "path": "/product/allergens",
+              "quote": "Contains Milk"
+            }
+          ],
+          "resolution_refs": [],
+          "rule_id": "animal-ingredients-v1",
+          "target": "whole_product"
+        },
+        {
+          "blocks_claim": true,
+          "code": "tag_animal_conflict",
+          "evidence_refs": [
+            {
+              "path": "/product/allergens",
+              "quote": "Contains Milk"
+            }
+          ],
+          "resolution_refs": [],
+          "rule_id": "animal-overrides-tag-v1",
+          "target": "whole_product"
+        }
+      ],
+      "positive_support": [],
+      "processing": {
+        "evidence_refs": [],
+        "status": "not_applicable"
+      },
+      "source_applicability": [],
+      "sourcing": {
+        "evidence_refs": [],
+        "status": "not_applicable"
+      }
+    }
+  },
+  {
+    "id": "17206011",
+    "name": "Lemsip Max Cold & Flu Lemon Sachets Paracetamol",
+    "current_on_ocado": 1,
+    "official_vegan": 1,
+    "vegan_status": "nonvegan",
+    "vegan_reason": null,
+    "vegan_policy_version": "whole-product-v2",
+    "vegan_evidence_hash": "ac7de923b881990e6e6e34f625f1f4fc03b3f8d29e12d895dbfd1ece3cf518dd",
+    "vegan_positive_block": 0,
+    "vegan_audit_id": 2455822,
+    "run_id": 292,
+    "classifier_version": "db-vegan-codex-v125",
+    "summary": "Shared whole-product evidence policy: nonvegan",
+    "product_id": "17206011",
+    "url": "https://www.ocado.com/products/17206011",
+    "previous": {
+      "id": "17206011",
+      "vegan_status": "vegan",
+      "vegan_reason": "tagged",
+      "current_on_ocado": 1,
+      "vegan_audit_id": null
+    },
+    "accepted_assessment": {
+      "components": {
+        "evidence_refs": [
+          {
+            "path": "/product/name",
+            "quote": "Lemsip Max Cold & Flu Lemon Sachets Paracetamol"
+          }
+        ],
+        "status": "insufficient"
+      },
+      "composition": {
+        "evidence_refs": [
+          {
+            "path": "/product/ingredients",
+            "quote": "Ingredients (per sachet): Paracetamol 1000mg, Phenylephrine Hydrochloride 12.2mg, Also contains Ascorbic Acid (Vitamin C), Aspartame, Lactose, Sodium and Sucrose"
+          }
+        ],
+        "status": "insufficient"
+      },
+      "identity": {
+        "evidence_refs": [
+          {
+            "path": "/product/name",
+            "quote": "Lemsip Max Cold & Flu Lemon Sachets Paracetamol"
+          }
+        ],
+        "status": "established"
+      },
+      "material_issues": [
+        {
+          "blocks_claim": false,
+          "code": "processing_unresolved",
+          "evidence_refs": [
+            {
+              "path": "/product/ingredients",
+              "quote": "Ingredients (per sachet): Paracetamol 1000mg, Phenylephrine Hydrochloride 12.2mg, Also contains Ascorbic Acid (Vitamin C), Aspartame, Lactose, Sodium and Sucrose"
+            }
+          ],
+          "resolution_refs": [],
+          "rule_id": "sugar-refining-v1",
+          "target": "whole_product"
+        },
+        {
+          "blocks_claim": false,
+          "code": "processing_unresolved",
+          "evidence_refs": [
+            {
+              "path": "/product/name",
+              "quote": "Lemsip Max Cold & Flu Lemon Sachets Paracetamol"
+            }
+          ],
+          "resolution_refs": [],
+          "rule_id": "citrus-coating-v1",
+          "target": "whole_product"
+        },
+        {
+          "blocks_claim": false,
+          "code": "source_unresolved",
+          "evidence_refs": [
+            {
+              "path": "/product/ingredients",
+              "quote": "Ingredients (per sachet): Paracetamol 1000mg, Phenylephrine Hydrochloride 12.2mg, Also contains Ascorbic Acid (Vitamin C), Aspartame, Lactose, Sodium and Sucrose"
+            }
+          ],
+          "resolution_refs": [],
+          "rule_id": "unspecified-composition-v1",
+          "target": "whole_product"
+        },
+        {
+          "blocks_claim": false,
+          "code": "composition_incomplete",
+          "evidence_refs": [
+            {
+              "path": "/product/package_type",
+              "quote": "Box"
+            }
+          ],
+          "resolution_refs": [],
+          "rule_id": "supplied-components-composition-v1",
+          "target": "supplied components"
+        },
+        {
+          "blocks_claim": true,
+          "code": "animal_ingredient",
+          "evidence_refs": [
+            {
+              "path": "/product/ingredients",
+              "quote": "Ingredients (per sachet): Paracetamol 1000mg, Phenylephrine Hydrochloride 12.2mg, Also contains Ascorbic Acid (Vitamin C), Aspartame, Lactose, Sodium and Sucrose"
+            }
+          ],
+          "resolution_refs": [],
+          "rule_id": "animal-ingredients-v1",
+          "target": "whole_product"
+        },
+        {
+          "blocks_claim": true,
+          "code": "tag_animal_conflict",
+          "evidence_refs": [
+            {
+              "path": "/product/ingredients",
+              "quote": "Ingredients (per sachet): Paracetamol 1000mg, Phenylephrine Hydrochloride 12.2mg, Also contains Ascorbic Acid (Vitamin C), Aspartame, Lactose, Sodium and Sucrose"
+            }
+          ],
+          "resolution_refs": [],
+          "rule_id": "animal-overrides-tag-v1",
+          "target": "whole_product"
+        }
+      ],
+      "positive_support": [],
+      "processing": {
+        "evidence_refs": [],
+        "status": "not_applicable"
+      },
+      "source_applicability": [],
+      "sourcing": {
+        "evidence_refs": [],
+        "status": "not_applicable"
+      }
+    }
+  },
+  {
+    "id": "271907011",
+    "name": "Mr Filbert's Moroccan Spiced Almonds",
+    "current_on_ocado": 1,
+    "official_vegan": 1,
+    "vegan_status": "nonvegan",
+    "vegan_reason": null,
+    "vegan_policy_version": "whole-product-v2",
+    "vegan_evidence_hash": "735bb49d336821c5513292128fc1d58e000cb596fa5713dd1d8c33c1fa877511",
+    "vegan_positive_block": 0,
+    "vegan_audit_id": 2457308,
+    "run_id": 292,
+    "classifier_version": "db-vegan-codex-v125",
+    "summary": "Shared whole-product evidence policy: nonvegan",
+    "product_id": "271907011",
+    "url": "https://www.ocado.com/products/271907011",
+    "previous": {
+      "id": "271907011",
+      "vegan_status": "vegan",
+      "vegan_reason": "tagged",
+      "current_on_ocado": 1,
+      "vegan_audit_id": null
+    },
+    "accepted_assessment": {
+      "components": {
+        "evidence_refs": [
+          {
+            "path": "/product/name",
+            "quote": "Mr Filbert's Moroccan Spiced Almonds"
+          }
+        ],
+        "status": "insufficient"
+      },
+      "composition": {
+        "evidence_refs": [
+          {
+            "path": "/product/ingredients",
+            "quote": "Roasted Almonds 85%, Sugar, Garlic, Rapeseed Oil, Sea Salt, Honey, Black Pepper, Mint, Cumin, Coriander, Chilli"
+          }
+        ],
+        "status": "insufficient"
+      },
+      "identity": {
+        "evidence_refs": [
+          {
+            "path": "/product/name",
+            "quote": "Mr Filbert's Moroccan Spiced Almonds"
+          }
+        ],
+        "status": "established"
+      },
+      "material_issues": [
+        {
+          "blocks_claim": false,
+          "code": "processing_unresolved",
+          "evidence_refs": [
+            {
+              "path": "/product/ingredients",
+              "quote": "Roasted Almonds 85%, Sugar, Garlic, Rapeseed Oil, Sea Salt, Honey, Black Pepper, Mint, Cumin, Coriander, Chilli"
+            }
+          ],
+          "resolution_refs": [],
+          "rule_id": "sugar-refining-v1",
+          "target": "whole_product"
+        },
+        {
+          "blocks_claim": false,
+          "code": "composition_incomplete",
+          "evidence_refs": [
+            {
+              "path": "/product/package_type",
+              "quote": "Re-Closable Packaging"
+            }
+          ],
+          "resolution_refs": [],
+          "rule_id": "supplied-components-composition-v1",
+          "target": "supplied components"
+        },
+        {
+          "blocks_claim": true,
+          "code": "animal_ingredient",
+          "evidence_refs": [
+            {
+              "path": "/product/ingredients",
+              "quote": "Roasted Almonds 85%, Sugar, Garlic, Rapeseed Oil, Sea Salt, Honey, Black Pepper, Mint, Cumin, Coriander, Chilli"
+            }
+          ],
+          "resolution_refs": [],
+          "rule_id": "animal-ingredients-v1",
+          "target": "whole_product"
+        },
+        {
+          "blocks_claim": true,
+          "code": "tag_animal_conflict",
+          "evidence_refs": [
+            {
+              "path": "/product/ingredients",
+              "quote": "Roasted Almonds 85%, Sugar, Garlic, Rapeseed Oil, Sea Salt, Honey, Black Pepper, Mint, Cumin, Coriander, Chilli"
+            }
+          ],
+          "resolution_refs": [],
+          "rule_id": "animal-overrides-tag-v1",
+          "target": "whole_product"
+        }
+      ],
+      "positive_support": [],
+      "processing": {
+        "evidence_refs": [],
+        "status": "not_applicable"
+      },
+      "source_applicability": [],
+      "sourcing": {
+        "evidence_refs": [],
+        "status": "not_applicable"
+      }
+    }
+  },
+  {
+    "id": "295249011",
+    "name": "Lemsip Max All in One Lemon Sachets Paracetamol Cold Flu",
+    "current_on_ocado": 1,
+    "official_vegan": 1,
+    "vegan_status": "nonvegan",
+    "vegan_reason": null,
+    "vegan_policy_version": "whole-product-v2",
+    "vegan_evidence_hash": "0c372c6d24bd7413b8c2ef5d6f5f66d343abc9851f0bb06add325b2c11dff175",
+    "vegan_positive_block": 0,
+    "vegan_audit_id": 2457944,
+    "run_id": 292,
+    "classifier_version": "db-vegan-codex-v125",
+    "summary": "Shared whole-product evidence policy: nonvegan",
+    "product_id": "295249011",
+    "url": "https://www.ocado.com/products/295249011",
+    "previous": {
+      "id": "295249011",
+      "vegan_status": "vegan",
+      "vegan_reason": "tagged",
+      "current_on_ocado": 1,
+      "vegan_audit_id": null
+    },
+    "accepted_assessment": {
+      "components": {
+        "evidence_refs": [
+          {
+            "path": "/product/name",
+            "quote": "Lemsip Max All in One Lemon Sachets Paracetamol Cold Flu"
+          }
+        ],
+        "status": "insufficient"
+      },
+      "composition": {
+        "evidence_refs": [
+          {
+            "path": "/product/ingredients",
+            "quote": "Ingredients (per sachet): Paracetamol 1000mg, Guaifenesin 200mg, Phenylephrine Hydrochloride 12.2mg, Also includes Aspartame (E951), Sucrose, Lactose and Sodium"
+          }
+        ],
+        "status": "insufficient"
+      },
+      "identity": {
+        "evidence_refs": [
+          {
+            "path": "/product/name",
+            "quote": "Lemsip Max All in One Lemon Sachets Paracetamol Cold Flu"
+          }
+        ],
+        "status": "established"
+      },
+      "material_issues": [
+        {
+          "blocks_claim": false,
+          "code": "processing_unresolved",
+          "evidence_refs": [
+            {
+              "path": "/product/ingredients",
+              "quote": "Ingredients (per sachet): Paracetamol 1000mg, Guaifenesin 200mg, Phenylephrine Hydrochloride 12.2mg, Also includes Aspartame (E951), Sucrose, Lactose and Sodium"
+            }
+          ],
+          "resolution_refs": [],
+          "rule_id": "sugar-refining-v1",
+          "target": "whole_product"
+        },
+        {
+          "blocks_claim": false,
+          "code": "processing_unresolved",
+          "evidence_refs": [
+            {
+              "path": "/product/name",
+              "quote": "Lemsip Max All in One Lemon Sachets Paracetamol Cold Flu"
+            }
+          ],
+          "resolution_refs": [],
+          "rule_id": "citrus-coating-v1",
+          "target": "whole_product"
+        },
+        {
+          "blocks_claim": false,
+          "code": "composition_incomplete",
+          "evidence_refs": [
+            {
+              "path": "/product/package_type",
+              "quote": "Box"
+            }
+          ],
+          "resolution_refs": [],
+          "rule_id": "supplied-components-composition-v1",
+          "target": "supplied components"
+        },
+        {
+          "blocks_claim": true,
+          "code": "evidence_conflict",
+          "evidence_refs": [
+            {
+              "path": "/product/detailed_description",
+              "quote": "Paracetamol, Guaifenesin, Phenylephrine Hydrochloride For the symptomatic relief of colds and flu including chesty coughs Ingredients (per sachet): Paracetamol 1000mg, Action: Analgesic & antipyretic, Relief of... Headache, sore throat, fever, body aches & pains Ingredients (per sachet): Guaifenesin 200mg, Expectorant, Relief of... Chesty Cough Ingredients (per sachet): Phenylephrine hydrochloride 12.2mg, Action: Decongestant, Relief of... Blocked or runny nose Also includes aspartame (E951), sucrose, lactose and sodium."
+            }
+          ],
+          "resolution_refs": [],
+          "rule_id": "animal-declaration-context-v1",
+          "target": "whole_product"
+        },
+        {
+          "blocks_claim": true,
+          "code": "animal_ingredient",
+          "evidence_refs": [
+            {
+              "path": "/product/ingredients",
+              "quote": "Ingredients (per sachet): Paracetamol 1000mg, Guaifenesin 200mg, Phenylephrine Hydrochloride 12.2mg, Also includes Aspartame (E951), Sucrose, Lactose and Sodium"
+            }
+          ],
+          "resolution_refs": [],
+          "rule_id": "animal-ingredients-v1",
+          "target": "whole_product"
+        },
+        {
+          "blocks_claim": true,
+          "code": "tag_animal_conflict",
+          "evidence_refs": [
+            {
+              "path": "/product/ingredients",
+              "quote": "Ingredients (per sachet): Paracetamol 1000mg, Guaifenesin 200mg, Phenylephrine Hydrochloride 12.2mg, Also includes Aspartame (E951), Sucrose, Lactose and Sodium"
+            }
+          ],
+          "resolution_refs": [],
+          "rule_id": "animal-overrides-tag-v1",
+          "target": "whole_product"
+        }
+      ],
+      "positive_support": [],
+      "processing": {
+        "evidence_refs": [],
+        "status": "not_applicable"
+      },
+      "source_applicability": [],
+      "sourcing": {
+        "evidence_refs": [],
+        "status": "not_applicable"
+      }
+    }
+  },
+  {
+    "id": "34925011",
+    "name": "HayMax Pure Organic Allergy Barrier Balm",
+    "current_on_ocado": 1,
+    "official_vegan": 1,
+    "vegan_status": "nonvegan",
+    "vegan_reason": null,
+    "vegan_policy_version": "whole-product-v2",
+    "vegan_evidence_hash": "b670f020e87f2db143d0146d35f1a23804365d2fbd2f43ce9f9f720da928e225",
+    "vegan_positive_block": 0,
+    "vegan_audit_id": 2459252,
+    "run_id": 292,
+    "classifier_version": "db-vegan-codex-v125",
+    "summary": "Shared whole-product evidence policy: nonvegan",
+    "product_id": "34925011",
+    "url": "https://www.ocado.com/products/34925011",
+    "previous": {
+      "id": "34925011",
+      "vegan_status": "vegan",
+      "vegan_reason": "tagged",
+      "current_on_ocado": 1,
+      "vegan_audit_id": null
+    },
+    "accepted_assessment": {
+      "components": {
+        "evidence_refs": [
+          {
+            "path": "/product/name",
+            "quote": "HayMax Pure Organic Allergy Barrier Balm"
+          }
+        ],
+        "status": "insufficient"
+      },
+      "composition": {
+        "evidence_refs": [
+          {
+            "path": "/product/ingredients",
+            "quote": "Helianthus Annuus (Sunflower) Seed Oil*, Cera Flava (Beeswax)*, Lavandula Angustifolia (Lavender) Oil*, Tocopherol (Vitamin E)**, *Ingredients organically produced, **Ingredient naturally produced"
+          }
+        ],
+        "status": "insufficient"
+      },
+      "identity": {
+        "evidence_refs": [
+          {
+            "path": "/product/name",
+            "quote": "HayMax Pure Organic Allergy Barrier Balm"
+          }
+        ],
+        "status": "established"
+      },
+      "material_issues": [
+        {
+          "blocks_claim": false,
+          "code": "source_unresolved",
+          "evidence_refs": [
+            {
+              "path": "/product/ingredients",
+              "quote": "Helianthus Annuus (Sunflower) Seed Oil*, Cera Flava (Beeswax)*, Lavandula Angustifolia (Lavender) Oil*, Tocopherol (Vitamin E)**, *Ingredients organically produced, **Ingredient naturally produced"
+            }
+          ],
+          "resolution_refs": [],
+          "rule_id": "unspecified-composition-v1",
+          "target": "whole_product"
+        },
+        {
+          "blocks_claim": false,
+          "code": "composition_incomplete",
+          "evidence_refs": [
+            {
+              "path": "/product/package_type",
+              "quote": "Box"
+            }
+          ],
+          "resolution_refs": [],
+          "rule_id": "supplied-components-composition-v1",
+          "target": "supplied components"
+        },
+        {
+          "blocks_claim": true,
+          "code": "animal_ingredient",
+          "evidence_refs": [
+            {
+              "path": "/product/ingredients",
+              "quote": "Helianthus Annuus (Sunflower) Seed Oil*, Cera Flava (Beeswax)*, Lavandula Angustifolia (Lavender) Oil*, Tocopherol (Vitamin E)**, *Ingredients organically produced, **Ingredient naturally produced"
+            }
+          ],
+          "resolution_refs": [],
+          "rule_id": "animal-ingredients-v1",
+          "target": "whole_product"
+        },
+        {
+          "blocks_claim": true,
+          "code": "tag_animal_conflict",
+          "evidence_refs": [
+            {
+              "path": "/product/ingredients",
+              "quote": "Helianthus Annuus (Sunflower) Seed Oil*, Cera Flava (Beeswax)*, Lavandula Angustifolia (Lavender) Oil*, Tocopherol (Vitamin E)**, *Ingredients organically produced, **Ingredient naturally produced"
+            }
+          ],
+          "resolution_refs": [],
+          "rule_id": "animal-overrides-tag-v1",
+          "target": "whole_product"
+        }
+      ],
+      "positive_support": [],
+      "processing": {
+        "evidence_refs": [],
+        "status": "not_applicable"
+      },
+      "source_applicability": [],
+      "sourcing": {
+        "evidence_refs": [],
+        "status": "not_applicable"
+      }
+    }
+  },
+  {
+    "id": "34926011",
+    "name": "HayMax Lavender Organic Allergy Barrier Balm",
+    "current_on_ocado": 1,
+    "official_vegan": 1,
+    "vegan_status": "nonvegan",
+    "vegan_reason": null,
+    "vegan_policy_version": "whole-product-v2",
+    "vegan_evidence_hash": "d870891c1062a1c521b2d3190c7f8f52e77c7d5875b5a7a39ac08383ef1ffa75",
+    "vegan_positive_block": 0,
+    "vegan_audit_id": 2459253,
+    "run_id": 292,
+    "classifier_version": "db-vegan-codex-v125",
+    "summary": "Shared whole-product evidence policy: nonvegan",
+    "product_id": "34926011",
+    "url": "https://www.ocado.com/products/34926011",
+    "previous": {
+      "id": "34926011",
+      "vegan_status": "vegan",
+      "vegan_reason": "tagged",
+      "current_on_ocado": 1,
+      "vegan_audit_id": null
+    },
+    "accepted_assessment": {
+      "components": {
+        "evidence_refs": [
+          {
+            "path": "/product/name",
+            "quote": "HayMax Lavender Organic Allergy Barrier Balm"
+          }
+        ],
+        "status": "insufficient"
+      },
+      "composition": {
+        "evidence_refs": [
+          {
+            "path": "/product/ingredients",
+            "quote": "Helianthus Annuus (Sunflower) Seed Oil*, Cera Flava (Beeswax)*, Lavandula Angustifolia (Lavender) Oil*, Tocopherol (Vitamin E)**, *Ingredients organically produced, **Ingredients naturally produced"
+          }
+        ],
+        "status": "insufficient"
+      },
+      "identity": {
+        "evidence_refs": [
+          {
+            "path": "/product/name",
+            "quote": "HayMax Lavender Organic Allergy Barrier Balm"
+          }
+        ],
+        "status": "established"
+      },
+      "material_issues": [
+        {
+          "blocks_claim": false,
+          "code": "source_unresolved",
+          "evidence_refs": [
+            {
+              "path": "/product/ingredients",
+              "quote": "Helianthus Annuus (Sunflower) Seed Oil*, Cera Flava (Beeswax)*, Lavandula Angustifolia (Lavender) Oil*, Tocopherol (Vitamin E)**, *Ingredients organically produced, **Ingredients naturally produced"
+            }
+          ],
+          "resolution_refs": [],
+          "rule_id": "unspecified-composition-v1",
+          "target": "whole_product"
+        },
+        {
+          "blocks_claim": false,
+          "code": "composition_incomplete",
+          "evidence_refs": [
+            {
+              "path": "/product/package_type",
+              "quote": "Box"
+            }
+          ],
+          "resolution_refs": [],
+          "rule_id": "supplied-components-composition-v1",
+          "target": "supplied components"
+        },
+        {
+          "blocks_claim": true,
+          "code": "animal_ingredient",
+          "evidence_refs": [
+            {
+              "path": "/product/ingredients",
+              "quote": "Helianthus Annuus (Sunflower) Seed Oil*, Cera Flava (Beeswax)*, Lavandula Angustifolia (Lavender) Oil*, Tocopherol (Vitamin E)**, *Ingredients organically produced, **Ingredients naturally produced"
+            }
+          ],
+          "resolution_refs": [],
+          "rule_id": "animal-ingredients-v1",
+          "target": "whole_product"
+        },
+        {
+          "blocks_claim": true,
+          "code": "tag_animal_conflict",
+          "evidence_refs": [
+            {
+              "path": "/product/ingredients",
+              "quote": "Helianthus Annuus (Sunflower) Seed Oil*, Cera Flava (Beeswax)*, Lavandula Angustifolia (Lavender) Oil*, Tocopherol (Vitamin E)**, *Ingredients organically produced, **Ingredients naturally produced"
+            }
+          ],
+          "resolution_refs": [],
+          "rule_id": "animal-overrides-tag-v1",
+          "target": "whole_product"
+        }
+      ],
+      "positive_support": [],
+      "processing": {
+        "evidence_refs": [],
+        "status": "not_applicable"
+      },
+      "source_applicability": [],
+      "sourcing": {
+        "evidence_refs": [],
+        "status": "not_applicable"
+      }
+    }
+  },
+  {
+    "id": "422730011",
+    "name": "Benedictine D.O.M French Liqueur",
+    "current_on_ocado": 1,
+    "official_vegan": 1,
+    "vegan_status": "nonvegan",
+    "vegan_reason": null,
+    "vegan_policy_version": "whole-product-v2",
+    "vegan_evidence_hash": "832e73d721913f0f107c1914a429115b3683aad85806a985f52f9eba35e24a9c",
+    "vegan_positive_block": 0,
+    "vegan_audit_id": 2461515,
+    "run_id": 292,
+    "classifier_version": "db-vegan-codex-v125",
+    "summary": "Shared whole-product evidence policy: nonvegan",
+    "product_id": "422730011",
+    "url": "https://www.ocado.com/products/422730011",
+    "previous": {
+      "id": "422730011",
+      "vegan_status": "vegan",
+      "vegan_reason": "manufacturer",
+      "current_on_ocado": 1,
+      "vegan_audit_id": null
+    },
+    "accepted_assessment": {
+      "components": {
+        "evidence_refs": [
+          {
+            "path": "/product/name",
+            "quote": "Benedictine D.O.M French Liqueur"
+          }
+        ],
+        "status": "insufficient"
+      },
+      "composition": {
+        "evidence_refs": [
+          {
+            "path": "/product/name",
+            "quote": "Benedictine D.O.M French Liqueur"
+          }
+        ],
+        "status": "insufficient"
+      },
+      "identity": {
+        "evidence_refs": [
+          {
+            "path": "/product/name",
+            "quote": "Benedictine D.O.M French Liqueur"
+          }
+        ],
+        "status": "established"
+      },
+      "material_issues": [
+        {
+          "blocks_claim": false,
+          "code": "composition_incomplete",
+          "evidence_refs": [
+            {
+              "path": "/product/package_type",
+              "quote": "Glass Bottle"
+            }
+          ],
+          "resolution_refs": [],
+          "rule_id": "supplied-components-composition-v1",
+          "target": "supplied components"
+        },
+        {
+          "blocks_claim": true,
+          "code": "evidence_conflict",
+          "evidence_refs": [
+            {
+              "path": "/product/features",
+              "quote": "Bénédictine is a truly extraordinary elixir, made from a secret recipe that is said to date back to 1510, originating with the benedictine monks of the Abbey of Fécamp, in Normandy, France, Produced using a unique blend of 27 herbs and spices, the crafting still takes place at Le Palais Bénédictine which also serves as a museum and art gallery, The careful and complex production process uses precious, original copper pot stills, large oak barrels for ageing, followed by blending the batches with honey and saffron, and ageing again, Bénédictine is ideal as a digestif and for cocktails such as a Singapore Sling, Vieux Carré or with sparkling wine and a lemon twist in the D.O.M. Cocktail; it's also delicious served with hot water, An excellent gift for those who appreciate the finer things, if you're looking for Fathers Day gifts, special occasion presents or a classic for a get-together, Bénédictine is a winning choice"
+            }
+          ],
+          "resolution_refs": [],
+          "rule_id": "animal-declaration-context-v1",
+          "target": "whole_product"
+        },
+        {
+          "blocks_claim": true,
+          "code": "animal_ingredient",
+          "evidence_refs": [
+            {
+              "path": "/product/features",
+              "quote": "The careful and complex production process uses precious, original copper pot stills, large oak barrels for ageing, followed by blending the batches with honey and saffron, and ageing again"
+            }
+          ],
+          "resolution_refs": [],
+          "rule_id": "animal-ingredients-v1",
+          "target": "whole_product"
+        },
+        {
+          "blocks_claim": true,
+          "code": "tag_animal_conflict",
+          "evidence_refs": [
+            {
+              "path": "/product/features",
+              "quote": "The careful and complex production process uses precious, original copper pot stills, large oak barrels for ageing, followed by blending the batches with honey and saffron, and ageing again"
+            }
+          ],
+          "resolution_refs": [],
+          "rule_id": "animal-overrides-tag-v1",
+          "target": "whole_product"
+        }
+      ],
+      "positive_support": [],
+      "processing": {
+        "evidence_refs": [],
+        "status": "not_applicable"
+      },
+      "source_applicability": [],
+      "sourcing": {
+        "evidence_refs": [],
+        "status": "not_applicable"
+      }
+    }
+  },
+  {
+    "id": "47121011",
+    "name": "Wirra Wirra Church Block Mclaren Vale Cabernet Shiraz Merlot",
+    "current_on_ocado": 1,
+    "official_vegan": 1,
+    "vegan_status": "nonvegan",
+    "vegan_reason": null,
+    "vegan_policy_version": "whole-product-v2",
+    "vegan_evidence_hash": "4e43052467d44e7879a7343e70d6bcc7c267507a0f0ffd03a3ed8d00cc8bfa56",
+    "vegan_positive_block": 0,
+    "vegan_audit_id": 2462940,
+    "run_id": 292,
+    "classifier_version": "db-vegan-codex-v125",
+    "summary": "Shared whole-product evidence policy: nonvegan",
+    "product_id": "47121011",
+    "url": "https://www.ocado.com/products/47121011",
+    "previous": {
+      "id": "47121011",
+      "vegan_status": "vegan",
+      "vegan_reason": "tagged",
+      "current_on_ocado": 1,
+      "vegan_audit_id": null
+    },
+    "accepted_assessment": {
+      "components": {
+        "evidence_refs": [
+          {
+            "path": "/product/name",
+            "quote": "Wirra Wirra Church Block Mclaren Vale Cabernet Shiraz Merlot"
+          }
+        ],
+        "status": "insufficient"
+      },
+      "composition": {
+        "evidence_refs": [
+          {
+            "path": "/product/name",
+            "quote": "Wirra Wirra Church Block Mclaren Vale Cabernet Shiraz Merlot"
+          }
+        ],
+        "status": "insufficient"
+      },
+      "identity": {
+        "evidence_refs": [
+          {
+            "path": "/product/name",
+            "quote": "Wirra Wirra Church Block Mclaren Vale Cabernet Shiraz Merlot"
+          }
+        ],
+        "status": "established"
+      },
+      "material_issues": [
+        {
+          "blocks_claim": false,
+          "code": "composition_incomplete",
+          "evidence_refs": [
+            {
+              "path": "/product/package_type",
+              "quote": "Glass Bottle"
+            }
+          ],
+          "resolution_refs": [],
+          "rule_id": "supplied-components-composition-v1",
+          "target": "supplied components"
+        },
+        {
+          "blocks_claim": false,
+          "code": "processing_unresolved",
+          "evidence_refs": [
+            {
+              "path": "/categories/0",
+              "quote": "beer-wine-spirits/wine/red-wine/shop-by-country/australia"
+            }
+          ],
+          "resolution_refs": [],
+          "rule_id": "wine-fining-v1",
+          "target": "whole_product"
+        },
+        {
+          "blocks_claim": false,
+          "code": "processing_unresolved",
+          "evidence_refs": [
+            {
+              "path": "/categories/0",
+              "quote": "beer-wine-spirits/wine/red-wine/shop-by-country/australia"
+            }
+          ],
+          "resolution_refs": [],
+          "rule_id": "wine-other-processing-v1",
+          "target": "non-fining inputs across grape, must and wine production"
+        },
+        {
+          "blocks_claim": true,
+          "code": "animal_ingredient",
+          "evidence_refs": [
+            {
+              "path": "/product/allergens",
+              "quote": "Contains Eggs, Contains Sulphur Dioxide/Sulphites"
+            }
+          ],
+          "resolution_refs": [],
+          "rule_id": "animal-ingredients-v1",
+          "target": "whole_product"
+        },
+        {
+          "blocks_claim": true,
+          "code": "tag_animal_conflict",
+          "evidence_refs": [
+            {
+              "path": "/product/allergens",
+              "quote": "Contains Eggs, Contains Sulphur Dioxide/Sulphites"
+            }
+          ],
+          "resolution_refs": [],
+          "rule_id": "animal-overrides-tag-v1",
+          "target": "whole_product"
+        }
+      ],
+      "positive_support": [],
+      "processing": {
+        "evidence_refs": [],
+        "status": "not_applicable"
+      },
+      "source_applicability": [],
+      "sourcing": {
+        "evidence_refs": [],
+        "status": "not_applicable"
+      }
+    }
+  },
+  {
+    "id": "486756011",
+    "name": "Purition Strawberry Vegan Wholefood Nutrition Powder",
+    "current_on_ocado": 1,
+    "official_vegan": 1,
+    "vegan_status": "nonvegan",
+    "vegan_reason": null,
+    "vegan_policy_version": "whole-product-v2",
+    "vegan_evidence_hash": "7d14231139bcf1fa667a0974bcfdff88a2c57694038f2704285a0bc93a55fe42",
+    "vegan_positive_block": 0,
+    "vegan_audit_id": 2463490,
+    "run_id": 292,
+    "classifier_version": "db-vegan-codex-v125",
+    "summary": "Shared whole-product evidence policy: nonvegan",
+    "product_id": "486756011",
+    "url": "https://www.ocado.com/products/486756011",
+    "previous": {
+      "id": "486756011",
+      "vegan_status": "vegan",
+      "vegan_reason": "tagged",
+      "current_on_ocado": 1,
+      "vegan_audit_id": null
+    },
+    "accepted_assessment": {
+      "components": {
+        "evidence_refs": [
+          {
+            "path": "/product/name",
+            "quote": "Purition Strawberry Vegan Wholefood Nutrition Powder"
+          }
+        ],
+        "status": "insufficient"
+      },
+      "composition": {
+        "evidence_refs": [
+          {
+            "path": "/product/ingredients",
+            "quote": "Wholefood Blend (Golden Flaxseed, Sunflower Kernels, Almonds, Coconut, Salvia Hispanica (Chia), Pumpkin Seeds, Sesame Seeds), Protein Blend (Pea Protein Isolate, Fava Bean Isolate, Fava Bean Concentrate), Freeze Dried Strawberries (5%), Nutritional Yeast, Psyllium Husk, Apple Pectin, Natural Flavouring, Sweetener: Steviol Glycosides (Stevia)."
+          }
+        ],
+        "status": "insufficient"
+      },
+      "identity": {
+        "evidence_refs": [
+          {
+            "path": "/product/name",
+            "quote": "Purition Strawberry Vegan Wholefood Nutrition Powder"
+          }
+        ],
+        "status": "established"
+      },
+      "material_issues": [
+        {
+          "blocks_claim": false,
+          "code": "source_unresolved",
+          "evidence_refs": [
+            {
+              "path": "/product/ingredients",
+              "quote": "Wholefood Blend (Golden Flaxseed, Sunflower Kernels, Almonds, Coconut, Salvia Hispanica (Chia), Pumpkin Seeds, Sesame Seeds), Protein Blend (Pea Protein Isolate, Fava Bean Isolate, Fava Bean Concentrate), Freeze Dried Strawberries (5%), Nutritional Yeast, Psyllium Husk, Apple Pectin, Natural Flavouring, Sweetener: Steviol Glycosides (Stevia)."
+            }
+          ],
+          "resolution_refs": [],
+          "rule_id": "unspecified-composition-v1",
+          "target": "whole_product"
+        },
+        {
+          "blocks_claim": false,
+          "code": "composition_incomplete",
+          "evidence_refs": [
+            {
+              "path": "/product/package_type",
+              "quote": "Doypack"
+            }
+          ],
+          "resolution_refs": [],
+          "rule_id": "supplied-components-composition-v1",
+          "target": "supplied components"
+        },
+        {
+          "blocks_claim": true,
+          "code": "animal_ingredient",
+          "evidence_refs": [
+            {
+              "path": "/product/allergens",
+              "quote": "Contains Milk, Sesame, Nuts - For allergens, see ingredients in Bold."
+            }
+          ],
+          "resolution_refs": [],
+          "rule_id": "animal-ingredients-v1",
+          "target": "whole_product"
+        },
+        {
+          "blocks_claim": true,
+          "code": "tag_animal_conflict",
+          "evidence_refs": [
+            {
+              "path": "/product/allergens",
+              "quote": "Contains Milk, Sesame, Nuts - For allergens, see ingredients in Bold."
+            }
+          ],
+          "resolution_refs": [],
+          "rule_id": "animal-overrides-tag-v1",
+          "target": "whole_product"
+        }
+      ],
+      "positive_support": [],
+      "processing": {
+        "evidence_refs": [],
+        "status": "not_applicable"
+      },
+      "source_applicability": [],
+      "sourcing": {
+        "evidence_refs": [],
+        "status": "not_applicable"
+      }
+    }
+  },
+  {
+    "id": "486757011",
+    "name": "Purition Vanilla Vegan Wholefood Nutrition Powder",
+    "current_on_ocado": 1,
+    "official_vegan": 1,
+    "vegan_status": "nonvegan",
+    "vegan_reason": null,
+    "vegan_policy_version": "whole-product-v2",
+    "vegan_evidence_hash": "cf7b44ba8e54afe1b8299b4c2a7457a33e96e5e06dccbc34fc81d4e55139695f",
+    "vegan_positive_block": 0,
+    "vegan_audit_id": 2463491,
+    "run_id": 292,
+    "classifier_version": "db-vegan-codex-v125",
+    "summary": "Shared whole-product evidence policy: nonvegan",
+    "product_id": "486757011",
+    "url": "https://www.ocado.com/products/486757011",
+    "previous": {
+      "id": "486757011",
+      "vegan_status": "vegan",
+      "vegan_reason": "tagged",
+      "current_on_ocado": 1,
+      "vegan_audit_id": null
+    },
+    "accepted_assessment": {
+      "components": {
+        "evidence_refs": [
+          {
+            "path": "/product/name",
+            "quote": "Purition Vanilla Vegan Wholefood Nutrition Powder"
+          }
+        ],
+        "status": "insufficient"
+      },
+      "composition": {
+        "evidence_refs": [
+          {
+            "path": "/product/ingredients",
+            "quote": "Wholefood Blend (Golden Flaxseed, Sunflower Kernels, Almonds, Coconut, Salvia Hispanica (Chia), Pumpkin Seeds, Sesame Seeds), Protein Blend (Pea Protein Isolate, Fava Bean Isolate, Fava Bean Concentrate), Nutritional Yeast, Psyllium Husk, Apple Pectin, Ground Vanilla Pods (1%), Natural Flavouring, Sweetener: Steviol Glycosides (Stevia)."
+          }
+        ],
+        "status": "insufficient"
+      },
+      "identity": {
+        "evidence_refs": [
+          {
+            "path": "/product/name",
+            "quote": "Purition Vanilla Vegan Wholefood Nutrition Powder"
+          }
+        ],
+        "status": "established"
+      },
+      "material_issues": [
+        {
+          "blocks_claim": false,
+          "code": "source_unresolved",
+          "evidence_refs": [
+            {
+              "path": "/product/ingredients",
+              "quote": "Wholefood Blend (Golden Flaxseed, Sunflower Kernels, Almonds, Coconut, Salvia Hispanica (Chia), Pumpkin Seeds, Sesame Seeds), Protein Blend (Pea Protein Isolate, Fava Bean Isolate, Fava Bean Concentrate), Nutritional Yeast, Psyllium Husk, Apple Pectin, Ground Vanilla Pods (1%), Natural Flavouring, Sweetener: Steviol Glycosides (Stevia)."
+            }
+          ],
+          "resolution_refs": [],
+          "rule_id": "unspecified-composition-v1",
+          "target": "whole_product"
+        },
+        {
+          "blocks_claim": false,
+          "code": "composition_incomplete",
+          "evidence_refs": [
+            {
+              "path": "/product/package_type",
+              "quote": "Doypack"
+            }
+          ],
+          "resolution_refs": [],
+          "rule_id": "supplied-components-composition-v1",
+          "target": "supplied components"
+        },
+        {
+          "blocks_claim": true,
+          "code": "animal_ingredient",
+          "evidence_refs": [
+            {
+              "path": "/product/allergens",
+              "quote": "Contains Milk, Sesame, Nuts - For allergens, see ingredients in Bold."
+            }
+          ],
+          "resolution_refs": [],
+          "rule_id": "animal-ingredients-v1",
+          "target": "whole_product"
+        },
+        {
+          "blocks_claim": true,
+          "code": "tag_animal_conflict",
+          "evidence_refs": [
+            {
+              "path": "/product/allergens",
+              "quote": "Contains Milk, Sesame, Nuts - For allergens, see ingredients in Bold."
+            }
+          ],
+          "resolution_refs": [],
+          "rule_id": "animal-overrides-tag-v1",
+          "target": "whole_product"
+        }
+      ],
+      "positive_support": [],
+      "processing": {
+        "evidence_refs": [],
+        "status": "not_applicable"
+      },
+      "source_applicability": [],
+      "sourcing": {
+        "evidence_refs": [],
+        "status": "not_applicable"
+      }
+    }
+  },
+  {
+    "id": "499676011",
+    "name": "John Masters Organics Shampoo for Dry Hair, Evening Primrose",
+    "current_on_ocado": 1,
+    "official_vegan": 1,
+    "vegan_status": "nonvegan",
+    "vegan_reason": null,
+    "vegan_policy_version": "whole-product-v2",
+    "vegan_evidence_hash": "38dc2f4fce3e61015aae856a17412791687b1d48deb243cf2c2d850a33680caa",
+    "vegan_positive_block": 0,
+    "vegan_audit_id": 2463954,
+    "run_id": 292,
+    "classifier_version": "db-vegan-codex-v125",
+    "summary": "Shared whole-product evidence policy: nonvegan",
+    "product_id": "499676011",
+    "url": "https://www.ocado.com/products/499676011",
+    "previous": {
+      "id": "499676011",
+      "vegan_status": "vegan",
+      "vegan_reason": "tagged",
+      "current_on_ocado": 1,
+      "vegan_audit_id": null
+    },
+    "accepted_assessment": {
+      "components": {
+        "evidence_refs": [
+          {
+            "path": "/product/name",
+            "quote": "John Masters Organics Shampoo for Dry Hair, Evening Primrose"
+          }
+        ],
+        "status": "insufficient"
+      },
+      "composition": {
+        "evidence_refs": [
+          {
+            "path": "/product/ingredients",
+            "quote": "ALOE BARBADENSIS LEAF JUICE (ALOE VERA)*, COCAMIDOPROPYL HYDROXYSULTAINE, ERYTHRITOL*, SODIUM COCOYL ISETHIONATE, WATER/AQUA, GLYCERIN, CAPRYLYL/CAPRYL GLUCOSIDE, OENOTHERA BIENNIS (EVENING PRIMROSE) OIL, PELARGONIUM GRAVEOLENS FLOWER OIL (GERANIUM) CEDRUS ATLANTICA BARK OIL (CEDARWOOD), CITRUS GRANDIS (GRAPEFRUIT) PEEL OIL, CITRUS LIMON (LEMON) PEEL OIL, POGOSTEMON CABLIN OIL (PATCHOULI), FUSANUS SPICATUS WOOD OIL, (SANDALWOOD), CANANGA ODORATA FLOWER OIL (YLANG YLANG), BABASSUAMIDOPROPYL BETAIN, HYDROXYPROPYLTRIMONIUM HONEY, GLYCERYL CAPRYLATE, PANTHENOL (VITAMIN B-5), SIMMONDSIA CHINENSIS (JOJOBA) SEED OIL*, PERSEA GRATISSIMA (AVOCADO) OIL, LINUM USITATISSIMUM (LINSEED) SEED OIL, HELIANTHUS ANNUUS (SUNFLOWER) SEED OIL*, CHAMOMILLA RECUTITA (MATRICARIA) FLOWER EXTRACT*, URTICA DIOICA (NETTLE) LEAF EXTRACT*, EQUISETUM ARVENSE EXTRACT (HORSETAIL)*, SYMPHYTUM OFFICINALE LEAF EXTRACT (COMFREY), SALIX ALBA (WILLOW) BARK EXTRACT, CAMELLIA SINENSIS LEAF EXTRACT (WHITE TEA), LAVANDULA ANGUSTIFOLIA (LAVENDER) FLOWER/LEAF/STEM EXTRACT*, HYDROLYZED RICE PROTEIN, TOCOPHEROL, SODIUM LEVULINATE, SODIUM PCA, SODIUM LACTATE, ARGININE, ASPARTIC ACID, PCA, GLYCINE, ALANINE, SERINE, VALINE, PROLINE, THREONINE, ISOLEUCINE, HISTIDINE, PHENYLALANINE, CARAMEL, SODIUM, PHYTATE, POTASSIUM SORBATE, SODIUM BENZOATE, CITRIC ACID, LIMONENE†, LINALOOL†, GERANIOL† *ORGANIC INGREDIENT †A NATURAL COMPONENT OF ESSENTIAL OILS"
+          }
+        ],
+        "status": "insufficient"
+      },
+      "identity": {
+        "evidence_refs": [
+          {
+            "path": "/product/name",
+            "quote": "John Masters Organics Shampoo for Dry Hair, Evening Primrose"
+          }
+        ],
+        "status": "established"
+      },
+      "material_issues": [
+        {
+          "blocks_claim": false,
+          "code": "processing_unresolved",
+          "evidence_refs": [
+            {
+              "path": "/product/ingredients",
+              "quote": "ALOE BARBADENSIS LEAF JUICE (ALOE VERA)*, COCAMIDOPROPYL HYDROXYSULTAINE, ERYTHRITOL*, SODIUM COCOYL ISETHIONATE, WATER/AQUA, GLYCERIN, CAPRYLYL/CAPRYL GLUCOSIDE, OENOTHERA BIENNIS (EVENING PRIMROSE) OIL, PELARGONIUM GRAVEOLENS FLOWER OIL (GERANIUM) CEDRUS ATLANTICA BARK OIL (CEDARWOOD), CITRUS GRANDIS (GRAPEFRUIT) PEEL OIL, CITRUS LIMON (LEMON) PEEL OIL, POGOSTEMON CABLIN OIL (PATCHOULI), FUSANUS SPICATUS WOOD OIL, (SANDALWOOD), CANANGA ODORATA FLOWER OIL (YLANG YLANG), BABASSUAMIDOPROPYL BETAIN, HYDROXYPROPYLTRIMONIUM HONEY, GLYCERYL CAPRYLATE, PANTHENOL (VITAMIN B-5), SIMMONDSIA CHINENSIS (JOJOBA) SEED OIL*, PERSEA GRATISSIMA (AVOCADO) OIL, LINUM USITATISSIMUM (LINSEED) SEED OIL, HELIANTHUS ANNUUS (SUNFLOWER) SEED OIL*, CHAMOMILLA RECUTITA (MATRICARIA) FLOWER EXTRACT*, URTICA DIOICA (NETTLE) LEAF EXTRACT*, EQUISETUM ARVENSE EXTRACT (HORSETAIL)*, SYMPHYTUM OFFICINALE LEAF EXTRACT (COMFREY), SALIX ALBA (WILLOW) BARK EXTRACT, CAMELLIA SINENSIS LEAF EXTRACT (WHITE TEA), LAVANDULA ANGUSTIFOLIA (LAVENDER) FLOWER/LEAF/STEM EXTRACT*, HYDROLYZED RICE PROTEIN, TOCOPHEROL, SODIUM LEVULINATE, SODIUM PCA, SODIUM LACTATE, ARGININE, ASPARTIC ACID, PCA, GLYCINE, ALANINE, SERINE, VALINE, PROLINE, THREONINE, ISOLEUCINE, HISTIDINE, PHENYLALANINE, CARAMEL, SODIUM, PHYTATE, POTASSIUM SORBATE, SODIUM BENZOATE, CITRIC ACID, LIMONENE†, LINALOOL†, GERANIOL† *ORGANIC INGREDIENT †A NATURAL COMPONENT OF ESSENTIAL OILS"
+            }
+          ],
+          "resolution_refs": [],
+          "rule_id": "liquid-clarification-v1",
+          "target": "whole_product"
+        },
+        {
+          "blocks_claim": false,
+          "code": "source_unresolved",
+          "evidence_refs": [
+            {
+              "path": "/product/ingredients",
+              "quote": "ALOE BARBADENSIS LEAF JUICE (ALOE VERA)*, COCAMIDOPROPYL HYDROXYSULTAINE, ERYTHRITOL*, SODIUM COCOYL ISETHIONATE, WATER/AQUA, GLYCERIN, CAPRYLYL/CAPRYL GLUCOSIDE, OENOTHERA BIENNIS (EVENING PRIMROSE) OIL, PELARGONIUM GRAVEOLENS FLOWER OIL (GERANIUM) CEDRUS ATLANTICA BARK OIL (CEDARWOOD), CITRUS GRANDIS (GRAPEFRUIT) PEEL OIL, CITRUS LIMON (LEMON) PEEL OIL, POGOSTEMON CABLIN OIL (PATCHOULI), FUSANUS SPICATUS WOOD OIL, (SANDALWOOD), CANANGA ODORATA FLOWER OIL (YLANG YLANG), BABASSUAMIDOPROPYL BETAIN, HYDROXYPROPYLTRIMONIUM HONEY, GLYCERYL CAPRYLATE, PANTHENOL (VITAMIN B-5), SIMMONDSIA CHINENSIS (JOJOBA) SEED OIL*, PERSEA GRATISSIMA (AVOCADO) OIL, LINUM USITATISSIMUM (LINSEED) SEED OIL, HELIANTHUS ANNUUS (SUNFLOWER) SEED OIL*, CHAMOMILLA RECUTITA (MATRICARIA) FLOWER EXTRACT*, URTICA DIOICA (NETTLE) LEAF EXTRACT*, EQUISETUM ARVENSE EXTRACT (HORSETAIL)*, SYMPHYTUM OFFICINALE LEAF EXTRACT (COMFREY), SALIX ALBA (WILLOW) BARK EXTRACT, CAMELLIA SINENSIS LEAF EXTRACT (WHITE TEA), LAVANDULA ANGUSTIFOLIA (LAVENDER) FLOWER/LEAF/STEM EXTRACT*, HYDROLYZED RICE PROTEIN, TOCOPHEROL, SODIUM LEVULINATE, SODIUM PCA, SODIUM LACTATE, ARGININE, ASPARTIC ACID, PCA, GLYCINE, ALANINE, SERINE, VALINE, PROLINE, THREONINE, ISOLEUCINE, HISTIDINE, PHENYLALANINE, CARAMEL, SODIUM, PHYTATE, POTASSIUM SORBATE, SODIUM BENZOATE, CITRIC ACID, LIMONENE†, LINALOOL†, GERANIOL† *ORGANIC INGREDIENT †A NATURAL COMPONENT OF ESSENTIAL OILS"
+            }
+          ],
+          "resolution_refs": [],
+          "rule_id": "source-dependent-additives-v1",
+          "target": "glycerin"
+        },
+        {
+          "blocks_claim": false,
+          "code": "processing_unresolved",
+          "evidence_refs": [
+            {
+              "path": "/product/ingredients",
+              "quote": "ALOE BARBADENSIS LEAF JUICE (ALOE VERA)*, COCAMIDOPROPYL HYDROXYSULTAINE, ERYTHRITOL*, SODIUM COCOYL ISETHIONATE, WATER/AQUA, GLYCERIN, CAPRYLYL/CAPRYL GLUCOSIDE, OENOTHERA BIENNIS (EVENING PRIMROSE) OIL, PELARGONIUM GRAVEOLENS FLOWER OIL (GERANIUM) CEDRUS ATLANTICA BARK OIL (CEDARWOOD), CITRUS GRANDIS (GRAPEFRUIT) PEEL OIL, CITRUS LIMON (LEMON) PEEL OIL, POGOSTEMON CABLIN OIL (PATCHOULI), FUSANUS SPICATUS WOOD OIL, (SANDALWOOD), CANANGA ODORATA FLOWER OIL (YLANG YLANG), BABASSUAMIDOPROPYL BETAIN, HYDROXYPROPYLTRIMONIUM HONEY, GLYCERYL CAPRYLATE, PANTHENOL (VITAMIN B-5), SIMMONDSIA CHINENSIS (JOJOBA) SEED OIL*, PERSEA GRATISSIMA (AVOCADO) OIL, LINUM USITATISSIMUM (LINSEED) SEED OIL, HELIANTHUS ANNUUS (SUNFLOWER) SEED OIL*, CHAMOMILLA RECUTITA (MATRICARIA) FLOWER EXTRACT*, URTICA DIOICA (NETTLE) LEAF EXTRACT*, EQUISETUM ARVENSE EXTRACT (HORSETAIL)*, SYMPHYTUM OFFICINALE LEAF EXTRACT (COMFREY), SALIX ALBA (WILLOW) BARK EXTRACT, CAMELLIA SINENSIS LEAF EXTRACT (WHITE TEA), LAVANDULA ANGUSTIFOLIA (LAVENDER) FLOWER/LEAF/STEM EXTRACT*, HYDROLYZED RICE PROTEIN, TOCOPHEROL, SODIUM LEVULINATE, SODIUM PCA, SODIUM LACTATE, ARGININE, ASPARTIC ACID, PCA, GLYCINE, ALANINE, SERINE, VALINE, PROLINE, THREONINE, ISOLEUCINE, HISTIDINE, PHENYLALANINE, CARAMEL, SODIUM, PHYTATE, POTASSIUM SORBATE, SODIUM BENZOATE, CITRIC ACID, LIMONENE†, LINALOOL†, GERANIOL† *ORGANIC INGREDIENT †A NATURAL COMPONENT OF ESSENTIAL OILS"
+            }
+          ],
+          "resolution_refs": [],
+          "rule_id": "citrus-coating-v1",
+          "target": "whole_product"
+        },
+        {
+          "blocks_claim": false,
+          "code": "source_unresolved",
+          "evidence_refs": [
+            {
+              "path": "/product/ingredients",
+              "quote": "ALOE BARBADENSIS LEAF JUICE (ALOE VERA)*, COCAMIDOPROPYL HYDROXYSULTAINE, ERYTHRITOL*, SODIUM COCOYL ISETHIONATE, WATER/AQUA, GLYCERIN, CAPRYLYL/CAPRYL GLUCOSIDE, OENOTHERA BIENNIS (EVENING PRIMROSE) OIL, PELARGONIUM GRAVEOLENS FLOWER OIL (GERANIUM) CEDRUS ATLANTICA BARK OIL (CEDARWOOD), CITRUS GRANDIS (GRAPEFRUIT) PEEL OIL, CITRUS LIMON (LEMON) PEEL OIL, POGOSTEMON CABLIN OIL (PATCHOULI), FUSANUS SPICATUS WOOD OIL, (SANDALWOOD), CANANGA ODORATA FLOWER OIL (YLANG YLANG), BABASSUAMIDOPROPYL BETAIN, HYDROXYPROPYLTRIMONIUM HONEY, GLYCERYL CAPRYLATE, PANTHENOL (VITAMIN B-5), SIMMONDSIA CHINENSIS (JOJOBA) SEED OIL*, PERSEA GRATISSIMA (AVOCADO) OIL, LINUM USITATISSIMUM (LINSEED) SEED OIL, HELIANTHUS ANNUUS (SUNFLOWER) SEED OIL*, CHAMOMILLA RECUTITA (MATRICARIA) FLOWER EXTRACT*, URTICA DIOICA (NETTLE) LEAF EXTRACT*, EQUISETUM ARVENSE EXTRACT (HORSETAIL)*, SYMPHYTUM OFFICINALE LEAF EXTRACT (COMFREY), SALIX ALBA (WILLOW) BARK EXTRACT, CAMELLIA SINENSIS LEAF EXTRACT (WHITE TEA), LAVANDULA ANGUSTIFOLIA (LAVENDER) FLOWER/LEAF/STEM EXTRACT*, HYDROLYZED RICE PROTEIN, TOCOPHEROL, SODIUM LEVULINATE, SODIUM PCA, SODIUM LACTATE, ARGININE, ASPARTIC ACID, PCA, GLYCINE, ALANINE, SERINE, VALINE, PROLINE, THREONINE, ISOLEUCINE, HISTIDINE, PHENYLALANINE, CARAMEL, SODIUM, PHYTATE, POTASSIUM SORBATE, SODIUM BENZOATE, CITRIC ACID, LIMONENE†, LINALOOL†, GERANIOL† *ORGANIC INGREDIENT †A NATURAL COMPONENT OF ESSENTIAL OILS"
+            }
+          ],
+          "resolution_refs": [],
+          "rule_id": "unspecified-composition-v1",
+          "target": "whole_product"
+        },
+        {
+          "blocks_claim": false,
+          "code": "composition_incomplete",
+          "evidence_refs": [
+            {
+              "path": "/product/name",
+              "quote": "John Masters Organics Shampoo for Dry Hair, Evening Primrose"
+            }
+          ],
+          "resolution_refs": [],
+          "rule_id": "manufactured-nonfood-composition-v1",
+          "target": "whole_product"
+        },
+        {
+          "blocks_claim": true,
+          "code": "animal_ingredient",
+          "evidence_refs": [
+            {
+              "path": "/product/ingredients",
+              "quote": "ALOE BARBADENSIS LEAF JUICE (ALOE VERA)*, COCAMIDOPROPYL HYDROXYSULTAINE, ERYTHRITOL*, SODIUM COCOYL ISETHIONATE, WATER/AQUA, GLYCERIN, CAPRYLYL/CAPRYL GLUCOSIDE, OENOTHERA BIENNIS (EVENING PRIMROSE) OIL, PELARGONIUM GRAVEOLENS FLOWER OIL (GERANIUM) CEDRUS ATLANTICA BARK OIL (CEDARWOOD), CITRUS GRANDIS (GRAPEFRUIT) PEEL OIL, CITRUS LIMON (LEMON) PEEL OIL, POGOSTEMON CABLIN OIL (PATCHOULI), FUSANUS SPICATUS WOOD OIL, (SANDALWOOD), CANANGA ODORATA FLOWER OIL (YLANG YLANG), BABASSUAMIDOPROPYL BETAIN, HYDROXYPROPYLTRIMONIUM HONEY, GLYCERYL CAPRYLATE, PANTHENOL (VITAMIN B-5), SIMMONDSIA CHINENSIS (JOJOBA) SEED OIL*, PERSEA GRATISSIMA (AVOCADO) OIL, LINUM USITATISSIMUM (LINSEED) SEED OIL, HELIANTHUS ANNUUS (SUNFLOWER) SEED OIL*, CHAMOMILLA RECUTITA (MATRICARIA) FLOWER EXTRACT*, URTICA DIOICA (NETTLE) LEAF EXTRACT*, EQUISETUM ARVENSE EXTRACT (HORSETAIL)*, SYMPHYTUM OFFICINALE LEAF EXTRACT (COMFREY), SALIX ALBA (WILLOW) BARK EXTRACT, CAMELLIA SINENSIS LEAF EXTRACT (WHITE TEA), LAVANDULA ANGUSTIFOLIA (LAVENDER) FLOWER/LEAF/STEM EXTRACT*, HYDROLYZED RICE PROTEIN, TOCOPHEROL, SODIUM LEVULINATE, SODIUM PCA, SODIUM LACTATE, ARGININE, ASPARTIC ACID, PCA, GLYCINE, ALANINE, SERINE, VALINE, PROLINE, THREONINE, ISOLEUCINE, HISTIDINE, PHENYLALANINE, CARAMEL, SODIUM, PHYTATE, POTASSIUM SORBATE, SODIUM BENZOATE, CITRIC ACID, LIMONENE†, LINALOOL†, GERANIOL† *ORGANIC INGREDIENT †A NATURAL COMPONENT OF ESSENTIAL OILS"
+            }
+          ],
+          "resolution_refs": [],
+          "rule_id": "animal-ingredients-v1",
+          "target": "whole_product"
+        },
+        {
+          "blocks_claim": true,
+          "code": "tag_animal_conflict",
+          "evidence_refs": [
+            {
+              "path": "/product/ingredients",
+              "quote": "ALOE BARBADENSIS LEAF JUICE (ALOE VERA)*, COCAMIDOPROPYL HYDROXYSULTAINE, ERYTHRITOL*, SODIUM COCOYL ISETHIONATE, WATER/AQUA, GLYCERIN, CAPRYLYL/CAPRYL GLUCOSIDE, OENOTHERA BIENNIS (EVENING PRIMROSE) OIL, PELARGONIUM GRAVEOLENS FLOWER OIL (GERANIUM) CEDRUS ATLANTICA BARK OIL (CEDARWOOD), CITRUS GRANDIS (GRAPEFRUIT) PEEL OIL, CITRUS LIMON (LEMON) PEEL OIL, POGOSTEMON CABLIN OIL (PATCHOULI), FUSANUS SPICATUS WOOD OIL, (SANDALWOOD), CANANGA ODORATA FLOWER OIL (YLANG YLANG), BABASSUAMIDOPROPYL BETAIN, HYDROXYPROPYLTRIMONIUM HONEY, GLYCERYL CAPRYLATE, PANTHENOL (VITAMIN B-5), SIMMONDSIA CHINENSIS (JOJOBA) SEED OIL*, PERSEA GRATISSIMA (AVOCADO) OIL, LINUM USITATISSIMUM (LINSEED) SEED OIL, HELIANTHUS ANNUUS (SUNFLOWER) SEED OIL*, CHAMOMILLA RECUTITA (MATRICARIA) FLOWER EXTRACT*, URTICA DIOICA (NETTLE) LEAF EXTRACT*, EQUISETUM ARVENSE EXTRACT (HORSETAIL)*, SYMPHYTUM OFFICINALE LEAF EXTRACT (COMFREY), SALIX ALBA (WILLOW) BARK EXTRACT, CAMELLIA SINENSIS LEAF EXTRACT (WHITE TEA), LAVANDULA ANGUSTIFOLIA (LAVENDER) FLOWER/LEAF/STEM EXTRACT*, HYDROLYZED RICE PROTEIN, TOCOPHEROL, SODIUM LEVULINATE, SODIUM PCA, SODIUM LACTATE, ARGININE, ASPARTIC ACID, PCA, GLYCINE, ALANINE, SERINE, VALINE, PROLINE, THREONINE, ISOLEUCINE, HISTIDINE, PHENYLALANINE, CARAMEL, SODIUM, PHYTATE, POTASSIUM SORBATE, SODIUM BENZOATE, CITRIC ACID, LIMONENE†, LINALOOL†, GERANIOL† *ORGANIC INGREDIENT †A NATURAL COMPONENT OF ESSENTIAL OILS"
+            }
+          ],
+          "resolution_refs": [],
+          "rule_id": "animal-overrides-tag-v1",
+          "target": "whole_product"
+        }
+      ],
+      "positive_support": [],
+      "processing": {
+        "evidence_refs": [],
+        "status": "not_applicable"
+      },
+      "source_applicability": [],
+      "sourcing": {
+        "evidence_refs": [],
+        "status": "not_applicable"
+      }
+    }
+  },
+  {
+    "id": "509908011",
+    "name": "Cook With M&S Katsu Curry Paste",
+    "current_on_ocado": 1,
+    "official_vegan": 1,
+    "vegan_status": "nonvegan",
+    "vegan_reason": null,
+    "vegan_policy_version": "whole-product-v2",
+    "vegan_evidence_hash": "f3e92bc66201117f08bec8bef894aa4a3cc50bfb1849c0c2ddff84e7d541fc76",
+    "vegan_positive_block": 0,
+    "vegan_audit_id": 2464913,
+    "run_id": 292,
+    "classifier_version": "db-vegan-codex-v125",
+    "summary": "Shared whole-product evidence policy: nonvegan",
+    "product_id": "509908011",
+    "url": "https://www.ocado.com/products/509908011",
+    "previous": {
+      "id": "509908011",
+      "vegan_status": "vegan",
+      "vegan_reason": "tagged",
+      "current_on_ocado": 1,
+      "vegan_audit_id": null
+    },
+    "accepted_assessment": {
+      "components": {
+        "evidence_refs": [
+          {
+            "path": "/product/name",
+            "quote": "Cook With M&S Katsu Curry Paste"
+          }
+        ],
+        "status": "insufficient"
+      },
+      "composition": {
+        "evidence_refs": [
+          {
+            "path": "/product/ingredients",
+            "quote": "Water, Onion Purée, Carrot Purée, Dark Soy Sauce (7%) (Water, Soybeans, Roasted Wheat (contains Gluten), Salt, Alcohol), Rapeseed Oil, Mirin Rice Wine (6%) (Rice, Water, Alcohol, Glucose Syrup), Ground Spices (5%) (Coriander Seeds, Turmeric, Cumin Seeds, Fenugreek, Star Anise, Ginger, Fennel Seeds, Dill Seeds, Black Pepper, Cloves, Dried Chillies, Celery Seeds, Caraway Seeds), Sugar, Chicken Stock (Water, Chicken, Chicken Bones, Chicken Fat, Salt, Yeast Extract, Sugar, Chicory Fibre, Cornflour, Mushroom Extract), Garlic Purée, Concentrated Lemon Juice, Cornflour, Red Chillies, Ground Bay Leaves, Salt, Dried Garlic, Dried Onions"
+          }
+        ],
+        "status": "insufficient"
+      },
+      "identity": {
+        "evidence_refs": [
+          {
+            "path": "/product/name",
+            "quote": "Cook With M&S Katsu Curry Paste"
+          }
+        ],
+        "status": "established"
+      },
+      "material_issues": [
+        {
+          "blocks_claim": false,
+          "code": "processing_unresolved",
+          "evidence_refs": [
+            {
+              "path": "/product/ingredients",
+              "quote": "Water, Onion Purée, Carrot Purée, Dark Soy Sauce (7%) (Water, Soybeans, Roasted Wheat (contains Gluten), Salt, Alcohol), Rapeseed Oil, Mirin Rice Wine (6%) (Rice, Water, Alcohol, Glucose Syrup), Ground Spices (5%) (Coriander Seeds, Turmeric, Cumin Seeds, Fenugreek, Star Anise, Ginger, Fennel Seeds, Dill Seeds, Black Pepper, Cloves, Dried Chillies, Celery Seeds, Caraway Seeds), Sugar, Chicken Stock (Water, Chicken, Chicken Bones, Chicken Fat, Salt, Yeast Extract, Sugar, Chicory Fibre, Cornflour, Mushroom Extract), Garlic Purée, Concentrated Lemon Juice, Cornflour, Red Chillies, Ground Bay Leaves, Salt, Dried Garlic, Dried Onions"
+            }
+          ],
+          "resolution_refs": [],
+          "rule_id": "wine-fining-v1",
+          "target": "whole_product"
+        },
+        {
+          "blocks_claim": false,
+          "code": "processing_unresolved",
+          "evidence_refs": [
+            {
+              "path": "/product/ingredients",
+              "quote": "Water, Onion Purée, Carrot Purée, Dark Soy Sauce (7%) (Water, Soybeans, Roasted Wheat (contains Gluten), Salt, Alcohol), Rapeseed Oil, Mirin Rice Wine (6%) (Rice, Water, Alcohol, Glucose Syrup), Ground Spices (5%) (Coriander Seeds, Turmeric, Cumin Seeds, Fenugreek, Star Anise, Ginger, Fennel Seeds, Dill Seeds, Black Pepper, Cloves, Dried Chillies, Celery Seeds, Caraway Seeds), Sugar, Chicken Stock (Water, Chicken, Chicken Bones, Chicken Fat, Salt, Yeast Extract, Sugar, Chicory Fibre, Cornflour, Mushroom Extract), Garlic Purée, Concentrated Lemon Juice, Cornflour, Red Chillies, Ground Bay Leaves, Salt, Dried Garlic, Dried Onions"
+            }
+          ],
+          "resolution_refs": [],
+          "rule_id": "liquid-clarification-v1",
+          "target": "whole_product"
+        },
+        {
+          "blocks_claim": false,
+          "code": "processing_unresolved",
+          "evidence_refs": [
+            {
+              "path": "/product/ingredients",
+              "quote": "Water, Onion Purée, Carrot Purée, Dark Soy Sauce (7%) (Water, Soybeans, Roasted Wheat (contains Gluten), Salt, Alcohol), Rapeseed Oil, Mirin Rice Wine (6%) (Rice, Water, Alcohol, Glucose Syrup), Ground Spices (5%) (Coriander Seeds, Turmeric, Cumin Seeds, Fenugreek, Star Anise, Ginger, Fennel Seeds, Dill Seeds, Black Pepper, Cloves, Dried Chillies, Celery Seeds, Caraway Seeds), Sugar, Chicken Stock (Water, Chicken, Chicken Bones, Chicken Fat, Salt, Yeast Extract, Sugar, Chicory Fibre, Cornflour, Mushroom Extract), Garlic Purée, Concentrated Lemon Juice, Cornflour, Red Chillies, Ground Bay Leaves, Salt, Dried Garlic, Dried Onions"
+            }
+          ],
+          "resolution_refs": [],
+          "rule_id": "sugar-refining-v1",
+          "target": "whole_product"
+        },
+        {
+          "blocks_claim": false,
+          "code": "processing_unresolved",
+          "evidence_refs": [
+            {
+              "path": "/product/ingredients",
+              "quote": "Water, Onion Purée, Carrot Purée, Dark Soy Sauce (7%) (Water, Soybeans, Roasted Wheat (contains Gluten), Salt, Alcohol), Rapeseed Oil, Mirin Rice Wine (6%) (Rice, Water, Alcohol, Glucose Syrup), Ground Spices (5%) (Coriander Seeds, Turmeric, Cumin Seeds, Fenugreek, Star Anise, Ginger, Fennel Seeds, Dill Seeds, Black Pepper, Cloves, Dried Chillies, Celery Seeds, Caraway Seeds), Sugar, Chicken Stock (Water, Chicken, Chicken Bones, Chicken Fat, Salt, Yeast Extract, Sugar, Chicory Fibre, Cornflour, Mushroom Extract), Garlic Purée, Concentrated Lemon Juice, Cornflour, Red Chillies, Ground Bay Leaves, Salt, Dried Garlic, Dried Onions"
+            }
+          ],
+          "resolution_refs": [],
+          "rule_id": "citrus-coating-v1",
+          "target": "whole_product"
+        },
+        {
+          "blocks_claim": false,
+          "code": "composition_incomplete",
+          "evidence_refs": [
+            {
+              "path": "/product/package_type",
+              "quote": "Jar"
+            },
+            {
+              "path": "/product/other_information",
+              "quote": "Additional Information: The oils in the sauce may naturally separate. This will not affect the eating quality. Jar - Widely Recycled Lid - Widely Recycled"
+            }
+          ],
+          "resolution_refs": [],
+          "rule_id": "supplied-components-composition-v1",
+          "target": "supplied components"
+        },
+        {
+          "blocks_claim": false,
+          "code": "processing_unresolved",
+          "evidence_refs": [
+            {
+              "path": "/product/ingredients",
+              "quote": "Water, Onion Purée, Carrot Purée, Dark Soy Sauce (7%) (Water, Soybeans, Roasted Wheat (contains Gluten), Salt, Alcohol), Rapeseed Oil, Mirin Rice Wine (6%) (Rice, Water, Alcohol, Glucose Syrup), Ground Spices (5%) (Coriander Seeds, Turmeric, Cumin Seeds, Fenugreek, Star Anise, Ginger, Fennel Seeds, Dill Seeds, Black Pepper, Cloves, Dried Chillies, Celery Seeds, Caraway Seeds), Sugar, Chicken Stock (Water, Chicken, Chicken Bones, Chicken Fat, Salt, Yeast Extract, Sugar, Chicory Fibre, Cornflour, Mushroom Extract), Garlic Purée, Concentrated Lemon Juice, Cornflour, Red Chillies, Ground Bay Leaves, Salt, Dried Garlic, Dried Onions"
+            }
+          ],
+          "resolution_refs": [],
+          "rule_id": "wine-other-processing-v1",
+          "target": "non-fining inputs across grape, must and wine production"
+        },
+        {
+          "blocks_claim": true,
+          "code": "animal_ingredient",
+          "evidence_refs": [
+            {
+              "path": "/product/ingredients",
+              "quote": "Water, Onion Purée, Carrot Purée, Dark Soy Sauce (7%) (Water, Soybeans, Roasted Wheat (contains Gluten), Salt, Alcohol), Rapeseed Oil, Mirin Rice Wine (6%) (Rice, Water, Alcohol, Glucose Syrup), Ground Spices (5%) (Coriander Seeds, Turmeric, Cumin Seeds, Fenugreek, Star Anise, Ginger, Fennel Seeds, Dill Seeds, Black Pepper, Cloves, Dried Chillies, Celery Seeds, Caraway Seeds), Sugar, Chicken Stock (Water, Chicken, Chicken Bones, Chicken Fat, Salt, Yeast Extract, Sugar, Chicory Fibre, Cornflour, Mushroom Extract), Garlic Purée, Concentrated Lemon Juice, Cornflour, Red Chillies, Ground Bay Leaves, Salt, Dried Garlic, Dried Onions"
+            }
+          ],
+          "resolution_refs": [],
+          "rule_id": "animal-ingredients-v1",
+          "target": "whole_product"
+        },
+        {
+          "blocks_claim": true,
+          "code": "tag_animal_conflict",
+          "evidence_refs": [
+            {
+              "path": "/product/ingredients",
+              "quote": "Water, Onion Purée, Carrot Purée, Dark Soy Sauce (7%) (Water, Soybeans, Roasted Wheat (contains Gluten), Salt, Alcohol), Rapeseed Oil, Mirin Rice Wine (6%) (Rice, Water, Alcohol, Glucose Syrup), Ground Spices (5%) (Coriander Seeds, Turmeric, Cumin Seeds, Fenugreek, Star Anise, Ginger, Fennel Seeds, Dill Seeds, Black Pepper, Cloves, Dried Chillies, Celery Seeds, Caraway Seeds), Sugar, Chicken Stock (Water, Chicken, Chicken Bones, Chicken Fat, Salt, Yeast Extract, Sugar, Chicory Fibre, Cornflour, Mushroom Extract), Garlic Purée, Concentrated Lemon Juice, Cornflour, Red Chillies, Ground Bay Leaves, Salt, Dried Garlic, Dried Onions"
+            }
+          ],
+          "resolution_refs": [],
+          "rule_id": "animal-overrides-tag-v1",
+          "target": "whole_product"
+        }
+      ],
+      "positive_support": [],
+      "processing": {
+        "evidence_refs": [],
+        "status": "not_applicable"
+      },
+      "source_applicability": [],
+      "sourcing": {
+        "evidence_refs": [],
+        "status": "not_applicable"
+      }
+    }
+  },
+  {
+    "id": "513308011",
+    "name": "Wirra Wirra 12th Man Adelaide Hills Chardonnay",
+    "current_on_ocado": 1,
+    "official_vegan": 1,
+    "vegan_status": "nonvegan",
+    "vegan_reason": null,
+    "vegan_policy_version": "whole-product-v2",
+    "vegan_evidence_hash": "f8be836c54cf84eaa590cd52e5c385e426827e8b58dd2895f37e6bf520e7a501",
+    "vegan_positive_block": 0,
+    "vegan_audit_id": 2465330,
+    "run_id": 292,
+    "classifier_version": "db-vegan-codex-v125",
+    "summary": "Shared whole-product evidence policy: nonvegan",
+    "product_id": "513308011",
+    "url": "https://www.ocado.com/products/513308011",
+    "previous": {
+      "id": "513308011",
+      "vegan_status": "vegan",
+      "vegan_reason": "tagged",
+      "current_on_ocado": 1,
+      "vegan_audit_id": null
+    },
+    "accepted_assessment": {
+      "components": {
+        "evidence_refs": [
+          {
+            "path": "/product/name",
+            "quote": "Wirra Wirra 12th Man Adelaide Hills Chardonnay"
+          }
+        ],
+        "status": "insufficient"
+      },
+      "composition": {
+        "evidence_refs": [
+          {
+            "path": "/product/name",
+            "quote": "Wirra Wirra 12th Man Adelaide Hills Chardonnay"
+          }
+        ],
+        "status": "insufficient"
+      },
+      "identity": {
+        "evidence_refs": [
+          {
+            "path": "/product/name",
+            "quote": "Wirra Wirra 12th Man Adelaide Hills Chardonnay"
+          }
+        ],
+        "status": "established"
+      },
+      "material_issues": [
+        {
+          "blocks_claim": false,
+          "code": "processing_unresolved",
+          "evidence_refs": [
+            {
+              "path": "/categories/0",
+              "quote": "beer-wine-spirits/wine/white-wine/organic-white-wine"
+            }
+          ],
+          "resolution_refs": [],
+          "rule_id": "wine-fining-v1",
+          "target": "whole_product"
+        },
+        {
+          "blocks_claim": false,
+          "code": "processing_unresolved",
+          "evidence_refs": [
+            {
+              "path": "/categories/0",
+              "quote": "beer-wine-spirits/wine/white-wine/organic-white-wine"
+            }
+          ],
+          "resolution_refs": [],
+          "rule_id": "wine-other-processing-v1",
+          "target": "non-fining inputs across grape, must and wine production"
+        },
+        {
+          "blocks_claim": true,
+          "code": "animal_ingredient",
+          "evidence_refs": [
+            {
+              "path": "/product/allergens",
+              "quote": "Contains Milk, Contains Sulphur Dioxide/Sulphites"
+            }
+          ],
+          "resolution_refs": [],
+          "rule_id": "animal-ingredients-v1",
+          "target": "whole_product"
+        },
+        {
+          "blocks_claim": true,
+          "code": "tag_animal_conflict",
+          "evidence_refs": [
+            {
+              "path": "/product/allergens",
+              "quote": "Contains Milk, Contains Sulphur Dioxide/Sulphites"
+            }
+          ],
+          "resolution_refs": [],
+          "rule_id": "animal-overrides-tag-v1",
+          "target": "whole_product"
+        }
+      ],
+      "positive_support": [],
+      "processing": {
+        "evidence_refs": [],
+        "status": "not_applicable"
+      },
+      "source_applicability": [],
+      "sourcing": {
+        "evidence_refs": [],
+        "status": "not_applicable"
+      }
+    }
+  },
+  {
+    "id": "513316011",
+    "name": "Neil Ellis Groenekloof Syrah",
+    "current_on_ocado": 1,
+    "official_vegan": 1,
+    "vegan_status": "nonvegan",
+    "vegan_reason": null,
+    "vegan_policy_version": "whole-product-v2",
+    "vegan_evidence_hash": "acd61c2baaa754ab546105ab0532927cea9a3ba4f01ac962b6ba124fb36af2dc",
+    "vegan_positive_block": 0,
+    "vegan_audit_id": 2465331,
+    "run_id": 292,
+    "classifier_version": "db-vegan-codex-v125",
+    "summary": "Shared whole-product evidence policy: nonvegan",
+    "product_id": "513316011",
+    "url": "https://www.ocado.com/products/513316011",
+    "previous": {
+      "id": "513316011",
+      "vegan_status": "vegan",
+      "vegan_reason": "tagged",
+      "current_on_ocado": 1,
+      "vegan_audit_id": null
+    },
+    "accepted_assessment": {
+      "components": {
+        "evidence_refs": [
+          {
+            "path": "/product/name",
+            "quote": "Neil Ellis Groenekloof Syrah"
+          }
+        ],
+        "status": "insufficient"
+      },
+      "composition": {
+        "evidence_refs": [
+          {
+            "path": "/product/name",
+            "quote": "Neil Ellis Groenekloof Syrah"
+          }
+        ],
+        "status": "insufficient"
+      },
+      "identity": {
+        "evidence_refs": [
+          {
+            "path": "/product/name",
+            "quote": "Neil Ellis Groenekloof Syrah"
+          }
+        ],
+        "status": "established"
+      },
+      "material_issues": [
+        {
+          "blocks_claim": false,
+          "code": "composition_incomplete",
+          "evidence_refs": [
+            {
+              "path": "/product/package_type",
+              "quote": "Glass"
+            }
+          ],
+          "resolution_refs": [],
+          "rule_id": "supplied-components-composition-v1",
+          "target": "supplied components"
+        },
+        {
+          "blocks_claim": false,
+          "code": "processing_unresolved",
+          "evidence_refs": [
+            {
+              "path": "/categories/0",
+              "quote": "beer-wine-spirits/wine/red-wine/shop-by-country/south-africa"
+            }
+          ],
+          "resolution_refs": [],
+          "rule_id": "wine-fining-v1",
+          "target": "whole_product"
+        },
+        {
+          "blocks_claim": false,
+          "code": "processing_unresolved",
+          "evidence_refs": [
+            {
+              "path": "/categories/0",
+              "quote": "beer-wine-spirits/wine/red-wine/shop-by-country/south-africa"
+            }
+          ],
+          "resolution_refs": [],
+          "rule_id": "wine-other-processing-v1",
+          "target": "non-fining inputs across grape, must and wine production"
+        },
+        {
+          "blocks_claim": true,
+          "code": "animal_ingredient",
+          "evidence_refs": [
+            {
+              "path": "/product/allergens",
+              "quote": "Contains Eggs, Contains Sulphur Dioxide/Sulphites Contains Sulphites, Egg Albumin"
+            }
+          ],
+          "resolution_refs": [],
+          "rule_id": "animal-ingredients-v1",
+          "target": "whole_product"
+        },
+        {
+          "blocks_claim": true,
+          "code": "tag_animal_conflict",
+          "evidence_refs": [
+            {
+              "path": "/product/allergens",
+              "quote": "Contains Eggs, Contains Sulphur Dioxide/Sulphites Contains Sulphites, Egg Albumin"
+            }
+          ],
+          "resolution_refs": [],
+          "rule_id": "animal-overrides-tag-v1",
+          "target": "whole_product"
+        }
+      ],
+      "positive_support": [],
+      "processing": {
+        "evidence_refs": [],
+        "status": "not_applicable"
+      },
+      "source_applicability": [],
+      "sourcing": {
+        "evidence_refs": [],
+        "status": "not_applicable"
+      }
+    }
+  },
+  {
+    "id": "51379011",
+    "name": "Biona Organic Honey & Hazel Crunchy Granola",
+    "current_on_ocado": 1,
+    "official_vegan": 1,
+    "vegan_status": "nonvegan",
+    "vegan_reason": null,
+    "vegan_policy_version": "whole-product-v2",
+    "vegan_evidence_hash": "c8883f41fc61cbe98668ef3d745df9eb160b126c7b48e4dfd9310c9d2f8d8ebb",
+    "vegan_positive_block": 0,
+    "vegan_audit_id": 2465354,
+    "run_id": 292,
+    "classifier_version": "db-vegan-codex-v125",
+    "summary": "Shared whole-product evidence policy: nonvegan",
+    "product_id": "51379011",
+    "url": "https://www.ocado.com/products/51379011",
+    "previous": {
+      "id": "51379011",
+      "vegan_status": "nonvegan",
+      "vegan_reason": null,
+      "current_on_ocado": 1,
+      "vegan_audit_id": null
+    },
+    "accepted_assessment": {
+      "components": {
+        "evidence_refs": [
+          {
+            "path": "/product/name",
+            "quote": "Biona Organic Honey & Hazel Crunchy Granola"
+          }
+        ],
+        "status": "insufficient"
+      },
+      "composition": {
+        "evidence_refs": [
+          {
+            "path": "/product/ingredients",
+            "quote": "Whole Rolled Oats * (74%), Honey* (24%), Sunflower Oil*, Hazelnuts * (2%), Sesame Seeds*, Sunflower Seeds*, * = Certified Organic ingredients"
+          }
+        ],
+        "status": "insufficient"
+      },
+      "identity": {
+        "evidence_refs": [
+          {
+            "path": "/product/name",
+            "quote": "Biona Organic Honey & Hazel Crunchy Granola"
+          }
+        ],
+        "status": "established"
+      },
+      "material_issues": [
+        {
+          "blocks_claim": false,
+          "code": "composition_incomplete",
+          "evidence_refs": [
+            {
+              "path": "/product/package_type",
+              "quote": "Bag"
+            }
+          ],
+          "resolution_refs": [],
+          "rule_id": "supplied-components-composition-v1",
+          "target": "supplied components"
+        },
+        {
+          "blocks_claim": true,
+          "code": "animal_ingredient",
+          "evidence_refs": [
+            {
+              "path": "/product/ingredients",
+              "quote": "Whole Rolled Oats * (74%), Honey* (24%), Sunflower Oil*, Hazelnuts * (2%), Sesame Seeds*, Sunflower Seeds*, * = Certified Organic ingredients"
+            }
+          ],
+          "resolution_refs": [],
+          "rule_id": "animal-ingredients-v1",
+          "target": "whole_product"
+        },
+        {
+          "blocks_claim": true,
+          "code": "tag_animal_conflict",
+          "evidence_refs": [
+            {
+              "path": "/product/ingredients",
+              "quote": "Whole Rolled Oats * (74%), Honey* (24%), Sunflower Oil*, Hazelnuts * (2%), Sesame Seeds*, Sunflower Seeds*, * = Certified Organic ingredients"
+            }
+          ],
+          "resolution_refs": [],
+          "rule_id": "animal-overrides-tag-v1",
+          "target": "whole_product"
+        }
+      ],
+      "positive_support": [],
+      "processing": {
+        "evidence_refs": [],
+        "status": "not_applicable"
+      },
+      "source_applicability": [],
+      "sourcing": {
+        "evidence_refs": [],
+        "status": "not_applicable"
+      }
+    }
+  },
+  {
+    "id": "525084011",
+    "name": "Dr. Oetker White Writing Icing",
+    "current_on_ocado": 1,
+    "official_vegan": 1,
+    "vegan_status": "nonvegan",
+    "vegan_reason": null,
+    "vegan_policy_version": "whole-product-v2",
+    "vegan_evidence_hash": "e7bca0fc4eb1d09a78028d22bb13bd5435c09427ad1d6cd464ae26730cb70beb",
+    "vegan_positive_block": 0,
+    "vegan_audit_id": 2467131,
+    "run_id": 292,
+    "classifier_version": "db-vegan-codex-v125",
+    "summary": "Shared whole-product evidence policy: nonvegan",
+    "product_id": "525084011",
+    "url": "https://www.ocado.com/products/525084011",
+    "previous": {
+      "id": "525084011",
+      "vegan_status": "vegan",
+      "vegan_reason": "manufacturer",
+      "current_on_ocado": 1,
+      "vegan_audit_id": null
+    },
+    "accepted_assessment": {
+      "components": {
+        "evidence_refs": [
+          {
+            "path": "/product/name",
+            "quote": "Dr. Oetker White Writing Icing"
+          }
+        ],
+        "status": "insufficient"
+      },
+      "composition": {
+        "evidence_refs": [
+          {
+            "path": "/product/ingredients",
+            "quote": "Sugar, Vegetable Oils (Palm, Rapeseed), Water, Glucose Syrup, Modified Starch, Emulsifiers (Citric Acid Esters of Mono- and Diglycerides of Fatty Acids, Polyoxyethylene Sorbitan Monostearate), Preservative (Potassium Sorbate), Salt, Natural Flavouring, Antioxidant (Tocopherol-Rich Extract), Acidity Regulator (Citric Acid)"
+          }
+        ],
+        "status": "insufficient"
+      },
+      "identity": {
+        "evidence_refs": [
+          {
+            "path": "/product/name",
+            "quote": "Dr. Oetker White Writing Icing"
+          }
+        ],
+        "status": "established"
+      },
+      "material_issues": [
+        {
+          "blocks_claim": false,
+          "code": "processing_unresolved",
+          "evidence_refs": [
+            {
+              "path": "/product/ingredients",
+              "quote": "Sugar, Vegetable Oils (Palm, Rapeseed), Water, Glucose Syrup, Modified Starch, Emulsifiers (Citric Acid Esters of Mono- and Diglycerides of Fatty Acids, Polyoxyethylene Sorbitan Monostearate), Preservative (Potassium Sorbate), Salt, Natural Flavouring, Antioxidant (Tocopherol-Rich Extract), Acidity Regulator (Citric Acid)"
+            }
+          ],
+          "resolution_refs": [],
+          "rule_id": "sugar-refining-v1",
+          "target": "whole_product"
+        },
+        {
+          "blocks_claim": false,
+          "code": "source_unresolved",
+          "evidence_refs": [
+            {
+              "path": "/product/ingredients",
+              "quote": "Sugar, Vegetable Oils (Palm, Rapeseed), Water, Glucose Syrup, Modified Starch, Emulsifiers (Citric Acid Esters of Mono- and Diglycerides of Fatty Acids, Polyoxyethylene Sorbitan Monostearate), Preservative (Potassium Sorbate), Salt, Natural Flavouring, Antioxidant (Tocopherol-Rich Extract), Acidity Regulator (Citric Acid)"
+            }
+          ],
+          "resolution_refs": [],
+          "rule_id": "unspecified-composition-v1",
+          "target": "whole_product"
+        },
+        {
+          "blocks_claim": false,
+          "code": "composition_incomplete",
+          "evidence_refs": [
+            {
+              "path": "/product/package_type",
+              "quote": "Box"
+            }
+          ],
+          "resolution_refs": [],
+          "rule_id": "supplied-components-composition-v1",
+          "target": "supplied components"
+        },
+        {
+          "blocks_claim": true,
+          "code": "animal_ingredient",
+          "evidence_refs": [
+            {
+              "path": "/product/allergens",
+              "quote": "Contains Milk"
+            }
+          ],
+          "resolution_refs": [],
+          "rule_id": "animal-ingredients-v1",
+          "target": "whole_product"
+        },
+        {
+          "blocks_claim": true,
+          "code": "tag_animal_conflict",
+          "evidence_refs": [
+            {
+              "path": "/product/allergens",
+              "quote": "Contains Milk"
+            }
+          ],
+          "resolution_refs": [],
+          "rule_id": "animal-overrides-tag-v1",
+          "target": "whole_product"
+        }
+      ],
+      "positive_support": [],
+      "processing": {
+        "evidence_refs": [],
+        "status": "not_applicable"
+      },
+      "source_applicability": [],
+      "sourcing": {
+        "evidence_refs": [],
+        "status": "not_applicable"
+      }
+    }
+  },
+  {
+    "id": "527870011",
+    "name": "M&S Percy Pig Advent Calendar Sweets",
+    "current_on_ocado": 1,
+    "official_vegan": 1,
+    "vegan_status": "nonvegan",
+    "vegan_reason": null,
+    "vegan_policy_version": "whole-product-v2",
+    "vegan_evidence_hash": "63ace3fde0462a6724e80d5bdbe32b1aad67801887a0d50d3bd7002e5124aa8a",
+    "vegan_positive_block": 0,
+    "vegan_audit_id": 2467361,
+    "run_id": 292,
+    "classifier_version": "db-vegan-codex-v125",
+    "summary": "Shared whole-product evidence policy: nonvegan",
+    "product_id": "527870011",
+    "url": "https://www.ocado.com/products/527870011",
+    "previous": null,
+    "accepted_assessment": {
+      "components": {
+        "evidence_refs": [
+          {
+            "path": "/product/name",
+            "quote": "M&S Percy Pig Advent Calendar Sweets"
+          }
+        ],
+        "status": "insufficient"
+      },
+      "composition": {
+        "evidence_refs": [
+          {
+            "path": "/product/ingredients",
+            "quote": "Merry Percmasy: Glucose Syrup, Sugar, Modified Potato Starch, Dextrose, Modified Tapioca Starch, Fruit Juice from Concentrates (3%) (Apple, Elderberry), Acid: Citric Acid, Malic Acid, Lactic Acid, Potato Protein, Natural Flavourings, Sunflower Oil, Fruit and Vegetable Concentrates (Black Carrot, Radish, Apple, Blueberry, Blackcurrant), Glazing Agent: Carnauba Wax Milk Chocolate: Sugar, Dried Whole Milk, Cocoa Butter, Cocoa Mass, Emulsifier: Soya Lecithin, Natural Vanilla Flavouring, Milk Chocolate contains Cocoa Solids 34% minimum, Milk Solids 20% minimum"
+          }
+        ],
+        "status": "insufficient"
+      },
+      "identity": {
+        "evidence_refs": [
+          {
+            "path": "/product/name",
+            "quote": "M&S Percy Pig Advent Calendar Sweets"
+          }
+        ],
+        "status": "established"
+      },
+      "material_issues": [
+        {
+          "blocks_claim": false,
+          "code": "processing_unresolved",
+          "evidence_refs": [
+            {
+              "path": "/product/ingredients",
+              "quote": "Merry Percmasy: Glucose Syrup, Sugar, Modified Potato Starch, Dextrose, Modified Tapioca Starch, Fruit Juice from Concentrates (3%) (Apple, Elderberry), Acid: Citric Acid, Malic Acid, Lactic Acid, Potato Protein, Natural Flavourings, Sunflower Oil, Fruit and Vegetable Concentrates (Black Carrot, Radish, Apple, Blueberry, Blackcurrant), Glazing Agent: Carnauba Wax Milk Chocolate: Sugar, Dried Whole Milk, Cocoa Butter, Cocoa Mass, Emulsifier: Soya Lecithin, Natural Vanilla Flavouring, Milk Chocolate contains Cocoa Solids 34% minimum, Milk Solids 20% minimum"
+            }
+          ],
+          "resolution_refs": [],
+          "rule_id": "liquid-clarification-v1",
+          "target": "whole_product"
+        },
+        {
+          "blocks_claim": false,
+          "code": "processing_unresolved",
+          "evidence_refs": [
+            {
+              "path": "/product/ingredients",
+              "quote": "Merry Percmasy: Glucose Syrup, Sugar, Modified Potato Starch, Dextrose, Modified Tapioca Starch, Fruit Juice from Concentrates (3%) (Apple, Elderberry), Acid: Citric Acid, Malic Acid, Lactic Acid, Potato Protein, Natural Flavourings, Sunflower Oil, Fruit and Vegetable Concentrates (Black Carrot, Radish, Apple, Blueberry, Blackcurrant), Glazing Agent: Carnauba Wax Milk Chocolate: Sugar, Dried Whole Milk, Cocoa Butter, Cocoa Mass, Emulsifier: Soya Lecithin, Natural Vanilla Flavouring, Milk Chocolate contains Cocoa Solids 34% minimum, Milk Solids 20% minimum"
+            }
+          ],
+          "resolution_refs": [],
+          "rule_id": "sugar-refining-v1",
+          "target": "whole_product"
+        },
+        {
+          "blocks_claim": false,
+          "code": "source_unresolved",
+          "evidence_refs": [
+            {
+              "path": "/product/ingredients",
+              "quote": "Merry Percmasy: Glucose Syrup, Sugar, Modified Potato Starch, Dextrose, Modified Tapioca Starch, Fruit Juice from Concentrates (3%) (Apple, Elderberry), Acid: Citric Acid, Malic Acid, Lactic Acid, Potato Protein, Natural Flavourings, Sunflower Oil, Fruit and Vegetable Concentrates (Black Carrot, Radish, Apple, Blueberry, Blackcurrant), Glazing Agent: Carnauba Wax Milk Chocolate: Sugar, Dried Whole Milk, Cocoa Butter, Cocoa Mass, Emulsifier: Soya Lecithin, Natural Vanilla Flavouring, Milk Chocolate contains Cocoa Solids 34% minimum, Milk Solids 20% minimum"
+            }
+          ],
+          "resolution_refs": [],
+          "rule_id": "unspecified-composition-v1",
+          "target": "whole_product"
+        },
+        {
+          "blocks_claim": false,
+          "code": "composition_incomplete",
+          "evidence_refs": [
+            {
+              "path": "/product/package_type",
+              "quote": "Box"
+            },
+            {
+              "path": "/product/features",
+              "quote": "With milk chocolates inside, Milk chocolates and a bag of Merry percymas sweets for Christmas Day, Percy themed milk chocolates for each day, A whole bag of Merry Percymas for Christmas day, The Great Food Quality Seal, No artificial colours or flavours, Suitable for vegetarians, Suitable for vegans"
+            },
+            {
+              "path": "/product/other_information",
+              "quote": "Box Contents: Percy Pig™ Sweets 170g e, Milk Chocolate Shapes 80g e Full Product Name: Advent Calendar with a Bag Of Percy Pig™ Soft Fruit Flavour Gums Made with Fruit Juice and 24 Solid Milk Chocolate Shapes Storage: Store in a cool, dry place, away from sunlight. Safety Warning: Always ask an adult for help when using scissors. Not suitable for children under 36 months due to potential choking hazard. Additional Information: Fairtrade Cocoa - The quantity of cocoa required for this product is sourced, traded and audited as Fairtrade, ensuring cocoa producers receive Fairtrade terms. It may be mixed during processing with non-certified cocoa so the total matches the amount sourced as Fairtrade (mass balance). For more information, visit info.fairtrade.net/sourcing FSC - FSC® Mix, Paper, FSC® C023337, This mix paper packaging is FSC® certified, helping to keep forests growing, for all, forever. Percy Pig™ is a registered trademark of M&S plc in the United Kingdom. Percy Pig™ shape and appearance are trademarks of M&S supplier. © M&S plc"
+            },
+            {
+              "path": "/product/detailed_description",
+              "quote": "Percy Pig™ Percymas Advent Calendar Milk chocolates and a bag of Merry Percymas sweets for Christmas Day. Advent calendar with a bag of Percy Pig™ soft fruit flavour gums made with fruit juice and 24 solid milk chocolate shapes."
+            }
+          ],
+          "resolution_refs": [],
+          "rule_id": "supplied-components-composition-v1",
+          "target": "supplied components"
+        },
+        {
+          "blocks_claim": true,
+          "code": "evidence_conflict",
+          "evidence_refs": [
+            {
+              "path": "/product/allergens",
+              "quote": "Contains Milk, May Contain Nuts, May Contain Peanuts, Contains Soya. Milk Chocolate: Not suitable for Nut and Peanut allergy sufferers. Percy Pig™ Jellies: Not suitable for Milk allergy sufferers. Merry Percmasy: Prepared to a Vegan recipe. Not suitable for those with a Milk allergy because this allergen is present in the environment. Milk Chocolate: Not suitable for those with a Nut and Peanut allergy."
+            }
+          ],
+          "resolution_refs": [],
+          "rule_id": "animal-declaration-context-v1",
+          "target": "whole_product"
+        },
+        {
+          "blocks_claim": true,
+          "code": "evidence_conflict",
+          "evidence_refs": [
+            {
+              "path": "/product/detailed_description",
+              "quote": "Percy Pig™ Percymas Advent Calendar Milk chocolates and a bag of Merry Percymas sweets for Christmas Day. Advent calendar with a bag of Percy Pig™ soft fruit flavour gums made with fruit juice and 24 solid milk chocolate shapes."
+            }
+          ],
+          "resolution_refs": [],
+          "rule_id": "animal-declaration-context-v1",
+          "target": "whole_product"
+        },
+        {
+          "blocks_claim": true,
+          "code": "evidence_conflict",
+          "evidence_refs": [
+            {
+              "path": "/product/other_information",
+              "quote": "Box Contents: Percy Pig™ Sweets 170g e, Milk Chocolate Shapes 80g e Full Product Name: Advent Calendar with a Bag Of Percy Pig™ Soft Fruit Flavour Gums Made with Fruit Juice and 24 Solid Milk Chocolate Shapes Storage: Store in a cool, dry place, away from sunlight. Safety Warning: Always ask an adult for help when using scissors. Not suitable for children under 36 months due to potential choking hazard. Additional Information: Fairtrade Cocoa - The quantity of cocoa required for this product is sourced, traded and audited as Fairtrade, ensuring cocoa producers receive Fairtrade terms. It may be mixed during processing with non-certified cocoa so the total matches the amount sourced as Fairtrade (mass balance). For more information, visit info.fairtrade.net/sourcing FSC - FSC® Mix, Paper, FSC® C023337, This mix paper packaging is FSC® certified, helping to keep forests growing, for all, forever. Percy Pig™ is a registered trademark of M&S plc in the United Kingdom. Percy Pig™ shape and appearance are trademarks of M&S supplier. © M&S plc"
+            }
+          ],
+          "resolution_refs": [],
+          "rule_id": "animal-declaration-context-v1",
+          "target": "whole_product"
+        },
+        {
+          "blocks_claim": true,
+          "code": "animal_ingredient",
+          "evidence_refs": [
+            {
+              "path": "/product/ingredients",
+              "quote": "Merry Percmasy: Glucose Syrup, Sugar, Modified Potato Starch, Dextrose, Modified Tapioca Starch, Fruit Juice from Concentrates (3%) (Apple, Elderberry), Acid: Citric Acid, Malic Acid, Lactic Acid, Potato Protein, Natural Flavourings, Sunflower Oil, Fruit and Vegetable Concentrates (Black Carrot, Radish, Apple, Blueberry, Blackcurrant), Glazing Agent: Carnauba Wax Milk Chocolate: Sugar, Dried Whole Milk, Cocoa Butter, Cocoa Mass, Emulsifier: Soya Lecithin, Natural Vanilla Flavouring, Milk Chocolate contains Cocoa Solids 34% minimum, Milk Solids 20% minimum"
+            }
+          ],
+          "resolution_refs": [],
+          "rule_id": "animal-ingredients-v1",
+          "target": "whole_product"
+        },
+        {
+          "blocks_claim": true,
+          "code": "tag_animal_conflict",
+          "evidence_refs": [
+            {
+              "path": "/product/ingredients",
+              "quote": "Merry Percmasy: Glucose Syrup, Sugar, Modified Potato Starch, Dextrose, Modified Tapioca Starch, Fruit Juice from Concentrates (3%) (Apple, Elderberry), Acid: Citric Acid, Malic Acid, Lactic Acid, Potato Protein, Natural Flavourings, Sunflower Oil, Fruit and Vegetable Concentrates (Black Carrot, Radish, Apple, Blueberry, Blackcurrant), Glazing Agent: Carnauba Wax Milk Chocolate: Sugar, Dried Whole Milk, Cocoa Butter, Cocoa Mass, Emulsifier: Soya Lecithin, Natural Vanilla Flavouring, Milk Chocolate contains Cocoa Solids 34% minimum, Milk Solids 20% minimum"
+            }
+          ],
+          "resolution_refs": [],
+          "rule_id": "animal-overrides-tag-v1",
+          "target": "whole_product"
+        }
+      ],
+      "positive_support": [],
+      "processing": {
+        "evidence_refs": [],
+        "status": "not_applicable"
+      },
+      "source_applicability": [],
+      "sourcing": {
+        "evidence_refs": [],
+        "status": "not_applicable"
+      }
+    }
+  },
+  {
+    "id": "545930011",
+    "name": "Graham Norton Sauvignon Blanc",
+    "current_on_ocado": 1,
+    "official_vegan": 1,
+    "vegan_status": "nonvegan",
+    "vegan_reason": null,
+    "vegan_policy_version": "whole-product-v2",
+    "vegan_evidence_hash": "fd23bcffca17240223195d0ee6b27c7cdecd0d6d2bd9ec468a611aac6e1ba7b3",
+    "vegan_positive_block": 0,
+    "vegan_audit_id": 2468432,
+    "run_id": 292,
+    "classifier_version": "db-vegan-codex-v125",
+    "summary": "Shared whole-product evidence policy: nonvegan",
+    "product_id": "545930011",
+    "url": "https://www.ocado.com/products/545930011",
+    "previous": {
+      "id": "545930011",
+      "vegan_status": "nonvegan",
+      "vegan_reason": null,
+      "current_on_ocado": 1,
+      "vegan_audit_id": null
+    },
+    "accepted_assessment": {
+      "components": {
+        "evidence_refs": [
+          {
+            "path": "/product/name",
+            "quote": "Graham Norton Sauvignon Blanc"
+          }
+        ],
+        "status": "insufficient"
+      },
+      "composition": {
+        "evidence_refs": [
+          {
+            "path": "/product/name",
+            "quote": "Graham Norton Sauvignon Blanc"
+          }
+        ],
+        "status": "insufficient"
+      },
+      "identity": {
+        "evidence_refs": [
+          {
+            "path": "/product/name",
+            "quote": "Graham Norton Sauvignon Blanc"
+          }
+        ],
+        "status": "established"
+      },
+      "material_issues": [
+        {
+          "blocks_claim": false,
+          "code": "composition_incomplete",
+          "evidence_refs": [
+            {
+              "path": "/product/package_type",
+              "quote": "Bottle"
+            }
+          ],
+          "resolution_refs": [],
+          "rule_id": "supplied-components-composition-v1",
+          "target": "supplied components"
+        },
+        {
+          "blocks_claim": false,
+          "code": "processing_unresolved",
+          "evidence_refs": [
+            {
+              "path": "/categories/0",
+              "quote": "beer-wine-spirits/wine/white-wine/shop-by-country/new-zealand"
+            }
+          ],
+          "resolution_refs": [],
+          "rule_id": "wine-fining-v1",
+          "target": "whole_product"
+        },
+        {
+          "blocks_claim": false,
+          "code": "processing_unresolved",
+          "evidence_refs": [
+            {
+              "path": "/categories/0",
+              "quote": "beer-wine-spirits/wine/white-wine/shop-by-country/new-zealand"
+            }
+          ],
+          "resolution_refs": [],
+          "rule_id": "wine-other-processing-v1",
+          "target": "non-fining inputs across grape, must and wine production"
+        },
+        {
+          "blocks_claim": true,
+          "code": "animal_ingredient",
+          "evidence_refs": [
+            {
+              "path": "/product/allergens",
+              "quote": "Contains Milk, Contains Sulphur Dioxide/Sulphites Contains Sulphites, Milk"
+            }
+          ],
+          "resolution_refs": [],
+          "rule_id": "animal-ingredients-v1",
+          "target": "whole_product"
+        },
+        {
+          "blocks_claim": true,
+          "code": "tag_animal_conflict",
+          "evidence_refs": [
+            {
+              "path": "/product/allergens",
+              "quote": "Contains Milk, Contains Sulphur Dioxide/Sulphites Contains Sulphites, Milk"
+            }
+          ],
+          "resolution_refs": [],
+          "rule_id": "animal-overrides-tag-v1",
+          "target": "whole_product"
+        }
+      ],
+      "positive_support": [],
+      "processing": {
+        "evidence_refs": [],
+        "status": "not_applicable"
+      },
+      "source_applicability": [],
+      "sourcing": {
+        "evidence_refs": [],
+        "status": "not_applicable"
+      }
+    }
+  },
+  {
+    "id": "551524011",
+    "name": "Hotel Chocolat Dark Chocolate Truffles Selector",
+    "current_on_ocado": 0,
+    "official_vegan": 1,
+    "vegan_status": "nonvegan",
+    "vegan_reason": null,
+    "vegan_policy_version": "whole-product-v2",
+    "vegan_evidence_hash": "646e7dae6e2b948f04617790db34ead5ae22379bb1c62d41104f781eb358d932",
+    "vegan_positive_block": 0,
+    "vegan_audit_id": 2468898,
+    "run_id": 292,
+    "classifier_version": "db-vegan-codex-v125",
+    "summary": "Shared whole-product evidence policy: nonvegan",
+    "product_id": "551524011",
+    "url": "https://www.ocado.com/products/551524011",
+    "previous": {
+      "id": "551524011",
+      "vegan_status": "vegan",
+      "vegan_reason": "tagged",
+      "current_on_ocado": 0,
+      "vegan_audit_id": null
+    },
+    "accepted_assessment": {
+      "components": {
+        "evidence_refs": [
+          {
+            "path": "/product/name",
+            "quote": "Hotel Chocolat Dark Chocolate Truffles Selector"
+          }
+        ],
+        "status": "insufficient"
+      },
+      "composition": {
+        "evidence_refs": [
+          {
+            "path": "/product/ingredients",
+            "quote": "Ingredients: Cocoa solids (cocoa mass, cocoa butter), sugar, HAZELNUT paste, stabilisers (sorbitol, glycerol), rum, glucose syrup, whipping cream (cream (from MILK), stabiliser (carrageenan)), butter oil (from MILK), skimmed MILK powder, cream (from MILK), dextrose, full cream MILK powder, cocoa powder, emulsifier (SOYA lecithin), neutral alcohol, concentrated whey (from MILK), natural flavour (vanilla), MILK protein, natural colours (beetroot, carotene, annatto). Dark chocolate contains minimum 70% cocoa solids. For allergens including cereals containing gluten see ingredients in bold. May contain traces of other tree nuts, peanuts, gluten, wheat, egg, sesame."
+          }
+        ],
+        "status": "insufficient"
+      },
+      "identity": {
+        "evidence_refs": [
+          {
+            "path": "/product/name",
+            "quote": "Hotel Chocolat Dark Chocolate Truffles Selector"
+          }
+        ],
+        "status": "established"
+      },
+      "material_issues": [
+        {
+          "blocks_claim": false,
+          "code": "processing_unresolved",
+          "evidence_refs": [
+            {
+              "path": "/product/ingredients",
+              "quote": "Ingredients: Cocoa solids (cocoa mass, cocoa butter), sugar, HAZELNUT paste, stabilisers (sorbitol, glycerol), rum, glucose syrup, whipping cream (cream (from MILK), stabiliser (carrageenan)), butter oil (from MILK), skimmed MILK powder, cream (from MILK), dextrose, full cream MILK powder, cocoa powder, emulsifier (SOYA lecithin), neutral alcohol, concentrated whey (from MILK), natural flavour (vanilla), MILK protein, natural colours (beetroot, carotene, annatto). Dark chocolate contains minimum 70% cocoa solids. For allergens including cereals containing gluten see ingredients in bold. May contain traces of other tree nuts, peanuts, gluten, wheat, egg, sesame."
+            }
+          ],
+          "resolution_refs": [],
+          "rule_id": "sugar-refining-v1",
+          "target": "whole_product"
+        },
+        {
+          "blocks_claim": false,
+          "code": "source_unresolved",
+          "evidence_refs": [
+            {
+              "path": "/product/ingredients",
+              "quote": "Ingredients: Cocoa solids (cocoa mass, cocoa butter), sugar, HAZELNUT paste, stabilisers (sorbitol, glycerol), rum, glucose syrup, whipping cream (cream (from MILK), stabiliser (carrageenan)), butter oil (from MILK), skimmed MILK powder, cream (from MILK), dextrose, full cream MILK powder, cocoa powder, emulsifier (SOYA lecithin), neutral alcohol, concentrated whey (from MILK), natural flavour (vanilla), MILK protein, natural colours (beetroot, carotene, annatto). Dark chocolate contains minimum 70% cocoa solids. For allergens including cereals containing gluten see ingredients in bold. May contain traces of other tree nuts, peanuts, gluten, wheat, egg, sesame."
+            }
+          ],
+          "resolution_refs": [],
+          "rule_id": "source-dependent-additives-v1",
+          "target": "glycerol"
+        },
+        {
+          "blocks_claim": true,
+          "code": "animal_ingredient",
+          "evidence_refs": [
+            {
+              "path": "/product/ingredients",
+              "quote": "Ingredients: Cocoa solids (cocoa mass, cocoa butter), sugar, HAZELNUT paste, stabilisers (sorbitol, glycerol), rum, glucose syrup, whipping cream (cream (from MILK), stabiliser (carrageenan)), butter oil (from MILK), skimmed MILK powder, cream (from MILK), dextrose, full cream MILK powder, cocoa powder, emulsifier (SOYA lecithin), neutral alcohol, concentrated whey (from MILK), natural flavour (vanilla), MILK protein, natural colours (beetroot, carotene, annatto). Dark chocolate contains minimum 70% cocoa solids. For allergens including cereals containing gluten see ingredients in bold. May contain traces of other tree nuts, peanuts, gluten, wheat, egg, sesame."
+            }
+          ],
+          "resolution_refs": [],
+          "rule_id": "animal-ingredients-v1",
+          "target": "whole_product"
+        },
+        {
+          "blocks_claim": true,
+          "code": "tag_animal_conflict",
+          "evidence_refs": [
+            {
+              "path": "/product/ingredients",
+              "quote": "Ingredients: Cocoa solids (cocoa mass, cocoa butter), sugar, HAZELNUT paste, stabilisers (sorbitol, glycerol), rum, glucose syrup, whipping cream (cream (from MILK), stabiliser (carrageenan)), butter oil (from MILK), skimmed MILK powder, cream (from MILK), dextrose, full cream MILK powder, cocoa powder, emulsifier (SOYA lecithin), neutral alcohol, concentrated whey (from MILK), natural flavour (vanilla), MILK protein, natural colours (beetroot, carotene, annatto). Dark chocolate contains minimum 70% cocoa solids. For allergens including cereals containing gluten see ingredients in bold. May contain traces of other tree nuts, peanuts, gluten, wheat, egg, sesame."
+            }
+          ],
+          "resolution_refs": [],
+          "rule_id": "animal-overrides-tag-v1",
+          "target": "whole_product"
+        }
+      ],
+      "positive_support": [],
+      "processing": {
+        "evidence_refs": [],
+        "status": "not_applicable"
+      },
+      "source_applicability": [],
+      "sourcing": {
+        "evidence_refs": [],
+        "status": "not_applicable"
+      }
+    }
+  },
+  {
+    "id": "55398011",
+    "name": "ProActiv Buttery Taste Alternative to Spreadable Butter",
+    "current_on_ocado": 1,
+    "official_vegan": 1,
+    "vegan_status": "nonvegan",
+    "vegan_reason": null,
+    "vegan_policy_version": "whole-product-v2",
+    "vegan_evidence_hash": "71ce9ca5f179213d9a62cd6a051bf6da1aaf94e74f3cd7c71b988c610439d059",
+    "vegan_positive_block": 0,
+    "vegan_audit_id": 2469213,
+    "run_id": 292,
+    "classifier_version": "db-vegan-codex-v125",
+    "summary": "Shared whole-product evidence policy: nonvegan",
+    "product_id": "55398011",
+    "url": "https://www.ocado.com/products/55398011",
+    "previous": {
+      "id": "55398011",
+      "vegan_status": "vegan",
+      "vegan_reason": "tagged",
+      "current_on_ocado": 1,
+      "vegan_audit_id": null
+    },
+    "accepted_assessment": {
+      "components": {
+        "evidence_refs": [
+          {
+            "path": "/product/name",
+            "quote": "ProActiv Buttery Taste Alternative to Spreadable Butter"
+          }
+        ],
+        "status": "insufficient"
+      },
+      "composition": {
+        "evidence_refs": [
+          {
+            "path": "/product/ingredients",
+            "quote": "Vegetable Oils (Rapeseed, Coconut, Sunflower), Water, Plant Sterol Esters 9% (Equivalent to 5.4% Plant Sterols), Salt (0.8%), Emulsifier (Lecithin), Natural Flavourings, Vitamin A and D"
+          }
+        ],
+        "status": "insufficient"
+      },
+      "identity": {
+        "evidence_refs": [
+          {
+            "path": "/product/name",
+            "quote": "ProActiv Buttery Taste Alternative to Spreadable Butter"
+          }
+        ],
+        "status": "established"
+      },
+      "material_issues": [
+        {
+          "blocks_claim": false,
+          "code": "source_unresolved",
+          "evidence_refs": [
+            {
+              "path": "/product/ingredients",
+              "quote": "Vegetable Oils (Rapeseed, Coconut, Sunflower), Water, Plant Sterol Esters 9% (Equivalent to 5.4% Plant Sterols), Salt (0.8%), Emulsifier (Lecithin), Natural Flavourings, Vitamin A and D"
+            }
+          ],
+          "resolution_refs": [],
+          "rule_id": "source-dependent-additives-v1",
+          "target": "lecithin"
+        },
+        {
+          "blocks_claim": false,
+          "code": "source_unresolved",
+          "evidence_refs": [
+            {
+              "path": "/product/ingredients",
+              "quote": "Vegetable Oils (Rapeseed, Coconut, Sunflower), Water, Plant Sterol Esters 9% (Equivalent to 5.4% Plant Sterols), Salt (0.8%), Emulsifier (Lecithin), Natural Flavourings, Vitamin A and D"
+            }
+          ],
+          "resolution_refs": [],
+          "rule_id": "unspecified-composition-v1",
+          "target": "whole_product"
+        },
+        {
+          "blocks_claim": false,
+          "code": "composition_incomplete",
+          "evidence_refs": [
+            {
+              "path": "/product/package_type",
+              "quote": "Tub"
+            },
+            {
+              "path": "/product/other_information",
+              "quote": "Full Product Name: 59% vegetable fat spread with added plant sterols. Storage: Keep refrigerated. Not suitable for freezing. Best before: see lid Safety Warning: Consuming more than 3g plant sterols per day is not recommended. High cholesterol is one of the risk factors for coronary heart disease. You may need to improve more than one risk factor to reduce your overall risk. Not intended for people who do not need to control their blood cholesterol level. Consult your doctor if you are on cholesterol lowering medication. Not suitable for pregnant or breast-feeding women and children under 5 years. Additional Information: ProActiv is a registered trademark."
+            }
+          ],
+          "resolution_refs": [],
+          "rule_id": "supplied-components-composition-v1",
+          "target": "supplied components"
+        },
+        {
+          "blocks_claim": true,
+          "code": "animal_ingredient",
+          "evidence_refs": [
+            {
+              "path": "/product/allergens",
+              "quote": "Contains Milk"
+            }
+          ],
+          "resolution_refs": [],
+          "rule_id": "animal-ingredients-v1",
+          "target": "whole_product"
+        },
+        {
+          "blocks_claim": true,
+          "code": "tag_animal_conflict",
+          "evidence_refs": [
+            {
+              "path": "/product/allergens",
+              "quote": "Contains Milk"
+            }
+          ],
+          "resolution_refs": [],
+          "rule_id": "animal-overrides-tag-v1",
+          "target": "whole_product"
+        }
+      ],
+      "positive_support": [],
+      "processing": {
+        "evidence_refs": [],
+        "status": "not_applicable"
+      },
+      "source_applicability": [],
+      "sourcing": {
+        "evidence_refs": [],
+        "status": "not_applicable"
+      }
+    }
+  },
+  {
+    "id": "577155011",
+    "name": "BrewDog Hazy Jane Guava",
+    "current_on_ocado": 0,
+    "official_vegan": 1,
+    "vegan_status": "nonvegan",
+    "vegan_reason": null,
+    "vegan_policy_version": "whole-product-v2",
+    "vegan_evidence_hash": "a7043376ce50394441a9cbc439b14648fe6eb388a26a78ff0129d7dd9a3c0b58",
+    "vegan_positive_block": 0,
+    "vegan_audit_id": 2471123,
+    "run_id": 292,
+    "classifier_version": "db-vegan-codex-v125",
+    "summary": "Shared whole-product evidence policy: nonvegan",
+    "product_id": "577155011",
+    "url": "https://www.ocado.com/products/577155011",
+    "previous": {
+      "id": "577155011",
+      "vegan_status": "vegan",
+      "vegan_reason": "tagged",
+      "current_on_ocado": 0,
+      "vegan_audit_id": null
+    },
+    "accepted_assessment": {
+      "components": {
+        "evidence_refs": [
+          {
+            "path": "/product/name",
+            "quote": "BrewDog Hazy Jane Guava"
+          }
+        ],
+        "status": "insufficient"
+      },
+      "composition": {
+        "evidence_refs": [
+          {
+            "path": "/product/ingredients",
+            "quote": "Water, Malted Barley, Lactose (Milk), Torrefied Wheat, Malted Oats, Hops, Yeast, Natural Flavourings"
+          }
+        ],
+        "status": "insufficient"
+      },
+      "identity": {
+        "evidence_refs": [
+          {
+            "path": "/product/name",
+            "quote": "BrewDog Hazy Jane Guava"
+          }
+        ],
+        "status": "established"
+      },
+      "material_issues": [
+        {
+          "blocks_claim": false,
+          "code": "source_unresolved",
+          "evidence_refs": [
+            {
+              "path": "/product/ingredients",
+              "quote": "Water, Malted Barley, Lactose (Milk), Torrefied Wheat, Malted Oats, Hops, Yeast, Natural Flavourings"
+            }
+          ],
+          "resolution_refs": [],
+          "rule_id": "unspecified-composition-v1",
+          "target": "whole_product"
+        },
+        {
+          "blocks_claim": false,
+          "code": "composition_incomplete",
+          "evidence_refs": [
+            {
+              "path": "/product/package_type",
+              "quote": "Box"
+            }
+          ],
+          "resolution_refs": [],
+          "rule_id": "supplied-components-composition-v1",
+          "target": "supplied components"
+        },
+        {
+          "blocks_claim": true,
+          "code": "animal_ingredient",
+          "evidence_refs": [
+            {
+              "path": "/product/ingredients",
+              "quote": "Water, Malted Barley, Lactose (Milk), Torrefied Wheat, Malted Oats, Hops, Yeast, Natural Flavourings"
+            }
+          ],
+          "resolution_refs": [],
+          "rule_id": "animal-ingredients-v1",
+          "target": "whole_product"
+        },
+        {
+          "blocks_claim": true,
+          "code": "tag_animal_conflict",
+          "evidence_refs": [
+            {
+              "path": "/product/ingredients",
+              "quote": "Water, Malted Barley, Lactose (Milk), Torrefied Wheat, Malted Oats, Hops, Yeast, Natural Flavourings"
+            }
+          ],
+          "resolution_refs": [],
+          "rule_id": "animal-overrides-tag-v1",
+          "target": "whole_product"
+        }
+      ],
+      "positive_support": [],
+      "processing": {
+        "evidence_refs": [],
+        "status": "not_applicable"
+      },
+      "source_applicability": [],
+      "sourcing": {
+        "evidence_refs": [],
+        "status": "not_applicable"
+      }
+    }
+  },
+  {
+    "id": "640669011",
+    "name": "Black Sheep Milk Stout",
+    "current_on_ocado": 1,
+    "official_vegan": 1,
+    "vegan_status": "nonvegan",
+    "vegan_reason": null,
+    "vegan_policy_version": "whole-product-v2",
+    "vegan_evidence_hash": "38b8ea494608db6e6add8df9f5374aef627d38948c622b7e4a46d76461b256f7",
+    "vegan_positive_block": 0,
+    "vegan_audit_id": 2479567,
+    "run_id": 292,
+    "classifier_version": "db-vegan-codex-v125",
+    "summary": "Shared whole-product evidence policy: nonvegan",
+    "product_id": "640669011",
+    "url": "https://www.ocado.com/products/640669011",
+    "previous": {
+      "id": "640669011",
+      "vegan_status": "nonvegan",
+      "vegan_reason": null,
+      "current_on_ocado": 1,
+      "vegan_audit_id": null
+    },
+    "accepted_assessment": {
+      "components": {
+        "evidence_refs": [
+          {
+            "path": "/product/name",
+            "quote": "Black Sheep Milk Stout"
+          }
+        ],
+        "status": "insufficient"
+      },
+      "composition": {
+        "evidence_refs": [
+          {
+            "path": "/product/ingredients",
+            "quote": "Water, Malted Barley (Gluten), Wheat (Gluten), Hops, Lactose"
+          }
+        ],
+        "status": "insufficient"
+      },
+      "identity": {
+        "evidence_refs": [
+          {
+            "path": "/product/name",
+            "quote": "Black Sheep Milk Stout"
+          }
+        ],
+        "status": "established"
+      },
+      "material_issues": [
+        {
+          "blocks_claim": false,
+          "code": "processing_unresolved",
+          "evidence_refs": [
+            {
+              "path": "/product/name",
+              "quote": "Black Sheep Milk Stout"
+            }
+          ],
+          "resolution_refs": [],
+          "rule_id": "liquid-clarification-v1",
+          "target": "whole_product"
+        },
+        {
+          "blocks_claim": false,
+          "code": "composition_incomplete",
+          "evidence_refs": [
+            {
+              "path": "/product/package_type",
+              "quote": "Bottle"
+            }
+          ],
+          "resolution_refs": [],
+          "rule_id": "supplied-components-composition-v1",
+          "target": "supplied components"
+        },
+        {
+          "blocks_claim": true,
+          "code": "animal_ingredient",
+          "evidence_refs": [
+            {
+              "path": "/product/ingredients",
+              "quote": "Water, Malted Barley (Gluten), Wheat (Gluten), Hops, Lactose"
+            }
+          ],
+          "resolution_refs": [],
+          "rule_id": "animal-ingredients-v1",
+          "target": "whole_product"
+        },
+        {
+          "blocks_claim": true,
+          "code": "tag_animal_conflict",
+          "evidence_refs": [
+            {
+              "path": "/product/ingredients",
+              "quote": "Water, Malted Barley (Gluten), Wheat (Gluten), Hops, Lactose"
+            }
+          ],
+          "resolution_refs": [],
+          "rule_id": "animal-overrides-tag-v1",
+          "target": "whole_product"
+        }
+      ],
+      "positive_support": [],
+      "processing": {
+        "evidence_refs": [],
+        "status": "not_applicable"
+      },
+      "source_applicability": [],
+      "sourcing": {
+        "evidence_refs": [],
+        "status": "not_applicable"
+      }
+    }
+  },
+  {
+    "id": "652605011",
+    "name": "Holland & Barrett Starflower Oil 1000mg with Vitamin B6",
+    "current_on_ocado": 1,
+    "official_vegan": 1,
+    "vegan_status": "nonvegan",
+    "vegan_reason": null,
+    "vegan_policy_version": "whole-product-v2",
+    "vegan_evidence_hash": "bad588e46b6d05f94ed4c4b11eb5a6e84323a3d081a4e3366ff3f7d89079180b",
+    "vegan_positive_block": 0,
+    "vegan_audit_id": 2481686,
+    "run_id": 292,
+    "classifier_version": "db-vegan-codex-v125",
+    "summary": "Shared whole-product evidence policy: nonvegan",
+    "product_id": "652605011",
+    "url": "https://www.ocado.com/products/652605011",
+    "previous": {
+      "id": "652605011",
+      "vegan_status": "vegan",
+      "vegan_reason": "tagged",
+      "current_on_ocado": 1,
+      "vegan_audit_id": null
+    },
+    "accepted_assessment": {
+      "components": {
+        "evidence_refs": [
+          {
+            "path": "/product/name",
+            "quote": "Holland & Barrett Starflower Oil 1000mg with Vitamin B6"
+          }
+        ],
+        "status": "insufficient"
+      },
+      "composition": {
+        "evidence_refs": [
+          {
+            "path": "/product/ingredients",
+            "quote": "Ingredients: Starflower (Borage) Seed Oil (Borago officinalis), Capsule Shell (Gelatine), Gelling Agent (Glycerol), Water, Vitamin B6 (Pyridoxine Hydrochloride)."
+          }
+        ],
+        "status": "insufficient"
+      },
+      "identity": {
+        "evidence_refs": [
+          {
+            "path": "/product/name",
+            "quote": "Holland & Barrett Starflower Oil 1000mg with Vitamin B6"
+          }
+        ],
+        "status": "established"
+      },
+      "material_issues": [
+        {
+          "blocks_claim": false,
+          "code": "source_unresolved",
+          "evidence_refs": [
+            {
+              "path": "/product/ingredients",
+              "quote": "Ingredients: Starflower (Borage) Seed Oil (Borago officinalis), Capsule Shell (Gelatine), Gelling Agent (Glycerol), Water, Vitamin B6 (Pyridoxine Hydrochloride)."
+            }
+          ],
+          "resolution_refs": [],
+          "rule_id": "source-dependent-additives-v1",
+          "target": "glycerol"
+        },
+        {
+          "blocks_claim": false,
+          "code": "source_unresolved",
+          "evidence_refs": [
+            {
+              "path": "/product/ingredients",
+              "quote": "Ingredients: Starflower (Borage) Seed Oil (Borago officinalis), Capsule Shell (Gelatine), Gelling Agent (Glycerol), Water, Vitamin B6 (Pyridoxine Hydrochloride)."
+            }
+          ],
+          "resolution_refs": [],
+          "rule_id": "unspecified-composition-v1",
+          "target": "whole_product"
+        },
+        {
+          "blocks_claim": false,
+          "code": "composition_incomplete",
+          "evidence_refs": [
+            {
+              "path": "/product/other_information",
+              "quote": "Advisory Information: Food supplements must not be used as a substitute for a varied and balanced diet and a healthy lifestyle. If you are pregnant, breastfeeding, taking any medications or under medical supervision, please consult a doctor or healthcare professional before use. Discontinue use and consult a doctor if adverse reactions occur. Keep out of reach of children. Do not use if seal under cap is broken or missing."
+            }
+          ],
+          "resolution_refs": [],
+          "rule_id": "supplied-components-composition-v1",
+          "target": "supplied components"
+        },
+        {
+          "blocks_claim": true,
+          "code": "animal_ingredient",
+          "evidence_refs": [
+            {
+              "path": "/product/ingredients",
+              "quote": "Ingredients: Starflower (Borage) Seed Oil (Borago officinalis), Capsule Shell (Gelatine), Gelling Agent (Glycerol), Water, Vitamin B6 (Pyridoxine Hydrochloride)."
+            }
+          ],
+          "resolution_refs": [],
+          "rule_id": "animal-ingredients-v1",
+          "target": "whole_product"
+        },
+        {
+          "blocks_claim": true,
+          "code": "tag_animal_conflict",
+          "evidence_refs": [
+            {
+              "path": "/product/ingredients",
+              "quote": "Ingredients: Starflower (Borage) Seed Oil (Borago officinalis), Capsule Shell (Gelatine), Gelling Agent (Glycerol), Water, Vitamin B6 (Pyridoxine Hydrochloride)."
+            }
+          ],
+          "resolution_refs": [],
+          "rule_id": "animal-overrides-tag-v1",
+          "target": "whole_product"
+        }
+      ],
+      "positive_support": [],
+      "processing": {
+        "evidence_refs": [],
+        "status": "not_applicable"
+      },
+      "source_applicability": [],
+      "sourcing": {
+        "evidence_refs": [],
+        "status": "not_applicable"
+      }
+    }
+  },
+  {
+    "id": "653000011",
+    "name": "Holland & Barrett Enzyme Formula Tablets",
+    "current_on_ocado": 1,
+    "official_vegan": 1,
+    "vegan_status": "nonvegan",
+    "vegan_reason": null,
+    "vegan_policy_version": "whole-product-v2",
+    "vegan_evidence_hash": "bcb1c1e1afc181535af7de8134df460a655c47bebd21f8904e879444f7f58771",
+    "vegan_positive_block": 0,
+    "vegan_audit_id": 2481795,
+    "run_id": 292,
+    "classifier_version": "db-vegan-codex-v125",
+    "summary": "Shared whole-product evidence policy: nonvegan",
+    "product_id": "653000011",
+    "url": "https://www.ocado.com/products/653000011",
+    "previous": {
+      "id": "653000011",
+      "vegan_status": "vegan",
+      "vegan_reason": "tagged",
+      "current_on_ocado": 1,
+      "vegan_audit_id": null
+    },
+    "accepted_assessment": {
+      "components": {
+        "evidence_refs": [
+          {
+            "path": "/product/name",
+            "quote": "Holland & Barrett Enzyme Formula Tablets"
+          }
+        ],
+        "status": "insufficient"
+      },
+      "composition": {
+        "evidence_refs": [
+          {
+            "path": "/product/ingredients",
+            "quote": "Bulking Agent (Dicalcium Phosphate), Maltodextrin, Amylase Enzyme, Betaine Hydrochloride, Anti-Caking Agents (Stearic Acid, Silicon Dioxide, Magnesium Stearate), Papain Enzyme (6,000 USP/mg) (Sulphur Dioxide/Sulphites), Bromelain Enzyme (1200GDU/g), Glazing Agents (Hydroxypropyl Methylcellulose, Hydroxypropyl Cellulose), Lipase Enzyme, Emulsifier (Cross-Linked Sodium Carboxymethylcellulose), Protease Enzyme, Pepsin Enzyme, Pancreatin Enzyme, Peppermint Extract (Mentha piperita, Leaf), Cellulase Enzyme, Humectant (Glycerol)"
+          }
+        ],
+        "status": "insufficient"
+      },
+      "identity": {
+        "evidence_refs": [
+          {
+            "path": "/product/name",
+            "quote": "Holland & Barrett Enzyme Formula Tablets"
+          }
+        ],
+        "status": "established"
+      },
+      "material_issues": [
+        {
+          "blocks_claim": false,
+          "code": "source_unresolved",
+          "evidence_refs": [
+            {
+              "path": "/product/ingredients",
+              "quote": "Bulking Agent (Dicalcium Phosphate), Maltodextrin, Amylase Enzyme, Betaine Hydrochloride, Anti-Caking Agents (Stearic Acid, Silicon Dioxide, Magnesium Stearate), Papain Enzyme (6,000 USP/mg) (Sulphur Dioxide/Sulphites), Bromelain Enzyme (1200GDU/g), Glazing Agents (Hydroxypropyl Methylcellulose, Hydroxypropyl Cellulose), Lipase Enzyme, Emulsifier (Cross-Linked Sodium Carboxymethylcellulose), Protease Enzyme, Pepsin Enzyme, Pancreatin Enzyme, Peppermint Extract (Mentha piperita, Leaf), Cellulase Enzyme, Humectant (Glycerol)"
+            }
+          ],
+          "resolution_refs": [],
+          "rule_id": "source-dependent-additives-v1",
+          "target": "glycerol"
+        },
+        {
+          "blocks_claim": false,
+          "code": "source_unresolved",
+          "evidence_refs": [
+            {
+              "path": "/product/ingredients",
+              "quote": "Bulking Agent (Dicalcium Phosphate), Maltodextrin, Amylase Enzyme, Betaine Hydrochloride, Anti-Caking Agents (Stearic Acid, Silicon Dioxide, Magnesium Stearate), Papain Enzyme (6,000 USP/mg) (Sulphur Dioxide/Sulphites), Bromelain Enzyme (1200GDU/g), Glazing Agents (Hydroxypropyl Methylcellulose, Hydroxypropyl Cellulose), Lipase Enzyme, Emulsifier (Cross-Linked Sodium Carboxymethylcellulose), Protease Enzyme, Pepsin Enzyme, Pancreatin Enzyme, Peppermint Extract (Mentha piperita, Leaf), Cellulase Enzyme, Humectant (Glycerol)"
+            }
+          ],
+          "resolution_refs": [],
+          "rule_id": "unspecified-composition-v1",
+          "target": "whole_product"
+        },
+        {
+          "blocks_claim": false,
+          "code": "composition_incomplete",
+          "evidence_refs": [
+            {
+              "path": "/product/package_type",
+              "quote": "Bottle"
+            },
+            {
+              "path": "/product/other_information",
+              "quote": "Safety Warning: Food supplements must not be used as a substitute for a varied and balanced diet and a healthy lifestyle. If you are pregnant, breastfeeding, taking any medications or under medical supervision, please consult a doctor or healthcare professional before use. Discontinue use and consult a doctor if adverse reactions occur. Keep out of sight and reach of young children. Do not use if seal under cap is broken or missing. This product is not intended for use by persons under the age of 18. Additional Information: Tablets"
+            }
+          ],
+          "resolution_refs": [],
+          "rule_id": "supplied-components-composition-v1",
+          "target": "supplied components"
+        },
+        {
+          "blocks_claim": true,
+          "code": "animal_ingredient",
+          "evidence_refs": [
+            {
+              "path": "/product/ingredients",
+              "quote": "Bulking Agent (Dicalcium Phosphate), Maltodextrin, Amylase Enzyme, Betaine Hydrochloride, Anti-Caking Agents (Stearic Acid, Silicon Dioxide, Magnesium Stearate), Papain Enzyme (6,000 USP/mg) (Sulphur Dioxide/Sulphites), Bromelain Enzyme (1200GDU/g), Glazing Agents (Hydroxypropyl Methylcellulose, Hydroxypropyl Cellulose), Lipase Enzyme, Emulsifier (Cross-Linked Sodium Carboxymethylcellulose), Protease Enzyme, Pepsin Enzyme, Pancreatin Enzyme, Peppermint Extract (Mentha piperita, Leaf), Cellulase Enzyme, Humectant (Glycerol)"
+            }
+          ],
+          "resolution_refs": [],
+          "rule_id": "animal-ingredients-v1",
+          "target": "whole_product"
+        },
+        {
+          "blocks_claim": true,
+          "code": "tag_animal_conflict",
+          "evidence_refs": [
+            {
+              "path": "/product/ingredients",
+              "quote": "Bulking Agent (Dicalcium Phosphate), Maltodextrin, Amylase Enzyme, Betaine Hydrochloride, Anti-Caking Agents (Stearic Acid, Silicon Dioxide, Magnesium Stearate), Papain Enzyme (6,000 USP/mg) (Sulphur Dioxide/Sulphites), Bromelain Enzyme (1200GDU/g), Glazing Agents (Hydroxypropyl Methylcellulose, Hydroxypropyl Cellulose), Lipase Enzyme, Emulsifier (Cross-Linked Sodium Carboxymethylcellulose), Protease Enzyme, Pepsin Enzyme, Pancreatin Enzyme, Peppermint Extract (Mentha piperita, Leaf), Cellulase Enzyme, Humectant (Glycerol)"
+            }
+          ],
+          "resolution_refs": [],
+          "rule_id": "animal-overrides-tag-v1",
+          "target": "whole_product"
+        }
+      ],
+      "positive_support": [],
+      "processing": {
+        "evidence_refs": [],
+        "status": "not_applicable"
+      },
+      "source_applicability": [],
+      "sourcing": {
+        "evidence_refs": [],
+        "status": "not_applicable"
+      }
+    }
+  },
+  {
+    "id": "658509011",
+    "name": "Schwartz Air Fryer Sweet & Sticky Chinese BBQ Seasoning Drum",
+    "current_on_ocado": 1,
+    "official_vegan": 1,
+    "vegan_status": "nonvegan",
+    "vegan_reason": null,
+    "vegan_policy_version": "whole-product-v2",
+    "vegan_evidence_hash": "7993af103a8274f09696559f11dc93d77caa66638373fa9c397b91bd9d6c3bb0",
+    "vegan_positive_block": 0,
+    "vegan_audit_id": 2483340,
+    "run_id": 292,
+    "classifier_version": "db-vegan-codex-v125",
+    "summary": "Shared whole-product evidence policy: nonvegan",
+    "product_id": "658509011",
+    "url": "https://www.ocado.com/products/658509011",
+    "previous": {
+      "id": "658509011",
+      "vegan_status": "nonvegan",
+      "vegan_reason": null,
+      "current_on_ocado": 1,
+      "vegan_audit_id": null
+    },
+    "accepted_assessment": {
+      "components": {
+        "evidence_refs": [
+          {
+            "path": "/product/name",
+            "quote": "Schwartz Air Fryer Sweet & Sticky Chinese BBQ Seasoning Drum"
+          }
+        ],
+        "status": "insufficient"
+      },
+      "composition": {
+        "evidence_refs": [
+          {
+            "path": "/product/ingredients",
+            "quote": "Rice Flour, Spices (Dried Garlic, Ground Fennel Seed, Ground Ginger, Ground Star Anise (3%), Ground Cinnamon (Cassia), Black Pepper, Ground Cloves), Salt, Acids (Soidum Diacetate, Citric Acid), Dried Red Bell Pepper, Dried Soy Sauce (5%) (Maltondextrin, Salt, Soya Beans, Wheat), Honey Powder (contains Wheat) (5%), Sugar Cane Fibre, Colour (Paprika Extract), Natural Flavouring, Smoked Maltodextrin"
+          }
+        ],
+        "status": "insufficient"
+      },
+      "identity": {
+        "evidence_refs": [
+          {
+            "path": "/product/name",
+            "quote": "Schwartz Air Fryer Sweet & Sticky Chinese BBQ Seasoning Drum"
+          }
+        ],
+        "status": "established"
+      },
+      "material_issues": [
+        {
+          "blocks_claim": false,
+          "code": "processing_unresolved",
+          "evidence_refs": [
+            {
+              "path": "/product/ingredients",
+              "quote": "Rice Flour, Spices (Dried Garlic, Ground Fennel Seed, Ground Ginger, Ground Star Anise (3%), Ground Cinnamon (Cassia), Black Pepper, Ground Cloves), Salt, Acids (Soidum Diacetate, Citric Acid), Dried Red Bell Pepper, Dried Soy Sauce (5%) (Maltondextrin, Salt, Soya Beans, Wheat), Honey Powder (contains Wheat) (5%), Sugar Cane Fibre, Colour (Paprika Extract), Natural Flavouring, Smoked Maltodextrin"
+            }
+          ],
+          "resolution_refs": [],
+          "rule_id": "sugar-refining-v1",
+          "target": "whole_product"
+        },
+        {
+          "blocks_claim": false,
+          "code": "source_unresolved",
+          "evidence_refs": [
+            {
+              "path": "/product/ingredients",
+              "quote": "Rice Flour, Spices (Dried Garlic, Ground Fennel Seed, Ground Ginger, Ground Star Anise (3%), Ground Cinnamon (Cassia), Black Pepper, Ground Cloves), Salt, Acids (Soidum Diacetate, Citric Acid), Dried Red Bell Pepper, Dried Soy Sauce (5%) (Maltondextrin, Salt, Soya Beans, Wheat), Honey Powder (contains Wheat) (5%), Sugar Cane Fibre, Colour (Paprika Extract), Natural Flavouring, Smoked Maltodextrin"
+            }
+          ],
+          "resolution_refs": [],
+          "rule_id": "unspecified-composition-v1",
+          "target": "whole_product"
+        },
+        {
+          "blocks_claim": false,
+          "code": "composition_incomplete",
+          "evidence_refs": [
+            {
+              "path": "/product/package_type",
+              "quote": "Cylinder"
+            }
+          ],
+          "resolution_refs": [],
+          "rule_id": "supplied-components-composition-v1",
+          "target": "supplied components"
+        },
+        {
+          "blocks_claim": true,
+          "code": "evidence_conflict",
+          "evidence_refs": [
+            {
+              "path": "/product/detailed_description",
+              "quote": "Inspired by classic Chinese BBQ! – made easy in your air fryer Made with honey, soy sauce and star anise, this expertly blended seasoning helps you create the ultimate sweet and sticky flavour with an at home glaze– perfect on pork, chicken or stirred fried rice! Maximum flavour, minimal effort! Ready in under 12 mins."
+            }
+          ],
+          "resolution_refs": [],
+          "rule_id": "animal-declaration-context-v1",
+          "target": "whole_product"
+        },
+        {
+          "blocks_claim": true,
+          "code": "animal_ingredient",
+          "evidence_refs": [
+            {
+              "path": "/product/ingredients",
+              "quote": "Rice Flour, Spices (Dried Garlic, Ground Fennel Seed, Ground Ginger, Ground Star Anise (3%), Ground Cinnamon (Cassia), Black Pepper, Ground Cloves), Salt, Acids (Soidum Diacetate, Citric Acid), Dried Red Bell Pepper, Dried Soy Sauce (5%) (Maltondextrin, Salt, Soya Beans, Wheat), Honey Powder (contains Wheat) (5%), Sugar Cane Fibre, Colour (Paprika Extract), Natural Flavouring, Smoked Maltodextrin"
+            }
+          ],
+          "resolution_refs": [],
+          "rule_id": "animal-ingredients-v1",
+          "target": "whole_product"
+        },
+        {
+          "blocks_claim": true,
+          "code": "tag_animal_conflict",
+          "evidence_refs": [
+            {
+              "path": "/product/ingredients",
+              "quote": "Rice Flour, Spices (Dried Garlic, Ground Fennel Seed, Ground Ginger, Ground Star Anise (3%), Ground Cinnamon (Cassia), Black Pepper, Ground Cloves), Salt, Acids (Soidum Diacetate, Citric Acid), Dried Red Bell Pepper, Dried Soy Sauce (5%) (Maltondextrin, Salt, Soya Beans, Wheat), Honey Powder (contains Wheat) (5%), Sugar Cane Fibre, Colour (Paprika Extract), Natural Flavouring, Smoked Maltodextrin"
+            }
+          ],
+          "resolution_refs": [],
+          "rule_id": "animal-overrides-tag-v1",
+          "target": "whole_product"
+        }
+      ],
+      "positive_support": [],
+      "processing": {
+        "evidence_refs": [],
+        "status": "not_applicable"
+      },
+      "source_applicability": [],
+      "sourcing": {
+        "evidence_refs": [],
+        "status": "not_applicable"
+      }
+    }
+  },
+  {
+    "id": "662345011",
+    "name": "Smint Strawberry Sugar Free Mints",
+    "current_on_ocado": 1,
+    "official_vegan": 1,
+    "vegan_status": "nonvegan",
+    "vegan_reason": null,
+    "vegan_policy_version": "whole-product-v2",
+    "vegan_evidence_hash": "08e8f8b1ddefdd3bc1760a294bac13710f482dd93e98505c4aa9520988c762fd",
+    "vegan_positive_block": 0,
+    "vegan_audit_id": 2484688,
+    "run_id": 292,
+    "classifier_version": "db-vegan-codex-v125",
+    "summary": "Shared whole-product evidence policy: nonvegan",
+    "product_id": "662345011",
+    "url": "https://www.ocado.com/products/662345011",
+    "previous": {
+      "id": "662345011",
+      "vegan_status": "nonvegan",
+      "vegan_reason": null,
+      "current_on_ocado": 1,
+      "vegan_audit_id": null
+    },
+    "accepted_assessment": {
+      "components": {
+        "evidence_refs": [
+          {
+            "path": "/product/name",
+            "quote": "Smint Strawberry Sugar Free Mints"
+          }
+        ],
+        "status": "insufficient"
+      },
+      "composition": {
+        "evidence_refs": [
+          {
+            "path": "/product/ingredients",
+            "quote": "Sweeteners (Sorbitol, Aspartame, Sucralose, Acesulfame K), Acids (Malic Acid, Citric Acid, Tartaric Acid), Anti-Caking Agent (Magnesium Salts of Fatty Acids), Flavourings, Fully Hydrogenated Sunflower Oil, Colour (Carmine)"
+          }
+        ],
+        "status": "insufficient"
+      },
+      "identity": {
+        "evidence_refs": [
+          {
+            "path": "/product/name",
+            "quote": "Smint Strawberry Sugar Free Mints"
+          }
+        ],
+        "status": "established"
+      },
+      "material_issues": [
+        {
+          "blocks_claim": false,
+          "code": "source_unresolved",
+          "evidence_refs": [
+            {
+              "path": "/product/ingredients",
+              "quote": "Sweeteners (Sorbitol, Aspartame, Sucralose, Acesulfame K), Acids (Malic Acid, Citric Acid, Tartaric Acid), Anti-Caking Agent (Magnesium Salts of Fatty Acids), Flavourings, Fully Hydrogenated Sunflower Oil, Colour (Carmine)"
+            }
+          ],
+          "resolution_refs": [],
+          "rule_id": "unspecified-composition-v1",
+          "target": "whole_product"
+        },
+        {
+          "blocks_claim": false,
+          "code": "composition_incomplete",
+          "evidence_refs": [
+            {
+              "path": "/product/package_type",
+              "quote": "Can"
+            },
+            {
+              "path": "/product/features",
+              "quote": "A larger individual (3 x bigger) sugar free mint vs classic Smint to provide long-lasting freshness when you need it most, Presented in a premium tin to support the need for portability and freshness on the go, 50 moments of functional long lasting freshness for consumers that want fresh breath, but prefer mints over gum"
+            },
+            {
+              "path": "/product/detailed_description",
+              "quote": "Three times bigger than regular Smint. Smint XXL Strawberry is a refreshing but fruity mint alternative. Available in a convenient and sophisticated tin perfect for your car and desk."
+            }
+          ],
+          "resolution_refs": [],
+          "rule_id": "supplied-components-composition-v1",
+          "target": "supplied components"
+        },
+        {
+          "blocks_claim": true,
+          "code": "animal_ingredient",
+          "evidence_refs": [
+            {
+              "path": "/product/ingredients",
+              "quote": "Sweeteners (Sorbitol, Aspartame, Sucralose, Acesulfame K), Acids (Malic Acid, Citric Acid, Tartaric Acid), Anti-Caking Agent (Magnesium Salts of Fatty Acids), Flavourings, Fully Hydrogenated Sunflower Oil, Colour (Carmine)"
+            }
+          ],
+          "resolution_refs": [],
+          "rule_id": "animal-ingredients-v1",
+          "target": "whole_product"
+        },
+        {
+          "blocks_claim": true,
+          "code": "tag_animal_conflict",
+          "evidence_refs": [
+            {
+              "path": "/product/ingredients",
+              "quote": "Sweeteners (Sorbitol, Aspartame, Sucralose, Acesulfame K), Acids (Malic Acid, Citric Acid, Tartaric Acid), Anti-Caking Agent (Magnesium Salts of Fatty Acids), Flavourings, Fully Hydrogenated Sunflower Oil, Colour (Carmine)"
+            }
+          ],
+          "resolution_refs": [],
+          "rule_id": "animal-overrides-tag-v1",
+          "target": "whole_product"
+        }
+      ],
+      "positive_support": [],
+      "processing": {
+        "evidence_refs": [],
+        "status": "not_applicable"
+      },
+      "source_applicability": [],
+      "sourcing": {
+        "evidence_refs": [],
+        "status": "not_applicable"
+      }
+    }
+  },
+  {
+    "id": "66714011",
+    "name": "Weleda Sensitive Soothing Light Face Moisturiser Organic Almond Natural",
+    "current_on_ocado": 0,
+    "official_vegan": 1,
+    "vegan_status": "nonvegan",
+    "vegan_reason": null,
+    "vegan_policy_version": "whole-product-v2",
+    "vegan_evidence_hash": "3660c908e645f917bdc8f4f0e6d22d6a529aefe461d731f06b0689ca9045948f",
+    "vegan_positive_block": 0,
+    "vegan_audit_id": 2486114,
+    "run_id": 292,
+    "classifier_version": "db-vegan-codex-v125",
+    "summary": "Shared whole-product evidence policy: nonvegan",
+    "product_id": "66714011",
+    "url": "https://www.ocado.com/products/66714011",
+    "previous": {
+      "id": "66714011",
+      "vegan_status": "vegan",
+      "vegan_reason": "tagged",
+      "current_on_ocado": 0,
+      "vegan_audit_id": null
+    },
+    "accepted_assessment": {
+      "components": {
+        "evidence_refs": [
+          {
+            "path": "/product/name",
+            "quote": "Weleda Sensitive Soothing Light Face Moisturiser Organic Almond Natural"
+          }
+        ],
+        "status": "insufficient"
+      },
+      "composition": {
+        "evidence_refs": [
+          {
+            "path": "/product/ingredients",
+            "quote": "Water (Aqua), Prunus Amygdalus Dulcis (Sweet Almond) Oil, Alcohol, Glyceryl Stearate SE, Glycerin, Hydrolyzed Beeswax, Prunus Domestica Seed Oil, Xanthan Gum, Lactic Acid."
+          }
+        ],
+        "status": "insufficient"
+      },
+      "identity": {
+        "evidence_refs": [
+          {
+            "path": "/product/name",
+            "quote": "Weleda Sensitive Soothing Light Face Moisturiser Organic Almond Natural"
+          }
+        ],
+        "status": "established"
+      },
+      "material_issues": [
+        {
+          "blocks_claim": false,
+          "code": "source_unresolved",
+          "evidence_refs": [
+            {
+              "path": "/product/ingredients",
+              "quote": "Water (Aqua), Prunus Amygdalus Dulcis (Sweet Almond) Oil, Alcohol, Glyceryl Stearate SE, Glycerin, Hydrolyzed Beeswax, Prunus Domestica Seed Oil, Xanthan Gum, Lactic Acid."
+            }
+          ],
+          "resolution_refs": [],
+          "rule_id": "source-dependent-additives-v1",
+          "target": "glycerin"
+        },
+        {
+          "blocks_claim": false,
+          "code": "composition_incomplete",
+          "evidence_refs": [
+            {
+              "path": "/product/name",
+              "quote": "Weleda Sensitive Soothing Light Face Moisturiser Organic Almond Natural"
+            }
+          ],
+          "resolution_refs": [],
+          "rule_id": "manufactured-nonfood-composition-v1",
+          "target": "whole_product"
+        },
+        {
+          "blocks_claim": false,
+          "code": "composition_incomplete",
+          "evidence_refs": [
+            {
+              "path": "/product/detailed_description",
+              "quote": "*Recently updated packaging design. Your packaging may vary while we make this exciting change. Your know how your skin reacts to the tiniest change of conditions – to heat, cold, air-conditioning, sometimes even to a late night? Almond oil is nature’s answer – a swiftly absorbed, super-skin-friendly oil which we take from organic sources and whisk into this ultra-light lotion for sensitive, combination and dry skin. With no fragrance at all, simply natural ingredients, it’s a cool, light, calming balm for over- reactive skin. +75% Reduces skin irritations (Self-assessment after 28 days) +45% Increased skin moisture (Tested after 28 days) Benefits: - Soothes and moisturises sensitive combination skin - Rapidly absorbed, boosts skin’s protective functions, reduces redness, tautness, itching and irritation - Dermatologically approved including for skin prone to allergies - Free from synthetic preservatives, fragrances, colourants, free of raw materials derived from mineral oil - Suitable for vegetarians"
+            }
+          ],
+          "resolution_refs": [],
+          "rule_id": "supplied-components-composition-v1",
+          "target": "supplied components"
+        },
+        {
+          "blocks_claim": true,
+          "code": "animal_ingredient",
+          "evidence_refs": [
+            {
+              "path": "/product/ingredients",
+              "quote": "Water (Aqua), Prunus Amygdalus Dulcis (Sweet Almond) Oil, Alcohol, Glyceryl Stearate SE, Glycerin, Hydrolyzed Beeswax, Prunus Domestica Seed Oil, Xanthan Gum, Lactic Acid."
+            }
+          ],
+          "resolution_refs": [],
+          "rule_id": "animal-ingredients-v1",
+          "target": "whole_product"
+        },
+        {
+          "blocks_claim": true,
+          "code": "tag_animal_conflict",
+          "evidence_refs": [
+            {
+              "path": "/product/ingredients",
+              "quote": "Water (Aqua), Prunus Amygdalus Dulcis (Sweet Almond) Oil, Alcohol, Glyceryl Stearate SE, Glycerin, Hydrolyzed Beeswax, Prunus Domestica Seed Oil, Xanthan Gum, Lactic Acid."
+            }
+          ],
+          "resolution_refs": [],
+          "rule_id": "animal-overrides-tag-v1",
+          "target": "whole_product"
+        }
+      ],
+      "positive_support": [],
+      "processing": {
+        "evidence_refs": [],
+        "status": "not_applicable"
+      },
+      "source_applicability": [],
+      "sourcing": {
+        "evidence_refs": [],
+        "status": "not_applicable"
+      }
+    }
+  },
+  {
+    "id": "700081011",
+    "name": "Free Soul HydraCreatine Sachets",
+    "current_on_ocado": 1,
+    "official_vegan": 1,
+    "vegan_status": "nonvegan",
+    "vegan_reason": null,
+    "vegan_policy_version": "whole-product-v2",
+    "vegan_evidence_hash": "ed2d58dcddf0d1d883a6701181e1b05c2734322bacdefbcfe474b8a8b9a66317",
+    "vegan_positive_block": 0,
+    "vegan_audit_id": 2498776,
+    "run_id": 292,
+    "classifier_version": "db-vegan-codex-v125",
+    "summary": "Shared whole-product evidence policy: nonvegan",
+    "product_id": "700081011",
+    "url": "https://www.ocado.com/products/700081011",
+    "previous": {
+      "id": "700081011",
+      "vegan_status": "vegan",
+      "vegan_reason": "manufacturer",
+      "current_on_ocado": 1,
+      "vegan_audit_id": null
+    },
+    "accepted_assessment": {
+      "components": {
+        "evidence_refs": [
+          {
+            "path": "/product/name",
+            "quote": "Free Soul HydraCreatine Sachets"
+          }
+        ],
+        "status": "insufficient"
+      },
+      "composition": {
+        "evidence_refs": [
+          {
+            "path": "/product/ingredients",
+            "quote": "Creatine Monohydrate, Tripotassium Citrate, Magnesium Citrate, Trisodium Citrate, Citric Acid, Malic Acid, Inulin, Natural Flavouring, Monopotassium Phosphate, Calcium Lactate, Calcium Gluconate, Himalayan Pink Salt, Silicon Dioxide, Ascorbic Acid (Vitamin C), Steviol Glycosides from Stevia, Beta-Carotene, Beetroot Red (Beta Vulgaris), Astragin® (Root Extract from Astragalus Membranaceous and Panaxnotoginseng)"
+          }
+        ],
+        "status": "insufficient"
+      },
+      "identity": {
+        "evidence_refs": [
+          {
+            "path": "/product/name",
+            "quote": "Free Soul HydraCreatine Sachets"
+          }
+        ],
+        "status": "established"
+      },
+      "material_issues": [
+        {
+          "blocks_claim": false,
+          "code": "source_unresolved",
+          "evidence_refs": [
+            {
+              "path": "/product/ingredients",
+              "quote": "Creatine Monohydrate, Tripotassium Citrate, Magnesium Citrate, Trisodium Citrate, Citric Acid, Malic Acid, Inulin, Natural Flavouring, Monopotassium Phosphate, Calcium Lactate, Calcium Gluconate, Himalayan Pink Salt, Silicon Dioxide, Ascorbic Acid (Vitamin C), Steviol Glycosides from Stevia, Beta-Carotene, Beetroot Red (Beta Vulgaris), Astragin® (Root Extract from Astragalus Membranaceous and Panaxnotoginseng)"
+            }
+          ],
+          "resolution_refs": [],
+          "rule_id": "unspecified-composition-v1",
+          "target": "whole_product"
+        },
+        {
+          "blocks_claim": false,
+          "code": "composition_incomplete",
+          "evidence_refs": [
+            {
+              "path": "/product/package_type",
+              "quote": "Box"
+            }
+          ],
+          "resolution_refs": [],
+          "rule_id": "supplied-components-composition-v1",
+          "target": "supplied components"
+        },
+        {
+          "blocks_claim": true,
+          "code": "animal_ingredient",
+          "evidence_refs": [
+            {
+              "path": "/product/other_information",
+              "quote": "Full Product Name: Strawberry Mango Flavour Powdered Food Supplement with Creatine, Collagen Peptides, Vitamin C, Electrolytes, Botanical Extract and Sweeteners. Storage:"
+            }
+          ],
+          "resolution_refs": [],
+          "rule_id": "animal-ingredients-v1",
+          "target": "whole_product"
+        },
+        {
+          "blocks_claim": true,
+          "code": "tag_animal_conflict",
+          "evidence_refs": [
+            {
+              "path": "/product/other_information",
+              "quote": "Full Product Name: Strawberry Mango Flavour Powdered Food Supplement with Creatine, Collagen Peptides, Vitamin C, Electrolytes, Botanical Extract and Sweeteners. Storage:"
+            }
+          ],
+          "resolution_refs": [],
+          "rule_id": "animal-overrides-tag-v1",
+          "target": "whole_product"
+        }
+      ],
+      "positive_support": [],
+      "processing": {
+        "evidence_refs": [],
+        "status": "not_applicable"
+      },
+      "source_applicability": [],
+      "sourcing": {
+        "evidence_refs": [],
+        "status": "not_applicable"
+      }
+    }
+  }
+]

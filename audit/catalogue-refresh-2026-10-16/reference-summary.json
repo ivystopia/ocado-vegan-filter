@@ -1,0 +1,245 @@
+{
+  "cases": 24,
+  "findings": [
+    {
+      "id": "376267011",
+      "name": "BEAUTYPRO Vitamin C Brightening Facial Sheet Mask",
+      "state": "accepted",
+      "expected": {
+        "vegan_status": "vegan",
+        "vegan_reason": "tagged",
+        "required_issue_codes": []
+      }
+    },
+    {
+      "id": "689563011",
+      "name": "Capri Sun Jungle Zero Party Pack Kids Juice Drink",
+      "state": "accepted",
+      "expected": {
+        "vegan_status": "vegan",
+        "vegan_reason": "manufacturer",
+        "required_issue_codes": []
+      }
+    },
+    {
+      "id": "502332011",
+      "name": "Garnier Micellar Water Rose",
+      "state": "accepted",
+      "expected": {
+        "vegan_status": "vegan",
+        "vegan_reason": "manufacturer",
+        "required_issue_codes": []
+      }
+    },
+    {
+      "id": "508930011",
+      "name": "Graze Salt & Vinegar Crunch Sharing Bag Snack",
+      "state": "accepted",
+      "expected": {
+        "vegan_status": "vegan",
+        "vegan_reason": "tagged",
+        "required_issue_codes": []
+      }
+    },
+    {
+      "id": "674579011",
+      "name": "Holland & Barrett Colon Complex Tablets",
+      "state": "accepted",
+      "expected": {
+        "vegan_status": "vegan",
+        "vegan_reason": "manufacturer",
+        "required_issue_codes": []
+      }
+    },
+    {
+      "id": "51533011",
+      "name": "Jackson Estate Vintage Widow Pinot Noir",
+      "state": "accepted",
+      "expected": {
+        "vegan_status": "vegan",
+        "vegan_reason": "tagged",
+        "required_issue_codes": []
+      }
+    },
+    {
+      "id": "681298011",
+      "name": "John Frieda BLONDE+ Repair System Pre-Shampoo Treatment",
+      "state": "accepted",
+      "expected": {
+        "vegan_status": "vegan",
+        "vegan_reason": "manufacturer",
+        "required_issue_codes": []
+      }
+    },
+    {
+      "id": "663224011",
+      "name": "L.A Brewery Non-Alcoholic Sparkling English Blush Kombucha",
+      "state": "accepted",
+      "expected": {
+        "vegan_status": "vegan",
+        "vegan_reason": "tagged",
+        "required_issue_codes": []
+      }
+    },
+    {
+      "id": "668514011",
+      "name": "M&S Collection Snowman Bao Buns",
+      "state": "accepted",
+      "expected": {
+        "vegan_status": "vegan",
+        "vegan_reason": "manufacturer",
+        "required_issue_codes": []
+      }
+    },
+    {
+      "id": "690845011",
+      "name": "OGGS Birthday Cake Flavour and Double Chocolate Cupcake Party Selection x 9",
+      "state": "accepted",
+      "expected": {
+        "vegan_status": "vegan",
+        "vegan_reason": "manufacturer",
+        "required_issue_codes": []
+      }
+    },
+    {
+      "id": "210033011",
+      "name": "Pillow Wad Hay, Small",
+      "state": "accepted",
+      "expected": {
+        "vegan_status": "vegan",
+        "vegan_reason": "ingredients",
+        "required_issue_codes": []
+      }
+    },
+    {
+      "id": "203521011",
+      "name": "Pommery Apanage Rose Champagne NV",
+      "state": "accepted",
+      "expected": {
+        "vegan_status": "vegan",
+        "vegan_reason": "tagged",
+        "required_issue_codes": []
+      }
+    },
+    {
+      "id": "659615011",
+      "name": "Served Cosmopolitan",
+      "state": "accepted",
+      "expected": {
+        "vegan_status": "vegan",
+        "vegan_reason": "manufacturer",
+        "required_issue_codes": []
+      }
+    },
+    {
+      "id": "664248011",
+      "name": "The Black Pig The Prize Chardonnay",
+      "state": "accepted",
+      "expected": {
+        "vegan_status": "vegan",
+        "vegan_reason": "manufacturer",
+        "required_issue_codes": []
+      }
+    },
+    {
+      "id": "275869011",
+      "name": "Vita Coco Organic Raw 100% Extra Virgin Cold Pressed Coconut Oil",
+      "state": "accepted",
+      "expected": {
+        "vegan_status": "vegan",
+        "vegan_reason": "manufacturer",
+        "required_issue_codes": []
+      }
+    },
+    {
+      "id": "674077011",
+      "name": "The Weyborne Oriana Golden Spur NV",
+      "state": "accepted",
+      "expected": {
+        "vegan_status": "vegan",
+        "vegan_reason": "manufacturer",
+        "required_issue_codes": []
+      }
+    },
+    {
+      "id": "324972011",
+      "name": "Garnier Micellar Cleansing Water Combination",
+      "state": "accepted",
+      "expected": {
+        "vegan_status": "vegan",
+        "vegan_reason": "manufacturer",
+        "required_issue_codes": []
+      }
+    },
+    {
+      "id": "502158011",
+      "name": "Cooks&Co Roasted Red & Yellow Peppers",
+      "state": "accepted",
+      "expected": {
+        "vegan_status": "vegan",
+        "vegan_reason": "manufacturer",
+        "required_issue_codes": []
+      }
+    },
+    {
+      "id": "508034011",
+      "name": "Baylis & Harding Goodness Lemongrass & Ginger Bath Soak",
+      "state": "accepted",
+      "expected": {
+        "vegan_status": "vegan",
+        "vegan_reason": "tagged",
+        "required_issue_codes": []
+      }
+    },
+    {
+      "id": "510260011",
+      "name": "Bulldog Skincare - Original Shower Gel",
+      "state": "accepted",
+      "expected": {
+        "vegan_status": "vegan",
+        "vegan_reason": "manufacturer",
+        "required_issue_codes": []
+      }
+    },
+    {
+      "id": "614762011",
+      "name": "Bio&Me Fruit and Nut Muesli",
+      "state": "accepted",
+      "expected": {
+        "vegan_status": "vegan",
+        "vegan_reason": "tagged",
+        "required_issue_codes": []
+      }
+    },
+    {
+      "id": "645551011",
+      "name": "Bio&Me Gluten Free Berry Burst Granola",
+      "state": "accepted",
+      "expected": {
+        "vegan_status": "vegan",
+        "vegan_reason": "tagged",
+        "required_issue_codes": []
+      }
+    },
+    {
+      "id": "680850011",
+      "name": "Baylis & Harding Goodness Range Discovery Gift Set",
+      "state": "accepted",
+      "expected": {
+        "vegan_status": "vegan",
+        "vegan_reason": "manufacturer",
+        "required_issue_codes": []
+      }
+    },
+    {
+      "id": "609330011",
+      "name": "Natural Petal Wedding Confetti",
+      "state": "accepted",
+      "expected": {
+        "vegan_status": "vegan",
+        "vegan_reason": "ingredients",
+        "required_issue_codes": []
+      }
+    }
+  ]
+}

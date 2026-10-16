@@ -1,0 +1,2857 @@
+[
+  {
+    "product_id": "679700011",
+    "vegan_status": "vegan",
+    "vegan_reason": "manufacturer",
+    "confidence": "certain",
+    "summary": "The product information describes plant-based salmon-style flakes and explicitly says \u201cSuitable for Vegans.\u201d The salmon wording is identified as style/flavour, not animal content. The whole-product assurance covers the listed ingredients and supplied tray for this SKU.",
+    "evidence": {
+      "rule": "codex_llm",
+      "evidence": [
+        "/manufacturer_vegan_evidence/0/content: \u201cSuitable for Vegans\u201d",
+        "/product/other_information: \u201cPlant Based Salmon Style Flakes Made with Wheat Protein\u201d",
+        "/product/ingredients: \u201cSweet Chilli Salmon Flavour Seasoning\u201d",
+        "/product/package_type: \u201cTray\u201d"
+      ],
+      "ambiguity_notes": [
+        "The fish category and salmon wording are consistent with a plant-based salmon-style product; the product information explicitly describes it as plant based and identifies the salmon wording as a flavour seasoning.",
+        "Ingredients include sugar and natural flavouring, and the product is sold in a tray. The applicable whole-product vegan assurance resolves these generic sourcing, processing and component uncertainties.",
+        "whole_product_gate_rejected"
+      ],
+      "assessment": {
+        "identity": {
+          "status": "established",
+          "evidence_refs": [
+            {
+              "path": "/product/name",
+              "quote": "Squeaky Bean Hot Smoked Sweet Chili Salmon Flakes"
+            },
+            {
+              "path": "/product/other_information",
+              "quote": "Full Product Name: Ready to Eat Plant Based Salmon Style Flakes Made with Wheat Protein Marinated in a Sweet Chilli Salmon Flavour Seasoning. Storage: Keep refrigerated below 5\u00b0C. Once opened, keep refrigerated and use within 2 days. Do"
+            },
+            {
+              "path": "/product/other_information",
+              "quote": "not exceed use by date. For use by date see front of pack. Not suitable for home freezing. Additional Information: Packaged in a Protective Atmosphere."
+            }
+          ]
+        },
+        "composition": {
+          "status": "covered_by_claim",
+          "evidence_refs": [
+            {
+              "path": "/product/dietary_information",
+              "quote": "Suitable for Vegans"
+            },
+            {
+              "path": "/manufacturer_vegan_evidence/1/content",
+              "quote": "Suitable for Vegans"
+            }
+          ]
+        },
+        "sourcing": {
+          "status": "covered_by_claim",
+          "evidence_refs": [
+            {
+              "path": "/product/dietary_information",
+              "quote": "Suitable for Vegans"
+            },
+            {
+              "path": "/manufacturer_vegan_evidence/1/content",
+              "quote": "Suitable for Vegans"
+            }
+          ]
+        },
+        "processing": {
+          "status": "covered_by_claim",
+          "evidence_refs": [
+            {
+              "path": "/product/dietary_information",
+              "quote": "Suitable for Vegans"
+            },
+            {
+              "path": "/manufacturer_vegan_evidence/1/content",
+              "quote": "Suitable for Vegans"
+            }
+          ]
+        },
+        "components": {
+          "status": "covered_by_claim",
+          "evidence_refs": [
+            {
+              "path": "/product/dietary_information",
+              "quote": "Suitable for Vegans"
+            },
+            {
+              "path": "/manufacturer_vegan_evidence/1/content",
+              "quote": "Suitable for Vegans"
+            }
+          ]
+        },
+        "positive_support": [
+          {
+            "reason": "manufacturer",
+            "evidence_refs": [
+              {
+                "path": "/product/dietary_information",
+                "quote": "Suitable for Vegans"
+              },
+              {
+                "path": "/manufacturer_vegan_evidence/1/content",
+                "quote": "Suitable for Vegans"
+              }
+            ]
+          }
+        ],
+        "material_issues": [
+          {
+            "code": "processing_unresolved",
+            "target": "whole_product",
+            "rule_id": "liquid-clarification-v1",
+            "evidence_refs": [
+              {
+                "path": "/product/ingredients",
+                "quote": "Water, Textured Wheat Protein (30%) (Wheat Protein, Wheat Flour), Rapeseed Oil, Sweet Chilli Salmon Flavour Seasoning (7%) (Sugar, Natural Flavouring, Garlic Powder, Smoked Dextrose, Maize Starch, Dried Garlic, Chilli, Dried Red Bell Pepper, Spirit Vinegar Powder, Acidity Regulator: Citric Acid, Cayenne Pepper, Colour: Paprika Extract), Natural Flavouring, Salt, Radish Concentrate, Acidity Regulator: Citric Acid, Carrot Concentrate"
+              }
+            ],
+            "resolution_refs": [
+              {
+                "path": "/product/dietary_information",
+                "quote": "Suitable for Vegans"
+              },
+              {
+                "path": "/manufacturer_vegan_evidence/1/content",
+                "quote": "Suitable for Vegans"
+              }
+            ],
+            "blocks_claim": false
+          },
+          {
+            "code": "processing_unresolved",
+            "target": "whole_product",
+            "rule_id": "sugar-refining-v1",
+            "evidence_refs": [
+              {
+                "path": "/product/ingredients",
+                "quote": "Water, Textured Wheat Protein (30%) (Wheat Protein, Wheat Flour), Rapeseed Oil, Sweet Chilli Salmon Flavour Seasoning (7%) (Sugar, Natural Flavouring, Garlic Powder, Smoked Dextrose, Maize Starch, Dried Garlic, Chilli, Dried Red Bell Pepper, Spirit Vinegar Powder, Acidity Regulator: Citric Acid, Cayenne Pepper, Colour: Paprika Extract), Natural Flavouring, Salt, Radish Concentrate, Acidity Regulator: Citric Acid, Carrot Concentrate"
+              }
+            ],
+            "resolution_refs": [
+              {
+                "path": "/product/dietary_information",
+                "quote": "Suitable for Vegans"
+              },
+              {
+                "path": "/manufacturer_vegan_evidence/1/content",
+                "quote": "Suitable for Vegans"
+              }
+            ],
+            "blocks_claim": false
+          },
+          {
+            "code": "source_unresolved",
+            "target": "whole_product",
+            "rule_id": "unspecified-composition-v1",
+            "evidence_refs": [
+              {
+                "path": "/product/ingredients",
+                "quote": "Water, Textured Wheat Protein (30%) (Wheat Protein, Wheat Flour), Rapeseed Oil, Sweet Chilli Salmon Flavour Seasoning (7%) (Sugar, Natural Flavouring, Garlic Powder, Smoked Dextrose, Maize Starch, Dried Garlic, Chilli, Dried Red Bell Pepper, Spirit Vinegar Powder, Acidity Regulator: Citric Acid, Cayenne Pepper, Colour: Paprika Extract), Natural Flavouring, Salt, Radish Concentrate, Acidity Regulator: Citric Acid, Carrot Concentrate"
+              }
+            ],
+            "resolution_refs": [
+              {
+                "path": "/product/dietary_information",
+                "quote": "Suitable for Vegans"
+              },
+              {
+                "path": "/manufacturer_vegan_evidence/1/content",
+                "quote": "Suitable for Vegans"
+              }
+            ],
+            "blocks_claim": false
+          },
+          {
+            "code": "composition_incomplete",
+            "target": "supplied components",
+            "rule_id": "supplied-components-composition-v1",
+            "evidence_refs": [
+              {
+                "path": "/product/package_type",
+                "quote": "Tray"
+              }
+            ],
+            "resolution_refs": [
+              {
+                "path": "/product/dietary_information",
+                "quote": "Suitable for Vegans"
+              },
+              {
+                "path": "/manufacturer_vegan_evidence/1/content",
+                "quote": "Suitable for Vegans"
+              }
+            ],
+            "blocks_claim": false
+          },
+          {
+            "code": "source_unresolved",
+            "target": "Sugar and natural flavouring in the listed ingredients",
+            "rule_id": "sugar-refining-v1; unspecified-composition-v1",
+            "evidence_refs": [
+              {
+                "path": "/product/ingredients",
+                "quote": "Water, Textured Wheat Protein (30%) (Wheat Protein, Wheat Flour), Rapeseed Oil, Sweet Chilli Salmon Flavour Seasoning (7%) (Sugar, Natural Flavouring, Garlic Powder, Smoked Dextrose, Maize Starch, Dried Garlic, Chilli, Dried Red Bell"
+              },
+              {
+                "path": "/product/ingredients",
+                "quote": "Pepper, Spirit Vinegar Powder, Acidity Regulator: Citric Acid, Cayenne Pepper, Colour: Paprika Extract), Natural Flavouring, Salt, Radish Concentrate, Acidity Regulator: Citric Acid, Carrot Concentrate"
+              }
+            ],
+            "resolution_refs": [
+              {
+                "path": "/manufacturer_vegan_evidence/0/content",
+                "quote": "Ready to Eat, Source of Omega 3, High Protein, Low Saturated Fat, Suitable for Vegans"
+              },
+              {
+                "path": "/manufacturer_vegan_evidence/1/content",
+                "quote": "Suitable for Vegans"
+              }
+            ],
+            "blocks_claim": false
+          },
+          {
+            "code": "composition_incomplete",
+            "target": "Supplied tray",
+            "rule_id": "supplied-components-composition-v1",
+            "evidence_refs": [
+              {
+                "path": "/product/package_type",
+                "quote": "Tray"
+              }
+            ],
+            "resolution_refs": [
+              {
+                "path": "/manufacturer_vegan_evidence/0/content",
+                "quote": "Ready to Eat, Source of Omega 3, High Protein, Low Saturated Fat, Suitable for Vegans"
+              },
+              {
+                "path": "/manufacturer_vegan_evidence/1/content",
+                "quote": "Suitable for Vegans"
+              }
+            ],
+            "blocks_claim": false
+          },
+          {
+            "code": "evidence_conflict",
+            "target": "Salmon wording as a possible fish-content declaration",
+            "rule_id": "animal-declaration-context-v1",
+            "evidence_refs": [
+              {
+                "path": "/product/name",
+                "quote": "Squeaky Bean Hot Smoked Sweet Chili Salmon Flakes"
+              },
+              {
+                "path": "/product/ingredients",
+                "quote": "Water, Textured Wheat Protein (30%) (Wheat Protein, Wheat Flour), Rapeseed Oil, Sweet Chilli Salmon Flavour Seasoning (7%) (Sugar, Natural Flavouring, Garlic Powder, Smoked Dextrose, Maize Starch, Dried Garlic, Chilli, Dried Red Bell"
+              },
+              {
+                "path": "/product/ingredients",
+                "quote": "Pepper, Spirit Vinegar Powder, Acidity Regulator: Citric Acid, Cayenne Pepper, Colour: Paprika Extract), Natural Flavouring, Salt, Radish Concentrate, Acidity Regulator: Citric Acid, Carrot Concentrate"
+              },
+              {
+                "path": "/categories/0",
+                "quote": "fresh-chilled-food/fish-seafood/ready-to-eat/fish"
+              }
+            ],
+            "resolution_refs": [
+              {
+                "path": "/product/other_information",
+                "quote": "Full Product Name: Ready to Eat Plant Based Salmon Style Flakes Made with Wheat Protein Marinated in a Sweet Chilli Salmon Flavour Seasoning. Storage: Keep refrigerated below 5\u00b0C. Once opened, keep refrigerated and use within 2 days. Do"
+              },
+              {
+                "path": "/product/other_information",
+                "quote": "not exceed use by date. For use by date see front of pack. Not suitable for home freezing. Additional Information: Packaged in a Protective Atmosphere."
+              },
+              {
+                "path": "/product/ingredients",
+                "quote": "Water, Textured Wheat Protein (30%) (Wheat Protein, Wheat Flour), Rapeseed Oil, Sweet Chilli Salmon Flavour Seasoning (7%) (Sugar, Natural Flavouring, Garlic Powder, Smoked Dextrose, Maize Starch, Dried Garlic, Chilli, Dried Red Bell"
+              },
+              {
+                "path": "/product/ingredients",
+                "quote": "Pepper, Spirit Vinegar Powder, Acidity Regulator: Citric Acid, Cayenne Pepper, Colour: Paprika Extract), Natural Flavouring, Salt, Radish Concentrate, Acidity Regulator: Citric Acid, Carrot Concentrate"
+              }
+            ],
+            "blocks_claim": true
+          },
+          {
+            "code": "processing_unresolved",
+            "target": "Sugar in the seasoning; potential refining process",
+            "rule_id": "sugar-refining-v1",
+            "evidence_refs": [
+              {
+                "path": "/product/ingredients",
+                "quote": "Water, Textured Wheat Protein (30%) (Wheat Protein, Wheat Flour), Rapeseed Oil, Sweet Chilli Salmon Flavour Seasoning (7%) (Sugar, Natural Flavouring, Garlic Powder, Smoked Dextrose, Maize Starch, Dried Garlic, Chilli, Dried Red Bell"
+              }
+            ],
+            "resolution_refs": [
+              {
+                "path": "/product/dietary_information",
+                "quote": "Suitable for Vegans"
+              },
+              {
+                "path": "/manufacturer_vegan_evidence/0/content",
+                "quote": "Ready to Eat, Source of Omega 3, High Protein, Low Saturated Fat, Suitable for Vegans"
+              },
+              {
+                "path": "/manufacturer_vegan_evidence/1/content",
+                "quote": "Suitable for Vegans"
+              }
+            ],
+            "blocks_claim": false
+          },
+          {
+            "code": "source_unresolved",
+            "target": "Natural flavouring in the seasoning",
+            "rule_id": "unspecified-composition-v1",
+            "evidence_refs": [
+              {
+                "path": "/product/ingredients",
+                "quote": "Water, Textured Wheat Protein (30%) (Wheat Protein, Wheat Flour), Rapeseed Oil, Sweet Chilli Salmon Flavour Seasoning (7%) (Sugar, Natural Flavouring, Garlic Powder, Smoked Dextrose, Maize Starch, Dried Garlic, Chilli, Dried Red Bell"
+              }
+            ],
+            "resolution_refs": [
+              {
+                "path": "/product/dietary_information",
+                "quote": "Suitable for Vegans"
+              },
+              {
+                "path": "/manufacturer_vegan_evidence/0/content",
+                "quote": "Ready to Eat, Source of Omega 3, High Protein, Low Saturated Fat, Suitable for Vegans"
+              },
+              {
+                "path": "/manufacturer_vegan_evidence/1/content",
+                "quote": "Suitable for Vegans"
+              }
+            ],
+            "blocks_claim": false
+          },
+          {
+            "code": "processing_unresolved",
+            "target": "Acidity regulator: citric acid",
+            "rule_id": "unspecified-composition-v1",
+            "evidence_refs": [
+              {
+                "path": "/product/ingredients",
+                "quote": "Pepper, Spirit Vinegar Powder, Acidity Regulator: Citric Acid, Cayenne Pepper, Colour: Paprika Extract), Natural Flavouring, Salt, Radish Concentrate, Acidity Regulator: Citric Acid, Carrot Concentrate"
+              }
+            ],
+            "resolution_refs": [
+              {
+                "path": "/product/dietary_information",
+                "quote": "Suitable for Vegans"
+              },
+              {
+                "path": "/manufacturer_vegan_evidence/0/content",
+                "quote": "Ready to Eat, Source of Omega 3, High Protein, Low Saturated Fat, Suitable for Vegans"
+              },
+              {
+                "path": "/manufacturer_vegan_evidence/1/content",
+                "quote": "Suitable for Vegans"
+              }
+            ],
+            "blocks_claim": false
+          },
+          {
+            "code": "composition_incomplete",
+            "target": "Supplied tray packaging",
+            "rule_id": "supplied-components-composition-v1",
+            "evidence_refs": [
+              {
+                "path": "/product/package_type",
+                "quote": "Tray"
+              }
+            ],
+            "resolution_refs": [
+              {
+                "path": "/product/dietary_information",
+                "quote": "Suitable for Vegans"
+              },
+              {
+                "path": "/manufacturer_vegan_evidence/0/content",
+                "quote": "Ready to Eat, Source of Omega 3, High Protein, Low Saturated Fat, Suitable for Vegans"
+              },
+              {
+                "path": "/manufacturer_vegan_evidence/1/content",
+                "quote": "Suitable for Vegans"
+              }
+            ],
+            "blocks_claim": false
+          }
+        ],
+        "source_applicability": []
+      },
+      "independent_passes": [
+        {
+          "product_id": "679700011",
+          "vegan_status": "vegan",
+          "vegan_reason": "manufacturer",
+          "confidence": "certain",
+          "summary": "The product information describes plant-based salmon-style flakes and explicitly says \u201cSuitable for Vegans.\u201d The salmon wording is identified as style/flavour, not animal content. The whole-product assurance covers the listed ingredients and supplied tray for this SKU.",
+          "evidence": [
+            "/manufacturer_vegan_evidence/0/content: \u201cSuitable for Vegans\u201d",
+            "/product/other_information: \u201cPlant Based Salmon Style Flakes Made with Wheat Protein\u201d",
+            "/product/ingredients: \u201cSweet Chilli Salmon Flavour Seasoning\u201d",
+            "/product/package_type: \u201cTray\u201d"
+          ],
+          "ambiguity_notes": [
+            "The fish category and salmon wording are consistent with a plant-based salmon-style product; the product information explicitly describes it as plant based and identifies the salmon wording as a flavour seasoning.",
+            "Ingredients include sugar and natural flavouring, and the product is sold in a tray. The applicable whole-product vegan assurance resolves these generic sourcing, processing and component uncertainties."
+          ],
+          "assessment": {
+            "identity": {
+              "status": "established",
+              "evidence_refs": [
+                {
+                  "path": "/product/name",
+                  "quote": "Squeaky Bean Hot Smoked Sweet Chili Salmon Flakes"
+                },
+                {
+                  "path": "/product/other_information",
+                  "quote": "Full Product Name: Ready to Eat Plant Based Salmon Style Flakes Made with Wheat Protein Marinated in a Sweet Chilli Salmon Flavour Seasoning. Storage: Keep refrigerated below 5\u00b0C. Once opened, keep refrigerated and use within 2 days. Do"
+                },
+                {
+                  "path": "/product/other_information",
+                  "quote": "not exceed use by date. For use by date see front of pack. Not suitable for home freezing. Additional Information: Packaged in a Protective Atmosphere."
+                }
+              ]
+            },
+            "composition": {
+              "status": "covered_by_claim",
+              "evidence_refs": [
+                {
+                  "path": "/product/ingredients",
+                  "quote": "Water, Textured Wheat Protein (30%) (Wheat Protein, Wheat Flour), Rapeseed Oil, Sweet Chilli Salmon Flavour Seasoning (7%) (Sugar, Natural Flavouring, Garlic Powder, Smoked Dextrose, Maize Starch, Dried Garlic, Chilli, Dried Red Bell"
+                },
+                {
+                  "path": "/product/ingredients",
+                  "quote": "Pepper, Spirit Vinegar Powder, Acidity Regulator: Citric Acid, Cayenne Pepper, Colour: Paprika Extract), Natural Flavouring, Salt, Radish Concentrate, Acidity Regulator: Citric Acid, Carrot Concentrate"
+                },
+                {
+                  "path": "/manufacturer_vegan_evidence/0/content",
+                  "quote": "Ready to Eat, Source of Omega 3, High Protein, Low Saturated Fat, Suitable for Vegans"
+                },
+                {
+                  "path": "/manufacturer_vegan_evidence/1/content",
+                  "quote": "Suitable for Vegans"
+                }
+              ]
+            },
+            "sourcing": {
+              "status": "covered_by_claim",
+              "evidence_refs": [
+                {
+                  "path": "/product/ingredients",
+                  "quote": "Water, Textured Wheat Protein (30%) (Wheat Protein, Wheat Flour), Rapeseed Oil, Sweet Chilli Salmon Flavour Seasoning (7%) (Sugar, Natural Flavouring, Garlic Powder, Smoked Dextrose, Maize Starch, Dried Garlic, Chilli, Dried Red Bell"
+                },
+                {
+                  "path": "/product/ingredients",
+                  "quote": "Pepper, Spirit Vinegar Powder, Acidity Regulator: Citric Acid, Cayenne Pepper, Colour: Paprika Extract), Natural Flavouring, Salt, Radish Concentrate, Acidity Regulator: Citric Acid, Carrot Concentrate"
+                },
+                {
+                  "path": "/manufacturer_vegan_evidence/0/content",
+                  "quote": "Ready to Eat, Source of Omega 3, High Protein, Low Saturated Fat, Suitable for Vegans"
+                },
+                {
+                  "path": "/manufacturer_vegan_evidence/1/content",
+                  "quote": "Suitable for Vegans"
+                }
+              ]
+            },
+            "processing": {
+              "status": "covered_by_claim",
+              "evidence_refs": [
+                {
+                  "path": "/product/ingredients",
+                  "quote": "Water, Textured Wheat Protein (30%) (Wheat Protein, Wheat Flour), Rapeseed Oil, Sweet Chilli Salmon Flavour Seasoning (7%) (Sugar, Natural Flavouring, Garlic Powder, Smoked Dextrose, Maize Starch, Dried Garlic, Chilli, Dried Red Bell"
+                },
+                {
+                  "path": "/product/ingredients",
+                  "quote": "Pepper, Spirit Vinegar Powder, Acidity Regulator: Citric Acid, Cayenne Pepper, Colour: Paprika Extract), Natural Flavouring, Salt, Radish Concentrate, Acidity Regulator: Citric Acid, Carrot Concentrate"
+                },
+                {
+                  "path": "/manufacturer_vegan_evidence/0/content",
+                  "quote": "Ready to Eat, Source of Omega 3, High Protein, Low Saturated Fat, Suitable for Vegans"
+                },
+                {
+                  "path": "/manufacturer_vegan_evidence/1/content",
+                  "quote": "Suitable for Vegans"
+                }
+              ]
+            },
+            "components": {
+              "status": "covered_by_claim",
+              "evidence_refs": [
+                {
+                  "path": "/product/package_type",
+                  "quote": "Tray"
+                },
+                {
+                  "path": "/manufacturer_vegan_evidence/0/content",
+                  "quote": "Ready to Eat, Source of Omega 3, High Protein, Low Saturated Fat, Suitable for Vegans"
+                },
+                {
+                  "path": "/manufacturer_vegan_evidence/1/content",
+                  "quote": "Suitable for Vegans"
+                }
+              ]
+            },
+            "positive_support": [
+              {
+                "reason": "manufacturer",
+                "evidence_refs": [
+                  {
+                    "path": "/manufacturer_vegan_evidence/0/content",
+                    "quote": "Ready to Eat, Source of Omega 3, High Protein, Low Saturated Fat, Suitable for Vegans"
+                  },
+                  {
+                    "path": "/manufacturer_vegan_evidence/1/content",
+                    "quote": "Suitable for Vegans"
+                  }
+                ]
+              }
+            ],
+            "material_issues": [
+              {
+                "code": "source_unresolved",
+                "target": "Sugar and natural flavouring in the listed ingredients",
+                "rule_id": "sugar-refining-v1; unspecified-composition-v1",
+                "evidence_refs": [
+                  {
+                    "path": "/product/ingredients",
+                    "quote": "Water, Textured Wheat Protein (30%) (Wheat Protein, Wheat Flour), Rapeseed Oil, Sweet Chilli Salmon Flavour Seasoning (7%) (Sugar, Natural Flavouring, Garlic Powder, Smoked Dextrose, Maize Starch, Dried Garlic, Chilli, Dried Red Bell"
+                  },
+                  {
+                    "path": "/product/ingredients",
+                    "quote": "Pepper, Spirit Vinegar Powder, Acidity Regulator: Citric Acid, Cayenne Pepper, Colour: Paprika Extract), Natural Flavouring, Salt, Radish Concentrate, Acidity Regulator: Citric Acid, Carrot Concentrate"
+                  }
+                ],
+                "resolution_refs": [
+                  {
+                    "path": "/manufacturer_vegan_evidence/0/content",
+                    "quote": "Ready to Eat, Source of Omega 3, High Protein, Low Saturated Fat, Suitable for Vegans"
+                  },
+                  {
+                    "path": "/manufacturer_vegan_evidence/1/content",
+                    "quote": "Suitable for Vegans"
+                  }
+                ],
+                "blocks_claim": false
+              },
+              {
+                "code": "composition_incomplete",
+                "target": "Supplied tray",
+                "rule_id": "supplied-components-composition-v1",
+                "evidence_refs": [
+                  {
+                    "path": "/product/package_type",
+                    "quote": "Tray"
+                  }
+                ],
+                "resolution_refs": [
+                  {
+                    "path": "/manufacturer_vegan_evidence/0/content",
+                    "quote": "Ready to Eat, Source of Omega 3, High Protein, Low Saturated Fat, Suitable for Vegans"
+                  },
+                  {
+                    "path": "/manufacturer_vegan_evidence/1/content",
+                    "quote": "Suitable for Vegans"
+                  }
+                ],
+                "blocks_claim": false
+              }
+            ],
+            "source_applicability": []
+          }
+        },
+        {
+          "product_id": "679700011",
+          "vegan_status": "vegan",
+          "vegan_reason": "manufacturer",
+          "confidence": "certain",
+          "summary": "The product information explicitly describes the item as plant-based salmon-style flakes made with wheat protein and says \u201cSuitable for Vegans.\u201d That whole-product assurance covers generic sourcing, processing, and tray-composition uncertainties; the salmon wording is qualified as style/flavour, not fish content.",
+          "evidence": [
+            "Product information: \u201cSuitable for Vegans\u201d (/product/dietary_information).",
+            "The full product name describes \u201cPlant Based Salmon Style Flakes Made with Wheat Protein\u201d (/product/other_information, refs 10\u201311).",
+            "The seasoning is described as \u201cSweet Chilli Salmon Flavour\u201d (/product/ingredients, refs 5\u20136).",
+            "The supplied package type is \u201cTray\u201d (/product/package_type)."
+          ],
+          "ambiguity_notes": [
+            "The product name and fish/seafood category use salmon wording, while product information identifies a plant-based salmon-style product. The product information\u2019s explicit qualification and vegan assurance resolve this wording for the supplied product."
+          ],
+          "assessment": {
+            "identity": {
+              "status": "established",
+              "evidence_refs": [
+                {
+                  "path": "/product/name",
+                  "quote": "Squeaky Bean Hot Smoked Sweet Chili Salmon Flakes"
+                },
+                {
+                  "path": "/product/other_information",
+                  "quote": "Full Product Name: Ready to Eat Plant Based Salmon Style Flakes Made with Wheat Protein Marinated in a Sweet Chilli Salmon Flavour Seasoning. Storage: Keep refrigerated below 5\u00b0C. Once opened, keep refrigerated and use within 2 days. Do"
+                },
+                {
+                  "path": "/product/other_information",
+                  "quote": "not exceed use by date. For use by date see front of pack. Not suitable for home freezing. Additional Information: Packaged in a Protective Atmosphere."
+                }
+              ]
+            },
+            "composition": {
+              "status": "covered_by_claim",
+              "evidence_refs": [
+                {
+                  "path": "/product/dietary_information",
+                  "quote": "Suitable for Vegans"
+                },
+                {
+                  "path": "/product/ingredients",
+                  "quote": "Water, Textured Wheat Protein (30%) (Wheat Protein, Wheat Flour), Rapeseed Oil, Sweet Chilli Salmon Flavour Seasoning (7%) (Sugar, Natural Flavouring, Garlic Powder, Smoked Dextrose, Maize Starch, Dried Garlic, Chilli, Dried Red Bell"
+                },
+                {
+                  "path": "/product/ingredients",
+                  "quote": "Pepper, Spirit Vinegar Powder, Acidity Regulator: Citric Acid, Cayenne Pepper, Colour: Paprika Extract), Natural Flavouring, Salt, Radish Concentrate, Acidity Regulator: Citric Acid, Carrot Concentrate"
+                }
+              ]
+            },
+            "sourcing": {
+              "status": "covered_by_claim",
+              "evidence_refs": [
+                {
+                  "path": "/product/dietary_information",
+                  "quote": "Suitable for Vegans"
+                }
+              ]
+            },
+            "processing": {
+              "status": "covered_by_claim",
+              "evidence_refs": [
+                {
+                  "path": "/product/dietary_information",
+                  "quote": "Suitable for Vegans"
+                },
+                {
+                  "path": "/product/ingredients",
+                  "quote": "Water, Textured Wheat Protein (30%) (Wheat Protein, Wheat Flour), Rapeseed Oil, Sweet Chilli Salmon Flavour Seasoning (7%) (Sugar, Natural Flavouring, Garlic Powder, Smoked Dextrose, Maize Starch, Dried Garlic, Chilli, Dried Red Bell"
+                }
+              ]
+            },
+            "components": {
+              "status": "covered_by_claim",
+              "evidence_refs": [
+                {
+                  "path": "/product/dietary_information",
+                  "quote": "Suitable for Vegans"
+                },
+                {
+                  "path": "/product/package_type",
+                  "quote": "Tray"
+                }
+              ]
+            },
+            "positive_support": [
+              {
+                "reason": "manufacturer",
+                "evidence_refs": [
+                  {
+                    "path": "/product/dietary_information",
+                    "quote": "Suitable for Vegans"
+                  },
+                  {
+                    "path": "/product/features",
+                    "quote": "Ready to Eat, Source of Omega 3, High Protein, Low Saturated Fat, Suitable for Vegans"
+                  },
+                  {
+                    "path": "/manufacturer_vegan_evidence/0/content",
+                    "quote": "Ready to Eat, Source of Omega 3, High Protein, Low Saturated Fat, Suitable for Vegans"
+                  },
+                  {
+                    "path": "/manufacturer_vegan_evidence/1/content",
+                    "quote": "Suitable for Vegans"
+                  }
+                ]
+              }
+            ],
+            "material_issues": [
+              {
+                "code": "evidence_conflict",
+                "target": "Salmon wording as a possible fish-content declaration",
+                "rule_id": "animal-declaration-context-v1",
+                "evidence_refs": [
+                  {
+                    "path": "/product/name",
+                    "quote": "Squeaky Bean Hot Smoked Sweet Chili Salmon Flakes"
+                  },
+                  {
+                    "path": "/product/ingredients",
+                    "quote": "Water, Textured Wheat Protein (30%) (Wheat Protein, Wheat Flour), Rapeseed Oil, Sweet Chilli Salmon Flavour Seasoning (7%) (Sugar, Natural Flavouring, Garlic Powder, Smoked Dextrose, Maize Starch, Dried Garlic, Chilli, Dried Red Bell"
+                  },
+                  {
+                    "path": "/product/ingredients",
+                    "quote": "Pepper, Spirit Vinegar Powder, Acidity Regulator: Citric Acid, Cayenne Pepper, Colour: Paprika Extract), Natural Flavouring, Salt, Radish Concentrate, Acidity Regulator: Citric Acid, Carrot Concentrate"
+                  },
+                  {
+                    "path": "/categories/0",
+                    "quote": "fresh-chilled-food/fish-seafood/ready-to-eat/fish"
+                  }
+                ],
+                "resolution_refs": [
+                  {
+                    "path": "/product/other_information",
+                    "quote": "Full Product Name: Ready to Eat Plant Based Salmon Style Flakes Made with Wheat Protein Marinated in a Sweet Chilli Salmon Flavour Seasoning. Storage: Keep refrigerated below 5\u00b0C. Once opened, keep refrigerated and use within 2 days. Do"
+                  },
+                  {
+                    "path": "/product/other_information",
+                    "quote": "not exceed use by date. For use by date see front of pack. Not suitable for home freezing. Additional Information: Packaged in a Protective Atmosphere."
+                  },
+                  {
+                    "path": "/product/ingredients",
+                    "quote": "Water, Textured Wheat Protein (30%) (Wheat Protein, Wheat Flour), Rapeseed Oil, Sweet Chilli Salmon Flavour Seasoning (7%) (Sugar, Natural Flavouring, Garlic Powder, Smoked Dextrose, Maize Starch, Dried Garlic, Chilli, Dried Red Bell"
+                  },
+                  {
+                    "path": "/product/ingredients",
+                    "quote": "Pepper, Spirit Vinegar Powder, Acidity Regulator: Citric Acid, Cayenne Pepper, Colour: Paprika Extract), Natural Flavouring, Salt, Radish Concentrate, Acidity Regulator: Citric Acid, Carrot Concentrate"
+                  }
+                ],
+                "blocks_claim": false
+              },
+              {
+                "code": "processing_unresolved",
+                "target": "Sugar in the seasoning; potential refining process",
+                "rule_id": "sugar-refining-v1",
+                "evidence_refs": [
+                  {
+                    "path": "/product/ingredients",
+                    "quote": "Water, Textured Wheat Protein (30%) (Wheat Protein, Wheat Flour), Rapeseed Oil, Sweet Chilli Salmon Flavour Seasoning (7%) (Sugar, Natural Flavouring, Garlic Powder, Smoked Dextrose, Maize Starch, Dried Garlic, Chilli, Dried Red Bell"
+                  }
+                ],
+                "resolution_refs": [
+                  {
+                    "path": "/product/dietary_information",
+                    "quote": "Suitable for Vegans"
+                  },
+                  {
+                    "path": "/manufacturer_vegan_evidence/0/content",
+                    "quote": "Ready to Eat, Source of Omega 3, High Protein, Low Saturated Fat, Suitable for Vegans"
+                  },
+                  {
+                    "path": "/manufacturer_vegan_evidence/1/content",
+                    "quote": "Suitable for Vegans"
+                  }
+                ],
+                "blocks_claim": false
+              },
+              {
+                "code": "source_unresolved",
+                "target": "Natural flavouring in the seasoning",
+                "rule_id": "unspecified-composition-v1",
+                "evidence_refs": [
+                  {
+                    "path": "/product/ingredients",
+                    "quote": "Water, Textured Wheat Protein (30%) (Wheat Protein, Wheat Flour), Rapeseed Oil, Sweet Chilli Salmon Flavour Seasoning (7%) (Sugar, Natural Flavouring, Garlic Powder, Smoked Dextrose, Maize Starch, Dried Garlic, Chilli, Dried Red Bell"
+                  }
+                ],
+                "resolution_refs": [
+                  {
+                    "path": "/product/dietary_information",
+                    "quote": "Suitable for Vegans"
+                  },
+                  {
+                    "path": "/manufacturer_vegan_evidence/0/content",
+                    "quote": "Ready to Eat, Source of Omega 3, High Protein, Low Saturated Fat, Suitable for Vegans"
+                  },
+                  {
+                    "path": "/manufacturer_vegan_evidence/1/content",
+                    "quote": "Suitable for Vegans"
+                  }
+                ],
+                "blocks_claim": false
+              },
+              {
+                "code": "processing_unresolved",
+                "target": "Acidity regulator: citric acid",
+                "rule_id": "unspecified-composition-v1",
+                "evidence_refs": [
+                  {
+                    "path": "/product/ingredients",
+                    "quote": "Pepper, Spirit Vinegar Powder, Acidity Regulator: Citric Acid, Cayenne Pepper, Colour: Paprika Extract), Natural Flavouring, Salt, Radish Concentrate, Acidity Regulator: Citric Acid, Carrot Concentrate"
+                  }
+                ],
+                "resolution_refs": [
+                  {
+                    "path": "/product/dietary_information",
+                    "quote": "Suitable for Vegans"
+                  },
+                  {
+                    "path": "/manufacturer_vegan_evidence/0/content",
+                    "quote": "Ready to Eat, Source of Omega 3, High Protein, Low Saturated Fat, Suitable for Vegans"
+                  },
+                  {
+                    "path": "/manufacturer_vegan_evidence/1/content",
+                    "quote": "Suitable for Vegans"
+                  }
+                ],
+                "blocks_claim": false
+              },
+              {
+                "code": "composition_incomplete",
+                "target": "Supplied tray packaging",
+                "rule_id": "supplied-components-composition-v1",
+                "evidence_refs": [
+                  {
+                    "path": "/product/package_type",
+                    "quote": "Tray"
+                  }
+                ],
+                "resolution_refs": [
+                  {
+                    "path": "/product/dietary_information",
+                    "quote": "Suitable for Vegans"
+                  },
+                  {
+                    "path": "/manufacturer_vegan_evidence/0/content",
+                    "quote": "Ready to Eat, Source of Omega 3, High Protein, Low Saturated Fat, Suitable for Vegans"
+                  },
+                  {
+                    "path": "/manufacturer_vegan_evidence/1/content",
+                    "quote": "Suitable for Vegans"
+                  }
+                ],
+                "blocks_claim": false
+              }
+            ],
+            "source_applicability": []
+          }
+        }
+      ],
+      "vegan_status": "vegan",
+      "vegan_reason": "manufacturer",
+      "positive_block": false,
+      "policy_version": "whole-product-v2",
+      "knowledge_version": "vegan-risk-registry-v51",
+      "materiality_version": "vegan-materiality-v1",
+      "copy_discrepancy_refs": [],
+      "tag_animal_conflict": false,
+      "proposed_status": "vegan",
+      "proposed_reason": "manufacturer",
+      "previous_gate_assessment": {
+        "identity": {
+          "status": "established",
+          "evidence_refs": [
+            {
+              "path": "/product/name",
+              "quote": "Squeaky Bean Hot Smoked Sweet Chili Salmon Flakes"
+            },
+            {
+              "path": "/product/other_information",
+              "quote": "Full Product Name: Ready to Eat Plant Based Salmon Style Flakes Made with Wheat Protein Marinated in a Sweet Chilli Salmon Flavour Seasoning. Storage: Keep refrigerated below 5\u00b0C. Once opened, keep refrigerated and use within 2 days. Do"
+            },
+            {
+              "path": "/product/other_information",
+              "quote": "not exceed use by date. For use by date see front of pack. Not suitable for home freezing. Additional Information: Packaged in a Protective Atmosphere."
+            }
+          ]
+        },
+        "composition": {
+          "status": "covered_by_claim",
+          "evidence_refs": [
+            {
+              "path": "/product/ingredients",
+              "quote": "Water, Textured Wheat Protein (30%) (Wheat Protein, Wheat Flour), Rapeseed Oil, Sweet Chilli Salmon Flavour Seasoning (7%) (Sugar, Natural Flavouring, Garlic Powder, Smoked Dextrose, Maize Starch, Dried Garlic, Chilli, Dried Red Bell"
+            },
+            {
+              "path": "/product/ingredients",
+              "quote": "Pepper, Spirit Vinegar Powder, Acidity Regulator: Citric Acid, Cayenne Pepper, Colour: Paprika Extract), Natural Flavouring, Salt, Radish Concentrate, Acidity Regulator: Citric Acid, Carrot Concentrate"
+            },
+            {
+              "path": "/manufacturer_vegan_evidence/0/content",
+              "quote": "Ready to Eat, Source of Omega 3, High Protein, Low Saturated Fat, Suitable for Vegans"
+            },
+            {
+              "path": "/manufacturer_vegan_evidence/1/content",
+              "quote": "Suitable for Vegans"
+            }
+          ]
+        },
+        "sourcing": {
+          "status": "covered_by_claim",
+          "evidence_refs": [
+            {
+              "path": "/product/ingredients",
+              "quote": "Water, Textured Wheat Protein (30%) (Wheat Protein, Wheat Flour), Rapeseed Oil, Sweet Chilli Salmon Flavour Seasoning (7%) (Sugar, Natural Flavouring, Garlic Powder, Smoked Dextrose, Maize Starch, Dried Garlic, Chilli, Dried Red Bell"
+            },
+            {
+              "path": "/product/ingredients",
+              "quote": "Pepper, Spirit Vinegar Powder, Acidity Regulator: Citric Acid, Cayenne Pepper, Colour: Paprika Extract), Natural Flavouring, Salt, Radish Concentrate, Acidity Regulator: Citric Acid, Carrot Concentrate"
+            },
+            {
+              "path": "/manufacturer_vegan_evidence/0/content",
+              "quote": "Ready to Eat, Source of Omega 3, High Protein, Low Saturated Fat, Suitable for Vegans"
+            },
+            {
+              "path": "/manufacturer_vegan_evidence/1/content",
+              "quote": "Suitable for Vegans"
+            }
+          ]
+        },
+        "processing": {
+          "status": "covered_by_claim",
+          "evidence_refs": [
+            {
+              "path": "/product/ingredients",
+              "quote": "Water, Textured Wheat Protein (30%) (Wheat Protein, Wheat Flour), Rapeseed Oil, Sweet Chilli Salmon Flavour Seasoning (7%) (Sugar, Natural Flavouring, Garlic Powder, Smoked Dextrose, Maize Starch, Dried Garlic, Chilli, Dried Red Bell"
+            },
+            {
+              "path": "/product/ingredients",
+              "quote": "Pepper, Spirit Vinegar Powder, Acidity Regulator: Citric Acid, Cayenne Pepper, Colour: Paprika Extract), Natural Flavouring, Salt, Radish Concentrate, Acidity Regulator: Citric Acid, Carrot Concentrate"
+            },
+            {
+              "path": "/manufacturer_vegan_evidence/0/content",
+              "quote": "Ready to Eat, Source of Omega 3, High Protein, Low Saturated Fat, Suitable for Vegans"
+            },
+            {
+              "path": "/manufacturer_vegan_evidence/1/content",
+              "quote": "Suitable for Vegans"
+            }
+          ]
+        },
+        "components": {
+          "status": "covered_by_claim",
+          "evidence_refs": [
+            {
+              "path": "/product/package_type",
+              "quote": "Tray"
+            },
+            {
+              "path": "/manufacturer_vegan_evidence/0/content",
+              "quote": "Ready to Eat, Source of Omega 3, High Protein, Low Saturated Fat, Suitable for Vegans"
+            },
+            {
+              "path": "/manufacturer_vegan_evidence/1/content",
+              "quote": "Suitable for Vegans"
+            }
+          ]
+        },
+        "positive_support": [
+          {
+            "reason": "manufacturer",
+            "evidence_refs": [
+              {
+                "path": "/manufacturer_vegan_evidence/0/content",
+                "quote": "Ready to Eat, Source of Omega 3, High Protein, Low Saturated Fat, Suitable for Vegans"
+              },
+              {
+                "path": "/manufacturer_vegan_evidence/1/content",
+                "quote": "Suitable for Vegans"
+              },
+              {
+                "path": "/product/dietary_information",
+                "quote": "Suitable for Vegans"
+              },
+              {
+                "path": "/product/features",
+                "quote": "Ready to Eat, Source of Omega 3, High Protein, Low Saturated Fat, Suitable for Vegans"
+              }
+            ]
+          }
+        ],
+        "material_issues": [
+          {
+            "code": "processing_unresolved",
+            "target": "whole_product",
+            "rule_id": "liquid-clarification-v1",
+            "evidence_refs": [
+              {
+                "path": "/product/ingredients",
+                "quote": "Water, Textured Wheat Protein (30%) (Wheat Protein, Wheat Flour), Rapeseed Oil, Sweet Chilli Salmon Flavour Seasoning (7%) (Sugar, Natural Flavouring, Garlic Powder, Smoked Dextrose, Maize Starch, Dried Garlic, Chilli, Dried Red Bell Pepper, Spirit Vinegar Powder, Acidity Regulator: Citric Acid, Cayenne Pepper, Colour: Paprika Extract), Natural Flavouring, Salt, Radish Concentrate, Acidity Regulator: Citric Acid, Carrot Concentrate"
+              }
+            ],
+            "resolution_refs": [],
+            "blocks_claim": false
+          },
+          {
+            "code": "processing_unresolved",
+            "target": "whole_product",
+            "rule_id": "sugar-refining-v1",
+            "evidence_refs": [
+              {
+                "path": "/product/ingredients",
+                "quote": "Water, Textured Wheat Protein (30%) (Wheat Protein, Wheat Flour), Rapeseed Oil, Sweet Chilli Salmon Flavour Seasoning (7%) (Sugar, Natural Flavouring, Garlic Powder, Smoked Dextrose, Maize Starch, Dried Garlic, Chilli, Dried Red Bell Pepper, Spirit Vinegar Powder, Acidity Regulator: Citric Acid, Cayenne Pepper, Colour: Paprika Extract), Natural Flavouring, Salt, Radish Concentrate, Acidity Regulator: Citric Acid, Carrot Concentrate"
+              }
+            ],
+            "resolution_refs": [],
+            "blocks_claim": false
+          },
+          {
+            "code": "source_unresolved",
+            "target": "whole_product",
+            "rule_id": "unspecified-composition-v1",
+            "evidence_refs": [
+              {
+                "path": "/product/ingredients",
+                "quote": "Water, Textured Wheat Protein (30%) (Wheat Protein, Wheat Flour), Rapeseed Oil, Sweet Chilli Salmon Flavour Seasoning (7%) (Sugar, Natural Flavouring, Garlic Powder, Smoked Dextrose, Maize Starch, Dried Garlic, Chilli, Dried Red Bell Pepper, Spirit Vinegar Powder, Acidity Regulator: Citric Acid, Cayenne Pepper, Colour: Paprika Extract), Natural Flavouring, Salt, Radish Concentrate, Acidity Regulator: Citric Acid, Carrot Concentrate"
+              }
+            ],
+            "resolution_refs": [],
+            "blocks_claim": false
+          },
+          {
+            "code": "composition_incomplete",
+            "target": "supplied components",
+            "rule_id": "supplied-components-composition-v1",
+            "evidence_refs": [
+              {
+                "path": "/product/package_type",
+                "quote": "Tray"
+              }
+            ],
+            "resolution_refs": [],
+            "blocks_claim": false
+          },
+          {
+            "code": "source_unresolved",
+            "target": "Sugar and natural flavouring in the listed ingredients",
+            "rule_id": "sugar-refining-v1; unspecified-composition-v1",
+            "evidence_refs": [
+              {
+                "path": "/product/ingredients",
+                "quote": "Water, Textured Wheat Protein (30%) (Wheat Protein, Wheat Flour), Rapeseed Oil, Sweet Chilli Salmon Flavour Seasoning (7%) (Sugar, Natural Flavouring, Garlic Powder, Smoked Dextrose, Maize Starch, Dried Garlic, Chilli, Dried Red Bell"
+              },
+              {
+                "path": "/product/ingredients",
+                "quote": "Pepper, Spirit Vinegar Powder, Acidity Regulator: Citric Acid, Cayenne Pepper, Colour: Paprika Extract), Natural Flavouring, Salt, Radish Concentrate, Acidity Regulator: Citric Acid, Carrot Concentrate"
+              }
+            ],
+            "resolution_refs": [
+              {
+                "path": "/manufacturer_vegan_evidence/0/content",
+                "quote": "Ready to Eat, Source of Omega 3, High Protein, Low Saturated Fat, Suitable for Vegans"
+              },
+              {
+                "path": "/manufacturer_vegan_evidence/1/content",
+                "quote": "Suitable for Vegans"
+              }
+            ],
+            "blocks_claim": false
+          },
+          {
+            "code": "composition_incomplete",
+            "target": "Supplied tray",
+            "rule_id": "supplied-components-composition-v1",
+            "evidence_refs": [
+              {
+                "path": "/product/package_type",
+                "quote": "Tray"
+              }
+            ],
+            "resolution_refs": [
+              {
+                "path": "/manufacturer_vegan_evidence/0/content",
+                "quote": "Ready to Eat, Source of Omega 3, High Protein, Low Saturated Fat, Suitable for Vegans"
+              },
+              {
+                "path": "/manufacturer_vegan_evidence/1/content",
+                "quote": "Suitable for Vegans"
+              }
+            ],
+            "blocks_claim": false
+          },
+          {
+            "code": "evidence_conflict",
+            "target": "Salmon wording as a possible fish-content declaration",
+            "rule_id": "animal-declaration-context-v1",
+            "evidence_refs": [
+              {
+                "path": "/product/name",
+                "quote": "Squeaky Bean Hot Smoked Sweet Chili Salmon Flakes"
+              },
+              {
+                "path": "/product/ingredients",
+                "quote": "Water, Textured Wheat Protein (30%) (Wheat Protein, Wheat Flour), Rapeseed Oil, Sweet Chilli Salmon Flavour Seasoning (7%) (Sugar, Natural Flavouring, Garlic Powder, Smoked Dextrose, Maize Starch, Dried Garlic, Chilli, Dried Red Bell"
+              },
+              {
+                "path": "/product/ingredients",
+                "quote": "Pepper, Spirit Vinegar Powder, Acidity Regulator: Citric Acid, Cayenne Pepper, Colour: Paprika Extract), Natural Flavouring, Salt, Radish Concentrate, Acidity Regulator: Citric Acid, Carrot Concentrate"
+              },
+              {
+                "path": "/categories/0",
+                "quote": "fresh-chilled-food/fish-seafood/ready-to-eat/fish"
+              }
+            ],
+            "resolution_refs": [
+              {
+                "path": "/product/other_information",
+                "quote": "Full Product Name: Ready to Eat Plant Based Salmon Style Flakes Made with Wheat Protein Marinated in a Sweet Chilli Salmon Flavour Seasoning. Storage: Keep refrigerated below 5\u00b0C. Once opened, keep refrigerated and use within 2 days. Do"
+              },
+              {
+                "path": "/product/other_information",
+                "quote": "not exceed use by date. For use by date see front of pack. Not suitable for home freezing. Additional Information: Packaged in a Protective Atmosphere."
+              },
+              {
+                "path": "/product/ingredients",
+                "quote": "Water, Textured Wheat Protein (30%) (Wheat Protein, Wheat Flour), Rapeseed Oil, Sweet Chilli Salmon Flavour Seasoning (7%) (Sugar, Natural Flavouring, Garlic Powder, Smoked Dextrose, Maize Starch, Dried Garlic, Chilli, Dried Red Bell"
+              },
+              {
+                "path": "/product/ingredients",
+                "quote": "Pepper, Spirit Vinegar Powder, Acidity Regulator: Citric Acid, Cayenne Pepper, Colour: Paprika Extract), Natural Flavouring, Salt, Radish Concentrate, Acidity Regulator: Citric Acid, Carrot Concentrate"
+              }
+            ],
+            "blocks_claim": true
+          },
+          {
+            "code": "processing_unresolved",
+            "target": "Sugar in the seasoning; potential refining process",
+            "rule_id": "sugar-refining-v1",
+            "evidence_refs": [
+              {
+                "path": "/product/ingredients",
+                "quote": "Water, Textured Wheat Protein (30%) (Wheat Protein, Wheat Flour), Rapeseed Oil, Sweet Chilli Salmon Flavour Seasoning (7%) (Sugar, Natural Flavouring, Garlic Powder, Smoked Dextrose, Maize Starch, Dried Garlic, Chilli, Dried Red Bell"
+              }
+            ],
+            "resolution_refs": [
+              {
+                "path": "/product/dietary_information",
+                "quote": "Suitable for Vegans"
+              },
+              {
+                "path": "/manufacturer_vegan_evidence/0/content",
+                "quote": "Ready to Eat, Source of Omega 3, High Protein, Low Saturated Fat, Suitable for Vegans"
+              },
+              {
+                "path": "/manufacturer_vegan_evidence/1/content",
+                "quote": "Suitable for Vegans"
+              }
+            ],
+            "blocks_claim": false
+          },
+          {
+            "code": "source_unresolved",
+            "target": "Natural flavouring in the seasoning",
+            "rule_id": "unspecified-composition-v1",
+            "evidence_refs": [
+              {
+                "path": "/product/ingredients",
+                "quote": "Water, Textured Wheat Protein (30%) (Wheat Protein, Wheat Flour), Rapeseed Oil, Sweet Chilli Salmon Flavour Seasoning (7%) (Sugar, Natural Flavouring, Garlic Powder, Smoked Dextrose, Maize Starch, Dried Garlic, Chilli, Dried Red Bell"
+              }
+            ],
+            "resolution_refs": [
+              {
+                "path": "/product/dietary_information",
+                "quote": "Suitable for Vegans"
+              },
+              {
+                "path": "/manufacturer_vegan_evidence/0/content",
+                "quote": "Ready to Eat, Source of Omega 3, High Protein, Low Saturated Fat, Suitable for Vegans"
+              },
+              {
+                "path": "/manufacturer_vegan_evidence/1/content",
+                "quote": "Suitable for Vegans"
+              }
+            ],
+            "blocks_claim": false
+          },
+          {
+            "code": "processing_unresolved",
+            "target": "Acidity regulator: citric acid",
+            "rule_id": "unspecified-composition-v1",
+            "evidence_refs": [
+              {
+                "path": "/product/ingredients",
+                "quote": "Pepper, Spirit Vinegar Powder, Acidity Regulator: Citric Acid, Cayenne Pepper, Colour: Paprika Extract), Natural Flavouring, Salt, Radish Concentrate, Acidity Regulator: Citric Acid, Carrot Concentrate"
+              }
+            ],
+            "resolution_refs": [
+              {
+                "path": "/product/dietary_information",
+                "quote": "Suitable for Vegans"
+              },
+              {
+                "path": "/manufacturer_vegan_evidence/0/content",
+                "quote": "Ready to Eat, Source of Omega 3, High Protein, Low Saturated Fat, Suitable for Vegans"
+              },
+              {
+                "path": "/manufacturer_vegan_evidence/1/content",
+                "quote": "Suitable for Vegans"
+              }
+            ],
+            "blocks_claim": false
+          },
+          {
+            "code": "composition_incomplete",
+            "target": "Supplied tray packaging",
+            "rule_id": "supplied-components-composition-v1",
+            "evidence_refs": [
+              {
+                "path": "/product/package_type",
+                "quote": "Tray"
+              }
+            ],
+            "resolution_refs": [
+              {
+                "path": "/product/dietary_information",
+                "quote": "Suitable for Vegans"
+              },
+              {
+                "path": "/manufacturer_vegan_evidence/0/content",
+                "quote": "Ready to Eat, Source of Omega 3, High Protein, Low Saturated Fat, Suitable for Vegans"
+              },
+              {
+                "path": "/manufacturer_vegan_evidence/1/content",
+                "quote": "Suitable for Vegans"
+              }
+            ],
+            "blocks_claim": false
+          },
+          {
+            "code": "evidence_conflict",
+            "target": "whole_product",
+            "rule_id": "animal-declaration-context-v1",
+            "evidence_refs": [
+              {
+                "path": "/product/other_information",
+                "quote": "Full Product Name: Ready to Eat Plant Based Salmon Style Flakes Made with Wheat Protein Marinated in a Sweet Chilli Salmon Flavour Seasoning. Storage: Keep refrigerated below 5\u00b0C. Once opened, keep refrigerated and use within 2 days. Do not exceed use by date. For use by date see front of pack. Not suitable for home freezing. Additional Information: Packaged in a Protective Atmosphere."
+              }
+            ],
+            "resolution_refs": [],
+            "blocks_claim": true
+          }
+        ],
+        "source_applicability": []
+      },
+      "source_qualified_flavour_replay": true
+    },
+    "source": "codex",
+    "model": "gpt-6-luna",
+    "reasoning_effort": "high",
+    "prompt_version": "ocado-vegan-whole-product-json-v38",
+    "context_hash": "6a2444e86aed698e9fa3a05838398039db388b422776ad20b3abb00c80eb0e23",
+    "raw_response": "{\"decisions\":[{\"product_id\":\"679700011\",\"vegan_status\":\"vegan\",\"vegan_reason\":\"manufacturer\",\"confidence\":\"certain\",\"summary\":\"The product information describes plant-based salmon-style flakes and explicitly says \u201cSuitable for Vegans.\u201d The salmon wording is identified as style/flavour, not animal content. The whole-product assurance covers the listed ingredients and supplied tray for this SKU.\",\"evidence\":[\"/manufacturer_vegan_evidence/0/content: \u201cSuitable for Vegans\u201d\",\"/product/other_information: \u201cPlant Based Salmon Style Flakes Made with Wheat Protein\u201d\",\"/product/ingredients: \u201cSweet Chilli Salmon Flavour Seasoning\u201d\",\"/product/package_type: \u201cTray\u201d\"],\"ambiguity_notes\":[\"The fish category and salmon wording are consistent with a plant-based salmon-style product; the product information explicitly describes it as plant based and identifies the salmon wording as a flavour seasoning.\",\"Ingredients include sugar and natural flavouring, and the product is sold in a tray. The applicable whole-product vegan assurance resolves these generic sourcing, processing and component uncertainties.\"],\"assessment\":{\"identity\":{\"status\":\"established\",\"evidence_refs\":[{\"reference_id\":1},{\"reference_id\":10},{\"reference_id\":11}]},\"composition\":{\"status\":\"covered_by_claim\",\"evidence_refs\":[{\"reference_id\":5},{\"reference_id\":6},{\"reference_id\":20},{\"reference_id\":22}]},\"sourcing\":{\"status\":\"covered_by_claim\",\"evidence_refs\":[{\"reference_id\":5},{\"reference_id\":6},{\"reference_id\":20},{\"reference_id\":22}]},\"processing\":{\"status\":\"covered_by_claim\",\"evidence_refs\":[{\"reference_id\":5},{\"reference_id\":6},{\"reference_id\":20},{\"reference_id\":22}]},\"components\":{\"status\":\"covered_by_claim\",\"evidence_refs\":[{\"reference_id\":14},{\"reference_id\":20},{\"reference_id\":22}]},\"positive_support\":[{\"reason\":\"manufacturer\",\"evidence_refs\":[{\"reference_id\":20},{\"reference_id\":22}]}],\"material_issues\":[{\"code\":\"source_unresolved\",\"target\":\"Sugar and natural flavouring in the listed ingredients\",\"rule_id\":\"sugar-refining-v1; unspecified-composition-v1\",\"evidence_refs\":[{\"reference_id\":5},{\"reference_id\":6}],\"resolution_refs\":[{\"reference_id\":20},{\"reference_id\":22}],\"blocks_claim\":false},{\"code\":\"composition_incomplete\",\"target\":\"Supplied tray\",\"rule_id\":\"supplied-components-composition-v1\",\"evidence_refs\":[{\"reference_id\":14}],\"resolution_refs\":[{\"reference_id\":20},{\"reference_id\":22}],\"blocks_claim\":false} ] ,\"source_applicability\":[]}}]}\n--- pass ---\n{\"decisions\":[{\"product_id\":\"679700011\",\"vegan_status\":\"vegan\",\"vegan_reason\":\"manufacturer\",\"confidence\":\"certain\",\"summary\":\"The product information explicitly describes the item as plant-based salmon-style flakes made with wheat protein and says \u201cSuitable for Vegans.\u201d That whole-product assurance covers generic sourcing, processing, and tray-composition uncertainties; the salmon wording is qualified as style/flavour, not fish content.\",\"evidence\":[\"Product information: \u201cSuitable for Vegans\u201d (/product/dietary_information).\",\"The full product name describes \u201cPlant Based Salmon Style Flakes Made with Wheat Protein\u201d (/product/other_information, refs 10\u201311).\",\"The seasoning is described as \u201cSweet Chilli Salmon Flavour\u201d (/product/ingredients, refs 5\u20136).\",\"The supplied package type is \u201cTray\u201d (/product/package_type).\"],\"ambiguity_notes\":[\"The product name and fish/seafood category use salmon wording, while product information identifies a plant-based salmon-style product. The product information\u2019s explicit qualification and vegan assurance resolve this wording for the supplied product.\"],\"assessment\":{\"identity\":{\"status\":\"established\",\"evidence_refs\":[{\"reference_id\":1},{\"reference_id\":10},{\"reference_id\":11}]},\"composition\":{\"status\":\"covered_by_claim\",\"evidence_refs\":[{\"reference_id\":8},{\"reference_id\":5},{\"reference_id\":6}]},\"sourcing\":{\"status\":\"covered_by_claim\",\"evidence_refs\":[{\"reference_id\":8}]},\"processing\":{\"status\":\"covered_by_claim\",\"evidence_refs\":[{\"reference_id\":8},{\"reference_id\":5}]},\"components\":{\"status\":\"covered_by_claim\",\"evidence_refs\":[{\"reference_id\":8},{\"reference_id\":14}]},\"positive_support\":[{\"reason\":\"manufacturer\",\"evidence_refs\":[{\"reference_id\":8},{\"reference_id\":9},{\"reference_id\":20},{\"reference_id\":22}]}],\"material_issues\":[{\"code\":\"evidence_conflict\",\"target\":\"Salmon wording as a possible fish-content declaration\",\"rule_id\":\"animal-declaration-context-v1\",\"evidence_refs\":[{\"reference_id\":1},{\"reference_id\":5},{\"reference_id\":6},{\"reference_id\":18}],\"resolution_refs\":[{\"reference_id\":10},{\"reference_id\":11},{\"reference_id\":5},{\"reference_id\":6}],\"blocks_claim\":false},{\"code\":\"processing_unresolved\",\"target\":\"Sugar in the seasoning; potential refining process\",\"rule_id\":\"sugar-refining-v1\",\"evidence_refs\":[{\"reference_id\":5}],\"resolution_refs\":[{\"reference_id\":8},{\"reference_id\":20},{\"reference_id\":22}],\"blocks_claim\":false},{\"code\":\"source_unresolved\",\"target\":\"Natural flavouring in the seasoning\",\"rule_id\":\"unspecified-composition-v1\",\"evidence_refs\":[{\"reference_id\":5}],\"resolution_refs\":[{\"reference_id\":8},{\"reference_id\":20},{\"reference_id\":22}],\"blocks_claim\":false},{\"code\":\"processing_unresolved\",\"target\":\"Acidity regulator: citric acid\",\"rule_id\":\"unspecified-composition-v1\",\"evidence_refs\":[{\"reference_id\":6}],\"resolution_refs\":[{\"reference_id\":8},{\"reference_id\":20},{\"reference_id\":22}],\"blocks_claim\":false},{\"code\":\"composition_incomplete\",\"target\":\"Supplied tray packaging\",\"rule_id\":\"supplied-components-composition-v1\",\"evidence_refs\":[{\"reference_id\":14}],\"resolution_refs\":[{\"reference_id\":8},{\"reference_id\":20},{\"reference_id\":22}],\"blocks_claim\":false}],\"source_applicability\":[]} }]}",
+    "parsed_response_json": "[\"{\\\"decisions\\\": [{\\\"ambiguity_notes\\\": [\\\"The fish category and salmon wording are consistent with a plant-based salmon-style product; the product information explicitly describes it as plant based and identifies the salmon wording as a flavour seasoning.\\\", \\\"Ingredients include sugar and natural flavouring, and the product is sold in a tray. The applicable whole-product vegan assurance resolves these generic sourcing, processing and component uncertainties.\\\"], \\\"assessment\\\": {\\\"components\\\": {\\\"evidence_refs\\\": [{\\\"path\\\": \\\"/product/package_type\\\", \\\"quote\\\": \\\"Tray\\\"}, {\\\"path\\\": \\\"/manufacturer_vegan_evidence/0/content\\\", \\\"quote\\\": \\\"Ready to Eat, Source of Omega 3, High Protein, Low Saturated Fat, Suitable for Vegans\\\"}, {\\\"path\\\": \\\"/manufacturer_vegan_evidence/1/content\\\", \\\"quote\\\": \\\"Suitable for Vegans\\\"}], \\\"status\\\": \\\"covered_by_claim\\\"}, \\\"composition\\\": {\\\"evidence_refs\\\": [{\\\"path\\\": \\\"/product/ingredients\\\", \\\"quote\\\": \\\"Water, Textured Wheat Protein (30%) (Wheat Protein, Wheat Flour), Rapeseed Oil, Sweet Chilli Salmon Flavour Seasoning (7%) (Sugar, Natural Flavouring, Garlic Powder, Smoked Dextrose, Maize Starch, Dried Garlic, Chilli, Dried Red Bell\\\"}, {\\\"path\\\": \\\"/product/ingredients\\\", \\\"quote\\\": \\\"Pepper, Spirit Vinegar Powder, Acidity Regulator: Citric Acid, Cayenne Pepper, Colour: Paprika Extract), Natural Flavouring, Salt, Radish Concentrate, Acidity Regulator: Citric Acid, Carrot Concentrate\\\"}, {\\\"path\\\": \\\"/manufacturer_vegan_evidence/0/content\\\", \\\"quote\\\": \\\"Ready to Eat, Source of Omega 3, High Protein, Low Saturated Fat, Suitable for Vegans\\\"}, {\\\"path\\\": \\\"/manufacturer_vegan_evidence/1/content\\\", \\\"quote\\\": \\\"Suitable for Vegans\\\"}], \\\"status\\\": \\\"covered_by_claim\\\"}, \\\"identity\\\": {\\\"evidence_refs\\\": [{\\\"path\\\": \\\"/product/name\\\", \\\"quote\\\": \\\"Squeaky Bean Hot Smoked Sweet Chili Salmon Flakes\\\"}, {\\\"path\\\": \\\"/product/other_information\\\", \\\"quote\\\": \\\"Full Product Name: Ready to Eat Plant Based Salmon Style Flakes Made with Wheat Protein Marinated in a Sweet Chilli Salmon Flavour Seasoning. Storage: Keep refrigerated below 5\\\\u00b0C. Once opened, keep refrigerated and use within 2 days. Do\\\"}, {\\\"path\\\": \\\"/product/other_information\\\", \\\"quote\\\": \\\"not exceed use by date. For use by date see front of pack. Not suitable for home freezing. Additional Information: Packaged in a Protective Atmosphere.\\\"}], \\\"status\\\": \\\"established\\\"}, \\\"material_issues\\\": [{\\\"blocks_claim\\\": false, \\\"code\\\": \\\"source_unresolved\\\", \\\"evidence_refs\\\": [{\\\"path\\\": \\\"/product/ingredients\\\", \\\"quote\\\": \\\"Water, Textured Wheat Protein (30%) (Wheat Protein, Wheat Flour), Rapeseed Oil, Sweet Chilli Salmon Flavour Seasoning (7%) (Sugar, Natural Flavouring, Garlic Powder, Smoked Dextrose, Maize Starch, Dried Garlic, Chilli, Dried Red Bell\\\"}, {\\\"path\\\": \\\"/product/ingredients\\\", \\\"quote\\\": \\\"Pepper, Spirit Vinegar Powder, Acidity Regulator: Citric Acid, Cayenne Pepper, Colour: Paprika Extract), Natural Flavouring, Salt, Radish Concentrate, Acidity Regulator: Citric Acid, Carrot Concentrate\\\"}], \\\"resolution_refs\\\": [{\\\"path\\\": \\\"/manufacturer_vegan_evidence/0/content\\\", \\\"quote\\\": \\\"Ready to Eat, Source of Omega 3, High Protein, Low Saturated Fat, Suitable for Vegans\\\"}, {\\\"path\\\": \\\"/manufacturer_vegan_evidence/1/content\\\", \\\"quote\\\": \\\"Suitable for Vegans\\\"}], \\\"rule_id\\\": \\\"sugar-refining-v1; unspecified-composition-v1\\\", \\\"target\\\": \\\"Sugar and natural flavouring in the listed ingredients\\\"}, {\\\"blocks_claim\\\": false, \\\"code\\\": \\\"composition_incomplete\\\", \\\"evidence_refs\\\": [{\\\"path\\\": \\\"/product/package_type\\\", \\\"quote\\\": \\\"Tray\\\"}], \\\"resolution_refs\\\": [{\\\"path\\\": \\\"/manufacturer_vegan_evidence/0/content\\\", \\\"quote\\\": \\\"Ready to Eat, Source of Omega 3, High Protein, Low Saturated Fat, Suitable for Vegans\\\"}, {\\\"path\\\": \\\"/manufacturer_vegan_evidence/1/content\\\", \\\"quote\\\": \\\"Suitable for Vegans\\\"}], \\\"rule_id\\\": \\\"supplied-components-composition-v1\\\", \\\"target\\\": \\\"Supplied tray\\\"}], \\\"positive_support\\\": [{\\\"evidence_refs\\\": [{\\\"path\\\": \\\"/manufacturer_vegan_evidence/0/content\\\", \\\"quote\\\": \\\"Ready to Eat, Source of Omega 3, High Protein, Low Saturated Fat, Suitable for Vegans\\\"}, {\\\"path\\\": \\\"/manufacturer_vegan_evidence/1/content\\\", \\\"quote\\\": \\\"Suitable for Vegans\\\"}], \\\"reason\\\": \\\"manufacturer\\\"}], \\\"processing\\\": {\\\"evidence_refs\\\": [{\\\"path\\\": \\\"/product/ingredients\\\", \\\"quote\\\": \\\"Water, Textured Wheat Protein (30%) (Wheat Protein, Wheat Flour), Rapeseed Oil, Sweet Chilli Salmon Flavour Seasoning (7%) (Sugar, Natural Flavouring, Garlic Powder, Smoked Dextrose, Maize Starch, Dried Garlic, Chilli, Dried Red Bell\\\"}, {\\\"path\\\": \\\"/product/ingredients\\\", \\\"quote\\\": \\\"Pepper, Spirit Vinegar Powder, Acidity Regulator: Citric Acid, Cayenne Pepper, Colour: Paprika Extract), Natural Flavouring, Salt, Radish Concentrate, Acidity Regulator: Citric Acid, Carrot Concentrate\\\"}, {\\\"path\\\": \\\"/manufacturer_vegan_evidence/0/content\\\", \\\"quote\\\": \\\"Ready to Eat, Source of Omega 3, High Protein, Low Saturated Fat, Suitable for Vegans\\\"}, {\\\"path\\\": \\\"/manufacturer_vegan_evidence/1/content\\\", \\\"quote\\\": \\\"Suitable for Vegans\\\"}], \\\"status\\\": \\\"covered_by_claim\\\"}, \\\"source_applicability\\\": [], \\\"sourcing\\\": {\\\"evidence_refs\\\": [{\\\"path\\\": \\\"/product/ingredients\\\", \\\"quote\\\": \\\"Water, Textured Wheat Protein (30%) (Wheat Protein, Wheat Flour), Rapeseed Oil, Sweet Chilli Salmon Flavour Seasoning (7%) (Sugar, Natural Flavouring, Garlic Powder, Smoked Dextrose, Maize Starch, Dried Garlic, Chilli, Dried Red Bell\\\"}, {\\\"path\\\": \\\"/product/ingredients\\\", \\\"quote\\\": \\\"Pepper, Spirit Vinegar Powder, Acidity Regulator: Citric Acid, Cayenne Pepper, Colour: Paprika Extract), Natural Flavouring, Salt, Radish Concentrate, Acidity Regulator: Citric Acid, Carrot Concentrate\\\"}, {\\\"path\\\": \\\"/manufacturer_vegan_evidence/0/content\\\", \\\"quote\\\": \\\"Ready to Eat, Source of Omega 3, High Protein, Low Saturated Fat, Suitable for Vegans\\\"}, {\\\"path\\\": \\\"/manufacturer_vegan_evidence/1/content\\\", \\\"quote\\\": \\\"Suitable for Vegans\\\"}], \\\"status\\\": \\\"covered_by_claim\\\"}}, \\\"confidence\\\": \\\"certain\\\", \\\"evidence\\\": [\\\"/manufacturer_vegan_evidence/0/content: \\\\u201cSuitable for Vegans\\\\u201d\\\", \\\"/product/other_information: \\\\u201cPlant Based Salmon Style Flakes Made with Wheat Protein\\\\u201d\\\", \\\"/product/ingredients: \\\\u201cSweet Chilli Salmon Flavour Seasoning\\\\u201d\\\", \\\"/product/package_type: \\\\u201cTray\\\\u201d\\\"], \\\"product_id\\\": \\\"679700011\\\", \\\"summary\\\": \\\"The product information describes plant-based salmon-style flakes and explicitly says \\\\u201cSuitable for Vegans.\\\\u201d The salmon wording is identified as style/flavour, not animal content. The whole-product assurance covers the listed ingredients and supplied tray for this SKU.\\\", \\\"vegan_reason\\\": \\\"manufacturer\\\", \\\"vegan_status\\\": \\\"vegan\\\"}]}\", \"{\\\"decisions\\\": [{\\\"ambiguity_notes\\\": [\\\"The product name and fish/seafood category use salmon wording, while product information identifies a plant-based salmon-style product. The product information\\\\u2019s explicit qualification and vegan assurance resolve this wording for the supplied product.\\\"], \\\"assessment\\\": {\\\"components\\\": {\\\"evidence_refs\\\": [{\\\"path\\\": \\\"/product/dietary_information\\\", \\\"quote\\\": \\\"Suitable for Vegans\\\"}, {\\\"path\\\": \\\"/product/package_type\\\", \\\"quote\\\": \\\"Tray\\\"}], \\\"status\\\": \\\"covered_by_claim\\\"}, \\\"composition\\\": {\\\"evidence_refs\\\": [{\\\"path\\\": \\\"/product/dietary_information\\\", \\\"quote\\\": \\\"Suitable for Vegans\\\"}, {\\\"path\\\": \\\"/product/ingredients\\\", \\\"quote\\\": \\\"Water, Textured Wheat Protein (30%) (Wheat Protein, Wheat Flour), Rapeseed Oil, Sweet Chilli Salmon Flavour Seasoning (7%) (Sugar, Natural Flavouring, Garlic Powder, Smoked Dextrose, Maize Starch, Dried Garlic, Chilli, Dried Red Bell\\\"}, {\\\"path\\\": \\\"/product/ingredients\\\", \\\"quote\\\": \\\"Pepper, Spirit Vinegar Powder, Acidity Regulator: Citric Acid, Cayenne Pepper, Colour: Paprika Extract), Natural Flavouring, Salt, Radish Concentrate, Acidity Regulator: Citric Acid, Carrot Concentrate\\\"}], \\\"status\\\": \\\"covered_by_claim\\\"}, \\\"identity\\\": {\\\"evidence_refs\\\": [{\\\"path\\\": \\\"/product/name\\\", \\\"quote\\\": \\\"Squeaky Bean Hot Smoked Sweet Chili Salmon Flakes\\\"}, {\\\"path\\\": \\\"/product/other_information\\\", \\\"quote\\\": \\\"Full Product Name: Ready to Eat Plant Based Salmon Style Flakes Made with Wheat Protein Marinated in a Sweet Chilli Salmon Flavour Seasoning. Storage: Keep refrigerated below 5\\\\u00b0C. Once opened, keep refrigerated and use within 2 days. Do\\\"}, {\\\"path\\\": \\\"/product/other_information\\\", \\\"quote\\\": \\\"not exceed use by date. For use by date see front of pack. Not suitable for home freezing. Additional Information: Packaged in a Protective Atmosphere.\\\"}], \\\"status\\\": \\\"established\\\"}, \\\"material_issues\\\": [{\\\"blocks_claim\\\": false, \\\"code\\\": \\\"evidence_conflict\\\", \\\"evidence_refs\\\": [{\\\"path\\\": \\\"/product/name\\\", \\\"quote\\\": \\\"Squeaky Bean Hot Smoked Sweet Chili Salmon Flakes\\\"}, {\\\"path\\\": \\\"/product/ingredients\\\", \\\"quote\\\": \\\"Water, Textured Wheat Protein (30%) (Wheat Protein, Wheat Flour), Rapeseed Oil, Sweet Chilli Salmon Flavour Seasoning (7%) (Sugar, Natural Flavouring, Garlic Powder, Smoked Dextrose, Maize Starch, Dried Garlic, Chilli, Dried Red Bell\\\"}, {\\\"path\\\": \\\"/product/ingredients\\\", \\\"quote\\\": \\\"Pepper, Spirit Vinegar Powder, Acidity Regulator: Citric Acid, Cayenne Pepper, Colour: Paprika Extract), Natural Flavouring, Salt, Radish Concentrate, Acidity Regulator: Citric Acid, Carrot Concentrate\\\"}, {\\\"path\\\": \\\"/categories/0\\\", \\\"quote\\\": \\\"fresh-chilled-food/fish-seafood/ready-to-eat/fish\\\"}], \\\"resolution_refs\\\": [{\\\"path\\\": \\\"/product/other_information\\\", \\\"quote\\\": \\\"Full Product Name: Ready to Eat Plant Based Salmon Style Flakes Made with Wheat Protein Marinated in a Sweet Chilli Salmon Flavour Seasoning. Storage: Keep refrigerated below 5\\\\u00b0C. Once opened, keep refrigerated and use within 2 days. Do\\\"}, {\\\"path\\\": \\\"/product/other_information\\\", \\\"quote\\\": \\\"not exceed use by date. For use by date see front of pack. Not suitable for home freezing. Additional Information: Packaged in a Protective Atmosphere.\\\"}, {\\\"path\\\": \\\"/product/ingredients\\\", \\\"quote\\\": \\\"Water, Textured Wheat Protein (30%) (Wheat Protein, Wheat Flour), Rapeseed Oil, Sweet Chilli Salmon Flavour Seasoning (7%) (Sugar, Natural Flavouring, Garlic Powder, Smoked Dextrose, Maize Starch, Dried Garlic, Chilli, Dried Red Bell\\\"}, {\\\"path\\\": \\\"/product/ingredients\\\", \\\"quote\\\": \\\"Pepper, Spirit Vinegar Powder, Acidity Regulator: Citric Acid, Cayenne Pepper, Colour: Paprika Extract), Natural Flavouring, Salt, Radish Concentrate, Acidity Regulator: Citric Acid, Carrot Concentrate\\\"}], \\\"rule_id\\\": \\\"animal-declaration-context-v1\\\", \\\"target\\\": \\\"Salmon wording as a possible fish-content declaration\\\"}, {\\\"blocks_claim\\\": false, \\\"code\\\": \\\"processing_unresolved\\\", \\\"evidence_refs\\\": [{\\\"path\\\": \\\"/product/ingredients\\\", \\\"quote\\\": \\\"Water, Textured Wheat Protein (30%) (Wheat Protein, Wheat Flour), Rapeseed Oil, Sweet Chilli Salmon Flavour Seasoning (7%) (Sugar, Natural Flavouring, Garlic Powder, Smoked Dextrose, Maize Starch, Dried Garlic, Chilli, Dried Red Bell\\\"}], \\\"resolution_refs\\\": [{\\\"path\\\": \\\"/product/dietary_information\\\", \\\"quote\\\": \\\"Suitable for Vegans\\\"}, {\\\"path\\\": \\\"/manufacturer_vegan_evidence/0/content\\\", \\\"quote\\\": \\\"Ready to Eat, Source of Omega 3, High Protein, Low Saturated Fat, Suitable for Vegans\\\"}, {\\\"path\\\": \\\"/manufacturer_vegan_evidence/1/content\\\", \\\"quote\\\": \\\"Suitable for Vegans\\\"}], \\\"rule_id\\\": \\\"sugar-refining-v1\\\", \\\"target\\\": \\\"Sugar in the seasoning; potential refining process\\\"}, {\\\"blocks_claim\\\": false, \\\"code\\\": \\\"source_unresolved\\\", \\\"evidence_refs\\\": [{\\\"path\\\": \\\"/product/ingredients\\\", \\\"quote\\\": \\\"Water, Textured Wheat Protein (30%) (Wheat Protein, Wheat Flour), Rapeseed Oil, Sweet Chilli Salmon Flavour Seasoning (7%) (Sugar, Natural Flavouring, Garlic Powder, Smoked Dextrose, Maize Starch, Dried Garlic, Chilli, Dried Red Bell\\\"}], \\\"resolution_refs\\\": [{\\\"path\\\": \\\"/product/dietary_information\\\", \\\"quote\\\": \\\"Suitable for Vegans\\\"}, {\\\"path\\\": \\\"/manufacturer_vegan_evidence/0/content\\\", \\\"quote\\\": \\\"Ready to Eat, Source of Omega 3, High Protein, Low Saturated Fat, Suitable for Vegans\\\"}, {\\\"path\\\": \\\"/manufacturer_vegan_evidence/1/content\\\", \\\"quote\\\": \\\"Suitable for Vegans\\\"}], \\\"rule_id\\\": \\\"unspecified-composition-v1\\\", \\\"target\\\": \\\"Natural flavouring in the seasoning\\\"}, {\\\"blocks_claim\\\": false, \\\"code\\\": \\\"processing_unresolved\\\", \\\"evidence_refs\\\": [{\\\"path\\\": \\\"/product/ingredients\\\", \\\"quote\\\": \\\"Pepper, Spirit Vinegar Powder, Acidity Regulator: Citric Acid, Cayenne Pepper, Colour: Paprika Extract), Natural Flavouring, Salt, Radish Concentrate, Acidity Regulator: Citric Acid, Carrot Concentrate\\\"}], \\\"resolution_refs\\\": [{\\\"path\\\": \\\"/product/dietary_information\\\", \\\"quote\\\": \\\"Suitable for Vegans\\\"}, {\\\"path\\\": \\\"/manufacturer_vegan_evidence/0/content\\\", \\\"quote\\\": \\\"Ready to Eat, Source of Omega 3, High Protein, Low Saturated Fat, Suitable for Vegans\\\"}, {\\\"path\\\": \\\"/manufacturer_vegan_evidence/1/content\\\", \\\"quote\\\": \\\"Suitable for Vegans\\\"}], \\\"rule_id\\\": \\\"unspecified-composition-v1\\\", \\\"target\\\": \\\"Acidity regulator: citric acid\\\"}, {\\\"blocks_claim\\\": false, \\\"code\\\": \\\"composition_incomplete\\\", \\\"evidence_refs\\\": [{\\\"path\\\": \\\"/product/package_type\\\", \\\"quote\\\": \\\"Tray\\\"}], \\\"resolution_refs\\\": [{\\\"path\\\": \\\"/product/dietary_information\\\", \\\"quote\\\": \\\"Suitable for Vegans\\\"}, {\\\"path\\\": \\\"/manufacturer_vegan_evidence/0/content\\\", \\\"quote\\\": \\\"Ready to Eat, Source of Omega 3, High Protein, Low Saturated Fat, Suitable for Vegans\\\"}, {\\\"path\\\": \\\"/manufacturer_vegan_evidence/1/content\\\", \\\"quote\\\": \\\"Suitable for Vegans\\\"}], \\\"rule_id\\\": \\\"supplied-components-composition-v1\\\", \\\"target\\\": \\\"Supplied tray packaging\\\"}], \\\"positive_support\\\": [{\\\"evidence_refs\\\": [{\\\"path\\\": \\\"/product/dietary_information\\\", \\\"quote\\\": \\\"Suitable for Vegans\\\"}, {\\\"path\\\": \\\"/product/features\\\", \\\"quote\\\": \\\"Ready to Eat, Source of Omega 3, High Protein, Low Saturated Fat, Suitable for Vegans\\\"}, {\\\"path\\\": \\\"/manufacturer_vegan_evidence/0/content\\\", \\\"quote\\\": \\\"Ready to Eat, Source of Omega 3, High Protein, Low Saturated Fat, Suitable for Vegans\\\"}, {\\\"path\\\": \\\"/manufacturer_vegan_evidence/1/content\\\", \\\"quote\\\": \\\"Suitable for Vegans\\\"}], \\\"reason\\\": \\\"manufacturer\\\"}], \\\"processing\\\": {\\\"evidence_refs\\\": [{\\\"path\\\": \\\"/product/dietary_information\\\", \\\"quote\\\": \\\"Suitable for Vegans\\\"}, {\\\"path\\\": \\\"/product/ingredients\\\", \\\"quote\\\": \\\"Water, Textured Wheat Protein (30%) (Wheat Protein, Wheat Flour), Rapeseed Oil, Sweet Chilli Salmon Flavour Seasoning (7%) (Sugar, Natural Flavouring, Garlic Powder, Smoked Dextrose, Maize Starch, Dried Garlic, Chilli, Dried Red Bell\\\"}], \\\"status\\\": \\\"covered_by_claim\\\"}, \\\"source_applicability\\\": [], \\\"sourcing\\\": {\\\"evidence_refs\\\": [{\\\"path\\\": \\\"/product/dietary_information\\\", \\\"quote\\\": \\\"Suitable for Vegans\\\"}], \\\"status\\\": \\\"covered_by_claim\\\"}}, \\\"confidence\\\": \\\"certain\\\", \\\"evidence\\\": [\\\"Product information: \\\\u201cSuitable for Vegans\\\\u201d (/product/dietary_information).\\\", \\\"The full product name describes \\\\u201cPlant Based Salmon Style Flakes Made with Wheat Protein\\\\u201d (/product/other_information, refs 10\\\\u201311).\\\", \\\"The seasoning is described as \\\\u201cSweet Chilli Salmon Flavour\\\\u201d (/product/ingredients, refs 5\\\\u20136).\\\", \\\"The supplied package type is \\\\u201cTray\\\\u201d (/product/package_type).\\\"], \\\"product_id\\\": \\\"679700011\\\", \\\"summary\\\": \\\"The product information explicitly describes the item as plant-based salmon-style flakes made with wheat protein and says \\\\u201cSuitable for Vegans.\\\\u201d That whole-product assurance covers generic sourcing, processing, and tray-composition uncertainties; the salmon wording is qualified as style/flavour, not fish content.\\\", \\\"vegan_reason\\\": \\\"manufacturer\\\", \\\"vegan_status\\\": \\\"vegan\\\"}]}\"]",
+    "validation_error": null,
+    "exit_status": 0,
+    "model_calls": [
+      {
+        "call_id": "264680d1-249e-42b4-9644-a91ccf8191dc",
+        "stage": "primary",
+        "model": "gpt-6-luna",
+        "reasoning_effort": "high",
+        "product_ids": [
+          "679700011"
+        ],
+        "prompt_version": "ocado-vegan-whole-product-json-v38.literal-reference-catalogue-v5",
+        "context_hash": "004504e1f22de98f17dfe319c3377476b13c116c7a37a971caf6ed232d4b62e2",
+        "isolation_version": "codex-evidence-only-v3",
+        "service_tier": "standard",
+        "started_at_epoch": 1792160978.2981157,
+        "usage": {
+          "cache_write_input_tokens": 0,
+          "reasoning_output_tokens": 476,
+          "output_tokens": 1035,
+          "input_tokens": 17894,
+          "cached_input_tokens": 0
+        },
+        "events": [
+          {
+            "type": "thread.started",
+            "thread_id": "01a1451e-5d98-70d1-8720-1591aee28120"
+          },
+          {
+            "type": "item.completed",
+            "item": {
+              "id": "item_0",
+              "type": "error",
+              "message": "Code Mode is unavailable because code-mode host is disabled. Code mode will fail closed; enable `features.code_mode_host` and install `codex-code-mode-host`."
+            }
+          },
+          {
+            "type": "turn.started"
+          },
+          {
+            "type": "item.completed",
+            "item": {
+              "id": "item_1",
+              "type": "agent_message",
+              "text": "{\"decisions\":[{\"product_id\":\"679700011\",\"vegan_status\":\"vegan\",\"vegan_reason\":\"manufacturer\",\"confidence\":\"certain\",\"summary\":\"The product information describes plant-based salmon-style flakes and explicitly says \u201cSuitable for Vegans.\u201d The salmon wording is identified as style/flavour, not animal content. The whole-product assurance covers the listed ingredients and supplied tray for this SKU.\",\"evidence\":[\"/manufacturer_vegan_evidence/0/content: \u201cSuitable for Vegans\u201d\",\"/product/other_information: \u201cPlant Based Salmon Style Flakes Made with Wheat Protein\u201d\",\"/product/ingredients: \u201cSweet Chilli Salmon Flavour Seasoning\u201d\",\"/product/package_type: \u201cTray\u201d\"],\"ambiguity_notes\":[\"The fish category and salmon wording are consistent with a plant-based salmon-style product; the product information explicitly describes it as plant based and identifies the salmon wording as a flavour seasoning.\",\"Ingredients include sugar and natural flavouring, and the product is sold in a tray. The applicable whole-product vegan assurance resolves these generic sourcing, processing and component uncertainties.\"],\"assessment\":{\"identity\":{\"status\":\"established\",\"evidence_refs\":[{\"reference_id\":1},{\"reference_id\":10},{\"reference_id\":11}]},\"composition\":{\"status\":\"covered_by_claim\",\"evidence_refs\":[{\"reference_id\":5},{\"reference_id\":6},{\"reference_id\":20},{\"reference_id\":22}]},\"sourcing\":{\"status\":\"covered_by_claim\",\"evidence_refs\":[{\"reference_id\":5},{\"reference_id\":6},{\"reference_id\":20},{\"reference_id\":22}]},\"processing\":{\"status\":\"covered_by_claim\",\"evidence_refs\":[{\"reference_id\":5},{\"reference_id\":6},{\"reference_id\":20},{\"reference_id\":22}]},\"components\":{\"status\":\"covered_by_claim\",\"evidence_refs\":[{\"reference_id\":14},{\"reference_id\":20},{\"reference_id\":22}]},\"positive_support\":[{\"reason\":\"manufacturer\",\"evidence_refs\":[{\"reference_id\":20},{\"reference_id\":22}]}],\"material_issues\":[{\"code\":\"source_unresolved\",\"target\":\"Sugar and natural flavouring in the listed ingredients\",\"rule_id\":\"sugar-refining-v1; unspecified-composition-v1\",\"evidence_refs\":[{\"reference_id\":5},{\"reference_id\":6}],\"resolution_refs\":[{\"reference_id\":20},{\"reference_id\":22}],\"blocks_claim\":false},{\"code\":\"composition_incomplete\",\"target\":\"Supplied tray\",\"rule_id\":\"supplied-components-composition-v1\",\"evidence_refs\":[{\"reference_id\":14}],\"resolution_refs\":[{\"reference_id\":20},{\"reference_id\":22}],\"blocks_claim\":false} ] ,\"source_applicability\":[]}}]}"
+            }
+          },
+          {
+            "type": "turn.completed",
+            "usage": {
+              "input_tokens": 17894,
+              "cached_input_tokens": 0,
+              "cache_write_input_tokens": 0,
+              "output_tokens": 1035,
+              "reasoning_output_tokens": 476
+            }
+          }
+        ],
+        "exit_status": 0,
+        "raw_response": "{\"decisions\":[{\"product_id\":\"679700011\",\"vegan_status\":\"vegan\",\"vegan_reason\":\"manufacturer\",\"confidence\":\"certain\",\"summary\":\"The product information describes plant-based salmon-style flakes and explicitly says \u201cSuitable for Vegans.\u201d The salmon wording is identified as style/flavour, not animal content. The whole-product assurance covers the listed ingredients and supplied tray for this SKU.\",\"evidence\":[\"/manufacturer_vegan_evidence/0/content: \u201cSuitable for Vegans\u201d\",\"/product/other_information: \u201cPlant Based Salmon Style Flakes Made with Wheat Protein\u201d\",\"/product/ingredients: \u201cSweet Chilli Salmon Flavour Seasoning\u201d\",\"/product/package_type: \u201cTray\u201d\"],\"ambiguity_notes\":[\"The fish category and salmon wording are consistent with a plant-based salmon-style product; the product information explicitly describes it as plant based and identifies the salmon wording as a flavour seasoning.\",\"Ingredients include sugar and natural flavouring, and the product is sold in a tray. The applicable whole-product vegan assurance resolves these generic sourcing, processing and component uncertainties.\"],\"assessment\":{\"identity\":{\"status\":\"established\",\"evidence_refs\":[{\"reference_id\":1},{\"reference_id\":10},{\"reference_id\":11}]},\"composition\":{\"status\":\"covered_by_claim\",\"evidence_refs\":[{\"reference_id\":5},{\"reference_id\":6},{\"reference_id\":20},{\"reference_id\":22}]},\"sourcing\":{\"status\":\"covered_by_claim\",\"evidence_refs\":[{\"reference_id\":5},{\"reference_id\":6},{\"reference_id\":20},{\"reference_id\":22}]},\"processing\":{\"status\":\"covered_by_claim\",\"evidence_refs\":[{\"reference_id\":5},{\"reference_id\":6},{\"reference_id\":20},{\"reference_id\":22}]},\"components\":{\"status\":\"covered_by_claim\",\"evidence_refs\":[{\"reference_id\":14},{\"reference_id\":20},{\"reference_id\":22}]},\"positive_support\":[{\"reason\":\"manufacturer\",\"evidence_refs\":[{\"reference_id\":20},{\"reference_id\":22}]}],\"material_issues\":[{\"code\":\"source_unresolved\",\"target\":\"Sugar and natural flavouring in the listed ingredients\",\"rule_id\":\"sugar-refining-v1; unspecified-composition-v1\",\"evidence_refs\":[{\"reference_id\":5},{\"reference_id\":6}],\"resolution_refs\":[{\"reference_id\":20},{\"reference_id\":22}],\"blocks_claim\":false},{\"code\":\"composition_incomplete\",\"target\":\"Supplied tray\",\"rule_id\":\"supplied-components-composition-v1\",\"evidence_refs\":[{\"reference_id\":14}],\"resolution_refs\":[{\"reference_id\":20},{\"reference_id\":22}],\"blocks_claim\":false} ] ,\"source_applicability\":[]}}]}",
+        "error": null,
+        "invocation_started": true,
+        "quota_before": {
+          "at_epoch": 1792160980.0835102,
+          "auth_type": "chatgpt",
+          "ordinary_usage_allowed": true,
+          "buckets": {
+            "codex": {
+              "primary": {
+                "usedPercent": 21,
+                "windowDurationMins": 10080,
+                "resetsAt": 1792649592
+              },
+              "secondary": null,
+              "credits": {
+                "hasCredits": false,
+                "unlimited": false,
+                "balance": "0"
+              },
+              "rateLimitReachedType": null,
+              "spendControlReached": false
+            }
+          }
+        },
+        "invocation": [
+          "codex",
+          "exec",
+          "--ephemeral",
+          "--json",
+          "--ignore-user-config",
+          "--ignore-rules",
+          "--strict-config",
+          "--skip-git-repo-check",
+          "--output-schema",
+          "/tmp/ocado-evidence-only-876brio5/schema.json",
+          "--output-last-message",
+          "/tmp/ocado-evidence-only-876brio5/response.json",
+          "-C",
+          "/tmp/ocado-evidence-only-876brio5",
+          "-s",
+          "read-only",
+          "-m",
+          "gpt-6-luna",
+          "-c",
+          "model_reasoning_effort=\"high\"",
+          "-c",
+          "web_search=\"disabled\"",
+          "-c",
+          "project_doc_max_bytes=0",
+          "-c",
+          "forced_login_method=\"chatgpt\"",
+          "-c",
+          "suppress_unstable_features_warning=true",
+          "-c",
+          "features.shell_tool=false",
+          "-c",
+          "features.unified_exec=false",
+          "-c",
+          "features.apps=false",
+          "-c",
+          "features.multi_agent=false",
+          "-c",
+          "agents.enabled=false",
+          "-c",
+          "features.browser_use=false",
+          "-c",
+          "features.browser_use_external=false",
+          "-c",
+          "features.code_mode_host=false",
+          "-c",
+          "features.hooks=false",
+          "-c",
+          "features.remote_plugin=false",
+          "-c",
+          "features.skill_search=false",
+          "-c",
+          "features.skip_host_skill_discovery=true",
+          "-c",
+          "features.view_image=false",
+          "-c",
+          "features.memories=false",
+          "-c",
+          "features.plugins=false",
+          "-c",
+          "features.in_app_browser=false",
+          "-c",
+          "features.image_generation=false",
+          "-c",
+          "features.goals=false",
+          "-c",
+          "features.sleep_tool=false",
+          "-c",
+          "features.shell_snapshot=false",
+          "-c",
+          "features.skill_mcp_dependency_install=false",
+          "-c",
+          "features.fast_mode=false",
+          "-"
+        ],
+        "parsed_response": {
+          "decisions": [
+            {
+              "product_id": "679700011",
+              "vegan_status": "vegan",
+              "vegan_reason": "manufacturer",
+              "confidence": "certain",
+              "summary": "The product information describes plant-based salmon-style flakes and explicitly says \u201cSuitable for Vegans.\u201d The salmon wording is identified as style/flavour, not animal content. The whole-product assurance covers the listed ingredients and supplied tray for this SKU.",
+              "evidence": [
+                "/manufacturer_vegan_evidence/0/content: \u201cSuitable for Vegans\u201d",
+                "/product/other_information: \u201cPlant Based Salmon Style Flakes Made with Wheat Protein\u201d",
+                "/product/ingredients: \u201cSweet Chilli Salmon Flavour Seasoning\u201d",
+                "/product/package_type: \u201cTray\u201d"
+              ],
+              "ambiguity_notes": [
+                "The fish category and salmon wording are consistent with a plant-based salmon-style product; the product information explicitly describes it as plant based and identifies the salmon wording as a flavour seasoning.",
+                "Ingredients include sugar and natural flavouring, and the product is sold in a tray. The applicable whole-product vegan assurance resolves these generic sourcing, processing and component uncertainties."
+              ],
+              "assessment": {
+                "identity": {
+                  "status": "established",
+                  "evidence_refs": [
+                    {
+                      "reference_id": 1
+                    },
+                    {
+                      "reference_id": 10
+                    },
+                    {
+                      "reference_id": 11
+                    }
+                  ]
+                },
+                "composition": {
+                  "status": "covered_by_claim",
+                  "evidence_refs": [
+                    {
+                      "reference_id": 5
+                    },
+                    {
+                      "reference_id": 6
+                    },
+                    {
+                      "reference_id": 20
+                    },
+                    {
+                      "reference_id": 22
+                    }
+                  ]
+                },
+                "sourcing": {
+                  "status": "covered_by_claim",
+                  "evidence_refs": [
+                    {
+                      "reference_id": 5
+                    },
+                    {
+                      "reference_id": 6
+                    },
+                    {
+                      "reference_id": 20
+                    },
+                    {
+                      "reference_id": 22
+                    }
+                  ]
+                },
+                "processing": {
+                  "status": "covered_by_claim",
+                  "evidence_refs": [
+                    {
+                      "reference_id": 5
+                    },
+                    {
+                      "reference_id": 6
+                    },
+                    {
+                      "reference_id": 20
+                    },
+                    {
+                      "reference_id": 22
+                    }
+                  ]
+                },
+                "components": {
+                  "status": "covered_by_claim",
+                  "evidence_refs": [
+                    {
+                      "reference_id": 14
+                    },
+                    {
+                      "reference_id": 20
+                    },
+                    {
+                      "reference_id": 22
+                    }
+                  ]
+                },
+                "positive_support": [
+                  {
+                    "reason": "manufacturer",
+                    "evidence_refs": [
+                      {
+                        "reference_id": 20
+                      },
+                      {
+                        "reference_id": 22
+                      }
+                    ]
+                  }
+                ],
+                "material_issues": [
+                  {
+                    "code": "source_unresolved",
+                    "target": "Sugar and natural flavouring in the listed ingredients",
+                    "rule_id": "sugar-refining-v1; unspecified-composition-v1",
+                    "evidence_refs": [
+                      {
+                        "reference_id": 5
+                      },
+                      {
+                        "reference_id": 6
+                      }
+                    ],
+                    "resolution_refs": [
+                      {
+                        "reference_id": 20
+                      },
+                      {
+                        "reference_id": 22
+                      }
+                    ],
+                    "blocks_claim": false
+                  },
+                  {
+                    "code": "composition_incomplete",
+                    "target": "Supplied tray",
+                    "rule_id": "supplied-components-composition-v1",
+                    "evidence_refs": [
+                      {
+                        "reference_id": 14
+                      }
+                    ],
+                    "resolution_refs": [
+                      {
+                        "reference_id": 20
+                      },
+                      {
+                        "reference_id": 22
+                      }
+                    ],
+                    "blocks_claim": false
+                  }
+                ],
+                "source_applicability": []
+              }
+            }
+          ]
+        },
+        "validated_response": {
+          "decisions": [
+            {
+              "product_id": "679700011",
+              "vegan_status": "vegan",
+              "vegan_reason": "manufacturer",
+              "confidence": "certain",
+              "summary": "The product information describes plant-based salmon-style flakes and explicitly says \u201cSuitable for Vegans.\u201d The salmon wording is identified as style/flavour, not animal content. The whole-product assurance covers the listed ingredients and supplied tray for this SKU.",
+              "evidence": [
+                "/manufacturer_vegan_evidence/0/content: \u201cSuitable for Vegans\u201d",
+                "/product/other_information: \u201cPlant Based Salmon Style Flakes Made with Wheat Protein\u201d",
+                "/product/ingredients: \u201cSweet Chilli Salmon Flavour Seasoning\u201d",
+                "/product/package_type: \u201cTray\u201d"
+              ],
+              "ambiguity_notes": [
+                "The fish category and salmon wording are consistent with a plant-based salmon-style product; the product information explicitly describes it as plant based and identifies the salmon wording as a flavour seasoning.",
+                "Ingredients include sugar and natural flavouring, and the product is sold in a tray. The applicable whole-product vegan assurance resolves these generic sourcing, processing and component uncertainties."
+              ],
+              "assessment": {
+                "identity": {
+                  "status": "established",
+                  "evidence_refs": [
+                    {
+                      "path": "/product/name",
+                      "quote": "Squeaky Bean Hot Smoked Sweet Chili Salmon Flakes"
+                    },
+                    {
+                      "path": "/product/other_information",
+                      "quote": "Full Product Name: Ready to Eat Plant Based Salmon Style Flakes Made with Wheat Protein Marinated in a Sweet Chilli Salmon Flavour Seasoning. Storage: Keep refrigerated below 5\u00b0C. Once opened, keep refrigerated and use within 2 days. Do"
+                    },
+                    {
+                      "path": "/product/other_information",
+                      "quote": "not exceed use by date. For use by date see front of pack. Not suitable for home freezing. Additional Information: Packaged in a Protective Atmosphere."
+                    }
+                  ]
+                },
+                "composition": {
+                  "status": "covered_by_claim",
+                  "evidence_refs": [
+                    {
+                      "path": "/product/ingredients",
+                      "quote": "Water, Textured Wheat Protein (30%) (Wheat Protein, Wheat Flour), Rapeseed Oil, Sweet Chilli Salmon Flavour Seasoning (7%) (Sugar, Natural Flavouring, Garlic Powder, Smoked Dextrose, Maize Starch, Dried Garlic, Chilli, Dried Red Bell"
+                    },
+                    {
+                      "path": "/product/ingredients",
+                      "quote": "Pepper, Spirit Vinegar Powder, Acidity Regulator: Citric Acid, Cayenne Pepper, Colour: Paprika Extract), Natural Flavouring, Salt, Radish Concentrate, Acidity Regulator: Citric Acid, Carrot Concentrate"
+                    },
+                    {
+                      "path": "/manufacturer_vegan_evidence/0/content",
+                      "quote": "Ready to Eat, Source of Omega 3, High Protein, Low Saturated Fat, Suitable for Vegans"
+                    },
+                    {
+                      "path": "/manufacturer_vegan_evidence/1/content",
+                      "quote": "Suitable for Vegans"
+                    }
+                  ]
+                },
+                "sourcing": {
+                  "status": "covered_by_claim",
+                  "evidence_refs": [
+                    {
+                      "path": "/product/ingredients",
+                      "quote": "Water, Textured Wheat Protein (30%) (Wheat Protein, Wheat Flour), Rapeseed Oil, Sweet Chilli Salmon Flavour Seasoning (7%) (Sugar, Natural Flavouring, Garlic Powder, Smoked Dextrose, Maize Starch, Dried Garlic, Chilli, Dried Red Bell"
+                    },
+                    {
+                      "path": "/product/ingredients",
+                      "quote": "Pepper, Spirit Vinegar Powder, Acidity Regulator: Citric Acid, Cayenne Pepper, Colour: Paprika Extract), Natural Flavouring, Salt, Radish Concentrate, Acidity Regulator: Citric Acid, Carrot Concentrate"
+                    },
+                    {
+                      "path": "/manufacturer_vegan_evidence/0/content",
+                      "quote": "Ready to Eat, Source of Omega 3, High Protein, Low Saturated Fat, Suitable for Vegans"
+                    },
+                    {
+                      "path": "/manufacturer_vegan_evidence/1/content",
+                      "quote": "Suitable for Vegans"
+                    }
+                  ]
+                },
+                "processing": {
+                  "status": "covered_by_claim",
+                  "evidence_refs": [
+                    {
+                      "path": "/product/ingredients",
+                      "quote": "Water, Textured Wheat Protein (30%) (Wheat Protein, Wheat Flour), Rapeseed Oil, Sweet Chilli Salmon Flavour Seasoning (7%) (Sugar, Natural Flavouring, Garlic Powder, Smoked Dextrose, Maize Starch, Dried Garlic, Chilli, Dried Red Bell"
+                    },
+                    {
+                      "path": "/product/ingredients",
+                      "quote": "Pepper, Spirit Vinegar Powder, Acidity Regulator: Citric Acid, Cayenne Pepper, Colour: Paprika Extract), Natural Flavouring, Salt, Radish Concentrate, Acidity Regulator: Citric Acid, Carrot Concentrate"
+                    },
+                    {
+                      "path": "/manufacturer_vegan_evidence/0/content",
+                      "quote": "Ready to Eat, Source of Omega 3, High Protein, Low Saturated Fat, Suitable for Vegans"
+                    },
+                    {
+                      "path": "/manufacturer_vegan_evidence/1/content",
+                      "quote": "Suitable for Vegans"
+                    }
+                  ]
+                },
+                "components": {
+                  "status": "covered_by_claim",
+                  "evidence_refs": [
+                    {
+                      "path": "/product/package_type",
+                      "quote": "Tray"
+                    },
+                    {
+                      "path": "/manufacturer_vegan_evidence/0/content",
+                      "quote": "Ready to Eat, Source of Omega 3, High Protein, Low Saturated Fat, Suitable for Vegans"
+                    },
+                    {
+                      "path": "/manufacturer_vegan_evidence/1/content",
+                      "quote": "Suitable for Vegans"
+                    }
+                  ]
+                },
+                "positive_support": [
+                  {
+                    "reason": "manufacturer",
+                    "evidence_refs": [
+                      {
+                        "path": "/manufacturer_vegan_evidence/0/content",
+                        "quote": "Ready to Eat, Source of Omega 3, High Protein, Low Saturated Fat, Suitable for Vegans"
+                      },
+                      {
+                        "path": "/manufacturer_vegan_evidence/1/content",
+                        "quote": "Suitable for Vegans"
+                      }
+                    ]
+                  }
+                ],
+                "material_issues": [
+                  {
+                    "code": "source_unresolved",
+                    "target": "Sugar and natural flavouring in the listed ingredients",
+                    "rule_id": "sugar-refining-v1; unspecified-composition-v1",
+                    "evidence_refs": [
+                      {
+                        "path": "/product/ingredients",
+                        "quote": "Water, Textured Wheat Protein (30%) (Wheat Protein, Wheat Flour), Rapeseed Oil, Sweet Chilli Salmon Flavour Seasoning (7%) (Sugar, Natural Flavouring, Garlic Powder, Smoked Dextrose, Maize Starch, Dried Garlic, Chilli, Dried Red Bell"
+                      },
+                      {
+                        "path": "/product/ingredients",
+                        "quote": "Pepper, Spirit Vinegar Powder, Acidity Regulator: Citric Acid, Cayenne Pepper, Colour: Paprika Extract), Natural Flavouring, Salt, Radish Concentrate, Acidity Regulator: Citric Acid, Carrot Concentrate"
+                      }
+                    ],
+                    "resolution_refs": [
+                      {
+                        "path": "/manufacturer_vegan_evidence/0/content",
+                        "quote": "Ready to Eat, Source of Omega 3, High Protein, Low Saturated Fat, Suitable for Vegans"
+                      },
+                      {
+                        "path": "/manufacturer_vegan_evidence/1/content",
+                        "quote": "Suitable for Vegans"
+                      }
+                    ],
+                    "blocks_claim": false
+                  },
+                  {
+                    "code": "composition_incomplete",
+                    "target": "Supplied tray",
+                    "rule_id": "supplied-components-composition-v1",
+                    "evidence_refs": [
+                      {
+                        "path": "/product/package_type",
+                        "quote": "Tray"
+                      }
+                    ],
+                    "resolution_refs": [
+                      {
+                        "path": "/manufacturer_vegan_evidence/0/content",
+                        "quote": "Ready to Eat, Source of Omega 3, High Protein, Low Saturated Fat, Suitable for Vegans"
+                      },
+                      {
+                        "path": "/manufacturer_vegan_evidence/1/content",
+                        "quote": "Suitable for Vegans"
+                      }
+                    ],
+                    "blocks_claim": false
+                  }
+                ],
+                "source_applicability": []
+              }
+            }
+          ]
+        },
+        "reference_canonicalizations": [
+          {
+            "product_id": "679700011",
+            "reference_id": 1,
+            "path": "/product/name",
+            "quote": "Squeaky Bean Hot Smoked Sweet Chili Salmon Flakes",
+            "operation": "literal-reference-catalogue-v5"
+          },
+          {
+            "product_id": "679700011",
+            "reference_id": 10,
+            "path": "/product/other_information",
+            "quote": "Full Product Name: Ready to Eat Plant Based Salmon Style Flakes Made with Wheat Protein Marinated in a Sweet Chilli Salmon Flavour Seasoning. Storage: Keep refrigerated below 5\u00b0C. Once opened, keep refrigerated and use within 2 days. Do",
+            "operation": "literal-reference-catalogue-v5"
+          },
+          {
+            "product_id": "679700011",
+            "reference_id": 11,
+            "path": "/product/other_information",
+            "quote": "not exceed use by date. For use by date see front of pack. Not suitable for home freezing. Additional Information: Packaged in a Protective Atmosphere.",
+            "operation": "literal-reference-catalogue-v5"
+          },
+          {
+            "product_id": "679700011",
+            "reference_id": 5,
+            "path": "/product/ingredients",
+            "quote": "Water, Textured Wheat Protein (30%) (Wheat Protein, Wheat Flour), Rapeseed Oil, Sweet Chilli Salmon Flavour Seasoning (7%) (Sugar, Natural Flavouring, Garlic Powder, Smoked Dextrose, Maize Starch, Dried Garlic, Chilli, Dried Red Bell",
+            "operation": "literal-reference-catalogue-v5"
+          },
+          {
+            "product_id": "679700011",
+            "reference_id": 6,
+            "path": "/product/ingredients",
+            "quote": "Pepper, Spirit Vinegar Powder, Acidity Regulator: Citric Acid, Cayenne Pepper, Colour: Paprika Extract), Natural Flavouring, Salt, Radish Concentrate, Acidity Regulator: Citric Acid, Carrot Concentrate",
+            "operation": "literal-reference-catalogue-v5"
+          },
+          {
+            "product_id": "679700011",
+            "reference_id": 20,
+            "path": "/manufacturer_vegan_evidence/0/content",
+            "quote": "Ready to Eat, Source of Omega 3, High Protein, Low Saturated Fat, Suitable for Vegans",
+            "operation": "literal-reference-catalogue-v5"
+          },
+          {
+            "product_id": "679700011",
+            "reference_id": 22,
+            "path": "/manufacturer_vegan_evidence/1/content",
+            "quote": "Suitable for Vegans",
+            "operation": "literal-reference-catalogue-v5"
+          },
+          {
+            "product_id": "679700011",
+            "reference_id": 5,
+            "path": "/product/ingredients",
+            "quote": "Water, Textured Wheat Protein (30%) (Wheat Protein, Wheat Flour), Rapeseed Oil, Sweet Chilli Salmon Flavour Seasoning (7%) (Sugar, Natural Flavouring, Garlic Powder, Smoked Dextrose, Maize Starch, Dried Garlic, Chilli, Dried Red Bell",
+            "operation": "literal-reference-catalogue-v5"
+          },
+          {
+            "product_id": "679700011",
+            "reference_id": 6,
+            "path": "/product/ingredients",
+            "quote": "Pepper, Spirit Vinegar Powder, Acidity Regulator: Citric Acid, Cayenne Pepper, Colour: Paprika Extract), Natural Flavouring, Salt, Radish Concentrate, Acidity Regulator: Citric Acid, Carrot Concentrate",
+            "operation": "literal-reference-catalogue-v5"
+          },
+          {
+            "product_id": "679700011",
+            "reference_id": 20,
+            "path": "/manufacturer_vegan_evidence/0/content",
+            "quote": "Ready to Eat, Source of Omega 3, High Protein, Low Saturated Fat, Suitable for Vegans",
+            "operation": "literal-reference-catalogue-v5"
+          },
+          {
+            "product_id": "679700011",
+            "reference_id": 22,
+            "path": "/manufacturer_vegan_evidence/1/content",
+            "quote": "Suitable for Vegans",
+            "operation": "literal-reference-catalogue-v5"
+          },
+          {
+            "product_id": "679700011",
+            "reference_id": 5,
+            "path": "/product/ingredients",
+            "quote": "Water, Textured Wheat Protein (30%) (Wheat Protein, Wheat Flour), Rapeseed Oil, Sweet Chilli Salmon Flavour Seasoning (7%) (Sugar, Natural Flavouring, Garlic Powder, Smoked Dextrose, Maize Starch, Dried Garlic, Chilli, Dried Red Bell",
+            "operation": "literal-reference-catalogue-v5"
+          },
+          {
+            "product_id": "679700011",
+            "reference_id": 6,
+            "path": "/product/ingredients",
+            "quote": "Pepper, Spirit Vinegar Powder, Acidity Regulator: Citric Acid, Cayenne Pepper, Colour: Paprika Extract), Natural Flavouring, Salt, Radish Concentrate, Acidity Regulator: Citric Acid, Carrot Concentrate",
+            "operation": "literal-reference-catalogue-v5"
+          },
+          {
+            "product_id": "679700011",
+            "reference_id": 20,
+            "path": "/manufacturer_vegan_evidence/0/content",
+            "quote": "Ready to Eat, Source of Omega 3, High Protein, Low Saturated Fat, Suitable for Vegans",
+            "operation": "literal-reference-catalogue-v5"
+          },
+          {
+            "product_id": "679700011",
+            "reference_id": 22,
+            "path": "/manufacturer_vegan_evidence/1/content",
+            "quote": "Suitable for Vegans",
+            "operation": "literal-reference-catalogue-v5"
+          },
+          {
+            "product_id": "679700011",
+            "reference_id": 14,
+            "path": "/product/package_type",
+            "quote": "Tray",
+            "operation": "literal-reference-catalogue-v5"
+          },
+          {
+            "product_id": "679700011",
+            "reference_id": 20,
+            "path": "/manufacturer_vegan_evidence/0/content",
+            "quote": "Ready to Eat, Source of Omega 3, High Protein, Low Saturated Fat, Suitable for Vegans",
+            "operation": "literal-reference-catalogue-v5"
+          },
+          {
+            "product_id": "679700011",
+            "reference_id": 22,
+            "path": "/manufacturer_vegan_evidence/1/content",
+            "quote": "Suitable for Vegans",
+            "operation": "literal-reference-catalogue-v5"
+          },
+          {
+            "product_id": "679700011",
+            "reference_id": 20,
+            "path": "/manufacturer_vegan_evidence/0/content",
+            "quote": "Ready to Eat, Source of Omega 3, High Protein, Low Saturated Fat, Suitable for Vegans",
+            "operation": "literal-reference-catalogue-v5"
+          },
+          {
+            "product_id": "679700011",
+            "reference_id": 22,
+            "path": "/manufacturer_vegan_evidence/1/content",
+            "quote": "Suitable for Vegans",
+            "operation": "literal-reference-catalogue-v5"
+          },
+          {
+            "product_id": "679700011",
+            "reference_id": 5,
+            "path": "/product/ingredients",
+            "quote": "Water, Textured Wheat Protein (30%) (Wheat Protein, Wheat Flour), Rapeseed Oil, Sweet Chilli Salmon Flavour Seasoning (7%) (Sugar, Natural Flavouring, Garlic Powder, Smoked Dextrose, Maize Starch, Dried Garlic, Chilli, Dried Red Bell",
+            "operation": "literal-reference-catalogue-v5"
+          },
+          {
+            "product_id": "679700011",
+            "reference_id": 6,
+            "path": "/product/ingredients",
+            "quote": "Pepper, Spirit Vinegar Powder, Acidity Regulator: Citric Acid, Cayenne Pepper, Colour: Paprika Extract), Natural Flavouring, Salt, Radish Concentrate, Acidity Regulator: Citric Acid, Carrot Concentrate",
+            "operation": "literal-reference-catalogue-v5"
+          },
+          {
+            "product_id": "679700011",
+            "reference_id": 20,
+            "path": "/manufacturer_vegan_evidence/0/content",
+            "quote": "Ready to Eat, Source of Omega 3, High Protein, Low Saturated Fat, Suitable for Vegans",
+            "operation": "literal-reference-catalogue-v5"
+          },
+          {
+            "product_id": "679700011",
+            "reference_id": 22,
+            "path": "/manufacturer_vegan_evidence/1/content",
+            "quote": "Suitable for Vegans",
+            "operation": "literal-reference-catalogue-v5"
+          },
+          {
+            "product_id": "679700011",
+            "reference_id": 14,
+            "path": "/product/package_type",
+            "quote": "Tray",
+            "operation": "literal-reference-catalogue-v5"
+          },
+          {
+            "product_id": "679700011",
+            "reference_id": 20,
+            "path": "/manufacturer_vegan_evidence/0/content",
+            "quote": "Ready to Eat, Source of Omega 3, High Protein, Low Saturated Fat, Suitable for Vegans",
+            "operation": "literal-reference-catalogue-v5"
+          },
+          {
+            "product_id": "679700011",
+            "reference_id": 22,
+            "path": "/manufacturer_vegan_evidence/1/content",
+            "quote": "Suitable for Vegans",
+            "operation": "literal-reference-catalogue-v5"
+          }
+        ],
+        "duration_seconds": 14.5788
+      },
+      {
+        "call_id": "0591d54c-c15e-4c7c-add0-6ea87648c7bf",
+        "stage": "primary",
+        "model": "gpt-6-luna",
+        "reasoning_effort": "high",
+        "product_ids": [
+          "679700011"
+        ],
+        "prompt_version": "ocado-vegan-whole-product-json-v38.literal-reference-catalogue-v5",
+        "context_hash": "004504e1f22de98f17dfe319c3377476b13c116c7a37a971caf6ed232d4b62e2",
+        "isolation_version": "codex-evidence-only-v3",
+        "service_tier": "standard",
+        "started_at_epoch": 1792160992.8807986,
+        "usage": {
+          "cache_write_input_tokens": 0,
+          "reasoning_output_tokens": 580,
+          "output_tokens": 1326,
+          "input_tokens": 17896,
+          "cached_input_tokens": 10752
+        },
+        "events": [
+          {
+            "type": "thread.started",
+            "thread_id": "01a1451e-9367-7c22-b1b4-ad2afc725886"
+          },
+          {
+            "type": "item.completed",
+            "item": {
+              "id": "item_0",
+              "type": "error",
+              "message": "Code Mode is unavailable because code-mode host is disabled. Code mode will fail closed; enable `features.code_mode_host` and install `codex-code-mode-host`."
+            }
+          },
+          {
+            "type": "turn.started"
+          },
+          {
+            "type": "item.completed",
+            "item": {
+              "id": "item_1",
+              "type": "agent_message",
+              "text": "{\"decisions\":[{\"product_id\":\"679700011\",\"vegan_status\":\"vegan\",\"vegan_reason\":\"manufacturer\",\"confidence\":\"certain\",\"summary\":\"The product information explicitly describes the item as plant-based salmon-style flakes made with wheat protein and says \u201cSuitable for Vegans.\u201d That whole-product assurance covers generic sourcing, processing, and tray-composition uncertainties; the salmon wording is qualified as style/flavour, not fish content.\",\"evidence\":[\"Product information: \u201cSuitable for Vegans\u201d (/product/dietary_information).\",\"The full product name describes \u201cPlant Based Salmon Style Flakes Made with Wheat Protein\u201d (/product/other_information, refs 10\u201311).\",\"The seasoning is described as \u201cSweet Chilli Salmon Flavour\u201d (/product/ingredients, refs 5\u20136).\",\"The supplied package type is \u201cTray\u201d (/product/package_type).\"],\"ambiguity_notes\":[\"The product name and fish/seafood category use salmon wording, while product information identifies a plant-based salmon-style product. The product information\u2019s explicit qualification and vegan assurance resolve this wording for the supplied product.\"],\"assessment\":{\"identity\":{\"status\":\"established\",\"evidence_refs\":[{\"reference_id\":1},{\"reference_id\":10},{\"reference_id\":11}]},\"composition\":{\"status\":\"covered_by_claim\",\"evidence_refs\":[{\"reference_id\":8},{\"reference_id\":5},{\"reference_id\":6}]},\"sourcing\":{\"status\":\"covered_by_claim\",\"evidence_refs\":[{\"reference_id\":8}]},\"processing\":{\"status\":\"covered_by_claim\",\"evidence_refs\":[{\"reference_id\":8},{\"reference_id\":5}]},\"components\":{\"status\":\"covered_by_claim\",\"evidence_refs\":[{\"reference_id\":8},{\"reference_id\":14}]},\"positive_support\":[{\"reason\":\"manufacturer\",\"evidence_refs\":[{\"reference_id\":8},{\"reference_id\":9},{\"reference_id\":20},{\"reference_id\":22}]}],\"material_issues\":[{\"code\":\"evidence_conflict\",\"target\":\"Salmon wording as a possible fish-content declaration\",\"rule_id\":\"animal-declaration-context-v1\",\"evidence_refs\":[{\"reference_id\":1},{\"reference_id\":5},{\"reference_id\":6},{\"reference_id\":18}],\"resolution_refs\":[{\"reference_id\":10},{\"reference_id\":11},{\"reference_id\":5},{\"reference_id\":6}],\"blocks_claim\":false},{\"code\":\"processing_unresolved\",\"target\":\"Sugar in the seasoning; potential refining process\",\"rule_id\":\"sugar-refining-v1\",\"evidence_refs\":[{\"reference_id\":5}],\"resolution_refs\":[{\"reference_id\":8},{\"reference_id\":20},{\"reference_id\":22}],\"blocks_claim\":false},{\"code\":\"source_unresolved\",\"target\":\"Natural flavouring in the seasoning\",\"rule_id\":\"unspecified-composition-v1\",\"evidence_refs\":[{\"reference_id\":5}],\"resolution_refs\":[{\"reference_id\":8},{\"reference_id\":20},{\"reference_id\":22}],\"blocks_claim\":false},{\"code\":\"processing_unresolved\",\"target\":\"Acidity regulator: citric acid\",\"rule_id\":\"unspecified-composition-v1\",\"evidence_refs\":[{\"reference_id\":6}],\"resolution_refs\":[{\"reference_id\":8},{\"reference_id\":20},{\"reference_id\":22}],\"blocks_claim\":false},{\"code\":\"composition_incomplete\",\"target\":\"Supplied tray packaging\",\"rule_id\":\"supplied-components-composition-v1\",\"evidence_refs\":[{\"reference_id\":14}],\"resolution_refs\":[{\"reference_id\":8},{\"reference_id\":20},{\"reference_id\":22}],\"blocks_claim\":false}],\"source_applicability\":[]} }]}"
+            }
+          },
+          {
+            "type": "turn.completed",
+            "usage": {
+              "input_tokens": 17896,
+              "cached_input_tokens": 10752,
+              "cache_write_input_tokens": 0,
+              "output_tokens": 1326,
+              "reasoning_output_tokens": 580
+            }
+          }
+        ],
+        "exit_status": 0,
+        "raw_response": "{\"decisions\":[{\"product_id\":\"679700011\",\"vegan_status\":\"vegan\",\"vegan_reason\":\"manufacturer\",\"confidence\":\"certain\",\"summary\":\"The product information explicitly describes the item as plant-based salmon-style flakes made with wheat protein and says \u201cSuitable for Vegans.\u201d That whole-product assurance covers generic sourcing, processing, and tray-composition uncertainties; the salmon wording is qualified as style/flavour, not fish content.\",\"evidence\":[\"Product information: \u201cSuitable for Vegans\u201d (/product/dietary_information).\",\"The full product name describes \u201cPlant Based Salmon Style Flakes Made with Wheat Protein\u201d (/product/other_information, refs 10\u201311).\",\"The seasoning is described as \u201cSweet Chilli Salmon Flavour\u201d (/product/ingredients, refs 5\u20136).\",\"The supplied package type is \u201cTray\u201d (/product/package_type).\"],\"ambiguity_notes\":[\"The product name and fish/seafood category use salmon wording, while product information identifies a plant-based salmon-style product. The product information\u2019s explicit qualification and vegan assurance resolve this wording for the supplied product.\"],\"assessment\":{\"identity\":{\"status\":\"established\",\"evidence_refs\":[{\"reference_id\":1},{\"reference_id\":10},{\"reference_id\":11}]},\"composition\":{\"status\":\"covered_by_claim\",\"evidence_refs\":[{\"reference_id\":8},{\"reference_id\":5},{\"reference_id\":6}]},\"sourcing\":{\"status\":\"covered_by_claim\",\"evidence_refs\":[{\"reference_id\":8}]},\"processing\":{\"status\":\"covered_by_claim\",\"evidence_refs\":[{\"reference_id\":8},{\"reference_id\":5}]},\"components\":{\"status\":\"covered_by_claim\",\"evidence_refs\":[{\"reference_id\":8},{\"reference_id\":14}]},\"positive_support\":[{\"reason\":\"manufacturer\",\"evidence_refs\":[{\"reference_id\":8},{\"reference_id\":9},{\"reference_id\":20},{\"reference_id\":22}]}],\"material_issues\":[{\"code\":\"evidence_conflict\",\"target\":\"Salmon wording as a possible fish-content declaration\",\"rule_id\":\"animal-declaration-context-v1\",\"evidence_refs\":[{\"reference_id\":1},{\"reference_id\":5},{\"reference_id\":6},{\"reference_id\":18}],\"resolution_refs\":[{\"reference_id\":10},{\"reference_id\":11},{\"reference_id\":5},{\"reference_id\":6}],\"blocks_claim\":false},{\"code\":\"processing_unresolved\",\"target\":\"Sugar in the seasoning; potential refining process\",\"rule_id\":\"sugar-refining-v1\",\"evidence_refs\":[{\"reference_id\":5}],\"resolution_refs\":[{\"reference_id\":8},{\"reference_id\":20},{\"reference_id\":22}],\"blocks_claim\":false},{\"code\":\"source_unresolved\",\"target\":\"Natural flavouring in the seasoning\",\"rule_id\":\"unspecified-composition-v1\",\"evidence_refs\":[{\"reference_id\":5}],\"resolution_refs\":[{\"reference_id\":8},{\"reference_id\":20},{\"reference_id\":22}],\"blocks_claim\":false},{\"code\":\"processing_unresolved\",\"target\":\"Acidity regulator: citric acid\",\"rule_id\":\"unspecified-composition-v1\",\"evidence_refs\":[{\"reference_id\":6}],\"resolution_refs\":[{\"reference_id\":8},{\"reference_id\":20},{\"reference_id\":22}],\"blocks_claim\":false},{\"code\":\"composition_incomplete\",\"target\":\"Supplied tray packaging\",\"rule_id\":\"supplied-components-composition-v1\",\"evidence_refs\":[{\"reference_id\":14}],\"resolution_refs\":[{\"reference_id\":8},{\"reference_id\":20},{\"reference_id\":22}],\"blocks_claim\":false}],\"source_applicability\":[]} }]}",
+        "error": null,
+        "invocation_started": true,
+        "quota_before": {
+          "at_epoch": 1792160993.9393418,
+          "auth_type": "chatgpt",
+          "ordinary_usage_allowed": true,
+          "buckets": {
+            "codex": {
+              "primary": {
+                "usedPercent": 21,
+                "windowDurationMins": 10080,
+                "resetsAt": 1792649592
+              },
+              "secondary": null,
+              "credits": {
+                "hasCredits": false,
+                "unlimited": false,
+                "balance": "0"
+              },
+              "rateLimitReachedType": null,
+              "spendControlReached": false
+            }
+          }
+        },
+        "invocation": [
+          "codex",
+          "exec",
+          "--ephemeral",
+          "--json",
+          "--ignore-user-config",
+          "--ignore-rules",
+          "--strict-config",
+          "--skip-git-repo-check",
+          "--output-schema",
+          "/tmp/ocado-evidence-only-ko2mw_5g/schema.json",
+          "--output-last-message",
+          "/tmp/ocado-evidence-only-ko2mw_5g/response.json",
+          "-C",
+          "/tmp/ocado-evidence-only-ko2mw_5g",
+          "-s",
+          "read-only",
+          "-m",
+          "gpt-6-luna",
+          "-c",
+          "model_reasoning_effort=\"high\"",
+          "-c",
+          "web_search=\"disabled\"",
+          "-c",
+          "project_doc_max_bytes=0",
+          "-c",
+          "forced_login_method=\"chatgpt\"",
+          "-c",
+          "suppress_unstable_features_warning=true",
+          "-c",
+          "features.shell_tool=false",
+          "-c",
+          "features.unified_exec=false",
+          "-c",
+          "features.apps=false",
+          "-c",
+          "features.multi_agent=false",
+          "-c",
+          "agents.enabled=false",
+          "-c",
+          "features.browser_use=false",
+          "-c",
+          "features.browser_use_external=false",
+          "-c",
+          "features.code_mode_host=false",
+          "-c",
+          "features.hooks=false",
+          "-c",
+          "features.remote_plugin=false",
+          "-c",
+          "features.skill_search=false",
+          "-c",
+          "features.skip_host_skill_discovery=true",
+          "-c",
+          "features.view_image=false",
+          "-c",
+          "features.memories=false",
+          "-c",
+          "features.plugins=false",
+          "-c",
+          "features.in_app_browser=false",
+          "-c",
+          "features.image_generation=false",
+          "-c",
+          "features.goals=false",
+          "-c",
+          "features.sleep_tool=false",
+          "-c",
+          "features.shell_snapshot=false",
+          "-c",
+          "features.skill_mcp_dependency_install=false",
+          "-c",
+          "features.fast_mode=false",
+          "-"
+        ],
+        "parsed_response": {
+          "decisions": [
+            {
+              "product_id": "679700011",
+              "vegan_status": "vegan",
+              "vegan_reason": "manufacturer",
+              "confidence": "certain",
+              "summary": "The product information explicitly describes the item as plant-based salmon-style flakes made with wheat protein and says \u201cSuitable for Vegans.\u201d That whole-product assurance covers generic sourcing, processing, and tray-composition uncertainties; the salmon wording is qualified as style/flavour, not fish content.",
+              "evidence": [
+                "Product information: \u201cSuitable for Vegans\u201d (/product/dietary_information).",
+                "The full product name describes \u201cPlant Based Salmon Style Flakes Made with Wheat Protein\u201d (/product/other_information, refs 10\u201311).",
+                "The seasoning is described as \u201cSweet Chilli Salmon Flavour\u201d (/product/ingredients, refs 5\u20136).",
+                "The supplied package type is \u201cTray\u201d (/product/package_type)."
+              ],
+              "ambiguity_notes": [
+                "The product name and fish/seafood category use salmon wording, while product information identifies a plant-based salmon-style product. The product information\u2019s explicit qualification and vegan assurance resolve this wording for the supplied product."
+              ],
+              "assessment": {
+                "identity": {
+                  "status": "established",
+                  "evidence_refs": [
+                    {
+                      "reference_id": 1
+                    },
+                    {
+                      "reference_id": 10
+                    },
+                    {
+                      "reference_id": 11
+                    }
+                  ]
+                },
+                "composition": {
+                  "status": "covered_by_claim",
+                  "evidence_refs": [
+                    {
+                      "reference_id": 8
+                    },
+                    {
+                      "reference_id": 5
+                    },
+                    {
+                      "reference_id": 6
+                    }
+                  ]
+                },
+                "sourcing": {
+                  "status": "covered_by_claim",
+                  "evidence_refs": [
+                    {
+                      "reference_id": 8
+                    }
+                  ]
+                },
+                "processing": {
+                  "status": "covered_by_claim",
+                  "evidence_refs": [
+                    {
+                      "reference_id": 8
+                    },
+                    {
+                      "reference_id": 5
+                    }
+                  ]
+                },
+                "components": {
+                  "status": "covered_by_claim",
+                  "evidence_refs": [
+                    {
+                      "reference_id": 8
+                    },
+                    {
+                      "reference_id": 14
+                    }
+                  ]
+                },
+                "positive_support": [
+                  {
+                    "reason": "manufacturer",
+                    "evidence_refs": [
+                      {
+                        "reference_id": 8
+                      },
+                      {
+                        "reference_id": 9
+                      },
+                      {
+                        "reference_id": 20
+                      },
+                      {
+                        "reference_id": 22
+                      }
+                    ]
+                  }
+                ],
+                "material_issues": [
+                  {
+                    "code": "evidence_conflict",
+                    "target": "Salmon wording as a possible fish-content declaration",
+                    "rule_id": "animal-declaration-context-v1",
+                    "evidence_refs": [
+                      {
+                        "reference_id": 1
+                      },
+                      {
+                        "reference_id": 5
+                      },
+                      {
+                        "reference_id": 6
+                      },
+                      {
+                        "reference_id": 18
+                      }
+                    ],
+                    "resolution_refs": [
+                      {
+                        "reference_id": 10
+                      },
+                      {
+                        "reference_id": 11
+                      },
+                      {
+                        "reference_id": 5
+                      },
+                      {
+                        "reference_id": 6
+                      }
+                    ],
+                    "blocks_claim": false
+                  },
+                  {
+                    "code": "processing_unresolved",
+                    "target": "Sugar in the seasoning; potential refining process",
+                    "rule_id": "sugar-refining-v1",
+                    "evidence_refs": [
+                      {
+                        "reference_id": 5
+                      }
+                    ],
+                    "resolution_refs": [
+                      {
+                        "reference_id": 8
+                      },
+                      {
+                        "reference_id": 20
+                      },
+                      {
+                        "reference_id": 22
+                      }
+                    ],
+                    "blocks_claim": false
+                  },
+                  {
+                    "code": "source_unresolved",
+                    "target": "Natural flavouring in the seasoning",
+                    "rule_id": "unspecified-composition-v1",
+                    "evidence_refs": [
+                      {
+                        "reference_id": 5
+                      }
+                    ],
+                    "resolution_refs": [
+                      {
+                        "reference_id": 8
+                      },
+                      {
+                        "reference_id": 20
+                      },
+                      {
+                        "reference_id": 22
+                      }
+                    ],
+                    "blocks_claim": false
+                  },
+                  {
+                    "code": "processing_unresolved",
+                    "target": "Acidity regulator: citric acid",
+                    "rule_id": "unspecified-composition-v1",
+                    "evidence_refs": [
+                      {
+                        "reference_id": 6
+                      }
+                    ],
+                    "resolution_refs": [
+                      {
+                        "reference_id": 8
+                      },
+                      {
+                        "reference_id": 20
+                      },
+                      {
+                        "reference_id": 22
+                      }
+                    ],
+                    "blocks_claim": false
+                  },
+                  {
+                    "code": "composition_incomplete",
+                    "target": "Supplied tray packaging",
+                    "rule_id": "supplied-components-composition-v1",
+                    "evidence_refs": [
+                      {
+                        "reference_id": 14
+                      }
+                    ],
+                    "resolution_refs": [
+                      {
+                        "reference_id": 8
+                      },
+                      {
+                        "reference_id": 20
+                      },
+                      {
+                        "reference_id": 22
+                      }
+                    ],
+                    "blocks_claim": false
+                  }
+                ],
+                "source_applicability": []
+              }
+            }
+          ]
+        },
+        "validated_response": {
+          "decisions": [
+            {
+              "product_id": "679700011",
+              "vegan_status": "vegan",
+              "vegan_reason": "manufacturer",
+              "confidence": "certain",
+              "summary": "The product information explicitly describes the item as plant-based salmon-style flakes made with wheat protein and says \u201cSuitable for Vegans.\u201d That whole-product assurance covers generic sourcing, processing, and tray-composition uncertainties; the salmon wording is qualified as style/flavour, not fish content.",
+              "evidence": [
+                "Product information: \u201cSuitable for Vegans\u201d (/product/dietary_information).",
+                "The full product name describes \u201cPlant Based Salmon Style Flakes Made with Wheat Protein\u201d (/product/other_information, refs 10\u201311).",
+                "The seasoning is described as \u201cSweet Chilli Salmon Flavour\u201d (/product/ingredients, refs 5\u20136).",
+                "The supplied package type is \u201cTray\u201d (/product/package_type)."
+              ],
+              "ambiguity_notes": [
+                "The product name and fish/seafood category use salmon wording, while product information identifies a plant-based salmon-style product. The product information\u2019s explicit qualification and vegan assurance resolve this wording for the supplied product."
+              ],
+              "assessment": {
+                "identity": {
+                  "status": "established",
+                  "evidence_refs": [
+                    {
+                      "path": "/product/name",
+                      "quote": "Squeaky Bean Hot Smoked Sweet Chili Salmon Flakes"
+                    },
+                    {
+                      "path": "/product/other_information",
+                      "quote": "Full Product Name: Ready to Eat Plant Based Salmon Style Flakes Made with Wheat Protein Marinated in a Sweet Chilli Salmon Flavour Seasoning. Storage: Keep refrigerated below 5\u00b0C. Once opened, keep refrigerated and use within 2 days. Do"
+                    },
+                    {
+                      "path": "/product/other_information",
+                      "quote": "not exceed use by date. For use by date see front of pack. Not suitable for home freezing. Additional Information: Packaged in a Protective Atmosphere."
+                    }
+                  ]
+                },
+                "composition": {
+                  "status": "covered_by_claim",
+                  "evidence_refs": [
+                    {
+                      "path": "/product/dietary_information",
+                      "quote": "Suitable for Vegans"
+                    },
+                    {
+                      "path": "/product/ingredients",
+                      "quote": "Water, Textured Wheat Protein (30%) (Wheat Protein, Wheat Flour), Rapeseed Oil, Sweet Chilli Salmon Flavour Seasoning (7%) (Sugar, Natural Flavouring, Garlic Powder, Smoked Dextrose, Maize Starch, Dried Garlic, Chilli, Dried Red Bell"
+                    },
+                    {
+                      "path": "/product/ingredients",
+                      "quote": "Pepper, Spirit Vinegar Powder, Acidity Regulator: Citric Acid, Cayenne Pepper, Colour: Paprika Extract), Natural Flavouring, Salt, Radish Concentrate, Acidity Regulator: Citric Acid, Carrot Concentrate"
+                    }
+                  ]
+                },
+                "sourcing": {
+                  "status": "covered_by_claim",
+                  "evidence_refs": [
+                    {
+                      "path": "/product/dietary_information",
+                      "quote": "Suitable for Vegans"
+                    }
+                  ]
+                },
+                "processing": {
+                  "status": "covered_by_claim",
+                  "evidence_refs": [
+                    {
+                      "path": "/product/dietary_information",
+                      "quote": "Suitable for Vegans"
+                    },
+                    {
+                      "path": "/product/ingredients",
+                      "quote": "Water, Textured Wheat Protein (30%) (Wheat Protein, Wheat Flour), Rapeseed Oil, Sweet Chilli Salmon Flavour Seasoning (7%) (Sugar, Natural Flavouring, Garlic Powder, Smoked Dextrose, Maize Starch, Dried Garlic, Chilli, Dried Red Bell"
+                    }
+                  ]
+                },
+                "components": {
+                  "status": "covered_by_claim",
+                  "evidence_refs": [
+                    {
+                      "path": "/product/dietary_information",
+                      "quote": "Suitable for Vegans"
+                    },
+                    {
+                      "path": "/product/package_type",
+                      "quote": "Tray"
+                    }
+                  ]
+                },
+                "positive_support": [
+                  {
+                    "reason": "manufacturer",
+                    "evidence_refs": [
+                      {
+                        "path": "/product/dietary_information",
+                        "quote": "Suitable for Vegans"
+                      },
+                      {
+                        "path": "/product/features",
+                        "quote": "Ready to Eat, Source of Omega 3, High Protein, Low Saturated Fat, Suitable for Vegans"
+                      },
+                      {
+                        "path": "/manufacturer_vegan_evidence/0/content",
+                        "quote": "Ready to Eat, Source of Omega 3, High Protein, Low Saturated Fat, Suitable for Vegans"
+                      },
+                      {
+                        "path": "/manufacturer_vegan_evidence/1/content",
+                        "quote": "Suitable for Vegans"
+                      }
+                    ]
+                  }
+                ],
+                "material_issues": [
+                  {
+                    "code": "evidence_conflict",
+                    "target": "Salmon wording as a possible fish-content declaration",
+                    "rule_id": "animal-declaration-context-v1",
+                    "evidence_refs": [
+                      {
+                        "path": "/product/name",
+                        "quote": "Squeaky Bean Hot Smoked Sweet Chili Salmon Flakes"
+                      },
+                      {
+                        "path": "/product/ingredients",
+                        "quote": "Water, Textured Wheat Protein (30%) (Wheat Protein, Wheat Flour), Rapeseed Oil, Sweet Chilli Salmon Flavour Seasoning (7%) (Sugar, Natural Flavouring, Garlic Powder, Smoked Dextrose, Maize Starch, Dried Garlic, Chilli, Dried Red Bell"
+                      },
+                      {
+                        "path": "/product/ingredients",
+                        "quote": "Pepper, Spirit Vinegar Powder, Acidity Regulator: Citric Acid, Cayenne Pepper, Colour: Paprika Extract), Natural Flavouring, Salt, Radish Concentrate, Acidity Regulator: Citric Acid, Carrot Concentrate"
+                      },
+                      {
+                        "path": "/categories/0",
+                        "quote": "fresh-chilled-food/fish-seafood/ready-to-eat/fish"
+                      }
+                    ],
+                    "resolution_refs": [
+                      {
+                        "path": "/product/other_information",
+                        "quote": "Full Product Name: Ready to Eat Plant Based Salmon Style Flakes Made with Wheat Protein Marinated in a Sweet Chilli Salmon Flavour Seasoning. Storage: Keep refrigerated below 5\u00b0C. Once opened, keep refrigerated and use within 2 days. Do"
+                      },
+                      {
+                        "path": "/product/other_information",
+                        "quote": "not exceed use by date. For use by date see front of pack. Not suitable for home freezing. Additional Information: Packaged in a Protective Atmosphere."
+                      },
+                      {
+                        "path": "/product/ingredients",
+                        "quote": "Water, Textured Wheat Protein (30%) (Wheat Protein, Wheat Flour), Rapeseed Oil, Sweet Chilli Salmon Flavour Seasoning (7%) (Sugar, Natural Flavouring, Garlic Powder, Smoked Dextrose, Maize Starch, Dried Garlic, Chilli, Dried Red Bell"
+                      },
+                      {
+                        "path": "/product/ingredients",
+                        "quote": "Pepper, Spirit Vinegar Powder, Acidity Regulator: Citric Acid, Cayenne Pepper, Colour: Paprika Extract), Natural Flavouring, Salt, Radish Concentrate, Acidity Regulator: Citric Acid, Carrot Concentrate"
+                      }
+                    ],
+                    "blocks_claim": false
+                  },
+                  {
+                    "code": "processing_unresolved",
+                    "target": "Sugar in the seasoning; potential refining process",
+                    "rule_id": "sugar-refining-v1",
+                    "evidence_refs": [
+                      {
+                        "path": "/product/ingredients",
+                        "quote": "Water, Textured Wheat Protein (30%) (Wheat Protein, Wheat Flour), Rapeseed Oil, Sweet Chilli Salmon Flavour Seasoning (7%) (Sugar, Natural Flavouring, Garlic Powder, Smoked Dextrose, Maize Starch, Dried Garlic, Chilli, Dried Red Bell"
+                      }
+                    ],
+                    "resolution_refs": [
+                      {
+                        "path": "/product/dietary_information",
+                        "quote": "Suitable for Vegans"
+                      },
+                      {
+                        "path": "/manufacturer_vegan_evidence/0/content",
+                        "quote": "Ready to Eat, Source of Omega 3, High Protein, Low Saturated Fat, Suitable for Vegans"
+                      },
+                      {
+                        "path": "/manufacturer_vegan_evidence/1/content",
+                        "quote": "Suitable for Vegans"
+                      }
+                    ],
+                    "blocks_claim": false
+                  },
+                  {
+                    "code": "source_unresolved",
+                    "target": "Natural flavouring in the seasoning",
+                    "rule_id": "unspecified-composition-v1",
+                    "evidence_refs": [
+                      {
+                        "path": "/product/ingredients",
+                        "quote": "Water, Textured Wheat Protein (30%) (Wheat Protein, Wheat Flour), Rapeseed Oil, Sweet Chilli Salmon Flavour Seasoning (7%) (Sugar, Natural Flavouring, Garlic Powder, Smoked Dextrose, Maize Starch, Dried Garlic, Chilli, Dried Red Bell"
+                      }
+                    ],
+                    "resolution_refs": [
+                      {
+                        "path": "/product/dietary_information",
+                        "quote": "Suitable for Vegans"
+                      },
+                      {
+                        "path": "/manufacturer_vegan_evidence/0/content",
+                        "quote": "Ready to Eat, Source of Omega 3, High Protein, Low Saturated Fat, Suitable for Vegans"
+                      },
+                      {
+                        "path": "/manufacturer_vegan_evidence/1/content",
+                        "quote": "Suitable for Vegans"
+                      }
+                    ],
+                    "blocks_claim": false
+                  },
+                  {
+                    "code": "processing_unresolved",
+                    "target": "Acidity regulator: citric acid",
+                    "rule_id": "unspecified-composition-v1",
+                    "evidence_refs": [
+                      {
+                        "path": "/product/ingredients",
+                        "quote": "Pepper, Spirit Vinegar Powder, Acidity Regulator: Citric Acid, Cayenne Pepper, Colour: Paprika Extract), Natural Flavouring, Salt, Radish Concentrate, Acidity Regulator: Citric Acid, Carrot Concentrate"
+                      }
+                    ],
+                    "resolution_refs": [
+                      {
+                        "path": "/product/dietary_information",
+                        "quote": "Suitable for Vegans"
+                      },
+                      {
+                        "path": "/manufacturer_vegan_evidence/0/content",
+                        "quote": "Ready to Eat, Source of Omega 3, High Protein, Low Saturated Fat, Suitable for Vegans"
+                      },
+                      {
+                        "path": "/manufacturer_vegan_evidence/1/content",
+                        "quote": "Suitable for Vegans"
+                      }
+                    ],
+                    "blocks_claim": false
+                  },
+                  {
+                    "code": "composition_incomplete",
+                    "target": "Supplied tray packaging",
+                    "rule_id": "supplied-components-composition-v1",
+                    "evidence_refs": [
+                      {
+                        "path": "/product/package_type",
+                        "quote": "Tray"
+                      }
+                    ],
+                    "resolution_refs": [
+                      {
+                        "path": "/product/dietary_information",
+                        "quote": "Suitable for Vegans"
+                      },
+                      {
+                        "path": "/manufacturer_vegan_evidence/0/content",
+                        "quote": "Ready to Eat, Source of Omega 3, High Protein, Low Saturated Fat, Suitable for Vegans"
+                      },
+                      {
+                        "path": "/manufacturer_vegan_evidence/1/content",
+                        "quote": "Suitable for Vegans"
+                      }
+                    ],
+                    "blocks_claim": false
+                  }
+                ],
+                "source_applicability": []
+              }
+            }
+          ]
+        },
+        "reference_canonicalizations": [
+          {
+            "product_id": "679700011",
+            "reference_id": 1,
+            "path": "/product/name",
+            "quote": "Squeaky Bean Hot Smoked Sweet Chili Salmon Flakes",
+            "operation": "literal-reference-catalogue-v5"
+          },
+          {
+            "product_id": "679700011",
+            "reference_id": 10,
+            "path": "/product/other_information",
+            "quote": "Full Product Name: Ready to Eat Plant Based Salmon Style Flakes Made with Wheat Protein Marinated in a Sweet Chilli Salmon Flavour Seasoning. Storage: Keep refrigerated below 5\u00b0C. Once opened, keep refrigerated and use within 2 days. Do",
+            "operation": "literal-reference-catalogue-v5"
+          },
+          {
+            "product_id": "679700011",
+            "reference_id": 11,
+            "path": "/product/other_information",
+            "quote": "not exceed use by date. For use by date see front of pack. Not suitable for home freezing. Additional Information: Packaged in a Protective Atmosphere.",
+            "operation": "literal-reference-catalogue-v5"
+          },
+          {
+            "product_id": "679700011",
+            "reference_id": 8,
+            "path": "/product/dietary_information",
+            "quote": "Suitable for Vegans",
+            "operation": "literal-reference-catalogue-v5"
+          },
+          {
+            "product_id": "679700011",
+            "reference_id": 5,
+            "path": "/product/ingredients",
+            "quote": "Water, Textured Wheat Protein (30%) (Wheat Protein, Wheat Flour), Rapeseed Oil, Sweet Chilli Salmon Flavour Seasoning (7%) (Sugar, Natural Flavouring, Garlic Powder, Smoked Dextrose, Maize Starch, Dried Garlic, Chilli, Dried Red Bell",
+            "operation": "literal-reference-catalogue-v5"
+          },
+          {
+            "product_id": "679700011",
+            "reference_id": 6,
+            "path": "/product/ingredients",
+            "quote": "Pepper, Spirit Vinegar Powder, Acidity Regulator: Citric Acid, Cayenne Pepper, Colour: Paprika Extract), Natural Flavouring, Salt, Radish Concentrate, Acidity Regulator: Citric Acid, Carrot Concentrate",
+            "operation": "literal-reference-catalogue-v5"
+          },
+          {
+            "product_id": "679700011",
+            "reference_id": 8,
+            "path": "/product/dietary_information",
+            "quote": "Suitable for Vegans",
+            "operation": "literal-reference-catalogue-v5"
+          },
+          {
+            "product_id": "679700011",
+            "reference_id": 8,
+            "path": "/product/dietary_information",
+            "quote": "Suitable for Vegans",
+            "operation": "literal-reference-catalogue-v5"
+          },
+          {
+            "product_id": "679700011",
+            "reference_id": 5,
+            "path": "/product/ingredients",
+            "quote": "Water, Textured Wheat Protein (30%) (Wheat Protein, Wheat Flour), Rapeseed Oil, Sweet Chilli Salmon Flavour Seasoning (7%) (Sugar, Natural Flavouring, Garlic Powder, Smoked Dextrose, Maize Starch, Dried Garlic, Chilli, Dried Red Bell",
+            "operation": "literal-reference-catalogue-v5"
+          },
+          {
+            "product_id": "679700011",
+            "reference_id": 8,
+            "path": "/product/dietary_information",
+            "quote": "Suitable for Vegans",
+            "operation": "literal-reference-catalogue-v5"
+          },
+          {
+            "product_id": "679700011",
+            "reference_id": 14,
+            "path": "/product/package_type",
+            "quote": "Tray",
+            "operation": "literal-reference-catalogue-v5"
+          },
+          {
+            "product_id": "679700011",
+            "reference_id": 8,
+            "path": "/product/dietary_information",
+            "quote": "Suitable for Vegans",
+            "operation": "literal-reference-catalogue-v5"
+          },
+          {
+            "product_id": "679700011",
+            "reference_id": 9,
+            "path": "/product/features",
+            "quote": "Ready to Eat, Source of Omega 3, High Protein, Low Saturated Fat, Suitable for Vegans",
+            "operation": "literal-reference-catalogue-v5"
+          },
+          {
+            "product_id": "679700011",
+            "reference_id": 20,
+            "path": "/manufacturer_vegan_evidence/0/content",
+            "quote": "Ready to Eat, Source of Omega 3, High Protein, Low Saturated Fat, Suitable for Vegans",
+            "operation": "literal-reference-catalogue-v5"
+          },
+          {
+            "product_id": "679700011",
+            "reference_id": 22,
+            "path": "/manufacturer_vegan_evidence/1/content",
+            "quote": "Suitable for Vegans",
+            "operation": "literal-reference-catalogue-v5"
+          },
+          {
+            "product_id": "679700011",
+            "reference_id": 1,
+            "path": "/product/name",
+            "quote": "Squeaky Bean Hot Smoked Sweet Chili Salmon Flakes",
+            "operation": "literal-reference-catalogue-v5"
+          },
+          {
+            "product_id": "679700011",
+            "reference_id": 5,
+            "path": "/product/ingredients",
+            "quote": "Water, Textured Wheat Protein (30%) (Wheat Protein, Wheat Flour), Rapeseed Oil, Sweet Chilli Salmon Flavour Seasoning (7%) (Sugar, Natural Flavouring, Garlic Powder, Smoked Dextrose, Maize Starch, Dried Garlic, Chilli, Dried Red Bell",
+            "operation": "literal-reference-catalogue-v5"
+          },
+          {
+            "product_id": "679700011",
+            "reference_id": 6,
+            "path": "/product/ingredients",
+            "quote": "Pepper, Spirit Vinegar Powder, Acidity Regulator: Citric Acid, Cayenne Pepper, Colour: Paprika Extract), Natural Flavouring, Salt, Radish Concentrate, Acidity Regulator: Citric Acid, Carrot Concentrate",
+            "operation": "literal-reference-catalogue-v5"
+          },
+          {
+            "product_id": "679700011",
+            "reference_id": 18,
+            "path": "/categories/0",
+            "quote": "fresh-chilled-food/fish-seafood/ready-to-eat/fish",
+            "operation": "literal-reference-catalogue-v5"
+          },
+          {
+            "product_id": "679700011",
+            "reference_id": 10,
+            "path": "/product/other_information",
+            "quote": "Full Product Name: Ready to Eat Plant Based Salmon Style Flakes Made with Wheat Protein Marinated in a Sweet Chilli Salmon Flavour Seasoning. Storage: Keep refrigerated below 5\u00b0C. Once opened, keep refrigerated and use within 2 days. Do",
+            "operation": "literal-reference-catalogue-v5"
+          },
+          {
+            "product_id": "679700011",
+            "reference_id": 11,
+            "path": "/product/other_information",
+            "quote": "not exceed use by date. For use by date see front of pack. Not suitable for home freezing. Additional Information: Packaged in a Protective Atmosphere.",
+            "operation": "literal-reference-catalogue-v5"
+          },
+          {
+            "product_id": "679700011",
+            "reference_id": 5,
+            "path": "/product/ingredients",
+            "quote": "Water, Textured Wheat Protein (30%) (Wheat Protein, Wheat Flour), Rapeseed Oil, Sweet Chilli Salmon Flavour Seasoning (7%) (Sugar, Natural Flavouring, Garlic Powder, Smoked Dextrose, Maize Starch, Dried Garlic, Chilli, Dried Red Bell",
+            "operation": "literal-reference-catalogue-v5"
+          },
+          {
+            "product_id": "679700011",
+            "reference_id": 6,
+            "path": "/product/ingredients",
+            "quote": "Pepper, Spirit Vinegar Powder, Acidity Regulator: Citric Acid, Cayenne Pepper, Colour: Paprika Extract), Natural Flavouring, Salt, Radish Concentrate, Acidity Regulator: Citric Acid, Carrot Concentrate",
+            "operation": "literal-reference-catalogue-v5"
+          },
+          {
+            "product_id": "679700011",
+            "reference_id": 5,
+            "path": "/product/ingredients",
+            "quote": "Water, Textured Wheat Protein (30%) (Wheat Protein, Wheat Flour), Rapeseed Oil, Sweet Chilli Salmon Flavour Seasoning (7%) (Sugar, Natural Flavouring, Garlic Powder, Smoked Dextrose, Maize Starch, Dried Garlic, Chilli, Dried Red Bell",
+            "operation": "literal-reference-catalogue-v5"
+          },
+          {
+            "product_id": "679700011",
+            "reference_id": 8,
+            "path": "/product/dietary_information",
+            "quote": "Suitable for Vegans",
+            "operation": "literal-reference-catalogue-v5"
+          },
+          {
+            "product_id": "679700011",
+            "reference_id": 20,
+            "path": "/manufacturer_vegan_evidence/0/content",
+            "quote": "Ready to Eat, Source of Omega 3, High Protein, Low Saturated Fat, Suitable for Vegans",
+            "operation": "literal-reference-catalogue-v5"
+          },
+          {
+            "product_id": "679700011",
+            "reference_id": 22,
+            "path": "/manufacturer_vegan_evidence/1/content",
+            "quote": "Suitable for Vegans",
+            "operation": "literal-reference-catalogue-v5"
+          },
+          {
+            "product_id": "679700011",
+            "reference_id": 5,
+            "path": "/product/ingredients",
+            "quote": "Water, Textured Wheat Protein (30%) (Wheat Protein, Wheat Flour), Rapeseed Oil, Sweet Chilli Salmon Flavour Seasoning (7%) (Sugar, Natural Flavouring, Garlic Powder, Smoked Dextrose, Maize Starch, Dried Garlic, Chilli, Dried Red Bell",
+            "operation": "literal-reference-catalogue-v5"
+          },
+          {
+            "product_id": "679700011",
+            "reference_id": 8,
+            "path": "/product/dietary_information",
+            "quote": "Suitable for Vegans",
+            "operation": "literal-reference-catalogue-v5"
+          },
+          {
+            "product_id": "679700011",
+            "reference_id": 20,
+            "path": "/manufacturer_vegan_evidence/0/content",
+            "quote": "Ready to Eat, Source of Omega 3, High Protein, Low Saturated Fat, Suitable for Vegans",
+            "operation": "literal-reference-catalogue-v5"
+          },
+          {
+            "product_id": "679700011",
+            "reference_id": 22,
+            "path": "/manufacturer_vegan_evidence/1/content",
+            "quote": "Suitable for Vegans",
+            "operation": "literal-reference-catalogue-v5"
+          },
+          {
+            "product_id": "679700011",
+            "reference_id": 6,
+            "path": "/product/ingredients",
+            "quote": "Pepper, Spirit Vinegar Powder, Acidity Regulator: Citric Acid, Cayenne Pepper, Colour: Paprika Extract), Natural Flavouring, Salt, Radish Concentrate, Acidity Regulator: Citric Acid, Carrot Concentrate",
+            "operation": "literal-reference-catalogue-v5"
+          },
+          {
+            "product_id": "679700011",
+            "reference_id": 8,
+            "path": "/product/dietary_information",
+            "quote": "Suitable for Vegans",
+            "operation": "literal-reference-catalogue-v5"
+          },
+          {
+            "product_id": "679700011",
+            "reference_id": 20,
+            "path": "/manufacturer_vegan_evidence/0/content",
+            "quote": "Ready to Eat, Source of Omega 3, High Protein, Low Saturated Fat, Suitable for Vegans",
+            "operation": "literal-reference-catalogue-v5"
+          },
+          {
+            "product_id": "679700011",
+            "reference_id": 22,
+            "path": "/manufacturer_vegan_evidence/1/content",
+            "quote": "Suitable for Vegans",
+            "operation": "literal-reference-catalogue-v5"
+          },
+          {
+            "product_id": "679700011",
+            "reference_id": 14,
+            "path": "/product/package_type",
+            "quote": "Tray",
+            "operation": "literal-reference-catalogue-v5"
+          },
+          {
+            "product_id": "679700011",
+            "reference_id": 8,
+            "path": "/product/dietary_information",
+            "quote": "Suitable for Vegans",
+            "operation": "literal-reference-catalogue-v5"
+          },
+          {
+            "product_id": "679700011",
+            "reference_id": 20,
+            "path": "/manufacturer_vegan_evidence/0/content",
+            "quote": "Ready to Eat, Source of Omega 3, High Protein, Low Saturated Fat, Suitable for Vegans",
+            "operation": "literal-reference-catalogue-v5"
+          },
+          {
+            "product_id": "679700011",
+            "reference_id": 22,
+            "path": "/manufacturer_vegan_evidence/1/content",
+            "quote": "Suitable for Vegans",
+            "operation": "literal-reference-catalogue-v5"
+          }
+        ],
+        "duration_seconds": 15.6342
+      }
+    ]
+  }
+]

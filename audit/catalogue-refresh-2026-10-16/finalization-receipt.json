@@ -1,0 +1,10 @@
+{
+  "state": "passed",
+  "change": "one description comment only",
+  "before_sha256": "91f80d6ccf564ba5b438d3489d8f9678a05e8c2a8feb1297da32d200fc35e5aa",
+  "after_sha256": "aac58e40d77f357c5f545f6a06d5c6138b0f2834c12956bf45fb4627fbf5a32a",
+  "runtime_and_generated_data_unchanged": true,
+  "version": "1.7.2",
+  "post_export_checks_sha256": "1dfef86c58022ab641a00b7e1734cee9737f8c63e862dde8a63eb868fb9f0f75",
+  "new_model_calls": 0
+}

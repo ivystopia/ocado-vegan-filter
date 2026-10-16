@@ -1,6 +1,6 @@
 # Whole-product vegan classification
 
-The classifier assesses stored evidence for the complete sold article, including relevant manufacturing and supplied packaging, pods, filters and other non-edible components. Development is on `dev`. Canonical catalogue reassessment is in progress; activation and local userscript regeneration require the policy, research, audit and export checks below. Keep the development version until release preparation is requested.
+The classifier assesses stored evidence for the complete sold article, including relevant manufacturing and supplied packaging, pods, filters and other non-edible components. Development is on `dev`. Canonical reassessment and local userscript regeneration are complete on `dev`; see [the completed report](../audit/catalogue-refresh-2026-10-16/README.md). Future updates retain the validation gates below. Keep the development version until release preparation is requested.
 
 ## Evidence policy
 

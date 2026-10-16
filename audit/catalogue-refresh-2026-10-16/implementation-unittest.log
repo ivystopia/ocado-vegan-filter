@@ -1,0 +1,199 @@
+.........................................gpt-6-luna/high pipeline run 1: 1/5
+..................gpt-6-luna/high pipeline run 1: 5/5
+..gpt-6-luna/high pipeline run 1: 1/5
+gpt-6-luna/high pipeline run 1: 2/5
+gpt-6-luna/high pipeline run 1: 3/5
+gpt-6-luna/high pipeline run 1: 4/5
+gpt-6-luna/high pipeline run 1: 5/5
+....gpt-6-luna/high rules run 1: 5/5
+...................................................Codex batch 1/1: products 1-1 of 1
+..Codex batch 1/1: products 1-1 of 1
+....../home/ivy/repos/personal/ocado_report/tools/classify_ocado_vegan.py:569: ResourceWarning: unclosed database in <sqlite3.Connection object at 0x7fe4b7d38e50>
+  return {row[1] for row in conn.execute(f"PRAGMA table_info({table_name})")}
+ResourceWarning: Enable tracemalloc to get the object allocation traceback
+/home/ivy/repos/personal/ocado_report/tools/classify_ocado_vegan.py:569: ResourceWarning: unclosed database in <sqlite3.Connection object at 0x7fe4b79a0130>
+  return {row[1] for row in conn.execute(f"PRAGMA table_info({table_name})")}
+ResourceWarning: Enable tracemalloc to get the object allocation traceback
+/home/ivy/repos/personal/ocado_report/tools/classify_ocado_vegan.py:569: ResourceWarning: unclosed database in <sqlite3.Connection object at 0x7fe4b79a06d0>
+  return {row[1] for row in conn.execute(f"PRAGMA table_info({table_name})")}
+ResourceWarning: Enable tracemalloc to get the object allocation traceback
+/home/ivy/repos/personal/ocado_report/tools/classify_ocado_vegan.py:569: ResourceWarning: unclosed database in <sqlite3.Connection object at 0x7fe4b79a04f0>
+  return {row[1] for row in conn.execute(f"PRAGMA table_info({table_name})")}
+ResourceWarning: Enable tracemalloc to get the object allocation traceback
+/home/ivy/repos/personal/ocado_report/tools/classify_ocado_vegan.py:569: ResourceWarning: unclosed database in <sqlite3.Connection object at 0x7fe4b79a07c0>
+  return {row[1] for row in conn.execute(f"PRAGMA table_info({table_name})")}
+ResourceWarning: Enable tracemalloc to get the object allocation traceback
+/home/ivy/repos/personal/ocado_report/tools/classify_ocado_vegan.py:569: ResourceWarning: unclosed database in <sqlite3.Connection object at 0x7fe4b79a08b0>
+  return {row[1] for row in conn.execute(f"PRAGMA table_info({table_name})")}
+ResourceWarning: Enable tracemalloc to get the object allocation traceback
+........................................................................................................................................  pass 1/2, attempt 1
+  retrying batch after error: Evidence quote is absent at /product/name
+  pass 1/2, attempt 2
+..  pass 1/2, attempt 1
+  retrying batch after error: Codex returned unexpected product_id
+  pass 1/2, attempt 2
+  pass 2/2, attempt 2
+.  pass 1/2, attempt 1
+  retrying batch after error: Evidence quote is absent at /product/name
+  pass 1/2, attempt 2
+  pass 2/2, attempt 2
+........................................................./usr/lib/python3.13/re/_parser.py:449: ResourceWarning: unclosed database in <sqlite3.Connection object at 0x7fe4b7d3b1f0>
+  return list(dict.fromkeys(items))
+ResourceWarning: Enable tracemalloc to get the object allocation traceback
+/usr/lib/python3.13/re/_parser.py:449: ResourceWarning: unclosed database in <sqlite3.Connection object at 0x7fe4b79a35b0>
+  return list(dict.fromkeys(items))
+ResourceWarning: Enable tracemalloc to get the object allocation traceback
+........  pass 1/2, attempt 1
+  pass 2/2, attempt 1
+.  pass 1/2, attempt 1
+  pass 2/2, attempt 1
+  pass 1/2, attempt 1
+  pass 2/2, attempt 1
+.  pass 1/2, attempt 1
+  pass 2/2, attempt 1
+  pass 1/2, attempt 1
+  pass 2/2, attempt 1
+.  pass 1/2, attempt 1
+  pass 2/2, attempt 1
+  pass 1/2, attempt 1
+  pass 2/2, attempt 1
+.  pass 1/2, attempt 1
+  pass 2/2, attempt 1
+  pass 1/2, attempt 1
+.  pass 1/2, attempt 1
+  splitting failed batch of 2 into 1 and 1: split
+    pass 1/2, attempt 1
+    pass 2/2, attempt 1
+    pass 1/2, attempt 1
+    pass 2/2, attempt 1
+.  pass 1/2, attempt 1
+  pass 2/2, attempt 1
+  pass 1/2, attempt 1
+  pass 2/2, attempt 1
+  pass 1/2, attempt 1
+  pass 2/2, attempt 1
+  pass 1/2, attempt 1
+  pass 2/2, attempt 1
+.  pass 1/2, attempt 1
+  pass 2/2, attempt 1
+  pass 1/2, attempt 1
+.  pass 1/2, attempt 1
+.Codex batch 1/1: products 1-1 of 1
+  pass 1/2, attempt 1
+  pass 2/2, attempt 1
+  pass 1/2, attempt 1
+  pass 2/2, attempt 1
+Codex batch 1/1: products 1-1 of 1
+  pass 1/2, attempt 1
+  pass 2/2, attempt 1
+  pass 1/2, attempt 1
+..  pass 1/2, attempt 1
+  pass 2/2, attempt 1
+  pass 1/2, attempt 1
+  pass 2/2, attempt 1
+..  pass 1/2, attempt 1
+  pass 2/2, attempt 1
+  pass 1/2, attempt 1
+  pass 2/2, attempt 1
+  pass 1/2, attempt 1
+  pass 2/2, attempt 1
+  pass 1/2, attempt 1
+  pass 2/2, attempt 1
+.  pass 1/2, attempt 1
+  pass 2/2, attempt 1
+  pass 1/2, attempt 1
+..........s........................./usr/lib/python3.13/unittest/mock.py:2247: ResourceWarning: unclosed database in <sqlite3.Connection object at 0x7fe4b71cb5b0>
+  def __init__(self, name, parent):
+ResourceWarning: Enable tracemalloc to get the object allocation traceback
+/usr/lib/python3.13/unittest/mock.py:2247: ResourceWarning: unclosed database in <sqlite3.Connection object at 0x7fe4b71ca890>
+  def __init__(self, name, parent):
+ResourceWarning: Enable tracemalloc to get the object allocation traceback
+/usr/lib/python3.13/unittest/mock.py:2247: ResourceWarning: unclosed database in <sqlite3.Connection object at 0x7fe4b71ca6b0>
+  def __init__(self, name, parent):
+ResourceWarning: Enable tracemalloc to get the object allocation traceback
+/usr/lib/python3.13/unittest/mock.py:2247: ResourceWarning: unclosed database in <sqlite3.Connection object at 0x7fe4b71cba60>
+  def __init__(self, name, parent):
+ResourceWarning: Enable tracemalloc to get the object allocation traceback
+/usr/lib/python3.13/unittest/mock.py:2247: ResourceWarning: unclosed database in <sqlite3.Connection object at 0x7fe4b71cb790>
+  def __init__(self, name, parent):
+ResourceWarning: Enable tracemalloc to get the object allocation traceback
+/usr/lib/python3.13/unittest/mock.py:2247: ResourceWarning: unclosed database in <sqlite3.Connection object at 0x7fe4b71cac50>
+  def __init__(self, name, parent):
+ResourceWarning: Enable tracemalloc to get the object allocation traceback
+/usr/lib/python3.13/unittest/mock.py:2247: ResourceWarning: unclosed database in <sqlite3.Connection object at 0x7fe4b71ca2f0>
+  def __init__(self, name, parent):
+ResourceWarning: Enable tracemalloc to get the object allocation traceback
+/usr/lib/python3.13/unittest/mock.py:2247: ResourceWarning: unclosed database in <sqlite3.Connection object at 0x7fe4b71ca7a0>
+  def __init__(self, name, parent):
+ResourceWarning: Enable tracemalloc to get the object allocation traceback
+/usr/lib/python3.13/unittest/mock.py:2247: ResourceWarning: unclosed database in <sqlite3.Connection object at 0x7fe4b71cb880>
+  def __init__(self, name, parent):
+ResourceWarning: Enable tracemalloc to get the object allocation traceback
+/usr/lib/python3.13/unittest/mock.py:2247: ResourceWarning: unclosed database in <sqlite3.Connection object at 0x7fe4b71cb2e0>
+  def __init__(self, name, parent):
+ResourceWarning: Enable tracemalloc to get the object allocation traceback
+fixture smoke test passed
+image ownership smoke test passed
+image rendering smoke test passed
+incremental updates smoke test passed
+malformed hydration smoke test passed
+reused counter smoke test passed
+userscript source test passed
+Refresh stage: checks
+Refresh stage: assessment
+........./usr/lib/python3.13/ast.py:50: ResourceWarning: unclosed database in <sqlite3.Connection object at 0x7fe4b71cab60>
+  return compile(source, filename, mode, flags,
+ResourceWarning: Enable tracemalloc to get the object allocation traceback
+............./usr/lib/python3.13/unittest/mock.py:2247: ResourceWarning: unclosed database in <sqlite3.Connection object at 0x7fe4b71cb4c0>
+  def __init__(self, name, parent):
+ResourceWarning: Enable tracemalloc to get the object allocation traceback
+/usr/lib/python3.13/unittest/mock.py:2247: ResourceWarning: unclosed database in <sqlite3.Connection object at 0x7fe4b71cae30>
+  def __init__(self, name, parent):
+ResourceWarning: Enable tracemalloc to get the object allocation traceback
+/usr/lib/python3.13/unittest/mock.py:2247: ResourceWarning: unclosed database in <sqlite3.Connection object at 0x7fe4b71cab60>
+  def __init__(self, name, parent):
+ResourceWarning: Enable tracemalloc to get the object allocation traceback
+......Accepted-evidence policy replay: 1/1
+Accepted-evidence policy replay: 1/1
+..Accepted-evidence policy replay: 1/1
+.Accepted-evidence policy replay: 3/3
+.Accepted-evidence policy replay: 1/1
+....................................Loaded 2 categories sitemap parts
+..Snapshotted classifier context for 1 products
+Backed up database to /tmp/tmpu74df6_i/db.sqlite.bak
+Finalization-only run 2, acquisition run 1; no new HTTP fetches
+Context changes new=0 changed=1 removed=0 invalidated=1
+Completed sync finalization run 2
+...Snapshotted classifier context for 1 products
+Reusing classifier context from the unfinished sync
+Context changes new=1 changed=1 removed=0 invalidated=2
+.Snapshotted classifier context for 1 products
+Snapshotted classifier context for 1 products
+Snapshotted classifier context for 1 products
+..Snapshotted classifier context for 1 products
+...Loaded 2 products sitemap parts
+.Snapshotted classifier context for 1 products
+Context changes new=0 changed=1 removed=0 invalidated=1
+......../home/ivy/repos/personal/ocado_report/tools/native_product_identity.py:378: ResourceWarning: unclosed database in <sqlite3.Connection object at 0x7fe4b71ca5c0>
+  if any(re.search(r'\b'+re.escape(alias)+r'\b', value) for alias in group)}
+ResourceWarning: Enable tracemalloc to get the object allocation traceback
+.............................................../usr/lib/python3.13/copy.py:194: ResourceWarning: unclosed database in <sqlite3.Connection object at 0x7fe4b71c9990>
+  memo[id(x)] = y
+ResourceWarning: Enable tracemalloc to get the object allocation traceback
+/usr/lib/python3.13/copy.py:194: ResourceWarning: unclosed database in <sqlite3.Connection object at 0x7fe4b71c9e40>
+  memo[id(x)] = y
+ResourceWarning: Enable tracemalloc to get the object allocation traceback
+/usr/lib/python3.13/copy.py:194: ResourceWarning: unclosed database in <sqlite3.Connection object at 0x7fe4b71ca5c0>
+  memo[id(x)] = y
+ResourceWarning: Enable tracemalloc to get the object allocation traceback
+/usr/lib/python3.13/copy.py:194: ResourceWarning: unclosed database in <sqlite3.Connection object at 0x7fe4b71caf20>
+  memo[id(x)] = y
+ResourceWarning: Enable tracemalloc to get the object allocation traceback
+/usr/lib/python3.13/copy.py:194: ResourceWarning: unclosed database in <sqlite3.Connection object at 0x7fe4b71caa70>
+  memo[id(x)] = y
+ResourceWarning: Enable tracemalloc to get the object allocation traceback
+................................................................................................
+----------------------------------------------------------------------
+Ran 609 tests in 46.858s
+
+OK (skipped=1)

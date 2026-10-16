@@ -1,0 +1,72 @@
+{
+  "state": "passed",
+  "authorization": "Retain the 600 and audit every added positive",
+  "mode": "uniform-original-positive-sample-plus-complete-added-positive-census",
+  "application_proof_path": "/home/ivy/repos/personal/ocado_report/.whole-product-work/flavour-seasoning-repair-2026-10-16/application-proof.json",
+  "application_proof_sha256": "3687481339a793a58a35bd20f29d8466070ff13bfec5b303591644e73a3320d4",
+  "old_manifest_sha256": "f34b5b8667f8c1042f944c9df95cce6b13bc9a859b5d7f1458d81db44e3221d4",
+  "previous_candidate_fingerprint": "564ae9c00a7a1c56eed71d91b94a74535f21522e05fa75a1c9da682380613d31",
+  "candidate_fingerprint": "8335cf2b209cf3585ad87969ff06a6a2f866ab630690639473f3f02e51da7f40",
+  "shadow_application": {
+    "state": "passed",
+    "database": "shadow",
+    "product_id": "679700011",
+    "before": [
+      "nonvegan",
+      null
+    ],
+    "after": [
+      "vegan",
+      "manufacturer"
+    ],
+    "previous_audit_id": 2489591,
+    "audit_id": 2501276,
+    "run_id": 308,
+    "proof_sha256": "3687481339a793a58a35bd20f29d8466070ff13bfec5b303591644e73a3320d4",
+    "native_hash": "6a2444e86aed698e9fa3a05838398039db388b422776ad20b3abb00c80eb0e23",
+    "unchanged_existing_positive_population_sha256": "285401da953473bfc402c9c2f288156a976ed7346d57df3ee3f76536ee308ee4",
+    "existing_positive_changes": 0,
+    "added_positive_ids": [
+      "679700011"
+    ],
+    "source_evidence_changes": 0,
+    "unrelated_product_changes": 0,
+    "authorization": "Retain the 600 and audit every added positive"
+  },
+  "canonical_application": {
+    "state": "passed",
+    "database": "canonical",
+    "product_id": "679700011",
+    "before": [
+      "nonvegan",
+      null
+    ],
+    "after": [
+      "vegan",
+      "manufacturer"
+    ],
+    "previous_audit_id": 2489591,
+    "audit_id": 2501276,
+    "run_id": 308,
+    "proof_sha256": "3687481339a793a58a35bd20f29d8466070ff13bfec5b303591644e73a3320d4",
+    "native_hash": "6a2444e86aed698e9fa3a05838398039db388b422776ad20b3abb00c80eb0e23",
+    "unchanged_existing_positive_population_sha256": "285401da953473bfc402c9c2f288156a976ed7346d57df3ee3f76536ee308ee4",
+    "existing_positive_changes": 0,
+    "added_positive_ids": [
+      "679700011"
+    ],
+    "source_evidence_changes": 0,
+    "unrelated_product_changes": 0,
+    "authorization": "Retain the 600 and audit every added positive"
+  },
+  "existing_positive_changes": 0,
+  "added_positive_ids": [
+    "679700011"
+  ],
+  "retained_600_score_sha256": "bd68940a471188ed5eef672addf9f120f35803e49f3fc5e2a36010b9d850af21",
+  "accepted_score_sha256": "77b08cb80c5359a67f09e7544828d10a46e582b5f5f3e85dbf1d608afd5e6f08",
+  "source_annotations_sha256": "fd2e81bc46993db45631f66f6b3e0ab4f1999c87697249e4d5c0bfbbd21c7063",
+  "impact_sha256": "d95836a0b9128ab1eac74e36134ba2a6fc73543ed3a24548c400f4126335d62d",
+  "post_export_fixture_failure_preserved": "/home/ivy/repos/personal/ocado_report/.whole-product-work/assessment-2026-10-16-v67/post-export-checks.catalogue-dependent-fixtures",
+  "note": "Exactly one source-aware animal-content correction; no wholesale reassessment or database copy. Primary blind agreement and the added-positive source census validated before the canonical transaction. Original positive population and blind references preserved unchanged."
+}

@@ -1,0 +1,14 @@
+{
+  "at": "2026-10-16T14:02:26.808631+00:00",
+  "archive": "/home/ivy/repos/personal/ocado_report/.whole-product-work/assessment-2026-10-16-v67/before-activation.sqlite.snapshot.tar.zst",
+  "archive_sha256": "bf1bf478dd90509f5929a795606f40dbc428780a3d784d222e3bda9e0cdef860",
+  "members": {
+    "before-activation.sqlite": {
+      "bytes": 2779189248,
+      "sha256": "58b75d911e63626ceef9a8e07b3efcfa2754515dfcb0f996e07c6cacd64a0e34"
+    }
+  },
+  "verified_lossless": true,
+  "restore_command": "zstd -d -c /home/ivy/repos/personal/ocado_report/.whole-product-work/assessment-2026-10-16-v67/before-activation.sqlite.snapshot.tar.zst | tar -xvf - -C /home/ivy/repos/personal/ocado_report/.whole-product-work/assessment-2026-10-16-v67",
+  "note": "Exact quiescent predecessor database and WAL retained together, without checkpointing or altering any decisions. Active candidate, original snapshots, manufacturer files and external audit artifacts untouched."
+}

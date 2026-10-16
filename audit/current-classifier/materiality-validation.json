@@ -1,0 +1,1035 @@
+{
+  "materiality_version": "vegan-materiality-v1",
+  "classifier_version": "db-vegan-codex-v129",
+  "primary_prompt": "ocado-vegan-whole-product-json-v38",
+  "arbitration_prompt": "ocado-vegan-whole-product-arbitration-v29",
+  "reference_prompt": "blind-evidence-adjudication-v26",
+  "policy": "whole-product-v2",
+  "knowledge": "vegan-risk-registry-v51",
+  "schema": 7,
+  "models": {
+    "primary": "gpt-6-luna/high",
+    "arbitration": "gpt-6.1-sol/medium",
+    "reference": "gpt-6.1-sol/high"
+  },
+  "approved_rule": "Only block discrepancies that materially affect vegan suitability or whether the vegan claim applies.",
+  "implementation_checks": {
+    "state": "passed",
+    "tests": 609,
+    "live_opt_in_skips": 1,
+    "temporary_firefox_fixtures": "passed",
+    "source_record_sha256": "1dfef86c58022ab641a00b7e1734cee9737f8c63e862dde8a63eb868fb9f0f75"
+  },
+  "retained_frozen_replays": {
+    "controls": {
+      "repetitions": 3,
+      "new_model_calls": 0,
+      "all_runs_passed": true
+    },
+    "pilot": {
+      "repetitions": 3,
+      "new_model_calls": 0,
+      "all_runs_passed": true
+    }
+  },
+  "fresh_primary_source_protocol": {
+    "products": 8,
+    "passes": 2,
+    "outcomes": [
+      [
+        "324972011",
+        "vegan",
+        "manufacturer"
+      ],
+      [
+        "502158011",
+        "vegan",
+        "manufacturer"
+      ],
+      [
+        "508034011",
+        "vegan",
+        "tagged"
+      ],
+      [
+        "510260011",
+        "vegan",
+        "manufacturer"
+      ],
+      [
+        "614762011",
+        "vegan",
+        "tagged"
+      ],
+      [
+        "645551011",
+        "vegan",
+        "tagged"
+      ],
+      [
+        "680850011",
+        "vegan",
+        "manufacturer"
+      ],
+      [
+        "660923011",
+        "vegan",
+        "manufacturer"
+      ]
+    ],
+    "database_writes": 0
+  },
+  "targeted_references": [
+    {
+      "id": "376267011",
+      "name": "BEAUTYPRO Vitamin C Brightening Facial Sheet Mask",
+      "input_sha256": "39ef45fd1c68ed63ca6f655ca397906530a0407c1456a38766d9233b7dada29b",
+      "state": "accepted",
+      "expected": {
+        "vegan_status": "vegan",
+        "vegan_reason": "tagged",
+        "required_issue_codes": []
+      },
+      "readings": [
+        {
+          "call_id": "83ba1888-7b86-4d04-a57c-d7d0a43a0d11",
+          "prompt": "blind-evidence-adjudication-v26",
+          "model": "gpt-6.1-sol",
+          "effort": "high"
+        },
+        {
+          "call_id": "c85022d5-1214-4893-91a9-0810841d1959",
+          "prompt": "blind-evidence-adjudication-v26",
+          "model": "gpt-6.1-sol",
+          "effort": "high"
+        }
+      ]
+    },
+    {
+      "id": "689563011",
+      "name": "Capri Sun Jungle Zero Party Pack Kids Juice Drink",
+      "input_sha256": "64a621458b643b054ccd3af3b41b614c206ca79c9f8a817789e6734018ffb9f2",
+      "state": "accepted",
+      "expected": {
+        "vegan_status": "vegan",
+        "vegan_reason": "manufacturer",
+        "required_issue_codes": []
+      },
+      "readings": [
+        {
+          "call_id": "83ba1888-7b86-4d04-a57c-d7d0a43a0d11",
+          "prompt": "blind-evidence-adjudication-v26",
+          "model": "gpt-6.1-sol",
+          "effort": "high"
+        },
+        {
+          "call_id": "c85022d5-1214-4893-91a9-0810841d1959",
+          "prompt": "blind-evidence-adjudication-v26",
+          "model": "gpt-6.1-sol",
+          "effort": "high"
+        }
+      ]
+    },
+    {
+      "id": "502332011",
+      "name": "Garnier Micellar Water Rose",
+      "input_sha256": "00033ed5ddf51f6b45aff24c1e1a76cea159def6f522c4f0676a9839a4110f72",
+      "state": "accepted",
+      "expected": {
+        "vegan_status": "vegan",
+        "vegan_reason": "manufacturer",
+        "required_issue_codes": []
+      },
+      "readings": [
+        {
+          "call_id": "83ba1888-7b86-4d04-a57c-d7d0a43a0d11",
+          "prompt": "blind-evidence-adjudication-v26",
+          "model": "gpt-6.1-sol",
+          "effort": "high"
+        },
+        {
+          "call_id": "c85022d5-1214-4893-91a9-0810841d1959",
+          "prompt": "blind-evidence-adjudication-v26",
+          "model": "gpt-6.1-sol",
+          "effort": "high"
+        }
+      ]
+    },
+    {
+      "id": "508930011",
+      "name": "Graze Salt & Vinegar Crunch Sharing Bag Snack",
+      "input_sha256": "ea61dfe18580d22f90a7637f18dd29276ad9480ea9d2f1cbc033ca3adbf73f3b",
+      "state": "accepted",
+      "expected": {
+        "vegan_status": "vegan",
+        "vegan_reason": "tagged",
+        "required_issue_codes": []
+      },
+      "readings": [
+        {
+          "call_id": "83ba1888-7b86-4d04-a57c-d7d0a43a0d11",
+          "prompt": "blind-evidence-adjudication-v26",
+          "model": "gpt-6.1-sol",
+          "effort": "high"
+        },
+        {
+          "call_id": "c85022d5-1214-4893-91a9-0810841d1959",
+          "prompt": "blind-evidence-adjudication-v26",
+          "model": "gpt-6.1-sol",
+          "effort": "high"
+        }
+      ]
+    },
+    {
+      "id": "674579011",
+      "name": "Holland & Barrett Colon Complex Tablets",
+      "input_sha256": "0c5a5764fc98d1c5f5939085f3aa671102f9494ed13de43b82f530dc5ea242a3",
+      "state": "accepted",
+      "expected": {
+        "vegan_status": "vegan",
+        "vegan_reason": "manufacturer",
+        "required_issue_codes": []
+      },
+      "readings": [
+        {
+          "call_id": "83ba1888-7b86-4d04-a57c-d7d0a43a0d11",
+          "prompt": "blind-evidence-adjudication-v26",
+          "model": "gpt-6.1-sol",
+          "effort": "high"
+        },
+        {
+          "call_id": "c85022d5-1214-4893-91a9-0810841d1959",
+          "prompt": "blind-evidence-adjudication-v26",
+          "model": "gpt-6.1-sol",
+          "effort": "high"
+        }
+      ]
+    },
+    {
+      "id": "51533011",
+      "name": "Jackson Estate Vintage Widow Pinot Noir",
+      "input_sha256": "37d3d7d7a7203b073f224fef53f79cc6237c00041d93660805e1e45a389ce4e0",
+      "state": "accepted",
+      "expected": {
+        "vegan_status": "vegan",
+        "vegan_reason": "tagged",
+        "required_issue_codes": []
+      },
+      "readings": [
+        {
+          "call_id": "83ba1888-7b86-4d04-a57c-d7d0a43a0d11",
+          "prompt": "blind-evidence-adjudication-v26",
+          "model": "gpt-6.1-sol",
+          "effort": "high"
+        },
+        {
+          "call_id": "c85022d5-1214-4893-91a9-0810841d1959",
+          "prompt": "blind-evidence-adjudication-v26",
+          "model": "gpt-6.1-sol",
+          "effort": "high"
+        }
+      ]
+    },
+    {
+      "id": "681298011",
+      "name": "John Frieda BLONDE+ Repair System Pre-Shampoo Treatment",
+      "input_sha256": "1044d648c6cc716e6fd17801e762f5c18623bb5fffb73f81a6f6f677de7621c7",
+      "state": "accepted",
+      "expected": {
+        "vegan_status": "vegan",
+        "vegan_reason": "manufacturer",
+        "required_issue_codes": []
+      },
+      "readings": [
+        {
+          "call_id": "83ba1888-7b86-4d04-a57c-d7d0a43a0d11",
+          "prompt": "blind-evidence-adjudication-v26",
+          "model": "gpt-6.1-sol",
+          "effort": "high"
+        },
+        {
+          "call_id": "c85022d5-1214-4893-91a9-0810841d1959",
+          "prompt": "blind-evidence-adjudication-v26",
+          "model": "gpt-6.1-sol",
+          "effort": "high"
+        }
+      ]
+    },
+    {
+      "id": "663224011",
+      "name": "L.A Brewery Non-Alcoholic Sparkling English Blush Kombucha",
+      "input_sha256": "f1d045e94acdccbd687b98a1bf5be17a64c45c2953c0435422e91328da39963e",
+      "state": "accepted",
+      "expected": {
+        "vegan_status": "vegan",
+        "vegan_reason": "tagged",
+        "required_issue_codes": []
+      },
+      "readings": [
+        {
+          "call_id": "83ba1888-7b86-4d04-a57c-d7d0a43a0d11",
+          "prompt": "blind-evidence-adjudication-v26",
+          "model": "gpt-6.1-sol",
+          "effort": "high"
+        },
+        {
+          "call_id": "c85022d5-1214-4893-91a9-0810841d1959",
+          "prompt": "blind-evidence-adjudication-v26",
+          "model": "gpt-6.1-sol",
+          "effort": "high"
+        }
+      ]
+    },
+    {
+      "id": "668514011",
+      "name": "M&S Collection Snowman Bao Buns",
+      "input_sha256": "8a99b934046d1bae6d35205bace5f066765f4894dafaa6bd563533696b6d8c61",
+      "state": "accepted",
+      "expected": {
+        "vegan_status": "vegan",
+        "vegan_reason": "manufacturer",
+        "required_issue_codes": []
+      },
+      "readings": [
+        {
+          "call_id": "1ae377ac-c83d-4254-9c6c-4f7f7b78e0a1",
+          "prompt": "blind-evidence-adjudication-v26",
+          "model": "gpt-6.1-sol",
+          "effort": "high"
+        },
+        {
+          "call_id": "2112d9de-6bc1-4e4a-9157-34ca6f9f8253",
+          "prompt": "blind-evidence-adjudication-v26",
+          "model": "gpt-6.1-sol",
+          "effort": "high"
+        }
+      ]
+    },
+    {
+      "id": "690845011",
+      "name": "OGGS Birthday Cake Flavour and Double Chocolate Cupcake Party Selection x 9",
+      "input_sha256": "0305292927b3b8845f48d9769e08339f4118ee619ad0e976cccc3b4dbe0b6206",
+      "state": "accepted",
+      "expected": {
+        "vegan_status": "vegan",
+        "vegan_reason": "manufacturer",
+        "required_issue_codes": []
+      },
+      "readings": [
+        {
+          "call_id": "1ae377ac-c83d-4254-9c6c-4f7f7b78e0a1",
+          "prompt": "blind-evidence-adjudication-v26",
+          "model": "gpt-6.1-sol",
+          "effort": "high"
+        },
+        {
+          "call_id": "2112d9de-6bc1-4e4a-9157-34ca6f9f8253",
+          "prompt": "blind-evidence-adjudication-v26",
+          "model": "gpt-6.1-sol",
+          "effort": "high"
+        }
+      ]
+    },
+    {
+      "id": "210033011",
+      "name": "Pillow Wad Hay, Small",
+      "input_sha256": "b9b4af681fd545deeb754c0532203ec4e09be6c8bc1c32b9c6d9fb947043128b",
+      "state": "accepted",
+      "expected": {
+        "vegan_status": "vegan",
+        "vegan_reason": "ingredients",
+        "required_issue_codes": []
+      },
+      "readings": [
+        {
+          "call_id": "1ae377ac-c83d-4254-9c6c-4f7f7b78e0a1",
+          "prompt": "blind-evidence-adjudication-v26",
+          "model": "gpt-6.1-sol",
+          "effort": "high"
+        },
+        {
+          "call_id": "2112d9de-6bc1-4e4a-9157-34ca6f9f8253",
+          "prompt": "blind-evidence-adjudication-v26",
+          "model": "gpt-6.1-sol",
+          "effort": "high"
+        }
+      ]
+    },
+    {
+      "id": "203521011",
+      "name": "Pommery Apanage Rose Champagne NV",
+      "input_sha256": "16416fc0ed3bf93de13ca3e1eee2472618f167f2e92389ee02bad732fec06a92",
+      "state": "accepted",
+      "expected": {
+        "vegan_status": "vegan",
+        "vegan_reason": "tagged",
+        "required_issue_codes": []
+      },
+      "readings": [
+        {
+          "call_id": "1ae377ac-c83d-4254-9c6c-4f7f7b78e0a1",
+          "prompt": "blind-evidence-adjudication-v26",
+          "model": "gpt-6.1-sol",
+          "effort": "high"
+        },
+        {
+          "call_id": "2112d9de-6bc1-4e4a-9157-34ca6f9f8253",
+          "prompt": "blind-evidence-adjudication-v26",
+          "model": "gpt-6.1-sol",
+          "effort": "high"
+        }
+      ]
+    },
+    {
+      "id": "659615011",
+      "name": "Served Cosmopolitan",
+      "input_sha256": "75880c45c8615c380f0239fd41f6885f2a41a8ba1220c0a4ec85eac07d56ebda",
+      "state": "accepted",
+      "expected": {
+        "vegan_status": "vegan",
+        "vegan_reason": "manufacturer",
+        "required_issue_codes": []
+      },
+      "readings": [
+        {
+          "call_id": "1ae377ac-c83d-4254-9c6c-4f7f7b78e0a1",
+          "prompt": "blind-evidence-adjudication-v26",
+          "model": "gpt-6.1-sol",
+          "effort": "high"
+        },
+        {
+          "call_id": "2112d9de-6bc1-4e4a-9157-34ca6f9f8253",
+          "prompt": "blind-evidence-adjudication-v26",
+          "model": "gpt-6.1-sol",
+          "effort": "high"
+        }
+      ]
+    },
+    {
+      "id": "664248011",
+      "name": "The Black Pig The Prize Chardonnay",
+      "input_sha256": "276ecbc9b82534cb273747d178f25354511a875ee15412272c02b5380b550beb",
+      "state": "accepted",
+      "expected": {
+        "vegan_status": "vegan",
+        "vegan_reason": "manufacturer",
+        "required_issue_codes": []
+      },
+      "readings": [
+        {
+          "call_id": "1ae377ac-c83d-4254-9c6c-4f7f7b78e0a1",
+          "prompt": "blind-evidence-adjudication-v26",
+          "model": "gpt-6.1-sol",
+          "effort": "high"
+        },
+        {
+          "call_id": "2112d9de-6bc1-4e4a-9157-34ca6f9f8253",
+          "prompt": "blind-evidence-adjudication-v26",
+          "model": "gpt-6.1-sol",
+          "effort": "high"
+        }
+      ]
+    },
+    {
+      "id": "275869011",
+      "name": "Vita Coco Organic Raw 100% Extra Virgin Cold Pressed Coconut Oil",
+      "input_sha256": "3fe83bfc4cf8b2d1afce03dbf9a4be8912b2e73be42ac3e9c1a64a103884b981",
+      "state": "accepted",
+      "expected": {
+        "vegan_status": "vegan",
+        "vegan_reason": "manufacturer",
+        "required_issue_codes": []
+      },
+      "readings": [
+        {
+          "call_id": "1ae377ac-c83d-4254-9c6c-4f7f7b78e0a1",
+          "prompt": "blind-evidence-adjudication-v26",
+          "model": "gpt-6.1-sol",
+          "effort": "high"
+        },
+        {
+          "call_id": "2112d9de-6bc1-4e4a-9157-34ca6f9f8253",
+          "prompt": "blind-evidence-adjudication-v26",
+          "model": "gpt-6.1-sol",
+          "effort": "high"
+        }
+      ]
+    },
+    {
+      "id": "674077011",
+      "name": "The Weyborne Oriana Golden Spur NV",
+      "input_sha256": "b941809bb35cfc1d663a070d44b96739ad9554c5b3098aa757d6bf63a3ae7c31",
+      "state": "accepted",
+      "expected": {
+        "vegan_status": "vegan",
+        "vegan_reason": "manufacturer",
+        "required_issue_codes": []
+      },
+      "readings": [
+        {
+          "call_id": "1ae377ac-c83d-4254-9c6c-4f7f7b78e0a1",
+          "prompt": "blind-evidence-adjudication-v26",
+          "model": "gpt-6.1-sol",
+          "effort": "high"
+        },
+        {
+          "call_id": "2112d9de-6bc1-4e4a-9157-34ca6f9f8253",
+          "prompt": "blind-evidence-adjudication-v26",
+          "model": "gpt-6.1-sol",
+          "effort": "high"
+        }
+      ]
+    },
+    {
+      "id": "324972011",
+      "name": "Garnier Micellar Cleansing Water Combination",
+      "input_sha256": "77d89f43a5de702c5aa3b54c69c7352f1629156f1a0494b727a0346a8d6eeb8a",
+      "state": "accepted",
+      "expected": {
+        "vegan_status": "vegan",
+        "vegan_reason": "manufacturer",
+        "required_issue_codes": []
+      },
+      "readings": [
+        {
+          "call_id": "854ea47f-7f4b-4c7e-9f39-25ddc20fb7cd",
+          "prompt": "blind-evidence-adjudication-v26",
+          "model": "gpt-6.1-sol",
+          "effort": "high"
+        },
+        {
+          "call_id": "15aa494c-c27b-499d-ae55-62cf452c2071",
+          "prompt": "blind-evidence-adjudication-v26",
+          "model": "gpt-6.1-sol",
+          "effort": "high"
+        }
+      ]
+    },
+    {
+      "id": "502158011",
+      "name": "Cooks&Co Roasted Red & Yellow Peppers",
+      "input_sha256": "7d84854af23115831369ae81ae9fd705f35ce9b93ceb098b40019890dc12e02a",
+      "state": "accepted",
+      "expected": {
+        "vegan_status": "vegan",
+        "vegan_reason": "manufacturer",
+        "required_issue_codes": []
+      },
+      "readings": [
+        {
+          "call_id": "854ea47f-7f4b-4c7e-9f39-25ddc20fb7cd",
+          "prompt": "blind-evidence-adjudication-v26",
+          "model": "gpt-6.1-sol",
+          "effort": "high"
+        },
+        {
+          "call_id": "15aa494c-c27b-499d-ae55-62cf452c2071",
+          "prompt": "blind-evidence-adjudication-v26",
+          "model": "gpt-6.1-sol",
+          "effort": "high"
+        }
+      ]
+    },
+    {
+      "id": "508034011",
+      "name": "Baylis & Harding Goodness Lemongrass & Ginger Bath Soak",
+      "input_sha256": "61e6e7ff48499da089f0868ab09a6dab7446514d4c37cff08faadfb19aba43ba",
+      "state": "accepted",
+      "expected": {
+        "vegan_status": "vegan",
+        "vegan_reason": "tagged",
+        "required_issue_codes": []
+      },
+      "readings": [
+        {
+          "call_id": "854ea47f-7f4b-4c7e-9f39-25ddc20fb7cd",
+          "prompt": "blind-evidence-adjudication-v26",
+          "model": "gpt-6.1-sol",
+          "effort": "high"
+        },
+        {
+          "call_id": "15aa494c-c27b-499d-ae55-62cf452c2071",
+          "prompt": "blind-evidence-adjudication-v26",
+          "model": "gpt-6.1-sol",
+          "effort": "high"
+        }
+      ]
+    },
+    {
+      "id": "510260011",
+      "name": "Bulldog Skincare - Original Shower Gel",
+      "input_sha256": "c35134bfca1f1a429091d4bae323053df4c12b138875143a5e5e2bf1059d8109",
+      "state": "accepted",
+      "expected": {
+        "vegan_status": "vegan",
+        "vegan_reason": "manufacturer",
+        "required_issue_codes": []
+      },
+      "readings": [
+        {
+          "call_id": "854ea47f-7f4b-4c7e-9f39-25ddc20fb7cd",
+          "prompt": "blind-evidence-adjudication-v26",
+          "model": "gpt-6.1-sol",
+          "effort": "high"
+        },
+        {
+          "call_id": "15aa494c-c27b-499d-ae55-62cf452c2071",
+          "prompt": "blind-evidence-adjudication-v26",
+          "model": "gpt-6.1-sol",
+          "effort": "high"
+        }
+      ]
+    },
+    {
+      "id": "614762011",
+      "name": "Bio&Me Fruit and Nut Muesli",
+      "input_sha256": "6651983dfd6e745a6624e5280947230b8d93af48d8eb785d334b72b104509782",
+      "state": "accepted",
+      "expected": {
+        "vegan_status": "vegan",
+        "vegan_reason": "tagged",
+        "required_issue_codes": []
+      },
+      "readings": [
+        {
+          "call_id": "854ea47f-7f4b-4c7e-9f39-25ddc20fb7cd",
+          "prompt": "blind-evidence-adjudication-v26",
+          "model": "gpt-6.1-sol",
+          "effort": "high"
+        },
+        {
+          "call_id": "15aa494c-c27b-499d-ae55-62cf452c2071",
+          "prompt": "blind-evidence-adjudication-v26",
+          "model": "gpt-6.1-sol",
+          "effort": "high"
+        }
+      ]
+    },
+    {
+      "id": "645551011",
+      "name": "Bio&Me Gluten Free Berry Burst Granola",
+      "input_sha256": "d6b8240a21c26c265456384656569f71c3552873375bf203da5c957dccf06e94",
+      "state": "accepted",
+      "expected": {
+        "vegan_status": "vegan",
+        "vegan_reason": "tagged",
+        "required_issue_codes": []
+      },
+      "readings": [
+        {
+          "call_id": "854ea47f-7f4b-4c7e-9f39-25ddc20fb7cd",
+          "prompt": "blind-evidence-adjudication-v26",
+          "model": "gpt-6.1-sol",
+          "effort": "high"
+        },
+        {
+          "call_id": "15aa494c-c27b-499d-ae55-62cf452c2071",
+          "prompt": "blind-evidence-adjudication-v26",
+          "model": "gpt-6.1-sol",
+          "effort": "high"
+        }
+      ]
+    },
+    {
+      "id": "680850011",
+      "name": "Baylis & Harding Goodness Range Discovery Gift Set",
+      "input_sha256": "b579a106ea10a48db7b95b0e084dee809879e86d910a68ddc18aecfc0b2cdc15",
+      "state": "accepted",
+      "expected": {
+        "vegan_status": "vegan",
+        "vegan_reason": "manufacturer",
+        "required_issue_codes": []
+      },
+      "readings": [
+        {
+          "call_id": "854ea47f-7f4b-4c7e-9f39-25ddc20fb7cd",
+          "prompt": "blind-evidence-adjudication-v26",
+          "model": "gpt-6.1-sol",
+          "effort": "high"
+        },
+        {
+          "call_id": "15aa494c-c27b-499d-ae55-62cf452c2071",
+          "prompt": "blind-evidence-adjudication-v26",
+          "model": "gpt-6.1-sol",
+          "effort": "high"
+        }
+      ]
+    },
+    {
+      "id": "609330011",
+      "name": "Natural Petal Wedding Confetti",
+      "input_sha256": "0d1ca4da23bb3f30ca3588b18f6a324e1a9b6847e3285bdc6c04166d99ca46e0",
+      "state": "accepted",
+      "expected": {
+        "vegan_status": "vegan",
+        "vegan_reason": "ingredients",
+        "required_issue_codes": []
+      },
+      "readings": [
+        {
+          "call_id": "854ea47f-7f4b-4c7e-9f39-25ddc20fb7cd",
+          "prompt": "blind-evidence-adjudication-v26",
+          "model": "gpt-6.1-sol",
+          "effort": "high"
+        },
+        {
+          "call_id": "15aa494c-c27b-499d-ae55-62cf452c2071",
+          "prompt": "blind-evidence-adjudication-v26",
+          "model": "gpt-6.1-sol",
+          "effort": "high"
+        }
+      ]
+    }
+  ],
+  "previewed_promotions": [
+    {
+      "id": "324972011",
+      "name": "Garnier Micellar Cleansing Water Combination",
+      "before": [
+        "unknown",
+        null
+      ],
+      "after": [
+        "vegan",
+        "manufacturer"
+      ],
+      "native_hash": "77d89f43a5de702c5aa3b54c69c7352f1629156f1a0494b727a0346a8d6eeb8a",
+      "previous_audit_id": 2458881,
+      "new_model_calls": 0
+    },
+    {
+      "id": "502158011",
+      "name": "Cooks&Co Roasted Red & Yellow Peppers",
+      "before": [
+        "unknown",
+        null
+      ],
+      "after": [
+        "vegan",
+        "manufacturer"
+      ],
+      "native_hash": "7d84854af23115831369ae81ae9fd705f35ce9b93ceb098b40019890dc12e02a",
+      "previous_audit_id": 2464147,
+      "new_model_calls": 0
+    },
+    {
+      "id": "508034011",
+      "name": "Baylis & Harding Goodness Lemongrass & Ginger Bath Soak",
+      "before": [
+        "unknown",
+        null
+      ],
+      "after": [
+        "vegan",
+        "tagged"
+      ],
+      "native_hash": "61e6e7ff48499da089f0868ab09a6dab7446514d4c37cff08faadfb19aba43ba",
+      "previous_audit_id": 2464732,
+      "new_model_calls": 0
+    },
+    {
+      "id": "510260011",
+      "name": "Bulldog Skincare - Original Shower Gel",
+      "before": [
+        "unknown",
+        null
+      ],
+      "after": [
+        "vegan",
+        "manufacturer"
+      ],
+      "native_hash": "c35134bfca1f1a429091d4bae323053df4c12b138875143a5e5e2bf1059d8109",
+      "previous_audit_id": 2464981,
+      "new_model_calls": 0
+    },
+    {
+      "id": "614762011",
+      "name": "Bio&Me Fruit and Nut Muesli",
+      "before": [
+        "unknown",
+        null
+      ],
+      "after": [
+        "vegan",
+        "tagged"
+      ],
+      "native_hash": "6651983dfd6e745a6624e5280947230b8d93af48d8eb785d334b72b104509782",
+      "previous_audit_id": 2475400,
+      "new_model_calls": 0
+    },
+    {
+      "id": "645551011",
+      "name": "Bio&Me Gluten Free Berry Burst Granola",
+      "before": [
+        "unknown",
+        null
+      ],
+      "after": [
+        "vegan",
+        "tagged"
+      ],
+      "native_hash": "d6b8240a21c26c265456384656569f71c3552873375bf203da5c957dccf06e94",
+      "previous_audit_id": 2450648,
+      "new_model_calls": 0
+    },
+    {
+      "id": "680850011",
+      "name": "Baylis & Harding Goodness Range Discovery Gift Set",
+      "before": [
+        "unknown",
+        null
+      ],
+      "after": [
+        "vegan",
+        "manufacturer"
+      ],
+      "native_hash": "b579a106ea10a48db7b95b0e084dee809879e86d910a68ddc18aecfc0b2cdc15",
+      "previous_audit_id": 2490098,
+      "new_model_calls": 0
+    }
+  ],
+  "candidate_hashes": {
+    "ocado-vegan-filter.user.js": "821eb8d8e3e1c75bc19afad80a342da965b0fc7563fc57638fe791c6007138c4",
+    "tests/test_added_mineral_scope.py": "4390cab0e499b6faf5bd74b1bac6f5c81d920093e9371079cddddf5a51578d2f",
+    "tests/test_article_grape_origin_scope.py": "18dea2b4d5790976215f2727a9bd82fe2a8910fe8455a49cf26c5209d67929dc",
+    "tests/test_assessment_compaction.py": "7c0b0fefca8bf8625931526286a1b1db45d83beeb235184aa422955dd5bebf32",
+    "tests/test_beer_style_identity.py": "d2accfa6b79059eb6dafc01ef62812c47a49ea3572e55bf671bec8f877c97412",
+    "tests/test_benchmark_whole_product.py": "686e36e64c42f5fe2449d35dff2997bb707b4be1c99dfc2fd3b403b1d410bde8",
+    "tests/test_body_wash_set_identity.py": "cd364a38fd369a373c7ee58f26045e668917f2ab8489e6ea2b6f0c0a013d8fa7",
+    "tests/test_bottle_material_features.py": "0dd028b32814383c26ff2cf480d05633aa642b7b8450c2f0c84d351ce996715b",
+    "tests/test_bound_candidate_clone.py": "e7b74ab2c6ad41fdf9bb98621b517abdeff591ec02c30aa2a611bde48d4eb735",
+    "tests/test_bounded_manufacturer_bundle.py": "a5bf431adb82380e5818ec425e5cc8b6dd4a040d6abbfd06e97fc742081d0d15",
+    "tests/test_build_bounded_manufacturer_bundle.py": "84b4724a67fb8705c72f755f8723f5a8abbee709247a427aa1fb36f219802e11",
+    "tests/test_build_catalogue_brand_identity.py": "e59bb0ff9c89f2f4944892eaa088d0ac7804886b26451d9958b5aa9b0072f8dc",
+    "tests/test_build_ocado_database.py": "0dd4f5bc5cd4a8c6c973c9009d8b1e0ff6c4a55fe9379ace67c5da4d2f8000c1",
+    "tests/test_call_admission_journal.py": "7fb2c2c924f189caf0eabf28a5c9a6f7b021dd5bacd7c3b28bd15776ac3219a6",
+    "tests/test_classify_ocado_vegan.py": "b82001f5647e1b8578a7c0d4d4147eba4e243981fd1f303f6a55ee787c401136",
+    "tests/test_container_recipe_identity.py": "ee0a279dcafbf85c7195618155e5e8d33d8c345d06c4810e2eb5500f2e9214e5",
+    "tests/test_cursory_research_accounting.py": "f2bb656924090327210b9220205fe468c6e7acc7c25c618d1b935509aa1e5ad2",
+    "tests/test_declared_article_identity.py": "57259f8a69ccc81223510db45ad586141a4becc2e37ed97163757b8184382d1f",
+    "tests/test_declared_composition_consistency.py": "3de7ddb820e5cfc611fca19d7192ed4b84231f4ffe44f4c96bb1459bec5c6d42",
+    "tests/test_declared_recipe_components.py": "e706fe8319b15b59f82f266189e691c40ce1311a97a454939f85dea51f4eeca4",
+    "tests/test_definite_animal_scope.py": "57a75c2188cdcbc3117a4ec52c1e72543dac89414e912e824318b70f8c4a2e04",
+    "tests/test_factory_warning_search.py": "8fe9f9ff52226f4e5193ec89d8d3d08e94624ed3b664ae419de1e1e65a45c7e7",
+    "tests/test_literal_reference_catalogue.py": "4e338eda8f2cd9540829eb6c2cca181cf296cd25f9ac1d96d510024846f2de9b",
+    "tests/test_literal_reference_fallback.py": "18d58503a3d5ed258ef554be15785c6caffe1242733019db74e9ffb78d92606b",
+    "tests/test_manufacturer_evidence.py": "65e06b89988d9b3faec7a71ecda03a290097e3fc0411450ec714b3bb7000259f",
+    "tests/test_materiality_policy.py": "f23ab713fa986eacf50bd318bc3a9b762b52f40959a7518d83e56e96141105d4",
+    "tests/test_native_product_identity.py": "ddcd835a02eb56f50afde04fad01d6a996824df068969214300b52c9f8e53fe4",
+    "tests/test_ocado_arbitration.py": "20b91cdade141d73b2f44a37cb524ae07709d26df5c4a1a8f29e753133b5dd7f",
+    "tests/test_ocado_vegan_filter.py": "b03e36b881a17fa1a1e7e8dd90c3eb3c3037b2cd168fec92b71bc2954981b4eb",
+    "tests/test_positive_audit_reason.py": "0d0c052cb876f712b9e939bc79502d184fb8fe414a761bb6ee9ed037c4b08752",
+    "tests/test_protein_ageing_identity.py": "762c3db40ed93bb2bebb65435f73906c7ce13ef46148a8fe58718ce3f12f2b5c",
+    "tests/test_recover_ocado_field_text.py": "3903715932c2c3bc128a884d87dd6e195424273bbb40a8826f746dced17cfe06",
+    "tests/test_reference_audit_continuation.py": "9ac9b8acede9c6c5c58778f83cffd40e7e515645f44380e0c6ee1ea7a9845594",
+    "tests/test_reference_normalization_cache.py": "8be2c426f95402f44ec2cbb5c47d384aff68e2399cdce21b9a3b50b6bea5f9cc",
+    "tests/test_refresh_whole_product.py": "39dd93690eb2aedbc27e4e22fbe5340a0f94896aecb93e48835d91773e2897e0",
+    "tests/test_replay_whole_product_policy.py": "a0e96579aac4a7750e74403b4f73a4302e345ebcc23d6085fe19e5b79defe7cb",
+    "tests/test_rice_bowl_identity.py": "ad379d66d5114540887d38ad3bf1d7d7bae98411bb5d1b8b6100e99a55103dfa",
+    "tests/test_semantic_claim_routing.py": "4d3ca68b72f4f67dc5c909e0fbc5446c01b6b09af4da2af800d2d6df1c1db608",
+    "tests/test_source_quote_restoration.py": "c38dfa50d9bcbbd11d3143e7bddfd56f70be783bea15e0d8ac2e0a95739b1885",
+    "tests/test_source_reference_schema.py": "a8d2fb40c513c8b369fce062667d049069d6beae176da5c15aae417112ba5dae",
+    "tests/test_sync_ocado_database.py": "a2bd4526128124e608eff128fa232ed01a5e050a120046cd09f6d153b94d537b",
+    "tests/test_unknown_promotion_block.py": "bd3d8f92192f970a0c38f7134bf680fac845fa6c87fb14a3cd0b3fac1d66fb6c",
+    "tests/test_update_userscript_allowlists.py": "c9e7011979ce00b051b426fb17a81cde7cf9f643c0a04fee834abbbd83a90f11",
+    "tests/test_whole_product_policy.py": "fe91b90637243c234d32f2f1a3adbfbeab589d7c5ed52739f8c581d20ebe2361",
+    "tools/adjudicate_whole_product_corpus.py": "b6f03472915f65ed85dfc5a3617f487af617467ce434b7e592e5160f15511d37",
+    "tools/assemble_whole_product_fixture.py": "1a1f314c00eea3151744bd3c1d86db2a79c59df63dc917c09f652c4ff7a38d14",
+    "tools/audit_whole_product_positives.py": "3994b4b98cd293eb6c69c2bd037387807d39850e9e7ea96a9afa006da4af54cc",
+    "tools/benchmark_ocado_userscript.py": "731d2c419227278448971ba6694fce6693ffc9d9b60e4ae1b5a7bcfb63447b96",
+    "tools/benchmark_whole_product.py": "c86296559e5bc3edbf5ea693d4380408a4dae61f5ad5dfe123a0f6220f379c72",
+    "tools/build_bounded_manufacturer_bundle.py": "fa5d752e5beb33d91ee6f6725bf1fbe05c2d305b301902e06c0a51bb86384ab9",
+    "tools/build_catalogue_brand_identity.py": "9ff5b76e38aace170e5c85833151d2b1d611922ca8b7a1186b736b2a187a7ccb",
+    "tools/build_ocado_database.py": "264b8b04144e937ee8700cbe3f8406b53b646887b23b9e49948301089b6f47ff",
+    "tools/catalogue_brand_identity.py": "66f534cfd12315285cd91bfeb9d92ea8325fe69a2e67a80fe6d742e503573206",
+    "tools/check_ocado_userscript_scenarios.py": "ab8b8edfe3b672fe5b17e6cb5ebce43b048c90d3c11811c7969ffa8a5dcdb59b",
+    "tools/classify_ocado_vegan.py": "71852a63c1739bf49a01a5fbde74f4c20ea6ded99c048378dd327390b861c879",
+    "tools/codex_evidence.py": "9566e761bc42704cd362ce557df70179136fc290c62dd876b237d3e123614c6a",
+    "tools/compare_whole_product_models.py": "baae1e914a048c6df9c94f85a70fdfa987b81b4fea8efa7a8169edf1a4e040a8",
+    "tools/cursory_research_accounting.py": "b456315682e27150f9c902d7056c3028224ccb3e759939ad34343364880a9378",
+    "tools/literal_reference_catalogue.py": "cd6b33829e66994132dc358feac528b5cee3cf3792cee903fab3ab7e9088cc2a",
+    "tools/manufacturer_evidence.py": "0e7b3bd002b48fa513817f02c5fac3af71375b802296af4d00b37cb1d16316c7",
+    "tools/native_product_identity.py": "bfeb0c175f0a56e40bade9c2cdd32313892eeb141a45e832c05c004e805d4fe0",
+    "tools/prepare_whole_product_corpus.py": "614bebda4e2c05b811d966b571536955807c06925713a67eeb3d83aac22b18cf",
+    "tools/recover_ocado_field_text.py": "461f98a10621c77e631fb7e0e14dc2ccbfc3d6925f946197c13028436d39ca00",
+    "tools/refresh_whole_product.py": "230547ba0b2f8e797954af95746b4f09c9415d9ca7182d8467a2879b216f1449",
+    "tools/refresh_whole_product_references.py": "587a6135cbaf6a8bd942bb1f77c7a3839cea5bf16e3b7669d9ccd883716fea15",
+    "tools/replay_whole_product_policy.py": "a4e7e07baec0d7eec5016c987e1a3c00ca02576ac4d9a6acb7d6723ac3c1a30e",
+    "tools/research_ocado_manufacturers.py": "368f1f5a48353a10f745e223bba7f044c5930f1baf27945e843f8cbb21076552",
+    "tools/shadow_vegan_policy.py": "2df013daa301567a3aa83cd0dced430cb5922ab30cb2e10c28a9b5e91b9f4362",
+    "tools/source_quote_restoration.py": "29a9fc8b5a0e5ce2164483df2d5f75111fe58aadbf4942b851bf87f826136f8e",
+    "tools/sync_ocado_database.py": "027d1125abb312c0e3ed6f1f38bc2317bbee97f7f53c643eae9bcc59bae6b0e5",
+    "tools/update_userscript_allowlists.py": "b9803d0a13302c67f13fe4be5b819315b17bd2ce9d2c25019071ce397f460ea1",
+    "tools/validate_whole_product_candidate.py": "038a532211d31cfd8a15f83db6007e815ebcdf12f1606bb7453a2f4a6c6fb8a7",
+    "tools/vegan_policy.py": "e0f3c6b4b32ea8fa1f65558f384ec583d7bdb5845e7a196a7cec54cdaf14aa4a"
+  },
+  "catalogue_activation": "completed on local dev; canonical database and repo userscript updated at unchanged version1.7.2",
+  "limitations": "Targeted diagnostics are not a representative random audit or independent proof of undisclosed manufacturing facts. No broad new classification, scrape, manufacturer crawl or model benchmark.",
+  "retained_materiality_diagnostic_classifier_version": "db-vegan-codex-v127",
+  "attribution_repair": {
+    "state": "passed",
+    "mode": "retained-suitability-audit-with-separately-validated-attribution",
+    "proof_path": "/home/ivy/repos/personal/ocado_report/.whole-product-work/attribution-repair-2026-10-16/continuation-proof.json",
+    "proof_sha256": "d513e72f68ba9d02d62261c608539a11df6bbdf22d52c7f41cc796aa5ff98fe9",
+    "authorization": "Retain the audit; validate the reason-only correction",
+    "changes": [
+      {
+        "product_id": "402370011",
+        "previous_audit_id": 2444762,
+        "audit_id": 2501275,
+        "before": "name",
+        "after": "manufacturer"
+      }
+    ],
+    "unchanged_product_signature": "2d44d691990a51369315966cfbf49a4f56f7ece910aeb18e41b83b9fbb7dc6e5",
+    "suitability_changes": 0,
+    "evidence_changes": 0,
+    "browser_membership_changes": 0,
+    "original_failed_score_sha256": "8446a3126ac1e9ad1696c368e6b12ec182539afc460494480839e7aa49eadfde",
+    "retained_artifacts": {
+      "positive-audit.json": "64808b435c90c6170ca6bfffc0b3f2a7a16650e4c37059975a5f7bff39013fb5",
+      "positive-audit.predictions.json": "522256126d739b57403bdcf1c5fa3ecf89a6e531fb47b37caf8f3c4a36d997b6",
+      "positive-readings/annotated-candidates.json": "3ccba945da8c90eb9d9768745d43190422d5a5befb9c3a8c515241350c103cc3",
+      "positive-score.json": "8446a3126ac1e9ad1696c368e6b12ec182539afc460494480839e7aa49eadfde"
+    },
+    "code_changes": [
+      "tests/test_attribution_repair.py",
+      "tests/test_slash_dietary_attributes.py",
+      "tools/classify_ocado_vegan.py",
+      "tools/refresh_whole_product.py",
+      "tools/repair_vegan_attribution.py",
+      "tools/vegan_policy.py"
+    ],
+    "run_id": 307,
+    "note": "600 original blind suitability references retained by explicit user instruction; attribution was repaired separately. This is not a fresh unseen test of reason accuracy."
+  },
+  "source_qualification_repair": {
+    "state": "passed",
+    "authorization": "Retain the 600 and audit every added positive",
+    "mode": "uniform-original-positive-sample-plus-complete-added-positive-census",
+    "application_proof_path": "/home/ivy/repos/personal/ocado_report/.whole-product-work/flavour-seasoning-repair-2026-10-16/application-proof.json",
+    "application_proof_sha256": "3687481339a793a58a35bd20f29d8466070ff13bfec5b303591644e73a3320d4",
+    "old_manifest_sha256": "f34b5b8667f8c1042f944c9df95cce6b13bc9a859b5d7f1458d81db44e3221d4",
+    "previous_candidate_fingerprint": "564ae9c00a7a1c56eed71d91b94a74535f21522e05fa75a1c9da682380613d31",
+    "candidate_fingerprint": "8335cf2b209cf3585ad87969ff06a6a2f866ab630690639473f3f02e51da7f40",
+    "shadow_application": {
+      "state": "passed",
+      "database": "shadow",
+      "product_id": "679700011",
+      "before": [
+        "nonvegan",
+        null
+      ],
+      "after": [
+        "vegan",
+        "manufacturer"
+      ],
+      "previous_audit_id": 2489591,
+      "audit_id": 2501276,
+      "run_id": 308,
+      "proof_sha256": "3687481339a793a58a35bd20f29d8466070ff13bfec5b303591644e73a3320d4",
+      "native_hash": "6a2444e86aed698e9fa3a05838398039db388b422776ad20b3abb00c80eb0e23",
+      "unchanged_existing_positive_population_sha256": "285401da953473bfc402c9c2f288156a976ed7346d57df3ee3f76536ee308ee4",
+      "existing_positive_changes": 0,
+      "added_positive_ids": [
+        "679700011"
+      ],
+      "source_evidence_changes": 0,
+      "unrelated_product_changes": 0,
+      "authorization": "Retain the 600 and audit every added positive"
+    },
+    "canonical_application": {
+      "state": "passed",
+      "database": "canonical",
+      "product_id": "679700011",
+      "before": [
+        "nonvegan",
+        null
+      ],
+      "after": [
+        "vegan",
+        "manufacturer"
+      ],
+      "previous_audit_id": 2489591,
+      "audit_id": 2501276,
+      "run_id": 308,
+      "proof_sha256": "3687481339a793a58a35bd20f29d8466070ff13bfec5b303591644e73a3320d4",
+      "native_hash": "6a2444e86aed698e9fa3a05838398039db388b422776ad20b3abb00c80eb0e23",
+      "unchanged_existing_positive_population_sha256": "285401da953473bfc402c9c2f288156a976ed7346d57df3ee3f76536ee308ee4",
+      "existing_positive_changes": 0,
+      "added_positive_ids": [
+        "679700011"
+      ],
+      "source_evidence_changes": 0,
+      "unrelated_product_changes": 0,
+      "authorization": "Retain the 600 and audit every added positive"
+    },
+    "existing_positive_changes": 0,
+    "added_positive_ids": [
+      "679700011"
+    ],
+    "retained_600_score_sha256": "bd68940a471188ed5eef672addf9f120f35803e49f3fc5e2a36010b9d850af21",
+    "accepted_score_sha256": "77b08cb80c5359a67f09e7544828d10a46e582b5f5f3e85dbf1d608afd5e6f08",
+    "source_annotations_sha256": "fd2e81bc46993db45631f66f6b3e0ab4f1999c87697249e4d5c0bfbbd21c7063",
+    "impact_sha256": "d95836a0b9128ab1eac74e36134ba2a6fc73543ed3a24548c400f4126335d62d",
+    "post_export_fixture_failure_preserved": "/home/ivy/repos/personal/ocado_report/.whole-product-work/assessment-2026-10-16-v67/post-export-checks.catalogue-dependent-fixtures",
+    "note": "Exactly one source-aware animal-content correction; no wholesale reassessment or database copy. Primary blind agreement and the added-positive source census validated before the canonical transaction. Original positive population and blind references preserved unchanged."
+  },
+  "final_positive_audit": {
+    "state": "passed",
+    "policy_version": "whole-product-v2",
+    "mode": "uniform-original-positive-sample-plus-complete-added-positive-census",
+    "authorization": "Retain the 600 and audit every added positive",
+    "reference_counts": {
+      "vegan": 601
+    },
+    "issues": [],
+    "sampling": {
+      "design": "600 uniformly sampled original positives, retained unchanged, plus every added positive audited (census); not a uniform sample of 601",
+      "size": 601,
+      "uniform_sample_size": 600,
+      "uniform_sampling": {
+        "seed": 9394689130020336957,
+        "size": 600,
+        "population_all_known": 12399,
+        "population_current": 11275,
+        "population_sha256": "402c72659bd4dbe360d075f021248c975972bfb628bdfd81c63c17d980a80424",
+        "design": "uniform without replacement from all known candidate positive labels"
+      },
+      "added_positive_census_size": 1,
+      "added_positive_ids": [
+        "679700011"
+      ],
+      "population_all_known": 12400,
+      "population_current": 11275,
+      "population_sha256": "3c5ed0a51d2629e2b63d17046ce888d779cd0462c50099a727bc79d9e9f468dd"
+    },
+    "packet_sha256": "2d35e74f337524e18225b73231c19166179b35dcb1b2148af26593e7d9e160c0",
+    "retained_600_score_sha256": "bd68940a471188ed5eef672addf9f120f35803e49f3fc5e2a36010b9d850af21",
+    "original_failed_score_sha256": "8446a3126ac1e9ad1696c368e6b12ec182539afc460494480839e7aa49eadfde",
+    "added_positive_packet_sha256": "184692f4ea2f32f23c1f05f33e85ec99d276d162abd55b656cc14400e0d36e55",
+    "added_positive_annotations_sha256": "fd2e81bc46993db45631f66f6b3e0ab4f1999c87697249e4d5c0bfbbd21c7063",
+    "conditional_original_stratum_binomial_upper_95": 0.004980443380361299,
+    "stratified_policy_error_upper_95": 0.004980041731701593,
+    "zero_error_binomial_upper_95": null,
+    "note": "User-approved mixed sampling design. The original 600 product evidence, positive labels and references are unchanged; every newly positive product has two new blind source-cited readings. The overall conditional bound weights the original-stratum bound by its population share and treats the completely audited new stratum as zero reference errors. This is not the binomial interval for 601 independent random products. Shared model/reference errors and undisclosed facts are not covered; no unconditional physical guarantee is claimed."
+  },
+  "final_catalogue_application": {
+    "all_known": {
+      "nonvegan": 14379,
+      "unknown": 31543,
+      "vegan": 12400
+    },
+    "current": {
+      "nonvegan": 13201,
+      "unknown": 26249,
+      "vegan": 11275
+    },
+    "unclassified": 0,
+    "root": "/home/ivy/repos/personal/ocado_report/.whole-product-work/assessment-2026-10-16-v67",
+    "tag_created": false,
+    "pushed": false,
+    "installed_copy_changed": false,
+    "broad_repeat_scrape_or_model_benchmark": false
+  }
+}
