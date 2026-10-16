@@ -77,6 +77,11 @@ class AttributionRepairTests(unittest.TestCase):
             self.assertIn('positive-score.attribution-corrected.json',artifacts)
             old=artifacts['attribution-repair.json'];(root/'attribution-repair.json').write_text('tampered')
             self.assertNotEqual(old,runner.artifacts('positive_audit')['attribution-repair.json'])
+            runner.manifest['catalogue_delta_repair'] = {'receipt': 'catalogue-delta-repair.json'}
+            for name in ('positive-score.delta-augmented.json', 'catalogue-delta-repair.json'):
+                (root/name).write_text(name)
+            self.assertEqual(len(runner.artifacts('positive_audit')), 9)
+            self.assertIn('catalogue-delta-repair.json', runner.artifacts('positive_audit'))
 
     def test_code_binding_rejects_unrelated_policy_or_transport_changes(self):
         current=benchmark.candidate_hashes()
