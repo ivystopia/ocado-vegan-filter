@@ -32,7 +32,7 @@ DEFAULT_REASONING_EFFORT = "high"
 ARBITRATION_MODEL = "gpt-6.1-sol"
 ARBITRATION_REASONING_EFFORT = "medium"
 ARBITRATION_PROMPT_VERSION = "ocado-vegan-whole-product-arbitration-v29"
-CLASSIFIER_VERSION = "db-vegan-codex-v128"
+CLASSIFIER_VERSION = "db-vegan-codex-v129"
 PROMPT_VERSION = "ocado-vegan-whole-product-json-v38"
 VALID_STATUSES = {"vegan", "nonvegan", "unknown"}
 VALID_VEGAN_REASONS = {"tagged", "manufacturer", "ingredients", "name"}
@@ -232,14 +232,14 @@ NON_ANIMAL_INGREDIENT_SUBSTITUTIONS = [
     ),
     (
         re.compile(
-            r"\b(?:vegan|vegetarian|plant[- ]based|meat[- ]free)\s+(?:chicken|beef|pork|bacon|ham|turkey|duck|lamb|mutton|fish|prawn|shrimp|crab|lobster|oyster)\b",
+            r"\b(?:vegan|vegetarian|plant[- ]based|meat[- ]free)\s+(?:chicken|beef|pork|bacon|ham|turkey|duck|lamb|mutton|fish|tuna|salmon|cod|anchov(?:y|ies)|prawn|shrimp|crab|lobster|oyster)\b",
             re.IGNORECASE,
         ),
         "plant alternative",
     ),
     (
         re.compile(
-            r"\b(?:chicken|beef|pork|bacon|ham|turkey|duck|lamb|mutton|fish|prawn|shrimp|crab|lobster|oyster)[- ](?:style|free)\b",
+            r"\b(?:chicken|beef|pork|bacon|ham|turkey|duck|lamb|mutton|fish|tuna|salmon|cod|anchov(?:y|ies)|prawn|shrimp|crab|lobster|oyster)[- ](?:style|free)\b",
             re.IGNORECASE,
         ),
         "plant alternative",
@@ -972,6 +972,10 @@ def strip_explicit_absence_and_plant_names(text: str) -> str:
     text = re.sub(r"\bvegan\s+butter\b", "plant fat", text, flags=re.I)
     text = re.sub(r"\b(?:hand|body|face)\s+cream\s*:", "cosmetic component: ", text, flags=re.I)
     text = re.sub(r"\b(?:cheese|sour cream(?:\s+(?:and|&)\s+onion)?)\s+flavou?r(?:ed)?\s+(?:seasoning|powder)\b", "flavouring component", text, flags=re.I)
+    # A flavour-seasoning heading does not specify animal provenance. Keep
+    # every nested/adjacent ingredient so actual fish or dairy still wins.
+    text = re.sub(r"\b(?:chicken|beef|pork|bacon|ham|turkey|duck|lamb|fish|tuna|salmon|cod|anchov(?:y|ies)|prawns?|shrimps?|crab|lobster|oyster)\s+flavou?r(?:ed|ing)?\s+(?:seasoning|powder)\b",
+                  "flavouring component", text, flags=re.I)
     text = re.sub(r"\b(?:dairy[- ]free|vegan)(?:\s+vegan)?\s+alternative\s+to\s+(?:\w+\s+){0,3}(?:cream cheese|cheese)\b", "plant alternative", text, flags=re.I)
     text = re.sub(r"\b(?:this\s+)?isn't\s+(?:chicken|bacon|beef|fish)\s+plant[- ]based\b", "plant alternative", text, flags=re.I)
     text = re.sub(r"\boyster\s*\(pleurotus ostreatus\)", "mushroom", text, flags=re.I)
@@ -1156,9 +1160,13 @@ def policy_facts(context: dict[str, Any], *, assessment=None, requested_status=N
             # factory-handling warning. Those later animal words do not name
             # the declared ingredient. Preserve an animal target before the
             # warning, and retain the full mixed field for scope assessment.
-            tail=re.split(r'\b(?:made|produced|packed)\s+in\s+(?:(?:a|the|same)\s+)?(?:factory|facility|site)\s+(?:that|which)\s+(?:also\s+)?handles?\b',tail,maxsplit=1,flags=re.I)[0]
+            tail=re.split(r'\b(?:made|produced|packed)\s+in\s+(?:(?:a|the)\s+)?(?:same\s+)?(?:factory|facility|site)\s+(?:that|which)\s+(?:also\s+)?handles?\b',tail,maxsplit=1,flags=re.I)[0]
+            # A bounded trigger must survive the complete clause. Otherwise
+            # cutting before a style/flavour qualifier invents animal content.
+            # The full field still goes to both independent interpreters.
             span=' '.join(tail.split()[:8])
-            if checker(span) or re.search(r'\b(?:isinglass|bone char|casein|egg album\w*)\b',span,re.I):spans.append(span)
+            full_animal = checker(tail) or re.search(r'\b(?:isinglass|bone char|casein|egg album\w*)\b',tail,re.I)
+            if full_animal and (checker(span) or re.search(r'\b(?:isinglass|bone char|casein|egg album\w*)\b',span,re.I)):spans.append(span)
         processing_use=re.search(r'\b(?:isinglass|bone char|gelati(?:n|ne)|casein|egg album\w*|animal[- ]derived milk|animal fats?)\b\s+(?:is|are)\s+used\s+(?:during|in|for)\s+(?:the\s+)?(?:manufactur\w*|process\w*|refin\w*|fining)\b',text,re.I)
         if not spans and not processing_use:continue
         refs=[policy.reference('/product/'+key,text)]
