@@ -406,9 +406,9 @@ def scoped_claim(text: str, *, negative: bool = False) -> bool:
 def dietary_attribute_claim(text: str) -> bool:
     """Recognise a complete dietary-attribute list, never narrative scope."""
     positive=r'(?:suitable for vegetarians? (?:and|&) vegans?|suitable for vegans? (?:and|&) vegetarians?|suitable for a vegan diet|suitable for vegans?|certified vegan|vegan[- ]friendly|vegan friendly|vegan)'
-    other=r'(?:(?:suitable for )?vegetarians?|not tested on animals|cruelty[- ]free|(?:gluten|dairy|soya?|nut|egg|wheat)[ -]+free|source of (?:protein|fibre|fiber)|(?:high|low)(?: in)? (?:protein|fibre|fiber|fat|sugar|salt|carbs?|carbohydrates?)|keto(?:genic)?|lchf|no add(?:ed|es) sugars?)'
+    other=r'(?:(?:suitable for )?vegetarians?|plant[- ]based|not tested on animals|cruelty[- ]free|(?:gluten|dairy|soya?|nut|egg|wheat)[ -]+free|source of (?:protein|fibre|fiber)|(?:high|low)(?: in)? (?:protein|fibre|fiber|fat|sugar|salt|carbs?|carbohydrates?)|keto(?:genic)?|lchf|no add(?:ed|es) sugars?|no artificial (?:sweeteners?|sweetners?))'
     attribute=f'(?:{positive}|{other})'
-    separator=r'(?:\s*[,;\n&]\s*|\s+and\s+|\.\s+)'
+    separator=r'(?:\s*[,;\n&/]\s*|\s+and\s+|\.\s+)'
     return bool(re.search(r'\bvegans?\b',text,re.I) and re.fullmatch(
         attribute+f'(?:{separator}{attribute})*',text.strip().rstrip('.!'),re.I))
 
@@ -437,7 +437,7 @@ def direct_claim(text: str, path: str) -> bool:
                 'suitable for vegetarians and vegans','suitable for vegetarians & vegans','certified vegan'}
     if plain in standalone:return True
     if path in {'/product/dietary_information','/product/features'} and dietary_attribute_claim(text) and any(
-            part.strip().strip('.!').lower() in standalone for part in re.split(r'[,;\n]|\.\s+',text)):
+            part.strip().strip('.!').lower() in standalone for part in re.split(r'[,;\n/]|\.\s+',text)):
         return True
     if not scoped_claim(text):return False
     return bool(re.fullmatch(r'(?:this|the) product is (?:vegan|suitable for vegans)[.!]?',text.strip(),re.I))
