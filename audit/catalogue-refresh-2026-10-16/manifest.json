@@ -263,7 +263,7 @@
   },
   "accepted_positive_score": "positive-score.delta-augmented.json",
   "post_export_code_hashes": {
-    "ocado-vegan-filter.user.js": "aac58e40d77f357c5f545f6a06d5c6138b0f2834c12956bf45fb4627fbf5a32a",
+    "ocado-vegan-filter.user.js": "f7afd92641b60d3c58267646fc2151705194f670b46ef01767e7239ddab00f60",
     "tests/test_added_mineral_scope.py": "4390cab0e499b6faf5bd74b1bac6f5c81d920093e9371079cddddf5a51578d2f",
     "tests/test_article_grape_origin_scope.py": "18dea2b4d5790976215f2727a9bd82fe2a8910fe8455a49cf26c5209d67929dc",
     "tests/test_assessment_compaction.py": "7c0b0fefca8bf8625931526286a1b1db45d83beeb235184aa422955dd5bebf32",
@@ -352,5 +352,9 @@
   "activation_backup_archive": {
     "receipt_path": "/home/ivy/repos/personal/ocado_report/.whole-product-work/assessment-2026-10-16-v67/before-activation.sqlite.archive.json",
     "receipt_sha256": "29d4c0f09b96984cb8298f093f6bce1257b93f6991cee737e386e3944263819a"
+  },
+  "userscript_layout_finalization": {
+    "receipt_path": "/home/ivy/repos/personal/ocado_report/audit/catalogue-refresh-2026-10-16/userscript-layout-finalization.json",
+    "receipt_sha256": "75f43fb91202b7cc93715e4c4fa5c02cea0c101066f263f813a0d0d9619326bd"
   }
 }
