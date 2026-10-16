@@ -115,6 +115,7 @@ The project has two related goals:
 
 ## Git Workflow
 
+- Local `dev` commits may be unsigned when GPG signing is unavailable. Use a per-command `git -c commit.gpgsign=false` override and preserve the configured signing preferences; release tags must still be signed.
 - Keep development work local unless pushing it is explicitly requested. For an authorized release push, push only `main` and the named release tag atomically; do not use `--all`, `--tags`, or push `dev` implicitly. Verify the current remote state and that `origin/main` is an ancestor of the release commit before pushing.
 - Keep local `main` aligned with authorized remote updates using fast-forward pulls. Before releasing, merge any documentation commits from `main` into `dev` so the approved release can fast-forward `main`. Verify release alignment by comparing `ocado-vegan-filter.user.js` with the latest tag, rather than requiring the branch and tag to point to the same commit between releases.
 - Commit each finalised logical change individually: one change per commit and one commit per change.
