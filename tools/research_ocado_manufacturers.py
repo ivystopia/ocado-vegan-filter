@@ -30,10 +30,11 @@ import manufacturer_evidence
 import update_userscript_allowlists as exporter
 import codex_evidence
 import vegan_policy as policy
+import cursory_research_accounting as cursory
 
 
 PROMPT_VERSION = "manufacturer-source-scope-v4"
-OUTCOMES = {"confirmed_vegan", "no_confirmation", "blocked", "pending"}
+OUTCOMES = {"confirmed_vegan", "no_confirmation", "blocked", "pending", "source_collected"}
 
 
 class ReviewValidationError(ValueError):
@@ -159,6 +160,7 @@ def read_bundle(root: Path) -> dict[str, Any]:
                 if record["brand"] not in catalogue:
                     raise ValueError("brand is outside this partition")
                 record_sources = {}
+                record_source_ids = set()
                 for source in record.get("sources", []):
                     url = source["url"]
                     if urlparse(url).scheme not in {"http", "https"} or not urlparse(url).hostname:
@@ -166,12 +168,22 @@ def read_bundle(root: Path) -> dict[str, Any]:
                     text_path = Path(source.get("source_text_path") or "")
                     if text_path.is_file() and not text_path.resolve().is_relative_to(part.resolve()):
                         raise ValueError("Source capture must be inside its assigned research partition")
-                    source_text = text_path.read_text(encoding="utf-8") if text_path.is_file() else ""
+                    source_raw = text_path.read_bytes() if text_path.is_file() else b""
+                    source_text = source_raw.decode("utf-8")
+                    source_hash = hashlib.sha256(source_raw).hexdigest()
+                    if source.get("content_sha256") and source["content_sha256"] != source_hash:
+                        raise ValueError("Retained source capture hash changed")
                     source = {**source, "source_text": source_text}
-                    source["content_sha256"] = hashlib.sha256(source_text.encode()).hexdigest()
-                    source["id"] = digest({"url": url, "sha256": source["content_sha256"]})
-                    record_sources[url] = source
-                    sources[source["id"]] = source
+                    source["content_sha256"] = source_hash
+                    source["id"] = digest({"url": url, "sha256": source_hash, "retrieved_at": source.get("retrieved_at")})
+                    record_sources.setdefault(url, []).append(source["id"])
+                    record_source_ids.add(source["id"])
+                    if source["id"] in sources:
+                        comparable = lambda value: {key: item for key, item in value.items() if key != "source_text_path"}
+                        if comparable(sources[source["id"]]) != comparable(source):
+                            raise ValueError("Conflicting metadata for one retained capture")
+                    else:
+                        sources[source["id"]] = source
                 for outcome in record.get("products", []):
                     product_id = outcome["product_id"]
                     if product_id not in products or products[product_id]["brand"] != record["brand"]:
@@ -183,18 +195,34 @@ def read_bundle(root: Path) -> dict[str, Any]:
                     if record.get("research_complete") is True and outcome["outcome"] in {"confirmed_vegan", "no_confirmation"}:
                         if not (outcome.get("scope_match", "").strip() or outcome.get("notes", "").strip()):
                             raise ValueError(f"Completed research needs a product-level explanation: {product_id}")
-                        if not outcome.get("source_urls") and not record.get("queries"):
+                        if not any(outcome.get(key) for key in ("source_urls", "source_ids", "checked_source_urls", "checked_source_ids", "queries")) and not record.get("queries"):
                             raise ValueError(f"Completed research needs sources or retained search attempts: {product_id}")
-                    selected_sources = []
-                    for url in outcome.get("source_urls", []):
-                        if url not in record_sources:
-                            raise ValueError(f"Unretained source for {product_id}: {url}")
-                        selected_sources.append(record_sources[url]["id"])
+                    def select_sources(field, id_field):
+                        selected = []
+                        for url in outcome.get(field, []):
+                            if url not in record_sources:
+                                raise ValueError(f"Unretained source for {product_id}: {url}")
+                            selected.extend(record_sources[url])
+                        if id_field in outcome:
+                            explicit = outcome[id_field]
+                            if not isinstance(explicit, list) or any(not isinstance(value, str) for value in explicit):
+                                raise ValueError("Invalid retained source identifiers")
+                            if len(explicit) != len(set(explicit)) or not set(explicit) <= record_source_ids:
+                                raise ValueError("Duplicate or unretained source identifiers")
+                            if selected and set(selected) != set(explicit):
+                                raise ValueError("Source URL and capture selections disagree")
+                            selected = explicit
+                        return sorted(set(selected))
+                    selected_sources = select_sources("source_urls", "source_ids")
+                    checked_sources = select_sources("checked_source_urls", "checked_source_ids")
+                    if set(selected_sources) & set(checked_sources):
+                        raise ValueError("Audit-only and applicable sources must remain distinct")
                     outcomes[product_id] = {
                         **outcome,
                         "source_ids": selected_sources,
+                        "checked_source_ids": checked_sources,
                         "research_complete": record.get("research_complete") is True,
-                        "queries": record.get("queries", []),
+                        "queries": outcome.get("queries", record.get("queries", [])),
                         "artifact": str(path.relative_to(root)),
                     }
             except (KeyError, ValueError, OSError, TypeError) as exc:
@@ -203,12 +231,40 @@ def read_bundle(root: Path) -> dict[str, Any]:
         raise ValueError("Snapshot product count does not match partition catalogues")
     for product_id in products:
         outcomes.setdefault(product_id, {"product_id": product_id, "outcome": "pending", "source_ids": [], "research_complete": False})
-    return {"snapshot": snapshot, "products": products, "outcomes": outcomes, "sources": sources, "errors": errors, "brands": len(brand_total)}
+    policy_path = root / "bounded-research-policy.json"
+    bounded_policy = json.loads(policy_path.read_text()) if policy_path.exists() else {}
+    acquisition_path = root / "bounded-acquisition-manifest.json"
+    if acquisition_path.exists():
+        acquisition = json.loads(acquisition_path.read_text())
+        if hashlib.sha256((root / "snapshot.json").read_bytes()).hexdigest() != acquisition.get("snapshot_sha256"):
+            errors.append("Frozen acquisition snapshot changed")
+        for relative, expected_hash in acquisition.get("diagnostic_hashes", {}).items():
+            path = (root / relative).resolve()
+            if not path.is_relative_to(root.resolve()) or not path.is_file() or hashlib.sha256(path.read_bytes()).hexdigest() != expected_hash:
+                errors.append("Retained acquisition provenance changed: " + relative)
+    shared_associations = {}
+    shared_path = root / "shared-source-associations.json"
+    if shared_path.exists():
+        for association in json.loads(shared_path.read_text()).get("products", []):
+            product_id = association.get("product_id")
+            refs = association.get("source_ids")
+            if (not isinstance(product_id, str) or not product_id or product_id in products or product_id in shared_associations
+                or not isinstance(refs, list) or not refs or len(refs) != len(set(refs)) or not set(refs) <= set(sources)
+                or association.get("positive_claim_approved") is not False
+                or not association.get("catalogue_context_hash") or not association.get("publisher_match_notes")
+                or not association.get("scope_match") or not association.get("notes")):
+                errors.append("Invalid exact shared-source association: " + str(product_id))
+            else:
+                shared_associations[product_id] = association
+    return {"snapshot": snapshot, "products": products, "outcomes": outcomes, "sources": sources, "errors": errors, "brands": len(brand_total),
+            "shared_associations": shared_associations,
+            "research_root": str(root.resolve()), "bounded_research_policy": bounded_policy,
+            "bounded_research_policy_sha256": hashlib.sha256(policy_path.read_bytes()).hexdigest() if policy_path.exists() else None}
 
 
 def bundle_status(bundle: dict[str, Any]) -> dict[str, Any]:
     counts = Counter(row["outcome"] for row in bundle["outcomes"].values())
-    return {
+    result = {
         "total_products": len(bundle["products"]),
         "current_products": sum(row["current_on_ocado"] == 1 for row in bundle["products"].values()),
         "brands": bundle["brands"],
@@ -220,6 +276,18 @@ def bundle_status(bundle: dict[str, Any]) -> dict[str, Any]:
         ),
         "errors": bundle["errors"],
     }
+    if bundle.get("bounded_research_policy_sha256"):
+        accounting = cursory.status(bundle, bundle["research_root"], bundle["bounded_research_policy"])
+        result.update(accounting)
+        result["bounded_research_policy_sha256"] = bundle["bounded_research_policy_sha256"]
+    return result
+
+
+def gathering_complete(status):
+    """Closed bounded checks may finish acquisition without inventing confirmation."""
+    if status.get("bounded_research_policy_sha256"):
+        return status.get("mode") == cursory.MODE and status.get("can_continue") is True and status["accounted_products"] == status["total_products"]
+    return not status["errors"] and status["complete_products"] == status["total_products"]
 
 
 def review_input(bundle: dict[str, Any], product_id: str) -> dict[str, Any]:
