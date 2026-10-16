@@ -39,7 +39,7 @@ class ClassifyOcadoVeganTests(unittest.TestCase):
         conn.execute("insert into product_categories (product_id, category_path) values (?, ?)", (product_id, category_path))
 
     def classify(self, conn: sqlite3.Connection, product_id: str = "1") -> classifier.ClassificationResult | None:
-        return classifier.classify_by_rules(classifier.load_product_context(conn, product_id))
+        return classifier.classify_rule_candidate(classifier.load_product_context(conn, product_id))
 
     def test_migration_adds_canonical_columns_and_drops_legacy_phase_columns(self) -> None:
         conn = sqlite3.connect(":memory:")
@@ -70,7 +70,7 @@ class ClassifyOcadoVeganTests(unittest.TestCase):
             ).fetchone()
         )
 
-    def test_official_vegan_tag_classifies_as_tagged(self) -> None:
+    def test_official_vegan_tag_supplies_provisional_tagged_basis(self) -> None:
         conn = self.create_db()
         self.insert_product(conn, official_vegan=1, name="Tagged Product")
 
@@ -534,7 +534,7 @@ class ClassifyOcadoVeganTests(unittest.TestCase):
         self.assertEqual(args.reasoning_effort, "high")
         prompt = classifier.build_codex_prompt([])
         self.assertIn("manufactured non-food goods", prompt)
-        self.assertIn("Identity conflicts", prompt)
+        self.assertIn("Material identity conflicts", prompt)
         self.assertIn("EVEN WITH an official vegan tag", prompt)
 
 

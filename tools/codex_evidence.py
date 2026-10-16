@@ -116,9 +116,31 @@ def invocation(codex_bin: str, directory: Path, schema: Path, output: Path,
     return [*command, "-"]
 
 
+def retain_admission(record: dict[str, Any]) -> None:
+    """Retain an attempt before invocation, even if the desktop later dies.
+
+    Completion journals still contain one final record per attempt. The small
+    sidecar records local admission, not provider completion or zero usage.
+    """
+    journal = USAGE_JOURNAL.get()
+    if journal is None:
+        return
+    path = journal.with_name(journal.stem + '.admissions' + journal.suffix)
+    path.parent.mkdir(parents=True, exist_ok=True)
+    fields = ('call_id', 'stage', 'model', 'reasoning_effort', 'product_ids',
+              'prompt_version', 'context_hash', 'isolation_version', 'started_at_epoch')
+    row = {key: record[key] for key in fields}
+    row.update({'state': 'invocation-prepared', 'usage': None,
+                'note': 'Reconcile with the completion journal by call_id. Missing completion means interrupted/unfinished usage, never zero tokens or a successful assessment.'})
+    with JOURNAL_LOCK, path.open('a', encoding='utf-8') as stream:
+        stream.write(json.dumps(row, ensure_ascii=True) + '\n')
+        stream.flush(); os.fsync(stream.fileno())
+
+
 def run(prompt: str, schema: dict[str, Any], *, model: str, effort: str,
         codex_bin: str, stage: str, product_ids: list[str], prompt_version: str,
-        context_hash: str, validator: Callable[[dict[str, Any]], Any] | None = None) -> dict[str, Any]:
+        context_hash: str, validator: Callable[[dict[str, Any]], Any] | None = None,
+        canonicalizer: Callable[[dict[str, Any]], tuple[dict[str, Any], list[dict[str, Any]]]] | None = None) -> dict[str, Any]:
     started = time.time()
     record: dict[str, Any] = {
         "call_id": str(uuid.uuid4()), "stage": stage, "model": model, "reasoning_effort": effort,
@@ -142,6 +164,9 @@ def run(prompt: str, schema: dict[str, Any], *, model: str, effort: str,
             }}
             command=invocation(codex_bin, directory, schema_path, output_path, model, effort)
             record['invocation']=command
+            if STOP_FILE is not None and STOP_FILE.exists():
+                raise StopRequestedError('Stop file appeared before invocation; no new model call admitted.')
+            retain_admission(record)
             record['invocation_started']=True
             completed = subprocess.run(command,
                                        input=prompt, text=True, capture_output=True, env=env, check=False)
@@ -184,12 +209,19 @@ def run(prompt: str, schema: dict[str, Any], *, model: str, effort: str,
             if record["usage"] is None:
                 raise RuntimeError("Codex did not report call token usage; refusing an unmetered benchmark")
             payload = json.loads(record["raw_response"])
-            if validator is not None:
-                validator(payload)
             record["parsed_response"] = payload
+            validated = payload
+            repairs = []
+            if canonicalizer is not None:
+                validated, repairs = canonicalizer(payload)
+            if validator is not None:
+                validator(validated)
+            if repairs:
+                record["validated_response"] = validated
+                record["reference_canonicalizations"] = repairs
             return record
     except BaseException as exc:
-        record["error"] = str(exc)
+        record["error"] = str(exc) or type(exc).__name__
         raise
     finally:
         record["duration_seconds"] = round(time.time() - started, 4)

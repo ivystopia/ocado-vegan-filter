@@ -54,12 +54,15 @@ class UpdateUserscriptAllowlistsTests(unittest.TestCase):
                          (product_id,name,ingredients,tag,text))
             context=classifier.load_product_context(conn,product_id)
             result = classifier.classify_by_rules(context)
-            if product_id=='20':
-                self.assertIsNone(result)  # Offline name interpretation is required.
+            if product_id in {'10','20','30'}:
+                self.assertIsNone(result)  # Claims require offline semantic interpretation.
                 assessment=classifier.policy.base_assessment(context,complete=True)
-                assessment['positive_support']=[{'reason':'name','evidence_refs':[classifier.policy.reference('/product/name',name)]}]
-                result=classifier.ClassificationResult(product_id=product_id,vegan_status='vegan',vegan_reason='name',
-                    confidence='certain',summary='Fixture with assessed whole-product name',source='codex',evidence={'assessment':assessment})
+                reason, path, quote = ({'10':('manufacturer','/product/dietary_information',text),
+                                      '20':('name','/product/name',name),
+                                      '30':('tagged','/product/official_vegan','1')}[product_id])
+                assessment['positive_support']=[{'reason':reason,'evidence_refs':[classifier.policy.reference(path,quote)]}]
+                result=classifier.ClassificationResult(product_id=product_id,vegan_status='vegan',vegan_reason=reason,
+                    confidence='certain',summary='Fixture with assessed whole-product claim',source='codex',evidence={'assessment':assessment})
             self.assertIsNotNone(result, product_id)
             classifier.write_classification(conn,run_id,result)
         conn.commit()
