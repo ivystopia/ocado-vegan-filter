@@ -16,6 +16,8 @@ Evaluate each product on its own evidence, without category or positive-reason s
 
 Freeze every initially unknown product for a cursory manufacturer check, including historical products. Use readily available official product pages or directly applicable FAQ/range statements and a straightforward lookup when needed. Do not deep-crawl sites or prolong investigation to rescue a product: the user accepts additional unknowns. Keep the actual attempts, captures, scope restrictions, contrary findings and withdrawals. Account for every product; distinguish checked-without-confirmation, closed access-blocked checks and unattempted/pending work. An access-blocked check may finish the bounded research effort but must remain explicitly blocked, never represented as proof that no confirmation exists. Reassess products affected by changed shared evidence. Positive evidence and classifier operational gates remain unchanged.
 
+Complete both planned reference readings across the fixed positive-audit sample before reviewing findings together. A single provisional reading is not ground truth and must not cause repeated new samples or classifier reruns. Preserve every original reading and failed score; diagnose confirmed failures, repair only affected behaviour and evidence, then perform the required fresh validation. Included-plan limits and actual operational failures still stop admissions safely.
+
 Database activation and local userscript regeneration are authorised after complete assessment/research, the uniform 600-positive audit, provenance, concurrency and export checks pass. Commit finalized logical changes on `dev`, keeping the current version for user testing. No tag, main advancement, push, publication or installed FireMonkey update. Included-plan limits checkpoint without paid fallback or resets.
 
 ## 1. Prepare and validate
@@ -103,7 +105,7 @@ python3 tools/classify_ocado_vegan.py --db "$DB_PATH" classify-all \
   --passes 2 \
   --retries 1 \
   --batch-size 8 \
-  --workers 3
+  --workers 8
 ```
 
 The command is resumable: successfully classified products are no longer selected if the command must be rerun. Primary status/reason disagreements trigger two fresh GPT-6.1-Sol/medium passes on the stored evidence. Only an agreed, policy-supported result is accepted; unresolved disagreements stay `unknown`, and exhausted arbitration failures are recorded as errors. Agreed primary unknowns are not escalated. The bounded worker, batch and retry settings match the current full-refresh coordinator; preserve the running configuration when resuming.
@@ -296,3 +298,5 @@ Do not regenerate or publish the userscript if any of the following occurs:
 - an unaccounted official vegan tag conflict, invalid animal-content decision or missing conflict block;
 - unexplained large classification-count movement;
 - syntax, unit-test, or Firefox regression.
+
+Only discrepancies materially affecting vegan suitability or claim applicability block a decision (`vegan-materiality-v1`). Keep ordinary copy inconsistencies as observations; do not repeatedly restart catalogue assessment or audit because of plant-only recipe, style, count or unrelated cosmetic-copy differences alongside an independently applicable whole-product assurance. Animal use, actual source/process/component doubts, wrong-product claim binding and source restrictions remain strict. Preserve historical failed scores and references; apply source-bound repairs and fresh affected validation under the approved revision.
