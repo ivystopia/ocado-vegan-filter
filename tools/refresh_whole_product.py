@@ -430,6 +430,9 @@ class Refresh:
                  'assessment':['manufacturer/snapshot.json'],
                  'research':['manufacturer-coverage.json','manufacturer-affected.json'],
                  'positive_audit':['positive-audit.json','positive-audit.predictions.json','positive-readings/annotated-candidates.json','positive-score.json']}
+        if getattr(self, 'manifest', {}).get('attribution_repair'):
+            paths['positive_audit'] += ['positive-score.attribution-corrected.json',
+                'positive-audit.attribution-corrected.predictions.json', 'attribution-repair.json']
         def path_for(name):
             if name.startswith('manufacturer/'):
                 return getattr(self, 'manufacturer', self.root/'manufacturer')/name.split('/',1)[1]
