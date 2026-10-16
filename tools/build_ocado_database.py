@@ -200,20 +200,43 @@ class TableParser(HTMLParser):
             self.current_row = None
 
 
-def normalize_space(value: str | None) -> str:
-    text = re.sub(r"\s+", " ", html.unescape(value or "")).strip()
+def _collapse_space(value: str) -> str:
+    text = re.sub(r"\s+", " ", value).strip()
     text = re.sub(r"\s+([,.;:%\]\)])", r"\1", text)
     text = re.sub(r"([\[\(])\s+", r"\1", text)
     return text
 
 
+def normalize_space(value: str | None) -> str:
+    return _collapse_space(html.unescape(value or ""))
+
+
+class VisibleFieldParser(HTMLParser):
+    """Keep text comparisons such as <5%; remove actual HTML markup only."""
+
+    def __init__(self) -> None:
+        super().__init__(convert_charrefs=True)
+        self.parts: list[str] = []
+
+    def handle_data(self, data: str) -> None:
+        self.parts.append(data)
+
+    def handle_starttag(self, tag, attrs) -> None:
+        self.parts.append(" ")
+
+    def handle_endtag(self, tag) -> None:
+        self.parts.append(" ")
+
+    def handle_comment(self, data) -> None:
+        self.parts.append(" ")
+
 def html_to_text(value: str | None) -> str:
     if not value:
         return ""
-    text = BR_RE.sub(" ", value)
-    text = P_BREAK_RE.sub(" ", text)
-    text = TAG_RE.sub(" ", text)
-    return normalize_space(text)
+    parser = VisibleFieldParser()
+    parser.feed(value)
+    parser.close()
+    return _collapse_space("".join(parser.parts))
 
 
 def table_to_plain_text(value: str | None) -> str:

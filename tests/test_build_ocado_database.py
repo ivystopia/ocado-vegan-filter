@@ -30,6 +30,19 @@ class BuildOcadoDatabaseTests(unittest.TestCase):
         self.assertEqual(importer.money_to_gbp({"amount": "85", "currency": "GBX"}), 0.85)
         self.assertIsNone(importer.money_to_gbp({"amount": "2.70", "currency": "EUR"}))
 
+    def test_literal_percent_comparison_preserves_complete_ingredient_tail(self) -> None:
+        self.assertEqual(importer.html_to_text('<table><tr><td>5-15% surfactants, <5% soap, Glycerin, Honey.</td></tr></table>'),
+                         '5-15% surfactants, <5% soap, Glycerin, Honey.')
+        self.assertEqual(importer.html_to_text('Water, <1% <b>Milk</b>, &lt;5% sugar.'),
+                         'Water, <1% Milk, <5% sugar.')
+
+    def test_real_markup_with_quoted_angle_brackets_is_not_ingredient_text(self) -> None:
+        self.assertEqual(importer.html_to_text('<span title="x > y">Contains <b>Milk</b></span><!-- hidden -->'),
+                         'Contains Milk')
+        self.assertEqual(importer.html_to_text('&amp;lt;5% &lt;b&gt;Milk&lt;/b&gt;'),
+                         '&lt;5% <b>Milk</b>')
+        self.assertEqual(importer.html_to_text('M&S, UK&ROI, R&D'), 'M&S, UK&ROI, R&D')
+
     def test_parse_nutrition_rows_extracts_product_specific_values(self) -> None:
         rows = importer.parse_nutrition_rows(
             "abc",
