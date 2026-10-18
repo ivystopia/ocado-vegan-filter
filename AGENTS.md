@@ -4,7 +4,7 @@
 
 - Serve the vegan customer shopping on Ocado: trustworthy, useful labels and working Add buttons and product links.
 - Read `docs/working-guide.md`, inspect `git status --short --branch` and recent commits before editing, and preserve unrelated work.
-- The user has cancelled the broad whole-product reclassification. The current foundation is the published **1.7.2** script and its classifications, with explicitly reviewed additions from unknown products. The current authorised task is a fresh review of every current Unknown product, not a selected batch. Do not resume old coordinators, reclassify the published vegan population, or impose a new catalogue-wide benchmark/audit programme.
+- The user has cancelled the broad whole-product reclassification. The current foundation is the published **1.7.2** script and its classifications, plus reviewed unknown additions. The complete 20,931-product current-Unknown review is finished: see `audit/current-unknown-review/README.md`. Preserve its valid decisions and source records; do not rerun completed work merely to resume this conversation. Do not resume old coordinators, reclassify the published vegan population, or impose a new catalogue-wide benchmark/audit programme.
 - Keep the fresh scraped product facts, previous database audit history and local recovery archives. Superseded implementation lives in Git history; it is not the active workflow.
 - Work on `dev`, keep version 1.7.2 for testing, and do not tag, advance `main`, push, publish or update installed FireMonkey without a new request.
 

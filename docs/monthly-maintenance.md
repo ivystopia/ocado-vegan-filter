@@ -2,6 +2,8 @@
 
 Keep the published classification baseline and refresh catalogue membership without bulk reclassification. The [working guide](working-guide.md) and [classifier design](vegan-classifier-design.md) describe reviewed unknown additions.
 
+The 2026-10-18 membership refresh and subsequent complete current-Unknown review are finished. The [completion report](../audit/current-unknown-review/README.md) records 20,931 freshly reviewed products, 3,593 additions and the regenerated local script. Do not repeat these completed stages when resuming. A later routine refresh should preserve unchanged reviewed evidence and focus fresh assessment on new or materially changed products; another full Unknown review requires a new request.
+
 ## Discover new and removed products
 
 Read the `browse-with-firefox` skill for the current snapshot environment. Use its interpreter and helper directory with a fresh local NVMe work root:

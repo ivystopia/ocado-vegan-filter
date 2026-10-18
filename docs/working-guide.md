@@ -1,6 +1,6 @@
 # Working in this repository
 
-Read [AGENTS.md](../AGENTS.md) first. The active task starts from published 1.7.2 and reviews every current Unknown product and makes only clearly supported additions. The [classifier design](vegan-classifier-design.md) describes the evidence policy; [maintenance](monthly-maintenance.md) describes future refreshes. Older reports and restored release-era tools are not current execution instructions.
+Read [AGENTS.md](../AGENTS.md) first. The completed additive review preserves published 1.7.2 and adds 3,593 supported products after reviewing all 20,931 current Unknowns. See the [completion report](../audit/current-unknown-review/README.md) before resuming work; classification and export are finished. The [classifier design](vegan-classifier-design.md) describes the evidence policy; [maintenance](monthly-maintenance.md) describes future refreshes. Older reports and restored release-era tools are not current execution instructions.
 
 ## Code map
 
@@ -12,6 +12,7 @@ Read [AGENTS.md](../AGENTS.md) first. The active task starts from published 1.7.
 - `tools/update_userscript_allowlists.py`: validates canonical decisions and regenerates sets while preserving retained ID placement.
 - `tools/refresh_catalogue_membership.py`: isolated complete discovery and new-product detail capture, followed by guarded membership import; existing classifications and detailed evidence remain intact.
 - `audit/published-baseline-restart/`: verified release manifest, reviewed source snapshots and completion report.
+- `audit/current-unknown-review/`: complete fresh-review accounting, applied additions, every product outcome, protected-label verification and separately assessed tag conflicts.
 - `tools/sync_ocado_database.py`: release-era scraper; use only an isolated database for future refresh work.
 - `tools/classify_ocado_vegan.py`, `tools/research_ocado_manufacturers.py`: release-era bulk tools; not the active canonical writers. The classifier CLI rejects the protected database. Do not use the restored historical model default.
 - `tools/build_ocado_database.py`: historical importer, destructive to its target. Never use against the source-of-truth database for setup or inspection.

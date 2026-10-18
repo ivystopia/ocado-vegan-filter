@@ -1,0 +1,164 @@
+{
+  "basis": "Frozen SQLite evidence, not newly verified live pages. Both excluded from vegan additions. Preserve raw model findings; distinguish source-consistent declarations from identity/composition disputes. No report sent to Ocado.",
+  "published_runtime_limitation": "The retained published userscript can independently accept live Ocado vegan tags. This additions-only review does not repair that existing runtime behaviour.",
+  "products": [
+    {
+      "product_id": "527870011",
+      "url": "https://www.ocado.com/products/527870011",
+      "name": "M&S Percy Pig Advent Calendar Sweets",
+      "context_hash": "ea0c736524bb0ffb7cc6ac388aa21c663da587fde2a9646f925f73a9d393e09a",
+      "finding": "consistent_stored_animal_declaration",
+      "rationale": "Ingredients, description and box contents consistently include milk chocolate, including dried whole milk, alongside a vegan tag.",
+      "model_outcome": {
+        "assessment": {
+          "components": "animal",
+          "composition": "animal",
+          "identity": "clear",
+          "processing": "clear"
+        },
+        "concerns": [
+          "The vegan tag conflicts materially with the included milk chocolate."
+        ],
+        "product_id": "527870011",
+        "rationale": "Although the calendar has a vegan tag and the sweets are described as vegan recipe, the complete sold product also contains milk chocolate.",
+        "reason": null,
+        "status": "nonvegan",
+        "support": [
+          {
+            "field": "official_vegan",
+            "quote": "1"
+          },
+          {
+            "field": "ingredients",
+            "quote": "Milk Chocolate: Sugar, Dried Whole Milk, Cocoa Butter, Cocoa Mass, Emulsifier: Soya Lecithin, Natural Vanilla Flavouring"
+          }
+        ]
+      },
+      "source_context": {
+        "categories": [
+          "occasions-entertaining/christmas/advent-calendars"
+        ],
+        "flags": [
+          "vegan",
+          "vegetarian"
+        ],
+        "product": {
+          "alcohol": 0,
+          "allergens": "Contains Milk, May Contain Nuts, May Contain Peanuts, Contains Soya. Milk Chocolate: Not suitable for Nut and Peanut allergy sufferers. Percy Pig™ Jellies: Not suitable for Milk allergy sufferers. Merry Percmasy: Prepared to a Vegan recipe. Not suitable for those with a Milk allergy because this allergen is present in the environment. Milk Chocolate: Not suitable for those with a Nut and Peanut allergy.",
+          "brand": "M&S",
+          "brand_marketing": "M&S Food has been at the heart of the nation since 1884. Giving our customers their best-loved products at the incredible quality and value that only M&S can deliver. From Percy Pig to the freshest M&S Select Farms produce, we grow, source, and develop our own products to give you family-ready food that's unbeatable on flavour and innovation. And that's whether you come to us for your family favourites, an indulgent treat, or your perfect party food spread. After all, this is not just food… This is M&S Food.",
+          "cooking_guidelines": null,
+          "country_of_origin": "Percy Pig™ Sweets made in Germany. Chocolate made in the UK.",
+          "country_of_packaging": null,
+          "current_vintage": null,
+          "detailed_description": "Percy Pig™ Percymas Advent Calendar Milk chocolates and a bag of Merry Percymas sweets for Christmas Day. Advent calendar with a bag of Percy Pig™ soft fruit flavour gums made with fruit juice and 24 solid milk chocolate shapes.",
+          "dietary_information": "Suitable for Vegans; Suitable for Vegetarians",
+          "features": "With milk chocolates inside, Milk chocolates and a bag of Merry percymas sweets for Christmas Day, Percy themed milk chocolates for each day, A whole bag of Merry Percymas for Christmas day, The Great Food Quality Seal, No artificial colours or flavours, Suitable for vegetarians, Suitable for vegans",
+          "further_description": "We are committed to sourcing our cocoa responsibly. To find out more, visit www.marksandspencer.com/cocoa Fairtrade contributes to sustainable development for certified producers by enabling fairer trading conditions, social change and environmental protection. Felix Donation Terms & Conditions 1. When you order this advent calendar or any other selected advent calendar for delivery between 7/10/26 and 20/10/26 (inclusive), Ocado will donate the cost of one meal (£0.38) to Felix, up to a maximum of 45,000 meals. 2. If we reach the maximum donation amount before the end of the above promotion period, we will update the Product Information accordingly. If any eligible orders are delivered between the maximum donation figure being reached and the time when we update the Product Information, we will however honour the donation on those sales. 3. There is no limit on the number of products customers can purchase (subject to availability). 4. Minimum spend plus delivery charges apply. 5. The promoter is Ocado Retail Limited of Apollo Court, 2 Bishop Square, Hatfield Business Park, Hatfield, Hertfordshire AL10 9NE. 6. Felix is a registered charity, Charity Number 1100051.",
+          "id": "527870011",
+          "ingredients": "Merry Percmasy: Glucose Syrup, Sugar, Modified Potato Starch, Dextrose, Modified Tapioca Starch, Fruit Juice from Concentrates (3%) (Apple, Elderberry), Acid: Citric Acid, Malic Acid, Lactic Acid, Potato Protein, Natural Flavourings, Sunflower Oil, Fruit and Vegetable Concentrates (Black Carrot, Radish, Apple, Blueberry, Blackcurrant), Glazing Agent: Carnauba Wax Milk Chocolate: Sugar, Dried Whole Milk, Cocoa Butter, Cocoa Mass, Emulsifier: Soya Lecithin, Natural Vanilla Flavouring, Milk Chocolate contains Cocoa Solids 34% minimum, Milk Solids 20% minimum",
+          "manufacturer": "Marks and Spencer plc, PO Box 3339, Chester, CH99 9QS, United Kingdom. M&S (Ireland) Ltd, PO Box 13022, Ravensdale, Dublin 2, Ireland.",
+          "manufacturer_marketing": null,
+          "name": "M&S Percy Pig Advent Calendar Sweets",
+          "official_vegan": 1,
+          "other_information": "Box Contents: Percy Pig™ Sweets 170g e, Milk Chocolate Shapes 80g e Full Product Name: Advent Calendar with a Bag Of Percy Pig™ Soft Fruit Flavour Gums Made with Fruit Juice and 24 Solid Milk Chocolate Shapes Storage: Store in a cool, dry place, away from sunlight. Safety Warning: Always ask an adult for help when using scissors. Not suitable for children under 36 months due to potential choking hazard. Additional Information: Fairtrade Cocoa - The quantity of cocoa required for this product is sourced, traded and audited as Fairtrade, ensuring cocoa producers receive Fairtrade terms. It may be mixed during processing with non-certified cocoa so the total matches the amount sourced as Fairtrade (mass balance). For more information, visit info.fairtrade.net/sourcing FSC - FSC® Mix, Paper, FSC® C023337, This mix paper packaging is FSC® certified, helping to keep forests growing, for all, forever. Percy Pig™ is a registered trademark of M&S plc in the United Kingdom. Percy Pig™ shape and appearance are trademarks of M&S supplier. © M&S plc",
+          "pack_size": "250g",
+          "package_type": "Box",
+          "preparation_and_usage": "To open - pull back finger tab and window. Peel back foil and remove chocolate. Retain for future reference.",
+          "producer": null,
+          "recipes": null,
+          "recycling_information": "Box - Recycle; Film - Do Not Recycle; Foil - Recycle; Insert - Recycle",
+          "serving_suggestions": null,
+          "specification": null,
+          "storage": "Store in a cool, dry place, away from sunlight.",
+          "url": "https://www.ocado.com/products/527870011/details",
+          "vinification_details": null
+        }
+      }
+    },
+    {
+      "product_id": "563256011",
+      "url": "https://www.ocado.com/products/563256011",
+      "name": "Skittles and Friends Sweets Medium Christmas Selection Box",
+      "context_hash": "fbd249ff971cb06ef33b8c330581705eb151f4fac8ad5a8cc0a2adc735eb5904",
+      "finding": "conflicting_composition_requires_review",
+      "rationale": "Description and allergens include Mars/Milky Way and milk/eggs, but ingredient and box-content fields instead list a plant-sweets assortment. The actual current variant/composition needs checking; do not call this a confirmed nonvegan product from these conflicting fields alone.",
+      "model_outcome": {
+        "assessment": {
+          "components": "clear",
+          "composition": "animal",
+          "identity": "clear",
+          "processing": "clear"
+        },
+        "concerns": [],
+        "product_id": "563256011",
+        "rationale": "This selection box includes Mars and Milky Way fun-size products, and the supplied allergen information confirms milk and eggs.",
+        "reason": null,
+        "status": "nonvegan",
+        "support": [
+          {
+            "field": "detailed_description",
+            "quote": "A Bag of Skittles® Crazy Sours® Plus Fun Size Mars®, Milky Way®, Skittles® Fruits x2 and Skittles® Darkside x2 Bags."
+          },
+          {
+            "field": "allergens",
+            "quote": "Contains Eggs"
+          },
+          {
+            "field": "allergens",
+            "quote": "Contains Milk"
+          }
+        ]
+      },
+      "source_context": {
+        "categories": [
+          "christmas/all-things-sweet/chocolate-sweets/sweets",
+          "christmas/all-things-sweet/tubs-tins-selection-boxes/tubs-selection-boxes/selection-boxes",
+          "christmas/gifts-cards-wrap/gift-finder/food-drink/food",
+          "christmas/gifts-cards-wrap/gift-finder/for-them",
+          "christmas/gifts-cards-wrap/stocking-fillers/under-10",
+          "christmas/the-festive-head-start",
+          "treats-snacks/sweets/boxes-gifts",
+          "treats-snacks/sweets/christmas-sweets"
+        ],
+        "flags": [
+          "ocado_price_promise",
+          "vegan",
+          "vegetarian"
+        ],
+        "product": {
+          "alcohol": 0,
+          "allergens": "May Contain Almonds, Contains Barley, May Contain Brazil Nuts, May Contain Cashew Nuts, Contains Eggs, May Contain Hazelnuts, May Contain Macadamia Nut / Queensland Nut, Contains Milk, Contains Nuts, May Contain Peanuts, May Contain Pecan Nuts, May Contain Pistachio Nuts, Contains Soya, May Contain Walnuts Skittles Darkside: Product may contain an uneven mix of flavours. Skittles Fruits: Product may contain an uneven mix of flavours. Skittles Sours: Product may contain an uneven mix of flavours. Starburst Original: Product may contain an uneven mix of flavours.",
+          "brand": "Skittles",
+          "brand_marketing": "Unwrap the Rainbow, Taste the Rainbow®",
+          "cooking_guidelines": null,
+          "country_of_origin": null,
+          "country_of_packaging": null,
+          "current_vintage": null,
+          "detailed_description": "Contains: A Bag of Skittles® Crazy Sours® Plus Fun Size Mars®, Milky Way®, Skittles® Fruits x2 and Skittles® Darkside x2 Bags.",
+          "dietary_information": "Suitable for Vegans",
+          "features": "With Cardboard Tray, Suitable for vegetarians",
+          "further_description": null,
+          "id": "563256011",
+          "ingredients": "Skittles Darkside: Sugar, Glucose Syrup, Palm Fat, Acid (Citric Acid), Dextrin, Flavourings, Maltodextrin, Modified Starch, Colours (Beetroot Red, Anthocyanins, Calcium Carbonate, Indigo Carmine, Carotenes, Curcumin, Brilliant Blue FCF), Acidity Regulator (Trisodium Citrate), Glazing Agent (Carnauba Wax), Concentrates (Sweet Potato, Radish), Emulsifier (Lecithin) Skittles Fruits: Sugar, Glucose Syrup, Palm Fat, Acids (Citric Acid, Malic Acid), Dextrin, Maltodextrin, Flavourings, Modified Starch, Colours (Beetroot Red, Anthocyanins, Calcium Carbonate, Carotenes, Curcumin, Indigo Carmine, Brilliant Blue FCF), Acidity Regulator (Trisodium Citrate), Glazing Agent (Carnauba Wax) Skittles Sours: Sugar, Glucose Syrup, Palm Fat, Acid (Citric Acid), Dextrin, Maltodextrin, Modified Starch, Flavourings, Colours (Anthocyanins, Beetroot Red, Calcium Carbonate, Curcumin, Indigocarmine, Carotenes, Brilliant Blue FCF), Acidity Regulator (Trisodium Citrate), Glazing Agent (Carnauba Wax), Concentrates (Sweet Potato, Radish) Starburst Original: Glucose Syrup, Sugar, Palm Fat, Concentrated Fruit Juices 1.4%** (Apple, Orange, Blackcurrant, Strawberry, Lime, Lemon), Acids (Citric Acid, Malic Acid), Modified Starch, Dextrin, Flavourings, Maltodextrin, Antioxidant (Ascorbic Acid (Vitamin C)), Emulsifier (Sunflower Lecithin), Colours (Anthocyanins, Beta-Carotene), Spirulina Extract, **Equivalent to 11.5% Fruit Juice",
+          "manufacturer": "IE: Mars Foods Ireland Ltd., PO Box 3856, Dublin 4. GB: Freepost Mars Wrigley Confectionery UK Ltd.",
+          "manufacturer_marketing": null,
+          "name": "Skittles and Friends Sweets Medium Christmas Selection Box",
+          "official_vegan": 1,
+          "other_information": "Box Contents: Skittles ® Darkside Funsize, Skittles ® Fruit Funsize x2, Skittles ® Crazy Sours ®, Starburst ® Full Product Name: Chewy Candies in a Crisp Sugar Shell with Fruit Flavours. Chewy Candies in a Crisp Sugar Shell with Sour Fruit Flavours. Chewy Candy with Apple, Orange, Blackcurrant, Strawberry, Lime and Lemon Flavours and Concentrated Fruit Juices. Chewy Candies in a Crisp Sugar Shell with Fruit Flavours. Storage: Keep cool and dry.",
+          "pack_size": "144g",
+          "package_type": "Box",
+          "preparation_and_usage": null,
+          "producer": null,
+          "recipes": null,
+          "recycling_information": "Box - Recycle; Tray - Recycle; Wrap - Recycle with bags at large supermarket - Don't recycle at home",
+          "serving_suggestions": null,
+          "specification": null,
+          "storage": null,
+          "url": "https://www.ocado.com/products/563256011/details",
+          "vinification_details": null
+        }
+      }
+    }
+  ]
+}

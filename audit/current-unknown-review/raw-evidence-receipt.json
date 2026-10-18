@@ -1,0 +1,9 @@
+{
+  "path": ".rollback-work/current-unknown-review-2026-10-18-complete.tar.gz",
+  "sha256": "7f002f5a7ce21bb34794ea652643a92b6f8c3108915c1675e1703bd451380cb1",
+  "bytes": 24812840,
+  "members": 7168,
+  "attempt_journals": 2158,
+  "verified": "All archive members decompressed; frozen queue and completion record present. Closed queue WAL checkpoint returned (0,0,0) before archiving.",
+  "cohort_hash": "4b2cb32f2665e5e5c2b5c21ad6c196887d26937261c33c4e5bdfbbea0cfff86a"
+}

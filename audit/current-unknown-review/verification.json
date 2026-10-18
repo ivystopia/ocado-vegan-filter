@@ -1,0 +1,87 @@
+{
+  "published_and_prior_additions_preserved": true,
+  "runtime_unchanged": true,
+  "retained_id_lines_unchanged": true,
+  "version": "1.7.2",
+  "script_sha256": "3994417fc7949471879042710d724b701bafcb1e6c413a549bc1a9e93ed2ab95",
+  "sets": {
+    "OFFICIAL_VEGAN_PRODUCT_IDS": {
+      "before": 4671,
+      "after": 4812,
+      "added": 141,
+      "removed": 0
+    },
+    "MANUFACTURER_OR_NAME_VEGAN_PRODUCT_IDS": {
+      "before": 9689,
+      "after": 10444,
+      "added": 755,
+      "removed": 0
+    },
+    "INGREDIENTS_VEGAN_PRODUCT_IDS": {
+      "before": 6191,
+      "after": 8888,
+      "added": 2697,
+      "removed": 0
+    },
+    "KNOWN_NON_VEGAN_PRODUCT_IDS": {
+      "before": 13933,
+      "after": 13933,
+      "added": 0,
+      "removed": 0
+    }
+  },
+  "database_counts": [
+    {
+      "status": "nonvegan",
+      "reason": null,
+      "all_known": 13933,
+      "current": 12589
+    },
+    {
+      "status": "unknown",
+      "reason": null,
+      "all_known": 21447,
+      "current": 17338
+    },
+    {
+      "status": "vegan",
+      "reason": "ingredients",
+      "all_known": 8888,
+      "current": 7847
+    },
+    {
+      "status": "vegan",
+      "reason": "manufacturer",
+      "all_known": 10175,
+      "current": 9187
+    },
+    {
+      "status": "vegan",
+      "reason": "name",
+      "all_known": 269,
+      "current": 216
+    },
+    {
+      "status": "vegan",
+      "reason": "tagged",
+      "all_known": 4812,
+      "current": 4414
+    }
+  ],
+  "fresh_review_ledger": {
+    "unknown": 17338,
+    "vegan": 3593
+  },
+  "classification_run_id": 313,
+  "canonical_baseline_validation": "passed",
+  "syntax": "node --check passed",
+  "tests": {
+    "run": 152,
+    "passed": 151,
+    "skipped": 1,
+    "live_site_checks": "optional OCADO_LIVE_TESTS check skipped",
+    "temporary_firefox_fixtures": "passed",
+    "installed_firemonkey": "not modified or tested"
+  },
+  "final_export_dry_run": "zero additions and removals in every set"
+}
