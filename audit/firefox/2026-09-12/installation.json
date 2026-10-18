@@ -1,0 +1,47 @@
+{
+  "tag": "1.7.1",
+  "tag_commit": "0ff48c703bed598beb57eca65dd9c25b06a1c225",
+  "source_sha256": "5783204bb6911b38cbcf76908bd4e67086c813059ac0f3b822c8c2837b47b5a8",
+  "version": "1.7.1",
+  "exact_source_verified": true,
+  "unrelated_rows_preserved": 36,
+  "active_reload_verified": true,
+  "running_storage_check": {
+    "version": "1.7.1",
+    "source_matched": true,
+    "enabled": true,
+    "cache_refreshed": false,
+    "other_entries_unchanged": true
+  },
+  "no_filter_while_disabled": true,
+  "active_check": {
+    "rule": ".ocado-vegan-filter-muted-add",
+    "legacy_image_markers": 0,
+    "native_button_classes_preserved": true
+  },
+  "active_clone_regression": {
+    "text": "Add",
+    "classes": "native-probe"
+  },
+  "post_scenario_storage_check": {
+    "version": "1.7.1",
+    "enabled": true,
+    "source_sha256": "5783204bb6911b38cbcf76908bd4e67086c813059ac0f3b822c8c2837b47b5a8"
+  },
+  "installed_grid_checks": 17,
+  "installed_navigation_checks": 9,
+  "cleanup": {
+    "task_tabs_closed": 2,
+    "other_windows_preserved": 1,
+    "task_debugging_server_closed": true,
+    "original_firefox_process_still_running": true,
+    "task_gateway_closed": true
+  },
+  "backup_created": true,
+  "duplicate_ocado_copy": {
+    "manager": "Violentmonkey",
+    "disabled": true,
+    "source_preserved": true,
+    "only_duplicate_entry_changed": true
+  }
+}

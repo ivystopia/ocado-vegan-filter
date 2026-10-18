@@ -1,0 +1,25 @@
+{
+  "userscript_sha256": "dd43faeedf2f275c402484e182382a4914a3dda0d860a046e716655aa82eaa2f",
+  "fixture_sha256": "8774c01eb51db64c168c236fe81652140293362c714329559acde22c0067e94b",
+  "firefox_version": "155.0",
+  "test_command": "SE_AVOID_STATS=true OCADO_LIVE_TESTS=1 python -m unittest discover -s tests",
+  "tests": 74,
+  "failures": 0,
+  "errors": 0,
+  "skipped": 0,
+  "elapsed_seconds": 25.962,
+  "syntax_command": "node --check ocado-vegan-filter.user.js",
+  "syntax_exit_code": 0,
+  "frozen_classifier_result": "audit/benchmarks/2026-09-04-luna-high-frozen.json",
+  "catalogue": {
+    "known_products": 54418,
+    "current_products": 49951,
+    "known_vegan": 19113,
+    "current_vegan": 17449,
+    "unclassified_current": 0
+  },
+  "embedded_set_parity": {
+    "added": 0,
+    "removed": 0
+  }
+}

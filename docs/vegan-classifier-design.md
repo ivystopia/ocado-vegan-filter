@@ -1,116 +1,208 @@
-# Whole-product vegan classification
+# DB-Only Vegan Classification System
 
-The classifier assesses stored evidence for the complete sold article, including relevant manufacturing and supplied packaging, pods, filters and other non-edible components. Development is on `dev`. Canonical reassessment and local userscript regeneration are complete on `dev`; see [the completed report](../audit/catalogue-refresh-2026-10-16/README.md). Future updates retain the validation gates below. Keep the development version until release preparation is requested.
+## Purpose
 
-## Evidence policy
+Classify every product in `ocado_products.sqlite` as one of:
 
-Literal animal declarations must establish content of the sold product. Egg-free names, seasoning or utensils for animal foods, recipe cards, material colours, cosmetic cream, fragrance notes and nutritional comparisons are not animal-content proof. Keep ambiguous prose for independent interpretation. If a repaired rule withdraws a previously conclusive shortcut and no independent reading exists, requeue that product as unclassified while preserving its previous audit; do not reuse the shortcut's generated assessment as supporting evidence. Source-applicability references to metadata use the exact supplied field value, with local quotation and applicability validation retained.
+- `vegan`
+- `nonvegan`
+- `unknown`
 
-Only discrepancies that materially affect vegan suitability or whether the relied-on claim applies can block a positive. This is the user-approved `vegan-materiality-v1` interpretation of the whole-product policy. Retain observed copy discrepancies without inventing which account is physically correct. Plant-only recipe differences, ingredient counts, beer style, ordinary pack formats, silicone-free/fragrance-free copy and botanical descriptions do not alone defeat an independently applicable complete-product assurance. A discrepancy is material when it establishes animal use, leaves a relevant source/process/component concern unresolved, or demonstrates that the assurance cannot be bound to the sold product. Explain that connection and cite the actual facts.
+The classifier must use only data already stored in SQLite.
+An explicitly requested [manufacturer-site research audit](manufacturer-research.md) can gather new primary-source evidence separately and import it into SQLite. The classifier remains offline; accepted website confirmations use the existing `vegan/manufacturer` category.
+It must not call Ocado live pages, Ocado APIs, product pages, search pages, category pages, or any other Ocado source.
+If the database does not contain enough information to decide, the classifier returns `unknown`.
 
-Native observers in `tools/native_product_identity.py` report potential discrepancies. They are not a universal catalogue-consistency requirement. With an independently applicable native whole-product tag, manufacturer assurance or affirmative product name, mechanical copy observations alone do not create an identity block. Preserve genuine animal-data misjoins and cross-product claim-binding concerns, website variant/market/time restrictions, contrary manufacturer assertions and definite animal declarations. A product or component with unresolved actual composition and no applicable assurance remains unknown.
+This replaces the old phase split:
 
-HTML field extraction preserves literal comparisons such as `<5%` and their complete ingredient tails. Correct a defective stored projection from retained, hash-validated SQLite responses in an isolated candidate, preserving previous fields/decisions and invalidating only affected classifications. Do not fetch again, change capture dates or refresh frozen benchmark inputs to conceal an extraction repair. Quotation normalization uses bounded caches keyed by exact text and tests literal matching before its existing visible-source fallback; changing a source value cannot reuse an old quotation result.
+- `vegan-according-to-manufacturer`
+- `vegan-according-to-ingredients`
 
-Statuses are `vegan`, `nonvegan` and `unknown`. `unknown` is an assessed insufficiency of evidence; NULL is unfinished work. A failed execution or invalid response stays operational work, never an implicit unknown.
+The database should expose one canonical product classification, not separate phase-specific vegan booleans.
 
-Permitted positive reasons, in canonical order, are an applicable Ocado tag (`tagged`), scoped manufacturer confirmation (`manufacturer`), an affirmative whole-product vegan name (`name`), and unambiguous vegan identity/composition with relevant sourcing and processing resolved (`ingredients`). Manufacturer confirmation takes precedence over a name. Never guess from probability, reputation, a category or absence of an animal word.
+## Canonical Product Fields
 
-A bare added mineral ingredient/group needs relevant composition and animal-free sourcing facts or an applicable whole-product vegan assurance. Generic plant-based marketing does not identify or source that group. Mineral preparations can use animal sources, as demonstrated by published oyster-shell calcium and bovine bone-meal products: https://www.solgar.com/products/calcium-600-tablets-from-oyster-shell-with-vitamin-d3 and https://www.nowfoods.com/products/supplements/bone-meal-powder . Those examples establish source variation, not animal use by another SKU. Intrinsic minerals, mineral-water identity, individually identified compounds and standard flour fortification are not blanket-blocked.
+The `products` table stores the latest classification:
 
-Correctly matched definite animal ingredients or processing settle `nonvegan`, even with a positive claim or official tag. Unrelated generic uncertainties cannot downgrade this proof to unknown. Retain official-tag/animal contradictions for reporting; do not contact Ocado without instructions. Suspected wrong-product joins, unresolved claim applicability and other material conflicts remain blocked `unknown`.
+- `vegan_status`: `vegan`, `nonvegan`, or `unknown`
+- `vegan_reason`: nullable; when `vegan_status = 'vegan'`, one of `tagged`, `manufacturer`, `ingredients`, `name`
+- `vegan_classifier_version`
+- `vegan_classified_at_epoch`
 
-Animal proof includes explicit pet-food meat/animal derivatives, mealworms, corroborated ordinary egg identity, formal food-supplement content introduced by “with”, and affirmative supplied animal-material declarations. A correctly matched formal supplement declaration of collagen peptides overrides positive claims even when another ingredient field omits it; recipe prose, flavour descriptions, vegan precursors and endogenous formation are excluded. Keep material assertions distinct from fragrances, metaphors, cleaning targets and faux alternatives. A separate precautionary-allergen or storage sentence must not negate an actual animal declaration; mixed factory-warning scope still needs interpretation. The INCI term `Synthetic Beeswax` does not prove bee-derived wax and does not prove vegan sourcing either: retain its source uncertainty unless applicable evidence resolves it, while preserving adjacent genuine beeswax, Cera Alba and other animal ingredients.
+The old product columns `vegan_according_to_manufacturer` and `vegan_according_to_ingredients` must not exist after migration.
+Source-signal fields such as `official_vegan` and `name_contains_vegan` may remain because they are evidence inputs, not final classification fields.
 
-Per-call structured-output constraints prohibit invented nested source pointers and companion-page references inside another page's source-applicability dimensions. Applicable pages may still be combined in whole-product assessments. Exact pointer resolution, literal quotations and scope checks remain local requirements even when response generation is constrained. A bounded quotation adapter may restore a unique exact source excerpt from the same field after ASCII capitalization changes, at most two JSON string-escaping layers, or reversible UTF-8/Latin-1 or Windows-1252 transport differences. It preserves the original response and logs the validated literal excerpt and source-field hash. It cannot change words, substantive punctuation, numbers, source paths, product identity or decisions; ambiguous matches and accent/spelling changes are rejected, and all normal validators still run.
+## Audit Tables
 
-Applicable whole-product claims can resolve generic composition, sourcing, processing and component uncertainty. They cannot override definite animal evidence or establish their own product/variant/market/period binding. Without such assurance, unresolved source-dependent additives, incomplete composition or relevant process risks mean unknown. General knowledge identifies mechanisms and ordinary identities; it cannot invent product-specific assurances.
+Classification must be auditable without re-scraping Ocado.
 
-Ordinary foods such as carrots and a simple leaf salad can qualify by common sense. Missing ingredients do not prove simplicity. Missing packaging details alone do not block an unambiguous ordinary food when no material component concern is evidenced; do not invent packaging or claim it is absent. Explicitly described manufactured components require assessment. Protective-atmosphere wording alone establishes neither a component concern nor packaging suitability.
+`vegan_classification_runs` records each rules or Codex run:
 
-“May contain milk” is precautionary information rather than intentional milk. Keep mixed allergy/factory fields intact for interpretation. Standard wheat/flour fortification with calcium, iron, niacin, thiamin or folic acid is permitted; other vitamin sources need applicable evidence. Resolved source wording such as soya lecithin resolves that ingredient alone. Known animal additives include E120, E901, E904 and E1105; the source-backed registry in `tools/vegan_policy.py` is bounded, not proof that unlisted additives are safe.
+- run start/end/status
+- mode
+- classifier version
+- prompt version
+- model and reasoning effort when applicable
+- originating sync run ID when classification is limited to a monthly sync
+- counters and errors
 
-The registry covers relevant wine fining and other wine processing, source-dependent additives, sugar refining, clarification/defoaming and planting-seed treatments. “Unfined” or animal-free fining agents alone do not establish the wine's complete production chain. Plant origin, filtering or distillation alone does not prove animal-free precursor processing. Apply mechanisms case by case, including relevant constituents, without speculative universal risks.
+`product_vegan_classification_audit` records each product decision:
 
-## Claims and scope
+- product ID
+- source: `rule` or `codex`
+- status/reason/confidence/summary
+- evidence JSON
+- prompt version
+- model/reasoning effort when applicable
+- product context hash
+- raw Codex final response
+- parsed Codex JSON
+- validation errors and exit status
 
-Name matching identifies candidates. Name-only candidates enter the independent model path for polarity, whole-article scope and higher-precedence evidence. A normal affirmative vegan SKU name covers the named article; a food noun or ordinary pack suffix alone does not restrict it to edible contents. Negation, probabilistic names, brand wording, component/formula claims, other variants and serving suggestions cannot establish whole-product suitability. “Not certified vegan” is absence of certification, not animal proof.
+The `products` table is the current source of truth.
+The audit tables explain how each current decision was reached.
 
-An affirmative producer self-description or a typed whole-product Vegan feature can support manufacturer evidence without the exact phrase “suitable for vegans”. A brand's name containing Vegan cannot supply this attribute. A quoted title or a name mentioned without an assertion remains name evidence only. Recipe/formula statements do not restrict an independent complete-product assurance unless they actually qualify that assurance. Nutrition figures per serving do not themselves restrict a separate whole-product claim.
+## Classification Semantics
 
-Read every cited assertion in its full retained sentence/capture. Reject clipped negations, hedges, component subjects and exceptions. A FAQ answer inherits its own question's subject; a packaging answer or a later question's answer cannot assure the food. Metadata and URL titles cannot supply assertions. Both model stages inspect and cite applicable positive routes before choosing a reason. Validate alternative supplied proof in canonical order; rejecting one basis cannot erase independently sufficient lower-priority proof. Agreed unknowns never promote.
+The classifier answers one question:
 
-An unqualified assurance for the matched named product need not enumerate ordinary pack sizes. Different formulations, flavours, markets, vintages, explicit material restrictions or selector mismatches remain consequential. Supplied Ocado/UK provenance establishes the sale market, not manufacturer origin or equivalence of international formulations.
+> Based only on the data in the database, can this product be treated as vegan?
 
-## Pipeline and models
+Do not infer from brand reputation, product category, marketing assumptions, or common sense except for a true single-ingredient item with no ingredients field and an unambiguous vegan product identity.
 
-Conclusive rules run first for definite animal evidence, known material blockers and unambiguous ordinary composition. An official tag, manufacturer statement or vegan name establishes a permitted positive basis but does not mechanically establish consistency of arbitrary surrounding product text. All positive claim candidates therefore enter the selected independent model path for complete-product scope, identity and consistency assessment. `classify_rule_candidate()` is a read-only precheck; `classify_by_rules()` returns only final deterministic decisions. The writer rejects provisional rule positives from `tagged`, `manufacturer` or `name`. Keep all four reasons and canonical precedence, including manufacturer confirmation above a vegan name. A rule's failure to recognize a claim is not proof of its absence. Genuinely unresolved source facts may finish unknown without a model call. The shared final policy gate applies to every decision-writing path, including manufacturer imports.
+Examples:
 
-Use exactly two fresh independent `gpt-6-luna` primary passes at reasoning effort `high`. Only raw status/reason disagreement triggers exactly two fresh blind `gpt-6.1-sol` passes at `medium` on the same evidence, without primary conclusions. Arbitration supports all four positive routes, has no recursion, and leaves unresolved disagreement unknown. Agreed primary unknowns do not escalate. Substantive issues from either agreeing pass survive merging. Exclude GPT-5.6-Luna. The supervising coding model does not change these defaults.
+- Fresh green beans with no ingredients field can be `vegan/ingredients`.
+- A product with no ingredients field should be treated as a single-ingredient product; use stored product identity and category text to decide whether that single ingredient is unambiguously vegan.
+- Plain dried pasta with ingredients `Durum wheat semolina` can be `vegan/ingredients`.
+- Udon noodles containing fortified wheat/flour can be `vegan/ingredients` when the fortification is limited to standard flour additions such as calcium, iron, niacin, thiamin, or folic acid.
+- Products without an official Ocado vegan tag that contain milk, egg, honey, gelatine, meat, fish, shellfish, beeswax, shellac, carmine, lanolin, or similar animal-derived ingredients should be `nonvegan`.
+- `May contain milk` warnings do not make a product `nonvegan`.
+- Material conflicts between supplied product fields should be `unknown`, even when each possible product or ingredient identity would individually be vegan.
+- Vague or ambiguous ingredients such as natural flavourings, enzymes, vitamins outside standard flour fortification, vitamin D3, glycerine, mono/diglycerides, glaze of unspecified composition, or colours should be `unknown` unless explicit vegan evidence exists. Explicit shellac is animal-derived and follows the non-vegan rule above.
 
-`tools/codex_evidence.py` uses fresh temporary evidence-only sessions, disabled web/tools/skills/config/rules and a read-only sandbox. API-key environment variables are removed; use the existing ChatGPT sign-in. Observed tool use invalidates a call. Validate isolation against the installed CLI: a prompt alone is not access control.
+## Decision Order
 
-Validate exact IDs, schema, status/reason combinations, source applicability, pointers and quotations locally. Reject missing, duplicate and unexpected products, fabricated references and unsupported claims. Each product in a batch uses only its own evidence and linked captures; shared source keys or repeated names do not invent other variants or conflicts. Retain every failed/retried attempt and its usage. Reasoning tokens are already output tokens. Included-plan limits stop admissions, drain calls and checkpoint; no paid/API fallback, allowance reset or automatic expensive-primary upgrade.
+Apply deterministic rules first.
+Stop at the first conclusive rule.
 
-## Provenance and source lifecycle
+1. Official vegan tag:
+   classify `vegan/tagged` if `products.official_vegan = 1` or `product_flags.flag = 'vegan'`.
+   Ocado's official tag is authoritative for this extension; store any apparent ingredient conflict in the tagged decision's audit evidence for manual review rather than downgrading the product.
 
-Canonical fields retain policy/classifier versions, per-product evidence hash, promotion block and audit ID. Runs/audits record knowledge/schema/prompt versions. `vegan_model_calls` retains each call once; `vegan_audit_model_calls` links product audits. Failed calls cannot replace accepted canonical decisions or clear pending work.
+2. Conclusive animal-derived ingredients:
+   for products without an official Ocado vegan tag, classify `nonvegan` when explicit ingredients such as whey, egg, honey, beeswax, gelatine, shellac, carmine, or lanolin conflict with a vegan claim.
+   This override intentionally excludes lexically ambiguous terms such as cocoa butter, coconut cream, vegan cheese, vegan collagen, and oyster mushroom.
 
-Manufacturer captures retain complete text/hash, URL, retrieval date, publisher/market identity and exact product association. Supply all associated captures, including contrary pages and unused positive quotations; exclude old research conclusions. Source assertions retain active/revoked/superseded state and audit history. Withdrawal invalidates dependent decisions. Newer retrieval alone does not override a more specific contrary statement. Catalogue identity/recipe/pack/publisher changes invalidate applicability.
+3. Explicit manufacturer text:
+   classify `vegan/manufacturer` when product text explicitly says suitable for vegans, certified vegan, vegan friendly, or registered with the Vegan Society.
+   classify `nonvegan` when product text explicitly says not vegan or not suitable for vegans.
+   classify `unknown` if explicit positive and negative vegan statements conflict.
+   Independently verified manufacturer website statements are also accepted here, only for the exact product identity, recipe and pack format reviewed. Their retained source text, URL, retrieval date, scope match and independent reviews explain the decision. Changed catalogue evidence invalidates the website claim's binding; source history remains available for reassessment.
 
-Schema 7 assesses identity, composition, sourcing, processing and supplied components, plus website product/variant/market/period applicability. Every relied-on source needs its own source-backed dimensions and product/source identity binding in both passes. Rebind persisted pointers by URL and complete capture hash. Catalogue bindings exclude external captures to prevent circular invalidation. Exact visible quotations may remove retrieval/Markdown decoration, never words, negations or qualifications. Full-capture validation remains strict; structured references do not mathematically prove interpretation or undisclosed production facts.
+4. Product name:
+   classify `vegan/name` when the product name contains the standalone word `vegan` and no explicit negative vegan statement was found.
 
-## Assessment, validation and activation
+5. Ingredients:
+   classify `nonvegan` when ingredients contain obvious animal-derived terms.
+   classify `unknown` when ingredients contain ambiguous terms.
+   classify `vegan/ingredients` only when all parsed ingredient terms are definitely vegan.
+   classify `vegan/ingredients` for no-ingredients products only when product identity is unambiguously a single vegan ingredient.
 
-Evaluate products individually. There are no category or positive-reason sample admission gates. Reuse completed benchmarks for the unchanged classifier after scraping; do not repeat model qualification for this catalogue refresh. Genuine model/prompt/schema/rule changes require appropriate new validation. The current frozen fixture is `benchmarks/vegan-classifier-v2/ethical-cases-v29.json`; it contains 497 controlled contracts. `audit/current-classifier/` retains applicable control/pilot evidence. Existing classifications or model agreement are not independent truth.
+6. No conclusive rule:
+   leave the product unresolved for Codex classification.
 
-Future benchmark evaluation retains every mismatch, zero unsafe positives and strict evidence/reason/animal-content/operational/persistence/export/browser contracts. Conservative vegan-to-unknown misses consume the 98% positive-recall budget and proportional per-route recall checks. Report coverage and every unrun or disputed case; never change reasons or expectations to improve a score. Separate family/shared-source groups between development and holdout. Metamorphic siblings and repetitions are not independent catalogue observations; a consumed holdout cannot support an untouched-holdout claim.
+## Codex LLM Fallback
 
-For this fundamental migration, `tools/refresh_whole_product.py` works on WAL-consistent snapshots, preserves previous decisions and reassesses every known product, including historical nonvegan/unknown decisions. Sync-run attribution must not narrow all-known selection. Routine refreshes classify new/changed products. Freeze every initially unknown product for a brief manufacturer check, including historical products, and reassess all products affected by changed shared sources. Check readily available official product pages or directly applicable FAQ/range statements, with a straightforward lookup when needed; do not prolong investigation to rescue unknowns. The user accepts conservative misses. Account for every product, preserving full captures, scope restrictions, contrary findings and withdrawals. Keep checked-without-confirmation, explicitly closed access-blocked and pending/unattempted outcomes distinct; blocked access is not evidence that confirmation does not exist. Source validation and positive-classification safeguards remain strict.
+Use Codex only for unresolved products.
+The local machine is authenticated through ChatGPT/Codex, not `OPENAI_API_KEY`.
 
-Require no unclassified products, resolution of operational errors, complete research accounting, current provenance and valid export. Audit a uniform 600-positive sample of the final fixed candidate with two blind source-cited Sol 6.1/high readings, validated quotations/applicability and explicit dispute accounting. Do not describe a zero-error automated sample as an unconditional physical vegan guarantee. Produce all-known/current transitions, promotion/demotion explanations and separate confirmed tag/animal contradictions from identity-review cases.
+The Python orchestrator is the only SQLite writer.
+Codex receives product-context JSON only and returns schema-validated JSON.
+It must not read files, query the DB, browse the web, or access Ocado.
 
-Activation is authorised after these checks. Reject concurrent canonical/candidate changes; transactionally preserve prior decisions and source/audit linkage. Run exporter dry-run before regenerating the local userscript. Rollback must retain newly established safety exclusions. Commit finalized tooling, evidence and script changes separately on `dev`; no tag, main advancement, push, publication or installed FireMonkey update.
+Use:
 
-## Export and shopper behaviour
+```bash
+codex exec --ephemeral --output-schema schema.json --output-last-message result.json
+```
 
-Exporter validation rejects stale/legacy positives, missing audit linkage, changed evidence and unfinished syncs. Export all known classified IDs, including historical products, into separate positive-reason sets, nonvegan IDs and blocked unknown IDs. Preserve retained ID order/placement and update counts.
+Bulk classification defaults:
 
-Browser precedence is recorded nonvegan, blocked unknown, validated positive IDs/applicable live official tags, then unknown. Runtime names and URL slugs cannot promote. Evidence-absent ordinary unknowns may benefit from a new live tag; recorded material conflicts cannot. Keep `Unknown vegan` for uncertainty and `Not vegan` only for affirmative negatives. Preserve native Add buttons, links, responsive images, quantity controls, incremental processing and self-contained shopping behaviour.
+- model: `gpt-5.6-luna`
+- reasoning effort: `high`
+- independent passes: two, including resumed runs
 
-## Literal-reference recovery and definite animal declarations
+The supervising interactive Codex model is a separate choice and can review code, prompts, and schemas without replacing the bulk classifier. Alternative classifier models/settings require a successful retained benchmark before writing decisions; historical fallback comparisons are recorded in the benchmark report rather than silently selected on errors.
 
-Manufacturer-source contexts use lossless literal IDs by default to avoid copied quotation errors. Generation constraints bind each ID to its product and the original permitted field and quotation; local hydration also enforces numeric ID bounds and integer types. Disagreement arbitration uses the native quotation carrier by default after observed repeated stalls with numbered references; the primary source carrier remains unchanged. Explicit native generation also remains available for diagnostics. A single-product bounded retry after an actual quotation/path validation failure may use `tools/literal_reference_catalogue.py`: globally distinct per-product IDs refer to prevalidated contiguous excerpts, while complete original fields remain in the prompt. Both independent readings restart; model choices, disagreement arbitration and whole-product evidence gates remain unchanged. Long fields use ordered unmodified text segments so the complete native field can be reconstructed exactly without duplicating its text in the prompt. Identical wire-schema alternatives may be deduplicated without weakening the canonical local schema. Count schema properties before invocation: oversized batches split; a single-product oversized schema uses the same lossless reference transport. Never truncate evidence to satisfy an input limit. Hydrate only IDs belonging to that product, then apply every ordinary schema, exact quotation and applicability validator. Retain original raw ID responses, canonical references and hydration operations. Exhausted validation failures remain unfinished operational errors, never completed unknowns.
+The bulk default was selected with a two-pass, evidence-grounded benchmark covering known vegan, non-vegan, unknown, and newly discovered products. Luna/high matched all 48 retained gold decisions with zero pass disagreements. Luna low and medium both repeated a false-vegan decision, while xhigh added no classification benefit and used materially more time and output tokens. See `docs/model-benchmark-2026-08-21.md`.
 
-Correctly corroborated own animal-food identity, declared natural leather/silk, and leather footwear uppers establish nonvegan content even when another component remains undocumented. Require actual own-product declarations; exclude imitation, care targets, fragrances, serving suggestions and other variants. Indigo carmine is distinct from insect carmine, and a vegan precursor blend or endogenous collagen-formation statement is not added animal collagen. These lexical distinctions do not add unresolved ingredients to the vegan allowlist.
+The model ID and reasoning effort are separate settings. Use model `gpt-5.6-luna` with reasoning effort `high`; never construct a slash-suffixed model ID such as `gpt-5.6-luna/high`.
 
-Non-negative uncertainty issues retain their validated references and resolution requirements, but skip the later substantive-animal-proof source rescan after that proof candidate is already false. Reference/schema/applicability validation remains unchanged. Retain measured performance and exact full-evidence equivalence when changing these pure processing paths.
+False-vegan errors are the primary rejection criterion. Pass agreement and latency are secondary because identical passes can still repeat the same unsupported inference.
 
-A final positive audit may stop early after an actual unsupported positive is confirmed by two distinct blind source-cited readings, or after a source-backed reference disagreement remains unresolved. A disagreement is an explicitly disputed finding, not proof of nonvegan content or a confirmed unsupported positive. Retain an explicitly incomplete failed score with no confidence bound; do not spend further calls on a known failed candidate or call the partial observations a completed 600-case audit. Repair the attributed cause and audit a new fixed candidate with a seed recorded before classification and sampling. Native observers retain cordial versus ready-to-drink copy differences for assessment. A block requires an evidenced vegan-suitability or claim-applicability consequence; flavour words and serving suggestions alone are insufficient.
+For manufactured non-food goods, material descriptions such as cotton, plastic, melamine, metal, or glass do not prove that the complete product is vegan. Unlisted dyes, adhesives, coatings, trims, and processing inputs require an `unknown` result unless explicit vegan evidence or a complete composition resolves them.
 
-Evidence references and assessment issues are logical sets: remove exact duplicate entries while preserving their first occurrence, every distinct quote/path, conflicting scope and different resolution. Never compact independent model-pass records or rewrite raw responses/history. Compact both gate input and output so reapplying the same policy cannot exponentially append the same unproven-source references. The current regression replays an unresolved source twelve times with an identical result. Branded multi-flavour differences remain observations unless they demonstrate a material animal-use concern or invalidate the relied-on assurance. A partial flavour list, additional ingredient or unrelated serving/brand text alone does neither.
+Do not use Luna `low` or `medium` reasoning for product decisions because both repeated a false-vegan result in the retained benchmark. Use `high` unless a later benchmark justifies another setting.
 
-An empty validated retained-text recovery plan performs no write, reclassification or redundant full-history scan. Reject unmatched projections even when there are no proposed changes. Non-empty plans keep their before/inside-transaction fingerprint and projection comparison; audit freezing and canonical concurrent-change guards remain mandatory.
+For every bulk run, run two independent Codex passes for any LLM-classified product.
+If the passes disagree on `vegan_status` or `vegan_reason`, classify the product as `unknown`.
 
-Reference readers apply the same ordinary-food/common-sense rule to generic packaging descriptions, labels and recycling notes. Such information alone does not evidence animal inputs or require invented glue/ink/material facts; still assess the component and retain any actual concern or contradiction. Intrinsically manufactured articles and supplied pods/filters do not gain an ordinary-food exemption for their complete relevant composition. Keep conflicting older reference readings unchanged, distinguish instruction repairs from classifier defects, and validate corrected interpretation with fresh blind source-cited readings.
+## Concurrency and optional review
 
-Standard declared pepsin and pancreatin are animal-enzyme identities, not generic protease/lipase claims. FDA identifies the standard food preparations as animal-derived, and EMA defines pancreatin as a pancreas extract: https://www.fda.gov/food/generally-recognized-safe-gras/enzyme-preparations-used-food-partial-list and https://www.ema.europa.eu/en/documents/mrl-report/pancreatin-summary-report-committee-veterinary-medicinal-products_en.pdf . Apply only actual content declarations. Explicit microbial/recombinant preparation identities, enzyme-absence wording and endogenous-production statements do not establish animal extraction; they remain subject to the normal complete-product assessment. Do not infer that every digestive enzyme is animal-derived.
+The Python orchestrator owns the SQLite connection and writes batch results transactionally. Its `--workers` setting controls concurrent Codex batches; it is separate from interactive review subagents. The CLI defaults to one worker, while [monthly maintenance](monthly-maintenance.md) explicitly uses eight based on the completed August run. Start small when evaluating a changed model or prompt, and lower concurrency if persistent service errors require it.
 
-Assess vintage/bottling chronology against the applicable convention. Australian harvests after 1 September through 31 December carry the following effective vintage, so an Australian 2024 vintage and bottling late in 2023 are not inherently contradictory: https://www.wineaustralia.com/labelling/further-information/the-blending-rules . The general OIV vintage standard refers to the grapes’ year: https://www.oiv.int/standards/international-standard-for-the-labelling-of-wines/part-iii-optional-information/optional-information/vintage-or-harvest-year . Do not invent an actual late-year harvest, treat missing origin as proof against the exception, or confuse winery history with own-product bottling. Bottling chronology requires a block only when it undermines vegan evidence applicability (for example a vintage-restricted assurance); later bottling and clearly identified other-vintage history do not.
+When review is delegated, keep reviewers read-only and give them a bounded task:
 
-A complete typed vegan attribute list may also contain an independent “Not tested on animals” or cruelty-free attribute without negating its explicit vegan suitability. Accept both “Vegans & Vegetarians” and “Vegetarians & Vegans” ordering. Testing/cruelty-free wording alone is not vegan evidence; component-only claims, exceptions and non-vegan statements remain subject to the existing scope/conflict checks. Applicable manufacturer confirmation keeps precedence over the vegan SKU name.
+- Prompt red-team: reviews ambiguity rules and false-positive risks.
+- Schema-risk inspector: reviews migration/upsert/audit/versioning risks.
+- Audit sampler: reviews stratified samples after classification.
 
-An explicit Vegan attribute remains manufacturer evidence alongside bounded independent nutrition descriptors such as low-carb, Keto, LCHF and no-added-sugar labels. Those descriptors alone provide no vegan evidence. Preserve the complete source quotation and retain the animal-content, component-scope and qualification checks. A confirmed incorrect positive reason can stop an incomplete audit separately from an unsafe-positive finding: preserve both positive references, report the strict reason failure, and supply no confidence bound for that stopped sample.
+Review subagents are not required to run the classifier. Do not introduce a persistent custom agent or change global Codex settings just to execute the existing workflow.
 
-Rhetorical or usage questions in a separate clause do not erase a declarative producer assurance; a question about vegan suitability is not itself an assertion. Preserve source punctuation, complete qualifiers, variant-only restrictions and quantified nutrition/ingredient-selection facts while binding a quotation to its own clause. Policy replay cannot invent an uncited manufacturer interpretation from an older name/ingredients assessment. After a relevant knowledge change, requeue such newly interpretable native higher-priority claims for the normal independent-pass contract; agreed unknowns remain protected and activation still requires zero unclassified products.
+## CLI
 
-A bare marketing ingredient-count mismatch does not alone establish incompatible named components, a different sold product or animal use. Declared entries and manufacturing/compound inputs need not use the same counting unit. An applicable whole-product vegan assurance can resolve generic composition/process uncertainty; do not invent the omitted input or assert that it is water. Actual named-component substitutions, explicit exclusions, wrong variants and definite animal evidence retain their existing handling.
+The implementation entrypoint is below. These are database-writing operations for an authorized classification task; place `--db PATH` before the subcommand when selecting a different database:
 
-Accepted-evidence replay validates the current native input hash and shared gate for every retained decision. Preserve an unchanged status/reason/promotion block and its original audit/call links only when policy, knowledge and schema versions already match. Stale metadata receives a new validated attestation without changing the old audit; changed decisions use the normal writer. Replay is not a new independent reading.
+```bash
+python3 tools/classify_ocado_vegan.py migrate-schema
+python3 tools/classify_ocado_vegan.py classify-rules
+python3 tools/classify_ocado_vegan.py classify-codex --limit 100 --batch-size 10
+python3 tools/classify_ocado_vegan.py classify-all --codex
+```
 
+`migrate-schema` creates a rolling SQLite backup before changing the DB.
+`classify-rules` must run before Codex for the selected queue.
+`classify-codex` is resumable because it selects only rows where `vegan_status IS NULL`.
+It refuses to submit an officially tagged product, so deterministic rules cannot be bypassed accidentally.
 
-## Materiality validation and retained work
+The `status` CLI also calls schema migration code, so use the read-only SQL in [the working guide](working-guide.md#inspecting-the-local-database-safely) for inspection. The guide also explains rolling-backup replacement, interrupted-sync baselines, and why `classify-rules --force` is not a complete reclassification.
 
-Classifier prompt v38 and arbitration prompt v29 share the same materiality text as blind reference prompt v26. Keep schema 7, the source-backed mechanism registry and selected model/pass contract unchanged. Actual material semantic concerns from either independent reading remain binding; the shared gate does not erase them just because another claim exists. Source/applicability validation, exact quotes, definite animal precedence and operational failures remain strict.
+## Verification
 
-When repairing a previously mechanical copy-only downgrade, reuse two validated agreeing original positive readings only if the native input hash is unchanged and the current shared gate approves their original assessments. Preserve the old audit and both original calls. Never promote an agreed unknown, resolve a raw disagreement by selecting a favourable reading, or interpret saved-call replay as new independent evidence. Preview every proposed promotion read-only before application. The frozen benchmark inputs, old expectations and failed scores remain unchanged; record separately the approved materiality revision and any superseded expectations.
+Unit tests should cover:
+
+- schema migration
+- deterministic official-tag rule
+- explicit manufacturer vegan/nonvegan text
+- conflicting manufacturer text
+- standalone `vegan` in product name
+- obvious animal-derived ingredients
+- may-contain allergen warnings
+- ambiguous ingredients
+- definitely vegan ingredient lists
+- single-ingredient no-ingredients products
+- Codex output parsing
+- independent Codex disagreement handling
+- DB write invariants
+
+After a full run:
+
+```sql
+select count(*) from products where vegan_status is null;
+select vegan_status, vegan_reason, count(*) from products group by vegan_status, vegan_reason;
+pragma table_info(products);
+```
+
+The first query must return `0`.
+The schema must not contain `vegan_according_to_manufacturer` or `vegan_according_to_ingredients`.

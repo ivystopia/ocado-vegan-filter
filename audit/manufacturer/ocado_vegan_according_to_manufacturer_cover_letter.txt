@@ -1,0 +1,22 @@
+Subject: Product vegan-tag discrepancies
+
+Hello Ocado Customer Services,
+
+I am reporting a catalogue/data issue affecting vegan labelling on the live site.
+
+I reviewed the current Ocado catalogue on 22 April 2026 and identified product pages where the product content explicitly states that the item is suitable for vegans, but the Ocado product metadata does not show the vegan tag/icon.
+
+Internally, I am referring to this as the "vegan according to manufacturer" list, because each included product has an explicit vegan claim from the product page content.
+
+I only included products where the vegan claim is stated explicitly in the product page content, such as:
+- Dietary Information
+- Features
+- Manufacturer description
+
+I did not include products based on ingredient inference alone.
+
+The attached file `ocado_vegan_according_to_manufacturer_urls.txt` contains the affected product URLs, one per line.
+
+Please could you pass this to the relevant catalogue/data quality team to review and correct where appropriate?
+
+Thank you.

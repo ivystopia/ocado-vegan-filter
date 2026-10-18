@@ -1,0 +1,65 @@
+..Benchmark cohort challenge: 24 products
+Benchmark cohort holdout: 24 products
+.........Codex batch 1/1: products 1-1 of 1
+......................................................fixture smoke test passed
+image ownership smoke test passed
+image rendering smoke test passed
+incremental updates smoke test passed
+{
+  "additionalVeganExample": {
+    "id": "511102011",
+    "href": "https://www.ocado.com/products/kuhne-gherkins/511102011",
+    "buttonText": "Add",
+    "visibleOfficialIcon": false,
+    "text": "Kuhne GherkinsVegetarianVegetarian(65)Rating, 4.5 out of 5 from 65 reviews.Kuhne Gherkins670gOrdinarily \u00a34.63 per kilo(\u00a34.63 per kilo)Price\u00a33.10Add"
+  }
+}
+additional vegan search smoke test passed
+{
+  "loadedCards": 50,
+  "mutedExamples": [
+    {
+      "id": "527741011",
+      "buttonText": "Unknown vegan",
+      "imageFilter": "grayscale(1) saturate(0)",
+      "offerColor": "rgb(101, 67, 72)",
+      "offerPriceColor": null,
+      "text": "FeaturedThis is a featured product.Whispering Angel Provence RoseOcado Price PromiseOcado Price Promise(51)Rating, 3.9 o"
+    },
+    {
+      "id": "214494011",
+      "buttonText": "Unknown vegan",
+      "imageFilter": "grayscale(1) saturate(0)",
+      "offerColor": "rgb(101, 67, 72)",
+      "offerPriceColor": null,
+      "text": "FeaturedThis is a featured product.Harpic Active Fresh Sunshine Rituals Limited Edition Toilet Cleaner Gel(55)Rating, 3."
+    },
+    {
+      "id": "606238011",
+      "buttonText": "Unknown vegan",
+      "imageFilter": "grayscale(1) saturate(0)",
+      "offerColor": "rgb(101, 67, 72)",
+      "offerPriceColor": null,
+      "text": "FeaturedThis is a featured product.Weetabix Crispy Minis ChocolateVegetarianVegetarianOcado Price PromiseOcado Price Pro"
+    }
+  ],
+  "officialVeganExamples": [
+    {
+      "id": "307754011",
+      "buttonText": "Add",
+      "text": "FeaturedThis is a featured product.Propercorn Sweet & Salty MultipackVegetarianVegetarianGluten FreeGluten FreeWheat Fre"
+    }
+  ]
+}
+promotions page smoke test passed
+malformed hydration smoke test passed
+reused counter smoke test passed
+userscript source test passed
+Snapshotted classifier context for 1 products
+Reusing classifier context from the unfinished sync
+Context changes new=1 changed=1 removed=0 invalidated=2
+.........
+----------------------------------------------------------------------
+Ran 74 tests in 25.962s
+
+OK

@@ -3,7 +3,6 @@
 from __future__ import annotations
 
 import json
-import hashlib
 import sqlite3
 import sys
 import tempfile
@@ -21,19 +20,6 @@ import manufacturer_evidence as evidence
 import research_ocado_manufacturers as research
 import sync_ocado_database as sync
 import update_userscript_allowlists as exporter
-import vegan_policy as policy
-
-
-def source_assessment(context, path='/manufacturer_source_candidates/0', quote=None):
-    row=policy.source_row(context,path)
-    full=policy.reference(path+'/source_text',row['source_text'])
-    refs=[{'path':path+'/source_text','quote':quote}] if quote else [full]
-    assessment=policy.base_assessment(context,complete=True)
-    assessment['positive_support']=[{'reason':'manufacturer','evidence_refs':refs}]
-    assessment['source_applicability']=[{'source_path':path,'scope':'product',
-        'product':{'status':'established','evidence_refs':[policy.reference('/product/name',context['product']['name']),full]},
-        **{key:{'status':'not_applicable','evidence_refs':[full]} for key in ('variant','market','period')}}]
-    return assessment
 
 
 class ManufacturerEvidenceTests(unittest.TestCase):
@@ -58,67 +44,16 @@ class ManufacturerEvidenceTests(unittest.TestCase):
                ('source', 'https://example.test/faq', 'FAQ', '2026-09-13T00:00:00Z',
                 'Manufacturer site', 'UK', 'source-hash', ?)""", (quote,),
         )
-        self.conn.execute('UPDATE manufacturer_website_sources SET content_sha256=? WHERE id=?',
-                          (hashlib.sha256(quote.encode()).hexdigest(),'source'))
         self.conn.execute(
-            "INSERT INTO manufacturer_website_evidence (run_id, product_id, source_id, catalogue_binding_hash, statement, scope_match, accepted_at, review_policy_version) VALUES (1, ?, 'source', ?, ?, 'Exact named UK product', '2026-09-13T00:00:00Z', ?)",
-            (product_id, binding, quote, policy.POLICY_VERSION),
+            "INSERT INTO manufacturer_website_evidence VALUES (1, ?, 'source', ?, ?, 'Exact named UK product', '2026-09-13T00:00:00Z')",
+            (product_id, binding, quote),
         )
 
     def test_verified_manufacturer_claim_resolves_ambiguous_flavouring_and_retains_source(self) -> None:
         self.add_claim()
-        context=classifier.load_product_context(self.conn,'1')
-        self.assertIsNone(classifier.classify_by_rules(context))
-        assessment=source_assessment(context,'/manufacturer_vegan_evidence/0')
-        result=policy.evaluate(classifier.product_context_for_llm(context),**classifier.policy_facts(context),assessment=assessment,requested_status='vegan',requested_reason='manufacturer')
-        self.assertEqual((result['vegan_status'],result['vegan_reason']),('vegan','manufacturer'))
-        self.assertEqual(context['manufacturer_vegan_evidence'][0]['source_url'],'https://example.test/faq')
-
-    def test_legacy_approval_is_reassessed_with_complete_capture(self):
-        self.add_claim()
-        self.conn.execute("UPDATE manufacturer_website_evidence SET review_policy_version=NULL")
-        self.conn.execute("UPDATE manufacturer_website_sources SET source_text=source_text || ' Except selected variants; check the product.'")
-        text=self.conn.execute('SELECT source_text FROM manufacturer_website_sources').fetchone()[0]
-        self.conn.execute('UPDATE manufacturer_website_sources SET content_sha256=?',(hashlib.sha256(text.encode()).hexdigest(),))
-        context=classifier.load_product_context(self.conn,'1')
-        self.assertIn('Except selected variants',context['manufacturer_vegan_evidence'][0]['source_text'])
-        self.assertIsNone(classifier.classify_by_rules(context))
-
-    def test_other_associated_captures_are_supplied_without_old_review_labels(self):
-        self.add_claim()
-        base=research.catalogue_payload(classifier.load_product_context(self.conn,'1'))
-        self.conn.execute('INSERT INTO manufacturer_research_products VALUES (?,?,?,?,?,?,?,?)',
-            (1,'1',1,classifier.context_hash(base),'old-outcome','old-review',json.dumps({'source_ids':['source'],'notes':'Do not inherit this judgement'}),None))
-        context=classifier.load_product_context(self.conn,'1')
-        row=context['manufacturer_source_candidates'][0]
-        self.assertEqual(row['association_status'],'catalogue_match')
-        self.assertNotIn('old-review',json.dumps(row))
-        self.assertNotIn('notes',row)
-        self.conn.execute('UPDATE manufacturer_website_evidence SET review_policy_version=NULL')
-        context=classifier.load_product_context(self.conn,'1')
-        self.assertIsNone(classifier.classify_by_rules(context))
-        self.conn.execute("UPDATE manufacturer_research_products SET research_json=?",(json.dumps({'source_ids':['missing']}),))
-        with self.assertRaisesRegex(ValueError,'missing source'):classifier.load_product_context(self.conn,'1')
-
-    def test_active_negative_assertion_and_withdrawal_preserve_history(self):
-        self.add_claim(quote="Our Original Cola is not suitable for vegans.")
-        self.conn.execute("UPDATE manufacturer_website_evidence SET assertion_status='nonvegan'")
-        result=classifier.classify_by_rules(classifier.load_product_context(self.conn,"1"))
-        self.assertIsNone(result)
-        context=classifier.load_product_context(self.conn,'1')
-        result=policy.evaluate(classifier.product_context_for_llm(context),**classifier.policy_facts(context),
-            assessment=source_assessment(context,'/manufacturer_vegan_evidence/0'),requested_status='nonvegan')
-        self.assertEqual(result['vegan_status'],'nonvegan')
-        self.conn.execute("UPDATE products SET ingredients='Water, flavouring, citric acid', official_vegan=1 WHERE id='1'")
-        result=classifier.classify_by_rules(classifier.load_product_context(self.conn,"1"))
-        self.assertEqual(result.vegan_status,"unknown")
-        self.assertTrue(result.evidence["positive_block"])
-        evidence.transition_assertion(self.conn,run_id=1,product_id="1",source_id="source",state="revoked",reason='Withdrawn after source review')
-        self.assertIsNone(self.conn.execute("SELECT vegan_status FROM products WHERE id='1'").fetchone()[0])
-        self.assertEqual(self.conn.execute("SELECT assertion_state FROM manufacturer_website_evidence").fetchone()[0],"revoked")
-        self.assertEqual(self.conn.execute("SELECT COUNT(*) FROM manufacturer_website_sources").fetchone()[0],1)
-        self.assertEqual(tuple(self.conn.execute('SELECT from_state,to_state,reason FROM manufacturer_assertion_events').fetchone()),
-                         ('active','revoked','Withdrawn after source review'))
+        result = classifier.classify_by_rules(classifier.load_product_context(self.conn, "1"))
+        self.assertEqual((result.vegan_status, result.vegan_reason), ("vegan", "manufacturer"))
+        self.assertTrue(any(row.get("source_url") == "https://example.test/faq" for row in result.evidence["sources"]))
 
     def test_claim_does_not_spread_to_another_product_of_same_brand(self) -> None:
         self.add_claim()
@@ -147,14 +82,6 @@ class ManufacturerEvidenceTests(unittest.TestCase):
         self.conn.execute("UPDATE products SET price_gbp = 2.50 WHERE id = '1'")
         self.assertTrue(classifier.load_product_context(self.conn, "1")["manufacturer_vegan_evidence"])
 
-    def test_captures_do_not_change_catalogue_identity_but_vintage_does(self):
-        context=classifier.product_context_for_llm(classifier.load_product_context(self.conn,'1'))
-        baseline=evidence.binding_hash(context,'330ml')
-        context['manufacturer_source_candidates']=[{'source_text':'A newly retained publication'}]
-        self.assertEqual(baseline,evidence.binding_hash(context,'330ml'))
-        context['product']['current_vintage']='2024'
-        self.assertNotEqual(baseline,evidence.binding_hash(context,'330ml'))
-
     def test_verified_claim_does_not_override_explicit_animal_ingredients(self) -> None:
         self.conn.execute("UPDATE products SET ingredients = 'Water, honey' WHERE id = '1'")
         self.add_claim()
@@ -165,21 +92,13 @@ class ManufacturerEvidenceTests(unittest.TestCase):
         self.conn.execute("UPDATE products SET official_vegan = 1 WHERE id = '1'")
         self.add_claim()
         result = classifier.classify_by_rules(classifier.load_product_context(self.conn, "1"))
-        self.assertIsNone(result)
-        context=classifier.load_product_context(self.conn,'1')
-        result=policy.evaluate(classifier.product_context_for_llm(context),**classifier.policy_facts(context),
-            assessment=source_assessment(context,'/manufacturer_vegan_evidence/0'),requested_status='vegan',requested_reason='manufacturer')
-        self.assertEqual((result['vegan_status'],result['vegan_reason']),('vegan','tagged'))
+        self.assertEqual((result.vegan_status, result.vegan_reason), ("vegan", "tagged"))
 
     def test_catalogue_manufacturer_statement_conflict_stays_unknown(self) -> None:
         self.conn.execute("UPDATE products SET dietary_information = 'Not suitable for vegans' WHERE id = '1'")
         self.add_claim()
         result = classifier.classify_by_rules(classifier.load_product_context(self.conn, "1"))
-        self.assertIsNone(result)
-        context=classifier.load_product_context(self.conn,'1')
-        result=policy.evaluate(classifier.product_context_for_llm(context),**classifier.policy_facts(context),
-            assessment=source_assessment(context,'/manufacturer_vegan_evidence/0'),requested_status='vegan',requested_reason='manufacturer')
-        self.assertEqual(result['vegan_status'],'unknown')
+        self.assertEqual(result.vegan_status, "unknown")
 
     def test_detail_refresh_does_not_delete_external_sources(self) -> None:
         self.add_claim()
@@ -196,14 +115,11 @@ class ManufacturerEvidenceTests(unittest.TestCase):
 
 class ManufacturerReviewTests(unittest.TestCase):
     def inputs(self) -> list[dict]:
-        return [{"product_id": "1",'catalogue_context':{'product':{'id':'1','name':'Original'},'flags':[],
-                 'categories':[],'manufacturer_vegan_evidence':[]},
-                 "sources": [{"url": "https://example.test/faq", "source_text": "Original is vegan. Diet is not suitable for vegans."}]}]
+        return [{"product_id": "1", "sources": [{"url": "https://example.test/faq", "source_text": "Original is vegan. Diet is not suitable for vegans."}]}]
 
     def decision(self, **overrides: object) -> dict:
         return {"product_id": "1", "vegan_status": "vegan", "vegan_reason": "manufacturer", "source_url": "https://example.test/faq",
-                "quote": "Original is vegan.", "scope_match": "Exact Original product", "notes": "",
-                'assessment':source_assessment(research.review_context(self.inputs()[0]),quote='Original is vegan.'), **overrides}
+                "quote": "Original is vegan.", "scope_match": "Exact Original product", "notes": "", **overrides}
 
     def test_review_rejects_fabricated_quote_or_unprovided_url(self) -> None:
         for overrides in ({"quote": "All drinks are vegan."}, {"source_url": "https://unrelated.test/"}):
@@ -212,9 +128,8 @@ class ManufacturerReviewTests(unittest.TestCase):
 
     def test_quote_validation_removes_link_markers_but_keeps_qualifications(self) -> None:
         source = "L202: Our \ue200cite\ue20275†Original\ue201 cola is vegan.\nL203: Our Diet cola is not vegan."
-        inputs = [{**self.inputs()[0], "sources": [{"url": "https://example.test/faq", "source_text": source}]}]
-        assessment=source_assessment(research.review_context(inputs[0]),quote='Our Original cola is vegan.')
-        research.validate_review({"products": [self.decision(quote="Our Original cola is vegan.",assessment=assessment)]}, inputs)
+        inputs = [{"product_id": "1", "sources": [{"url": "https://example.test/faq", "source_text": source}]}]
+        research.validate_review({"products": [self.decision(quote="Our Original cola is vegan.")]}, inputs)
         with self.assertRaisesRegex(ValueError, "absent from the cited source"):
             research.validate_review({"products": [self.decision(quote="Our Diet cola is vegan.")]}, inputs)
 
@@ -252,13 +167,20 @@ class ManufacturerReviewTests(unittest.TestCase):
         self.assertEqual(research.bundle_status(bundle)["complete_products"], 1)
 
     def test_retained_source_benchmark_inputs_keep_their_hashes(self) -> None:
-        fixture = json.loads((TOOLS.parent / "benchmarks/manufacturer-source-scope-v2.json").read_text())
-        self.assertEqual(len(fixture["cases"]), 19)
-        self.assertEqual(len({case["input"]["product_id"] for case in fixture["cases"]}), 19)
+        fixture = json.loads((TOOLS.parent / "benchmarks/manufacturer-source-scope-v1.json").read_text())
+        self.assertEqual(len(fixture["cases"]), 16)
+        self.assertEqual(len({case["input"]["product_id"] for case in fixture["cases"]}), 16)
         for case in fixture["cases"]:
             with self.subTest(label=case["label"]):
                 self.assertEqual(research.digest(case["input"]), case["input_sha256"])
 
+    def test_brand_identity_benchmark_adds_cases_without_changing_frozen_cases(self) -> None:
+        original = json.loads((TOOLS.parent / "benchmarks/manufacturer-source-scope-v1.json").read_text())
+        expanded = json.loads((TOOLS.parent / "benchmarks/manufacturer-source-scope-v2.json").read_text())
+        self.assertEqual(expanded["cases"][:16], original["cases"])
+        self.assertEqual(len(expanded["cases"]), 19)
+        for case in expanded["cases"]:
+            self.assertEqual(research.digest(case["input"]), case["input_sha256"])
 
 
 class ManufacturerImportTests(unittest.TestCase):
@@ -297,8 +219,7 @@ class ManufacturerImportTests(unittest.TestCase):
         bundle = research.read_bundle(root)
         value = research.review_input(bundle, "1")
         decision = {"product_id": "1", "vegan_status": "vegan", "vegan_reason": "manufacturer", "source_url": url,
-                    "quote": "Our Original Cola is vegan.", "scope_match": "Exact named UK Original Cola", "notes": "",
-                    'assessment':source_assessment(research.review_context(value),quote='Our Original Cola is vegan.')}
+                    "quote": "Our Original Cola is vegan.", "scope_match": "Exact named UK Original Cola", "notes": ""}
         research.write_json(root / "reviews/1.json", {
             "product_id": "1", "input_hash": research.digest({"prompt_version": research.PROMPT_VERSION, "input": value}),
             "prompt_version": research.PROMPT_VERSION, "model": classifier.DEFAULT_CODEX_MODEL,
@@ -324,8 +245,7 @@ class ManufacturerImportTests(unittest.TestCase):
             self.assertEqual(conn.execute("SELECT COUNT(*) FROM manufacturer_research_products").fetchone()[0], 2)
             self.assertEqual(conn.execute("SELECT COUNT(*) FROM manufacturer_website_sources").fetchone()[0], 1)
             self.assertEqual(conn.execute("SELECT source FROM product_vegan_classification_audit").fetchone()[0], "manufacturer-website-review")
-            self.assertEqual(conn.execute("SELECT vegan_reason FROM products WHERE id='1'").fetchone()[0], 'manufacturer')
-            self.assertIsNone(classifier.classify_by_rules(classifier.load_product_context(conn, '1')))
+            self.assertEqual(classifier.classify_by_rules(classifier.load_product_context(conn, "1")).vegan_reason, "manufacturer")
 
     def test_concurrent_recipe_or_classification_change_blocks_import(self) -> None:
         for column, value in (("ingredients", "Water, honey"), ("vegan_status", "nonvegan"),

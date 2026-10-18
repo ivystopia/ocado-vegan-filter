@@ -28,13 +28,10 @@ from urllib.parse import urlparse
 import classify_ocado_vegan as classifier
 import manufacturer_evidence
 import update_userscript_allowlists as exporter
-import codex_evidence
-import vegan_policy as policy
-import cursory_research_accounting as cursory
 
 
-PROMPT_VERSION = "manufacturer-source-scope-v4"
-OUTCOMES = {"confirmed_vegan", "no_confirmation", "blocked", "pending", "source_collected"}
+PROMPT_VERSION = "manufacturer-source-scope-v2"
+OUTCOMES = {"confirmed_vegan", "no_confirmation", "blocked", "pending"}
 
 
 class ReviewValidationError(ValueError):
@@ -53,7 +50,7 @@ REVIEW_SCHEMA = {
             "items": {
                 "type": "object",
                 "additionalProperties": False,
-                "required": ["product_id", "vegan_status", "vegan_reason", "source_url", "quote", "scope_match", "notes", "assessment"],
+                "required": ["product_id", "vegan_status", "vegan_reason", "source_url", "quote", "scope_match", "notes"],
                 "properties": {
                     "product_id": {"type": "string"},
                     "vegan_status": {"type": "string", "enum": ["vegan", "unknown"]},
@@ -62,7 +59,6 @@ REVIEW_SCHEMA = {
                     "quote": {"type": "string"},
                     "scope_match": {"type": "string"},
                     "notes": {"type": "string"},
-                    "assessment": policy.ASSESSMENT_SCHEMA,
                 },
             },
         },
@@ -105,7 +101,7 @@ def create_snapshot(root: Path, db: Path, partitions: int) -> dict[str, Any]:
             product_id = product["id"]
             context = classifier.load_product_context(conn, product_id)
             payload = catalogue_payload(context)
-            hash_value = digest(manufacturer_evidence.catalogue_identity_payload(payload))
+            hash_value = digest(payload)
             for key in ("pack_size", "manufacturer", "producer", "return_to_address"):
                 if product[key]:
                     payload["product"][key] = product[key]
@@ -160,7 +156,6 @@ def read_bundle(root: Path) -> dict[str, Any]:
                 if record["brand"] not in catalogue:
                     raise ValueError("brand is outside this partition")
                 record_sources = {}
-                record_source_ids = set()
                 for source in record.get("sources", []):
                     url = source["url"]
                     if urlparse(url).scheme not in {"http", "https"} or not urlparse(url).hostname:
@@ -168,22 +163,12 @@ def read_bundle(root: Path) -> dict[str, Any]:
                     text_path = Path(source.get("source_text_path") or "")
                     if text_path.is_file() and not text_path.resolve().is_relative_to(part.resolve()):
                         raise ValueError("Source capture must be inside its assigned research partition")
-                    source_raw = text_path.read_bytes() if text_path.is_file() else b""
-                    source_text = source_raw.decode("utf-8")
-                    source_hash = hashlib.sha256(source_raw).hexdigest()
-                    if source.get("content_sha256") and source["content_sha256"] != source_hash:
-                        raise ValueError("Retained source capture hash changed")
+                    source_text = text_path.read_text(encoding="utf-8") if text_path.is_file() else ""
                     source = {**source, "source_text": source_text}
-                    source["content_sha256"] = source_hash
-                    source["id"] = digest({"url": url, "sha256": source_hash, "retrieved_at": source.get("retrieved_at")})
-                    record_sources.setdefault(url, []).append(source["id"])
-                    record_source_ids.add(source["id"])
-                    if source["id"] in sources:
-                        comparable = lambda value: {key: item for key, item in value.items() if key != "source_text_path"}
-                        if comparable(sources[source["id"]]) != comparable(source):
-                            raise ValueError("Conflicting metadata for one retained capture")
-                    else:
-                        sources[source["id"]] = source
+                    source["content_sha256"] = hashlib.sha256(source_text.encode()).hexdigest()
+                    source["id"] = digest({"url": url, "sha256": source["content_sha256"]})
+                    record_sources[url] = source
+                    sources[source["id"]] = source
                 for outcome in record.get("products", []):
                     product_id = outcome["product_id"]
                     if product_id not in products or products[product_id]["brand"] != record["brand"]:
@@ -195,34 +180,18 @@ def read_bundle(root: Path) -> dict[str, Any]:
                     if record.get("research_complete") is True and outcome["outcome"] in {"confirmed_vegan", "no_confirmation"}:
                         if not (outcome.get("scope_match", "").strip() or outcome.get("notes", "").strip()):
                             raise ValueError(f"Completed research needs a product-level explanation: {product_id}")
-                        if not any(outcome.get(key) for key in ("source_urls", "source_ids", "checked_source_urls", "checked_source_ids", "queries")) and not record.get("queries"):
+                        if not outcome.get("source_urls") and not record.get("queries"):
                             raise ValueError(f"Completed research needs sources or retained search attempts: {product_id}")
-                    def select_sources(field, id_field):
-                        selected = []
-                        for url in outcome.get(field, []):
-                            if url not in record_sources:
-                                raise ValueError(f"Unretained source for {product_id}: {url}")
-                            selected.extend(record_sources[url])
-                        if id_field in outcome:
-                            explicit = outcome[id_field]
-                            if not isinstance(explicit, list) or any(not isinstance(value, str) for value in explicit):
-                                raise ValueError("Invalid retained source identifiers")
-                            if len(explicit) != len(set(explicit)) or not set(explicit) <= record_source_ids:
-                                raise ValueError("Duplicate or unretained source identifiers")
-                            if selected and set(selected) != set(explicit):
-                                raise ValueError("Source URL and capture selections disagree")
-                            selected = explicit
-                        return sorted(set(selected))
-                    selected_sources = select_sources("source_urls", "source_ids")
-                    checked_sources = select_sources("checked_source_urls", "checked_source_ids")
-                    if set(selected_sources) & set(checked_sources):
-                        raise ValueError("Audit-only and applicable sources must remain distinct")
+                    selected_sources = []
+                    for url in outcome.get("source_urls", []):
+                        if url not in record_sources:
+                            raise ValueError(f"Unretained source for {product_id}: {url}")
+                        selected_sources.append(record_sources[url]["id"])
                     outcomes[product_id] = {
                         **outcome,
                         "source_ids": selected_sources,
-                        "checked_source_ids": checked_sources,
                         "research_complete": record.get("research_complete") is True,
-                        "queries": outcome.get("queries", record.get("queries", [])),
+                        "queries": record.get("queries", []),
                         "artifact": str(path.relative_to(root)),
                     }
             except (KeyError, ValueError, OSError, TypeError) as exc:
@@ -231,40 +200,12 @@ def read_bundle(root: Path) -> dict[str, Any]:
         raise ValueError("Snapshot product count does not match partition catalogues")
     for product_id in products:
         outcomes.setdefault(product_id, {"product_id": product_id, "outcome": "pending", "source_ids": [], "research_complete": False})
-    policy_path = root / "bounded-research-policy.json"
-    bounded_policy = json.loads(policy_path.read_text()) if policy_path.exists() else {}
-    acquisition_path = root / "bounded-acquisition-manifest.json"
-    if acquisition_path.exists():
-        acquisition = json.loads(acquisition_path.read_text())
-        if hashlib.sha256((root / "snapshot.json").read_bytes()).hexdigest() != acquisition.get("snapshot_sha256"):
-            errors.append("Frozen acquisition snapshot changed")
-        for relative, expected_hash in acquisition.get("diagnostic_hashes", {}).items():
-            path = (root / relative).resolve()
-            if not path.is_relative_to(root.resolve()) or not path.is_file() or hashlib.sha256(path.read_bytes()).hexdigest() != expected_hash:
-                errors.append("Retained acquisition provenance changed: " + relative)
-    shared_associations = {}
-    shared_path = root / "shared-source-associations.json"
-    if shared_path.exists():
-        for association in json.loads(shared_path.read_text()).get("products", []):
-            product_id = association.get("product_id")
-            refs = association.get("source_ids")
-            if (not isinstance(product_id, str) or not product_id or product_id in products or product_id in shared_associations
-                or not isinstance(refs, list) or not refs or len(refs) != len(set(refs)) or not set(refs) <= set(sources)
-                or association.get("positive_claim_approved") is not False
-                or not association.get("catalogue_context_hash") or not association.get("publisher_match_notes")
-                or not association.get("scope_match") or not association.get("notes")):
-                errors.append("Invalid exact shared-source association: " + str(product_id))
-            else:
-                shared_associations[product_id] = association
-    return {"snapshot": snapshot, "products": products, "outcomes": outcomes, "sources": sources, "errors": errors, "brands": len(brand_total),
-            "shared_associations": shared_associations,
-            "research_root": str(root.resolve()), "bounded_research_policy": bounded_policy,
-            "bounded_research_policy_sha256": hashlib.sha256(policy_path.read_bytes()).hexdigest() if policy_path.exists() else None}
+    return {"snapshot": snapshot, "products": products, "outcomes": outcomes, "sources": sources, "errors": errors, "brands": len(brand_total)}
 
 
 def bundle_status(bundle: dict[str, Any]) -> dict[str, Any]:
     counts = Counter(row["outcome"] for row in bundle["outcomes"].values())
-    result = {
+    return {
         "total_products": len(bundle["products"]),
         "current_products": sum(row["current_on_ocado"] == 1 for row in bundle["products"].values()),
         "brands": bundle["brands"],
@@ -276,18 +217,6 @@ def bundle_status(bundle: dict[str, Any]) -> dict[str, Any]:
         ),
         "errors": bundle["errors"],
     }
-    if bundle.get("bounded_research_policy_sha256"):
-        accounting = cursory.status(bundle, bundle["research_root"], bundle["bounded_research_policy"])
-        result.update(accounting)
-        result["bounded_research_policy_sha256"] = bundle["bounded_research_policy_sha256"]
-    return result
-
-
-def gathering_complete(status):
-    """Closed bounded checks may finish acquisition without inventing confirmation."""
-    if status.get("bounded_research_policy_sha256"):
-        return status.get("mode") == cursory.MODE and status.get("can_continue") is True and status["accounted_products"] == status["total_products"]
-    return not status["errors"] and status["complete_products"] == status["total_products"]
 
 
 def review_input(bundle: dict[str, Any], product_id: str) -> dict[str, Any]:
@@ -310,33 +239,16 @@ def review_input(bundle: dict[str, Any], product_id: str) -> dict[str, Any]:
     }
 
 
-def review_context(value):
-    context = json.loads(json.dumps(value['catalogue_context']))
-    candidates = context.setdefault('manufacturer_source_candidates', [])
-    for source in value['sources']:
-        source_hash = hashlib.sha256(source['source_text'].encode()).hexdigest()
-        if any(row['source_url'] == source['url'] and row['source_sha256'] == source_hash for row in candidates):
-            continue
-        candidates.append({'source_id':digest([source['url'],source_hash]), 'source_url':source['url'],
-            'source_text':source['source_text'], 'source_sha256':source_hash,
-            'retrieved_at':source.get('retrieved_at',''), 'official_identity':source.get('official_identity',''),
-            'market_scope':source.get('market_scope',''), 'association_status':'catalogue_match'})
-    return context
-
-
-def reviewed_policy_result(value, decisions):
-    context = review_context(value)
-    records = [{**row, 'confidence':'certain' if row['vegan_status']=='vegan' else 'uncertain',
-                'summary':row['notes'], 'evidence':[], 'ambiguity_notes':[]} for row in decisions]
-    merged = classifier.merge_pass_decisions([{row['product_id']:row} for row in records], value['product_id'])
-    result = classifier.decision_to_result(merged, source='manufacturer-source-review',
-        model=classifier.DEFAULT_CODEX_MODEL, reasoning_effort=classifier.DEFAULT_REASONING_EFFORT,
-        context_hash_value=digest(context), raw_response='', parsed_response_json=json.dumps(decisions), exit_status=0)
-    return classifier.apply_policy_gate(context, result)
-
-
 def build_review_prompt(inputs: list[dict[str, Any]]) -> str:
-    transport, shared = classifier.evidence_transport([review_context(value) for value in inputs])
+    sources = {}
+    products = []
+    for value in inputs:
+        source_keys = []
+        for source in value["sources"]:
+            key = digest(source)
+            sources[key] = {"source_key": key, **source}
+            source_keys.append(key)
+        products.append({**{key: item for key, item in value.items() if key != "sources"}, "source_keys": source_keys})
     return (
         "Review manufacturer website evidence for UK Ocado products. Return JSON matching the supplied schema.\n"
         "Use only the supplied catalogue snapshot and captured primary-source text. Do not use tools, browse, read files, or rely on remembered facts.\n"
@@ -349,20 +261,26 @@ def build_review_prompt(inputs: list[dict[str, Any]]) -> str:
         "Explicit animal ingredients or conflicting product identity prevent promotion. May-contain allergen warnings alone do not. Product-level conflicts and unresolved source or market ambiguity stay unknown.\n"
         "A vegan response must cite one supplied source_url, give a short verbatim quote found in that source_text, and explain the product-to-claim match. Retain qualifications and exceptions in scope_match/notes. The quote and its surrounding context must actually support the claim. Unknown responses use null source_url, empty quote, and explain missing evidence.\n"
         "Assess every supplied product exactly once.\n\n"
-        + policy.policy_prompt()
-        + "\nReturn a full assessment using paths within each classifier_context. For source_text transport objects read the complete shared_source_texts value; cite the individual source_text path with exact visible quotations. Do not treat the research candidate as evidence.\n"
-        + json.dumps({'shared_source_texts':shared,'products':[{'product_id':value['product_id'],
-            'classifier_context':context} for value,context in zip(inputs,transport)]}, ensure_ascii=False)
+        + json.dumps({"sources": list(sources.values()), "products": products}, ensure_ascii=False)
     )
 
 
 def visible_source_text(value: str) -> str:
     """Remove retrieval/markup decoration without changing the source's words."""
-    return policy.visible_source_text(value)
+    value = re.sub(r"(?m)^L\d+:\s?", "", value)
+
+    def citation_label(match: re.Match[str]) -> str:
+        parts = match.group(1).split("†")
+        return parts[1] if len(parts) > 1 else ""
+
+    value = re.sub("\ue200cite\ue202([^\ue201]*)\ue201", citation_label, value)
+    value = re.sub(r"\[([^\]\n]+)\]\(https?://[^\s)]+\)", r"\1", value)
+    value = value.replace("**", "").replace("__", "")
+    value = classifier.normalize_space(html.unescape(value))
+    return re.sub(r"\s+([,.;:!?])", r"\1", value)
 
 
 def validate_review(payload: dict[str, Any], inputs: list[dict[str, Any]]) -> dict[str, dict[str, Any]]:
-    policy.validate_schema(payload, REVIEW_SCHEMA)
     by_id = {row["product_id"]: row for row in inputs}
     result = {}
     for row in payload.get("products", []):
@@ -380,7 +298,6 @@ def validate_review(payload: dict[str, Any], inputs: list[dict[str, Any]]) -> di
                 raise ValueError(f"{product_id}: product scope match is missing")
         elif row.get("vegan_status") != "unknown" or row.get("vegan_reason") is not None:
             raise ValueError(f"{product_id}: review must be vegan/manufacturer or unknown/null")
-        policy.validate_assessment(row['assessment'], review_context(by_id[product_id]))
         result[product_id] = row
     if result.keys() != by_id.keys():
         raise ValueError("Review product IDs do not match the input batch")
@@ -388,20 +305,32 @@ def validate_review(payload: dict[str, Any], inputs: list[dict[str, Any]]) -> di
 
 
 def call_review(inputs: list[dict[str, Any]], codex_bin: str) -> dict[str, Any]:
-    def validate(payload):
+    with tempfile.TemporaryDirectory(prefix="ocado-manufacturer-review-") as tmp:
+        temporary = Path(tmp)
+        schema = temporary / "schema.json"
+        output = temporary / "output.json"
+        write_json(schema, REVIEW_SCHEMA)
+        command = [
+            codex_bin, "exec", "--ephemeral", "--output-schema", str(schema),
+            "--output-last-message", str(output), "-C", str(Path.cwd()), "-s", "read-only",
+            "-m", classifier.DEFAULT_CODEX_MODEL, "-c", f'model_reasoning_effort="{classifier.DEFAULT_REASONING_EFFORT}"',
+            "-c", 'web_search="disabled"', "-",
+        ]
+        process = subprocess.run(command, input=build_review_prompt(inputs), text=True, capture_output=True, check=False)
+        if process.returncode:
+            # Do not echo CLI stderr: it can contain local configuration details.
+            raise RuntimeError(f"Manufacturer review exited with status {process.returncode}")
+        if not output.is_file():
+            raise RuntimeError("Manufacturer review returned no output")
+        payload = json.loads(output.read_text(encoding="utf-8"))
         try:
-            validate_review(payload, inputs)
+            decisions = validate_review(payload, inputs)
         except ValueError as exc:
             raise ReviewValidationError(str(exc), payload) from exc
-    record = codex_evidence.run(build_review_prompt(inputs), REVIEW_SCHEMA,
-        model=classifier.DEFAULT_CODEX_MODEL, effort=classifier.DEFAULT_REASONING_EFFORT,
-        codex_bin=codex_bin, stage="manufacturer-review", product_ids=[item["product_id"] for item in inputs],
-        prompt_version=PROMPT_VERSION, context_hash=digest(inputs), validator=validate)
-    payload = record["parsed_response"]
-    return {"products": validate_review(payload, inputs), "raw_response": payload, "model_call": record}
+        return {"products": decisions, "raw_response": payload}
 
 
-def _review_batch(inputs: list[dict[str, Any]], codex_bin: str, *, failure_dir: Path | None = None) -> dict[str, Any]:
+def review_batch(inputs: list[dict[str, Any]], codex_bin: str, *, failure_dir: Path | None = None) -> dict[str, Any]:
     passes = []
     validation_retries = 0
     for pass_index in range(2):
@@ -437,8 +366,7 @@ def _review_batch(inputs: list[dict[str, Any]], codex_bin: str, *, failure_dir: 
     for item in inputs:
         product_id = item["product_id"]
         decisions = [value[product_id] for value in passes]
-        policy_result = reviewed_policy_result(item, decisions)
-        confirmed = policy_result.vegan_status == 'vegan' and policy_result.vegan_reason == 'manufacturer'
+        confirmed = all(value["vegan_status"] == "vegan" and value["vegan_reason"] == "manufacturer" for value in decisions)
         result[product_id] = {
             "product_id": product_id,
             "input_hash": digest({"prompt_version": PROMPT_VERSION, "input": item}),
@@ -451,22 +379,6 @@ def _review_batch(inputs: list[dict[str, Any]], codex_bin: str, *, failure_dir: 
             "validation_retries": validation_retries,
         }
     return result
-
-
-def review_batch(inputs, codex_bin, *, failure_dir=None):
-    own = codex_evidence.CALL_RECORDS.get() is None
-    token = codex_evidence.CALL_RECORDS.set([]) if own else None
-    start = len(codex_evidence.CALL_RECORDS.get() or [])
-    journal = codex_evidence.USAGE_JOURNAL.set(failure_dir.parent / "calls.jsonl") if failure_dir is not None else None
-    try:
-        result = _review_batch(inputs, codex_bin, failure_dir=failure_dir)
-        records = (codex_evidence.CALL_RECORDS.get() or [])[start:]
-        for product_id, row in result.items():
-            row["model_calls"] = [call for call in records if product_id in call["product_ids"]]
-        return result
-    finally:
-        if token is not None: codex_evidence.CALL_RECORDS.reset(token)
-        if journal is not None: codex_evidence.USAGE_JOURNAL.reset(journal)
 
 
 def benchmark_sources(fixture_path: Path, output_path: Path, codex_bin: str) -> dict[str, Any]:
@@ -580,8 +492,7 @@ def read_reviews(root: Path, bundle: dict[str, Any]) -> dict[str, Any]:
             raise ValueError(f"{product_id}: two independent reviews are required")
         for decision in record["passes"]:
             validate_review({"products": [decision]}, [value])
-        policy_result = reviewed_policy_result(value, record['passes'])
-        expected_outcome = 'confirmed_vegan' if policy_result.vegan_status == 'vegan' and policy_result.vegan_reason == 'manufacturer' else 'unknown'
+        expected_outcome = "confirmed_vegan" if all(row["vegan_status"] == "vegan" for row in record["passes"]) else "unknown"
         if record.get("outcome") != expected_outcome:
             raise ValueError(f"{product_id}: review merge does not match the independent passes")
         reviews[product_id] = record
@@ -604,19 +515,25 @@ def application_plan(conn: sqlite3.Connection, bundle: dict[str, Any], reviews: 
             (product.get(key) or None) != (snapshot["context"]["product"].get(key) or None)
             for key in ("pack_size", *manufacturer_evidence.PUBLISHER_FIELDS)
         )
-        if digest(manufacturer_evidence.catalogue_identity_payload(catalogue_payload(context))) != snapshot["context_hash"] or identity_changed:
+        if digest(catalogue_payload(context)) != snapshot["context_hash"] or identity_changed:
             raise ValueError(f"{product_id}: catalogue evidence changed during research; reassess before applying")
         if product["vegan_status"] != "unknown":
             raise ValueError(f"{product_id}: classification changed during research; preserve the concurrent decision")
         decision = review["passes"][0]
         source = next(bundle["sources"][key] for key in bundle["outcomes"][product_id]["source_ids"] if bundle["sources"][key]["url"] == decision["source_url"])
-        policy_context = review_context(review_input(bundle, product_id))
-        result = reviewed_policy_result(review_input(bundle, product_id), review['passes'])
+        evidence = {
+            "field_title": "Verified manufacturer website", "content": decision["quote"],
+            "source_kind": "manufacturer_website", "verified_status": "vegan",
+            "source_url": source["url"], "source_sha256": source["content_sha256"],
+            "retrieved_at": source["retrieved_at"], "scope_match": decision["scope_match"],
+        }
+        context["manufacturer_vegan_evidence"].append(evidence)
+        result = classifier.classify_by_rules(context)
         if not result or result.vegan_status != "vegan" or result.vegan_reason != "manufacturer":
             rejected[product_id] = result.summary if result else "Canonical rules did not confirm this manufacturer claim"
             continue
         accepted[product_id] = {
-            "decision": decision, "source": source, "policy_result": result, "policy_context":policy_context,
+            "decision": decision, "source": source,
             "binding_hash": manufacturer_evidence.binding_hash(
                 catalogue_payload(context), product.get("pack_size"),
                 **{key: product.get(key) for key in manufacturer_evidence.PUBLISHER_FIELDS}),
@@ -694,19 +611,11 @@ def apply_bundle(root: Path, db: Path, bundle: dict[str, Any], *, dry_run: bool,
             for product_id, accepted in plan["accepted"].items():
                 decision = accepted["decision"]
                 conn.execute(
-                    "INSERT INTO manufacturer_website_evidence (run_id, product_id, source_id, catalogue_binding_hash, statement, scope_match, accepted_at, review_policy_version) VALUES (?, ?, ?, ?, ?, ?, ?, ?)",
-                    (research_run_id, product_id, accepted["source"]["id"], accepted["binding_hash"], decision["quote"], decision["scope_match"], utc_now(), policy.POLICY_VERSION),
+                    "INSERT INTO manufacturer_website_evidence VALUES (?, ?, ?, ?, ?, ?, ?)",
+                    (research_run_id, product_id, accepted["source"]["id"], accepted["binding_hash"], decision["quote"], decision["scope_match"], utc_now()),
                 )
-                manufacturer_evidence.assertion_event(conn,run_id=research_run_id,product_id=product_id,source_id=accepted['source']['id'],
-                    from_state=None,to_state='active',reason='Two fresh complete-source/scope reviews: '+PROMPT_VERSION)
                 context = classifier.load_product_context(conn, product_id)
-                # These exact complete sources have just received two fresh
-                # scope reviews. Revalidate that reviewed decision against the
-                # retained evidence rather than re-entering the semantic queue.
-                previous = accepted['policy_result']
-                assessment = policy.rebind_source_assessment(accepted['policy_context'], classifier.product_context_for_llm(context), previous.evidence['assessment'])
-                result = classifier.apply_policy_gate(context, classifier.replace(previous,
-                    evidence={**previous.evidence,'assessment':assessment}))
+                result = classifier.classify_by_rules(context)
                 if not result or result.vegan_status != "vegan" or result.vegan_reason != "manufacturer":
                     raise ValueError(f"{product_id}: retained evidence did not reproduce the reviewed decision")
                 result = classifier.ClassificationResult(
@@ -714,7 +623,6 @@ def apply_bundle(root: Path, db: Path, bundle: dict[str, Any], *, dry_run: bool,
                        "reasoning_effort": classifier.DEFAULT_REASONING_EFFORT, "prompt_version": PROMPT_VERSION,
                        "context_hash": digest(classifier.product_context_for_llm(context)),
                        "parsed_response_json": json.dumps(reviews[product_id]),
-                       "model_calls": tuple(reviews[product_id].get("model_calls", [])),
                        "evidence": {**result.evidence, "research_run_id": research_run_id,
                                     "previous_status": "unknown", "independent_passes": reviews[product_id]["passes"]}},
                 )

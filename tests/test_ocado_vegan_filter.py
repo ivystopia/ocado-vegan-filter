@@ -59,26 +59,12 @@ def userscript() -> str:
     return USERSCRIPT.read_text()
 
 
-def fixture_userscript(source: str | None = None) -> str:
-    """Isolate DOM contracts from catalogue decisions; IDs here are test data."""
-    source = userscript() if source is None else source
-    ids = {
-        "OFFICIAL_VEGAN_PRODUCT_IDS": OFFICIAL_VEGAN_IDS,
-        "MANUFACTURER_OR_NAME_VEGAN_PRODUCT_IDS": MANUFACTURER_OR_NAME_VEGAN_IDS | {"634291011", "315701011"},
-        "INGREDIENTS_VEGAN_PRODUCT_IDS": INGREDIENTS_VEGAN_IDS,
-        "KNOWN_NON_VEGAN_PRODUCT_IDS": KNOWN_NON_VEGAN_IDS,
-        "BLOCKED_VEGAN_PROMOTION_PRODUCT_IDS": {"999999001"},
-    }
-    for name, values in ids.items():
-        source, count = re.subn(r"(const " + name + r" = new Set\(\s*`)[^`]*", lambda m: m.group(1) + " ".join(sorted(values)), source, count=1)
-        assert count == 1, name
-    return source
-
-
 def extract_userscript_id_set(constant_name: str) -> set[str]:
     match = re.search(
-        rf"const\s+{re.escape(constant_name)}\s*=\s*new\s+Set\(\s*`(?P<body>[^`]*)`",
-        userscript(), flags=re.S,
+        rf"const\s+{re.escape(constant_name)}\s*=\s*new\s+Set\(\s*`(?P<body>.*?)`\s*"
+        r"\.trim\(\)\s*\.split\(\s*/\\s\+/\s*\)\s*,?\s*\)",
+        userscript(),
+        flags=re.S,
     )
     assert match, f"{constant_name} was not found in userscript"
     return set(re.findall(r"\b\d+\b", match.group("body")))
@@ -94,23 +80,10 @@ def userscript_source_test() -> None:
     ingredients_ids = extract_userscript_id_set("INGREDIENTS_VEGAN_PRODUCT_IDS")
     known_non_vegan_ids = extract_userscript_id_set("KNOWN_NON_VEGAN_PRODUCT_IDS")
 
-    # Catalogue evidence is validated by the exporter, not historical sample IDs.
-    assert all((official_ids, manufacturer_or_name_ids, ingredients_ids, known_non_vegan_ids))
-    blocked_ids = extract_userscript_id_set("BLOCKED_VEGAN_PROMOTION_PRODUCT_IDS")
-    positives = official_ids | manufacturer_or_name_ids | ingredients_ids
-    assert not positives & blocked_ids
-    counts = {
-        "Recognised vegan product IDs": len(positives),
-        "Official Ocado vegan product IDs": len(official_ids),
-        "Additional vegan product IDs recognised by this script": len(manufacturer_or_name_ids | ingredients_ids),
-        "Manufacturer/name evidence product IDs": len(manufacturer_or_name_ids),
-        "Ingredients evidence product IDs": len(ingredients_ids),
-        "Known non-vegan product IDs": len(known_non_vegan_ids),
-        "Blocked vegan promotion product IDs": len(blocked_ids),
-    }
-    for label, count in counts.items():
-        match = re.search(re.escape(label) + r": ([\d,]+)", userscript())
-        assert match and int(match.group(1).replace(",", "")) == count, label
+    assert OFFICIAL_VEGAN_IDS <= official_ids
+    assert MANUFACTURER_OR_NAME_VEGAN_IDS <= manufacturer_or_name_ids
+    assert INGREDIENTS_VEGAN_IDS <= ingredients_ids
+    assert KNOWN_NON_VEGAN_IDS <= known_non_vegan_ids
     assert not (official_ids | manufacturer_or_name_ids | ingredients_ids) & known_non_vegan_ids
     assert "const MANUFACTURER_VEGAN_PRODUCT_IDS" not in userscript()
     print("userscript source test passed")
@@ -297,7 +270,7 @@ def fixture_smoke_test() -> None:
             }, { once: true });
             """
         )
-        driver.execute_script(fixture_userscript())
+        driver.execute_script(userscript())
         wait = WebDriverWait(driver, 5)
         wait.until(lambda d: d.execute_script("return getComputedStyle(document.querySelector('#unknown img')).opacity") == "0.42")
         driver.find_element(By.CSS_SELECTOR, "#unknown button").click()
@@ -428,6 +401,7 @@ def fixture_smoke_test() -> None:
         "cajun",
         "cajun-hyphen",
         "official",
+        "official-overrides-known-nonvegan",
         "official-hidden-icon",
         "name-vegan",
         "hydration-vegan",
@@ -446,7 +420,6 @@ def fixture_smoke_test() -> None:
     assert_card_state(rows, "unknown", muted=True, label="Unknown vegan")
     assert_card_state(rows, "late-hydration-vegan", muted=True, label="Unknown vegan", check_link_target=False)
     assert_card_state(rows, "known-nonvegan", muted=True, label="Not vegan", check_link_target=False)
-    assert_card_state(rows, "official-overrides-known-nonvegan", muted=True, label="Not vegan", check_link_target=False)
     assert click_counts == {"add": 1, "image": 1}, click_counts
     assert rows["unknown"]["unknownHoverText"] == "Add anyway", rows["unknown"]
     assert rows["unknown"]["unknownLeaveText"] == "Unknown vegan", rows["unknown"]
@@ -480,7 +453,7 @@ def malformed_hydration_smoke_test() -> None:
     driver = headless_firefox()
     try:
         driver.get("data:text/html;base64," + base64.b64encode(html.encode()).decode())
-        driver.execute_script(fixture_userscript())
+        driver.execute_script(userscript())
         wait = WebDriverWait(driver, 5)
         wait.until(lambda d: d.execute_script("return document.querySelector('#milk button').textContent") == "Not vegan")
         assert driver.execute_script("return document.querySelector('#bad button').textContent") == "Unknown vegan"
@@ -499,7 +472,7 @@ def reused_counter_smoke_test() -> None:
     try:
         driver.get("data:text/html;base64," + base64.b64encode(html.encode()).decode())
         driver.execute_script("window.originalButton=document.querySelector('button');window.clicks=0;originalButton.addEventListener('click',()=>window.clicks++);")
-        driver.execute_script(fixture_userscript())
+        driver.execute_script(userscript())
         wait = WebDriverWait(driver, 5)
         wait.until(lambda d: d.execute_script("return originalButton.textContent") == "Unknown vegan")
         driver.execute_script("""
@@ -528,7 +501,7 @@ def incremental_updates_smoke_test() -> None:
         <svg><use></use></svg><button data-test="counter-button" aria-label="Add another">Add</button>
       </article>
     </main>"""
-    source = fixture_userscript().replace("  let scheduled = false;", """
+    source = userscript().replace("  let scheduled = false;", """
       const originalProcessCard = processCard;
       window.auditProcessed = 0;
       processCard = card => { window.auditProcessed++; originalProcessCard(card); };
@@ -578,7 +551,7 @@ def image_ownership_smoke_test() -> None:
     driver = headless_firefox()
     try:
         driver.get("data:text/html;base64," + base64.b64encode(html.encode()).decode())
-        driver.execute_script(fixture_userscript())
+        driver.execute_script(userscript())
         wait = WebDriverWait(driver, 5)
         wait.until(lambda d: d.execute_script("return document.querySelector('article').classList.contains('ocado-vegan-filter-muted')"))
         driver.execute_script(
@@ -659,7 +632,7 @@ def image_rendering_smoke_test() -> None:
         )
         driver.execute_script(
             "const script = document.createElement('script'); script.textContent = arguments[0]; document.documentElement.append(script);",
-            fixture_userscript(),
+            userscript(),
         )
         WebDriverWait(driver, 20).until(
             lambda d: d.execute_script("return document.querySelectorAll('.ocado-vegan-filter-muted').length") == image_count
@@ -838,19 +811,11 @@ def additional_vegan_search_smoke_test() -> None:
     finally:
         driver.quit()
 
-    known = extract_userscript_id_set("KNOWN_NON_VEGAN_PRODUCT_IDS")
-    blocked = extract_userscript_id_set("BLOCKED_VEGAN_PROMOTION_PRODUCT_IDS")
-    positive = set().union(*(extract_userscript_id_set(name) for name in (
-        "OFFICIAL_VEGAN_PRODUCT_IDS", "MANUFACTURER_OR_NAME_VEGAN_PRODUCT_IDS", "INGREDIENTS_VEGAN_PRODUCT_IDS")))
-    eligible = target["id"] not in known | blocked and (target["id"] in positive or target["official"])
-    expected = "Add" if eligible else "Not vegan" if target["id"] in known else "Unknown vegan"
-    assert target["buttonText"] == expected, target
+    assert target["buttonText"] == "Add", target
     assert target["buttonDisabled"] is False, target
-    assert target["mutedClass"] is (not eligible), target
-    if eligible:
-        assert target["imageFilter"] == "none" and target["imageOpacity"] == "1", target
-    else:
-        assert_zero_saturation_filter(target["imageFilter"], target)
+    assert target["mutedClass"] is False, target
+    assert target["imageFilter"] == "none", target
+    assert target["imageOpacity"] == "1", target
     print(
         json.dumps(
             {
@@ -869,48 +834,6 @@ def additional_vegan_search_smoke_test() -> None:
 
 
 class UserscriptTests(unittest.TestCase):
-    def test_fixture_data_changes_only_the_embedded_sets(self) -> None:
-        source = userscript()
-        blank = re.sub(r"(const \w+_PRODUCT_IDS = new Set\(\s*`)[^`]*", r"\g<1>999000000", source)
-        self.assertEqual(fixture_userscript(source), fixture_userscript(blank))
-        strip = lambda text: re.sub(r"(const \w+_PRODUCT_IDS = new Set\(\s*`)[^`]*", r"\g<1>", text)
-        self.assertEqual(strip(source), strip(fixture_userscript(source)))
-
-    def test_unreviewed_name_and_slug_cannot_promote(self) -> None:
-        html = """<!doctype html><article class="product-card-container">
-          <a href="https://www.ocado.com/products/vegan-example-999880011">Vegan example</a>
-          <button data-test="counter-button" aria-label="Add vegan example">Add</button></article>"""
-        driver = headless_firefox()
-        self.addCleanup(driver.quit)
-        driver.get("data:text/html;base64," + base64.b64encode(html.encode()).decode())
-        driver.execute_script(fixture_userscript())
-        WebDriverWait(driver, 5).until(lambda d: d.find_element(By.TAG_NAME, "button").text == "Unknown vegan")
-
-    def test_recorded_identity_block_overrides_live_tag(self) -> None:
-        html = """<!doctype html><article class="product-card-container">
-          <a href="https://www.ocado.com/products/999880011">Vegan example</a><svg id="vegan"></svg>
-          <button data-test="counter-button" aria-label="Add example">Add</button></article>"""
-        driver = headless_firefox()
-        self.addCleanup(driver.quit)
-        driver.get("data:text/html;base64," + base64.b64encode(html.encode()).decode())
-        source = fixture_userscript()
-        source = re.sub(r"(const BLOCKED_VEGAN_PROMOTION_PRODUCT_IDS = new Set\(\s*`)[^`]*", r"\g<1>999880011", source, count=1)
-        driver.execute_script(source)
-        WebDriverWait(driver, 5).until(lambda d: d.find_element(By.TAG_NAME, "button").text == "Unknown vegan")
-
-    def test_recorded_nonvegan_overrides_live_tag_and_name(self) -> None:
-        html = """<!doctype html><article class="product-card-container">
-          <a href="https://www.ocado.com/products/vegan-example-17959011">Vegan example</a>
-          <svg id="vegan"></svg>
-          <button data-test="counter-button" aria-label="Add vegan example">Add</button>
-        </article>"""
-        driver = headless_firefox()
-        self.addCleanup(driver.quit)
-        driver.get("data:text/html;base64," + base64.b64encode(html.encode()).decode())
-        driver.execute_script(fixture_userscript())
-        WebDriverWait(driver, 5).until(lambda d: d.find_element(By.TAG_NAME, "button").text == "Not vegan")
-        self.assertFalse(driver.find_element(By.TAG_NAME, "button").get_attribute("disabled"))
-
     def test_cloned_muted_buttons_can_be_reclassified(self) -> None:
         html = """<!doctype html><main><article class="product-card-container">
           <a href="https://www.ocado.com/products/999880011">Sample</a>
@@ -919,7 +842,7 @@ class UserscriptTests(unittest.TestCase):
         driver = headless_firefox()
         self.addCleanup(driver.quit)
         driver.get("data:text/html;base64," + base64.b64encode(html.encode()).decode())
-        driver.execute_script(fixture_userscript())
+        driver.execute_script(userscript())
         wait = WebDriverWait(driver, 5)
         wait.until(lambda d: d.execute_script("return document.querySelector('button').textContent") == "Unknown vegan")
         driver.execute_script("""
@@ -945,7 +868,7 @@ class UserscriptTests(unittest.TestCase):
         self.addCleanup(driver.quit)
         driver.get("data:text/html;base64," + base64.b64encode(html.encode()).decode())
         driver.execute_script("window.clicks=0;document.querySelector('button').addEventListener('click',()=>window.clicks++);")
-        driver.execute_script(fixture_userscript())
+        driver.execute_script(userscript())
         wait = WebDriverWait(driver, 5)
         button = driver.find_element(By.TAG_NAME, "button")
         wait.until(lambda d: button.text == "Unknown vegan")
@@ -980,7 +903,7 @@ class UserscriptTests(unittest.TestCase):
           new MutationObserver(records=>window.imageWrites.push(...records.map(r=>r.attributeName)))
             .observe(document.querySelector('img'),{attributes:true});
         """)
-        driver.execute_script(fixture_userscript())
+        driver.execute_script(userscript())
         wait = WebDriverWait(driver, 5)
         wait.until(lambda d: d.execute_script("return getComputedStyle(document.querySelector('img')).opacity") == "0.42")
         self.assertEqual(driver.execute_script("return window.imageWrites;"), [])
@@ -1002,7 +925,7 @@ class UserscriptTests(unittest.TestCase):
         driver = headless_firefox()
         self.addCleanup(driver.quit)
         driver.get("data:text/html;base64," + base64.b64encode(html.encode()).decode())
-        driver.execute_script(fixture_userscript())
+        driver.execute_script(userscript())
         wait = WebDriverWait(driver, 5)
         wait.until(lambda d: d.execute_script("return document.querySelector('button').textContent") == "Unknown vegan")
         driver.execute_script("""
@@ -1029,7 +952,7 @@ class UserscriptTests(unittest.TestCase):
         driver = headless_firefox()
         self.addCleanup(driver.quit)
         driver.get("data:text/html;base64," + base64.b64encode(html.encode()).decode())
-        driver.execute_script(fixture_userscript())
+        driver.execute_script(userscript())
         wait = WebDriverWait(driver, 5)
         wait.until(lambda d: d.execute_script("return document.querySelector('article button').textContent") == "Unknown vegan")
         classes = driver.execute_script("return [...document.querySelector('article button').classList];")

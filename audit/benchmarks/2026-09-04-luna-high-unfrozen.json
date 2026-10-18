@@ -1,0 +1,311 @@
+{
+  "batch_size": 10,
+  "benchmark": "ocado-vegan-classifier-v1",
+  "decisions": {
+    "208237011": {
+      "actual_reason": null,
+      "actual_status": "unknown",
+      "expected_status": "unknown",
+      "source": "codex"
+    },
+    "290555011": {
+      "actual_reason": "ingredients",
+      "actual_status": "vegan",
+      "expected_status": "vegan",
+      "source": "codex"
+    },
+    "366209011": {
+      "actual_reason": null,
+      "actual_status": "unknown",
+      "expected_status": "unknown",
+      "source": "codex"
+    },
+    "374339011": {
+      "actual_reason": "ingredients",
+      "actual_status": "vegan",
+      "expected_status": "vegan",
+      "source": "codex"
+    },
+    "468140011": {
+      "actual_reason": null,
+      "actual_status": "unknown",
+      "expected_status": "unknown",
+      "source": "codex"
+    },
+    "482049011": {
+      "actual_reason": null,
+      "actual_status": "nonvegan",
+      "expected_status": "nonvegan",
+      "source": "codex"
+    },
+    "522485011": {
+      "actual_reason": null,
+      "actual_status": "unknown",
+      "expected_status": "unknown",
+      "source": "codex"
+    },
+    "558578011": {
+      "actual_reason": null,
+      "actual_status": "nonvegan",
+      "expected_status": "nonvegan",
+      "source": "codex"
+    },
+    "587053011": {
+      "actual_reason": null,
+      "actual_status": "unknown",
+      "expected_status": "unknown",
+      "source": "codex"
+    },
+    "587564011": {
+      "actual_reason": "ingredients",
+      "actual_status": "vegan",
+      "expected_status": "vegan",
+      "source": "codex"
+    },
+    "592773011": {
+      "actual_reason": null,
+      "actual_status": "nonvegan",
+      "expected_status": "nonvegan",
+      "source": "codex"
+    },
+    "596529011": {
+      "actual_reason": "ingredients",
+      "actual_status": "vegan",
+      "expected_status": "vegan",
+      "source": "codex"
+    },
+    "596537011": {
+      "actual_reason": "ingredients",
+      "actual_status": "vegan",
+      "expected_status": "vegan",
+      "source": "codex"
+    },
+    "59959011": {
+      "actual_reason": "manufacturer",
+      "actual_status": "vegan",
+      "expected_status": "vegan",
+      "source": "codex"
+    },
+    "602030011": {
+      "actual_reason": null,
+      "actual_status": "unknown",
+      "expected_status": "unknown",
+      "source": "codex"
+    },
+    "611536011": {
+      "actual_reason": null,
+      "actual_status": "nonvegan",
+      "expected_status": "nonvegan",
+      "source": "codex"
+    },
+    "614318011": {
+      "actual_reason": "manufacturer",
+      "actual_status": "vegan",
+      "expected_status": "vegan",
+      "source": "codex"
+    },
+    "615851011": {
+      "actual_reason": null,
+      "actual_status": "nonvegan",
+      "expected_status": "nonvegan",
+      "source": "codex"
+    },
+    "632148011": {
+      "actual_reason": null,
+      "actual_status": "unknown",
+      "expected_status": "unknown",
+      "source": "codex"
+    },
+    "632229011": {
+      "actual_reason": null,
+      "actual_status": "nonvegan",
+      "expected_status": "nonvegan",
+      "source": "codex"
+    },
+    "632347011": {
+      "actual_reason": "ingredients",
+      "actual_status": "vegan",
+      "expected_status": "vegan",
+      "source": "codex"
+    },
+    "638884011": {
+      "actual_reason": null,
+      "actual_status": "unknown",
+      "expected_status": "unknown",
+      "source": "codex"
+    },
+    "645374011": {
+      "actual_reason": null,
+      "actual_status": "nonvegan",
+      "expected_status": "nonvegan",
+      "source": "codex"
+    },
+    "646897011": {
+      "actual_reason": null,
+      "actual_status": "unknown",
+      "expected_status": "unknown",
+      "source": "codex"
+    },
+    "650833011": {
+      "actual_reason": null,
+      "actual_status": "nonvegan",
+      "expected_status": "nonvegan",
+      "source": "codex"
+    },
+    "652728011": {
+      "actual_reason": null,
+      "actual_status": "unknown",
+      "expected_status": "unknown",
+      "source": "codex"
+    },
+    "653480011": {
+      "actual_reason": null,
+      "actual_status": "nonvegan",
+      "expected_status": "nonvegan",
+      "source": "codex"
+    },
+    "656339011": {
+      "actual_reason": null,
+      "actual_status": "unknown",
+      "expected_status": "unknown",
+      "source": "codex"
+    },
+    "664071011": {
+      "actual_reason": null,
+      "actual_status": "unknown",
+      "expected_status": "unknown",
+      "source": "codex"
+    },
+    "677449011": {
+      "actual_reason": null,
+      "actual_status": "unknown",
+      "expected_status": "unknown",
+      "source": "codex"
+    },
+    "677770011": {
+      "actual_reason": "manufacturer",
+      "actual_status": "vegan",
+      "expected_status": "unknown",
+      "source": "codex"
+    },
+    "678164011": {
+      "actual_reason": "manufacturer",
+      "actual_status": "vegan",
+      "expected_status": "vegan",
+      "source": "codex"
+    },
+    "683213011": {
+      "actual_reason": null,
+      "actual_status": "unknown",
+      "expected_status": "unknown",
+      "source": "codex"
+    },
+    "683869011": {
+      "actual_reason": "manufacturer",
+      "actual_status": "vegan",
+      "expected_status": "vegan",
+      "source": "codex"
+    },
+    "686950011": {
+      "actual_reason": null,
+      "actual_status": "unknown",
+      "expected_status": "unknown",
+      "source": "codex"
+    },
+    "687407011": {
+      "actual_reason": null,
+      "actual_status": "unknown",
+      "expected_status": "unknown",
+      "source": "codex"
+    },
+    "687631011": {
+      "actual_reason": null,
+      "actual_status": "unknown",
+      "expected_status": "unknown",
+      "source": "codex"
+    },
+    "687816011": {
+      "actual_reason": null,
+      "actual_status": "nonvegan",
+      "expected_status": "nonvegan",
+      "source": "codex"
+    },
+    "688461011": {
+      "actual_reason": null,
+      "actual_status": "unknown",
+      "expected_status": "unknown",
+      "source": "codex"
+    },
+    "690031011": {
+      "actual_reason": null,
+      "actual_status": "unknown",
+      "expected_status": "unknown",
+      "source": "codex"
+    },
+    "692655011": {
+      "actual_reason": null,
+      "actual_status": "unknown",
+      "expected_status": "unknown",
+      "source": "codex"
+    },
+    "694881011": {
+      "actual_reason": "ingredients",
+      "actual_status": "vegan",
+      "expected_status": "vegan",
+      "source": "codex"
+    },
+    "697048011": {
+      "actual_reason": null,
+      "actual_status": "unknown",
+      "expected_status": "unknown",
+      "source": "codex"
+    },
+    "697553011": {
+      "actual_reason": null,
+      "actual_status": "unknown",
+      "expected_status": "unknown",
+      "source": "codex"
+    },
+    "70079011": {
+      "actual_reason": null,
+      "actual_status": "nonvegan",
+      "expected_status": "nonvegan",
+      "source": "codex"
+    },
+    "76359011": {
+      "actual_reason": null,
+      "actual_status": "nonvegan",
+      "expected_status": "nonvegan",
+      "source": "codex"
+    },
+    "80782011": {
+      "actual_reason": null,
+      "actual_status": "nonvegan",
+      "expected_status": "nonvegan",
+      "source": "codex"
+    },
+    "86518011": {
+      "actual_reason": null,
+      "actual_status": "nonvegan",
+      "expected_status": "nonvegan",
+      "source": "codex"
+    }
+  },
+  "disagreement_ids": [],
+  "duration_seconds": 261.979,
+  "error_ids": [],
+  "exact_matches": 47,
+  "false_vegan_ids": [
+    "677770011"
+  ],
+  "fixture_date": "2026-08-21",
+  "mismatch_ids": [
+    "677770011"
+  ],
+  "missing_ids": [],
+  "model": "gpt-5.6-luna",
+  "passes": 2,
+  "product_count": 48,
+  "reasoning_effort": "high",
+  "run_at": "2026-09-04T19:43:45.547910+00:00"
+}

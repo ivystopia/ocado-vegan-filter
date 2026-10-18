@@ -1,0 +1,39 @@
+{
+  "verified_at": "2026-09-13T19:44:05.090564+00:00",
+  "version": "1.7.2",
+  "added_ids": 1398,
+  "existing_ids_removed": 0,
+  "only_ids_counts_version_changed": true,
+  "retained_id_line_placement_preserved": true,
+  "unrelated_product_fields_and_classifications_unchanged": true,
+  "all_unknown_cohort_outcomes_retained": true,
+  "supervisor_exclusions_remain_unknown": true,
+  "backup_path": "/home/ivy/repos/personal/ocado_report/ocado_products.sqlite.before-manufacturer-20260913T194132Z.bak",
+  "counts": {
+    "all_known": 54418,
+    "current": 49951,
+    "unknown_all_known": 19974,
+    "unknown_current": 18047
+  },
+  "source_sha256": "5276d765f27fc870df5ec319fdfc63bcaa5dc88dc6ea87970c42b55e9f47a039",
+  "repository_tests": {
+    "command": ".venv/bin/python -m unittest discover -s tests",
+    "run": 101,
+    "passed": 100,
+    "skipped": 1,
+    "skip_reason": "Live Ocado checks are opt-in (OCADO_LIVE_TESTS=1 was not enabled)",
+    "result": "OK",
+    "seconds": 30.413,
+    "headless_firefox_fixtures": "passed"
+  },
+  "syntax_check": {
+    "command": "node --check ocado-vegan-filter.user.js",
+    "result": "passed"
+  },
+  "frozen_benchmarks": {
+    "classifier": "audit/benchmarks/2026-09-13-manufacturer-identity-binding-luna-high.json",
+    "classifier_exact_matches": "48/48",
+    "source_scope": "audit/benchmarks/2026-09-13-manufacturer-source-scope-v2-luna-high.json",
+    "source_scope_exact_matches": "19/19"
+  }
+}

@@ -1,0 +1,17 @@
+{
+  "generatedAtEpoch": 1776863652,
+  "leafCategoryCount": 5176,
+  "categoryPageCount": 6568,
+  "uniqueProducts": 47835,
+  "failedCategoryCount": 0,
+  "failedCategories": [],
+  "candidateProductsWithoutVeganIcon": 43333,
+  "matchCount": 6320,
+  "bopErrorCount": 0,
+  "bopErrors": [],
+  "elapsedSeconds": 429.26,
+  "categoryBatchSize": 20,
+  "categoryBatchConcurrency": 10,
+  "bopBatchSize": 200,
+  "bopBatchConcurrency": 10
+}

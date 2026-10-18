@@ -1,6 +1,0 @@
-{
-  "change": "CSV record terminators CRLF to LF; all parsed field values unchanged",
-  "source_sha256": "488cd6e0283de08a166b42ea3a155a3be71ec2b23732785d4709b21c3a70705d",
-  "repository_sha256": "b6be39db3863e0fe3da3b45106b7e45cdc9d04a660293567c8ec15058857437e",
-  "records_including_header": 29
-}

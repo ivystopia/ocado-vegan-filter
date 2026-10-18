@@ -1,35 +1,37 @@
 # Monthly Ocado Catalogue And Userscript Maintenance
 
-This runbook refreshes the SQLite source of truth, validates classifications and prepares a userscript update. Routine refreshes classify new/changed products; fundamental policy migrations reassess every known product, including historical products and existing nonvegan/unknown decisions. Run it manually about once a month.
+This runbook refreshes the SQLite source of truth, reclassifies only new or changed products, validates the result, and prepares a userscript update. Run it manually about once a month.
 
-The live scrape itself does not use an LLM. The selected primary, GPT-6-Luna/high, is used only after the scrape, for products that remain unresolved after deterministic rules. Two fresh Sol 6.1/medium passes arbitrate only raw primary status/reason disagreements. GPT-5.6-Luna is excluded. Conservative unknowns count against the 98% positive-recall target; safety and evidence contracts remain strict. New classifier changes require appropriate validation; canonical activation retains its policy, research, audit and export gates.
+The live scrape itself does not use an LLM. Luna/high is used only after the scrape, for products that remain unresolved after deterministic rules.
 
-The whole-product catalogue migration is complete on `dev` for local testing; see [the completed report](../audit/catalogue-refresh-2026-10-16/README.md). Future activation remains gated by policy, research, audit and export checks. Reuse completed benchmarks for the unchanged classifier after catalogue refresh. Genuine model/policy/prompt/schema/rule changes require appropriate validation.
+## 1. Prepare And Benchmark
 
-## Full-policy migration on dev
+Start from the repository root with a clean tracked working tree and the [development environment](../README.md#development) active. The local SQLite database is intentionally untracked. If resuming an interrupted refresh, inspect the latest run and follow [the recovery guidance](working-guide.md#recovery-and-classifier-pitfalls) before starting another writer.
 
-Use `tools/refresh_whole_product.py --root .whole-product-work/refresh-YYYY-MM-DD run`. It preserves the canonical baseline, uses WAL-consistent working snapshots and reassesses every known product, including historical and existing nonvegan/unknown products. Conclusive rules precede models. Sync-run attribution is separate from all-known selection.
-
-Discovery includes every part advertised by `https://www.ocado.com/sitemaps/sitemap_index.xml`, complete category pagination and current-product details. Preserve historical last-known evidence. Investigate missing/failing captures or implausible changes before assessment. Use the working guide's guarded interrupted-sync and offline-finalization recovery; never rewrite failed statuses or discard the baseline.
-
-Evaluate each product on its own evidence, without category or positive-reason sample admission gates. For a completed scrape or drained assessment checkpoint, `continue-assessment --from-root <previous-root> --reuse-benchmark-reason <authorised-reuse-instruction>` on a fresh root preserves applicable benchmark evidence, completed candidate decisions, audit history and any frozen research cohort. It refuses active phases, changed canonical baselines or changed classifier implementation. Run fresh implementation checks, then resume only unclassified products; do not repeat successful model calls or scraping.
-
-Freeze every initially unknown product for a cursory manufacturer check, including historical products. Use readily available official product pages or directly applicable FAQ/range statements and a straightforward lookup when needed. Do not deep-crawl sites or prolong investigation to rescue a product: the user accepts additional unknowns. Keep the actual attempts, captures, scope restrictions, contrary findings and withdrawals. Account for every product; distinguish checked-without-confirmation, closed access-blocked checks and unattempted/pending work. An access-blocked check may finish the bounded research effort but must remain explicitly blocked, never represented as proof that no confirmation exists. Reassess products affected by changed shared evidence. Positive evidence and classifier operational gates remain unchanged.
-
-Complete both planned reference readings across the fixed positive-audit sample before reviewing findings together. A single provisional reading is not ground truth and must not cause repeated new samples or classifier reruns. Preserve every original reading and failed score; diagnose confirmed failures, repair only affected behaviour and evidence, then perform the required fresh validation. Included-plan limits and actual operational failures still stop admissions safely.
-
-Database activation and local userscript regeneration are authorised after complete assessment/research, the uniform 600-positive audit, provenance, concurrency and export checks pass. Commit finalized logical changes on `dev`, keeping the current version for user testing. No tag, main advancement, push, publication or installed FireMonkey update. Included-plan limits checkpoint without paid fallback or resets.
-
-## 1. Prepare and validate
-
-Work on `dev`, inspect the tracked tree and use the development environment. Follow [the classifier design](vegan-classifier-design.md) for current policy, model settings and validation. Reuse applicable benchmarks for this unchanged-classifier refresh; do not relabel frozen expectations or repeat model qualification.
-
-```sh
+```bash
+cd /home/ivy/repos/personal/ocado_report
+git status --short
+codex --version
+codex login status
 python3 -m unittest discover -s tests
-node --check ocado-vegan-filter.user.js
 ```
 
-Reuse retained, applicable verification for the unchanged classifier. A scrape alone does not require new model qualification; genuine classifier changes require the design's affected validation. Do not ask the already settled model-choice question again. Never use paid/API fallback on included-plan exhaustion. Keep completed checkpoints and resume the same scoped work when included allowance becomes available.
+Run the fixed safety benchmark before contacting Ocado. It is read-only and must finish with `48/48 exact`, no false-vegan result, and no execution errors.
+
+The standard fixture now contains frozen SQLite evidence in `benchmarks/vegan-classifier-v1-contexts.json`, with hashes checked by the runner. It does not reread changing catalogue rows. Keep these inputs and their expected statuses together when adding regression cases.
+
+```bash
+RUN_STAMP="$(date +%F-%H%M%S)"
+
+python3 tools/benchmark_ocado_vegan.py \
+  --model gpt-5.6-luna \
+  --reasoning-effort high \
+  --passes 2 \
+  --batch-size 10 \
+  --json-output "audit/benchmarks/${RUN_STAMP}-luna-high.json"
+```
+
+Stop if the command exits non-zero. A pass disagreement is always merged to `unknown` and reported; investigate any new disagreement before continuing even when it does not create an exact-status mismatch. The runner retries transient schema/output failures, but any observed retry should still be noted in the monthly review. Use a new output filename for each attempt so failed results remain available alongside successful reruns.
 
 ## 2. Refresh The SQLite Catalogue
 
@@ -49,7 +51,7 @@ BROWSE_WITH_FIREFOX_SCRIPTS="$FIREFOX_SCRIPTS" \
 
 Read the `browse-with-firefox` skill for the current environment/helper paths if the checks above fail. The sync needs this Firefox environment because it imports Selenium's `firefox_session.py` helper and launches a headless snapshot of the current Firefox profile. It does not close, restart, or modify the real Firefox session.
 
-Use SQLite as the source of truth throughout maintenance.
+Do not use the legacy `scan_ocado_vegan_according_to_ingredients.py` JSONL pipeline for monthly maintenance.
 
 Use the full default detail refresh for monthly maintenance. Limit flags are for isolated smoke-test databases; `--missing-details-only` cannot detect changed ingredients on already fetched products.
 
@@ -94,21 +96,21 @@ Stop if the selected run is not `completed`, reports errors, or the change count
 
 ## 3. Classify New And Changed Products
 
-After applicable verification, run deterministic rules first and Luna 6/high only for remaining unresolved products. The code defaults already select this primary and Sol 6.1/medium arbitration; keep model and effort as separate arguments. Do not use Luna 5.6. For a full-policy migration, use the isolated coordinator above rather than this routine changed-product command.
+Run deterministic rules first and Luna/high only for the remaining unresolved products. Keep the model ID and effort as separate arguments.
 
 ```bash
 python3 tools/classify_ocado_vegan.py --db "$DB_PATH" classify-all \
   --codex \
   --sync-run-id "$SYNC_RUN_ID" \
-  --model gpt-6-luna \
+  --model gpt-5.6-luna \
   --reasoning-effort high \
   --passes 2 \
-  --retries 1 \
-  --batch-size 8 \
+  --retries 2 \
+  --batch-size 10 \
   --workers 8
 ```
 
-The command is resumable: successfully classified products are no longer selected if the command must be rerun. Primary status/reason disagreements trigger two fresh GPT-6.1-Sol/medium passes on the stored evidence. Only an agreed, policy-supported result is accepted; unresolved disagreements stay `unknown`, and exhausted arbitration failures are recorded as errors. Agreed primary unknowns are not escalated. The bounded worker, batch and retry settings match the current full-refresh coordinator; preserve the running configuration when resuming.
+The command is resumable: successfully classified products are no longer selected if the command must be rerun. Any disagreement between the two passes becomes `unknown`. Eight workers completed the 8,242-product August 2026 queue without a final error; lower the worker count and rerun only if the service starts returning persistent rate or execution errors.
 
 ## 4. Validate The Database
 
@@ -164,38 +166,14 @@ FROM product_vegan_classification_audit AS a
 JOIN vegan_classification_runs AS r ON r.id = a.run_id
 WHERE r.sync_run_id = ${SYNC_RUN_ID}
   AND r.mode = 'codex'
-  AND EXISTS (SELECT 1 FROM json_each(a.evidence_json, '$.ambiguity_notes')
-              WHERE value = 'independent_codex_disagreement');
+  AND a.evidence_json LIKE '%independent_codex_disagreement%';
 
-SELECT json_extract(a.evidence_json, '$.arbitration.outcome') AS arbitration_outcome,
-       COUNT(*) AS products
-FROM product_vegan_classification_audit AS a
-JOIN vegan_classification_runs AS r ON r.id = a.run_id
-WHERE r.sync_run_id = ${SYNC_RUN_ID}
-  AND json_extract(a.evidence_json, '$.arbitration') IS NOT NULL
-GROUP BY arbitration_outcome;
-
-SELECT COUNT(*) AS historical_validation_error_audits
+SELECT COUNT(*) AS validation_error_products
 FROM product_vegan_classification_audit AS a
 JOIN vegan_classification_runs AS r ON r.id = a.run_id
 WHERE r.sync_run_id = ${SYNC_RUN_ID}
   AND r.mode = 'codex'
   AND a.validation_error IS NOT NULL;
-
-SELECT COUNT(*) AS unfinished_products_with_validation_errors
-FROM products AS p
-WHERE p.vegan_status IS NULL
-  AND EXISTS (
-    SELECT 1 FROM product_vegan_classification_audit AS a
-    JOIN vegan_classification_runs AS r ON r.id = a.run_id
-    WHERE a.product_id = p.id
-      AND r.sync_run_id = ${SYNC_RUN_ID}
-      AND a.validation_error IS NOT NULL
-  );
-
-SELECT COUNT(*) AS unclassified_all_known_products
-FROM products
-WHERE vegan_status IS NULL;
 
 SELECT COALESCE(c.previous_vegan_status, 'unclassified') AS previous_status,
        COALESCE(c.previous_vegan_reason, '') AS previous_reason,
@@ -214,17 +192,16 @@ SQL
 
 Required gates:
 
-- The remaining queue completes successfully with current, valid product-level audit linkage. Preserve and explicitly account for earlier failed/interrupted runs rather than requiring their historical error counts to disappear.
+- Both classification runs are `completed` with zero errors.
 - `unclassified_changed_products` is zero.
 - `unclassified_current_products` is zero.
-- Every `official_tag_conflicts` row is accounted for by current-policy audit evidence: a correctly matched definite animal finding is `nonvegan`, and an unresolved identity/material conflict is blocked `unknown`. Do not require these valid exceptions to be vegan/tagged merely to make the count zero.
-- `unfinished_products_with_validation_errors` is zero. Historical failed audit attempts remain visible and are not themselves current product decisions.
-- For a fundamental policy migration, `unclassified_all_known_products` is zero, including historical products.
-- Every raw primary disagreement is accounted for with exactly two fresh blind arbitration passes; unresolved disagreement remains unknown. Valid agreed arbitration decisions retain their policy-supported status.
+- `official_tag_conflicts` is zero.
+- `validation_error_products` is zero.
+- Every reported pass disagreement is stored as `unknown` and reviewed as a group before export.
 - Counts distinguish all known products from current Ocado products.
-- Review large status movements using retained product-level source evidence, transitions and the automated positive audit; independent human annotation is not a prerequisite.
+- Any large movement into or out of `vegan`, particularly `vegan/ingredients`, is manually reviewed.
 
-For resumed classification, retain earlier failed/interrupted run records and account for their errors; require successful completion of the remaining queue and all product-level gates. Do not rewrite historical run statuses. The `official_tag_conflicts` query is an exception inventory, not an invariant that an official tag must always win. Correctly matched definite animal ingredients or processing override the tag to nonvegan and belong in the retained Ocado contradiction report. A suspected wrong-product join or unresolved material conflict remains blocked unknown. Validate current policy/evidence/audit provenance through the exporter; do not contact Ocado without explicit instructions.
+For resumed classification, retain earlier failed/interrupted run records and account for their errors; require successful completion of the remaining queue and all product-level gates. Do not rewrite historical run statuses. The `official_tag_conflicts` query checks canonical classifications against official tags; apparent ingredient conflicts on correctly classified `vegan/tagged` products belong in a separate manual-review report and do not override the official tag.
 
 `unknown` is a valid completed classification. `NULL` is unfinished work and blocks export.
 
@@ -273,30 +250,26 @@ Confirm these states in the automated Firefox tests, then repeat the acceptance 
 
 ## 7. Commit And Release
 
-Commit the tested userscript and retained benchmark/report artifacts on `dev` as one scoped maintenance change. Complete local development and testing there, including any requested FireMonkey testing using the [installation runbook](firemonkey-installation.md). Wait for the user's approval of the tested changes before advancing `main` for release. Tooling and documentation about unreleased changes stay on `dev`; other documentation-only commits may go directly to `main` between releases while its userscript remains identical to the latest tag.
+Commit the tested userscript and retained benchmark/report artifacts directly to `main` as one scoped maintenance change.
 
 Prepare the release locally before publication:
 
-1. Inspect the current remote branches and tags, fetch `origin`, and fast-forward local `main` to `origin/main` if needed. Merge any new documentation commits from `main` into `dev`. Ensure both `main` and `origin/main` are ancestors of the approved `dev` commit; integrate other remote changes and rerun relevant checks before obtaining release approval if they change the tested implementation. With a clean working tree, run `git switch main` and `git merge --ff-only dev`. Create and verify a signed annotated local tag at that exact `main` commit, using the exact userscript version without a `v` prefix. Include the release notes in the tag annotation. Verify that `main` and the tag resolve to the same commit at release creation, then run `git switch dev`. Later documentation-only commits may advance `main` while preserving the tagged userscript. If fast-forwarding fails, investigate rather than resetting or force-pushing.
+1. Create and verify a signed annotated local tag at the tested commit, using the exact userscript version without a `v` prefix. Include the release notes in the tag annotation.
 2. Back up FireMonkey storage, install the exact tagged source into the user's local FireMonkey, safely reload it, and verify the installed source using [the FireMonkey runbook](firemonkey-installation.md). This is part of preparing the local tag, so no separate installation permission is needed. The user then tests it before publishing to Greasy Fork.
-3. If final verification finds a bug, fix and test it on `dev` at the same version. After the user approves the correction, fast-forward `main` to the corrected commit and remake and verify the signed annotated local tag there, then return to `dev`. Repeat the FireMonkey installation, reload, and source verification. Check first that the tag is still unpublished and unpushed; never replace a shared tag or force-push. A pushed or published release requires a new version and tag.
+3. If testing finds a bug, fix it at the same version, rerun the relevant checks, commit the correction, and remake and verify the signed annotated local tag. Repeat the FireMonkey installation, reload, and source verification. Check first that the tag is still unpublished and unpushed; changing a shared tag or rewriting pushed history requires explicit authorization for that concrete action.
 4. After the user's testing, publish the exact tested source to Greasy Fork when requested, or let the user publish it. Verify the live version and source before describing it as published.
-5. When pushing is requested, recheck the remote state and push only `main` and the named release tag with `git push --atomic origin refs/heads/main "refs/tags/${NEXT_VERSION}"`. Do not push `dev`, all branches, or all tags implicitly. This sends the approved release while retaining later `dev` commits locally. The tag workflow runs the checks, verifies that the tag equals the userscript metadata version, and creates the GitHub release assets. Verify both remote refs and the completed workflow.
+5. When pushing is requested, push the commit and release tag. The tag workflow runs the checks, verifies that the tag equals the userscript metadata version, and creates the GitHub release assets.
 
 Creating a local tag includes updating the installed FireMonkey copy, but does not authorize pushing or publication. If safe reload automation is unavailable, provide the exact manual reload steps and report that active installation verification remains incomplete; do not close or restart the user's Firefox without an explicit request.
-
-Release versions describe `ocado-vegan-filter.user.js`, although Git tags snapshot the whole repository. Between releases, verify the userscript against the latest tag with `git diff <latest-release-tag> main -- ocado-vegan-filter.user.js`; an empty diff confirms alignment even when `main` contains later documentation commits.
 
 ## Monthly Stop Conditions
 
 Do not regenerate or publish the userscript if any of the following occurs:
 
-- a critical validation mismatch, false-vegan result, missing product or unresolved model error;
+- benchmark mismatch, false-vegan result, missing product, or model error;
 - failed or incomplete Ocado sync;
-- an unresolved classification execution or validation error;
+- classification run error;
 - unresolved `NULL` status for any current or sync-changed product;
-- an unaccounted official vegan tag conflict, invalid animal-content decision or missing conflict block;
+- official vegan tag conflict;
 - unexplained large classification-count movement;
 - syntax, unit-test, or Firefox regression.
-
-Only discrepancies materially affecting vegan suitability or claim applicability block a decision (`vegan-materiality-v1`). Keep ordinary copy inconsistencies as observations; do not repeatedly restart catalogue assessment or audit because of plant-only recipe, style, count or unrelated cosmetic-copy differences alongside an independently applicable whole-product assurance. Animal use, actual source/process/component doubts, wrong-product claim binding and source restrictions remain strict. Preserve historical failed scores and references; apply source-bound repairs and fresh affected validation under the approved revision.

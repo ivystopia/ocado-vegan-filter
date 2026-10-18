@@ -1,0 +1,296 @@
+{
+  "source_sha256": "5783204bb6911b38cbcf76908bd4e67086c813059ac0f3b822c8c2837b47b5a8",
+  "browser": "155.0.1",
+  "mode": "clean Firefox with injected script",
+  "basket_actions": 0,
+  "scenarios": [
+    {
+      "page": "milk",
+      "phase": "initial",
+      "requested_width": 1440,
+      "actual_width": 1440,
+      "cards": 50,
+      "rendered_cards": 9,
+      "statuses": {
+        "vegan": 1,
+        "nonvegan": 8,
+        "unknown": 0
+      },
+      "image_link_hits": 5,
+      "add_button_hits": 5,
+      "issues": []
+    },
+    {
+      "page": "milk",
+      "phase": "scrolled",
+      "requested_width": 1440,
+      "actual_width": 1440,
+      "cards": 50,
+      "rendered_cards": 24,
+      "statuses": {
+        "vegan": 1,
+        "nonvegan": 23,
+        "unknown": 0
+      },
+      "image_link_hits": 5,
+      "add_button_hits": 5,
+      "issues": []
+    },
+    {
+      "page": "vegan-cheese",
+      "phase": "initial",
+      "requested_width": 1440,
+      "actual_width": 1440,
+      "cards": 39,
+      "rendered_cards": 9,
+      "statuses": {
+        "vegan": 9,
+        "nonvegan": 0,
+        "unknown": 0
+      },
+      "image_link_hits": 5,
+      "add_button_hits": 5,
+      "issues": []
+    },
+    {
+      "page": "vegan-cheese",
+      "phase": "scrolled",
+      "requested_width": 1440,
+      "actual_width": 1440,
+      "cards": 39,
+      "rendered_cards": 17,
+      "statuses": {
+        "vegan": 17,
+        "nonvegan": 0,
+        "unknown": 0
+      },
+      "image_link_hits": 5,
+      "add_button_hits": 10,
+      "issues": []
+    },
+    {
+      "page": "offers",
+      "phase": "initial",
+      "requested_width": 1440,
+      "actual_width": 1440,
+      "cards": 51,
+      "rendered_cards": 19,
+      "statuses": {
+        "vegan": 10,
+        "nonvegan": 6,
+        "unknown": 3
+      },
+      "image_link_hits": 5,
+      "add_button_hits": 5,
+      "issues": []
+    },
+    {
+      "page": "offers",
+      "phase": "scrolled",
+      "requested_width": 1440,
+      "actual_width": 1440,
+      "cards": 51,
+      "rendered_cards": 39,
+      "statuses": {
+        "vegan": 17,
+        "nonvegan": 17,
+        "unknown": 5
+      },
+      "image_link_hits": 5,
+      "add_button_hits": 5,
+      "issues": []
+    },
+    {
+      "page": "milk",
+      "phase": "initial",
+      "requested_width": 768,
+      "actual_width": 768,
+      "cards": 50,
+      "rendered_cards": 6,
+      "statuses": {
+        "vegan": 1,
+        "nonvegan": 5,
+        "unknown": 0
+      },
+      "image_link_hits": 3,
+      "add_button_hits": 0,
+      "issues": []
+    },
+    {
+      "page": "milk",
+      "phase": "scrolled",
+      "requested_width": 768,
+      "actual_width": 768,
+      "cards": 50,
+      "rendered_cards": 15,
+      "statuses": {
+        "vegan": 1,
+        "nonvegan": 14,
+        "unknown": 0
+      },
+      "image_link_hits": 3,
+      "add_button_hits": 3,
+      "issues": []
+    },
+    {
+      "page": "vegan-cheese",
+      "phase": "initial",
+      "requested_width": 768,
+      "actual_width": 768,
+      "cards": 39,
+      "rendered_cards": 6,
+      "statuses": {
+        "vegan": 6,
+        "nonvegan": 0,
+        "unknown": 0
+      },
+      "image_link_hits": 3,
+      "add_button_hits": 0,
+      "issues": []
+    },
+    {
+      "page": "vegan-cheese",
+      "phase": "scrolled",
+      "requested_width": 768,
+      "actual_width": 768,
+      "cards": 39,
+      "rendered_cards": 14,
+      "statuses": {
+        "vegan": 14,
+        "nonvegan": 0,
+        "unknown": 0
+      },
+      "image_link_hits": 3,
+      "add_button_hits": 3,
+      "issues": []
+    },
+    {
+      "page": "offers",
+      "phase": "initial",
+      "requested_width": 768,
+      "actual_width": 768,
+      "cards": 51,
+      "rendered_cards": 19,
+      "statuses": {
+        "vegan": 10,
+        "nonvegan": 6,
+        "unknown": 3
+      },
+      "image_link_hits": 3,
+      "add_button_hits": 0,
+      "issues": []
+    },
+    {
+      "page": "offers",
+      "phase": "scrolled",
+      "requested_width": 768,
+      "actual_width": 768,
+      "cards": 51,
+      "rendered_cards": 27,
+      "statuses": {
+        "vegan": 16,
+        "nonvegan": 7,
+        "unknown": 4
+      },
+      "image_link_hits": 6,
+      "add_button_hits": 3,
+      "issues": []
+    },
+    {
+      "page": "milk",
+      "phase": "initial",
+      "requested_width": 390,
+      "actual_width": 390,
+      "cards": 50,
+      "rendered_cards": 4,
+      "statuses": {
+        "vegan": 1,
+        "nonvegan": 3,
+        "unknown": 0
+      },
+      "image_link_hits": 2,
+      "add_button_hits": 2,
+      "issues": []
+    },
+    {
+      "page": "milk",
+      "phase": "scrolled",
+      "requested_width": 390,
+      "actual_width": 390,
+      "cards": 50,
+      "rendered_cards": 11,
+      "statuses": {
+        "vegan": 1,
+        "nonvegan": 10,
+        "unknown": 0
+      },
+      "image_link_hits": 2,
+      "add_button_hits": 2,
+      "issues": []
+    },
+    {
+      "page": "vegan-cheese",
+      "phase": "initial",
+      "requested_width": 390,
+      "actual_width": 390,
+      "cards": 39,
+      "rendered_cards": 4,
+      "statuses": {
+        "vegan": 4,
+        "nonvegan": 0,
+        "unknown": 0
+      },
+      "image_link_hits": 2,
+      "add_button_hits": 2,
+      "issues": []
+    },
+    {
+      "page": "vegan-cheese",
+      "phase": "scrolled",
+      "requested_width": 390,
+      "actual_width": 390,
+      "cards": 39,
+      "rendered_cards": 10,
+      "statuses": {
+        "vegan": 10,
+        "nonvegan": 0,
+        "unknown": 0
+      },
+      "image_link_hits": 4,
+      "add_button_hits": 3,
+      "issues": []
+    },
+    {
+      "page": "offers",
+      "phase": "initial",
+      "requested_width": 390,
+      "actual_width": 390,
+      "cards": 51,
+      "rendered_cards": 19,
+      "statuses": {
+        "vegan": 10,
+        "nonvegan": 6,
+        "unknown": 3
+      },
+      "image_link_hits": 2,
+      "add_button_hits": 1,
+      "issues": []
+    },
+    {
+      "page": "offers",
+      "phase": "scrolled",
+      "requested_width": 390,
+      "actual_width": 390,
+      "cards": 51,
+      "rendered_cards": 20,
+      "statuses": {
+        "vegan": 11,
+        "nonvegan": 6,
+        "unknown": 3
+      },
+      "image_link_hits": 3,
+      "add_button_hits": 3,
+      "issues": []
+    }
+  ]
+}
