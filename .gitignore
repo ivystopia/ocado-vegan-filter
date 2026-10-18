@@ -10,3 +10,9 @@ __pycache__/
 
 # Resumable manufacturer-site research work; retained summaries live in audit/.
 .manufacturer-research/
+
+# Local recovery archives and retained catalogue evidence.
+.whole-product-work/
+.rollback-work/
+# Superseded local model-call checkpoints remain recoverable, not active reports.
+audit/benchmarks/*-whole-product/

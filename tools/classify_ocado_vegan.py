@@ -1717,6 +1717,12 @@ def main(argv: list[str] | None = None) -> int:
     args = build_parser().parse_args(argv)
     db_path = Path(args.db)
 
+    if db_path.exists():
+        from published_baseline import active
+        with closing(sqlite3.connect(db_path.resolve().as_uri() + "?mode=ro", uri=True)) as probe:
+            if active(probe):
+                raise ValueError("Published baseline is protected; use published_baseline.py for reviewed unknown additions")
+
     if args.command == "migrate-schema":
         backup = create_backup(db_path)
         with closing(connect(db_path)) as conn:

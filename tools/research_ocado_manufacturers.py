@@ -544,6 +544,11 @@ def application_plan(conn: sqlite3.Connection, bundle: dict[str, Any], reviews: 
 
 def apply_bundle(root: Path, db: Path, bundle: dict[str, Any], *, dry_run: bool,
                  partial_reason: str | None = None) -> dict[str, Any]:
+    if not dry_run and db.exists():
+        from published_baseline import active
+        with closing(sqlite3.connect(db.resolve().as_uri() + "?mode=ro", uri=True)) as probe:
+            if active(probe):
+                raise ValueError("Published baseline is protected; retain evidence for individually reviewed additions")
     status = bundle_status(bundle)
     if status["errors"]:
         raise ValueError("Repair invalid research artifacts before applying")

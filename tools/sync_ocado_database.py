@@ -1108,6 +1108,11 @@ def run_sync(args: argparse.Namespace) -> int:
     if not db_path.exists():
         raise FileNotFoundError(db_path)
 
+    from published_baseline import active
+    with closing(sqlite3.connect(db_path.resolve().as_uri() + "?mode=ro", uri=True)) as probe:
+        if active(probe):
+            raise ValueError("Published baseline is protected; use refresh_catalogue_membership.py")
+
     backup_path = create_rolling_backup(db_path)
     print(f"Backed up database to {backup_path}", flush=True)
 

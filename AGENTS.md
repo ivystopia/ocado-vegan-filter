@@ -1,133 +1,68 @@
 # Ocado Report Instructions
 
-These instructions apply to this repository.
+## Purpose and current work
 
-## Project Purpose
+- Serve the vegan customer shopping on Ocado: trustworthy, useful labels and working Add buttons and product links.
+- Read `docs/working-guide.md`, inspect `git status --short --branch` and recent commits before editing, and preserve unrelated work.
+- The user has cancelled the broad whole-product reclassification. The current foundation is the published **1.7.2** script and its classifications, with small, explicitly reviewed additions from products that were unknown in that baseline. Do not resume old coordinators, reclassify the published vegan population, or impose a new catalogue-wide benchmark/audit programme.
+- Keep the fresh scraped product facts, previous database audit history and local recovery archives. Superseded implementation lives in Git history; it is not the active workflow.
+- Work on `dev`, keep version 1.7.2 for testing, and do not tag, advance `main`, push, publish or update installed FireMonkey without a new request.
 
-This repository supports an Ocado vegan-labelling audit and the `Ocado Vegan Filter` userscript.
+## Source of truth and safety
 
-The project has two related goals:
+- Use `ocado_products.sqlite` for product analysis. Distinguish all known from `current_on_ocado = 1` products. Historical JSONL files are not the analysis source.
+- Inspect SQLite read-only. The legacy classifier's `status` command migrates schema; use SQL instead. Never run `build_ocado_database.py` or its destructive `create_schema()` against the canonical database.
+- Use only the main NVMe filesystem, never mounted drives such as `/mnt/e`, including for recovery or reads.
+- Preserve prior decisions and provenance before replacing them. Use transactions, reject stale evidence, and preserve concurrent changes. Do not copy a live SQLite main file without its WAL; use SQLite backup or a consistent logical backup for the exact fields changed.
+- Preserve interrupted `sync_context_baseline` records. A failed latest sync cannot be bypassed by selecting an earlier successful run.
 
-- Maintain a local product database for analysis of Ocado catalogue data.
-- Maintain a self-contained userscript that helps vegan shoppers by treating products as vegan only when the local evidence supports that decision.
+## Classification policy for new reviews
 
-## Start Here
+- Valid statuses are `vegan`, `nonvegan`, `unknown`; valid vegan reasons are `tagged`, `manufacturer`, `name`, `ingredients`.
+- Reason precedence is `tagged`, `manufacturer`, `name`, `ingredients`. Manufacturer confirmation takes precedence over a vegan name.
+- Plain fruit and vegetables, including an unambiguously simple mix, can qualify from identity/composition without a vegan claim. Kissabel British Apples (647140011) is a positive example. A missing ingredients field does not establish simplicity for an arbitrary manufactured product.
+- Assess the complete sold product, including relevant processing and supplied components. Ordinary bags, trays, wrapping, or missing packaging details are not themselves evidence of an animal component. Do not invent speculative packaging or supply-chain risks.
+- Material evidence of animal ingredients, animal processing, source-dependent additives, a supplied component, or a genuinely inapplicable claim needs resolution. A product name containing a fruit word or membership of a produce category does not establish the sold product's composition.
+- Separate actual ingredients from serving suggestions, recipes, precautionary may-contain warnings and descriptive words such as buttery potato flesh or custard apple. Do not infer animal content from those words alone.
+- Correctly matched definite animal ingredients override a vegan tag in any new assessment; collect such contradictions for possible reporting, but never contact Ocado without explicit instructions. Preserve the published baseline in this additive task; newly discovered contrary evidence on a baseline product should be reported for a separately scoped correction.
+- Keep `Unknown vegan` for unresolved cases. Do not use `Almost vegan` or `Probably vegan`. Missing/NULL status is unfinished work.
+- No automatic blanket produce rule: explicitly review and retain each accepted record with its source context, quotations and rationale. Quantify additions and explain their evidence before applying them.
 
-- Inspect `git status --short --branch` and recent commits before editing; preserve any existing user changes.
-- Read [the working guide](docs/working-guide.md) for the code map, environment, safe inspection commands, and recurring failure modes.
-- For catalogue refreshes, use [monthly maintenance](docs/monthly-maintenance.md); for classifier changes, use [the classifier design](docs/vegan-classifier-design.md).
-- For browser or performance changes, read [the Firefox audit](docs/code-audit-2026-09-04.md) and the relevant tests in `tests/test_ocado_vegan_filter.py` before changing the script.
-- Dated audit reports describe the evidence and policy at the time of that run. Follow current instructions and runbooks for today's workflow; do not infer current release state or model defaults from an old report.
+## Current workflow
 
-## Source Of Truth
+- Follow `docs/vegan-classifier-design.md` and use `tools/published_baseline.py` for the protected baseline and reviewed unknown additions. Preview first; its application uses a transaction and exact source checks.
+- Preserve every published positive and nonvegan ID and its evidence-group membership. Only reviewed unknowns may be added; neither baseline demotions nor unrelated promotions belong in this effort.
+- Refresh catalogue discovery for new and removed products when requested. Use `tools/refresh_catalogue_membership.py`: scan all advertised sitemap parts and category pages, fetch new IDs into an isolated database, then validate and import membership/new facts. Keep existing product details and classifications intact; removed products remain historical. A membership refresh is not a full detail refresh or permission for bulk reclassification.
+- Clear ordinary-food reviews need no new model benchmark or expensive bulk calls. Do not require a sample quota, exhaustive manufacturer research or a catalogue-wide positive audit for this bounded additive workflow.
+- The restored release-era classifier is not the active canonical writer. Its CLI refuses the protected database. Manufacturer imports and future syncs must use isolated databases until they can preserve this baseline and present product-level changes for review.
+- If later unresolved classification is requested, retain GPT-6-Luna/high, two independent passes, and exactly two fresh blind GPT-6.1-Sol/medium passes only on status/reason disagreement. Agreed unknowns never escalate. Do not revive GPT-5.6-Luna or silently use the restored legacy classifier's old settings/semantics. Implement and validate this separately before using models for the protected workflow.
+- Use the included ChatGPT plan only; no paid/API fallback, automatic model upgrade or allowance reset. The supervising model does not select the bulk classifier.
+- Manufacturer research, when needed, is a brief check of applicable official product pages or FAQs. Retain exact source, scope, URL and date; an unsuccessful check leaves unknown. Do not deep-crawl or reopen the previous exhaustive research programme.
+- Run `tools/update_userscript_allowlists.py --dry-run` before regeneration. It checks exact published classifications plus source-bound reviewed additions, including historical IDs. New scraped flags do not silently overwrite the restored baseline.
 
-- Use `ocado_products.sqlite` as the source of truth for product analysis.
-- Do not use the JSONL scrape files for new analysis unless the user explicitly asks for raw scrape archaeology.
-- Treat JSONL files as historical import/raw data only.
-- If new live scraping is performed, import the result into SQLite and keep enough raw/pre-check data in SQLite or clearly named raw files so future analysis does not require re-hitting Ocado unnecessarily.
-- When reporting product counts, distinguish all known products from `current_on_ocado = 1` products.
-- Open SQLite read-only for inspection. The classifier CLI's `status` command calls schema migration code, so use the working guide's SQL for read-only status checks.
-- `tools/build_ocado_database.py` is a historical importer whose CLI deletes its output database and sidecars before rebuilding. Its `create_schema()` helper drops tables. Use an isolated target for reconstruction/tests; never run either against the source-of-truth database as a setup or inspection step.
+## Userscript and browser
 
-## Vegan Classification Rules
+- Edit the repo copy `ocado-vegan-filter.user.js`; keep it self-contained. Preserve the published runtime during this additive effort. Change only the relevant embedded IDs and generated counts, keeping retained ID order and line placement.
+- Keep separate manufacturer/name and ingredients ID sets and preserve the nonvegan set. Product links and the real Ocado Add button must remain clickable; de-emphasis must not disable shopping.
+- Preserve responsive image sources, host-owned DOM updates and native button handlers. Follow the Firefox guidance before any runtime change; reproduce behaviour defects in temporary Firefox before fixing them.
+- Do not close or restart real Firefox without explicit authorization. No blind GUI keystrokes.
+- The installed manager is FireMonkey. A later requested release installs the exact tagged source using `docs/firemonkey-installation.md`; local development does not.
+- Keep metadata free of personal identifiers, use `@license Unlicense`, and preserve the license. Bump version only when release preparation is requested.
 
-- Vegan classification must prefer false negatives over false positives.
-- Do not tag a product as vegan from probability, brand reputation, category assumptions, or "usually vegan" reasoning.
-- Valid product statuses are `vegan`, `nonvegan`, and `unknown`.
-- Valid vegan reasons are `tagged`, `manufacturer`, `ingredients`, and `name`.
-- `unknown` means assessed, but not enough database evidence exists to classify safely.
-- `NULL` or missing status means unclassified and should generally be treated as work remaining.
-- May-contain allergen warnings do not make a product non-vegan.
-- A product with no explicit ingredients field should be treated as a single-ingredient product and classified from stored product identity/category text when that identity is unambiguous.
-- Ocado's official vegan tag is authoritative: classify tagged products as `vegan/tagged` even when stored ingredient text appears to conflict, and report those conflicts separately for manual review.
-- For products without an official Ocado vegan tag, explicit animal-derived ingredients such as milk, egg, honey, gelatine, meat, fish, shellfish, beeswax, shellac, carmine, lanolin, or similar should classify as non-vegan.
-- Ingredients with ambiguous sourcing should classify as unknown unless the product text explicitly resolves the source.
-- Fortified wheat/flour should be treated as vegan when the fortification is limited to standard flour additions such as calcium, iron, niacin, thiamin, or folic acid.
-- Vitamins outside standard flour fortification should remain unknown unless the evidence explicitly proves the sources are vegan.
-- Safe parser improvements should be source-aware, for example allowing `soya lecithin` while keeping bare `lecithin` unknown.
+## Git and release
 
-## Classifier Workflow
+- Commit finalized logical changes separately on `dev`, inspect staged diffs, and account for new files. Local commits may be unsigned with `git -c commit.gpgsign=false`; preserve global signing preferences.
+- No history rewriting or force pushing. A rollback commit preserves recovery through Git history.
+- Keep SSH remote URLs. For GitHub CLI use `env -u GH_TOKEN -u GITHUB_TOKEN gh ...` to avoid stale environment tokens.
+- After explicit release approval, merge any main documentation changes into dev, fast-forward main to approved dev, create a signed annotated tag with the exact version (no `v` prefix), verify FireMonkey, then return to dev. A release tag remains local unless push is explicitly requested.
+- An authorized release push sends only main and the named tag atomically, never dev or all tags. Check remote state first. Never move a published tag; unpublished local testing fixes retain the agreed version and can remake its local tag.
+- Use short imperative user-visible release notes in tag annotations and Greasy Fork text, not a standalone changelog.
+- Firm user workflow decisions should update these instructions directly.
 
-- The classifier must use only data already stored in SQLite unless the task is explicitly to scrape/import new data.
-- Manufacturer-site reassessment is a separate evidence-gathering workflow: research every initially unknown product, retain the manufacturer's published statement, URL, retrieval date, market/range restrictions, and exact product match, then import accepted evidence into SQLite as `vegan/manufacturer`.
-- Keep manufacturer research exhaustive and resumable: explicitly account for every product, distinguish pending or blocked research from completed checks without confirmation, and never substitute a few illustrative brands or brand-specific code for catalogue-wide research.
-- For manufacturer-only userscript updates, change the embedded vegan IDs and generated counts only; preserve runtime behaviour, existing classifications outside the reviewed unknown cohort, and the non-vegan set.
-- Follow `docs/vegan-classifier-design.md` for end-to-end classifier behaviour.
-- Use `gpt-5.6-luna` with reasoning effort `high` and two independent passes for bulk unresolved classification.
-- The supervising Codex model and bulk classifier model are separate choices. A change of supervising model does not change the benchmarked classifier default.
-- Pass the model and reasoning effort separately; `gpt-5.6-luna/high` is not a valid model ID.
-- Do not use Luna `low` or `medium` for product decisions: both repeated a false-vegan result in the retained safety benchmark.
-- Run `tools/benchmark_ocado_vegan.py` successfully before each monthly live sync or after any model, prompt, schema, or classification-rule change.
-- Keep the benchmark's frozen contexts, hashes, and expected labels together. Investigate mismatches; do not refresh inputs from today's catalogue or change expected labels merely to obtain a pass.
-- For monthly maintenance, follow `docs/monthly-maintenance.md` and use the DB-first sync/classifier workflow rather than the legacy JSONL scanners.
-- Keep audit trails for classification decisions in the database tables, including evidence, summary, classifier version, and run metadata.
-- If independent LLM/classifier passes disagree on status or vegan reason, classify the product as unknown unless the user explicitly authorizes a different arbitration workflow.
-- For any rule change that increases vegan classifications, first quantify likely impact with SQLite queries and explain the safety argument.
-- After an interrupted sync, preserve `sync_context_baseline` and inspect the latest run before resuming. Never delete the baseline or edit run status to bypass export checks; follow the recovery guidance in the working guide.
+## Verification and output
 
-## Userscript Source And Release Rules
-
-- The distributable userscript is `Ocado Vegan Filter`.
-- The repo copy is `ocado-vegan-filter.user.js`.
-- Ordinary development edits go to the repo copy. Whenever a requested local release tag is created or remade, also update the user's installed FireMonkey copy to the exact tagged source, reload it safely, and verify it for the user's pre-publication testing. This installation is part of release preparation and does not need a separate permission question.
-- Preserve the current userscript formatting style; edits should already match VS Code autoformat-on-save output and should not introduce formatting-only churn.
-- If the user says they updated a separate local copy of the userscript, treat that named file as the current source of truth and sync the repo copy from it after validating.
-- Keep the script self-contained; it should not fetch Ocado product detail pages or call third-party services while shopping.
-- The script should treat products as vegan when Ocado tags them vegan, when the name explicitly contains standalone `vegan`, or when the product ID is in an embedded vegan allowlist.
-- Live or embedded official Ocado vegan metadata must take precedence over the embedded non-vegan set.
-- Keep separate allowlists for manufacturer/name evidence and ingredients evidence.
-- Non-vegan or not-known-vegan products should be visually de-emphasised only; the real Ocado Add button must remain present and clickable.
-- Use `Not vegan` only for products affirmatively classified `nonvegan`; use `Unknown vegan` for products without enough evidence to establish either vegan or non-vegan status.
-- Product links must remain clickable.
-- Preserve Ocado's responsive image sources and existing button elements/handlers. Recycled cards and quantity controls must retain host-owned changes; restore only styles, classes, and labels still owned by this script.
-- Keep userscript metadata free of personal identifiers.
-- Never use a personal domain in userscript metadata.
-- Greasy Fork may force or preserve `@namespace`; if a namespace is required, use a non-personal value.
-- Use `@license Unlicense` and preserve the Unlicense text when preparing release files.
-- Bump the userscript version when preparing a new release. Fixes found while testing an unpublished local release keep that release's agreed version number.
-- Keep the product counts at the top of the userscript comment block up to date whenever a userscript change is finalised.
-- When regenerating embedded product ID allowlists, keep the diff minimal: preserve the relative order and line placement of retained IDs, remove obsolete IDs in place, append only genuinely new IDs, and avoid unrelated userscript changes.
-- Use `tools/update_userscript_allowlists.py`, starting with `--dry-run`. It exports all known classified IDs, including historical products; do not silently narrow exports to current products or hand-edit sets around a failed safety gate.
-- Commit development changes directly to `main`.
-- For requested release work, prepare a signed annotated local tag once the agreed version passes repository checks, before the user's FireMonkey testing and Greasy Fork publication.
-- Use exact Greasy Fork version strings for tags, for example `1.4.4`, not `v1.4.4`.
-- If the user finds a bug while testing an unpublished local release, fix it at the same version, rerun the relevant checks, and remake the signed annotated local tag at the corrected commit.
-- Check local/remote tag state and publication state before moving an existing tag. Replacing an unpublished, unpushed local tag is part of this testing workflow; changing shared tags or rewriting pushed history needs explicit authorization for that concrete action.
-- Local release preparation does not authorize pushing or publishing. A tag push creates a GitHub release through the workflow; a local tag or metadata version alone does not prove publication on Greasy Fork.
-- Documentation/tooling-only changes that leave the userscript unchanged do not need a userscript version bump or release tag and do not trigger a FireMonkey installation.
-- Write short, imperative Greasy Fork release notes describing user-visible results, product additions/removals, and why classifications changed. Cover the whole interval since the last published version, including skipped local versions. Use tag annotations and Greasy Fork text; do not add a standalone `CHANGELOG.md` unless requested.
-
-## Git Workflow
-
-- Commit each finalised logical change individually: one change per commit and one commit per change.
-- Account for new files by tracking intended repository artifacts or explicitly ignoring local working data. Leave finalised changes committed and report anything intentionally left uncommitted.
-- Keep formatting-only changes in a separate commit from feature, behaviour, documentation, or data changes.
-- Keep repo-specific signing configuration in local `.git/config`, not in tracked repo files.
-- Keep GitHub Actions workflows on the latest stable major versions of actions and avoid deprecated JavaScript runtimes.
-- Keep the GitHub remote on SSH, not HTTPS, and use SSH for Git pushes/fetches.
-- For GitHub CLI API commands, do not let stale environment tokens override the authenticated `gh` keyring login; run commands as `env -u GH_TOKEN -u GITHUB_TOKEN gh ...` unless the user explicitly asks to test an environment token.
-- If GitHub CLI returns `HTTP 401: Bad credentials`, first check `gh auth status` with those token variables unset before asking the user to re-authenticate.
-- When the user makes a firm statement about how this repository should be handled in future, update this `AGENTS.md` directly as part of the current task.
-
-## FireMonkey Workflow
-
-- Do not assume any userscript manager other than FireMonkey is active.
-- Do not close or restart the user's real Firefox unless the user explicitly asks.
-- Prefer editing userscript files on disk for release work.
-- When creating/remaking a requested local release tag, or separately asked to update the installed script, follow [the FireMonkey installation runbook](docs/firemonkey-installation.md). It covers backup, parsing, storage writes, reload, and exact-source verification.
-- Never use blind GUI keystrokes. Target and verify the specific Firefox window/tab before any GUI interaction.
-
-## Testing
-
-- Run targeted tests after code changes when practical.
-- Use `python3 -m unittest discover -s tests` in the development environment. New tests must be discoverable `unittest.TestCase` methods; bare helper functions were silently skipped in an earlier browser suite.
-- For userscript/browser behaviour bugs, reproduce the issue in clean temporary Firefox before implementing a fix; use retained fixtures where possible and live pages when needed. These automated checks are part of development and do not require changing the installed FireMonkey copy.
-- For performance changes, measure before and after with `tools/benchmark_ocado_userscript.py` and preserve relevant results. Protect incremental card processing, bounded hydration scans, and CSS-only image filtering; do not infer speed from source size alone.
-- For userscript syntax, run `node --check` on the script file.
-- Python tools live under `tools/`, tests live under `tests/`, and retained audit outputs live under `audit/`.
-- The normal suite runs real headless Firefox fixtures; `OCADO_LIVE_TESTS=1` enables the live Ocado checks. Report skips explicitly and distinguish injected-script tests from installed FireMonkey verification.
-
-## Output Conventions
-
-- Use URLs in the form `https://www.ocado.com/products/<id>` when generating lists for customer-service or public reports.
-- Do not expose credentials, cookies, account-specific Ocado session details, or browser profile secrets.
+- Use `.venv/bin/python -m unittest discover -s tests` and `node --check ocado-vegan-filter.user.js`. Tests must be discoverable `unittest.TestCase` methods.
+- Test exact baseline retention, unknown-only admission, source changes, audit linkage, atomic rollback and export consistency for review tooling. Use clean temporary Firefox fixtures; `OCADO_LIVE_TESTS=1` enables optional live checks. Report skips and distinguish injected-script tests from FireMonkey verification.
+- For runtime performance changes, measure before/after using `tools/benchmark_ocado_userscript.py`; source size is not performance evidence.
+- Keep reviewable evidence under `audit/`, tools under `tools/`, and tests under `tests/`. Ignore large local databases, raw captures and recovery work.
+- Use `https://www.ocado.com/products/<id>` for product reports. Do not expose credentials, cookies or private browser/session details.

@@ -10,7 +10,7 @@ https://greasyfork.org/en/scripts/576838-ocado-vegan-filter
 
 Ocado already has a vegan icon and filter, but some vegan products are missing from that metadata or do not show the vegan icon in product grids.
 
-This script adds a client-side correction layer. It embeds over 19,000 vegan product IDs from an offline Ocado catalogue audit, including over 14,000 products beyond the officially tagged vegan set seen in the audit.
+This script adds a client-side correction layer. It embeds over 20,000 vegan product IDs from an offline Ocado catalogue audit, including over 15,000 products beyond the officially tagged vegan set seen in the audit.
 
 Products identified as vegan keep Ocado's normal styling and yellow `Add` button.
 
@@ -62,14 +62,15 @@ The large local SQLite database and raw scrape streams are intentionally not tra
 
 - `tools/build_ocado_database.py` - historical JSONL importer and shared parsing/schema helpers. Its CLI deletes and rebuilds the output database; it is not a normal setup or refresh command.
 - `tools/sync_ocado_database.py` - imports and synchronises scraped Ocado product data into SQLite.
-- `tools/classify_ocado_vegan.py` - classifies products as `vegan`, `nonvegan`, or `unknown` from stored database data.
-- `tools/research_ocado_manufacturers.py` - tracks exhaustive manufacturer-site research, independently reviews retained sources, and imports product-specific confirmations; see `docs/manufacturer-research.md`.
+- `tools/published_baseline.py` - protects published classifications and applies individually reviewed unknown-to-vegan additions.
+- `tools/refresh_catalogue_membership.py` - discovers new/removed products and fetches new product details without reclassifying existing products.
+- `tools/classify_ocado_vegan.py`, `tools/research_ocado_manufacturers.py` - restored release-era tools; not active writers for the protected canonical database.
 - `tools/benchmark_ocado_vegan.py` - runs the fixed, read-only classifier safety benchmark.
 - `tools/update_userscript_allowlists.py` - previews and regenerates the embedded sets from canonical SQLite classifications while preserving retained ID order.
 - `docs/working-guide.md` - environment setup, code map, safe inspection, and troubleshooting for maintainers.
 - `docs/vegan-classifier-design.md` - notes describing the intended offline vegan-classification workflow.
 - `docs/monthly-maintenance.md` - the monthly scrape, classification, validation, and userscript update runbook.
-- `docs/model-benchmark-2026-08-21.md` - evidence supporting the current Luna/high classifier default.
+- `docs/model-benchmark-2026-08-21.md` - historical model experiment, not current execution instructions.
 - `docs/firemonkey-installation.md` - installs and verifies the tagged release in local FireMonkey for pre-publication testing.
 
 ### Scraping Tooling

@@ -71,7 +71,13 @@ def validate_official_tag_precedence(conn: sqlite3.Connection) -> None:
 
 def load_allowlists(conn: sqlite3.Connection) -> dict[str, list[str]]:
     validate_export_readiness(conn)
-    validate_official_tag_precedence(conn)
+    from published_baseline import active, validate
+    if active(conn):
+        # The user restored the published decisions while retaining newer facts.
+        # Validate that exact baseline plus source-bound reviews, not newly scraped tags.
+        validate(conn)
+    else:
+        validate_official_tag_precedence(conn)
     result = {}
     for name, status_clause in SET_QUERIES.items():
         rows = conn.execute(
