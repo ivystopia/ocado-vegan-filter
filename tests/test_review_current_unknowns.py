@@ -204,6 +204,37 @@ class ReviewTests(unittest.TestCase):
                 )
             self.assertEqual(review.progress(root)["remaining"], 2)
 
+    def test_exhausted_batch_omissions_use_bounded_individual_fallback(self):
+        with tempfile.TemporaryDirectory() as tmp:
+            root = Path(tmp)
+            calls = []
+
+            def fake(prompt, schema, **kw):
+                ids = kw["product_ids"]
+                calls.append(ids)
+                payload = {"decisions": [] if len(ids) > 1 else [decision(ids[0])]}
+                record = {
+                    "call_id": str(len(calls)),
+                    "product_ids": ids,
+                    "context_hash": kw["context_hash"],
+                    "model": kw["model"],
+                    "reasoning_effort": kw["effort"],
+                    "exit_status": 0,
+                    "usage": {"input_tokens": 1},
+                    "parsed_response": payload,
+                }
+                with review.codex_evidence.USAGE_JOURNAL.get().open("a") as stream:
+                    stream.write(json.dumps(record) + "\n")
+                kw["validator"](payload)
+                return record
+
+            with mock.patch.object(review.codex_evidence, "run", side_effect=fake):
+                result, _ = review.read_pass(
+                    root, 0, "primary-1", [context("1"), context("2")], review.PRIMARY, "codex"
+                )
+            self.assertEqual(calls, [["1", "2"], ["1", "2"], ["1", "2"], ["1"], ["2"]])
+            self.assertEqual(set(result), {"1", "2"})
+
     def test_literal_reference_normalization_cannot_invent_evidence(self):
         c = context()
         c["product"]["ingredients"] = None

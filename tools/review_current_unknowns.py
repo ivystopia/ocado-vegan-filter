@@ -289,6 +289,7 @@ def read_pass(root, batch, label, contexts, pair, codex_bin):
     by_id = {c["product"]["id"]: c for c in contexts}
     accepted = {}
     attempts = dict.fromkeys(by_id, 0)
+    single_attempts = dict.fromkeys(by_id, 0)
     call_ids = []
     consumed = set()
 
@@ -317,6 +318,8 @@ def read_pass(root, batch, label, contexts, pair, codex_bin):
             if record.get("invocation_started", True):
                 for pid in ids:
                     attempts[pid] += 1
+                    if len(ids) == 1:
+                        single_attempts[pid] += 1
             payload = record.get("parsed_response")
             if (
                 not record.get("usage")
@@ -329,7 +332,7 @@ def read_pass(root, batch, label, contexts, pair, codex_bin):
             if not isinstance(decisions, list) or any(not isinstance(d, dict) for d in decisions):
                 continue
             returned = [d.get("product_id") for d in decisions]
-            if len(returned) != len(set(returned)) or set(returned) != set(ids):
+            if len(returned) != len(set(returned)) or not set(returned) <= set(ids):
                 continue
             retained = False
             for d in decisions:
@@ -350,8 +353,15 @@ def read_pass(root, batch, label, contexts, pair, codex_bin):
         recover()
         while set(accepted) != set(by_id):
             missing = [c for c in contexts if c["product"]["id"] not in accepted]
-            if any(attempts[c["product"]["id"]] >= 3 for c in missing):
-                raise RuntimeError(f"Exhausted failed attempts for batch {batch} {label}; repair required")
+            exhausted = next((c for c in missing if attempts[c["product"]["id"]] >= 3), None)
+            if exhausted:
+                if single_attempts[exhausted["product"]["id"]] >= 3:
+                    raise RuntimeError(
+                        f"Exhausted isolated failed attempts for batch {batch} {label}; repair required"
+                    )
+                # Context isolation repairs batch association/omission failures.
+                # It cannot repeat an already valid decision or change models.
+                missing = [exhausted]
             partial_prompt = PROMPT + baseline.encoded(missing)
             partial_binding = baseline.digest(
                 {"version": VERSION, "prompt": partial_prompt, "model": pair[0], "effort": pair[1]}
