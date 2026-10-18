@@ -6,6 +6,7 @@ Read [AGENTS.md](../AGENTS.md) first. The active task starts from published 1.7.
 
 - `ocado-vegan-filter.user.js`: published shopping runtime and embedded ID sets. Preserve runtime behaviour during this additive effort.
 - `tools/review_current_unknowns.py`: frozen complete current-Unknown queue, fresh independent readings, per-product outcomes and guarded additive activation.
+- `tools/report_unknown_review.py`: read-only reconciliation of complete cohort coverage, independent reading provenance, attempts, token usage and tag/animal contradictions.
 - `tools/codex_evidence.py`: isolated included-plan model calls, admission guards and retained token usage.
 - `tools/published_baseline.py`: protected restoration, source-bound reviews and audit writes; previews by default.
 - `tools/update_userscript_allowlists.py`: validates canonical decisions and regenerates sets while preserving retained ID placement.
