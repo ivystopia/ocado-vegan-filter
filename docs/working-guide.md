@@ -4,11 +4,12 @@ Read [AGENTS.md](../AGENTS.md) first. The completed additive review preserves pu
 
 ## Code map
 
-- `ocado-vegan-filter.user.js`: published shopping runtime and embedded ID sets. Preserve runtime behaviour during this additive effort.
+- `ocado-vegan-filter.user.js`: development version 1.8.0, with recorded nonvegan and reviewed conflict states ahead of every positive route. Unrelated shopping behaviour is preserved.
 - `tools/review_current_unknowns.py`: frozen complete current-Unknown queue, fresh independent readings, per-product outcomes and guarded additive activation.
 - `tools/report_unknown_review.py`: read-only reconciliation of complete cohort coverage, independent reading provenance, attempts, token usage and tag/animal contradictions.
 - `tools/codex_evidence.py`: isolated included-plan model calls, admission guards and retained token usage.
 - `tools/published_baseline.py`: protected restoration, source-bound reviews and audit writes; previews by default.
+- `tools/reviewed_safety.py`: source-reviewed safety findings for unblocked Unknown products, with previous-decision preservation and strict export linkage. See `audit/tag-safety-1.8.0/` for the two reviewed tag cases.
 - `tools/update_userscript_allowlists.py`: validates canonical decisions and regenerates sets while preserving retained ID placement.
 - `tools/refresh_catalogue_membership.py`: isolated complete discovery and new-product detail capture, followed by guarded membership import; existing classifications and detailed evidence remain intact.
 - `audit/published-baseline-restart/`: verified release manifest, reviewed source snapshots and completion report.
@@ -57,7 +58,7 @@ node --check ocado-vegan-filter.user.js
 
 The suite uses Selenium with temporary headless Firefox; `FIREFOX_BINARY` chooses the browser. `OCADO_LIVE_TESTS=1` enables live Ocado checks. Report skipped live checks. Injecting a script in temporary Firefox does not verify installed FireMonkey.
 
-Browser behaviour tests must preserve clickable native Add buttons and links, responsive images and host DOM changes. Reproduce a runtime bug before editing; measure performance changes with `tools/benchmark_ocado_userscript.py`. The published runtime is intentionally unchanged here.
+Browser behaviour tests must preserve clickable native Add buttons and links, responsive images and host DOM changes. Reproduce a runtime bug before editing; measure performance changes with `tools/benchmark_ocado_userscript.py`. The 1.8.0 safety precedence change is deliberately narrow; no catalogue review or model benchmark is repeated for it.
 
 ## Recovery
 

@@ -11,6 +11,7 @@ from unittest import mock
 
 sys.path.insert(0, str(Path(__file__).resolve().parents[1] / "tools"))
 import published_baseline as policy
+import reviewed_safety as safety
 import update_userscript_allowlists as export
 import classify_ocado_vegan as legacy
 import sync_ocado_database as legacy_sync
@@ -82,6 +83,84 @@ class PublishedBaselineTests(unittest.TestCase):
         sets = export.load_allowlists(self.conn)
         self.assertEqual(sets["INGREDIENTS_VEGAN_PRODUCT_IDS"], ["1", "3"])
         self.assertEqual(sets["KNOWN_NON_VEGAN_PRODUCT_IDS"], ["2"])
+
+    def safety_reviews(self):
+        for name, kind in {"vegan_positive_block": "INTEGER DEFAULT 0", "vegan_audit_id": "INTEGER",
+                           "vegan_evidence_hash": "TEXT", "vegan_policy_version": "TEXT"}.items():
+            self.conn.execute(f"ALTER TABLE products ADD COLUMN {name} {kind}")
+        self.conn.execute("UPDATE products SET ingredients='Apples',detailed_description='Includes milk chocolate' WHERE id='3'")
+        self.restore()
+        reviews = []
+        for pid, status, finding, support in [
+            ("3", "unknown", "unresolved_evidence_conflict", [{"field": "ingredients", "quote": "Apples"}, {"field": "detailed_description", "quote": "Includes milk chocolate"}]),
+            ("4", "nonvegan", "confirmed_animal_ingredient", [{"field": "ingredients", "quote": "Carrot, butter"}]),
+        ]:
+            context = policy.source_context(self.conn, pid)
+            reviews.append({"product_id": pid, "status": status, "finding": finding, "context": context,
+                            "context_hash": policy.digest(context), "rationale": "Reviewed source evidence.",
+                            "support": support, "reviewed_by": "test reviewer", "reviewed_on": "2026-10-18",
+                            "scope": "complete product; evidenced material concerns only"})
+        return reviews
+
+    def test_safety_decisions_export_with_previous_audit_linkage(self):
+        reviews = self.safety_reviews()
+        previous = self.conn.execute("SELECT vegan_audit_id FROM products WHERE id='4'").fetchone()[0]
+        with self.conn:
+            safety.apply_reviews(self.conn, reviews)
+        sets = export.load_allowlists(self.conn)
+        self.assertEqual(sets["KNOWN_NON_VEGAN_PRODUCT_IDS"], ["2", "4"])
+        self.assertEqual(sets["BLOCKED_UNKNOWN_PRODUCT_IDS"], ["3"])
+        row = self.conn.execute("SELECT a.evidence_json FROM product_vegan_classification_audit a JOIN products p ON p.vegan_audit_id=a.id WHERE p.id='4'").fetchone()
+        self.assertEqual(json.loads(row[0])["previous_decision"]["vegan_audit_id"], previous)
+        with self.assertRaisesRegex(ValueError, "unblocked unknown"):
+            safety.apply_reviews(self.conn, reviews)
+        with self.assertRaisesRegex(ValueError, "Resolve the reviewed conflict"):
+            policy.apply_reviews(self.conn, [self.review()])
+
+    def test_safety_rejects_changed_source_and_invented_quotes(self):
+        reviews = self.safety_reviews()
+        reviews[0]["support"][0]["quote"] = "not in the source"
+        with self.assertRaisesRegex(ValueError, "quotation"):
+            safety.apply_reviews(self.conn, reviews)
+        self.assertFalse(self.conn.execute("SELECT 1 FROM sqlite_master WHERE name=?", (safety.TABLE,)).fetchone())
+        reviews[0]["support"][0]["quote"] = "Apples"
+        with self.conn:
+            safety.apply_reviews(self.conn, reviews)
+        self.conn.execute("UPDATE products SET ingredients='New recipe' WHERE id='4'")
+        with self.assertRaisesRegex(ValueError, "Stale safety evidence"):
+            export.load_allowlists(self.conn)
+
+    def test_safety_rejects_cleared_block_and_missing_audit(self):
+        reviews = self.safety_reviews()
+        with self.conn:
+            safety.apply_reviews(self.conn, reviews)
+        self.conn.execute("UPDATE products SET vegan_positive_block=0 WHERE id='3'")
+        with self.assertRaisesRegex(ValueError, "canonical decision"):
+            export.load_allowlists(self.conn)
+        self.conn.rollback()
+        self.conn.execute("DELETE FROM product_vegan_classification_audit WHERE id=(SELECT audit_id FROM reviewed_safety_decisions WHERE product_id='4')")
+        with self.assertRaisesRegex(ValueError, "audit linkage"):
+            export.load_allowlists(self.conn)
+
+    def test_unreviewed_block_cannot_change_published_positive(self):
+        self.safety_reviews()
+        self.conn.execute("UPDATE products SET vegan_positive_block=1 WHERE id='1'")
+        with self.assertRaisesRegex(ValueError, "Unreviewed"):
+            export.load_allowlists(self.conn)
+
+    def test_safety_application_rolls_back_all_rows_on_failure(self):
+        reviews = self.safety_reviews()
+        before = self.conn.execute("SELECT id,vegan_status,vegan_audit_id FROM products ORDER BY id").fetchall()
+        real_write = policy.write_decision
+        def fail_second(*args, **kwargs):
+            if args[2] == "4":
+                raise ValueError("injected write failure")
+            return real_write(*args, **kwargs)
+        with self.assertRaisesRegex(ValueError, "injected write failure"), self.conn:
+            with mock.patch.object(policy, "write_decision", side_effect=fail_second):
+                safety.apply_reviews(self.conn, reviews)
+        self.assertEqual(self.conn.execute("SELECT id,vegan_status,vegan_audit_id FROM products ORDER BY id").fetchall(), before)
+        policy.validate(self.conn)
 
     def test_changed_animal_ingredients_reject_review(self):
         self.restore()

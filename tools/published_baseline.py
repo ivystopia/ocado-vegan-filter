@@ -114,6 +114,11 @@ def validate(conn):
         if audit != (pid, "vegan", review["reason"], review["context_hash"], record_json):
             raise ValueError(f"Review audit linkage mismatch: {pid}")
         expected[pid] = ("vegan", review["reason"])
+    from reviewed_safety import validated_decisions
+    safety = validated_decisions(conn)
+    if set(safety) & set(expected):
+        raise ValueError("Safety review cannot overwrite protected published/reviewed classifications")
+    expected.update(safety)
     actual = {
         pid: (status, reason)
         for pid, status, reason in conn.execute("SELECT id, vegan_status, vegan_reason FROM products")
@@ -163,14 +168,14 @@ def validate_review(conn, review):
     # This validates provenance, not semantic truth. Each record is explicitly reviewed.
 
 
-def new_run(conn, mode, count):
+def new_run(conn, mode, count, *, classifier_version=VERSION):
     return conn.execute(
         "INSERT INTO vegan_classification_runs(started_at_epoch,status,mode,classifier_version,total_products) VALUES (?,'running',?,?,?)",
-        (int(time.time()), mode, VERSION, count),
+        (int(time.time()), mode, classifier_version, count),
     ).lastrowid
 
 
-def write_decision(conn, run, pid, status, reason, evidence, summary, *, source="rule"):
+def write_decision(conn, run, pid, status, reason, evidence, summary, *, source="rule", classifier_version=VERSION):
     if source not in {"rule", "codex"}:
         raise ValueError("Invalid reviewed decision source")
     stamp = int(time.time())
@@ -180,14 +185,14 @@ def write_decision(conn, run, pid, status, reason, evidence, summary, *, source=
         (run_id,product_id,source,vegan_status,vegan_reason,confidence,summary,evidence_json,
          context_hash,classifier_version,classified_at_epoch)
         VALUES (?,?,?,?,?,'high',?,?,?,?,?)""",
-        (run, pid, source, status, reason, summary, encoded(evidence), context_hash, VERSION, stamp),
+        (run, pid, source, status, reason, summary, encoded(evidence), context_hash, classifier_version, stamp),
     ).lastrowid
     values = {
         "vegan_status": status,
         "vegan_reason": reason,
-        "vegan_classifier_version": VERSION,
+        "vegan_classifier_version": classifier_version,
         "vegan_classified_at_epoch": stamp,
-        "vegan_policy_version": VERSION,
+        "vegan_policy_version": classifier_version,
         "vegan_evidence_hash": context_hash,
         "vegan_positive_block": 0,
         "vegan_audit_id": aid,
@@ -271,6 +276,8 @@ def apply_reviews(conn, reviews, *, source="rule"):
         ).fetchone()
         if row != ("unknown", None):
             raise ValueError("Only unknown products may be promoted")
+        if "vegan_positive_block" in {r[1] for r in conn.execute("PRAGMA table_info(products)")} and conn.execute("SELECT 1 FROM products WHERE id=? AND vegan_positive_block=1", (review["product_id"],)).fetchone():
+            raise ValueError("Resolve the reviewed conflict before promoting this product")
     run = new_run(conn, "reviewed-unknown-additions", len(reviews))
     for review in reviews:
         aid = write_decision(

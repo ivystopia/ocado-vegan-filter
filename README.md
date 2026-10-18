@@ -32,7 +32,7 @@ The filter is cosmetic only. Product links still work, and the real Ocado `Add` 
 
 ## How Products Are Treated As Vegan
 
-The script treats a product as vegan when any of these are true:
+Provided there is no recorded non-vegan evidence or reviewed unresolved conflict, the script treats a product as vegan when any of these are true:
 
 - Ocado officially tags it as vegan.
 - The product name contains the standalone word `vegan`.
@@ -40,7 +40,7 @@ The script treats a product as vegan when any of these are true:
 - A published manufacturer statement confirms the matched product or range, with its source and scope retained in the offline audit.
 - Embedded catalogue data supports a conservative vegan-by-ingredients classification.
 
-Live or embedded official Ocado vegan metadata is authoritative and takes precedence over the script's embedded non-vegan evidence.
+Recorded non-vegan evidence takes precedence over every positive route, including live Ocado vegan tags. Reviewed unresolved conflicts remain `Unknown vegan` even if a live tag, page metadata, name or embedded positive entry says vegan. Ordinary Unknown products without a recorded conflict can still qualify from positive evidence.
 
 `Not vegan` means that the offline audit found affirmative non-vegan evidence. `Unknown vegan` means that the stored evidence is insufficient to establish either vegan or non-vegan status safely.
 

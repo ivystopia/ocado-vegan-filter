@@ -1,0 +1,35 @@
+{
+  "run_id": 314,
+  "decisions": {
+    "527870011": "nonvegan",
+    "563256011": "unknown"
+  },
+  "previous_decisions": {
+    "527870011": {
+      "id": "527870011",
+      "vegan_status": "unknown",
+      "vegan_reason": null,
+      "vegan_positive_block": 0,
+      "vegan_audit_id": 2517280,
+      "vegan_evidence_hash": null,
+      "vegan_classifier_version": "published-baseline-1.7.2-reviewed-v1",
+      "vegan_policy_version": "published-baseline-1.7.2-reviewed-v1",
+      "vegan_classified_at_epoch": 1792333675
+    },
+    "563256011": {
+      "id": "563256011",
+      "vegan_status": "unknown",
+      "vegan_reason": null,
+      "vegan_positive_block": 0,
+      "vegan_audit_id": 2520725,
+      "vegan_evidence_hash": null,
+      "vegan_classifier_version": "published-baseline-1.7.2-reviewed-v1",
+      "vegan_policy_version": "published-baseline-1.7.2-reviewed-v1",
+      "vegan_classified_at_epoch": 1792333675
+    }
+  },
+  "backup": {
+    "path": ".rollback-work/tag-safety-1.8.0/before-safety-decisions.json.gz",
+    "sha256": "20d0b065415bafd2096ab45caabb4d69a84fe4fc4454da97f606706d098a61f8"
+  }
+}

@@ -1,0 +1,56 @@
+{
+  "classification_changes": {
+    "527870011": {
+      "before": [
+        "unknown",
+        null,
+        0,
+        2517280
+      ],
+      "after": [
+        "nonvegan",
+        null,
+        0,
+        2564434
+      ]
+    },
+    "563256011": {
+      "before": [
+        "unknown",
+        null,
+        0,
+        2520725
+      ],
+      "after": [
+        "unknown",
+        null,
+        1,
+        2564435
+      ]
+    }
+  },
+  "published_and_reviewed_positive_ids_unchanged": true,
+  "previous_nonvegan_ids_preserved": true,
+  "vegan_count": 24144,
+  "nonvegan_count": 13934,
+  "blocked_unknown_count": 1,
+  "script_sha256": "9dbe1c17fe15584ef0e7467d7c7f2e2f93f4b1d9a71f459414a414fab08ea7fd",
+  "export_matches_database": true,
+  "version": "1.8.0",
+  "tests": {
+    "run": 159,
+    "passed": 158,
+    "skipped": 1,
+    "temporary_firefox_fixtures": "passed",
+    "optional_live_ocado_check": "skipped",
+    "installed_firemonkey": "unchanged, not tested"
+  },
+  "syntax": "node --check and Python compilation passed",
+  "final_export_dry_run": "zero additions/removals in every set",
+  "test_log_sha256": "a872c265779ed32b570a402be6270c4e6548609c053d77e347d8996f333dc962",
+  "code_sha256": {
+    "tools/reviewed_safety.py": "b450596eedd32b1bf63deee436a8fe67f25a3b3a1488c349414f01c9dc2e572b",
+    "tools/published_baseline.py": "38ac32020b104621b729ab53a24be1a81a85f3e6ee34585b38f20e53a5a3a037",
+    "tools/update_userscript_allowlists.py": "cc2c3d796d3a42c91649d6bd1694036f4f65f29ea3b8c9bfab625b501c6bd1a6"
+  }
+}

@@ -1,8 +1,8 @@
 // ==UserScript==
 // @name        Ocado Vegan Filter
-// @version     1.7.2
+// @version     1.8.0
 // @license     Unlicense
-// @description Supplement Ocado's incomplete vegan labelling with over 19,000 recognised vegan products.
+// @description Supplement Ocado's incomplete vegan labelling with over 24,000 recognised vegan products.
 // @match       https://www.ocado.com/*
 // @run-at      document-idle
 // @inject-into page
@@ -21,7 +21,8 @@
  * Additional vegan product IDs recognised by this script: 19,332
  * Manufacturer/name evidence product IDs: 10,444
  * Ingredients evidence product IDs: 8,888
- * Known non-vegan product IDs: 13,933
+ * Known non-vegan product IDs: 13,934
+ * Unresolved-conflict product IDs: 1
  *
  * These counts are generated from the embedded product ID sets below. Update
  * them whenever the sets are regenerated.
@@ -79,7 +80,8 @@
  * Products treated as vegan keep their normal appearance and retain the normal
  * yellow "Add" button. A product is treated as vegan when Ocado identifies it as
  * vegan, when the product name explicitly says vegan, or when its product ID is
- * present in one of the embedded vegan ID sets below.
+ * present in one of the embedded vegan ID sets below, unless recorded non-vegan
+ * evidence or an unresolved conflict takes precedence.
  *
  * Known non-vegan and unknown products are visually de-emphasised. Their
  * product image is faded and fully desaturated, promotional red text is muted,
@@ -95,8 +97,8 @@
  *
  * - OFFICIAL_VEGAN_PRODUCT_IDS contains products Ocado officially tagged
  *   vegan. It acts as a fallback when Ocado hides the vegan icon in a
- *   product grid. Official Ocado vegan metadata is authoritative and takes
- *   precedence over local non-vegan evidence.
+ *   product grid. Recorded non-vegan evidence and unresolved conflicts take
+ *   precedence over this set and live Ocado vegan metadata.
  * - MANUFACTURER_OR_NAME_VEGAN_PRODUCT_IDS contains products where the Ocado
  *   page content explicitly says the product is suitable for vegans, or where
  *   the product name itself contains the standalone word "vegan".
@@ -106,6 +108,8 @@
  * - KNOWN_NON_VEGAN_PRODUCT_IDS contains products with affirmative non-vegan
  *   evidence in the local audit. Products in neither a vegan set nor this set
  *   are treated as unknown, rather than assumed non-vegan.
+ * - BLOCKED_UNKNOWN_PRODUCT_IDS contains reviewed unresolved conflicts. These
+ *   remain unknown even when a live tag, name, URL or embedded positive says vegan.
  *
  * The script is intentionally self-contained for shopping use: it does not fetch
  * product detail pages in the background and does not contact any third-party
@@ -5425,6 +5429,15 @@
   702738011 702739011 702740011 702741011 702742011 702743011 702744011 702745011
   702746011 702747011 702748011 702749011 702750011 702751011 702752011 702753011
   702754011 702755011
+  527870011
+  `
+      .trim()
+      .split(/\s+/),
+  );
+
+  const BLOCKED_UNKNOWN_PRODUCT_IDS = new Set(
+    `
+  563256011
   `
       .trim()
       .split(/\s+/),
@@ -5864,15 +5877,19 @@
   function veganStatusForCard(card) {
     const productId = productIdForCard(card);
 
-    /*
-     * Positive evidence is intentionally checked before the known non-vegan
-     * fallback. In particular, Ocado's official metadata is authoritative.
-     */
+    // These source-reviewed safeguards apply to every positive route, including
+    // live tags, hydration metadata, names and stale embedded positive entries.
+    if (isKnownNonVeganProductId(productId)) {
+      return "nonvegan";
+    }
+    if (BLOCKED_UNKNOWN_PRODUCT_IDS.has(productId)) {
+      return "unknown";
+    }
     if (isKnownVeganProductId(productId) || hasOfficialVeganTag(card) || productNameOrSlugSaysVegan(card) || hydrationProductHasVeganAttribute(productId)) {
       return "vegan";
     }
 
-    return isKnownNonVeganProductId(productId) ? "nonvegan" : "unknown";
+    return "unknown";
   }
 
   function processCard(card) {

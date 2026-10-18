@@ -6,7 +6,7 @@
 - Read `docs/working-guide.md`, inspect `git status --short --branch` and recent commits before editing, and preserve unrelated work.
 - The user has cancelled the broad whole-product reclassification. The current foundation is the published **1.7.2** script and its classifications, plus reviewed unknown additions. The complete 20,931-product current-Unknown review is finished: see `audit/current-unknown-review/README.md`. Preserve its valid decisions and source records; do not rerun completed work merely to resume this conversation. Do not resume old coordinators, reclassify the published vegan population, or impose a new catalogue-wide benchmark/audit programme.
 - Keep the fresh scraped product facts, previous database audit history and local recovery archives. Superseded implementation lives in Git history; it is not the active workflow.
-- Work on `dev`, keep version 1.7.2 for testing, and do not tag, advance `main`, push, publish or update installed FireMonkey without a new request.
+- Work on `dev`, keep the user-requested development version **1.8.0** for testing, and do not tag, advance `main`, push, publish or update installed FireMonkey without a new request. Changing script metadata does not authorize a Git tag or installation.
 
 ## Source of truth and safety
 
@@ -40,11 +40,12 @@
 - Use the included ChatGPT plan only; no paid/API fallback, automatic model upgrade or allowance reset. The supervising model does not select the bulk classifier.
 - Manufacturer research, when needed, is a brief check of applicable official product pages or FAQs. Retain exact source, scope, URL and date; an unsuccessful check leaves unknown. Do not deep-crawl or reopen the previous exhaustive research programme.
 - Run `tools/update_userscript_allowlists.py --dry-run` before regeneration. It checks exact published classifications plus source-bound reviewed additions, including historical IDs. New scraped flags do not silently overwrite the restored baseline.
+- Record individually reviewed animal-content findings and unresolved conflicts using `tools/reviewed_safety.py`, with source quotes, hashes, previous decisions and audit links. Preview before transactional application with a verified logical backup. This narrow safety workflow accepts unblocked Unknown products; it cannot rewrite protected published/reviewed positives. Retained conflict rows from the cancelled broad migration are historical, not current promotion blocks.
 
 ## Userscript and browser
 
-- Edit the repo copy `ocado-vegan-filter.user.js`; keep it self-contained. Preserve the published runtime during this additive effort. Change only the relevant embedded IDs and generated counts, keeping retained ID order and line placement.
-- Keep separate manufacturer/name and ingredients ID sets and preserve the nonvegan set. Product links and the real Ocado Add button must remain clickable; de-emphasis must not disable shopping.
+- Edit the repo copy `ocado-vegan-filter.user.js`; keep it self-contained. Runtime precedence is recorded nonvegan, reviewed blocked Unknown, then positive evidence, then ordinary Unknown. No live Ocado tag, hydration attribute, name/URL claim or stale embedded positive can override either safety state. Keep unrelated runtime behaviour and retained ID order/line placement intact.
+- Keep separate manufacturer/name and ingredients ID sets, a known-nonvegan set, and `BLOCKED_UNKNOWN_PRODUCT_IDS` exported from reviewed canonical promotion blocks. Generic Unknown is not automatically a conflict. Product links and the real Ocado Add button must remain clickable; de-emphasis must not disable shopping.
 - Preserve responsive image sources, host-owned DOM updates and native button handlers. Follow the Firefox guidance before any runtime change; reproduce behaviour defects in temporary Firefox before fixing them.
 - Do not close or restart real Firefox without explicit authorization. No blind GUI keystrokes.
 - The installed manager is FireMonkey. A later requested release installs the exact tagged source using `docs/firemonkey-installation.md`; local development does not.

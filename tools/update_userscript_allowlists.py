@@ -40,10 +40,12 @@ def validate_export_readiness(conn: sqlite3.Connection) -> None:
 
 
 def validate_official_tag_precedence(conn: sqlite3.Connection) -> None:
+    columns = {row[1] for row in conn.execute("PRAGMA table_info(products)")}
+    blocked = "p.vegan_positive_block = 1" if "vegan_positive_block" in columns else "0"
     conflicts = [
         row[0]
         for row in conn.execute(
-            """
+            f"""
             SELECT p.id
             FROM products AS p
             WHERE (
@@ -53,10 +55,8 @@ def validate_official_tag_precedence(conn: sqlite3.Connection) -> None:
                     WHERE f.product_id = p.id AND f.flag = 'vegan'
                 )
               )
-              AND (
-                p.vegan_status IS NOT 'vegan'
-                OR p.vegan_reason IS NOT 'tagged'
-              )
+              AND NOT (p.vegan_status IS 'nonvegan' OR (p.vegan_status IS 'unknown' AND COALESCE(({blocked}), 0)))
+              AND (p.vegan_status IS NOT 'vegan' OR p.vegan_reason IS NOT 'tagged')
             ORDER BY CAST(p.id AS INTEGER), p.id
             """
         )
@@ -84,6 +84,14 @@ def load_allowlists(conn: sqlite3.Connection) -> dict[str, list[str]]:
             f"SELECT id FROM products WHERE {status_clause} ORDER BY CAST(id AS INTEGER), id"
         )
         result[name] = [row[0] for row in rows]
+    columns = {row[1] for row in conn.execute("PRAGMA table_info(products)")}
+    result["BLOCKED_UNKNOWN_PRODUCT_IDS"] = []
+    if "vegan_positive_block" in columns:
+        if conn.execute("SELECT 1 FROM products WHERE vegan_positive_block = 1 AND vegan_status IS NOT 'unknown'").fetchone():
+            raise ValueError("A promotion block must have canonical unknown status")
+        result["BLOCKED_UNKNOWN_PRODUCT_IDS"] = [r[0] for r in conn.execute(
+            "SELECT id FROM products WHERE vegan_positive_block = 1 ORDER BY CAST(id AS INTEGER), id"
+        )]
     return result
 
 
@@ -130,6 +138,7 @@ def update_counts(source: str, allowlists: dict[str, list[str]]) -> str:
         "Manufacturer/name evidence product IDs": manufacturer,
         "Ingredients evidence product IDs": ingredients,
         "Known non-vegan product IDs": nonvegan,
+        "Unresolved-conflict product IDs": len(allowlists["BLOCKED_UNKNOWN_PRODUCT_IDS"]),
     }
     for label, value in replacements.items():
         source, count = re.subn(rf"(\* {re.escape(label)}: )[\d,]+", rf"\g<1>{value:,}", source, count=1)
@@ -162,7 +171,7 @@ def main() -> int:
     args = parser.parse_args()
 
     source = args.userscript.read_text(encoding="utf-8")
-    before = {name: extract_set(source, name) for name in SET_QUERIES}
+    before = {name: extract_set(source, name) for name in (*SET_QUERIES, "BLOCKED_UNKNOWN_PRODUCT_IDS")}
     with closing(sqlite3.connect(f"file:{args.db}?mode=ro", uri=True)) as conn:
         allowlists = load_allowlists(conn)
     updated = regenerate(source, allowlists, args.version)

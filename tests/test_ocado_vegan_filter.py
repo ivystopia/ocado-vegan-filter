@@ -176,7 +176,7 @@ def fixture_smoke_test() -> None:
         <svg id="vegan"></svg>
         <button data-test="counter-button" aria-label="Add Unowned Native Opacity">Add</button>
       </article>
-      <article class="product-card-container" id="official-overrides-known-nonvegan">
+      <article class="product-card-container" id="known-nonvegan-overrides-official">
         <a href="https://www.ocado.com/products/example-live-vegan-17959011"><img></a>
         <svg id="vegan"></svg>
         <button data-test="counter-button" aria-label="Add Example Live Vegan">Add</button>
@@ -290,7 +290,7 @@ def fixture_smoke_test() -> None:
         rows = driver.execute_script(
             """
             const {unknownHoverText, unknownLeaveText, knownNonveganHoverText, knownNonveganLeaveText} = arguments[0];
-            return Object.fromEntries(['ready', 'ready-hyphen', 'cajun', 'cajun-hyphen', 'official', 'unowned-native-opacity', 'official-overrides-known-nonvegan', 'official-hidden-icon', 'name-vegan', 'hydration-vegan', 'late-hydration-vegan', 'stale-vegan', 'ingredients-beans', 'ingredients-pasta', 'features-gherkins', 'unknown', 'known-nonvegan'].map(id => {
+            return Object.fromEntries(['ready', 'ready-hyphen', 'cajun', 'cajun-hyphen', 'official', 'unowned-native-opacity', 'known-nonvegan-overrides-official', 'official-hidden-icon', 'name-vegan', 'hydration-vegan', 'late-hydration-vegan', 'stale-vegan', 'ingredients-beans', 'ingredients-pasta', 'features-gherkins', 'unknown', 'known-nonvegan'].map(id => {
               const card = document.getElementById(id);
               const button = card.querySelector('button');
               const img = card.querySelector('img');
@@ -401,7 +401,6 @@ def fixture_smoke_test() -> None:
         "cajun",
         "cajun-hyphen",
         "official",
-        "official-overrides-known-nonvegan",
         "official-hidden-icon",
         "name-vegan",
         "hydration-vegan",
@@ -420,6 +419,7 @@ def fixture_smoke_test() -> None:
     assert_card_state(rows, "unknown", muted=True, label="Unknown vegan")
     assert_card_state(rows, "late-hydration-vegan", muted=True, label="Unknown vegan", check_link_target=False)
     assert_card_state(rows, "known-nonvegan", muted=True, label="Not vegan", check_link_target=False)
+    assert_card_state(rows, "known-nonvegan-overrides-official", muted=True, label="Not vegan", check_link_target=False)
     assert click_counts == {"add": 1, "image": 1}, click_counts
     assert rows["unknown"]["unknownHoverText"] == "Add anyway", rows["unknown"]
     assert rows["unknown"]["unknownLeaveText"] == "Unknown vegan", rows["unknown"]
@@ -834,6 +834,77 @@ def additional_vegan_search_smoke_test() -> None:
 
 
 class UserscriptTests(unittest.TestCase):
+    def test_safety_precedence_survives_hydration_stale_lists_and_card_reuse(self) -> None:
+        html = '''<!doctype html><main>
+          <article class="product-card-container" id="conflict">
+            <a href="https://www.ocado.com/products/563256011">Sample<img></a>
+            <button data-test="counter-button" aria-label="Add sample" onclick="window.addClicks++">Add</button>
+          </article>
+          <article class="product-card-container" id="negative">
+            <a href="https://www.ocado.com/products/17959011">Sample<img></a>
+            <button data-test="counter-button" aria-label="Add sample">Add</button>
+          </article>
+          <article class="product-card-container" id="control">
+            <a href="https://www.ocado.com/products/999880011">Sample<img></a>
+            <button data-test="counter-button" aria-label="Add sample">Add</button>
+          </article>
+        </main><script>window.addClicks=0;</script>'''
+        # Deliberately stale positive membership must not defeat safety evidence.
+        source = userscript()
+        marker = "const OFFICIAL_VEGAN_PRODUCT_IDS = new Set(\n    `"
+        self.assertIn(marker, source)
+        source = source.replace(marker, marker + "\n  563256011 17959011", 1)
+        driver = headless_firefox()
+        self.addCleanup(driver.quit)
+        driver.get("data:text/html;base64," + base64.b64encode(html.encode()).decode())
+        driver.execute_script(source)
+        wait = WebDriverWait(driver, 5)
+        def label(card):
+            return driver.find_element(By.CSS_SELECTOR, f"#{card} button").text
+        wait.until(lambda d: label("control") == "Unknown vegan")
+        self.assertEqual(label("conflict"), "Unknown vegan")
+        self.assertEqual(label("negative"), "Not vegan")
+        driver.execute_script('''
+          window.__INITIAL_STATE__ = {data:{products: Object.fromEntries(
+            ['563256011','17959011','999880011'].map(id=>[id,{retailerProductId:id,attributes:[{icon:'vegan',label:'Vegan'}]}])
+          )}};
+          document.querySelector('#control a').textContent='Updated product';
+        ''')
+        wait.until(lambda d: label("control") == "Add")
+        self.assertEqual(label("conflict"), "Unknown vegan")
+        self.assertEqual(label("negative"), "Not vegan")
+        # The native button stays clickable and reusing the card rechecks its ID.
+        driver.execute_script("document.querySelector('#conflict button').click(); document.querySelector('#conflict a').href='https://www.ocado.com/products/511102011';")
+        wait.until(lambda d: label("conflict") == "Add")
+        driver.execute_script("document.querySelector('#conflict a').href='https://www.ocado.com/products/563256011';")
+        wait.until(lambda d: label("conflict") == "Unknown vegan")
+        driver.execute_script("document.querySelector('#conflict button').click()")
+        self.assertEqual(driver.execute_script("return window.addClicks"), 2)
+
+    def test_safety_evidence_precedes_live_vegan_tags(self) -> None:
+        cases = [("17959011", "Not vegan"), ("527870011", "Not vegan"), ("563256011", "Unknown vegan")]
+        html = '<!doctype html><main>' + ''.join(
+            f'''<article class="product-card-container" id="p{pid}">
+              <a href="https://www.ocado.com/products/vegan-sample/{pid}" onclick="window.linkClicks++;return false">Vegan sample<img></a>
+              <svg data-test="product-card-lifestyle-vegan"></svg>
+              <button data-test="counter-button" aria-label="Add vegan sample" onclick="window.addClicks++">Add</button>
+            </article>''' for pid, _ in cases
+        ) + '</main><script>window.addClicks=0;window.linkClicks=0;</script>'
+        driver = headless_firefox()
+        self.addCleanup(driver.quit)
+        driver.get("data:text/html;base64," + base64.b64encode(html.encode()).decode())
+        driver.execute_script(userscript())
+        WebDriverWait(driver, 5).until(lambda d: d.execute_script("return document.getElementById('ocado-vegan-filter-style') !== null"))
+        for pid, expected in cases:
+            with self.subTest(product=pid):
+                button = driver.find_element(By.CSS_SELECTOR, f"#p{pid} button")
+                self.assertEqual(button.text, expected)
+                self.assertTrue(button.is_enabled())
+                driver.execute_script("arguments[0].click()", button)
+                driver.find_element(By.CSS_SELECTOR, f"#p{pid} a").click()
+        self.assertEqual(driver.execute_script("return window.addClicks"), 3)
+        self.assertEqual(driver.execute_script("return window.linkClicks"), 3)
+
     def test_cloned_muted_buttons_can_be_reclassified(self) -> None:
         html = """<!doctype html><main><article class="product-card-container">
           <a href="https://www.ocado.com/products/999880011">Sample</a>

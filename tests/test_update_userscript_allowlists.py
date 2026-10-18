@@ -64,7 +64,7 @@ class UpdateUserscriptAllowlistsTests(unittest.TestCase):
         self.assertIn("Additional vegan product IDs recognised by this script: 3", updated)
         self.assertIn("Known non-vegan product IDs: 1", updated)
 
-    def test_load_allowlists_rejects_official_tag_classification_conflicts(self) -> None:
+    def test_nonvegan_can_override_tag_but_unknown_needs_explicit_block(self) -> None:
         conn = sqlite3.connect(":memory:")
         self.addCleanup(conn.close)
         conn.execute(
@@ -80,7 +80,18 @@ class UpdateUserscriptAllowlistsTests(unittest.TestCase):
         )
         conn.execute("insert into product_flags values ('20', 'vegan')")
 
-        with self.assertRaisesRegex(ValueError, "Refusing to export 2 products"):
+        with self.assertRaisesRegex(ValueError, "Refusing to export 1 products"):
+            generator.load_allowlists(conn)
+        conn.execute("ALTER TABLE products ADD COLUMN vegan_positive_block INTEGER DEFAULT 0")
+        conn.execute("UPDATE products SET vegan_positive_block=1 WHERE id='20'")
+        sets = generator.load_allowlists(conn)
+        self.assertEqual(sets["KNOWN_NON_VEGAN_PRODUCT_IDS"], ["10"])
+        self.assertEqual(sets["BLOCKED_UNKNOWN_PRODUCT_IDS"], ["20"])
+        updated = generator.regenerate((ROOT / "ocado-vegan-filter.user.js").read_text(), sets)
+        self.assertEqual(generator.extract_set(updated, "BLOCKED_UNKNOWN_PRODUCT_IDS"), {"20"})
+        self.assertIn("Unresolved-conflict product IDs: 1", updated)
+        conn.execute("UPDATE products SET vegan_status='vegan',vegan_reason='tagged' WHERE id='20'")
+        with self.assertRaisesRegex(ValueError, "canonical unknown"):
             generator.load_allowlists(conn)
 
     def test_dry_run_does_not_write_userscript(self) -> None:

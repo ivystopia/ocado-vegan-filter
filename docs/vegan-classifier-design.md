@@ -22,7 +22,11 @@ Each accepted record retains the complete selected SQLite source fields, flags, 
 
 `tools/update_userscript_allowlists.py` recognizes the protected baseline and requires exact agreement with its published decisions plus recorded additions. It rejects unreviewed promotions, demotions, removed baseline IDs, stale reviews and missing review audits. The old unconditional official-tag invariant is inapplicable to this deliberate restoration: newer scraped flags remain evidence, not permission to rewrite the historical decision set.
 
-The userscript's published runtime is unchanged. Export preserves retained ID positions and changes only additions and counts. No blocked-unknown set or whole-product coordinator is part of the active implementation.
+The user-requested 1.8.0 runtime checks recorded nonvegan evidence first, reviewed unresolved conflicts second, then existing positive routes. Live tags, hydration metadata, names/URLs and stale embedded positives cannot override a safety state. Export preserves retained ID positions. Ordinary Unknown products are not automatically blocked.
+
+`tools/reviewed_safety.py` records explicit source-reviewed findings for previously unblocked Unknown products. Confirmed animal ingredients produce `nonvegan`; conflicting identity/composition evidence produces `unknown` with `vegan_positive_block=1`. It preserves the complete source context and exact quotations, records previous classification/audit linkage, and writes canonical decisions transactionally after a verified logical backup. The protected baseline validator requires matching reviewed safety records, audit links, unchanged source hashes and block state. Missing records, stale evidence or clearing a block without review stop export. The exporter generates `BLOCKED_UNKNOWN_PRODUCT_IDS` from these canonical blocks; it never resurrects historical conflict rows from the cancelled migration. Resolving a blocked product requires a separately reviewed correction; the ordinary additions writer cannot promote it.
+
+The two initial safety decisions are retained in `audit/tag-safety-1.8.0/`. The 20,931-product review remains complete and its original scores/outcomes remain unchanged; the new safety records supersede the two canonical decisions with their own audit trail. Development stays local on `dev` without a tag, push or installed FireMonkey update.
 
 ## Complete current-Unknown review
 
