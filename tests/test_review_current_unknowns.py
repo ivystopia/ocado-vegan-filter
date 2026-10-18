@@ -90,6 +90,25 @@ class ReviewTests(unittest.TestCase):
         with self.assertRaises(ValueError):
             review.validate_payload({"decisions": [decision(status="unknown")]}, [context()])
 
+    def test_unknown_quote_field_repair_requires_unique_exact_source(self):
+        c = context()
+        c["product"].update(ingredients="Vitamins B3, B5, D", detailed_description="Contains Vitamin D")
+        d = decision(status="unknown", reason=None)
+        d["support"] = [{"field": "ingredients", "quote": "Vitamin D"}]
+        result = review.validate_payload({"decisions": [d]}, [c])["1"]
+        self.assertEqual(result["support"], [{"field": "detailed_description", "quote": "Vitamin D"}])
+        self.assertEqual(d["support"][0]["field"], "ingredients")
+        ambiguous = copy.deepcopy(c)
+        ambiguous["product"]["features"] = "Vitamin D added"
+        with self.assertRaises(ValueError):
+            review.validate_payload({"decisions": [d]}, [ambiguous])
+        for status in ("vegan", "nonvegan"):
+            bad = copy.deepcopy(d)
+            bad["status"] = status
+            bad["reason"] = "ingredients" if status == "vegan" else None
+            with self.assertRaises(ValueError):
+                review.validate_payload({"decisions": [bad]}, [c])
+
     def test_arbitration_disagreement_remains_unknown(self):
         yes = decision()
         no = decision(status="unknown", reason=None)

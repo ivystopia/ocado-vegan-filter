@@ -210,6 +210,23 @@ def validate_payload(payload, contexts):
                 # Decimal points and other punctuation remain strict.
                 # no word, identity, status or positive evidence is inferred.
                 quote["quote"] = product["name"]
+            if (
+                item.get("status") == "unknown"
+                and isinstance(field, str)
+                and isinstance(quote.get("quote"), str)
+                and quote["quote"].strip()
+                and isinstance(product.get(field), str)
+                and quote["quote"] not in product[field]
+            ):
+                matches = [
+                    key
+                    for key, value in product.items()
+                    if isinstance(value, str) and quote["quote"] in value
+                ]
+                if len(matches) == 1:
+                    # Correct only an unambiguous field reference. The quoted
+                    # words already occur verbatim in the same supplied record.
+                    quote["field"] = matches[0]
             retained.append(quote)
         item["support"] = retained
     found = {}
