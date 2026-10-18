@@ -1,0 +1,128 @@
+{
+  "published_version": "1.7.2",
+  "reviewed_additions": 40,
+  "model_calls": 0,
+  "new_to_database": 1202,
+  "no_longer_current": 380,
+  "returned": 44,
+  "category_pages": 6411,
+  "category_failures": 0,
+  "new_details_succeeded": 1202,
+  "new_detail_failures": 0,
+  "catalogue_scope": "Full membership discovery; details for new IDs only. Existing details retained.",
+  "all_known": 59524,
+  "current_on_ocado": 51591,
+  "classifications": [
+    {
+      "status": "nonvegan",
+      "reason": null,
+      "all_known": 13933,
+      "current": 12589
+    },
+    {
+      "status": "unknown",
+      "reason": null,
+      "all_known": 25040,
+      "current": 20931
+    },
+    {
+      "status": "vegan",
+      "reason": "ingredients",
+      "all_known": 6191,
+      "current": 5150
+    },
+    {
+      "status": "vegan",
+      "reason": "manufacturer",
+      "all_known": 9423,
+      "current": 8435
+    },
+    {
+      "status": "vegan",
+      "reason": "name",
+      "all_known": 266,
+      "current": 213
+    },
+    {
+      "status": "vegan",
+      "reason": "tagged",
+      "all_known": 4671,
+      "current": 4273
+    }
+  ],
+  "sets": {
+    "OFFICIAL_VEGAN_PRODUCT_IDS": {
+      "baseline": 4669,
+      "current": 4671,
+      "added": 2,
+      "removed": 0
+    },
+    "MANUFACTURER_OR_NAME_VEGAN_PRODUCT_IDS": {
+      "baseline": 9689,
+      "current": 9689,
+      "added": 0,
+      "removed": 0
+    },
+    "INGREDIENTS_VEGAN_PRODUCT_IDS": {
+      "baseline": 6153,
+      "current": 6191,
+      "added": 38,
+      "removed": 0
+    },
+    "KNOWN_NON_VEGAN_PRODUCT_IDS": {
+      "baseline": 13933,
+      "current": 13933,
+      "added": 0,
+      "removed": 0
+    }
+  },
+  "baseline_runtime_and_retained_layout_unchanged": true,
+  "membership_import": {
+    "new": 1202,
+    "removed": 380,
+    "returned": 44,
+    "current": 51591,
+    "preview": false,
+    "sync_run_id": 8,
+    "retained_product_fields_sha256": "d93ca042526be7160828408fb123d77741b60893def813232497e9345781a219"
+  },
+  "new_products_still_unknown": 1194,
+  "published": false,
+  "tagged_release": false,
+  "installed_firemonkey_updated": false,
+  "retained_capture_manifest": [
+    {
+      "url": "https://www.ocado.com/sitemaps/sitemap_index.xml",
+      "file": "sitemap-0.xml",
+      "sha256": "99d60129aa480ec4e25755cd093b2e6dd5b43f73558049886bc350d0c63ffd89"
+    },
+    {
+      "url": "https://www.ocado.com/sitemaps/sitemap-categories-part1.xml",
+      "file": "sitemap-1.xml",
+      "sha256": "be5dad617e5be9d5c8d455aac058bacc1752c90a01912b609ceab1c7da0de029"
+    },
+    {
+      "url": "https://www.ocado.com/sitemaps/sitemap-products-part1.xml",
+      "file": "sitemap-2.xml",
+      "sha256": "3ce455443a6309b819ec0e7a78e7614972f73a767875e85cdd01c2e4a7d99636"
+    },
+    {
+      "url": "https://www.ocado.com/sitemaps/sitemap-products-part2.xml",
+      "file": "sitemap-3.xml",
+      "sha256": "3835b33465c396f9739b15618f6991184092a1b1a64fc897dfd04f075bc96f7c"
+    }
+  ],
+  "verification": {
+    "unittest_run": 128,
+    "unittest_passed": 127,
+    "skipped": 1,
+    "skip_reason": "Optional live Ocado pages disabled; temporary headless Firefox fixtures passed.",
+    "unittest_seconds": 42.94,
+    "node_syntax": "passed",
+    "python_syntax": "passed",
+    "export_dry_run": "passed; zero pending changes",
+    "firemonkey_installation": "not performed; not requested",
+    "runtime_comparison": "Removing only the reviewed additions and updating counts reproduces the published source SHA-256 exactly."
+  },
+  "userscript_sha256": "35640bdf62aeabc22e13a80043912ae05e18fc0d9d42f8de6124316a5fdcffcc"
+}

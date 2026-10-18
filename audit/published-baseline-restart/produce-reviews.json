@@ -1,0 +1,1972 @@
+{
+  "scope": "First bounded batch of clear ordinary produce; not an exhaustive unknown audit.",
+  "reviews": [
+    {
+      "product_id": "647140011",
+      "reason": "ingredients",
+      "context": {
+        "product": {
+          "id": "647140011",
+          "name": "Kissabel British Apples",
+          "brand": "Worldwide Fruit",
+          "url": "https://www.ocado.com/products/647140011/details",
+          "pack_size": "4 per pack",
+          "official_vegan": 0,
+          "alcohol": 0,
+          "ingredients": null,
+          "allergens": null,
+          "detailed_description": null,
+          "dietary_information": null,
+          "features": "I’m RED inside - discover the taste of nature. Kissabel apples have a natural red flesh, with a sweet and tangy flavour The perfect revitalizing, tasty and natural snack. A collection of red, orange and yellow skin apple, all with a red flesh",
+          "further_description": "www.kissabel.com",
+          "brand_marketing": null,
+          "manufacturer_marketing": null,
+          "manufacturer": "Worldwide Fruit, Apple Way, Wardentree Lane, Spalding, Lincolnshire, PE11 3BB.",
+          "producer": null,
+          "preparation_and_usage": "Wash before use.",
+          "cooking_guidelines": null,
+          "other_information": "Storage: Keep refrigerated.",
+          "package_type": "Wrap",
+          "recycling_information": "Tray - Recycle Film - Recycle with bags at larger supermarkets",
+          "specification": null,
+          "storage": "Refrigerate after purchase. Best served at room temperature.",
+          "recipes": null,
+          "serving_suggestions": null,
+          "country_of_origin": "UK",
+          "country_of_packaging": "UK",
+          "current_vintage": null,
+          "vinification_details": null
+        },
+        "flags": [
+          "vegetarian"
+        ],
+        "categories": [
+          "fresh-chilled-food/fruit/apples",
+          "fresh-chilled-food/in-season/fruit",
+          "fresh-chilled-food/in-season/offers"
+        ]
+      },
+      "context_hash": "5f146aad658f884327e3e13a719ee35761dd07d001fa16ad29e6cc3fef9e405c",
+      "rationale": "Plain produce: Kissabel British Apples. The stored identity and composition support vegan suitability. Ordinary wrapping or missing packaging details provide no evidenced animal-component concern.",
+      "support": [
+        {
+          "field": "name",
+          "quote": "Kissabel British Apples"
+        },
+        {
+          "field": "features",
+          "quote": "I’m RED inside - discover the taste of nature. Kissabel apples have a natural red flesh, with a sweet and tangy flavour The perfect revitalizing, tasty and natural snack. A collection of red, orange and yellow skin apple, all with a red flesh"
+        }
+      ],
+      "reviewed_by": "supervising Codex agent, direct source review (no separate classifier calls)",
+      "reviewed_on": "2026-10-18",
+      "scope": "complete product; evidenced material concerns only"
+    },
+    {
+      "product_id": "540971011",
+      "reason": "ingredients",
+      "context": {
+        "product": {
+          "id": "540971011",
+          "name": "M&S British Egremont Russet Apples",
+          "brand": "M&S",
+          "url": "https://www.ocado.com/products/540971011/details",
+          "pack_size": "4 per pack",
+          "official_vegan": 0,
+          "alcohol": 0,
+          "ingredients": null,
+          "allergens": null,
+          "detailed_description": "M&S Select Farms Egremont Russet Apples Class I British Russet apples, with a nutty sweet flavour and golden russeted skin. 1 of your 5 a day.",
+          "dietary_information": null,
+          "features": "We know and trust, Traditional varieties bursting with flavour, Eat well",
+          "further_description": "Deliciously healthy food Best enjoyed as part of a healthy lifestyle & a balanced varied diet.",
+          "brand_marketing": "M&S Food has been at the heart of the nation since 1884. Giving our customers their best-loved products at the incredible quality and value that only M&S can deliver. From Percy Pig to the freshest M&S Select Farms produce, we grow, source, and develop our own products to give you family-ready food that's unbeatable on flavour and innovation. And that's whether you come to us for your family favourites, an indulgent treat, or your perfect party food spread. After all, this is not just food… This is M&S Food.",
+          "manufacturer_marketing": null,
+          "manufacturer": "Marks and Spencer plc, PO Box 3339, Chester, CH99 9QS, United Kingdom. M&S (Ireland) Ltd, PO Box 13022, Ravensdale, Dublin 2, Ireland.",
+          "producer": null,
+          "preparation_and_usage": "Wash before use.",
+          "cooking_guidelines": null,
+          "other_information": "Storage: Best stored in a fridge. Additional Information: © M&S plc",
+          "package_type": "Tray",
+          "recycling_information": "Film - Recycle with bags at large supermarket - Don't recycle at home",
+          "specification": null,
+          "storage": "Keep Refrigerated",
+          "recipes": null,
+          "serving_suggestions": null,
+          "country_of_origin": "United Kingdom",
+          "country_of_packaging": null,
+          "current_vintage": null,
+          "vinification_details": null
+        },
+        "flags": [
+          "vegetarian"
+        ],
+        "categories": [
+          "fresh-chilled-food/fruit/apples",
+          "m-s/m-s-best-of-fresh/m-s-fruit-vegetables/m-s-fruit",
+          "m-s/m-s-own-brands/m-s-eat-well"
+        ]
+      },
+      "context_hash": "23060608e5f145ecb839a84a23e32d37b58ba388a598cbefac2d925239cf1896",
+      "rationale": "Plain produce: M&S British Egremont Russet Apples. The stored identity and composition support vegan suitability. Ordinary wrapping or missing packaging details provide no evidenced animal-component concern.",
+      "support": [
+        {
+          "field": "name",
+          "quote": "M&S British Egremont Russet Apples"
+        },
+        {
+          "field": "detailed_description",
+          "quote": "M&S Select Farms Egremont Russet Apples Class I British Russet apples, with a nutty sweet flavour and golden russeted skin. 1 of your 5 a day."
+        }
+      ],
+      "reviewed_by": "supervising Codex agent, direct source review (no separate classifier calls)",
+      "reviewed_on": "2026-10-18",
+      "scope": "complete product; evidenced material concerns only"
+    },
+    {
+      "product_id": "540911011",
+      "reason": "ingredients",
+      "context": {
+        "product": {
+          "id": "540911011",
+          "name": "M&S Collection British Kissabel Apples",
+          "brand": "M&S",
+          "url": "https://www.ocado.com/products/540911011/details",
+          "pack_size": "4 per pack",
+          "official_vegan": 0,
+          "alcohol": 0,
+          "ingredients": null,
+          "allergens": null,
+          "detailed_description": "M&S Select Farms Kissabel Apples Sweet, natural and tasty kissabel apples with a red centre. Four per pack.",
+          "dietary_information": null,
+          "features": "Eat well, Natural Red Flesh & Intensely Flavoursome, Hand Picked",
+          "further_description": "Deliciously healthy food Best enjoyed as part of a healthy lifestyle & a balanced varied diet.",
+          "brand_marketing": "M&S Food has been at the heart of the nation since 1884. Giving our customers their best-loved products at the incredible quality and value that only M&S can deliver. From Percy Pig to the freshest M&S Select Farms produce, we grow, source, and develop our own products to give you family-ready food that's unbeatable on flavour and innovation. And that's whether you come to us for your family favourites, an indulgent treat, or your perfect party food spread. After all, this is not just food… This is M&S Food.",
+          "manufacturer_marketing": null,
+          "manufacturer": "Marks and Spencer plc, PO Box 3339, Chester, CH99 9QS, United Kingdom. M&S (Ireland) Ltd, PO Box 13022, Ravensdale, Dublin 2, Ireland.",
+          "producer": null,
+          "preparation_and_usage": "Wash before use.",
+          "cooking_guidelines": null,
+          "other_information": "Storage: Best stored in a fridge. Additional Information: © Marks and Spencer plc",
+          "package_type": "Bag",
+          "recycling_information": "Tray - Recycle",
+          "specification": null,
+          "storage": "Keep Refrigerated",
+          "recipes": null,
+          "serving_suggestions": null,
+          "country_of_origin": null,
+          "country_of_packaging": null,
+          "current_vintage": null,
+          "vinification_details": null
+        },
+        "flags": [
+          "vegetarian"
+        ],
+        "categories": [
+          "events-inspiration/halloween/m-s",
+          "fresh-chilled-food/fruit/apples",
+          "m-s/m-s-best-of-fresh/m-s-fruit-vegetables/m-s-fruit",
+          "m-s/m-s-own-brands/m-s-eat-well",
+          "m-s/m-s-pet",
+          "new-trending/new/new-in-m-s"
+        ]
+      },
+      "context_hash": "a27f54f216c4dc491689f97dd3603b53270297a32074e90e8746675273520583",
+      "rationale": "Plain produce: M&S Collection British Kissabel Apples. The stored identity and composition support vegan suitability. Ordinary wrapping or missing packaging details provide no evidenced animal-component concern.",
+      "support": [
+        {
+          "field": "name",
+          "quote": "M&S Collection British Kissabel Apples"
+        },
+        {
+          "field": "detailed_description",
+          "quote": "M&S Select Farms Kissabel Apples Sweet, natural and tasty kissabel apples with a red centre. Four per pack."
+        }
+      ],
+      "reviewed_by": "supervising Codex agent, direct source review (no separate classifier calls)",
+      "reviewed_on": "2026-10-18",
+      "scope": "complete product; evidenced material concerns only"
+    },
+    {
+      "product_id": "703290011",
+      "reason": "ingredients",
+      "context": {
+        "product": {
+          "id": "703290011",
+          "name": "Pickd Organic Apples",
+          "brand": "Pick'd Organic",
+          "url": "https://www.ocado.com/products/703290011/details",
+          "pack_size": "1kg",
+          "official_vegan": 0,
+          "alcohol": 0,
+          "ingredients": "Organic Apples.",
+          "allergens": "No allergens.",
+          "detailed_description": "Crisp, juicy and naturally sweet, Pickd Organic Apples are a delicious everyday choice. Enjoy them fresh as a snack, slice into porridge or lunchboxes, or use in crumbles, cakes and sauces. A versatile 1kg pack of organic fruit, carefully selected for flavour and crunch.",
+          "dietary_information": "Organic, Vegetarian.",
+          "features": null,
+          "further_description": null,
+          "brand_marketing": null,
+          "manufacturer_marketing": null,
+          "manufacturer": "Packed for: Ethical Food Company Limited, Unit 11a, Drayton Manor Drive, Alcester Road, Stratford Upon Avon, Warwickshire, CV37 9RQ",
+          "producer": null,
+          "preparation_and_usage": "Wash before use.",
+          "cooking_guidelines": null,
+          "other_information": "Certification body - Soil Association Certification number - GB-ORG-05, UK/Non-UK Agriculture",
+          "package_type": "Bag & Label",
+          "recycling_information": "Label: Recycle Bag: Don't recycle at home. Recycle at recycling point.",
+          "specification": null,
+          "storage": "Best stored in the fridge.",
+          "recipes": null,
+          "serving_suggestions": null,
+          "country_of_origin": "UK, Spain, France, Austria, Argentina, Chile, New Zealand & Italy",
+          "country_of_packaging": "UK",
+          "current_vintage": null,
+          "vinification_details": null
+        },
+        "flags": [
+          "organic",
+          "vegetarian"
+        ],
+        "categories": [
+          "dietary-lifestyle/organic/fresh-chilled/fruit-vegetables/fruit",
+          "fresh-chilled-food/fruit/apples",
+          "fresh-chilled-food/fruit/organic-fruit",
+          "new-trending/in-case-you-missed-it"
+        ]
+      },
+      "context_hash": "226a50de1f64323070aad7ffcb45ea642e352b53c7c44af1bd7d03c2ee289252",
+      "rationale": "Plain produce: Pickd Organic Apples. The stored identity and composition support vegan suitability. Ordinary wrapping or missing packaging details provide no evidenced animal-component concern.",
+      "support": [
+        {
+          "field": "name",
+          "quote": "Pickd Organic Apples"
+        },
+        {
+          "field": "ingredients",
+          "quote": "Organic Apples."
+        }
+      ],
+      "reviewed_by": "supervising Codex agent, direct source review (no separate classifier calls)",
+      "reviewed_on": "2026-10-18",
+      "scope": "complete product; evidenced material concerns only"
+    },
+    {
+      "product_id": "702621011",
+      "reason": "ingredients",
+      "context": {
+        "product": {
+          "id": "702621011",
+          "name": "Pickd Organic Mini British Apples",
+          "brand": "Pick'd Organic",
+          "url": "https://www.ocado.com/products/702621011/details",
+          "pack_size": "8 per pack",
+          "official_vegan": 0,
+          "alcohol": 0,
+          "ingredients": "Organic British Apples.",
+          "allergens": "No allergens.",
+          "detailed_description": "Small apples. Proper crunch. Pickd Organic Mini British Apples are perfectly sized for little hands, lunchboxes and on-the-go snacking, with the crisp bite and refreshing flavour you want from an apple. Enjoy whole, slice into porridge and salads, or serve with a favourite dip.",
+          "dietary_information": "Organic, Vegetarian.",
+          "features": null,
+          "further_description": null,
+          "brand_marketing": null,
+          "manufacturer_marketing": null,
+          "manufacturer": "Packed for: Ethical Food Company Limited, Unit 11a, Drayton Manor Drive, Alcester Road, Stratford Upon Avon, Warwickshire, CV37 9RQ",
+          "producer": null,
+          "preparation_and_usage": "Wash before use.",
+          "cooking_guidelines": null,
+          "other_information": "Certification body - Soil Association Certification number - GB-ORG-05, UK/Non-UK Agriculture",
+          "package_type": "Film & Label",
+          "recycling_information": "Label: Recycle Film: Don't recycle at home. Recycle at recycling point.",
+          "specification": null,
+          "storage": "Best stored in the fridge.",
+          "recipes": null,
+          "serving_suggestions": null,
+          "country_of_origin": "UK",
+          "country_of_packaging": "UK",
+          "current_vintage": null,
+          "vinification_details": null
+        },
+        "flags": [
+          "organic",
+          "vegetarian"
+        ],
+        "categories": [
+          "fresh-chilled-food/best-of-british/fruit-vegetables/fruit",
+          "fresh-chilled-food/fruit/apples",
+          "fresh-chilled-food/fruit/organic-fruit"
+        ]
+      },
+      "context_hash": "dd24b54f0cca4a6b4c162518ceb2f1547dd8a1f8b189d83dd8e491003b47cb4f",
+      "rationale": "Plain produce: Pickd Organic Mini British Apples. The stored identity and composition support vegan suitability. Ordinary wrapping or missing packaging details provide no evidenced animal-component concern.",
+      "support": [
+        {
+          "field": "name",
+          "quote": "Pickd Organic Mini British Apples"
+        },
+        {
+          "field": "ingredients",
+          "quote": "Organic British Apples."
+        }
+      ],
+      "reviewed_by": "supervising Codex agent, direct source review (no separate classifier calls)",
+      "reviewed_on": "2026-10-18",
+      "scope": "complete product; evidenced material concerns only"
+    },
+    {
+      "product_id": "701457011",
+      "reason": "ingredients",
+      "context": {
+        "product": {
+          "id": "701457011",
+          "name": "Pickd Organic Blueberries",
+          "brand": "Pick'd Organic",
+          "url": "https://www.ocado.com/products/701457011/details",
+          "pack_size": "150g",
+          "official_vegan": 0,
+          "alcohol": 0,
+          "ingredients": "Organic Blueberries.",
+          "allergens": "No allergens.",
+          "detailed_description": "Little blue bursts of organic goodness. Pickd Organic Blueberries are sweet, gently tangy and satisfyingly juicy. Snack straight from the pack, scatter over cereal and yoghurt, blend into smoothies, or fold into pancakes, muffins and bakes for pockets of berry flavour.",
+          "dietary_information": "Organic, Vegetarian.",
+          "features": null,
+          "further_description": null,
+          "brand_marketing": null,
+          "manufacturer_marketing": null,
+          "manufacturer": "Packed for: Ethical Food Company Limited, Unit 11a, Drayton Manor Drive, Alcester Road, Stratford Upon Avon, Warwickshire, CV37 9RQ",
+          "producer": null,
+          "preparation_and_usage": "Wash before use.",
+          "cooking_guidelines": null,
+          "other_information": "Certification body - Soil Association Certification number - GB-ORG-05, UK/Non-UK Agriculture",
+          "package_type": "Film & Label & Punnet",
+          "recycling_information": "Punnet: Recycle Label & Film: Don't recycle at home. Recycle at recycling point.",
+          "specification": null,
+          "storage": "Best stored in the fridge.",
+          "recipes": null,
+          "serving_suggestions": null,
+          "country_of_origin": "Peru, Spain",
+          "country_of_packaging": "UK",
+          "current_vintage": null,
+          "vinification_details": null
+        },
+        "flags": [
+          "organic",
+          "vegetarian"
+        ],
+        "categories": [
+          "dietary-lifestyle/organic/fresh-chilled/fruit-vegetables/fruit",
+          "fresh-chilled-food/fruit/berries-cherries/blueberries",
+          "fresh-chilled-food/fruit/organic-fruit",
+          "new-trending/in-case-you-missed-it"
+        ]
+      },
+      "context_hash": "6c80cfe373abe9305508617d45fb74e2b9bfd5b1f1c4c618b40626407e257014",
+      "rationale": "Plain produce: Pickd Organic Blueberries. The stored identity and composition support vegan suitability. Ordinary wrapping or missing packaging details provide no evidenced animal-component concern.",
+      "support": [
+        {
+          "field": "name",
+          "quote": "Pickd Organic Blueberries"
+        },
+        {
+          "field": "ingredients",
+          "quote": "Organic Blueberries."
+        }
+      ],
+      "reviewed_by": "supervising Codex agent, direct source review (no separate classifier calls)",
+      "reviewed_on": "2026-10-18",
+      "scope": "complete product; evidenced material concerns only"
+    },
+    {
+      "product_id": "703291011",
+      "reason": "ingredients",
+      "context": {
+        "product": {
+          "id": "703291011",
+          "name": "Pickd Organic Large Cucumber",
+          "brand": "Pick'd Organic",
+          "url": "https://www.ocado.com/products/703291011/details",
+          "pack_size": null,
+          "official_vegan": 0,
+          "alcohol": 0,
+          "ingredients": "Organic Cucumber.",
+          "allergens": "No allergens.",
+          "detailed_description": "Cool, crisp and ready for anything. Pickd Organ ic Large Cucumber has refreshing crunch from end to end. Slice into salads and sandwiches, cut into batons for dipping, grate into tzatziki, or muddle into chilled drinks. A dependable fridge staple with plenty of fresh ideas.",
+          "dietary_information": "Organic, Vegetarian.",
+          "features": null,
+          "further_description": null,
+          "brand_marketing": null,
+          "manufacturer_marketing": null,
+          "manufacturer": "Packed for: Ethical Food Company Limited, Unit 11a, Drayton Manor Drive, Alcester Road, Stratford Upon Avon, Warwickshire, CV37 9RQ",
+          "producer": null,
+          "preparation_and_usage": "Wash before use.",
+          "cooking_guidelines": null,
+          "other_information": "Certification body - Soil Association Certification number - GB-ORG-05, UK/Non-UK Agriculture",
+          "package_type": "Film & Label",
+          "recycling_information": "Label: Recycle Film: Don't recycle at home. Recycle at recycling point.",
+          "specification": null,
+          "storage": "Best stored in the fridge.",
+          "recipes": null,
+          "serving_suggestions": null,
+          "country_of_origin": "Spain, UK",
+          "country_of_packaging": "UK",
+          "current_vintage": null,
+          "vinification_details": null
+        },
+        "flags": [
+          "organic",
+          "vegetarian"
+        ],
+        "categories": [
+          "dietary-lifestyle/organic/fresh-chilled/fruit-vegetables/vegetables",
+          "fresh-chilled-food/salad-herbs/cucumber",
+          "fresh-chilled-food/vegetables/organic"
+        ]
+      },
+      "context_hash": "add85f2767a0b1e85e2a38731cc6d30c0fdebb3ba8b70644a5d3bbba2c493cb5",
+      "rationale": "Plain produce: Pickd Organic Large Cucumber. The stored identity and composition support vegan suitability. Ordinary wrapping or missing packaging details provide no evidenced animal-component concern.",
+      "support": [
+        {
+          "field": "name",
+          "quote": "Pickd Organic Large Cucumber"
+        },
+        {
+          "field": "ingredients",
+          "quote": "Organic Cucumber."
+        }
+      ],
+      "reviewed_by": "supervising Codex agent, direct source review (no separate classifier calls)",
+      "reviewed_on": "2026-10-18",
+      "scope": "complete product; evidenced material concerns only"
+    },
+    {
+      "product_id": "701466011",
+      "reason": "ingredients",
+      "context": {
+        "product": {
+          "id": "701466011",
+          "name": "Pickd Organic Ripen at Home Kiwi",
+          "brand": "Pick'd Organic",
+          "url": "https://www.ocado.com/products/701466011/details",
+          "pack_size": "4 per pack",
+          "official_vegan": 0,
+          "alcohol": 0,
+          "ingredients": "Organic Kiwi.",
+          "allergens": "No allergens.",
+          "detailed_description": "Good things come to those who wait. Pickd Organic Ripen at Home Kiwi arrives firm, ready to ripen in your fruit bowl. Once it gives slightly when gently pressed, cut and scoop for a bright sweet-sharp snack, or slice into breakfast bowls, fruit salads and desserts.",
+          "dietary_information": "Organic, Vegetarian.",
+          "features": null,
+          "further_description": null,
+          "brand_marketing": null,
+          "manufacturer_marketing": null,
+          "manufacturer": "Packed for: Ethical Food Company Limited, Unit 11a, Drayton Manor Drive, Alcester Road, Stratford Upon Avon, Warwickshire, CV37 9RQ",
+          "producer": null,
+          "preparation_and_usage": "Wash before use.",
+          "cooking_guidelines": null,
+          "other_information": "Certification body - Soil Association Certification number - GB-ORG-05, UK/Non-UK Agriculture",
+          "package_type": "Film & Label",
+          "recycling_information": "Label: Recycle Film: Don't recycle at home. Recycle at recycling point.",
+          "specification": null,
+          "storage": "Keep refrigerated. To ripen kiwis, place in a fruit bowl at room temperature.",
+          "recipes": null,
+          "serving_suggestions": null,
+          "country_of_origin": "Italy, Chile, Argentina",
+          "country_of_packaging": "UK",
+          "current_vintage": null,
+          "vinification_details": null
+        },
+        "flags": [
+          "organic",
+          "vegetarian"
+        ],
+        "categories": [
+          "dietary-lifestyle/organic/fresh-chilled/fruit-vegetables/fruit",
+          "fresh-chilled-food/fruit/kiwi",
+          "fresh-chilled-food/fruit/organic-fruit"
+        ]
+      },
+      "context_hash": "944f406dfe3148beca0d352b1459895a9a704976ef55eabda0b09236198dee41",
+      "rationale": "Plain produce: Pickd Organic Ripen at Home Kiwi. The stored identity and composition support vegan suitability. Ordinary wrapping or missing packaging details provide no evidenced animal-component concern.",
+      "support": [
+        {
+          "field": "name",
+          "quote": "Pickd Organic Ripen at Home Kiwi"
+        },
+        {
+          "field": "ingredients",
+          "quote": "Organic Kiwi."
+        }
+      ],
+      "reviewed_by": "supervising Codex agent, direct source review (no separate classifier calls)",
+      "reviewed_on": "2026-10-18",
+      "scope": "complete product; evidenced material concerns only"
+    },
+    {
+      "product_id": "703565011",
+      "reason": "ingredients",
+      "context": {
+        "product": {
+          "id": "703565011",
+          "name": "Pickd Organic Unwaxed Lemons",
+          "brand": "Pick'd Organic",
+          "url": "https://www.ocado.com/products/703565011/details",
+          "pack_size": "3 per pack",
+          "official_vegan": 0,
+          "alcohol": 0,
+          "ingredients": "Organic Lemons",
+          "allergens": "No allergens.",
+          "detailed_description": "Fresh, zesty and full of citrus character, Pickd Organic Unwaxed Lemons bring a bright lift to everyday cooking. With unwaxed peel, both the zest and juice are ready to use in baking, dressings, marinades and drinks, or squeezed over fish and vegetables for a refreshing finish.",
+          "dietary_information": "Organic, Vegetarian.",
+          "features": null,
+          "further_description": null,
+          "brand_marketing": null,
+          "manufacturer_marketing": null,
+          "manufacturer": "Packed for: Ethical Food Company Limited, Unit 11a, Drayton Manor Drive, Alcester Road, Stratford Upon Avon, Warwickshire, CV37 9RQ",
+          "producer": null,
+          "preparation_and_usage": "Wash before use.",
+          "cooking_guidelines": null,
+          "other_information": "Certification body - Soil Association Certification number - GB-ORG-05, UK/Non-UK Agriculture",
+          "package_type": "Net & Label",
+          "recycling_information": "Net: Don't recycle Label: Don't recycle",
+          "specification": null,
+          "storage": "Best stored in the fridge.",
+          "recipes": null,
+          "serving_suggestions": null,
+          "country_of_origin": "Spain, Italy, South Africa, Peru",
+          "country_of_packaging": "UK",
+          "current_vintage": null,
+          "vinification_details": null
+        },
+        "flags": [
+          "organic",
+          "vegetarian"
+        ],
+        "categories": [
+          "dietary-lifestyle/organic/fresh-chilled/fruit-vegetables/fruit",
+          "fresh-chilled-food/fruit/lemons-limes/lemons",
+          "fresh-chilled-food/fruit/organic-fruit",
+          "fresh-chilled-food/in-season/fruit",
+          "new-trending/in-case-you-missed-it"
+        ]
+      },
+      "context_hash": "8b31d35919a916bd32e8188d51b6d388b0ac0a0c78cc89e7ca5669428d3e73d3",
+      "rationale": "Plain produce: Pickd Organic Unwaxed Lemons. The stored identity and composition support vegan suitability. Ordinary wrapping or missing packaging details provide no evidenced animal-component concern.",
+      "support": [
+        {
+          "field": "name",
+          "quote": "Pickd Organic Unwaxed Lemons"
+        },
+        {
+          "field": "ingredients",
+          "quote": "Organic Lemons"
+        }
+      ],
+      "reviewed_by": "supervising Codex agent, direct source review (no separate classifier calls)",
+      "reviewed_on": "2026-10-18",
+      "scope": "complete product; evidenced material concerns only"
+    },
+    {
+      "product_id": "703288011",
+      "reason": "ingredients",
+      "context": {
+        "product": {
+          "id": "703288011",
+          "name": "Pickd Organic Limes",
+          "brand": "Pick'd Organic",
+          "url": "https://www.ocado.com/products/703288011/details",
+          "pack_size": "3 per pack",
+          "official_vegan": 0,
+          "alcohol": 0,
+          "ingredients": "Organic Limes.",
+          "allergens": "No allergens.",
+          "detailed_description": "Pickd Organic Unwaxed Limes bring a sharp, fragrant hit of flavour, and because the peel is unwaxed, the zest is every bit as useful as the juice. Grate over curries and baking, squeeze into dressings, marinades and tacos, or muddle into drinks when only a proper lime kick will do.",
+          "dietary_information": "Organic, Vegetarian.",
+          "features": null,
+          "further_description": null,
+          "brand_marketing": null,
+          "manufacturer_marketing": null,
+          "manufacturer": "Packed for: Ethical Food Company Limited, Unit 11a, Drayton Manor Drive, Alcester Road, Stratford Upon Avon, Warwickshire, CV37 9RQ",
+          "producer": null,
+          "preparation_and_usage": "Wash before use.",
+          "cooking_guidelines": null,
+          "other_information": "Certification body - Soil Association Certification number - GB-ORG-05, UK/Non-UK Agriculture",
+          "package_type": "Net & Label",
+          "recycling_information": "Net: Don't recycle Label: Don't recycle",
+          "specification": null,
+          "storage": "Best stored in the fridge.",
+          "recipes": null,
+          "serving_suggestions": null,
+          "country_of_origin": "Spain, Peru",
+          "country_of_packaging": "UK",
+          "current_vintage": null,
+          "vinification_details": null
+        },
+        "flags": [
+          "organic"
+        ],
+        "categories": [
+          "fresh-chilled-food/fruit/lemons-limes/limes",
+          "fresh-chilled-food/fruit/organic-fruit"
+        ]
+      },
+      "context_hash": "b1c0ed630956480bb2996fae1d42e34d0744db7bbcf6899c3cfdb50eb790b998",
+      "rationale": "Plain produce: Pickd Organic Limes. The stored identity and composition support vegan suitability. Ordinary wrapping or missing packaging details provide no evidenced animal-component concern.",
+      "support": [
+        {
+          "field": "name",
+          "quote": "Pickd Organic Limes"
+        },
+        {
+          "field": "ingredients",
+          "quote": "Organic Limes."
+        }
+      ],
+      "reviewed_by": "supervising Codex agent, direct source review (no separate classifier calls)",
+      "reviewed_on": "2026-10-18",
+      "scope": "complete product; evidenced material concerns only"
+    },
+    {
+      "product_id": "207047011",
+      "reason": "ingredients",
+      "context": {
+        "product": {
+          "id": "207047011",
+          "name": "Fenland Celery",
+          "brand": "FENLAND",
+          "url": "https://www.ocado.com/products/207047011/details",
+          "pack_size": "450g",
+          "official_vegan": 0,
+          "alcohol": 0,
+          "ingredients": "Celery",
+          "allergens": null,
+          "detailed_description": "Fenland Celery is a unique white winter celery grown exclusively in the rich, dark soils of the Fens. With its distinctively sweet, nutty flavour, it still tastes just as it did when first grown in Victorian times. Perfect in hearty soups and stews, paired with creamy blue cheese, served fresh in seasonal salads, or enjoyed simply with a cheese board and dips, Fenland Celery is loved by chefs and home cooks alike. A true seasonal treat, it’s only available for 8 short weeks each year – so enjoy it while you can! Grown using traditional methods passed down through generations, this seasonal delicacy has a rich heritage and a flavour like no other. Recognised with Protected Geographical Indication (PGI) status, Fenland Celery joins an exclusive group of British foods celebrated for their quality. Its sweet, nutty flavour and crisp texture come from the unique growing method known as earthing up, where the soil is carefully banked around the celery plants to protect them from frost and naturally blanch the stems to their signature pale colour. Discover more about its history, growing methods, and explore a range of delicious recipe ideas at www.fenlandcelery.com.",
+          "dietary_information": "Contains Celery",
+          "features": "Traditional Fenland celery as it used to taste!, Deliciously nutty & mellow!, 100% English grown exclusively in the Fenlands, In season & only available October to December, Grown using only Fenland water",
+          "further_description": "For the traditional way to prepare celery for the cheese board and further recipe ideas please visit: fenlandcelery.com",
+          "brand_marketing": "Fenland celery dates back to the Victorian times when the crop was specially grown in the Fens for sale in the Christmas markets in London. It was extremely popular and became a feature of the Victorian Londoner's Christmas dinner. Cambridgeshire producer G's Fresh revived Fenland celery a decade ago. After bringing the 150 year-old crop home to London's prestigious New Covent Garden Market, Fenland celery quickly attracted a loyal following of chefs and foodies. Now Fenland celery is available nationwide, through good retailers. Today's Fenland celery looks much the same as it did 150 years ago. Look out for its leafy top and pale white stick, cut to a point by hand, as dictated by tradition.",
+          "manufacturer_marketing": null,
+          "manufacturer": "G's Fresh Ltd. Barway, Ely, Cambs, CB7 5TZ.",
+          "producer": null,
+          "preparation_and_usage": "Wash before use Use the leaves and outer stalks for stocks, soups & casseroles, while the tender inner stems are perfect for crudités, snacks and salads.",
+          "cooking_guidelines": "Wash before use. Use the leaves and outer stalks for stocks, soups & casseroles, while the tender inner stems are perfect for crudités, snacks and salads. Keep in the salad drawer of your fridge.",
+          "other_information": "Full Product Name: Celery Storage: Keep refrigerated Keep in the salad drawer of your fridge. Origin: Grown in the UK Additional Information: Class 1",
+          "package_type": "Heat Sealed",
+          "recycling_information": "Bag - Plastic - Not Currently Recycled",
+          "specification": null,
+          "storage": "Keep Refrigerated",
+          "recipes": "Fenland Celery Braised in White Wine, Cream & Thyme Serve as a side with roast chicken. Serves 4-6 as a side dish Preparation Time: 10mins Cooking Time: 1 hour 30-45 mins What you'll need 1 bunch Fenland celery, separated into stems Small bunch fresh thyme, woody stalks removed 150ml white wine 250ml double cream 1 clove garlic, crushed Salt & freshly ground black pepper 25g butter What to do: 1: Preheat the oven to 180°C. 2: Use a potato peeler to take a thin slice down the outer edge of each Fenland celery stem to remove any tough strings. Cut each stem in half and for the thicker stems, cut in half down the length too. 3: Lay the celery end to end in a rectangular baking dish, tucking in the thyme sprigs. 4: In a jug, stir together the wine, cream and crushed garlic. Season generously with salt and freshly ground black pepper. 5: Pour the wine and cream over the celery and dot the butter over the top. Loosely cover with foil and bake in the over for an hour or so until the celery is just tender when pierced with the point of a knife. 6: Remove the foil and bake for a further 30-45 minutes until the top is golden and bubbling",
+          "serving_suggestions": null,
+          "country_of_origin": "United Kingdom",
+          "country_of_packaging": null,
+          "current_vintage": null,
+          "vinification_details": null
+        },
+        "flags": [],
+        "categories": [
+          "fresh-chilled-food/salad-herbs/celery",
+          "fresh-chilled-food/vegetables/celery-fennel/celery"
+        ]
+      },
+      "context_hash": "d11c5c1043ff921d37bbd4908f5e795f7972e32290b4858fa9257e8827046b5e",
+      "rationale": "Plain produce: Fenland Celery. The stored identity and composition support vegan suitability. Ordinary wrapping or missing packaging details provide no evidenced animal-component concern. The blue-cheese pairing and wine/cream/butter recipe are suggestions for the customer, not ingredients in the celery sold.",
+      "support": [
+        {
+          "field": "name",
+          "quote": "Fenland Celery"
+        },
+        {
+          "field": "ingredients",
+          "quote": "Celery"
+        }
+      ],
+      "reviewed_by": "supervising Codex agent, direct source review (no separate classifier calls)",
+      "reviewed_on": "2026-10-18",
+      "scope": "complete product; evidenced material concerns only"
+    },
+    {
+      "product_id": "350988011",
+      "reason": "ingredients",
+      "context": {
+        "product": {
+          "id": "350988011",
+          "name": "Isle of Wight Exclusive Winter Cherry on the Vine Tomatoes",
+          "brand": "Isle of Wight Tomatoes",
+          "url": "https://www.ocado.com/products/350988011/details",
+          "pack_size": "200g",
+          "official_vegan": 0,
+          "alcohol": 0,
+          "ingredients": "Tomatoes",
+          "allergens": null,
+          "detailed_description": null,
+          "dietary_information": null,
+          "features": "For over 15 years, we’ve been growing exceptional tomatoes in the heart of the Arreton Valley on the beautiful Isle of Wight. Combining age-old traditions with modern-day innovation we’re passionate about growing tomatoes that taste the way they should. Every tomato is picked at the peak of ripeness, ensuring it develops the maximum depth of taste. In the winter months, we dedicate a small part of our nursery to one of our most loved varieties, cherry vine. With the help of state-of-the-art, energy-efficient LED lighting, we provide the ideal amount of light to nurture these plants and deliver a truly delicious tomato. Bursting with the perfect balance of sweetness and acidity, Isle of Wight Cherry Vine Tomatoes are ideal for roasting, tossing into salads, or simply enjoying as a snack straight from the vine.",
+          "further_description": null,
+          "brand_marketing": null,
+          "manufacturer_marketing": null,
+          "manufacturer": "The Tomato Stall Ltd, Main Road, Arreton, Isle of Wight, PO30 3AR.",
+          "producer": null,
+          "preparation_and_usage": "Wash before use.",
+          "cooking_guidelines": null,
+          "other_information": "Storage: Store at room temperature. Additional Information: Class 1 (20mm-35mm)",
+          "package_type": "Tray",
+          "recycling_information": "Punnet recyclable, film not currently recycled",
+          "specification": null,
+          "storage": "Store at room temperature",
+          "recipes": null,
+          "serving_suggestions": null,
+          "country_of_origin": "United Kingdom",
+          "country_of_packaging": "UK",
+          "current_vintage": null,
+          "vinification_details": null
+        },
+        "flags": [
+          "vegetarian"
+        ],
+        "categories": [
+          "events-inspiration/future-of-food/fresh-frozen-bakery",
+          "fresh-chilled-food/salad-herbs/tomatoes/salad-snacking",
+          "fresh-chilled-food/vegetables/tomatoes/salad-snacking"
+        ]
+      },
+      "context_hash": "fd1b8f0086f7f80d6bb6ec9bc8529e7d7aac75465f18a16f6cfc36c94bb06fe8",
+      "rationale": "Plain produce: Isle of Wight Exclusive Winter Cherry on the Vine Tomatoes. The stored identity and composition support vegan suitability. Ordinary wrapping or missing packaging details provide no evidenced animal-component concern.",
+      "support": [
+        {
+          "field": "name",
+          "quote": "Isle of Wight Exclusive Winter Cherry on the Vine Tomatoes"
+        },
+        {
+          "field": "ingredients",
+          "quote": "Tomatoes"
+        }
+      ],
+      "reviewed_by": "supervising Codex agent, direct source review (no separate classifier calls)",
+      "reviewed_on": "2026-10-18",
+      "scope": "complete product; evidenced material concerns only"
+    },
+    {
+      "product_id": "680190011",
+      "reason": "ingredients",
+      "context": {
+        "product": {
+          "id": "680190011",
+          "name": "Isle of Wight Tomatoes Campari Vine Tomatoes",
+          "brand": "Isle of Wight Tomatoes",
+          "url": "https://www.ocado.com/products/680190011/details",
+          "pack_size": "225g",
+          "official_vegan": 0,
+          "alcohol": 0,
+          "ingredients": null,
+          "allergens": null,
+          "detailed_description": "For over 15 years, we’ve been growing exceptional tomatoes in the heart of the Arreton Valley on the beautiful Isle of Wight. Combining age-old traditions with modern-day innovation, we’re passionate about growing tomatoes that taste the way they should. Every tomato is picked at the peak of ripeness, ensuring it develops the maximum depth of taste. In the winter months, we dedicate a small part of our nursery to one of our most loved varieties, Campari Vine tomatoes. With the help of state-of-the-art, energy-efficient LED lighting, we provide the ideal amount of light to nurture these plants and deliver a truly delicious tomato. Famous for its perfect balance of savoury and sweet, the Campari Vine Tomato is wonderfully versatile. Roast or grill to intensify its natural sweetness, chop into a rich tomato sauce, or simply slice, season, and enjoy on warm sourdough.",
+          "dietary_information": null,
+          "features": null,
+          "further_description": null,
+          "brand_marketing": null,
+          "manufacturer_marketing": null,
+          "manufacturer": "The Tomato Stall Ltd, Main Road, Arreton, Isle of Wight, PO30 3AR.",
+          "producer": null,
+          "preparation_and_usage": "Wash before use.",
+          "cooking_guidelines": null,
+          "other_information": "Store at room temperature",
+          "package_type": "Punnet and film",
+          "recycling_information": "Punnet recyclable, film not currently recycled",
+          "specification": null,
+          "storage": "Store at room temperature",
+          "recipes": null,
+          "serving_suggestions": null,
+          "country_of_origin": "United Kingdom",
+          "country_of_packaging": "United Kingdom",
+          "current_vintage": null,
+          "vinification_details": null
+        },
+        "flags": [
+          "vegetarian"
+        ],
+        "categories": [
+          "events-inspiration/future-of-food/fresh-frozen-bakery",
+          "fresh-chilled-food/salad-herbs/tomatoes/salad-snacking",
+          "fresh-chilled-food/salad-herbs/tomatoes/slicing",
+          "fresh-chilled-food/vegetables/tomatoes/salad-snacking",
+          "fresh-chilled-food/vegetables/tomatoes/slicing"
+        ]
+      },
+      "context_hash": "2b0dc0d2a7181a0e2a1be7fd05cbb4eed0cd25525619c9cebf46b9aa61c5eafa",
+      "rationale": "Plain produce: Isle of Wight Tomatoes Campari Vine Tomatoes. The stored identity and composition support vegan suitability. Ordinary wrapping or missing packaging details provide no evidenced animal-component concern.",
+      "support": [
+        {
+          "field": "name",
+          "quote": "Isle of Wight Tomatoes Campari Vine Tomatoes"
+        },
+        {
+          "field": "detailed_description",
+          "quote": "For over 15 years, we’ve been growing exceptional tomatoes in the heart of the Arreton Valley on the beautiful Isle of Wight."
+        }
+      ],
+      "reviewed_by": "supervising Codex agent, direct source review (no separate classifier calls)",
+      "reviewed_on": "2026-10-18",
+      "scope": "complete product; evidenced material concerns only"
+    },
+    {
+      "product_id": "680189011",
+      "reason": "ingredients",
+      "context": {
+        "product": {
+          "id": "680189011",
+          "name": "Isle of Wight Tomatoes Winter Selection Pack",
+          "brand": "Isle of Wight Tomatoes",
+          "url": "https://www.ocado.com/products/680189011/details",
+          "pack_size": "600g",
+          "official_vegan": 0,
+          "alcohol": 0,
+          "ingredients": null,
+          "allergens": null,
+          "detailed_description": "For over 15 years, we’ve been growing exceptional tomatoes in the heart of the Arreton Valley on the beautiful Isle of Wight. Combining age-old traditions with modern-day innovation, we’re passionate about growing tomatoes that taste the way they should. Every tomato is picked at the peak of ripeness, ensuring it develops maximum depth of flavour. During the winter months, we dedicate a small part of our nursery to growing some of our most loved varieties: Campari, Cherry Vine and Arreton Jewel tomatoes. With the help of state-of-the-art, energy-efficient LED lighting, we provide the ideal conditions to nurture these plants and deliver truly delicious tomatoes throughout the season. This exclusive winter selection brings together the best of both worlds, balancing sweet and savoury notes to inspire creativity in the kitchen. Perfect for roasting, grilling, tossing into salads or simply enjoying as a fresh snack, these flavour-packed tomatoes make it easy to enjoy your favourite dishes all year round.",
+          "dietary_information": null,
+          "features": null,
+          "further_description": null,
+          "brand_marketing": null,
+          "manufacturer_marketing": null,
+          "manufacturer": "The Tomato Stall Ltd, Main Road, Arreton, Isle of Wight, PO30 3AR.",
+          "producer": null,
+          "preparation_and_usage": "Wash before use.",
+          "cooking_guidelines": null,
+          "other_information": "Store at room temperature",
+          "package_type": "Cardboard box with cardboard lid",
+          "recycling_information": "Recyclable",
+          "specification": null,
+          "storage": "Store at room temperature",
+          "recipes": null,
+          "serving_suggestions": null,
+          "country_of_origin": "United Kingdom",
+          "country_of_packaging": "United Kingdom",
+          "current_vintage": null,
+          "vinification_details": null
+        },
+        "flags": [
+          "vegetarian"
+        ],
+        "categories": [
+          "events-inspiration/future-of-food/fresh-frozen-bakery",
+          "fresh-chilled-food/salad-herbs/tomatoes/salad-snacking",
+          "fresh-chilled-food/salad-herbs/tomatoes/slicing",
+          "fresh-chilled-food/vegetables/tomatoes/salad-snacking",
+          "fresh-chilled-food/vegetables/tomatoes/slicing"
+        ]
+      },
+      "context_hash": "2189cbdd4e15743989fdd22440d2b2e06abee2952894a4fa260180a70472b38e",
+      "rationale": "Plain produce: Isle of Wight Tomatoes Winter Selection Pack. The stored identity and composition support vegan suitability. Ordinary wrapping or missing packaging details provide no evidenced animal-component concern.",
+      "support": [
+        {
+          "field": "name",
+          "quote": "Isle of Wight Tomatoes Winter Selection Pack"
+        },
+        {
+          "field": "detailed_description",
+          "quote": "For over 15 years, we’ve been growing exceptional tomatoes in the heart of the Arreton Valley on the beautiful Isle of Wight."
+        }
+      ],
+      "reviewed_by": "supervising Codex agent, direct source review (no separate classifier calls)",
+      "reviewed_on": "2026-10-18",
+      "scope": "complete product; evidenced material concerns only"
+    },
+    {
+      "product_id": "700122011",
+      "reason": "ingredients",
+      "context": {
+        "product": {
+          "id": "700122011",
+          "name": "M&S Baby Aubergine",
+          "brand": "M&S",
+          "url": "https://www.ocado.com/products/700122011/details",
+          "pack_size": "150g",
+          "official_vegan": 0,
+          "alcohol": 0,
+          "ingredients": null,
+          "allergens": null,
+          "detailed_description": "Turn simple veg into a standout side with our M&S Baby Aubergine, selected for their glossy skin, mellow earthy flavour and rich, velvety flesh. Their smaller size helps them cook quickly while holding their shape, so you can roast until the edges caramelise and the centre turns silky, or pan-fry for a golden finish. Score yours before cooking to help garlic, lemon and herb marinades soak in, brush with miso or harissa for deeper savoury notes, or finish with citrus and toasted seeds to add brightness and crunch. M&S UPC - 29528875",
+          "dietary_information": null,
+          "features": "Eat well, Rich & Velvety, Roast or Pan Fry, 1 of Your Five a Day = 80g, From Select Farms we know and trust",
+          "further_description": "Eat a healthy variety of differently coloured vegetables and fruits each day - at least 5 portions. Deliciously healthy food Best enjoyed as part of a healthy lifestyle & a balanced varied diet.",
+          "brand_marketing": "M&S Food has been at the heart of the nation since 1884. Giving our customers their best-loved products at incredible quality and value that only M&S can deliver. From Percy Pig to the freshest M&S Select Farms produce, we grow, source, and develop our own products to give you family-ready food that is unbeatable in flavour and innovation. And that is whether you come to us for your family favourites, an indulgent treat, or your perfect party food spread. After all, this is not just food… This is M&S Food.",
+          "manufacturer_marketing": null,
+          "manufacturer": "Marks and Spencer plc, PO Box 3339, Chester, CH99 9QS, United Kingdom. M&S (Ireland) Ltd, PO Box 13022, Ravensdale, Dublin 2, Ireland.",
+          "producer": null,
+          "preparation_and_usage": "Wash before use.",
+          "cooking_guidelines": "Other - From Chilled. - Remove all packaging - Wash before use - Trim ends For best result Electric 200°C / Fan 180°C / Gas 6, 20-30 mins - Preheat 1 tbsp of oil in a baking tray - Place the aubergines onto the baking tray - Cook until tender, turning occasionally",
+          "other_information": "Storage: Best stored in a fridge. Additional Information: © Marks and Spencer plc",
+          "package_type": null,
+          "recycling_information": null,
+          "specification": null,
+          "storage": null,
+          "recipes": null,
+          "serving_suggestions": null,
+          "country_of_origin": null,
+          "country_of_packaging": null,
+          "current_vintage": null,
+          "vinification_details": null
+        },
+        "flags": [
+          "vegetarian"
+        ],
+        "categories": [
+          "fresh-chilled-food/vegetables/courgettes-aubergines/aubergines"
+        ]
+      },
+      "context_hash": "d54c24158842c3a2d53bf21763609bb6c7b55f6948a032506e392c641770e901",
+      "rationale": "Plain produce: M&S Baby Aubergine. The stored identity and composition support vegan suitability. Ordinary wrapping or missing packaging details provide no evidenced animal-component concern.",
+      "support": [
+        {
+          "field": "name",
+          "quote": "M&S Baby Aubergine"
+        },
+        {
+          "field": "detailed_description",
+          "quote": "Turn simple veg into a standout side with our M&S Baby Aubergine, selected for their glossy skin, mellow earthy flavour and rich, velvety flesh."
+        }
+      ],
+      "reviewed_by": "supervising Codex agent, direct source review (no separate classifier calls)",
+      "reviewed_on": "2026-10-18",
+      "scope": "complete product; evidenced material concerns only"
+    },
+    {
+      "product_id": "518353011",
+      "reason": "ingredients",
+      "context": {
+        "product": {
+          "id": "518353011",
+          "name": "M&S Baby Brussel Sprouts",
+          "brand": "M&S",
+          "url": "https://www.ocado.com/products/518353011/details",
+          "pack_size": "80g",
+          "official_vegan": 0,
+          "alcohol": 0,
+          "ingredients": null,
+          "allergens": null,
+          "detailed_description": "M&S Baby Sprouts Baby Brussels sprouts. High in serlenium. Ready to pierce and microwave. M&S UPC - 228909",
+          "dietary_information": null,
+          "features": "Eat well, High in Selenium, Prepped & Ready to Cook, 80g = 1 of 5 a day",
+          "further_description": "Deliciously healthy food Best enjoyed as part of a healthy lifestyle & a balanced varied diet.",
+          "brand_marketing": "M&S Food has been at the heart of the nation since 1884. Giving our customers their best-loved products at the incredible quality and value that only M&S can deliver. From Percy Pig to the freshest M&S Select Farms produce, we grow, source, and develop our own products to give you family-ready food that's unbeatable on flavour and innovation. And that's whether you come to us for your family favourites, an indulgent treat, or your perfect party food spread. After all, this is not just food… This is M&S Food.",
+          "manufacturer_marketing": null,
+          "manufacturer": "Marks and Spencer plc, PO Box 3339, Chester, CH99 9QS, United Kingdom. M&S (Ireland) Ltd, PO Box 13022, Ravensdale, Dublin 2, Ireland.",
+          "producer": null,
+          "preparation_and_usage": null,
+          "cooking_guidelines": "Microwave - From Chilled. 750W, 1 min 900W, 55 secs Pierce film. Place on a microwaveable plate. Cook on high (100%). After cooking, leave to stand for 2 mins. Guide for one pack only. Do not reheat.",
+          "other_information": "Full Product Name: Baby Brussels sprouts Storage: Not suitable for freezing. For use by, see front of pack. Keep refrigerated 0°C to +5°C. Safety Warning: Take care, this product will be particularly hot after cooking. Origin: Produce of the UK Additional Information: © Marks and Spencer plc",
+          "package_type": "Bag",
+          "recycling_information": null,
+          "specification": null,
+          "storage": "Keep Refrigerated; Not Suitable for Home Freezing",
+          "recipes": null,
+          "serving_suggestions": null,
+          "country_of_origin": "UK",
+          "country_of_packaging": null,
+          "current_vintage": null,
+          "vinification_details": null
+        },
+        "flags": [
+          "microwavable",
+          "vegetarian"
+        ],
+        "categories": [
+          "fresh-chilled-food/vegetables/cabbage-spinach-greens/sprouts",
+          "fresh-chilled-food/vegetables/prepared-easy-to-cook",
+          "m-s/m-s-best-of-fresh/m-s-fruit-vegetables/m-s-vegetables",
+          "m-s/m-s-own-brands/m-s-eat-well"
+        ]
+      },
+      "context_hash": "e471a42166c08e599179c6d4239a03fd86a08eb38cb438ee47b782aec086194b",
+      "rationale": "Plain produce: M&S Baby Brussel Sprouts. The stored identity and composition support vegan suitability. Ordinary wrapping or missing packaging details provide no evidenced animal-component concern.",
+      "support": [
+        {
+          "field": "name",
+          "quote": "M&S Baby Brussel Sprouts"
+        },
+        {
+          "field": "detailed_description",
+          "quote": "M&S Baby Sprouts Baby Brussels sprouts. High in serlenium. Ready to pierce and microwave. M&S UPC - 228909"
+        }
+      ],
+      "reviewed_by": "supervising Codex agent, direct source review (no separate classifier calls)",
+      "reviewed_on": "2026-10-18",
+      "scope": "complete product; evidenced material concerns only"
+    },
+    {
+      "product_id": "517691011",
+      "reason": "ingredients",
+      "context": {
+        "product": {
+          "id": "517691011",
+          "name": "M&S Baby Button Brussel Sprouts",
+          "brand": "M&S",
+          "url": "https://www.ocado.com/products/517691011/details",
+          "pack_size": "200g",
+          "official_vegan": 0,
+          "alcohol": 0,
+          "ingredients": "Baby Button Sprouts (100%)",
+          "allergens": null,
+          "detailed_description": "M&S Baby Button Sprouts",
+          "dietary_information": null,
+          "features": "1 of your 5 a day = 80g, Eat Well",
+          "further_description": "Deliciously healthy food Best enjoyed as part of a healthy lifestyle & a balanced varied diet.",
+          "brand_marketing": "M&S Food has been at the heart of the nation since 1884. Giving our customers their best-loved products at the incredible quality and value that only M&S can deliver. From Percy Pig to the freshest M&S Select Farms produce, we grow, source, and develop our own products to give you family-ready food that's unbeatable on flavour and innovation. And that's whether you come to us for your family favourites, an indulgent treat, or your perfect party food spread. After all, this is not just food… This is M&S Food.",
+          "manufacturer_marketing": null,
+          "manufacturer": "Marks and Spencer plc, PO Box 3339, Chester, CH99 9QS, United Kingdom. M&S (Ireland) Ltd, PO Box 13022, Ravensdale, Dublin 2, Ireland.",
+          "producer": null,
+          "preparation_and_usage": "Wash before use.",
+          "cooking_guidelines": "Cooking Instructions - General. - Remove all packaging - Peel and trim as required Needs cooking. For best result Steam; Oven cook - From Chilled. Electric 200°C, Fan 180°C, Gas 6, 15-20 mins - Preheat 1 tbsp of oil in a baking tray - Place sprouts onto the baking tray - Cook until tender, turning occasionally; Shallow Fry - From Chilled. 15-20 mins - Preheat 1 tsp of oil in a pan - Cook on medium heat until tender, turning occasionally.; Steam - From Chilled. 5-6 mins - Place into a steamer or colander and steam until tender",
+          "other_information": "Storage: Best stored in a fridge. Additional Information: © Marks and Spencer plc",
+          "package_type": "Tray",
+          "recycling_information": "Tray - Recycle",
+          "specification": null,
+          "storage": "Keep Refrigerated",
+          "recipes": null,
+          "serving_suggestions": null,
+          "country_of_origin": "Product of United Kingdom COO Printed on Pack During Production.",
+          "country_of_packaging": "United Kingdom",
+          "current_vintage": null,
+          "vinification_details": null
+        },
+        "flags": [
+          "vegetarian"
+        ],
+        "categories": [
+          "fresh-chilled-food/vegetables/cabbage-spinach-greens/sprouts",
+          "m-s/m-s-best-of-fresh/m-s-fruit-vegetables/m-s-vegetables"
+        ]
+      },
+      "context_hash": "46a81c7f1f181fc5ccdd50d9312ff7fbe0390833dc0f0d26226d7dcacfaeeba5",
+      "rationale": "Plain produce: M&S Baby Button Brussel Sprouts. The stored identity and composition support vegan suitability. Ordinary wrapping or missing packaging details provide no evidenced animal-component concern.",
+      "support": [
+        {
+          "field": "name",
+          "quote": "M&S Baby Button Brussel Sprouts"
+        },
+        {
+          "field": "ingredients",
+          "quote": "Baby Button Sprouts (100%)"
+        }
+      ],
+      "reviewed_by": "supervising Codex agent, direct source review (no separate classifier calls)",
+      "reviewed_on": "2026-10-18",
+      "scope": "complete product; evidenced material concerns only"
+    },
+    {
+      "product_id": "700124011",
+      "reason": "ingredients",
+      "context": {
+        "product": {
+          "id": "700124011",
+          "name": "M&S Baby Fennel",
+          "brand": "M&S",
+          "url": "https://www.ocado.com/products/700124011/details",
+          "pack_size": "150g",
+          "official_vegan": 0,
+          "alcohol": 0,
+          "ingredients": null,
+          "allergens": null,
+          "detailed_description": "M&S Baby Fennel",
+          "dietary_information": null,
+          "features": "Eat well, Crisp & Aromatic, Roast or Pan Fry, 1 of your Five a day = 80g, From Select Farms we know and trust",
+          "further_description": "Eat a healthy variety of differently coloured vegetables and fruits each day - at least 5 portions. Deliciously healthy food Best enjoyed as part of a healthy lifestyle & a balanced varied diet.",
+          "brand_marketing": null,
+          "manufacturer_marketing": null,
+          "manufacturer": "Marks and Spencer plc, PO Box 3339, Chester, CH99 9QS, United Kingdom. M&S (Ireland) Ltd, PO Box 13022, Ravensdale, Dublin 2, Ireland.",
+          "producer": null,
+          "preparation_and_usage": "Wash before use.",
+          "cooking_guidelines": "Other - From Chilled. - Remove all packaging - Wash before use - Trim ends For best result Electric 200°C / Fan 180°C / Gas 6, 20-30 mins - Preheat 1 tbsp of oil in a baking tray - Place the fennel onto the baking tray - Cook until tender, turning occasionally",
+          "other_information": "Storage: Best stored in a fridge. Additional Information: © Marks and Spencer plc",
+          "package_type": "Wrap",
+          "recycling_information": null,
+          "specification": null,
+          "storage": null,
+          "recipes": null,
+          "serving_suggestions": null,
+          "country_of_origin": null,
+          "country_of_packaging": null,
+          "current_vintage": null,
+          "vinification_details": null
+        },
+        "flags": [
+          "vegetarian"
+        ],
+        "categories": [
+          "fresh-chilled-food/in-season/offers",
+          "fresh-chilled-food/vegetables/celery-fennel/fennel"
+        ]
+      },
+      "context_hash": "15057bce05aefcb58b7eb58eef14304b9f9194d3421cc6c5b0b2aecb6f7dd51b",
+      "rationale": "Plain produce: M&S Baby Fennel. The stored identity and composition support vegan suitability. Ordinary wrapping or missing packaging details provide no evidenced animal-component concern.",
+      "support": [
+        {
+          "field": "name",
+          "quote": "M&S Baby Fennel"
+        },
+        {
+          "field": "detailed_description",
+          "quote": "M&S Baby Fennel"
+        }
+      ],
+      "reviewed_by": "supervising Codex agent, direct source review (no separate classifier calls)",
+      "reviewed_on": "2026-10-18",
+      "scope": "complete product; evidenced material concerns only"
+    },
+    {
+      "product_id": "524035011",
+      "reason": "ingredients",
+      "context": {
+        "product": {
+          "id": "524035011",
+          "name": "M&S British Brussels Sprout Tree",
+          "brand": "M&S",
+          "url": "https://www.ocado.com/products/524035011/details",
+          "pack_size": null,
+          "official_vegan": 0,
+          "alcohol": 0,
+          "ingredients": "Brussels Sprouts (100%).",
+          "allergens": null,
+          "detailed_description": "M&S Brussels Sprouts Tree Hand selected Brussels sprouts tree.",
+          "dietary_information": null,
+          "features": "100% of M&S Select Farms products meet our high quality and environmental protection standards. We know and trust all our Select Farmers, so you can trust M&S for your fresh food.",
+          "further_description": null,
+          "brand_marketing": "M&S Food has been at the heart of the nation since 1884. Giving our customers their best-loved products at the incredible quality and value that only M&S can deliver. From Percy Pig to the freshest M&S Select Farms produce, we grow, source, and develop our own products to give you family-ready food that's unbeatable on flavour and innovation. And that's whether you come to us for your family favourites, an indulgent treat, or your perfect party food spread. After all, this is not just food… This is M&S Food.",
+          "manufacturer_marketing": null,
+          "manufacturer": "Marks and Spencer plc, PO Box 3339, Chester, CH99 9QS, United Kingdom. M&S (Ireland) Ltd, PO Box 13022, Ravensdale, Dublin 2, Ireland.",
+          "producer": null,
+          "preparation_and_usage": "Wash before use Peel and trim as desired Steam 5-7 minutes Boil 4-5 minutes Or just until tender",
+          "cooking_guidelines": null,
+          "other_information": "Storage: Best stored in a fridge.",
+          "package_type": null,
+          "recycling_information": null,
+          "specification": null,
+          "storage": "Keep Refrigerated",
+          "recipes": null,
+          "serving_suggestions": null,
+          "country_of_origin": null,
+          "country_of_packaging": null,
+          "current_vintage": null,
+          "vinification_details": null
+        },
+        "flags": [
+          "vegetarian"
+        ],
+        "categories": [
+          "fresh-chilled-food/vegetables/cabbage-spinach-greens/sprouts",
+          "m-s/m-s-best-of-fresh/m-s-fruit-vegetables/m-s-vegetables"
+        ]
+      },
+      "context_hash": "9928f8f824c3e789e5ef233ef2b6c8002c9d678328829d0e29bdc2e610facb50",
+      "rationale": "Plain produce: M&S British Brussels Sprout Tree. The stored identity and composition support vegan suitability. Ordinary wrapping or missing packaging details provide no evidenced animal-component concern.",
+      "support": [
+        {
+          "field": "name",
+          "quote": "M&S British Brussels Sprout Tree"
+        },
+        {
+          "field": "ingredients",
+          "quote": "Brussels Sprouts (100%)."
+        }
+      ],
+      "reviewed_by": "supervising Codex agent, direct source review (no separate classifier calls)",
+      "reviewed_on": "2026-10-18",
+      "scope": "complete product; evidenced material concerns only"
+    },
+    {
+      "product_id": "518647011",
+      "reason": "ingredients",
+      "context": {
+        "product": {
+          "id": "518647011",
+          "name": "M&S British Brussels Sprouts",
+          "brand": "M&S",
+          "url": "https://www.ocado.com/products/518647011/details",
+          "pack_size": "500g",
+          "official_vegan": 0,
+          "alcohol": 0,
+          "ingredients": "Brussels Sprouts",
+          "allergens": null,
+          "detailed_description": "M&S Select Farms Brussels Sprouts Sweet and crisp Brussels sprouts. Wash before use, peel and trim as desired and steam for best results or boil. 80g make up 1 of your 5 a day.",
+          "dietary_information": null,
+          "features": "Eat well, Sweet & Crisp, Steam, Roast or Saute, Naturally rich in vitamin C",
+          "further_description": "Deliciously healthy food Best enjoyed as part of a healthy lifestyle & a balanced varied diet. Eat a healthy variety of differently coloured vegetables and fruits each day - at least 5 portions.",
+          "brand_marketing": "M&S Food has been at the heart of the nation since 1884. Giving our customers their best-loved products at the incredible quality and value that only M&S can deliver. From Percy Pig to the freshest M&S Select Farms produce, we grow, source, and develop our own products to give you family-ready food that's unbeatable on flavour and innovation. And that's whether you come to us for your family favourites, an indulgent treat, or your perfect party food spread. After all, this is not just food… This is M&S Food.",
+          "manufacturer_marketing": null,
+          "manufacturer": "Marks and Spencer plc, PO Box 3339, Chester, CH99 9QS, United Kingdom. M&S (Ireland) Ltd, PO Box 13022, Ravensdale, Dublin 2, Ireland.",
+          "producer": null,
+          "preparation_and_usage": "Brussels Sprouts Remove packaging. Wash before use. Peel and trim as required. Cut in half before cooking Needs cooking. For best results steam. Steam 10-12 mins • Empty contents into a steamer or colander and steam Oven 15-20 mins Electric 200°C / Fan 180°C Gas 6 • Preheat 1 tbsp of oil on a baking tray in the oven • Once preheated, place sprouts onto the baking tray and cook on the middle shelf • Cook for 15-20 mins or until tender turning occasionally. Saute 15-20 mins • Preheat 1 tsp of oil in a frying pan over medium heat. • Add the sprouts to the frying pan, stirring occasionally until the Brussels sprouts are soft and slightly charred. Reduce heat if necessary. • Check food is piping hot before serving Do not reheat",
+          "cooking_guidelines": "Cooking Instructions - General. Remove packaging. Wash before use. Peel and trim as required. Cut in half before cooking. Needs cooking. For best results steam. Do not reheat.; Oven cook - From Chilled. Electric 200°C, Fan 180°C, Gas 6 - Preheat 1 tbsp of oil on a baking tray in the oven - Once preheated, place sprouts onto the baking tray and cook on the middle shelf - Cook for 15-20 mins or until tender, turning occasionally.; Shallow Fry - From Chilled. 15-20 mins - Preheat 1 tsp of oil in a frying pan over medium heat. - Add the sprouts to the frying pan, stirring occasionally until the Brussels sprouts are soft and slightly charred. Reduce heat if necessary. - Check food is piping hot before serving.; Steam - From Chilled. 10-12 mins Empty contents into a steamer or colander and steam",
+          "other_information": "Full Product Name: M&S Brussels Sprouts Storage: Best stored in a fridge. Additional Information: © Marks and Spencer plc",
+          "package_type": "Bag",
+          "recycling_information": "Film - Do not recycle at home, recycle with bags at large supermarket.",
+          "specification": null,
+          "storage": "Best stored in a fridge. Wash before use",
+          "recipes": null,
+          "serving_suggestions": null,
+          "country_of_origin": "Country of Origin printed on pack by supplier",
+          "country_of_packaging": "United Kingdom",
+          "current_vintage": null,
+          "vinification_details": null
+        },
+        "flags": [
+          "vegetarian"
+        ],
+        "categories": [
+          "fresh-chilled-food/best-of-british/fruit-vegetables/vegetables",
+          "fresh-chilled-food/vegetables/cabbage-spinach-greens/sprouts",
+          "m-s/m-s-best-of-fresh/m-s-fruit-vegetables/m-s-vegetables",
+          "m-s/m-s-own-brands/m-s-eat-well",
+          "roast-season/veg-essential-roasties"
+        ]
+      },
+      "context_hash": "ea4a6e41470f657840f7595d3bd3d1d275d582b24b04b5df84227be2a77f86e6",
+      "rationale": "Plain produce: M&S British Brussels Sprouts. The stored identity and composition support vegan suitability. Ordinary wrapping or missing packaging details provide no evidenced animal-component concern.",
+      "support": [
+        {
+          "field": "name",
+          "quote": "M&S British Brussels Sprouts"
+        },
+        {
+          "field": "ingredients",
+          "quote": "Brussels Sprouts"
+        }
+      ],
+      "reviewed_by": "supervising Codex agent, direct source review (no separate classifier calls)",
+      "reviewed_on": "2026-10-18",
+      "scope": "complete product; evidenced material concerns only"
+    },
+    {
+      "product_id": "542580011",
+      "reason": "ingredients",
+      "context": {
+        "product": {
+          "id": "542580011",
+          "name": "M&S British Prepped Brussels Sprouts",
+          "brand": "M&S",
+          "url": "https://www.ocado.com/products/542580011/details",
+          "pack_size": "400g",
+          "official_vegan": 0,
+          "alcohol": 0,
+          "ingredients": "Brussels Sprouts (100%),",
+          "allergens": null,
+          "detailed_description": "High in selenium. Selenium contributes to the normal function of the immune system.",
+          "dietary_information": "Suitable for Vegetarians",
+          "features": "Eat well, Sweet & Green, Prepared & Ready to Steam or Boil, Suitable for vegetarians",
+          "further_description": "Deliciously healthy food Best enjoyed as part of a healthy lifestyle & a balanced varied diet. 1 of Your Five a Day Per 80g Eat a healthy variety of differently coloured vegetables and fruits each day - at least 5 portions.",
+          "brand_marketing": "M&S Food has been at the heart of the nation since 1884. Giving our customers their best-loved products at the incredible quality and value that only M&S can deliver. From Percy Pig to the freshest M&S Select Farms produce, we grow, source, and develop our own products to give you family-ready food that's unbeatable on flavour and innovation. And that's whether you come to us for your family favourites, an indulgent treat, or your perfect party food spread. After all, this is not just food… This is M&S Food.",
+          "manufacturer_marketing": null,
+          "manufacturer": "Marks and Spencer plc, PO Box 3339, Chester, CH99 9QS, United Kingdom. M&S (Ireland) Ltd, PO Box 13022, Ravensdale, Dublin 2, Ireland.",
+          "producer": null,
+          "preparation_and_usage": "Why Not Try... Recipe Suggestion Brussel Sprouts with Bacon and Chestnuts Serves 6 Preparation time: 5 mins Cooking time: 30 mins You Will Need: 480g Prepped Brussels Sprouts 150g Bacon lardons 100g Whole/sliced cooked chestnuts 1 Tbsp. Butter Method 1. Bring a large pan of salted water to the boil, cook sprouts for 7 minutes. Drain and run under the cold tap until cold. 2. Fry off bacon lardons in a pan until crisp, tip out onto a plate. 3. Fry the chestnuts for 5 minutes, remove from the pan. 4. Add sprouts with a splash of water to a pan and fry for a further 5 minutes until tender. 5. Turn up heat and add butter, bacon lardons and chestnuts and plenty of seasoning.",
+          "cooking_guidelines": "Boil - From Chilled. 9-12 mins - Remove all packaging - Bring pan of water to boil, place in a pan, cover and simmer - Drain and serve; Cooking Instructions - General. Needs Cooking For best results Steam. Do not reheat.; Microwave - From Chilled. 4 mins, 800W - Pierce film once - Place on a microwaveable plate and cook on high (100%) - Leave to stand for 2 mins before serving; Steam - From Chilled. 9-11 mins - Remove all packaging - Place into a steamer or colander and steam",
+          "other_information": "Full Product Name: Brussels Sprouts Storage: For use by, see front of pack. Keep refrigerated 0°C to +5°C. Not suitable for freezing. Safety Warning: Take care, this product will be particularly hot after cooking. Additional Information: © Marks and Spencer plc",
+          "package_type": "Bag",
+          "recycling_information": "Film - Recycle with bags at large supermarket - Don't recycle at home",
+          "specification": null,
+          "storage": "Keep Refrigerated; Not Suitable for Home Freezing",
+          "recipes": "Why not try... Recipe suggestion Brussels sprouts with bacon and chestnuts Serves 5 Preparation time: 5 mins Cooking time: 30 mins You will need... 400g Prepped brussels sprouts 150g Bacon lardons 100g Whole/sliced cooked chestnuts 1 Tbsp. Butter Method 1. Bring a large pan of salted water to the boil, cook for 9 minutes. Drain and run under the cold tap until cold. 2. Fry off pancetta in a pan until crisp, tip out onto a plate. 3. Fry the chestnuts for 5 minutes, remove from the pan. 4. Add sprouts with a splash of water to a pan and fry for a further 5 minutes until tender. 5. Turn up heat and add butter, pancetta and chestnuts and plenty of seasoning.",
+          "serving_suggestions": null,
+          "country_of_origin": "United Kingdom",
+          "country_of_packaging": "United Kingdom",
+          "current_vintage": null,
+          "vinification_details": null
+        },
+        "flags": [
+          "microwavable",
+          "vegetarian"
+        ],
+        "categories": [
+          "fresh-chilled-food/vegetables/cabbage-spinach-greens/sprouts"
+        ]
+      },
+      "context_hash": "16a49034ada1b99d2dd09f0e45918d57c30873eeb2467978082babc75636e4f3",
+      "rationale": "Plain produce: M&S British Prepped Brussels Sprouts. The stored identity and composition support vegan suitability. Ordinary wrapping or missing packaging details provide no evidenced animal-component concern. The bacon/chestnut recipe explicitly lists ingredients the customer must supply; the sold product is 100% Brussels sprouts.",
+      "support": [
+        {
+          "field": "name",
+          "quote": "M&S British Prepped Brussels Sprouts"
+        },
+        {
+          "field": "ingredients",
+          "quote": "Brussels Sprouts (100%),"
+        }
+      ],
+      "reviewed_by": "supervising Codex agent, direct source review (no separate classifier calls)",
+      "reviewed_on": "2026-10-18",
+      "scope": "complete product; evidenced material concerns only"
+    },
+    {
+      "product_id": "645487011",
+      "reason": "ingredients",
+      "context": {
+        "product": {
+          "id": "645487011",
+          "name": "M&S Carrot Broccoli & Sprouts",
+          "brand": "M&S",
+          "url": "https://www.ocado.com/products/645487011/details",
+          "pack_size": "720g",
+          "official_vegan": 0,
+          "alcohol": 0,
+          "ingredients": "Carrots (37%), Broccoli (34%), Brussels Sprouts (29%)",
+          "allergens": null,
+          "detailed_description": "M&S Carrot Broccoli & Sprouts Prepped and ready to cook carrots, broccoli and sprouts. Simply steam, microwave or boil. For best results, steam.",
+          "dietary_information": null,
+          "features": "Eat well, Savoury & Sweet, Prepared & Ready to Steam or Microwave",
+          "further_description": "Deliciously healthy food Best enjoyed as part of a healthy lifestyle & a balanced varied diet. 1 of Your Five a Day = 80g Eat a healthy variety of differently coloured vegetables and fruits each day - at least 5 portions.",
+          "brand_marketing": "M&S Food has been at the heart of the nation since 1884. Giving our customers their best-loved products at the incredible quality and value that only M&S can deliver. From Percy Pig to the freshest M&S Select Farms produce, we grow, source, and develop our own products to give you family-ready food that's unbeatable on flavour and innovation. And that's whether you come to us for your family favourites, an indulgent treat, or your perfect party food spread. After all, this is not just food… This is M&S Food.",
+          "manufacturer_marketing": null,
+          "manufacturer": "Marks and Spencer plc, PO Box 3339, Chester, CH99 9QS, United Kingdom. M&S (Ireland) Ltd, PO Box 13022, Ravensdale, Dublin 2, Ireland.",
+          "producer": null,
+          "preparation_and_usage": "NEEDS COOKING For best results STEAM STEAM 7-9 mins • Remove all packaging. • Empty contents into a steamer or colander and steam. MICROWAVE 750W 6 mins, 30 secs 900W 5 mins • Pierce film. • Place bag on a microwaveable plate. • Cook on high (100%). • After cooking, leave to stand for 1 min. • Guide for one pack only. BOIL 6-9 mins • Bring pan of water to boil. • Empty pack contents into pan, cover and simmer. • Drain and serve. Do not reheat.",
+          "cooking_guidelines": "Boil - From Chilled. 6-9 mins - Bring pan of water to boil - Empty pack contents into pan, cover and simmer - Drain and serve; Cooking Instructions - General. Needs Cooking For best results Steam. Do not reheat.; Microwave - From Chilled. 6 mins, 800W - Pierce film - Place bag on a microwaveable plate - Cook on high (100%) - After cooking, leave to stand for 1 min; Steam - From Chilled. 7-9 mins - Remove all packaging - Empty contents into a steamer or colander and steam",
+          "other_information": "Full Product Name: Carrots, Broccoli and Brussels Sprouts Storage: For use by, see front of pack. Keep refrigerated at 0°C to +5°C. Not suitable for freezing. Additional Information: © Marks and Spencer plc",
+          "package_type": "Bag",
+          "recycling_information": "Film - Recycle with bags at large supermarket - Don't recycle at home",
+          "specification": null,
+          "storage": "Keep Refrigerated; Not Suitable for Home Freezing",
+          "recipes": null,
+          "serving_suggestions": null,
+          "country_of_origin": "Produce of more than one country. Packed in the UK.",
+          "country_of_packaging": "United Kingdom",
+          "current_vintage": null,
+          "vinification_details": null
+        },
+        "flags": [
+          "microwavable"
+        ],
+        "categories": [
+          "fresh-chilled-food/vegetables/microwave-vegetables",
+          "fresh-chilled-food/vegetables/mixed-vegetable-selection-packs"
+        ]
+      },
+      "context_hash": "8b07b4aa57717491caaa4fb07fb0a139110e2ddb20c4cc189d7534013aaa3039",
+      "rationale": "Plain produce: M&S Carrot Broccoli & Sprouts. The stored identity and composition support vegan suitability. Ordinary wrapping or missing packaging details provide no evidenced animal-component concern. The complete list is carrots 37%, broccoli 34% and Brussels sprouts 29%, with no dressing or added butter.",
+      "support": [
+        {
+          "field": "name",
+          "quote": "M&S Carrot Broccoli & Sprouts"
+        },
+        {
+          "field": "ingredients",
+          "quote": "Carrots (37%), Broccoli (34%), Brussels Sprouts (29%)"
+        }
+      ],
+      "reviewed_by": "supervising Codex agent, direct source review (no separate classifier calls)",
+      "reviewed_on": "2026-10-18",
+      "scope": "complete product; evidenced material concerns only"
+    },
+    {
+      "product_id": "675445011",
+      "reason": "ingredients",
+      "context": {
+        "product": {
+          "id": "675445011",
+          "name": "M&S Celebration Potatoes",
+          "brand": "M&S",
+          "url": "https://www.ocado.com/products/675445011/details",
+          "pack_size": "750g",
+          "official_vegan": 0,
+          "alcohol": 0,
+          "ingredients": "Celebration Potatoes (100%).",
+          "allergens": null,
+          "detailed_description": "With buttery golden flesh & a rich, nutty flavour, these versatile potatoes are perfect for roasting, boiling or salads This exclusive variety is grown sustainably in the sandy soils of suffolk's coastal strip, using pioneering local methods",
+          "dietary_information": null,
+          "features": "Our Latest Discovery, Eat well",
+          "further_description": "Deliciously healthy food Best enjoyed as part of a healthy lifestyle & a balanced varied diet.",
+          "brand_marketing": null,
+          "manufacturer_marketing": null,
+          "manufacturer": "Marks and Spencer plc, PO Box 3339, Chester, CH99 9QS, United Kingdom. M&S (Ireland) Ltd, PO Box 13022, Ravensdale, Dublin 2, Ireland.",
+          "producer": null,
+          "preparation_and_usage": "Wash before use.",
+          "cooking_guidelines": "Boil - From Ambient. 25-30 mins - Bring pan of water to boil, place in a pan, cover and simmer until tender - Drain and serve; Cooking Instructions - General. Needs cooking - Remove all packaging For best results roast; Oven cook - From Ambient. Roast Electric 220°C, Fan 200°C, Gas 7, 40-50 mins - Preheat some oil in a roasting tin - Spread potatoes evenly in the roasting tin and baste - Roast uncovered - Cook until tender, turning occasionally; Steam - From Ambient. 25 - 30 mins - Place into a steamer or colander and steam until tender",
+          "other_information": "Storage: Best stored in a fridge. Additional Information: © Marks and Spencer plc",
+          "package_type": "Bag",
+          "recycling_information": "Film - Recycle with bags at large supermarket - Don't recycle at home",
+          "specification": null,
+          "storage": "Best stored in a fridge. Wash before use.",
+          "recipes": null,
+          "serving_suggestions": null,
+          "country_of_origin": "Product of United Kingdom COO Printed on Pack During Production, Front of Pack.",
+          "country_of_packaging": null,
+          "current_vintage": null,
+          "vinification_details": null
+        },
+        "flags": [
+          "vegetarian"
+        ],
+        "categories": [
+          "fresh-chilled-food/vegetables/potatoes/baking-potatoes",
+          "fresh-chilled-food/vegetables/potatoes/red-potatoes",
+          "m-s/m-s-best-of-fresh/m-s-fruit-vegetables/m-s-vegetables",
+          "new-trending/new/new-in-m-s"
+        ]
+      },
+      "context_hash": "a6d8c841c80dcf91c1038fd0d4e3110d399cf52ea9ac6ff6162b4600494adb67",
+      "rationale": "Plain produce: M&S Celebration Potatoes. The stored identity and composition support vegan suitability. Ordinary wrapping or missing packaging details provide no evidenced animal-component concern. Buttery describes the golden potato flesh, not added butter; the ingredient is 100% potatoes.",
+      "support": [
+        {
+          "field": "name",
+          "quote": "M&S Celebration Potatoes"
+        },
+        {
+          "field": "ingredients",
+          "quote": "Celebration Potatoes (100%)."
+        }
+      ],
+      "reviewed_by": "supervising Codex agent, direct source review (no separate classifier calls)",
+      "reviewed_on": "2026-10-18",
+      "scope": "complete product; evidenced material concerns only"
+    },
+    {
+      "product_id": "532071011",
+      "reason": "ingredients",
+      "context": {
+        "product": {
+          "id": "532071011",
+          "name": "M&S Edible Squash (Variable)",
+          "brand": "M&S",
+          "url": "https://www.ocado.com/products/532071011/details",
+          "pack_size": null,
+          "official_vegan": 0,
+          "alcohol": 0,
+          "ingredients": null,
+          "allergens": null,
+          "detailed_description": "M&S Seasonal Mixed Squash Receive one from a delicious selection of seasonal squash. Perfect for making soup, roasting and stuffing with cheese. Product may differ in colour or variety depending on availability.",
+          "dietary_information": null,
+          "features": "Eat well",
+          "further_description": null,
+          "brand_marketing": "M&S Food has been at the heart of the nation since 1884. Giving our customers their best-loved products at the incredible quality and value that only M&S can deliver. From Percy Pig to the freshest M&S Select Farms produce, we grow, source, and develop our own products to give you family-ready food that's unbeatable on flavour and innovation. And that's whether you come to us for your family favourites, an indulgent treat, or your perfect party food spread. After all, this is not just food… This is M&S Food.",
+          "manufacturer_marketing": null,
+          "manufacturer": "Marks and Spencer plc, PO Box 3339, Chester, CH99 9QS, United Kingdom. M&S (Ireland) Ltd, PO Box 13022, Ravensdale, Dublin 2, Ireland.",
+          "producer": null,
+          "preparation_and_usage": "Wash before use.",
+          "cooking_guidelines": null,
+          "other_information": "Additional Information: © Marks and Spencer plc",
+          "package_type": "Loose",
+          "recycling_information": null,
+          "specification": null,
+          "storage": null,
+          "recipes": null,
+          "serving_suggestions": null,
+          "country_of_origin": null,
+          "country_of_packaging": null,
+          "current_vintage": null,
+          "vinification_details": null
+        },
+        "flags": [
+          "vegetarian"
+        ],
+        "categories": [
+          "events-inspiration/halloween/pumpkins",
+          "fresh-chilled-food/in-season/vegetables-salad/vegetables",
+          "fresh-chilled-food/vegetables/pumpkins",
+          "fresh-chilled-food/vegetables/squash-sweet-potatoes/squash",
+          "m-s/m-s-best-of-fresh/m-s-fruit-vegetables/m-s-vegetables",
+          "m-s/m-s-own-brands/m-s-eat-well",
+          "new-trending/new/new-in-m-s"
+        ]
+      },
+      "context_hash": "685ed2025c1dcc766261b15466c216ccca9b0347709d23aa142c0ff437af640b",
+      "rationale": "Plain produce: M&S Edible Squash (Variable). The stored identity and composition support vegan suitability. Ordinary wrapping or missing packaging details provide no evidenced animal-component concern. Stuffing with cheese is a serving suggestion; the supplied item is a whole squash.",
+      "support": [
+        {
+          "field": "name",
+          "quote": "M&S Edible Squash (Variable)"
+        },
+        {
+          "field": "detailed_description",
+          "quote": "M&S Seasonal Mixed Squash Receive one from a delicious selection of seasonal squash. Perfect for making soup, roasting and stuffing with cheese. Product may differ in colour or variety depending on availability."
+        }
+      ],
+      "reviewed_by": "supervising Codex agent, direct source review (no separate classifier calls)",
+      "reviewed_on": "2026-10-18",
+      "scope": "complete product; evidenced material concerns only"
+    },
+    {
+      "product_id": "528865011",
+      "reason": "ingredients",
+      "context": {
+        "product": {
+          "id": "528865011",
+          "name": "M&S Ghost Pumpkin",
+          "brand": "M&S",
+          "url": "https://www.ocado.com/products/528865011/details",
+          "pack_size": null,
+          "official_vegan": 0,
+          "alcohol": 0,
+          "ingredients": "Ghost Pumpkin (100%).",
+          "allergens": null,
+          "detailed_description": "M&S Ghost Pumpkin This pumpkin is perfect for carving in spooky faces at Halloween. Once carved, use the flesh in pies, soups and risottos. Perfect for spooky Halloween displays. M&S UPC -268417",
+          "dietary_information": null,
+          "features": "This pumpkin is perfect for carving at Halloween. Once carved, use the flesh in pies, soups and risottos.",
+          "further_description": null,
+          "brand_marketing": "M&S Food has been at the heart of the nation since 1884. Giving our customers their best-loved products at the incredible quality and value that only M&S can deliver. From Percy Pig to the freshest M&S Select Farms produce, we grow, source, and develop our own products to give you family-ready food that's unbeatable on flavour and innovation. And that's whether you come to us for your family favourites, an indulgent treat, or your perfect party food spread. After all, this is not just food… This is M&S Food.",
+          "manufacturer_marketing": null,
+          "manufacturer": "Marks and Spencer plc, PO Box 3339, Chester, CH99 9QS, United Kingdom. M&S (Ireland) Ltd, PO Box 13022, Ravensdale, Dublin 2, Ireland.",
+          "producer": null,
+          "preparation_and_usage": null,
+          "cooking_guidelines": null,
+          "other_information": "Additional Information: © M&S plc",
+          "package_type": "Loose",
+          "recycling_information": null,
+          "specification": null,
+          "storage": "Store in a cool dark place.",
+          "recipes": null,
+          "serving_suggestions": null,
+          "country_of_origin": null,
+          "country_of_packaging": null,
+          "current_vintage": null,
+          "vinification_details": null
+        },
+        "flags": [],
+        "categories": [
+          "events-inspiration/halloween/pumpkins",
+          "fresh-chilled-food/in-season/vegetables-salad/vegetables",
+          "fresh-chilled-food/vegetables/pumpkins",
+          "m-s/m-s-best-of-fresh/m-s-fruit-vegetables/m-s-vegetables",
+          "new-trending/new/new-in-m-s"
+        ]
+      },
+      "context_hash": "3a3c4a8f89470da2229bc90d6f2375651e29f9d64684193925fc681d8a503ef6",
+      "rationale": "Plain produce: M&S Ghost Pumpkin. The stored identity and composition support vegan suitability. Ordinary wrapping or missing packaging details provide no evidenced animal-component concern.",
+      "support": [
+        {
+          "field": "name",
+          "quote": "M&S Ghost Pumpkin"
+        },
+        {
+          "field": "ingredients",
+          "quote": "Ghost Pumpkin (100%)."
+        }
+      ],
+      "reviewed_by": "supervising Codex agent, direct source review (no separate classifier calls)",
+      "reviewed_on": "2026-10-18",
+      "scope": "complete product; evidenced material concerns only"
+    },
+    {
+      "product_id": "65344011",
+      "reason": "ingredients",
+      "context": {
+        "product": {
+          "id": "65344011",
+          "name": "Ocado British Brussels Sprouts",
+          "brand": "Ocado",
+          "url": "https://www.ocado.com/products/65344011/details",
+          "pack_size": "750g",
+          "official_vegan": 0,
+          "alcohol": 0,
+          "ingredients": "Brussels Sprouts.",
+          "allergens": null,
+          "detailed_description": "Ocado British Brussels Sprouts. Firm, with a slightly earthy flavour, Brussels sprouts are a versatile vegetable that you can easily added into your favourite meals. Naturally high in folic acid, vitamin C and fibre, an 80g portion is 1 of your 5 a day. Roasting or sautéing brings out a sweeter, slightly nuttier taste - just don't fall into the overcooking trap! Cook with bacon and butter for a decadent side dish, toss into your stir-fries, or bake into a fritter or gratin. Once trimmed and peeled, you can also shred them raw into salads or coleslaw for an extra hit of crunch. Did you know? You don't need to cross your sprouts before cooking - this was only traditionally done to ensure large sprouts cooked at the same time as smaller ones. Looking to add more veg variety into your dishes? Simply search 'Ocado veg' for a huge range of fresh ideas.",
+          "dietary_information": null,
+          "features": null,
+          "further_description": null,
+          "brand_marketing": null,
+          "manufacturer_marketing": null,
+          "manufacturer": "Packed in the UK for: Ocado Retail Ltd., Hatfield, Herts, AL10 9NE UK www.ocado.com",
+          "producer": null,
+          "preparation_and_usage": null,
+          "cooking_guidelines": "For best results, steam. Remove all packaging. Trim each sprout and remove the outer leaves. Rinse well. Steam: 10-15 mins Place required amount into a steamer basket over boiling water. Steam for 10-15 minutes until tender. Ensure the water does not boil dry. Boil: 7-8 mins Place required amount into a saucepan of boiling water. Bring back to the boil and simmer for 7-8 minutes until tender. Drain and serve. All appliances vary. These are guidelines only. Ensure the product is piping hot before serving. Do not reheat.",
+          "other_information": "Warning: Keep bag away from babies, small children and pets to avoid danger of suffocation.",
+          "package_type": null,
+          "recycling_information": "Don't recycle at home RECYCLE AT RECYCLING POINT",
+          "specification": null,
+          "storage": "Best stored in a fridge. Caution: Wash before use.",
+          "recipes": null,
+          "serving_suggestions": null,
+          "country_of_origin": "UK",
+          "country_of_packaging": null,
+          "current_vintage": null,
+          "vinification_details": null
+        },
+        "flags": [
+          "ocado_price_promise",
+          "vegetarian"
+        ],
+        "categories": [
+          "christmas/the-big-feast/sides-sauces-veg/veg",
+          "fresh-chilled-food/vegetables/cabbage-spinach-greens/sprouts",
+          "ocado-own-range/fruit-vegetables-salad/vegetables"
+        ]
+      },
+      "context_hash": "786acac230b0cf84a1b7041e56c1da171694a73be4a8553b7b3db5e5972fb81b",
+      "rationale": "Plain produce: Ocado British Brussels Sprouts. The stored identity and composition support vegan suitability. Ordinary wrapping or missing packaging details provide no evidenced animal-component concern. Bacon and butter occur in a proposed serving idea, not in the declared Brussels sprouts ingredient.",
+      "support": [
+        {
+          "field": "name",
+          "quote": "Ocado British Brussels Sprouts"
+        },
+        {
+          "field": "ingredients",
+          "quote": "Brussels Sprouts."
+        }
+      ],
+      "reviewed_by": "supervising Codex agent, direct source review (no separate classifier calls)",
+      "reviewed_on": "2026-10-18",
+      "scope": "complete product; evidenced material concerns only"
+    },
+    {
+      "product_id": "78684011",
+      "reason": "ingredients",
+      "context": {
+        "product": {
+          "id": "78684011",
+          "name": "Ocado Carving Pumpkin (Typical Diameter 17-24cm)",
+          "brand": "Ocado",
+          "url": "https://www.ocado.com/products/78684011/details",
+          "pack_size": null,
+          "official_vegan": 0,
+          "alcohol": 0,
+          "ingredients": null,
+          "allergens": null,
+          "detailed_description": "Ocado Carving Pumpkin. This product is sold by size, the minimum size, of product you will receive is 17cm. Due to seasonal growing conditions, this year's crop is generally smaller than average while maintaining the same great eating quality. Grown specifically for its size and shape, a carving pumpkin is the ideal base for your festive Halloween decorations. It has a classic large, rounded shape and a thick, firm skin, perfect for holding up any spooky pattern you're brave enough to attempt! After carving, the contents of the pumpkin can still be put to good use. The inner seeds can be easily scooped out, cleaned, and roasted with a pinch of salt or spices for a delicious, crunchy snack. The remaining bright orange flesh is best saved for composting. While the flesh is safe to eat, it is generally watery and mild, making it best suited for its fun and decorative purpose.",
+          "dietary_information": null,
+          "features": null,
+          "further_description": null,
+          "brand_marketing": null,
+          "manufacturer_marketing": null,
+          "manufacturer": "Produced and packed for: Ocado Retail Ltd., Hatfield, Herts, AL10 9NE UK www.ocado.com",
+          "producer": null,
+          "preparation_and_usage": null,
+          "cooking_guidelines": "How to carve a pumpkin: 1. Cut the top off and set aside. 2. Scoop out the seeds and pulp - don't make the walls too thin. 3. Carve a spooky masterpiece. 4. Insert a tealight and add the top back on.",
+          "other_information": null,
+          "package_type": null,
+          "recycling_information": null,
+          "specification": null,
+          "storage": "Store in a cool, dry place.",
+          "recipes": null,
+          "serving_suggestions": null,
+          "country_of_origin": "UK",
+          "country_of_packaging": null,
+          "current_vintage": null,
+          "vinification_details": null
+        },
+        "flags": [
+          "vegetarian"
+        ],
+        "categories": [
+          "events-inspiration/halloween/pumpkins",
+          "fresh-chilled-food/in-season/vegetables-salad/vegetables",
+          "fresh-chilled-food/vegetables/pumpkins",
+          "m-s/m-s-best-of-fresh/m-s-fruit-vegetables/m-s-vegetables",
+          "new-trending/new/what-s-new/new-for-halloween",
+          "ocado-own-range/fruit-vegetables-salad/vegetables"
+        ]
+      },
+      "context_hash": "4c89e123176af69be4317e982c47d7f372881150ceb23c2deaf3df097607a141",
+      "rationale": "Plain produce: Ocado Carving Pumpkin (Typical Diameter 17-24cm). The stored identity and composition support vegan suitability. Ordinary wrapping or missing packaging details provide no evidenced animal-component concern. The item is a real pumpkin; inserting a tealight is a customer instruction, not an included candle.",
+      "support": [
+        {
+          "field": "name",
+          "quote": "Ocado Carving Pumpkin (Typical Diameter 17-24cm)"
+        },
+        {
+          "field": "detailed_description",
+          "quote": "Ocado Carving Pumpkin. This product is sold by size, the minimum size, of product you will receive is 17cm."
+        }
+      ],
+      "reviewed_by": "supervising Codex agent, direct source review (no separate classifier calls)",
+      "reviewed_on": "2026-10-18",
+      "scope": "complete product; evidenced material concerns only"
+    },
+    {
+      "product_id": "531989011",
+      "reason": "ingredients",
+      "context": {
+        "product": {
+          "id": "531989011",
+          "name": "Ocado Culinary Pumpkin min 600g",
+          "brand": "Ocado",
+          "url": "https://www.ocado.com/products/531989011/details",
+          "pack_size": null,
+          "official_vegan": 0,
+          "alcohol": 0,
+          "ingredients": null,
+          "allergens": null,
+          "detailed_description": "Ocado Culinary Pumpkin. This product is sold by weight, the minimum weight, of product you will receive is 600g. Due to seasonal growing conditions, this year's crop is generally smaller than average while maintaining the same great eating quality. We don't recommend carving this pumpkin due to the thickness of the skin. This pumpkin has been grown for eating rather than carving, and is prized for its dense texture and rich, sweet flavour. A good pumpkin is firm and round in shape, with a slightly flat surface on one side where it has been growing on the ground. It has a thick orange or yellow skin and is filled with a bright, solid orange flesh. When cooked, its flavour deepens, becoming intensely sweet, earthy, and nutty. Pumpkins are the essential ingredient for classic sweet bakes. The cooked and puréed flesh is the key to creating a rich and fragrant pumpkin pie, or can be added to cakes, muffins, and bread for a delicious autumnal flavour. Its natural sweetness makes it an excellent base for a variety of comforting desserts. The dense texture and earthy sweetness of pumpkin also make it fantastic for savoury cooking. It's perfect for roasting, as the heat caramelises its natural sugars. It can be added to curries, risottos, and hearty soups to add a rich flavour and substance, making it a warming and satisfying ingredient for any meal. Looking for more fresh produce for your favourite meals? Search 'Ocado veg' for a wide range of fresh, frozen, seasonal and organic inspiration.",
+          "dietary_information": null,
+          "features": null,
+          "further_description": null,
+          "brand_marketing": null,
+          "manufacturer_marketing": null,
+          "manufacturer": "Produced and packed for: Ocado Retail Ltd., Hatfield, Herts, AL10 9NE UK www.ocado.com",
+          "producer": null,
+          "preparation_and_usage": "Wash before use",
+          "cooking_guidelines": null,
+          "other_information": null,
+          "package_type": null,
+          "recycling_information": null,
+          "specification": null,
+          "storage": "Store in a cool, dry place.",
+          "recipes": null,
+          "serving_suggestions": null,
+          "country_of_origin": "UK",
+          "country_of_packaging": null,
+          "current_vintage": null,
+          "vinification_details": null
+        },
+        "flags": [],
+        "categories": [
+          "events-inspiration/halloween/pumpkins",
+          "fresh-chilled-food/in-season/vegetables-salad/vegetables",
+          "fresh-chilled-food/vegetables/pumpkins",
+          "m-s/m-s-best-of-fresh/m-s-fruit-vegetables/m-s-vegetables",
+          "ocado-own-range/fruit-vegetables-salad/vegetables"
+        ]
+      },
+      "context_hash": "ab537fa81d2637bc829a2bf7388321a7fee743cb44ca1001090a0b0fda7e7831",
+      "rationale": "Plain produce: Ocado Culinary Pumpkin min 600g. The stored identity and composition support vegan suitability. Ordinary wrapping or missing packaging details provide no evidenced animal-component concern.",
+      "support": [
+        {
+          "field": "name",
+          "quote": "Ocado Culinary Pumpkin min 600g"
+        },
+        {
+          "field": "detailed_description",
+          "quote": "Ocado Culinary Pumpkin. This product is sold by weight, the minimum weight, of product you will receive is 600g."
+        }
+      ],
+      "reviewed_by": "supervising Codex agent, direct source review (no separate classifier calls)",
+      "reviewed_on": "2026-10-18",
+      "scope": "complete product; evidenced material concerns only"
+    },
+    {
+      "product_id": "693810011",
+      "reason": "ingredients",
+      "context": {
+        "product": {
+          "id": "693810011",
+          "name": "Ocado Strawberries 227g",
+          "brand": "Ocado",
+          "url": "https://www.ocado.com/products/693810011/details",
+          "pack_size": "227g",
+          "official_vegan": 0,
+          "alcohol": 0,
+          "ingredients": null,
+          "allergens": null,
+          "detailed_description": "Ocado Strawberries Typically heart-shaped or conical, these strawberries are a bright, glossy red colour when ripe, and have a green leafy top. With a distinctive, fragrant aroma and a balance of intense sweetness and acidity, their juiciness provides a burst of flavour in every bite. As 80g is 1 of your 5 a day, one or more portions can be easily enjoyed in so many ways, including as a lunchbox snack. It's a star ingredient in countless desserts, including fruit salads, tarts and pies, cakes, mousses and fools. Mix into ice cream, turn into sorbet or for a classic indulgent treat, dip into melted dark chocolate and let them cool and harden in the fridge. They're a wonderful addition to yoghurt, cereal and granola, pancakes and waffles or blended into a smoothie. You can also make delicious jams and preserves to enjoy their flavour year-round. In drinks they add a subtly sweety flavour to water, lemonade, and cocktails, and are surprisingly delicious in salads, as they complement leafy greens, cheese, and balsamic vinaigrette. Looking for recipe inspiration? If you like what you see in our serving suggestion, scroll down for this colourful Over the Rainbow Yoghurt Lollipops recipe. Looking for more fresh flavours to brighten up your fruit bowl? Search 'Ocado fruit' for a huge range of home grown and exotic ideas.",
+          "dietary_information": null,
+          "features": null,
+          "further_description": null,
+          "brand_marketing": null,
+          "manufacturer_marketing": null,
+          "manufacturer": "Packed in the UK for: Ocado Retail Ltd., Hatfield, Herts, AL10 9NE UK www.ocado.com",
+          "producer": null,
+          "preparation_and_usage": null,
+          "cooking_guidelines": null,
+          "other_information": null,
+          "package_type": "Tray, Pad & Film.",
+          "recycling_information": "Tray Recycle Pad Don't Recycle Film Don't Recycle",
+          "specification": null,
+          "storage": "Best stored in a fridge. Wash before use. Best enjoyed at room temperature.",
+          "recipes": "Over the Rainbow Yoghurt Lollipops Prep time: 10 mins Serves: 4 Ingredients: 1 handful of strawberries or raspberries, cut into small pieces 1 handful of pomegranate seeds 1 handful of kiwi, cut into small pieces 1 handful of pineapple, mango or satsuma, cut into small pieces 1 handful of blueberries 8 tbsp of thick kefir yoghurt or greek yoghurt 1 handful of purple grapes, halved Method Step 1 Spread the yoghurt into four circles, about 5mm thick (2 tbsp for each circle) on a large baking tray lined with baking paper. You can use two smaller trays if necessary, just make sure they fit your freezer. Step 2 Arrange the fruit in rainbow lines, sticking to the colour order of purple, blue, green, yellow, orange then red. Step 3 Place the top of a cake pop stick (see Tip) into the yoghurt and freeze overnight (or for at least 4 hours). Step 4 Remove from the freezer and allow to sit for 5-10 mins before carefully lifting off the baking paper and enjoy nibbling the cold, colourful rainbow.",
+          "serving_suggestions": null,
+          "country_of_origin": "Country of origin may vary due to seasonality, specifically between Egypt, Morocco, Netherlands, Spain and the UK.",
+          "country_of_packaging": null,
+          "current_vintage": null,
+          "vinification_details": null
+        },
+        "flags": [
+          "vegetarian"
+        ],
+        "categories": [
+          "fresh-chilled-food/fruit/berries-cherries/strawberries",
+          "ocado-own-range/fruit-vegetables-salad/fruit"
+        ]
+      },
+      "context_hash": "0f712b4f6b16dc2b5769a1e62591fd47f64779cd37f668b7672a5f5b643cf247",
+      "rationale": "Plain produce: Ocado Strawberries 227g. The stored identity and composition support vegan suitability. Ordinary wrapping or missing packaging details provide no evidenced animal-component concern. Yoghurt, cheese and chocolate occur in serving suggestions or the separate lollipop recipe, not in the strawberries sold.",
+      "support": [
+        {
+          "field": "name",
+          "quote": "Ocado Strawberries 227g"
+        },
+        {
+          "field": "detailed_description",
+          "quote": "Ocado Strawberries Typically heart-shaped or conical, these strawberries are a bright, glossy red colour when ripe, and have a green leafy top."
+        }
+      ],
+      "reviewed_by": "supervising Codex agent, direct source review (no separate classifier calls)",
+      "reviewed_on": "2026-10-18",
+      "scope": "complete product; evidenced material concerns only"
+    },
+    {
+      "product_id": "684068011",
+      "reason": "ingredients",
+      "context": {
+        "product": {
+          "id": "684068011",
+          "name": "OrchardWorld Large Dragon Fruit",
+          "brand": "Orchardworld",
+          "url": "https://www.ocado.com/products/684068011/details",
+          "pack_size": null,
+          "official_vegan": 0,
+          "alcohol": 0,
+          "ingredients": null,
+          "allergens": null,
+          "detailed_description": "OrchardWorld would like to present the 'Dragon Fruit', a stunningly attractive fruit, with pink or yellow skin and green scales, resembling a dragon's skin. As you break open to reveal the flesh, quite often white or a vibrant fuchsia pink in colour and speckled with tiny black seeds. The mild sweet flavour, often likened to a cross between a pear and a kiwi adds a crunch with the seeds. Cultivated in sub-tropical regions on a climbing cactus plant scientifically known as a 'Hylocereus undatus'. How to eat a Dragon Fruit: Cut it open by slicing lengthways, then cut into quarters for easy eating. Scoop out the flesh and cut into cubes to eat directly. A Dragon Fruit is ripe when the colour is bright and a slight softness when pressed. Perfect to add to smoothies, salads or deserts.",
+          "dietary_information": null,
+          "features": null,
+          "further_description": null,
+          "brand_marketing": null,
+          "manufacturer_marketing": null,
+          "manufacturer": "Orchard World LTD, 790 The Crescent, Colchester Business Park, Colchester, Essex, CO4 9YQ. Telephone: 01206 834465 Email: Info@theorchardfruitcompany.com",
+          "producer": null,
+          "preparation_and_usage": "Best Served at room temperature. Wash before use.",
+          "cooking_guidelines": null,
+          "other_information": null,
+          "package_type": "PLU Label",
+          "recycling_information": "Yes",
+          "specification": null,
+          "storage": "Store at room temperature to ripen then keep refrigerated for longevity",
+          "recipes": null,
+          "serving_suggestions": null,
+          "country_of_origin": "Ecuador, Peru & Spain",
+          "country_of_packaging": "UK",
+          "current_vintage": null,
+          "vinification_details": null
+        },
+        "flags": [
+          "organic",
+          "vegetarian"
+        ],
+        "categories": [
+          "fresh-chilled-food/fruit/exotic-fruit"
+        ]
+      },
+      "context_hash": "c1ce235daa71d7d899f45ec99908cd5f8c321a9d422de7333bab76f0b56da920",
+      "rationale": "Plain produce: OrchardWorld Large Dragon Fruit. The stored identity and composition support vegan suitability. Ordinary wrapping or missing packaging details provide no evidenced animal-component concern.",
+      "support": [
+        {
+          "field": "name",
+          "quote": "OrchardWorld Large Dragon Fruit"
+        },
+        {
+          "field": "detailed_description",
+          "quote": "OrchardWorld would like to present the 'Dragon Fruit', a stunningly attractive fruit, with pink or yellow skin and green scales, resembling a dragon's skin."
+        }
+      ],
+      "reviewed_by": "supervising Codex agent, direct source review (no separate classifier calls)",
+      "reviewed_on": "2026-10-18",
+      "scope": "complete product; evidenced material concerns only"
+    },
+    {
+      "product_id": "685057011",
+      "reason": "ingredients",
+      "context": {
+        "product": {
+          "id": "685057011",
+          "name": "OrchardWorld Organic Ripen at Home Cherimoya (Custard Apple)",
+          "brand": "Orchardworld",
+          "url": "https://www.ocado.com/products/685057011/details",
+          "pack_size": "2 per pack",
+          "official_vegan": 0,
+          "alcohol": 0,
+          "ingredients": null,
+          "allergens": null,
+          "detailed_description": "Cherimoya Fruit is also known as the 'Custard Apple'. A medium sized green, heart shaped fruit with skin that gives the appearance of overlapping scales. They are smooth to touch, with a creamy white flesh and big glossy seeds. How to eat Cherimoya: Cut it open lengthways to reveal the creamy flesh Scoop the flesh out removing the seeds Chilling the fruit enhances the flavour and texture A ripened Cherimoya is slightly brown on appearance - see last image above for example. Best eaten when added to smoothies and desserts to give them a creamy texture",
+          "dietary_information": null,
+          "features": null,
+          "further_description": null,
+          "brand_marketing": null,
+          "manufacturer_marketing": null,
+          "manufacturer": "Orchard World LTD, 790 The Crescent, Colchester Business Park, Colchester, Essex, CO4 9YQ. Telephone: 01206 834465 Email: Info@theorchardfruitcompany.com",
+          "producer": null,
+          "preparation_and_usage": "Best Served at room temperature. Wash before use.",
+          "cooking_guidelines": null,
+          "other_information": null,
+          "package_type": "Card tray, plan flow wrap and label",
+          "recycling_information": "Yes",
+          "specification": null,
+          "storage": "Store at room temperature to ripen then keep refrigerated for longevity",
+          "recipes": null,
+          "serving_suggestions": null,
+          "country_of_origin": "Spain",
+          "country_of_packaging": "UK",
+          "current_vintage": null,
+          "vinification_details": null
+        },
+        "flags": [
+          "vegetarian"
+        ],
+        "categories": [
+          "fresh-chilled-food/fruit/exotic-fruit"
+        ]
+      },
+      "context_hash": "d654c92444522e230416c8de8080d61e625e5aef2dd6703c9d99e260f9cf43a3",
+      "rationale": "Plain produce: OrchardWorld Organic Ripen at Home Cherimoya (Custard Apple). The stored identity and composition support vegan suitability. Ordinary wrapping or missing packaging details provide no evidenced animal-component concern. Custard apple is the fruit identity, and creamy describes its flesh; no dairy ingredient is supplied.",
+      "support": [
+        {
+          "field": "name",
+          "quote": "OrchardWorld Organic Ripen at Home Cherimoya (Custard Apple)"
+        },
+        {
+          "field": "detailed_description",
+          "quote": "Cherimoya Fruit is also known as the 'Custard Apple'."
+        }
+      ],
+      "reviewed_by": "supervising Codex agent, direct source review (no separate classifier calls)",
+      "reviewed_on": "2026-10-18",
+      "scope": "complete product; evidenced material concerns only"
+    },
+    {
+      "product_id": "700804011",
+      "reason": "ingredients",
+      "context": {
+        "product": {
+          "id": "700804011",
+          "name": "Wonderfully Curious Spaghetti Squash",
+          "brand": "Wonderfully Curious",
+          "url": "https://www.ocado.com/products/700804011/details",
+          "pack_size": null,
+          "official_vegan": 0,
+          "alcohol": 0,
+          "ingredients": null,
+          "allergens": null,
+          "detailed_description": "A golden-yellow oval squash with flesh that separates into slightly sweet and nutty spaghetti-like strands. This squash can be baked, boiled or microwaved whole, then cut in half, topped with sauce and eaten as if it were spaghetti. It makes it a useful gluten-free or low-calorie substitution in pasta recipes, served with a pesto or tomato sauce. After draining well it is a great substitute for noodles; tossed into a stir-fry with lots of chili and ginger. The cooked strands are also excellent eaten cold tossed in vinaigrette.",
+          "dietary_information": null,
+          "features": null,
+          "further_description": null,
+          "brand_marketing": null,
+          "manufacturer_marketing": null,
+          "manufacturer": "CURIOUS, THE FRESH PRODUCE CENTRE, TRANSFESA ROAD, PADDOCK WOOD, KENT, TN12 6UT",
+          "producer": null,
+          "preparation_and_usage": "Wash before use.",
+          "cooking_guidelines": null,
+          "other_information": null,
+          "package_type": "Label",
+          "recycling_information": null,
+          "specification": null,
+          "storage": "Store in a cool, dry place.",
+          "recipes": null,
+          "serving_suggestions": null,
+          "country_of_origin": "UK",
+          "country_of_packaging": "UK",
+          "current_vintage": null,
+          "vinification_details": null
+        },
+        "flags": [
+          "vegetarian"
+        ],
+        "categories": [
+          "events-inspiration/halloween/pumpkins",
+          "fresh-chilled-food/in-season/vegetables-salad/vegetables",
+          "fresh-chilled-food/vegetables/squash-sweet-potatoes/squash"
+        ]
+      },
+      "context_hash": "2d0acacf652bd3bb3b231a7db47e37db3b41db1ea9c2d4044268b5835eaa236e",
+      "rationale": "Plain produce: Wonderfully Curious Spaghetti Squash. The stored identity and composition support vegan suitability. Ordinary wrapping or missing packaging details provide no evidenced animal-component concern.",
+      "support": [
+        {
+          "field": "name",
+          "quote": "Wonderfully Curious Spaghetti Squash"
+        },
+        {
+          "field": "detailed_description",
+          "quote": "A golden-yellow oval squash with flesh that separates into slightly sweet and nutty spaghetti-like strands."
+        }
+      ],
+      "reviewed_by": "supervising Codex agent, direct source review (no separate classifier calls)",
+      "reviewed_on": "2026-10-18",
+      "scope": "complete product; evidenced material concerns only"
+    }
+  ]
+}

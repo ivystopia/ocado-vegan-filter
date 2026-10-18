@@ -1,0 +1,504 @@
+{
+  "scope": "Eight ordinary produce additions from the membership refresh; other new products remain unknown pending review.",
+  "reviews": [
+    {
+      "product_id": "658013011",
+      "reason": "ingredients",
+      "context": {
+        "product": {
+          "id": "658013011",
+          "name": "Berryworld King Strawberries",
+          "brand": "Berryworld",
+          "url": "https://www.ocado.com/products/658013011/details",
+          "pack_size": "425g",
+          "official_vegan": 0,
+          "alcohol": 0,
+          "ingredients": "Blueberries",
+          "allergens": null,
+          "detailed_description": "Bow down to BerryWorld King Strawberries! Our largest, plumpest, and juiciest Strawberries yet. These royally delicious berries are hand-picked at peak ripeness to deliver a burst of sweet, delicious flavour fit for a King. Big on size, big on flavour, these berry majestic Strawberries are naturally nutritious and delicious, making them the ultimate treat. Grown with care for the planet and people, they're the berry best choice for a guilt-free treat. With every purchase, you're helping us support FareShare, a charity fighting hunger and reducing food waste in the UK. We've already provided the equivalent of 1.6 million meals to those in need, thanks to berry-lovers like you! Add a punnet of BerryWorld goodness to your basket today!",
+          "dietary_information": "Suitable for Vegetarians",
+          "features": null,
+          "further_description": null,
+          "brand_marketing": null,
+          "manufacturer_marketing": null,
+          "manufacturer": "Winterwood Farms, Chartway Road, Maidstone ME17 3DN",
+          "producer": null,
+          "preparation_and_usage": null,
+          "cooking_guidelines": null,
+          "other_information": null,
+          "package_type": "Plastic Punnet",
+          "recycling_information": null,
+          "specification": null,
+          "storage": "Keep Refrigerated",
+          "recipes": null,
+          "serving_suggestions": null,
+          "country_of_origin": "Jordan",
+          "country_of_packaging": "UK",
+          "current_vintage": null,
+          "vinification_details": null
+        },
+        "flags": [],
+        "categories": [
+          "fresh-chilled-food/brands-we-love/berryworld/blueberry",
+          "fresh-chilled-food/fruit/berries-cherries/blueberries"
+        ]
+      },
+      "context_hash": "25f186a3e70330e5cf17ac9d5afe4086e965b45b6860b6cf2dfb56f4537de0b6",
+      "rationale": "The name and description say strawberries while the ingredients say blueberries. This discrepancy is retained, not reconciled: both supplied identities describe plain berries, so it does not materially change vegan suitability. There is no coating, dressing or animal ingredient evidenced.",
+      "support": [
+        {
+          "field": "name",
+          "quote": "Berryworld King Strawberries"
+        },
+        {
+          "field": "ingredients",
+          "quote": "Blueberries"
+        },
+        {
+          "field": "detailed_description",
+          "quote": "Bow down to BerryWorld King Strawberries! Our largest, plumpest, and juiciest Strawberries yet."
+        }
+      ],
+      "reviewed_by": "supervising Codex agent, direct source review (no separate classifier calls)",
+      "reviewed_on": "2026-10-18",
+      "scope": "complete product; evidenced material concerns only"
+    },
+    {
+      "product_id": "518211011",
+      "reason": "ingredients",
+      "context": {
+        "product": {
+          "id": "518211011",
+          "name": "M&S Orange",
+          "brand": "M&S",
+          "url": "https://www.ocado.com/products/518211011/details",
+          "pack_size": "350g",
+          "official_vegan": 0,
+          "alcohol": 0,
+          "ingredients": "Orange",
+          "allergens": null,
+          "detailed_description": "M&S Orange Segments Sweet and tangy orange segments. M&S UPC - 270489",
+          "dietary_information": null,
+          "features": "Eat well, Refreshing & Juicy, 1 of Your 5 a Day",
+          "further_description": "Deliciously healthy food Best enjoyed as part of a healthy lifestyle & a balanced varied diet. 1 of your five a day = 80g Eat a healthy variety of differently coloured vegetables and fruits each day - At least 5 portions.",
+          "brand_marketing": "M&S Food has been at the heart of the nation since 1884. Giving our customers their best-loved products at the incredible quality and value that only M&S can deliver. From Percy Pig to the freshest M&S Select Farms produce, we grow, source, and develop our own products to give you family-ready food that's unbeatable on flavour and innovation. And that's whether you come to us for your family favourites, an indulgent treat, or your perfect party food spread. After all, this is not just food… This is M&S Food.",
+          "manufacturer_marketing": null,
+          "manufacturer": "Marks and Spencer plc, PO Box 3339, Chester, CH99 9QS, United Kingdom. M&S (Ireland) Ltd, PO Box 13022, Ravensdale, Dublin 2, Ireland.",
+          "producer": null,
+          "preparation_and_usage": null,
+          "cooking_guidelines": null,
+          "other_information": "Full Product Name: Orange Storage: Not suitable for freezing. For use by, see top of pack. Keep refrigerated 0°C to +5°C. Once opened, eat within 24 hours. Safety Warning: This product may contain pips. Additional Information: © M&S plc",
+          "package_type": "Pot",
+          "recycling_information": "Film - Do Not Recycle; Pot - Recycle",
+          "specification": null,
+          "storage": "Keep Refrigerated; Not Suitable for Home Freezing",
+          "recipes": null,
+          "serving_suggestions": null,
+          "country_of_origin": "South Africa",
+          "country_of_packaging": "United Kingdom",
+          "current_vintage": null,
+          "vinification_details": null
+        },
+        "flags": [
+          "vegetarian"
+        ],
+        "categories": [
+          "fresh-chilled-food/fruit/prepared-lunch-snack-fruit",
+          "m-s/m-s-best-of-fresh/m-s-fruit-vegetables/m-s-fruit",
+          "m-s/m-s-eat-well/fruit",
+          "m-s/m-s-own-brands/m-s-eat-well"
+        ]
+      },
+      "context_hash": "15a9b64f6d13b3d52fb450b4ed1e56045dd0ea3236524c36b374ab6595c285c3",
+      "rationale": "The sold orange segments have the single ingredient Orange; the pot does not create an evidenced animal-component concern.",
+      "support": [
+        {
+          "field": "name",
+          "quote": "M&S Orange"
+        },
+        {
+          "field": "ingredients",
+          "quote": "Orange"
+        },
+        {
+          "field": "detailed_description",
+          "quote": "M&S Orange Segments Sweet and tangy orange segments. M&S UPC - 270489"
+        }
+      ],
+      "reviewed_by": "supervising Codex agent, direct source review (no separate classifier calls)",
+      "reviewed_on": "2026-10-18",
+      "scope": "complete product; evidenced material concerns only"
+    },
+    {
+      "product_id": "517874011",
+      "reason": "ingredients",
+      "context": {
+        "product": {
+          "id": "517874011",
+          "name": "M&S Passion Fruit",
+          "brand": "M&S",
+          "url": "https://www.ocado.com/products/517874011/details",
+          "pack_size": "90g",
+          "official_vegan": 0,
+          "alcohol": 0,
+          "ingredients": null,
+          "allergens": null,
+          "detailed_description": "M&S Passion Fruit",
+          "dietary_information": null,
+          "features": "Eat well, Fragrant & tangy",
+          "further_description": "Deliciously healthy food Best enjoyed as part of a healthy lifestyle & a balanced varied diet. 1 of Your Five a Day Eat a healthy variety of differently coloured vegetables and fruits each day - at least 5 portions.",
+          "brand_marketing": "M&S Food has been at the heart of the nation since 1884. Giving our customers their best-loved products at the incredible quality and value that only M&S can deliver. From Percy Pig to the freshest M&S Select Farms produce, we grow, source, and develop our own products to give you family-ready food that's unbeatable on flavour and innovation. And that's whether you come to us for your family favourites, an indulgent treat, or your perfect party food spread. After all, this is not just food… This is M&S Food.",
+          "manufacturer_marketing": null,
+          "manufacturer": "Marks and Spencer plc, PO Box 3339, Chester, CH99 9QS, United Kingdom. M&S (Ireland) Ltd, PO Box 13022, Ravensdale, Dublin 2, Ireland.",
+          "producer": null,
+          "preparation_and_usage": "Wash before use.",
+          "cooking_guidelines": null,
+          "other_information": "Full Product Name: Passion Fruit Storage: For use by, see front of pack. Keep refrigerated 0°C to +5°C. Once opened, eat within 24 hours. Not suitable for freezing. Additional Information: © Marks and Spencer plc",
+          "package_type": "Pouch",
+          "recycling_information": "Film - Recycle with bags at large supermarket - Don't recycle at home",
+          "specification": null,
+          "storage": "Keep Refrigerated; Not Suitable for Home Freezing",
+          "recipes": null,
+          "serving_suggestions": null,
+          "country_of_origin": "Produce of more than one country. Made in South Africa",
+          "country_of_packaging": "South Africa",
+          "current_vintage": null,
+          "vinification_details": null
+        },
+        "flags": [
+          "vegetarian"
+        ],
+        "categories": [
+          "fresh-chilled-food/fruit/exotic-fruit",
+          "fresh-chilled-food/fruit/prepared-lunch-snack-fruit",
+          "m-s/m-s-best-of-fresh/m-s-fruit-vegetables/m-s-fruit",
+          "m-s/m-s-eat-well/fruit",
+          "m-s/m-s-own-brands/m-s-eat-well"
+        ]
+      },
+      "context_hash": "cc8771950550b52cb80cdf4aaf538606393a4295f24354857fa6e18a16fe9b0c",
+      "rationale": "The complete product identity is plain passion fruit. Missing ingredients and ordinary pouch packaging do not create an evidenced concern.",
+      "support": [
+        {
+          "field": "name",
+          "quote": "M&S Passion Fruit"
+        },
+        {
+          "field": "detailed_description",
+          "quote": "M&S Passion Fruit"
+        }
+      ],
+      "reviewed_by": "supervising Codex agent, direct source review (no separate classifier calls)",
+      "reviewed_on": "2026-10-18",
+      "scope": "complete product; evidenced material concerns only"
+    },
+    {
+      "product_id": "203776011",
+      "reason": "ingredients",
+      "context": {
+        "product": {
+          "id": "203776011",
+          "name": "Natoora British Brussels Sprouts Tops",
+          "brand": "Natoora",
+          "url": "https://www.ocado.com/products/203776011/details",
+          "pack_size": "300g",
+          "official_vegan": 0,
+          "alcohol": 0,
+          "ingredients": null,
+          "allergens": null,
+          "detailed_description": "FLAVOUR IS A FRONTIER Natoora British Brussel Sprout Tops - Sprout tops are often left on the farm, yet these small, tender greens, usually considered a grower's bonus, hold great culinary potential. - The tops of the plants are removed between late September and mid-November in Lincolnshire to encourage robust growth in the sprouts below. - By working closely with growers, we can explore the underutilized parts of plants, adding more variety to what ends up on the plate. Take it further - Steam and douse in butter. - Add to soups and stews. Natoora's radical approach to seasonal sourcing is shaping the future of food - We are revolutionising the food system. - We work direct with growers who value flavour, biodiversity and heritage over yield. - We give them the support they need to build a better future for food, rooted in small scale, sustainable agriculture that gives back to our planet.",
+          "dietary_information": null,
+          "features": null,
+          "further_description": null,
+          "brand_marketing": null,
+          "manufacturer_marketing": null,
+          "manufacturer": "Natoora Ltd 108-114 Druid Street SE1 2HH",
+          "producer": null,
+          "preparation_and_usage": "Wash before use",
+          "cooking_guidelines": null,
+          "other_information": null,
+          "package_type": "Compostable Bag",
+          "recycling_information": "Compostable",
+          "specification": null,
+          "storage": "Keep refrigerated.",
+          "recipes": null,
+          "serving_suggestions": null,
+          "country_of_origin": "UK",
+          "country_of_packaging": "UK",
+          "current_vintage": null,
+          "vinification_details": null
+        },
+        "flags": [],
+        "categories": [
+          "fresh-chilled-food/brands-we-love/natoora-shop/vegetables",
+          "fresh-chilled-food/vegetables/cabbage-spinach-greens/spring-greens",
+          "fresh-chilled-food/vegetables/cabbage-spinach-greens/sprouts"
+        ]
+      },
+      "context_hash": "841864b84f92fc5fec5d5dfeae25dc943374e5de1444c4f8f1b40b116267dee8",
+      "rationale": "Sprout tops are plain plant leaves. Dousing them in butter is a customer serving instruction, not an included ingredient. Compostable bag alone is not a material concern.",
+      "support": [
+        {
+          "field": "name",
+          "quote": "Natoora British Brussels Sprouts Tops"
+        },
+        {
+          "field": "detailed_description",
+          "quote": "FLAVOUR IS A FRONTIER Natoora British Brussel Sprout Tops - Sprout tops are often left on the farm, yet these small, tender greens, usually considered a grower's bonus, hold great culinary potential."
+        }
+      ],
+      "reviewed_by": "supervising Codex agent, direct source review (no separate classifier calls)",
+      "reviewed_on": "2026-10-18",
+      "scope": "complete product; evidenced material concerns only"
+    },
+    {
+      "product_id": "435284011",
+      "reason": "ingredients",
+      "context": {
+        "product": {
+          "id": "435284011",
+          "name": "Natoora British Organic Parsnips",
+          "brand": "Natoora",
+          "url": "https://www.ocado.com/products/435284011/details",
+          "pack_size": "500g",
+          "official_vegan": 0,
+          "alcohol": 0,
+          "ingredients": null,
+          "allergens": null,
+          "detailed_description": "FLAVOUR IS A FRONTIER Natoora British Organic Parsnips - Organic Parsnips straight from Duncan in Lancashire. - Rather than harvest early and hold in cold storage as many commercial growers would do, Duncan leaves his parsnips in the ground and digs to order. As temperatures dip, the parsnips begin to convert their starch to sugars, becoming sweet while also absorbing nutrients from the soil. - By committing to organic cultivation techniques for over 30 years, Duncan has fed into the fertility and minerality of his soils, taking the flavour of his vegetables to new heights. - Black, sandy and super fertile soil produces nutrient-dense parsnips. Take it further - Grate, toss raw with sliced apple and walnuts in a mustard dressing. - Baked as a gratin with seasoned breadcrumbs and strong Cheddar. Natoora's radical approach to seasonal sourcing is shaping the future of food - We are revolutionising the food system. - We work direct with growers who value flavour, biodiversity and heritage over yield. - We give them the support they need to build a better future for food, rooted in small scale, sustainable agriculture that gives back to our planet.",
+          "dietary_information": null,
+          "features": null,
+          "further_description": null,
+          "brand_marketing": null,
+          "manufacturer_marketing": null,
+          "manufacturer": "Natoora Ltd 108-114 Druid Street SE1 2HH",
+          "producer": null,
+          "preparation_and_usage": "Wash before use.",
+          "cooking_guidelines": null,
+          "other_information": null,
+          "package_type": "Compostable Bag",
+          "recycling_information": "These bags are from The Compost Bag Company. They use surplus raw materials from plants like Cardoon Thistle and Sugar Beet to make these fully compostable bags using 100% renewable energy.",
+          "specification": null,
+          "storage": "Keep refrigerated.",
+          "recipes": null,
+          "serving_suggestions": null,
+          "country_of_origin": "UK",
+          "country_of_packaging": "UK",
+          "current_vintage": null,
+          "vinification_details": null
+        },
+        "flags": [
+          "organic",
+          "vegetarian"
+        ],
+        "categories": [
+          "christmas/the-big-feast/sides-sauces-veg/veg",
+          "dietary-lifestyle/organic/fresh-chilled/fruit-vegetables/vegetables",
+          "fresh-chilled-food/brands-we-love/natoora-shop/vegetables",
+          "fresh-chilled-food/vegetables/carrots-root-vegetables/parsnips",
+          "fresh-chilled-food/vegetables/organic"
+        ]
+      },
+      "context_hash": "2aa5434a4928693f85e85d6b1bafa8708d727fcc68c9cac708e7bdabc0a29426",
+      "rationale": "Plain parsnips. Cheddar appears only in an optional gratin suggestion. Packaging text explicitly describes bags made from plant materials.",
+      "support": [
+        {
+          "field": "name",
+          "quote": "Natoora British Organic Parsnips"
+        },
+        {
+          "field": "detailed_description",
+          "quote": "FLAVOUR IS A FRONTIER Natoora British Organic Parsnips - Organic Parsnips straight from Duncan in Lancashire."
+        }
+      ],
+      "reviewed_by": "supervising Codex agent, direct source review (no separate classifier calls)",
+      "reviewed_on": "2026-10-18",
+      "scope": "complete product; evidenced material concerns only"
+    },
+    {
+      "product_id": "203780011",
+      "reason": "tagged",
+      "context": {
+        "product": {
+          "id": "203780011",
+          "name": "Natoora Italian Vanilla Persimmons",
+          "brand": "Natoora",
+          "url": "https://www.ocado.com/products/203780011/details",
+          "pack_size": "2 per pack",
+          "official_vegan": 1,
+          "alcohol": 0,
+          "ingredients": null,
+          "allergens": null,
+          "detailed_description": "FLAVOUR IS A FRONTIER Natoora Italian Vanilla Persimmon - We source Vanilla Persimmons from Campania, where they grow without the use of chemical sprays or fertilisers. - Picked ripe, they will mature further off the tree but remain firm-fleshed and retain a mild astringency. - Persimmons require a drop in temperature to undergo a process similar to bletting, converting their bitter tannins to sugars to reach full maturity. - This natural bletting process can result in dark markings on the skin and in the flesh – far from signs of spoilage, these signal perfect ripeness and are intrinsic to the vanilla variety. Take it further - Slice thinly, toss with bitter leaves and ricotta. - Cut into wedges, roast with honey. Our packaging is plastic-free - We have developed our own revolutionary packaging which is entirely plastic-free and home disposable. Each of our recyclable cardboard punnets is flow-wrapped with home-compostable film which, unlike traditional plastic flow-wrap, disintegrates within 180 days. Dispose of the black punnet in your normal recycling and the clear film in your food waste bin. - Each punnet bears the ‘Plastic Free’ mark of A Plastic Planet, a grassroots movement which aims to turn off the plastic tap. Natoora's radical approach to seasonal sourcing is shaping the future of food - We are revolutionising the food system. - We work direct with growers who value flavour, biodiversity and heritage over yield. - We give them the support they need to build a better future for food, rooted in small scale, sustainable agriculture that gives back to our planet.",
+          "dietary_information": null,
+          "features": null,
+          "further_description": null,
+          "brand_marketing": null,
+          "manufacturer_marketing": null,
+          "manufacturer": "Natoora Ltd., St.James's Road, London, SE16 4RA.",
+          "producer": null,
+          "preparation_and_usage": "Wash before use.",
+          "cooking_guidelines": null,
+          "other_information": null,
+          "package_type": "Recyclable cardboard punnet and home-compostable film",
+          "recycling_information": "Recyclable punnet and home-compostable film",
+          "specification": null,
+          "storage": "Keep refrigerated.",
+          "recipes": null,
+          "serving_suggestions": null,
+          "country_of_origin": "Italy",
+          "country_of_packaging": "UK",
+          "current_vintage": null,
+          "vinification_details": null
+        },
+        "flags": [
+          "vegan"
+        ],
+        "categories": [
+          "fresh-chilled-food/brands-we-love/natoora-shop/fruit",
+          "fresh-chilled-food/fruit/exotic-fruit"
+        ]
+      },
+      "context_hash": "98c98fab872861cd67f46e52339ab80a24ac4e90f5dde317d98746ef4176be48",
+      "rationale": "Plain persimmons with an applicable official vegan flag. Vanilla is the fruit variety, not an added flavouring. Ricotta and honey are serving suggestions; documented punnet/film does not evidence an animal component.",
+      "support": [
+        {
+          "field": "name",
+          "quote": "Natoora Italian Vanilla Persimmons"
+        },
+        {
+          "field": "detailed_description",
+          "quote": "FLAVOUR IS A FRONTIER Natoora Italian Vanilla Persimmon - We source Vanilla Persimmons from Campania, where they grow without the use of chemical sprays or fertilisers."
+        }
+      ],
+      "reviewed_by": "supervising Codex agent, direct source review (no separate classifier calls)",
+      "reviewed_on": "2026-10-18",
+      "scope": "complete product; evidenced material concerns only"
+    },
+    {
+      "product_id": "399724011",
+      "reason": "ingredients",
+      "context": {
+        "product": {
+          "id": "399724011",
+          "name": "Natoora Seasonal Italian Decana Pears min",
+          "brand": "Natoora",
+          "url": "https://www.ocado.com/products/399724011/details",
+          "pack_size": "2 per pack",
+          "official_vegan": 0,
+          "alcohol": 0,
+          "ingredients": null,
+          "allergens": null,
+          "detailed_description": "FLAVOUR IS A FRONTIER Natoora Seasonal Italian Decana Pears - We are currently sourcing Decana pears from the small Piedmont market of Roero. - Decana pears blush on the side that meets the sun, turning a deep rust. - Flesh is highly perfumed and rich in sweet, citrusy juice; skin is textured but never tough, and with good flavour. - We'll see other varieties as they come into season during the course of the year. Take it further - Thinly sliced, tossed with radicchio, gorgonzola dolce and roasted walnuts. - Baked into frangipane. Our packaging is plastic-free - We have developed our own revolutionary packaging which is entirely plastic-free and home disposable. Each of our recyclable cardboard punnets is flow-wrapped with home-compostable film which, unlike traditional plastic flow-wrap, disintegrates within 180 days. Dispose of the black punnet in your normal recycling and the clear film in your food waste bin. - Each punnet bears the ‘Plastic Free’ mark of A Plastic Planet, a grassroots movement which aims to turn off the plastic tap. Natoora's radical approach to seasonal sourcing is shaping the future of food - Natoora's radical approach to seasonal sourcing is shaping the future of food - We are revolutionising the food system. - We work direct with growers who value flavour, biodiversity and heritage over yield. - We give them the support they need to build a better future for food, rooted in small scale, sustainable agriculture that gives back to our planet.",
+          "dietary_information": null,
+          "features": null,
+          "further_description": null,
+          "brand_marketing": null,
+          "manufacturer_marketing": null,
+          "manufacturer": null,
+          "producer": null,
+          "preparation_and_usage": "Wash before use.",
+          "cooking_guidelines": null,
+          "other_information": null,
+          "package_type": "Recyclable cardboard punnet and home-compostable film",
+          "recycling_information": null,
+          "specification": null,
+          "storage": "Keep refrigerated.",
+          "recipes": null,
+          "serving_suggestions": null,
+          "country_of_origin": "Italy",
+          "country_of_packaging": "UK",
+          "current_vintage": null,
+          "vinification_details": null
+        },
+        "flags": [
+          "vegetarian"
+        ],
+        "categories": [
+          "fresh-chilled-food/brands-we-love/natoora-shop/fruit",
+          "fresh-chilled-food/fruit/pears"
+        ]
+      },
+      "context_hash": "e5b17fc6c765664ab96947566884145e925b7b1fbfb70123223ac9d0a2941d0a",
+      "rationale": "Plain pears. Gorgonzola and frangipane appear as customer serving ideas, not included ingredients. Punnet/film alone provides no material animal-component concern.",
+      "support": [
+        {
+          "field": "name",
+          "quote": "Natoora Seasonal Italian Decana Pears min"
+        },
+        {
+          "field": "detailed_description",
+          "quote": "FLAVOUR IS A FRONTIER Natoora Seasonal Italian Decana Pears - We are currently sourcing Decana pears from the small Piedmont market of Roero."
+        }
+      ],
+      "reviewed_by": "supervising Codex agent, direct source review (no separate classifier calls)",
+      "reviewed_on": "2026-10-18",
+      "scope": "complete product; evidenced material concerns only"
+    },
+    {
+      "product_id": "207094011",
+      "reason": "tagged",
+      "context": {
+        "product": {
+          "id": "207094011",
+          "name": "Natoora Sicilian Pomegranate",
+          "brand": "Natoora",
+          "url": "https://www.ocado.com/products/207094011/details",
+          "pack_size": null,
+          "official_vegan": 1,
+          "alcohol": 0,
+          "ingredients": "Pomegranate",
+          "allergens": null,
+          "detailed_description": "FLAVOUR IS A FRONTIER Natoora Sicilian Pomegranate - We source our exceptionally heavy, syrup-rich Pomegranates direct from Marco, our grower in Sicily. - Pomegranates don't ripen after being picked, so they must be harvested at full maturity. - Marco and his team use a refractometer to check sucrose levels, ensuring the perfect balance of acidity, sweetness, and shape before harvesting. - His ripe, dark seeded pomegranates are a world apart from the bland, long-travelled fruit we see on the market. Slice into quarters horizontally, whack the outer skin with a wooden spoon to remove seeds. Take it further - Toss with shaved fennel, blood orange, and olive oil. - Pair with slow-roasted duck and a pomegranate glaze for a rich, sweet-acidic finish. Natoora's radical approach to seasonal sourcing is shaping the future of food - We are revolutionising the food system. - We work direct with growers who value flavour, biodiversity and heritage over yield. - We give them the support they need to build a better future for food, rooted in small scale, sustainable agriculture that gives back to our planet.",
+          "dietary_information": "Suitable for Vegans; Suitable for Vegetarians",
+          "features": null,
+          "further_description": null,
+          "brand_marketing": "What is Natoora? Natoora was founded in 2004 in a bid to bring flavour, seasonality and transparency back to the way we source and eat food. Today, we work closely with responsible growers to find fruit and veg varieties chosen for flavour, many of which never make it into the mainstream food system. From seed selection to traditional growing methods, we champion the people and practices behind good produce, connecting growers with chefs and home cooks all around the world.",
+          "manufacturer_marketing": null,
+          "manufacturer": "Natoora Ltd., St.James's Road, London, SE16 4RA.",
+          "producer": null,
+          "preparation_and_usage": "How to remove seeds from a pomegranate Slice into quarters horizontally, then whack the outer skin with a wooden spoon to remove the seeds. Best ways to eat pomegranate Toss with shaved fennel, orange slices and a drizzle of extra version olive oil for a sweet-acidic salad. Wash before use.",
+          "cooking_guidelines": null,
+          "other_information": "Storage: Keep refrigerated.",
+          "package_type": "Compostable sticker",
+          "recycling_information": "Net - Recyclable",
+          "specification": null,
+          "storage": null,
+          "recipes": null,
+          "serving_suggestions": null,
+          "country_of_origin": "Italy",
+          "country_of_packaging": "UK",
+          "current_vintage": null,
+          "vinification_details": null
+        },
+        "flags": [
+          "vegan"
+        ],
+        "categories": [
+          "fresh-chilled-food/brands-we-love/natoora-shop/fruit",
+          "fresh-chilled-food/fruit/exotic-fruit",
+          "world-foods/italian/fruit-vegetables/fruit"
+        ]
+      },
+      "context_hash": "53e8fb309876ed760a7b8b52ddbba9816b24e866eebdff09d4393ef6bd9e6ffb",
+      "rationale": "Plain pomegranate, with an applicable official vegan flag and Suitable for Vegans statement. Duck appears only in a pairing suggestion. Packaging descriptions do not evidence an animal component.",
+      "support": [
+        {
+          "field": "name",
+          "quote": "Natoora Sicilian Pomegranate"
+        },
+        {
+          "field": "ingredients",
+          "quote": "Pomegranate"
+        },
+        {
+          "field": "detailed_description",
+          "quote": "FLAVOUR IS A FRONTIER Natoora Sicilian Pomegranate - We source our exceptionally heavy, syrup-rich Pomegranates direct from Marco, our grower in Sicily."
+        }
+      ],
+      "reviewed_by": "supervising Codex agent, direct source review (no separate classifier calls)",
+      "reviewed_on": "2026-10-18",
+      "scope": "complete product; evidenced material concerns only"
+    }
+  ]
+}

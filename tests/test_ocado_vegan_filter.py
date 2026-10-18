@@ -965,6 +965,24 @@ class UserscriptTests(unittest.TestCase):
     def test_source(self) -> None:
         userscript_source_test()
 
+    def test_reviewed_kissabel_apples_keep_the_real_add_button(self) -> None:
+        html = '''<html><body><article class="product-card-container">
+          <a href="https://www.ocado.com/products/kissabel-british-apples/647140011">Kissabel British Apples<img></a>
+          <button data-test="counter-button" aria-label="Add Kissabel British Apples"
+            onclick="window.appleClicks=(window.appleClicks||0)+1">Add</button>
+          </article></body></html>'''
+        with headless_firefox() as driver:
+            driver.get("data:text/html;base64," + base64.b64encode(html.encode()).decode())
+            driver.execute_script(userscript())
+            driver.execute_async_script("const done=arguments[0];requestAnimationFrame(()=>requestAnimationFrame(done));")
+            self.assertFalse(driver.execute_script("return document.querySelector('article').classList.contains('ocado-vegan-filter-muted');"))
+            button = driver.find_element(By.TAG_NAME, "button")
+            self.assertEqual(button.text, "Add")
+            button.click()
+            self.assertEqual(driver.execute_script("return window.appleClicks"), 1)
+            self.assertEqual(driver.find_element(By.TAG_NAME, "a").get_attribute("href"),
+                             "https://www.ocado.com/products/kissabel-british-apples/647140011")
+
     def test_fixture(self) -> None:
         fixture_smoke_test()
 
