@@ -62,8 +62,18 @@ def source_context(conn, pid):
     row = conn.execute("SELECT " + ",".join(SOURCE_FIELDS) + " FROM products WHERE id=?", (pid,)).fetchone()
     if row is None:
         raise ValueError(f"Missing product {pid}")
+    product = dict(zip(SOURCE_FIELDS, row))
+    # Some suppliers place explicit vegan declarations in nutrition-table text.
+    # Preserve that source only when present; existing source-bound reviews with
+    # no such text retain their exact context/hash.
+    if conn.execute("SELECT 1 FROM sqlite_master WHERE name='manufacturer_vegan_evidence'").fetchone():
+        nutrition = [r[0] for r in conn.execute(
+            "SELECT DISTINCT content FROM manufacturer_vegan_evidence WHERE product_id=? AND field_title='nutritionalData' ORDER BY content", (pid,)
+        )]
+        if nutrition:
+            product["nutrition_declaration"] = "\n".join(nutrition)
     return {
-        "product": dict(zip(SOURCE_FIELDS, row)),
+        "product": product,
         "flags": [
             r[0] for r in conn.execute("SELECT flag FROM product_flags WHERE product_id=? ORDER BY flag", (pid,))
         ],

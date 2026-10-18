@@ -24,8 +24,12 @@ Each accepted record retains the complete selected SQLite source fields, flags, 
 
 The userscript's published runtime is unchanged. Export preserves retained ID positions and changes only additions and counts. No blocked-unknown set or whole-product coordinator is part of the active implementation.
 
-## Model use and future changes
+## Complete current-Unknown review
 
-No model calls are needed for this first conclusive ordinary-food batch. Do not use restored legacy model settings on the canonical database. A later model-backed workflow must implement the selected two Luna 6/high readings and two blind Sol 6.1/medium readings on disagreement, within the included plan. It is a separately bounded change, not a reason to restart catalogue-wide classification now.
+The current task reviews every current Unknown product afresh. Freeze all `current_on_ocado = 1 AND vegan_status = 'unknown'` records with complete relevant source fields, flags, categories and source hashes. Do not filter admission by category or apparent likelihood. Keep previous decisions out of model inputs. Two independent GPT-6-Luna/high readings assess each product; raw status/reason disagreement receives exactly two fresh blind GPT-6.1-Sol/medium readings. Agreed unknowns do not escalate. Every product gets a retained outcome, including non-promotions; an operational failure is unfinished work.
 
-A future refresh should gather new facts into an isolated database and present affected products for review, preserving the protected baseline until changes are explicitly scoped. Genuine newly discovered evidence that a baseline item is nonvegan must be reported; baseline preservation is not a claim that known contrary evidence can be ignored forever.
+Use `tools/review_current_unknowns.py`. The queue and call journals live on the main NVMe under `.rollback-work/`. Every attempt checks included-plan eligibility and retains usage, input bindings and raw responses. No tools or prior answers are available to the classifier. Validate exact IDs, source quotations, canonical reason, complete-product dimensions and unresolved concerns locally. Resume completed passes without repeating them. Schema/transport failures have bounded retries; valid conservative decisions are never retried to obtain a positive.
+
+Before application, require complete cohort accounting, unchanged source hashes and unchanged protected classifications. Apply only clearly supported unknown-to-vegan additions through the protected baseline writer. Retain all other review outcomes in a separate audit ledger, leaving their canonical Unknown labels intact. Preserve all published and already reviewed classifications. This is a complete review of the frozen Unknown cohort, not a revalidation of published positives, a new scrape, or an exhaustive external manufacturer search.
+
+Preview first, then apply, export with a dry run, verify unchanged runtime and existing ID placement, run tests and commit on dev. No tag, push, publication or installed FireMonkey update. Continue supervising until finished or an actual included-plan/external blocker prevents progress; never call a partial batch complete.

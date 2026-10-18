@@ -27,7 +27,7 @@ Import rejects concurrent membership changes, preserves existing decisions and s
 
 ## Review and export
 
-Review clear unknown candidates individually, including newly discovered products. Apply source-bound additions using `tools/published_baseline.py`. Keep published positives/nonvegan IDs unchanged unless a separate correction is explicitly scoped. No quotas, blanket rules, broad reclassification, repeat model benchmark or exhaustive manufacturer research belongs in this workflow.
+When a complete Unknown review is requested, freeze and review every current Unknown record using `tools/review_current_unknowns.py`, including newly discovered products. Candidate screening alone is not completed review. Apply source-bound additions using `tools/published_baseline.py`. Keep published positives/nonvegan IDs unchanged unless a separate correction is explicitly scoped. No quotas, blanket rules, broad reclassification, repeat model benchmark or exhaustive manufacturer research belongs in this workflow.
 
 Run the full tests, exporter dry run, then regenerate the local userscript and verify that only reviewed IDs and counts changed. Commit on dev without a new tag, push or FireMonkey installation. The user will test this development script before deciding on a release.
 

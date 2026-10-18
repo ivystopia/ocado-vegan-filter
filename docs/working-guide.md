@@ -1,10 +1,12 @@
 # Working in this repository
 
-Read [AGENTS.md](../AGENTS.md) first. The active task starts from published 1.7.2 and makes small reviewed additions from unknown products. The [classifier design](vegan-classifier-design.md) describes the evidence policy; [maintenance](monthly-maintenance.md) describes future refreshes. Older reports and restored release-era tools are not current execution instructions.
+Read [AGENTS.md](../AGENTS.md) first. The active task starts from published 1.7.2 and reviews every current Unknown product and makes only clearly supported additions. The [classifier design](vegan-classifier-design.md) describes the evidence policy; [maintenance](monthly-maintenance.md) describes future refreshes. Older reports and restored release-era tools are not current execution instructions.
 
 ## Code map
 
 - `ocado-vegan-filter.user.js`: published shopping runtime and embedded ID sets. Preserve runtime behaviour during this additive effort.
+- `tools/review_current_unknowns.py`: frozen complete current-Unknown queue, fresh independent readings, per-product outcomes and guarded additive activation.
+- `tools/codex_evidence.py`: isolated included-plan model calls, admission guards and retained token usage.
 - `tools/published_baseline.py`: protected restoration, source-bound reviews and audit writes; previews by default.
 - `tools/update_userscript_allowlists.py`: validates canonical decisions and regenerates sets while preserving retained ID placement.
 - `tools/refresh_catalogue_membership.py`: isolated complete discovery and new-product detail capture, followed by guarded membership import; existing classifications and detailed evidence remain intact.
@@ -29,7 +31,7 @@ Keep all-known/current counts separate. Existing detailed records and raw SQLite
 ## Review and apply clear unknowns
 
 1. Select unknown candidates and inspect full relevant SQLite fields, flags and categories. Select by name/category only to find candidates, never as automatic proof. Retain exact source snapshots, quotations, scope and rationale in a JSON review file using the existing produce review as its schema example.
-2. Confirm that each accepted item is outside every published set, has unambiguous product identity/composition and no evidenced material concern. Prefer a small useful batch over speculative automatic rules. Record manufacturer precedence if applicable.
+2. Confirm that each accepted item is outside every published set, has unambiguous product identity/composition and no evidenced material concern. Do not confuse a selected batch with completion of the full current-Unknown queue. Record manufacturer precedence if applicable.
 3. Preview and apply the review, then export:
 
 ```sh
@@ -62,3 +64,9 @@ Browser behaviour tests must preserve clickable native Add buttons and links, re
 - Inspect actual processes before assuming a job survived a restart. No previous whole-product coordinator should be resumed after this user-requested rollback.
 - Preserve Git history with rollback commits. Do not reset shared branches or force push. Use unsigned local dev commits if GPG is unavailable; release tags still require signatures.
 - Keep this development work local. No release tag, main advancement, push, publication or installed FireMonkey update until requested.
+
+## Complete current-Unknown review
+
+Run `tools/review_current_unknowns.py freeze --root .rollback-work/current-unknown-review-YYYY-MM-DD`, then `run` with the same root. Use `status` to inspect exact reviewed/remaining counts. The coordinator holds a lock; each complete pass is retained independently. A STOP file means admissions halted: inspect its error and attempt journals, resolve the actual cause, then resume without discarding completed work. Do not change prompt/schema/model/source bindings mid-run.
+
+After every frozen product has a valid final review, use `finalize` without `--apply` to write the complete outcomes and proposed additions under `audit/current-unknown-review/`. Inspect the report and additions, then use `finalize --apply` to record the outcomes and add supported positives transactionally. It rejects concurrent changes to the cohort, its source evidence or protected decisions. A completed activation is not rerunnable as a new queue.
