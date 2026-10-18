@@ -45,8 +45,9 @@ class ReviewTests(unittest.TestCase):
 
     def test_quotes_must_exist_and_claim_must_be_quoted(self):
         for d in (decision(reason="name"), decision(reason="manufacturer")):
-            with self.assertRaises(ValueError):
-                review.validate_payload({"decisions": [d]}, [context()])
+            raw = review.validate_payload({"decisions": [d]}, [context()])["1"]
+            self.assertEqual(raw["reason"], d["reason"], "preserve raw reason for disagreement checks")
+            self.assertIsNotNone(review.positive_basis_issue(raw), "unsupported reason cannot promote")
         d = decision()
         d["support"][0]["quote"] = "Vegan apples"
         with self.assertRaises(ValueError):

@@ -90,6 +90,94 @@ class PublishedBaselineTests(unittest.TestCase):
         with self.assertRaisesRegex(ValueError, "Stale reviewed evidence"):
             policy.apply_reviews(self.conn, [review])
 
+    def test_model_backed_addition_preserves_actual_audit_source(self):
+        self.restore()
+        with self.conn:
+            result = policy.apply_reviews(self.conn, [self.review()], source="codex")
+        self.assertEqual(
+            self.conn.execute(
+                "SELECT source FROM product_vegan_classification_audit WHERE run_id=?", (result["run_id"],)
+            ).fetchall(),
+            [("codex",)],
+        )
+        self.assertEqual(
+            self.conn.execute(
+                "SELECT rule_classified,llm_classified FROM vegan_classification_runs WHERE id=?",
+                (result["run_id"],),
+            ).fetchone(),
+            (0, 1),
+        )
+
+    def test_complete_unknown_review_activation_keeps_baseline_and_backups(self):
+        import gzip
+        import review_current_unknowns as runner
+
+        self.restore()
+        self.conn.execute("ALTER TABLE products ADD COLUMN current_on_ocado INTEGER DEFAULT 1")
+        self.conn.execute("UPDATE products SET current_on_ocado=0 WHERE id='4'")
+        self.conn.execute("CREATE TABLE manufacturer_website_evidence(product_id TEXT)")
+        self.conn.commit()
+        root = Path(self.tmp.name) / "review"
+        output = Path(self.tmp.name) / "report"
+        with mock.patch("builtins.print"):
+            runner.freeze(self.path, root)
+        context = policy.source_context(self.conn, "3")
+        decision = {
+            "product_id": "3",
+            "status": "vegan",
+            "reason": "ingredients",
+            "rationale": "Plain apples with no evidenced material concern.",
+            "support": [{"field": "name", "quote": "Kissabel British Apples"}],
+            "concerns": [],
+            "assessment": dict.fromkeys(runner.DIMENSIONS, "clear"),
+        }
+        result = {
+            "decision": decision,
+            "primary": [decision, decision],
+            "arbitration": None,
+            "call_ids": ["one", "two"],
+        }
+        with closing(runner.connect(root)) as queue, queue:
+            queue.execute("UPDATE products SET result_json=? WHERE id='3'", (json.dumps(result),))
+        folder = root / "passes/00000"
+        folder.mkdir(parents=True)
+        for call_id, stage in [("one", "primary-1"), ("two", "primary-2")]:
+            binding = policy.digest(
+                {
+                    "version": runner.VERSION,
+                    "prompt": runner.PROMPT + policy.encoded([context]),
+                    "model": runner.PRIMARY[0],
+                    "effort": runner.PRIMARY[1],
+                }
+            )
+            record = {
+                "call_id": call_id,
+                "stage": stage,
+                "product_ids": ["3"],
+                "model": runner.PRIMARY[0],
+                "reasoning_effort": runner.PRIMARY[1],
+                "context_hash": binding,
+                "invocation_started": True,
+                "exit_status": 0,
+                "usage": {"input_tokens": 1},
+                "parsed_response": {"decisions": [decision]},
+            }
+            (folder / f"{stage}.attempts.jsonl").write_text(json.dumps(record) + "\n")
+        with mock.patch("builtins.print"):
+            runner.finalize(self.path, root, output, True)
+        application = json.loads((output / "application.json").read_text())
+        self.assertTrue(application["applied"])
+        with gzip.open(application["before_activation_backup"]["path"], "rt") as stream:
+            before = json.load(stream)["before"]
+        self.assertEqual([(row["id"], row["vegan_status"]) for row in before], [("3", "unknown")])
+        self.assertEqual(
+            self.conn.execute("SELECT id,vegan_status FROM products ORDER BY id").fetchall(),
+            [("1", "vegan"), ("2", "nonvegan"), ("3", "vegan"), ("4", "unknown")],
+        )
+        self.assertEqual(self.conn.execute("SELECT count(*) FROM current_unknown_reviews").fetchone()[0], 1)
+        with mock.patch("builtins.print"), self.assertRaisesRegex(ValueError, "cohort changed"):
+            runner.finalize(self.path, root, output, True)
+
     def test_changed_identity_cannot_reuse_review(self):
         self.restore()
         review = self.review()

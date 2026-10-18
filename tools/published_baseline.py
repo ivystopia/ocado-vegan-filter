@@ -170,15 +170,17 @@ def new_run(conn, mode, count):
     ).lastrowid
 
 
-def write_decision(conn, run, pid, status, reason, evidence, summary):
+def write_decision(conn, run, pid, status, reason, evidence, summary, *, source="rule"):
+    if source not in {"rule", "codex"}:
+        raise ValueError("Invalid reviewed decision source")
     stamp = int(time.time())
     context_hash = evidence.get("context_hash")
     aid = conn.execute(
         """INSERT INTO product_vegan_classification_audit
         (run_id,product_id,source,vegan_status,vegan_reason,confidence,summary,evidence_json,
          context_hash,classifier_version,classified_at_epoch)
-        VALUES (?,?,'rule',?,?,'high',?,?,?,?,?)""",
-        (run, pid, status, reason, summary, encoded(evidence), context_hash, VERSION, stamp),
+        VALUES (?,?,?,?,?,'high',?,?,?,?,?)""",
+        (run, pid, source, status, reason, summary, encoded(evidence), context_hash, VERSION, stamp),
     ).lastrowid
     values = {
         "vegan_status": status,
@@ -192,13 +194,16 @@ def write_decision(conn, run, pid, status, reason, evidence, summary):
     }
     columns = {r[1] for r in conn.execute("PRAGMA table_info(products)")}
     values = {k: v for k, v in values.items() if k in columns}
-    conn.execute("UPDATE products SET " + ",".join(k + "=?" for k in values) + " WHERE id=?", (*values.values(), pid))
+    conn.execute(
+        "UPDATE products SET " + ",".join(k + "=?" for k in values) + " WHERE id=?", (*values.values(), pid)
+    )
     return aid
 
 
-def finish_run(conn, run, count):
+def finish_run(conn, run, count, *, source="rule"):
+    count_column = {"rule": "rule_classified", "codex": "llm_classified"}[source]
     conn.execute(
-        "UPDATE vegan_classification_runs SET status='completed',completed_at_epoch=?,rule_classified=? WHERE id=?",
+        f"UPDATE vegan_classification_runs SET status='completed',completed_at_epoch=?,{count_column}=? WHERE id=?",
         (int(time.time()), count, run),
     )
 
@@ -253,7 +258,7 @@ def restore(conn, backup_path):
     return {"run_id": run, "restored_products": len(before), "published_classified": len(expected)}
 
 
-def apply_reviews(conn, reviews):
+def apply_reviews(conn, reviews, *, source="rule"):
     """Caller owns transaction. Validate every record before the first write."""
     validate(conn)
     ids = [r["product_id"] for r in reviews]
@@ -268,9 +273,20 @@ def apply_reviews(conn, reviews):
             raise ValueError("Only unknown products may be promoted")
     run = new_run(conn, "reviewed-unknown-additions", len(reviews))
     for review in reviews:
-        aid = write_decision(conn, run, review["product_id"], "vegan", review["reason"], review, review["rationale"])
-        conn.execute("INSERT INTO reviewed_vegan_additions VALUES(?,?,?)", (review["product_id"], encoded(review), aid))
-    finish_run(conn, run, len(reviews))
+        aid = write_decision(
+            conn,
+            run,
+            review["product_id"],
+            "vegan",
+            review["reason"],
+            review,
+            review["rationale"],
+            source=source,
+        )
+        conn.execute(
+            "INSERT INTO reviewed_vegan_additions VALUES(?,?,?)", (review["product_id"], encoded(review), aid)
+        )
+    finish_run(conn, run, len(reviews), source=source)
     validate(conn)
     return {"run_id": run, "added_vegan": len(reviews)}
 

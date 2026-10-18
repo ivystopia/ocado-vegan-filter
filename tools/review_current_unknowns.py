@@ -88,7 +88,12 @@ def code_hash():
     return baseline.digest(
         {
             p.name: hashlib.sha256(p.read_bytes()).hexdigest()
-            for p in (Path(__file__), Path(codex_evidence.__file__), Path(baseline.__file__))
+            for p in (
+                Path(__file__),
+                Path(codex_evidence.__file__),
+                Path(baseline.__file__),
+                ROOT / "tools/report_unknown_review.py",
+            )
         }
     )
 
@@ -249,16 +254,21 @@ def validate_payload(payload, contexts):
                 continue
             if not isinstance(value, str) or q["quote"] not in value:
                 raise ValueError(f"Quotation not found in supplied source for {pid}")
-        if d["status"] == "vegan" and d["reason"] in ("manufacturer", "name"):
-            if not any(
-                "vegan" in q["quote"].lower() and (d["reason"] != "name" or q["field"] == "name")
-                for q in d["support"]
-            ):
-                raise ValueError("Positive claim is not quoted")
         found[pid] = d
     if set(found) != set(by_id):
         raise ValueError("Missing decisions")
     return found
+
+
+def positive_basis_issue(decision):
+    """An unsupported attribution is a policy hold, not a request to reroll a label."""
+    if decision["status"] == "vegan" and decision["reason"] in ("manufacturer", "name"):
+        if not any(
+            "vegan" in quote["quote"].lower() and (decision["reason"] != "name" or quote["field"] == "name")
+            for quote in decision["support"]
+        ):
+            return "The agreed positive reason lacks an affirmative whole-product vegan assertion in its source quotations; retain Unknown pending a supported reason."
+    return None
 
 
 def read_pass(root, batch, label, contexts, pair, codex_bin):
@@ -601,6 +611,18 @@ def finalize(db, root, output, apply):
             validate_payload({"decisions": [reading]}, [context])
         if result["decision"] != merge(result["primary"], result["arbitration"]):
             raise ValueError("Result merge changed")
+        issue = positive_basis_issue(result["decision"])
+        if issue and pid not in exclusions:
+            exclusions[pid] = {
+                "product_id": pid,
+                "context_hash": hashed,
+                "rationale": issue,
+                "support": [
+                    q
+                    for q in result["decision"]["support"]
+                    if isinstance(context["product"].get(q["field"]), str)
+                ],
+            }
         if result["decision"]["status"] == "vegan" and pid not in exclusions:
             reviews.append(make_review(context, result, time.strftime("%Y-%m-%d")))
         result["promotion_hold"] = exclusions.get(pid)
@@ -608,6 +630,11 @@ def finalize(db, root, output, apply):
             "vegan" if result["decision"]["status"] == "vegan" and pid not in exclusions else "unknown"
         )
         results.append({"product_id": pid, "context_hash": hashed, **result})
+    from report_unknown_review import report as reconcile_calls
+
+    accounting = reconcile_calls(root, output)
+    if not accounting["complete"]:
+        raise ValueError("Fresh-reading/call accounting is incomplete")
     with closing(sqlite3.connect(f'file:{db}?mode={"rw" if apply else "ro"}', uri=True)) as conn, conn:
         conn.execute("BEGIN IMMEDIATE" if apply else "BEGIN")
         baseline.validate(conn)
@@ -651,7 +678,33 @@ def finalize(db, root, output, apply):
             from update_userscript_allowlists import validate_export_readiness
 
             validate_export_readiness(conn)
-            report["application"] = baseline.apply_reviews(conn, reviews)
+            columns = ["id"] + [
+                row[1] for row in conn.execute("PRAGMA table_info(products)") if row[1].startswith("vegan_")
+            ]
+            before = [
+                dict(
+                    zip(
+                        columns,
+                        conn.execute(
+                            "SELECT " + ",".join(columns) + " FROM products WHERE id=?", (item["product_id"],)
+                        ).fetchone(),
+                    )
+                )
+                for item in reviews
+            ]
+            backup = {"cohort_hash": manifest["cohort_hash"], "before": before}
+            backup_path = root / f"before-activation-{time.time_ns()}.classifications.json.gz"
+            with gzip.open(backup_path, "xt") as stream:
+                json.dump(backup, stream, ensure_ascii=False)
+            with gzip.open(backup_path, "rt") as stream:
+                if json.load(stream) != backup:
+                    raise ValueError("Pre-activation logical backup verification failed")
+            report["before_activation_backup"] = {
+                "path": str(backup_path.resolve()),
+                "sha256": hashlib.sha256(backup_path.read_bytes()).hexdigest(),
+                "products": len(before),
+            }
+            report["application"] = baseline.apply_reviews(conn, reviews, source="codex")
             conn.execute(
                 """CREATE TABLE IF NOT EXISTS current_unknown_reviews (cohort_hash TEXT,product_id TEXT,context_hash TEXT,result_json TEXT,reviewed_at_epoch INTEGER, PRIMARY KEY(cohort_hash,product_id))"""
             )
@@ -669,7 +722,7 @@ def finalize(db, root, output, apply):
                 ],
             )
             report["applied"] = True
-        write_json(output / ("application.json" if apply else "preview.json"), report)
+    write_json(output / ("application.json" if apply else "preview.json"), report)
     print(baseline.encoded(report), flush=True)
 
 
