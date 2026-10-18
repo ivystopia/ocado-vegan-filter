@@ -237,6 +237,15 @@ class ReviewTests(unittest.TestCase):
             with self.assertRaises(ValueError):
                 review.checked_exclusions(root, rows)
 
+    def test_exact_numeric_absence_of_tag_is_grounded_without_becoming_a_tag(self):
+        c = context()
+        d = decision(status="unknown", reason=None)
+        d["support"].append({"field": "official_vegan", "quote": "0"})
+        self.assertEqual(review.validate_payload({"decisions": [d]}, [c])["1"]["status"], "unknown")
+        d["support"][-1]["quote"] = "1"
+        with self.assertRaises(ValueError):
+            review.validate_payload({"decisions": [d]}, [c])
+
     def test_nutrition_declaration_is_retained_without_changing_other_contexts(self):
         with sqlite3.connect(":memory:") as conn:
             conn.execute(

@@ -243,7 +243,7 @@ def validate_payload(payload, contexts):
             ):
                 raise ValueError("Invalid quotation")
             value = by_id[pid]["product"].get(q["field"])
-            if q["field"] == "official_vegan" and value == 1 and q["quote"] == "1":
+            if q["field"] == "official_vegan" and value in (0, 1) and q["quote"] == str(value):
                 continue  # Exact typed flag reference; text quotes are retained separately.
             if q["field"] == "flags" and q["quote"] in by_id[pid]["flags"]:
                 continue
