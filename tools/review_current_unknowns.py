@@ -8,6 +8,7 @@ import fcntl
 import gzip
 import hashlib
 import json
+import re
 import shutil
 import sqlite3
 import threading
@@ -196,6 +197,19 @@ def validate_payload(payload, contexts):
                 and product[field] in (None, "")
             ):
                 continue  # Redundant absence reference, not a textual quote.
+            if (
+                item.get("status") == "unknown"
+                and field == "name"
+                and isinstance(quote.get("quote"), str)
+                and isinstance(product.get("name"), str)
+                and re.sub(r"(?<=[A-Za-z])\.(?=\s)", "", quote["quote"])
+                == re.sub(r"(?<=[A-Za-z])\.(?=\s)", "", product["name"])
+            ):
+                # Recover an abstention's full-name reference when only periods
+                # after an abbreviation differ (Dr Oetker / Dr. Oetker).
+                # Decimal points and other punctuation remain strict.
+                # no word, identity, status or positive evidence is inferred.
+                quote["quote"] = product["name"]
             retained.append(quote)
         item["support"] = retained
     found = {}

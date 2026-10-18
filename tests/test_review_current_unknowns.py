@@ -62,6 +62,30 @@ class ReviewTests(unittest.TestCase):
             review.validate_payload({"decisions": [decision(reason="tagged")]}, [c])["1"]["reason"], "tagged"
         )
 
+    def test_unknown_full_name_period_repair_preserves_raw_words_and_status(self):
+        c = context(name="Dr. Oetker Pastel Cupcake Cases")
+        d = decision(status="unknown", reason=None)
+        d["support"] = [{"field": "name", "quote": "Dr Oetker Pastel Cupcake Cases"}]
+        result = review.validate_payload({"decisions": [d]}, [c])["1"]
+        self.assertEqual(result["status"], "unknown")
+        self.assertEqual(result["support"][0]["quote"], c["product"]["name"])
+        self.assertEqual(d["support"][0]["quote"], "Dr Oetker Pastel Cupcake Cases")
+        for status, quote in (
+            ("vegan", "Dr Oetker Pastel Cupcake Cases"),
+            ("unknown", "Dr Oetker Vegan Cupcake Cases"),
+            ("unknown", "Dr Oetker Pastel Muffin Cases"),
+        ):
+            bad = copy.deepcopy(d)
+            bad["status"] = status
+            bad["reason"] = "ingredients" if status == "vegan" else None
+            bad["support"][0]["quote"] = quote
+            with self.subTest(status=status, quote=quote), self.assertRaises(ValueError):
+                review.validate_payload({"decisions": [bad]}, [c])
+        decimal = context(name="Example Product 10.5g")
+        d["support"][0]["quote"] = "Example Product 105g"
+        with self.assertRaises(ValueError):
+            review.validate_payload({"decisions": [d]}, [decimal])
+
     def test_nonpositive_cannot_have_positive_reason(self):
         with self.assertRaises(ValueError):
             review.validate_payload({"decisions": [decision(status="unknown")]}, [context()])
